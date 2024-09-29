@@ -15,7 +15,8 @@ interface Product {
 const HomePage: React.FC = () => {
   const [activePhoneItem, setActivePhoneItem] = useState<string>('Iphone 15');
   const [activeIpadItem, setActiveIpadItem] = useState<string>('Ipad Pro');
-  const [activeLaptopItem, setActiveLaptopItem] = useState<string>('MacBook Air');
+  const [activeLaptopItem, setActiveLaptopItem] =
+    useState<string>('MacBook Air');
   const location = useLocation();
 
   const FecthPhoneCatalog: IPhoneCatalog[] = [
@@ -41,36 +42,36 @@ const HomePage: React.FC = () => {
   const phoneProducts: Record<string, Product[]> = {
     'Iphone 15': [
       { name: 'Iphone 15 128GB', price: '30,000,000 VND', storage: '128GB' },
-      { name: 'Iphone 15 256GB', price: '35,000,000 VND', storage: '256GB' },
+      { name: 'Iphone 15 256GB', price: '35,000,000 VND', storage: '256GB' }
     ],
     'Iphone 14': [
       { name: 'Iphone 14 128GB', price: '25,000,000 VND', storage: '128GB' },
-      { name: 'Iphone 14 256GB', price: '28,000,000 VND', storage: '256GB' },
-    ],
+      { name: 'Iphone 14 256GB', price: '28,000,000 VND', storage: '256GB' }
+    ]
     // Thêm các sản phẩm khác tương tự
   };
 
   const ipadProducts: Record<string, Product[]> = {
     'Ipad Pro': [
       { name: 'Ipad Pro 128GB', price: '20,000,000 VND', storage: '128GB' },
-      { name: 'Ipad Pro 256GB', price: '25,000,000 VND', storage: '256GB' },
+      { name: 'Ipad Pro 256GB', price: '25,000,000 VND', storage: '256GB' }
     ],
     'Ipad Air': [
       { name: 'Ipad Air 64GB', price: '15,000,000 VND', storage: '64GB' },
-      { name: 'Ipad Air 256GB', price: '18,000,000 VND', storage: '256GB' },
-    ],
+      { name: 'Ipad Air 256GB', price: '18,000,000 VND', storage: '256GB' }
+    ]
     // Thêm các sản phẩm khác
   };
 
   const laptopProducts: Record<string, Product[]> = {
     'MacBook Air': [
       { name: 'MacBook Air 256GB', price: '35,000,000 VND', storage: '256GB' },
-      { name: 'MacBook Air 512GB', price: '40,000,000 VND', storage: '512GB' },
+      { name: 'MacBook Air 512GB', price: '40,000,000 VND', storage: '512GB' }
     ],
     'MacBook Pro': [
       { name: 'MacBook Pro 256GB', price: '45,000,000 VND', storage: '256GB' },
-      { name: 'MacBook Pro 512GB', price: '50,000,000 VND', storage: '512GB' },
-    ],
+      { name: 'MacBook Pro 512GB', price: '50,000,000 VND', storage: '512GB' }
+    ]
     // Thêm các sản phẩm khác
   };
 
@@ -101,7 +102,7 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="pb-[20px] xl:pt-[80px]">
-      <HeaderResponsive Title_NavbarMobile='Trang Chủ' />
+      <HeaderResponsive Title_NavbarMobile="Trang Chủ" />
       <div>
         {/* Banner */}
         <div className="relative">
@@ -117,12 +118,12 @@ const HomePage: React.FC = () => {
           <div>
             <img
               src={BannerDesktop}
-              className="w-full hidden xl:block"
+              className="hidden w-full xl:block"
               alt="BannerDesktop"
             />
             <img
               src={BannerTablet}
-              className="w-full xl:hidden hidden md:block"
+              className="hidden w-full md:block xl:hidden"
               alt="BannerTablet"
             />
             <img
@@ -143,10 +144,11 @@ const HomePage: React.FC = () => {
             {FecthPhoneCatalog.map(item => (
               <Button
                 key={item._id}
-                className={`flex w-full items-center justify-center transition-all duration-500 ease-in-out hover:rounded-badge hover:bg-secondary hover:text-white ${item.name === activePhoneItem
-                  ? 'bg-primary text-white hover:bg-primary hover:text-white'
-                  : 'bg-white text-primary'
-                  }`}
+                className={`flex w-full items-center justify-center transition-all duration-500 ease-in-out hover:rounded-badge hover:bg-secondary hover:text-white ${
+                  item.name === activePhoneItem
+                    ? 'bg-primary text-white hover:bg-primary hover:text-white'
+                    : 'bg-white text-primary'
+                }`}
                 onClick={() => handlePhoneItemClick(item.name)}
               >
                 {item.name}
@@ -155,20 +157,32 @@ const HomePage: React.FC = () => {
           </div>
 
           {/* Bảng sản phẩm */}
-          <table className="min-w-full mt-5 border-collapse border border-gray-200">
+          <table className="mt-5 min-w-full border-collapse border border-gray-200">
             <thead>
               <tr className="bg-[#ff6a00] text-white">
-                <th className="border border-primary px-4 py-2 text-left">Tên sản phẩm</th>
-                <th className="border border-primary px-4 py-2 text-left">Giá</th>
-                <th className="border border-primary px-4 py-2 text-left">Dung lượng</th>
+                <th className="border border-primary px-4 py-2 text-left">
+                  Tên sản phẩm
+                </th>
+                <th className="border border-primary px-4 py-2 text-left">
+                  Giá
+                </th>
+                <th className="border border-primary px-4 py-2 text-left">
+                  Dung lượng
+                </th>
               </tr>
             </thead>
             <tbody>
-               {phoneProducts[activePhoneItem]?.map((product, index) => (
-                <tr key={index} className=" hover:bg-black hover:bg-opacity-10">
-                  <td className="border border-primary px-4 py-2">{product.name}</td>
-                  <td className="border border-primary px-4 py-2">{product.price}</td>
-                  <td className="border border-primary px-4 py-2">{product.storage}</td>
+              {phoneProducts[activePhoneItem]?.map((product, index) => (
+                <tr key={index} className="hover:bg-black hover:bg-opacity-10">
+                  <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
+                    {product.name}
+                  </td>
+                  <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
+                    {product.price}
+                  </td>
+                  <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
+                    {product.storage}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -185,10 +199,11 @@ const HomePage: React.FC = () => {
             {FecthIpadCatalog.map(item => (
               <Button
                 key={item._id}
-                className={`flex w-full items-center justify-center transition-all duration-500 ease-in-out hover:rounded-badge hover:bg-secondary hover:text-white ${item.name === activeIpadItem
-                  ? 'bg-primary text-white hover:bg-primary hover:text-white'
-                  : 'bg-white text-primary'
-                  }`}
+                className={`flex w-full items-center justify-center transition-all duration-500 ease-in-out hover:rounded-badge hover:bg-secondary hover:text-white ${
+                  item.name === activeIpadItem
+                    ? 'bg-primary text-white hover:bg-primary hover:text-white'
+                    : 'bg-white text-primary'
+                }`}
                 onClick={() => handleIpadItemClick(item.name)}
               >
                 {item.name}
@@ -197,20 +212,32 @@ const HomePage: React.FC = () => {
           </div>
 
           {/* Bảng sản phẩm */}
-          <table className="min-w-full mt-5 border-collapse border border-gray-200">
+          <table className="mt-5 min-w-full border-collapse border border-gray-200">
             <thead>
               <tr className="bg-[#ff6a00] text-white">
-                <th className="border border-primary px-4 py-2 text-left">Tên sản phẩm</th>
-                <th className="border border-primary px-4 py-2 text-left">Giá</th>
-                <th className="border border-primary px-4 py-2 text-left">Dung lượng</th>
+                <th className="border border-primary px-4 py-2 text-left">
+                  Tên sản phẩm
+                </th>
+                <th className="border border-primary px-4 py-2 text-left">
+                  Giá
+                </th>
+                <th className="border border-primary px-4 py-2 text-left">
+                  Dung lượng
+                </th>
               </tr>
             </thead>
             <tbody>
               {ipadProducts[activeIpadItem]?.map((product, index) => (
-                <tr key={index} className=" hover:bg-black hover:bg-opacity-10">
-                  <td className="border border-primary px-4 py-2">{product.name}</td>
-                  <td className="border border-primary px-4 py-2">{product.price}</td>
-                  <td className="border border-primary px-4 py-2">{product.storage}</td>
+                <tr key={index} className="hover:bg-black hover:bg-opacity-10">
+                  <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
+                    {product.name}
+                  </td>
+                  <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
+                    {product.price}
+                  </td>
+                  <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
+                    {product.storage}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -227,10 +254,11 @@ const HomePage: React.FC = () => {
             {FecthLaptopCatalog.map(item => (
               <Button
                 key={item._id}
-                className={`flex w-full items-center justify-center transition-all duration-500 ease-in-out hover:rounded-badge hover:bg-secondary hover:text-white ${item.name === activeLaptopItem
-                  ? 'bg-primary text-white hover:bg-primary hover:text-white'
-                  : 'bg-white text-primary'
-                  }`}
+                className={`flex w-full items-center justify-center transition-all duration-500 ease-in-out hover:rounded-badge hover:bg-secondary hover:text-white ${
+                  item.name === activeLaptopItem
+                    ? 'bg-primary text-white hover:bg-primary hover:text-white'
+                    : 'bg-white text-primary'
+                }`}
                 onClick={() => handleLaptopItemClick(item.name)}
               >
                 {item.name}
@@ -239,20 +267,32 @@ const HomePage: React.FC = () => {
           </div>
 
           {/* Bảng sản phẩm */}
-          <table className="min-w-full mt-5 border-collapse border border-gray-200">
+          <table className="mt-5 min-w-full border-collapse border border-gray-200">
             <thead>
               <tr className="bg-[#ff6a00] text-white">
-                <th className="border border-primary px-4 py-2 text-left">Tên sản phẩm</th>
-                <th className="border border-primary px-4 py-2 text-left">Giá</th>
-                <th className="border border-primary px-4 py-2 text-left">Dung lượng</th>
+                <th className="border border-primary px-4 py-2 text-left">
+                  Tên sản phẩm
+                </th>
+                <th className="border border-primary px-4 py-2 text-left">
+                  Giá
+                </th>
+                <th className="border border-primary px-4 py-2 text-left">
+                  Dung lượng
+                </th>
               </tr>
             </thead>
             <tbody>
               {laptopProducts[activeLaptopItem]?.map((product, index) => (
-                <tr key={index} className=" hover:bg-black hover:bg-opacity-10">
-                  <td className="border border-primary px-4 py-2">{product.name}</td>
-                  <td className="border border-primary px-4 py-2">{product.price}</td>
-                  <td className="border border-primary px-4 py-2">{product.storage}</td>
+                <tr key={index} className="hover:bg-black hover:bg-opacity-10">
+                  <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
+                    {product.name}
+                  </td>
+                  <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
+                    {product.price}
+                  </td>
+                  <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
+                    {product.storage}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -261,6 +301,6 @@ const HomePage: React.FC = () => {
       </div>
     </div>
   );
-}
+};
 
 export default HomePage;

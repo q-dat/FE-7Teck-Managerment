@@ -14,7 +14,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <BrowserRouter>
         <Suspense fallback={<LoadingPage loading={true} />}>
           <ErrorBoundary>
-              <App />
+            <App />
           </ErrorBoundary>
         </Suspense>
       </BrowserRouter>

@@ -89,7 +89,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                 {/* LOGO */}
                 <div className="flex items-center justify-center">
                   <img
-                    className="object-cover rounded-full -mb-0.5"
+                    className="-mb-0.5 rounded-full object-cover"
                     width={120}
                     loading="lazy"
                     src={Logo}
@@ -109,10 +109,11 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                       >
                         <NavLink
                           to={item.link}
-                          className={`btn relative mt-2 flex w-full flex-row items-center justify-between rounded-none border-none pl-4 pr-3 ${item.name === activeItem
-                            ? 'bg-primary bg-opacity-30 text-sm font-bold text-primary dark:bg-opacity-50 dark:text-white'
-                            : 'border-none bg-primary bg-opacity-10 text-sm font-light text-black shadow-headerMenu dark:text-white'
-                            } `}
+                          className={`btn relative mt-2 flex w-full flex-row items-center justify-between rounded-none border-none pl-4 pr-3 ${
+                            item.name === activeItem
+                              ? 'bg-primary bg-opacity-30 text-sm font-bold text-primary dark:bg-opacity-50 dark:text-white'
+                              : 'border-none bg-primary bg-opacity-10 text-sm font-light text-black shadow-headerMenu dark:text-white'
+                          } `}
                         >
                           <>
                             {item.name === activeItem && (
@@ -125,13 +126,17 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                                     ? 'h-5 w-5 text-primary dark:text-white'
                                     : 'h-5 w-5'
                                 }
-                              ><Icon /></div>
+                              >
+                                <Icon />
+                              </div>
                             )}
                             <span className={Icon ? '' : ''}>{item.name}</span>
                             {item.submenu && (
                               <div
                                 className={`ml-2 h-4 w-4 ${openSubmenu === item.name ? 'rotate-180' : ''}`}
-                              ><FaChevronDown /></div>
+                              >
+                                <FaChevronDown />
+                              </div>
                             )}
                           </>
                         </NavLink>
@@ -166,7 +171,9 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
               onClick={toggleLeftVisible}
               className="flex flex-row items-center justify-center gap-2 py-4 text-2xl text-black dark:text-white xl:hidden"
             >
-              <div className="glass rounded-md bg-primary p-1 text-[25px] text-white shadow-headerMenu dark:text-white" ><RxHamburgerMenu /></div>
+              <div className="glass rounded-md bg-primary p-1 text-[25px] text-white shadow-headerMenu dark:text-white">
+                <RxHamburgerMenu />
+              </div>
             </div>
           </Drawer>
         </div>
@@ -184,7 +191,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                 {/* LOGO */}
                 <div className="flex items-center justify-center">
                   <img
-                    className="object-cover rounded-full mb-5"
+                    className="mb-5 rounded-full object-cover"
                     width={120}
                     loading="lazy"
                     src={Logo}
@@ -206,7 +213,9 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
               onClick={toggleRightVisible}
               className="flex flex-row items-center justify-center gap-2 py-4 text-2xl text-black dark:text-white xl:hidden"
             >
-              <div className="glass rounded-md bg-primary p-1 text-[25px] text-white shadow-headerMenu dark:text-white" ><IoSettingsSharp /></div>
+              <div className="glass rounded-md bg-primary p-1 text-[25px] text-white shadow-headerMenu dark:text-white">
+                <IoSettingsSharp />
+              </div>
             </div>
           </Drawer>
         </div>
@@ -217,7 +226,9 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
           className="w-full text-black focus:outline-none dark:border-white dark:bg-transparent dark:text-white"
           type="text"
         />
-        <div className="absolute right-2 h-5 w-5 cursor-pointer text-gray-50" ><IoSearchOutline /></div>
+        <div className="absolute right-2 h-5 w-5 cursor-pointer text-gray-50">
+          <IoSearchOutline />
+        </div>
       </div>
     </div>
   );

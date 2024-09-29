@@ -45,7 +45,7 @@ const Header: React.FC = () => {
           link: ''
         },
         {
-          name:'#',
+          name: '#',
           icon: IoTicket,
           link: ''
         }
@@ -68,11 +68,11 @@ const Header: React.FC = () => {
   return (
     <div>
       {/* Desktop */}
-      <div className="fixed z-[99999] hidden h-[80px] w-full flex-row items-center justify-evenly bg-white dark:bg-primary py-2 uppercase shadow-md  xl:flex">
+      <div className="fixed z-[99999] hidden h-[80px] w-full flex-row items-center justify-evenly bg-white py-2 uppercase shadow-md dark:bg-primary xl:flex">
         <Menu className="flex flex-row items-center justify-center">
           <Link to="/">
             <img
-              className="mr-[200px] object-cover rounded-full"
+              className="mr-[200px] rounded-full object-cover"
               width={60}
               loading="lazy"
               src={Logo}
@@ -106,13 +106,17 @@ const Header: React.FC = () => {
                             ? 'h-5 w-5 text-primary dark:text-white'
                             : 'h-5 w-5'
                         }
-                      ><Icon/></div>
+                      >
+                        <Icon />
+                      </div>
                     )}
                     <span>{item.name}</span>
                     {item.submenu && (
                       <div
                         className={`m-0 h-4 w-4 p-0 ${openSubmenu === item.name ? 'rotate-180' : ''}`}
-                      ><FaChevronDown/></div>
+                      >
+                        <FaChevronDown />
+                      </div>
                     )}
                   </>
                 </NavLink>

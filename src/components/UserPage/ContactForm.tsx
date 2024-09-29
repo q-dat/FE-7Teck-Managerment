@@ -8,7 +8,6 @@ import {
 } from '../../assets/images';
 
 const ContactForm: React.FC = () => {
-
   const [isExpanded, setIsExpanded] = useState<boolean>(true);
   const dropdownContentRef = useRef<HTMLDivElement>(null);
 
@@ -30,9 +29,7 @@ const ContactForm: React.FC = () => {
         className="mb-5 ml-1 flex items-center rounded-md border border-white bg-primary p-2 text-xs text-white shadow-mainMenu"
         onClick={toggleDropdown}
       >
-        {isExpanded
-          ? `Thu Gọn ▼`
-          : `Liên Hệ▲`}
+        {isExpanded ? `Thu Gọn ▼` : `Liên Hệ▲`}
       </button>
       <div
         ref={dropdownContentRef}
@@ -102,4 +99,3 @@ const ContactForm: React.FC = () => {
 };
 
 export default ContactForm;
-

@@ -20,7 +20,6 @@ const NavbarAdmin: React.FC<{}> = () => {
     setDropdownVisible(!dropdownVisible);
   };
 
-
   return (
     <div className="flex items-center justify-between">
       <div className="hidden w-full items-center justify-between xl:flex">
@@ -31,7 +30,9 @@ const NavbarAdmin: React.FC<{}> = () => {
             type="text"
             placeholder="Tìm Kiếm..."
           />
-          <div className="absolute right-2 h-5 w-5 cursor-pointer text-black" ><IoSearchOutline/></div>
+          <div className="absolute right-2 h-5 w-5 cursor-pointer text-black">
+            <IoSearchOutline />
+          </div>
         </div>
 
         <div className="flex h-full items-center">
@@ -77,8 +78,7 @@ const NavbarAdmin: React.FC<{}> = () => {
           </nav>
           <div className="text-black">
             Hello,
-            <span className="font-semibold text-red-500">
-            </span>
+            <span className="font-semibold text-red-500"></span>
           </div>
           <div className="ml-4 cursor-pointer" onClick={handleAvatarClick}>
             <Avatar />
@@ -88,14 +88,18 @@ const NavbarAdmin: React.FC<{}> = () => {
                   size="md"
                   className="text-md flex w-full items-center justify-start rounded-none border-b-[0.5px] border-b-gray-50"
                 >
-                  <div className="mr-2 text-base" ><BiSolidUserRectangle/></div>
+                  <div className="mr-2 text-base">
+                    <BiSolidUserRectangle />
+                  </div>
                   Profile
                 </Button>
                 <Button
                   size="md"
                   className="text-md flex w-full items-center justify-start rounded-none border-b-[0.5px] border-b-gray-50"
                 >
-                  <div className="mr-2 text-base" ><IoSettings/></div>
+                  <div className="mr-2 text-base">
+                    <IoSettings />
+                  </div>
                   Settings
                 </Button>
               </div>
@@ -108,4 +112,3 @@ const NavbarAdmin: React.FC<{}> = () => {
 };
 
 export default NavbarAdmin;
-

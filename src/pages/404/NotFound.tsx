@@ -15,20 +15,22 @@ const NotFound: React.FC<{}> = () => {
         <Hero.Overlay />
         <Hero.Content className="text-center">
           <div className="max-w-md">
-            <h1 className="text-5xl font-bold text-white">
-
-            404 NOT FOUND            </h1>
-            <p className="py-6 text-white">Trang bạn tìm hiện không có, xin lỗi vì sự bất tiện này</p>
+            <h1 className="text-5xl font-bold text-white">404 NOT FOUND </h1>
+            <p className="py-6 text-white">
+              Trang bạn tìm hiện không có, xin lỗi vì sự bất tiện này
+            </p>
 
             <div className="flex items-center justify-center gap-4">
               <Link to="/">
                 <Button color="primary" className="text-white">
-Trang Chính                </Button>
+                  Trang Chính{' '}
+                </Button>
               </Link>
 
               <Link to="/auth/login">
                 <Button color="secondary" className="text-white">
-Đăng Nhập                </Button>
+                  Đăng Nhập{' '}
+                </Button>
               </Link>
             </div>
           </div>

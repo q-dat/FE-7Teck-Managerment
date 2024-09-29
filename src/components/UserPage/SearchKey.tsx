@@ -58,18 +58,20 @@ const SearchKey: React.FC = () => {
             </div>
 
             <div className="pt-10">
-              <div className="flex flex-row rounded-xl border border-black p-[1px]">
+              <div className="flex flex-row rounded-xl border border-black p-[1px] dark:border-white">
                 <InputForm
                   type="text"
                   placeholder="Nhập để tìm kiếm"
-                  className="w-[500px] rounded-r-none border-none bg-transparent focus:border-none focus:outline-none"
+                  className="w-[500px] rounded-r-none border-none bg-transparent focus:border-none focus:outline-none dark:text-white"
                   classNameLabel=" bg-white dark:bg-primary"
                 />
                 <Button
                   size="md"
                   className="rounded-l-none border-none shadow-none"
                 >
-                  <div className="text-xl text-black dark:text-white" ><BsSearch/></div>
+                  <div className="text-xl text-black dark:text-white">
+                    <BsSearch />
+                  </div>
                 </Button>
               </div>
             </div>
@@ -81,4 +83,3 @@ const SearchKey: React.FC = () => {
 };
 
 export default SearchKey;
-
