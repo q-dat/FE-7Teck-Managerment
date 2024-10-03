@@ -37,7 +37,7 @@ const Header: React.FC = () => {
     },
     {
       name: 'Liên Hệ',
-      link: '',
+      link: '/contact',
       submenu: [
         {
           name: '#',

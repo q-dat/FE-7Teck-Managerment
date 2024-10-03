@@ -91,7 +91,7 @@ const NotificationPopup: React.FC = () => {
                     <form
                       ref={formRef}
                       onSubmit={onSubmit}
-                      className="my-5 flex items-center justify-center rounded-xl border border-primary bg-white p-5 dark:border-white dark:bg-gray-500"
+                      className="my-5 flex items-center justify-center rounded-xl shadow-headerMenu bg-white p-5 dark:border-white dark:bg-gray-500"
                     >
                       <div className="flex w-1/2 items-center justify-center">
                         <div className="flex flex-col gap-5">
@@ -113,7 +113,7 @@ const NotificationPopup: React.FC = () => {
                           </div>
                           <Textarea
                             name="feedback"
-                            className="border border-gray-300 bg-white text-black focus:border-primary focus:outline-none dark:bg-gray-700 dark:text-white xs:w-full sm:w-[350px] md:w-[650px] lg:w-full"
+                            className="border pb-20 border-gray-300 bg-white text-black focus:border-primary focus:outline-none dark:bg-gray-700 dark:text-white xs:w-full sm:w-[350px] md:w-[650px] lg:w-full"
                             placeholder="Tin nhắn của bạn"
                           />
                           <div className="w-full">

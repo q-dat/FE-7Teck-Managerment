@@ -1,7 +1,7 @@
 import React from 'react';
 import { Footer } from 'react-daisyui';
-import { FaCcVisa } from 'react-icons/fa6';
-import { FaCcApplePay } from 'react-icons/fa';
+// import { FaCcVisa } from 'react-icons/fa6';
+// import { FaCcApplePay } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { Logo } from '../../assets/images';
 const FooterFC: React.FC = () => {
@@ -30,7 +30,7 @@ const FooterFC: React.FC = () => {
           <Link className="hover:text-secondary" to={''}></Link>
         </div>
         <div>
-          <Footer.Title></Footer.Title>
+          <Footer.Title>Liên Hệ</Footer.Title>
 
           <Link className="hover:text-secondary" to="tel:0333133050">
             HotLine: 0333133050
@@ -45,12 +45,12 @@ const FooterFC: React.FC = () => {
         <div>
           <Footer.Title></Footer.Title>
           <div className="flex gap-2">
-            <Link className="text-[40px] hover:text-secondary" to={''}>
+            {/* <Link className="text-[40px] hover:text-secondary" to={''}>
               <FaCcVisa />
             </Link>
             <Link className="text-[40px] hover:text-secondary" to={''}>
               <FaCcApplePay />
-            </Link>
+            </Link> */}
           </div>
         </div>
       </Footer>

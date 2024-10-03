@@ -42,13 +42,13 @@ const HomePage: React.FC = () => {
   const phoneProducts: Record<string, Product[]> = {
     'Iphone 15': [
       { name: 'Iphone 15 128GB', price: '30,000,000 VND', storage: '128GB' },
-      { name: 'Iphone 15 256GB', price: '35,000,000 VND', storage: '256GB' }
+      { name: 'Iphone 15 256GB', price: '35,000,000 VND', storage: '256GB' },
+      { name: 'Iphone 15 Cũ 256GB', price: '35,000,000 VND', storage: '256GB' }
     ],
     'Iphone 14': [
       { name: 'Iphone 14 128GB', price: '25,000,000 VND', storage: '128GB' },
       { name: 'Iphone 14 256GB', price: '28,000,000 VND', storage: '256GB' }
     ]
-    // Thêm các sản phẩm khác tương tự
   };
 
   const ipadProducts: Record<string, Product[]> = {
@@ -60,7 +60,6 @@ const HomePage: React.FC = () => {
       { name: 'Ipad Air 64GB', price: '15,000,000 VND', storage: '64GB' },
       { name: 'Ipad Air 256GB', price: '18,000,000 VND', storage: '256GB' }
     ]
-    // Thêm các sản phẩm khác
   };
 
   const laptopProducts: Record<string, Product[]> = {
@@ -72,7 +71,6 @@ const HomePage: React.FC = () => {
       { name: 'MacBook Pro 256GB', price: '45,000,000 VND', storage: '256GB' },
       { name: 'MacBook Pro 512GB', price: '50,000,000 VND', storage: '512GB' }
     ]
-    // Thêm các sản phẩm khác
   };
 
   useEffect(() => {
@@ -133,7 +131,6 @@ const HomePage: React.FC = () => {
             />
           </div>
         </div>
-
         {/* Phone Catalog */}
         <div className="px-2 xl:px-[100px]">
           {/* Tittle */}

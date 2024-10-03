@@ -35,15 +35,14 @@ const SearchKey: React.FC = () => {
           onClick={handleOverlayClick}
         >
           <div
-            className="relative cursor-default flex-col gap-5 rounded-xl border border-primary bg-white p-5 dark:bg-primary xl:flex"
+            className="relative cursor-default flex-col gap-5 rounded-md border border-primary bg-white p-5 dark:bg-primary xl:flex"
             onClick={e => e.stopPropagation()}
           >
             <div className="flex items-center justify-between gap-2 text-base font-light">
               <div className="flex items-center justify-center gap-2 text-black dark:text-white">
                 Bấm
                 <Kbd
-                  className="bg-white px-5 text-black"
-                  onClick={() => setShowSearch(false)}
+                  className="bg-white px-3 text-black rounded-md"
                 >
                   ESC
                 </Kbd>
@@ -57,7 +56,7 @@ const SearchKey: React.FC = () => {
               </Button>
             </div>
 
-            <div className="pt-10">
+            <div className="pt-5">
               <div className="flex flex-row rounded-xl border border-black p-[1px] dark:border-white">
                 <InputForm
                   type="text"
