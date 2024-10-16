@@ -13,6 +13,7 @@
     "@reduxjs/toolkit": "^2.2.7",
     "@typescript-eslint/eslint-plugin": "^8.7.0",
     "boring-avatars": "^1.11.2",
+    "daisyui": "^4.12.13",
     "eslint-plugin-prettier": "^5.2.1",
     "prettier-plugin-tailwindcss": "^0.6.8",
     "react": "^18.3.1",
