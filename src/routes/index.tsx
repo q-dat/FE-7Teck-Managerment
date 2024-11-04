@@ -6,6 +6,7 @@ import ContactPage from '../pages/user/ContactPage';
 // UserPage
 const User = lazy(() => import('../pages/user/User'));
 const HomePage = lazy(() => import('../pages/user/HomePage'));
+const PriceListPage = lazy(() => import('../pages/user/PriceListPage'));
 
 // admin
 const Admin = lazy(() => import('../pages/admin/Admin'));
@@ -20,7 +21,7 @@ export default function AppRoutes() {
         <Route element={<DefaultLayout />}>
           <Route path="/" element={<User />}>
             <Route index path="" element={<HomePage />} />
-
+            <Route path="price-list" element={<PriceListPage />} />
             <Route path="contact" element={<ContactPage />} />
           </Route>
         </Route>

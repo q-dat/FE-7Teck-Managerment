@@ -37,6 +37,10 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
       link: '/'
     },
     {
+      name: 'Bảng Giá Thu Mua',
+      link: '/price-list'
+    },
+    {
       name: 'Liên Hệ',
       link: '/contact',
       submenu: [

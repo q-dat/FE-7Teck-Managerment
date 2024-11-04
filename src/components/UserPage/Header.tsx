@@ -36,6 +36,10 @@ const Header: React.FC = () => {
       link: '/'
     },
     {
+      name: 'Bảng Giá Thu Mua',
+      link: '/price-list'
+    },
+    {
       name: 'Liên Hệ',
       link: '/contact',
       submenu: [
