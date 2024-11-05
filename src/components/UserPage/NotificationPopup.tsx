@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Button, Hero, Textarea } from 'react-daisyui';
 import InputForm from './InputForm';
+import { MdOutlineCancel } from 'react-icons/md';
 
 const NotificationPopup: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -15,7 +16,7 @@ const NotificationPopup: React.FC = () => {
     setIsVisible(false);
     sessionStorage.setItem('popupShown', 'true');
   };
-
+  //Contact Form
   const [result, setResult] = React.useState<string>('');
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -27,7 +28,7 @@ const NotificationPopup: React.FC = () => {
 
     const formData = new FormData(event.currentTarget);
 
-    formData.append('access_key', '');
+    formData.append('access_key', ' ');
 
     try {
       const response = await fetch('https://api.web3forms.com/submit', {
@@ -38,7 +39,7 @@ const NotificationPopup: React.FC = () => {
       const data: { success: boolean; message: string } = await response.json();
 
       if (data.success) {
-        setResult('Gửi thành công!');
+        setResult('Đã gửi thành công!');
 
         // Reset form using formRef
         formRef.current?.reset();
@@ -47,8 +48,8 @@ const NotificationPopup: React.FC = () => {
         setResult(data.message);
       }
     } catch (error) {
-      console.error('Yêu cầu thất bại!', error);
-      setResult('Có lỗi xảy ra khi gửi biểu mẫu!');
+      console.error('Yêu cầu thất bại', error);
+      setResult('Đã xảy ra lỗi khi gửi biểu mẫu!');
     }
   };
   return (
@@ -63,68 +64,63 @@ const NotificationPopup: React.FC = () => {
 
           <div
             id="popup"
-            className="fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 transform overflow-auto rounded-lg bg-white shadow-lg dark:bg-gray-700"
+            className="fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 transform overflow-auto rounded-lg border border-white bg-white dark:bg-gray-900"
           >
-            <div className="flex flex-col items-end justify-center rounded-lg border border-white dark:border-opacity-50">
-              {/* IMAGE BANNER */}
+            <div className="flex flex-col items-end justify-center rounded-lg">
               <Hero>
                 <Hero.Content>
-                  <div id="contact" className="flex w-full flex-col rounded-xl">
+                  <div className="flex w-full flex-col rounded-xl">
                     <div
                       className="flex flex-col items-end justify-center"
                       onClick={closePopup}
                     >
-                      <p className="rounded-md bg-red-500 px-4 py-2 text-white">
-                        X
+                      <p className="cursor-pointer rounded-full bg-white text-3xl font-bold text-red-500 shadow-inner shadow-red-500 hover:scale-90">
+                        <MdOutlineCancel />
                       </p>
                     </div>
                     <div className="flex flex-col items-center justify-center">
                       <p className="text-[40px] font-bold uppercase text-primary dark:text-white">
-                        Thông tin liên hệ
+Liên Hệ Với Chúng Tôi
                       </p>
                       <p className="font-semibold text-primary dark:text-white">
-                        Chúng Tôi Luôn Sẵn Sàng Lắng Nghe: Hãy Để Lại Lời Nhắn
-                        Của Bạn!{' '}
-                      </p>
+                      Với bất kì câu hỏi nào? Hãy để lại tin nhắn để được giải đáp thắc mắc                      </p>
                     </div>
                     {/* Form */}
                     <form
                       ref={formRef}
                       onSubmit={onSubmit}
-                      className="my-5 flex items-center justify-center rounded-xl shadow-headerMenu bg-white p-5 dark:border-white dark:bg-gray-500"
+                      className="my-5 flex items-center justify-center rounded-xl bg-transparent"
                     >
-                      <div className="flex w-1/2 items-center justify-center">
-                        <div className="flex flex-col gap-5">
-                          <div className="flex flex-col gap-5 xl:flex-row">
-                            <InputForm
-                              name="email"
-                              type="email"
-                              placeholder="Email"
-                              className="border border-gray-300 bg-white text-black focus:border-primary dark:bg-gray-700 dark:text-white xs:w-[300px] sm:w-[350px] md:w-[650px] xl:w-[500px]"
-                              classNameLabel="bg-white dark:bg-gray-700"
-                            />
-                            <InputForm
-                              name="name"
-                              type="text"
-                              className="border border-gray-300 bg-white text-black focus:border-primary dark:bg-gray-700 dark:text-white xs:w-[300px] sm:w-[350px] md:w-[650px] xl:w-[300px]"
-                              placeholder="Tên của bạn"
-                              classNameLabel="bg-white dark:bg-gray-700"
-                            />
-                          </div>
-                          <Textarea
-                            name="feedback"
-                            className="border pb-20 border-gray-300 bg-white text-black focus:border-primary focus:outline-none dark:bg-gray-700 dark:text-white xs:w-full sm:w-[350px] md:w-[650px] lg:w-full"
-                            placeholder="Tin nhắn của bạn"
+                      <div className="flex flex-col gap-5">
+                        <div className="flex flex-col gap-5 xl:flex-row">
+                          <InputForm
+                            name="email"
+                            type="email"
+                            placeholder='Email'
+                            className="border border-black bg-white text-black focus:border-primary focus:shadow-inner focus:shadow-primary dark:bg-gray-700 dark:text-white dark:shadow-none dark:shadow-white xs:w-[300px] sm:w-[350px] md:w-[650px] xl:w-[350px]"
+                            classNameLabel="bg-white dark:bg-gray-700"
                           />
-                          <div className="w-full">
-                            <Button
-                              className="w-full bg-primary text-sm text-white hover:border-primary hover:bg-secondary hover:text-white dark:hover:bg-gray-700"
-                              type="submit"
-                            >
-                              Gửi
-                            </Button>
-                            <span>{result}</span>
-                          </div>
+                          <InputForm
+                            name="name"
+                            type="text"
+                            className="border border-black bg-white text-black focus:border-primary focus:shadow-inner focus:shadow-primary dark:bg-gray-700 dark:text-white dark:shadow-none dark:shadow-white xs:w-[300px] sm:w-[350px] md:w-[650px] xl:w-[250px]"
+                            placeholder='Tên của bạn'
+                            classNameLabel="bg-white dark:bg-gray-700"
+                          />
+                        </div>
+                        <Textarea
+                          name="feedback"
+                          className="border border-black bg-white pb-20 text-black focus:border-primary focus:shadow-inner focus:shadow-primary focus:outline-none dark:bg-gray-700 dark:text-white dark:shadow-none dark:shadow-white xs:w-full sm:w-[350px] md:w-[650px] lg:w-full"
+                          placeholder='Bạn muốn đặt câu hỏi hay góp ý gì?'
+                        />
+                        <div className="w-full">
+                          <Button
+                            className="w-20 bg-primary text-sm text-white hover:bg-secondary"
+                            type="submit"
+                          >
+                           Gửi
+                          </Button>
+                          <span>{result}</span>
                         </div>
                       </div>
                     </form>
