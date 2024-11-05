@@ -72,11 +72,18 @@ const Header: React.FC = () => {
   return (
     <div>
       {/* Desktop */}
-      <div className="fixed z-[99999] hidden h-[80px] w-full flex-row items-center justify-evenly bg-white py-2 uppercase shadow-md dark:bg-primary xl:flex">
+      <div className="fixed z-[99999] hidden h-[80px] w-full flex-row items-center justify-evenly bg-white bg-opacity-90 py-2 uppercase shadow-md dark:bg-black dark:bg-opacity-80 xl:flex">
         <Menu className="flex flex-row items-center justify-center">
           <Link to="/">
             <img
-              className="mr-[200px] rounded-full object-cover"
+              className="mr-[200px] block object-cover dark:hidden"
+              width={60}
+              loading="lazy"
+              src={Logo}
+              alt="LOGO"
+            />
+            <img
+              className="mr-[200px] hidden object-cover dark:block"
               width={60}
               loading="lazy"
               src={Logo}
@@ -94,33 +101,30 @@ const Header: React.FC = () => {
               >
                 <NavLink
                   to={item.link}
-                  className={`btn relative flex w-full items-center justify-center rounded-none border-none pl-4 ${item.name === activeItem
-                    ? 'bg-primary bg-opacity-20 text-sm font-bold text-primary dark:bg-opacity-50 dark:text-white'
-                    : 'border-none text-sm font-light text-black shadow-none hover:border hover:border-primary hover:bg-gray-50 hover:bg-opacity-30 hover:text-primary dark:text-white'
-                    }`}
+                  className={`btn relative flex w-full items-center justify-center rounded-none border-none pl-4 ${
+                    item.name === activeItem
+                      ? 'bg-primary bg-opacity-20 text-sm font-bold text-primary dark:bg-secondary dark:bg-opacity-40 dark:text-white'
+                      : 'border-none bg-transparent text-sm font-light text-black shadow-none hover:border hover:border-primary hover:bg-gray-50 hover:bg-opacity-30 hover:text-primary dark:text-white'
+                  }`}
                 >
                   <>
                     {item.name === activeItem && (
                       <div className="absolute bottom-0 left-0 h-[2px] w-full bg-primary dark:bg-white" />
                     )}
                     {Icon && (
-                      <div
+                      <Icon
                         className={
                           item.name === activeItem
                             ? 'h-5 w-5 text-primary dark:text-white'
                             : 'h-5 w-5'
                         }
-                      >
-                        <Icon />
-                      </div>
+                      />
                     )}
-                    <span>{item.name}</span>
+                    <span className={Icon ? '' : ''}>{item.name}</span>
                     {item.submenu && (
-                      <div
+                      <FaChevronDown
                         className={`m-0 h-4 w-4 p-0 ${openSubmenu === item.name ? 'rotate-180' : ''}`}
-                      >
-                        <FaChevronDown />
-                      </div>
+                      />
                     )}
                   </>
                 </NavLink>
@@ -149,6 +153,7 @@ const Header: React.FC = () => {
           })}
         </Menu>
         <div className="flex items-center justify-center gap-5">
+          {/* DarkMode Button */}
           <DarkMode />
         </div>
       </div>
