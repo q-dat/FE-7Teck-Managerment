@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
-import { IPhoneCatalog } from '../../types/type/user/phoneCatalog';
 import { Button } from 'react-daisyui';
 import { useLocation } from 'react-router-dom';
 
@@ -9,6 +8,10 @@ interface Product {
   name: string;
   price: string;
   storage: string;
+}
+export interface IPhoneCatalog {
+  _id: string;
+  name: string;
 }
 
 const PriceListPage: React.FC = () => {
