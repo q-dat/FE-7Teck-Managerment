@@ -1,10 +1,12 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { BannerDesktop, BannerTablet, BannerMobile } from '../../assets/images';
 import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
 import { IProduct } from '../../types/type/product/product';
 import { Button } from 'react-daisyui';
-import Pagination from '../../components/UserPage/Pagination';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import {
+  IoIosArrowDropleftCircle,
+  IoIosArrowDroprightCircle
+} from 'react-icons/io';
 
 const HomePage: React.FC = () => {
   const products: IProduct[] = [
@@ -119,36 +121,33 @@ const HomePage: React.FC = () => {
       updateAt: ''
     }
   ];
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8;
-
-  // Lọc sản phẩm có `status` là `sale`
-  const saleProducts = products.filter(product => product.status === 'sale');
-  const totalPages = Math.ceil(saleProducts.length / itemsPerPage);
-
-  // Tính toán sản phẩm hiển thị dựa trên trang hiện tại
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentProducts = saleProducts.slice(indexOfFirstItem, indexOfLastItem);
-
-  const handleNextPage = () => {
-    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
-  };
-
-  const handlePrevPage = () => {
-    if (currentPage > 1) setCurrentPage(currentPage - 1);
-  };
-  // scrollRef
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const scroll = (scrollOffset: number) => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollLeft += scrollOffset;
+  
+  // const saleProducts = products.filter(product => product.status === 'sale');
+  
+  // scrollRefMobile
+  const scrollRefMobile = useRef<HTMLDivElement>(null);
+  const scrollMobile = (scrollOffset: number) => {
+    if (scrollRefMobile.current) {
+      scrollRefMobile.current.scrollLeft += scrollOffset;
     }
   };
-
+// scrollRefLaptop
+const scrollRefLaptop= useRef<HTMLDivElement>(null);
+const scrollLaptop = (scrollOffset: number) => {
+  if (scrollRefLaptop.current) {
+    scrollRefLaptop.current.scrollLeft += scrollOffset;
+  }
+};
+// scrollRefMobile
+const scrollRefIpad = useRef<HTMLDivElement>(null);
+const scrollIpad = (scrollOffset: number) => {
+  if (scrollRefIpad.current) {
+    scrollRefIpad.current.scrollLeft += scrollOffset;
+  }
+};
   return (
     <div className="pb-[20px] xl:pt-[80px]">
-      <HeaderResponsive Title_NavbarMobile="Bảng Giá Thu Mua" />
+      <HeaderResponsive Title_NavbarMobile="Trang Chủ" />
       {/* Banner */}
       <div>
         {/* Banner */}
@@ -182,22 +181,24 @@ const HomePage: React.FC = () => {
         </div>
       </div>
       {/* Body */}
-      <div className="space-y-10 px-[2px] xl:px-[100px]">
-        {/* Best Saller */}
+      <div className="space-y-10 px-2 xl:px-[130px]">
+        {/* Mobile */}
         <div className="relative">
-          <p className="text-center font-black">Sản Phẩm Nổi Bật</p>
+          <p className="my-5 text-start font-serif text-2xl font-bold text-primary xl:text-2xl">
+           Điện Thoại Nổi Bật
+          </p>
           <div
-            ref={scrollRef}
-            className="flex flex-row items-start justify-between gap-x-5 gap-y-5 overflow-x-auto scroll-smooth py-1 scrollbar-hide"
+            ref={scrollRefMobile}
+            className="grid grid-flow-col grid-rows-2 items-start justify-between gap-x-5 gap-y-5 overflow-x-auto scroll-smooth py-1 scrollbar-hide"
           >
             {products.map(product => (
               <div
                 key={product._id}
                 className="dropdown dropdown-hover relative rounded-md bg-white shadow-headerMenu shadow-gray-50"
               >
-                <div className="flex w-[250px] flex-col items-center justify-center">
+                <div className="flex w-[170px] flex-col items-center justify-center xl:w-[220px]">
                   <img
-                    className="h-[250px] w-[250px] rounded-md object-cover"
+                    className="h-[170px] w-[170px] rounded-md object-cover xl:h-[220px] xl:w-[220px]"
                     src={product.img}
                   />
                   <p>{product.name}</p>
@@ -213,31 +214,36 @@ const HomePage: React.FC = () => {
           {/* Navigation Button  */}
           <div className="absolute top-1/2 flex w-full items-center justify-between">
             <Button
-              onClick={() => scroll(-200)}
-              className="border-none bg-transparent p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-70 hover:text-white dark:bg-white dark:text-primary"
+              onClick={() => scrollMobile(-200)}
+              className="rounded-full border-transparent bg-transparent p-0 text-primary shadow-none hover:border hover:border-primary dark:text-primary"
             >
-              <FaChevronLeft className="text-3xl" />
+              <IoIosArrowDropleftCircle className="text-4xl" />
             </Button>
             <Button
-              onClick={() => scroll(200)}
-              className="border-none bg-transparent p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-70 hover:text-white dark:bg-white dark:text-primary"
+              onClick={() => scrollMobile(200)}
+              className="rounded-full border-transparent bg-transparent p-0 text-primary shadow-none hover:border hover:border-primary dark:text-primary"
             >
-              <FaChevronRight className="text-3xl" />
+              <IoIosArrowDroprightCircle className="text-4xl" />
             </Button>
           </div>
         </div>
-        {/* Product */}
-        <div>
-          <p className="text-center font-black">Sản Phẩm Giảm Giá</p>
-          <div className="grid grid-flow-row grid-cols-4 items-start justify-between gap-x-5 gap-y-5">
-            {currentProducts.slice(0, 8).map(product => (
+        {/* Laptop */}
+        <div className="relative">
+          <p className="my-5 text-start font-serif text-2xl font-bold text-primary xl:text-2xl">
+           Laptop
+          </p>
+          <div
+            ref={scrollRefLaptop}
+            className="grid grid-flow-col grid-rows-2 items-start justify-between gap-x-5 gap-y-5 overflow-x-auto scroll-smooth py-1 scrollbar-hide"
+          >
+            {products.map(product => (
               <div
                 key={product._id}
                 className="dropdown dropdown-hover relative rounded-md bg-white shadow-headerMenu shadow-gray-50"
               >
-                <div className="flex flex-col items-center justify-center">
+                <div className="flex w-[170px] flex-col items-center justify-center xl:w-[220px]">
                   <img
-                    className="h-[280px] w-full rounded-md object-cover"
+                    className="h-[170px] w-[170px] rounded-md object-cover xl:h-[220px] xl:w-[220px]"
                     src={product.img}
                   />
                   <p>{product.name}</p>
@@ -250,15 +256,69 @@ const HomePage: React.FC = () => {
               </div>
             ))}
           </div>
+          {/* Navigation Button  */}
+          <div className="absolute top-1/2 flex w-full items-center justify-between">
+            <Button
+              onClick={() => scrollLaptop(-200)}
+              className="rounded-full border-transparent bg-transparent p-0 text-primary shadow-none hover:border hover:border-primary dark:text-primary"
+            >
+              <IoIosArrowDropleftCircle className="text-4xl" />
+            </Button>
+            <Button
+              onClick={() => scrollLaptop(200)}
+              className="rounded-full border-transparent bg-transparent p-0 text-primary shadow-none hover:border hover:border-primary dark:text-primary"
+            >
+              <IoIosArrowDroprightCircle className="text-4xl" />
+            </Button>
+          </div>
         </div>
+          {/* Ipad */}
+          <div className="relative">
+          <p className="my-5 text-start font-serif text-2xl font-bold text-primary xl:text-2xl">
+            Ipad
+          </p>
+          <div
+            ref={scrollRefIpad}
+            className="grid grid-flow-col grid-rows-2 items-start justify-between gap-x-5 gap-y-5 overflow-x-auto scroll-smooth py-1 scrollbar-hide"
+          >
+            {products.map(product => (
+              <div
+                key={product._id}
+                className="dropdown dropdown-hover relative rounded-md bg-white shadow-headerMenu shadow-gray-50"
+              >
+                <div className="flex w-[170px] flex-col items-center justify-center xl:w-[220px]">
+                  <img
+                    className="h-[170px] w-[170px] rounded-md object-cover xl:h-[220px] xl:w-[220px]"
+                    src={product.img}
+                  />
+                  <p>{product.name}</p>
+                  <p>Giá:{(product.price * 1000).toLocaleString('vi-VN')}đ</p>
+                  <div className="dropdown-content absolute left-0 top-0 flex h-full w-full flex-row items-center justify-center gap-2 transition-all duration-1000 ease-in-out">
+                    <Button size="sm">Mua Ngay</Button>
+                    <Button size="sm">Xem Thêm</Button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          {/* Navigation Button  */}
+          <div className="absolute top-1/2 flex w-full items-center justify-between">
+            <Button
+              onClick={() => scrollIpad(-200)}
+              className="rounded-full border-transparent bg-transparent p-0 text-primary shadow-none hover:border hover:border-primary dark:text-primary"
+            >
+              <IoIosArrowDropleftCircle className="text-4xl" />
+            </Button>
+            <Button
+              onClick={() => scrollIpad(200)}
+              className="rounded-full border-transparent bg-transparent p-0 text-primary shadow-none hover:border hover:border-primary dark:text-primary"
+            >
+              <IoIosArrowDroprightCircle className="text-4xl" />
+            </Button>
+          </div>
+        </div>
+        {/*  */}
       </div>
-      {/* Pagination Controls */}
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onNextPage={handleNextPage}
-        onPrevPage={handlePrevPage}
-      />
     </div>
   );
 };

@@ -15,7 +15,7 @@ const Pagination: React.FC<PaginationProps> = ({
   onPrevPage
 }) => {
   return (
-    <div className="mt-4 flex flex-row items-center justify-center gap-x-10">
+    <div className="mt-10 flex flex-row items-center justify-center gap-x-10 px-2 text-primary">
       <Button
         className="rounded-md shadow-headerMenu shadow-gray-50"
         color="primary"
@@ -23,10 +23,11 @@ const Pagination: React.FC<PaginationProps> = ({
         disabled={currentPage === 1}
         onClick={onPrevPage}
       >
-        <IoIosArrowDropleft className="text-xl text-black" /> Trang Trước
+        <IoIosArrowDropleft className="text-xl text-black dark:text-white" />{' '}
+        Trang Trước
       </Button>
-      <span className="mx-2">
-        Trang {currentPage} / {totalPages}
+      <span className="mx-2 text-primary">
+        {currentPage} / {totalPages}
       </span>
       <Button
         className="rounded-md shadow-headerMenu shadow-gray-50"
@@ -35,7 +36,8 @@ const Pagination: React.FC<PaginationProps> = ({
         disabled={currentPage === totalPages}
         onClick={onNextPage}
       >
-        Trang Tiếp <IoIosArrowDropright className="text-xl text-black" />
+        Trang Tiếp{' '}
+        <IoIosArrowDropright className="text-xl text-black dark:text-white" />
       </Button>
     </div>
   );

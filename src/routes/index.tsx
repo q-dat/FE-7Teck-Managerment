@@ -1,11 +1,11 @@
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import DefaultLayout from '../layout/DefaultLayout';
-import ContactPage from '../pages/user/ContactPage';
-
 // UserPage
 const User = lazy(() => import('../pages/user/User'));
 const HomePage = lazy(() => import('../pages/user/HomePage'));
+const ContactPage = lazy(() => import('../pages/user/ContactPage'));
+const ProductPage = lazy(() => import('../pages/user/ProductPage'));
 const PriceListPage = lazy(() => import('../pages/user/PriceListPage'));
 
 // admin
@@ -22,6 +22,7 @@ export default function AppRoutes() {
           <Route path="/" element={<User />}>
             <Route index path="" element={<HomePage />} />
             <Route path="price-list" element={<PriceListPage />} />
+            <Route path="product-list" element={<ProductPage />} />
             <Route path="contact" element={<ContactPage />} />
           </Route>
         </Route>

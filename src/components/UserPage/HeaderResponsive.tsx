@@ -1,7 +1,7 @@
 import React, { ReactNode, useCallback, useEffect, useState } from 'react';
-import { Button, Drawer, Input, Menu } from 'react-daisyui';
+import { Button, Drawer, Menu } from 'react-daisyui';
 import { RxHamburgerMenu } from 'react-icons/rx';
-import { IoSearchOutline, IoSettingsSharp, IoTicket } from 'react-icons/io5';
+import { IoSettingsSharp, IoTicket } from 'react-icons/io5';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { FaHome, FaChevronDown } from 'react-icons/fa';
 import { GiReturnArrow } from 'react-icons/gi';
@@ -35,6 +35,10 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
       name: 'Trang Chủ',
       icon: FaHome,
       link: '/'
+    },
+    {
+      name: 'Sản Phẩm',
+      link: '/product-list'
     },
     {
       name: 'Bảng Giá Thu Mua',
@@ -82,7 +86,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
   }, []);
 
   return (
-    <div className="flex flex-col px-2 pb-6 xl:hidden xl:px-0">
+    <div className="flex flex-col px-2 xl:hidden xl:px-0">
       <div className="flex items-center justify-between">
         <div className="z-50">
           <Drawer
@@ -175,7 +179,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
               onClick={toggleLeftVisible}
               className="flex flex-row items-center justify-center gap-2 py-4 text-2xl text-black dark:text-white xl:hidden"
             >
-              <div className="glass rounded-md bg-primary p-1 text-[25px] text-white shadow-headerMenu dark:text-white">
+              <div className="rounded-md p-1 text-[25px] text-primary">
                 <RxHamburgerMenu />
               </div>
             </div>
@@ -217,7 +221,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
               onClick={toggleRightVisible}
               className="flex flex-row items-center justify-center gap-2 py-4 text-2xl text-black dark:text-white xl:hidden"
             >
-              <div className="glass rounded-md bg-primary p-1 text-[25px] text-white shadow-headerMenu dark:text-white">
+              <div className="rounded-md p-1 text-[20px] text-primary">
                 <IoSettingsSharp />
               </div>
             </div>
@@ -225,7 +229,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
         </div>
       </div>
       {/* Input Search */}
-      <div className="relative flex items-center">
+      {/* <div className="relative flex items-center">
         <Input
           className="w-full text-black focus:outline-none dark:border-white dark:bg-transparent dark:text-white"
           type="text"
@@ -233,7 +237,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
         <div className="absolute right-2 h-5 w-5 cursor-pointer text-gray-50">
           <IoSearchOutline />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

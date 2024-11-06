@@ -36,6 +36,10 @@ const Header: React.FC = () => {
       link: '/'
     },
     {
+      name: 'Sản Phẩm',
+      link: '/product-list'
+    },
+    {
       name: 'Bảng Giá Thu Mua',
       link: '/price-list'
     },
@@ -72,7 +76,7 @@ const Header: React.FC = () => {
   return (
     <div>
       {/* Desktop */}
-      <div className="fixed z-[99999] hidden h-[80px] w-full flex-row items-center justify-evenly bg-white bg-opacity-90 py-2 uppercase shadow-md dark:bg-black dark:bg-opacity-80 xl:flex">
+      <div className="fixed z-[99999] hidden h-[80px] w-full flex-row items-center justify-evenly bg-white bg-opacity-90 py-2 uppercase shadow-md dark:bg-black dark:bg-opacity-50 xl:flex">
         <Menu className="flex flex-row items-center justify-center">
           <Link to="/">
             <img
@@ -83,7 +87,7 @@ const Header: React.FC = () => {
               alt="LOGO"
             />
             <img
-              className="mr-[200px] hidden object-cover dark:block"
+              className="mr-[200px] hidden object-cover dark:block rounded-full"
               width={60}
               loading="lazy"
               src={Logo}

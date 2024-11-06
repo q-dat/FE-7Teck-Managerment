@@ -102,7 +102,7 @@ const PriceListPage: React.FC = () => {
 
   return (
     <div className="pb-[20px] xl:pt-[80px]">
-      <HeaderResponsive Title_NavbarMobile="Trang Chủ" />
+      <HeaderResponsive Title_NavbarMobile="Bảng Giá Thu Mua" />
       <div>
         {/* Phone Catalog */}
         <div className="px-2 xl:px-[100px]">
