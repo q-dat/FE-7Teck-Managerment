@@ -198,16 +198,16 @@ const HomePage: React.FC = () => {
           <Link to="product-detail">
             <div
               ref={scrollRefMobile}
-              className="grid grid-flow-col grid-rows-2 items-start justify-between gap-x-5 gap-y-5 overflow-x-auto scroll-smooth py-1 scrollbar-hide"
+              className="grid grid-flow-col grid-rows-2 items-start justify-between gap-3 xl:gap-5 overflow-x-auto scroll-smooth py-1 scrollbar-hide"
             >
               {products.map(product => (
                 <div
                   key={product._id}
                   className="dropdown dropdown-hover relative rounded-md bg-white shadow-headerMenu shadow-gray-50"
                 >
-                  <div className="flex w-[220px] flex-col items-center justify-center xl:w-[220px]">
+                  <div className="flex w-[185px]  flex-col items-center justify-center xl:w-[220px]">
                     <img
-                      className="h-[220px] w-[220px] rounded-md object-cover xl:h-[220px] xl:w-[220px]"
+                      className="h-[185px] w-[185px]  rounded-md object-cover xl:h-[220px] xl:w-[220px]"
                       src={product.img}
                     />
                     <p>{product.name}</p>
@@ -244,16 +244,16 @@ const HomePage: React.FC = () => {
           </p>
           <div
             ref={scrollRefIpad}
-            className="grid grid-flow-col grid-rows-2 items-start justify-between gap-x-5 gap-y-5 overflow-x-auto scroll-smooth py-1 scrollbar-hide"
+            className="grid grid-flow-col grid-rows-2 items-start justify-between gap-3 xl:gap-5 overflow-x-auto scroll-smooth py-1 scrollbar-hide"
           >
             {products.map(product => (
               <div
                 key={product._id}
                 className="dropdown dropdown-hover relative rounded-md bg-white shadow-headerMenu shadow-gray-50"
               >
-                <div className="flex w-[220px] flex-col items-center justify-center xl:w-[220px]">
+                <div className="flex w-[185px]  flex-col items-center justify-center xl:w-[220px]">
                   <img
-                    className="h-[220px] w-[220px] rounded-md object-cover xl:h-[220px] xl:w-[220px]"
+                    className="h-[185px] w-[185px]  rounded-md object-cover xl:h-[220px] xl:w-[220px]"
                     src={product.img}
                   />
                   <p>{product.name}</p>
@@ -289,16 +289,16 @@ const HomePage: React.FC = () => {
           </p>
           <div
             ref={scrollRefWindow}
-            className="flex flex-row items-start justify-between gap-x-5 gap-y-5 overflow-x-auto scroll-smooth py-1 scrollbar-hide"
+            className="flex flex-row items-start justify-between gap-3 xl:gap-5 overflow-x-auto scroll-smooth py-1 scrollbar-hide"
           >
             {products.map(product => (
               <div
                 key={product._id}
                 className="dropdown dropdown-hover relative rounded-md bg-white shadow-headerMenu shadow-gray-50"
               >
-                <div className="flex w-[220px] flex-col items-center justify-center xl:w-[220px]">
+                <div className="flex w-[185px]  flex-col items-center justify-center xl:w-[220px]">
                   <img
-                    className="h-[220px] w-[220px] rounded-md object-cover xl:h-[220px] xl:w-[220px]"
+                    className="h-[185px] w-[185px]  rounded-md object-cover xl:h-[220px] xl:w-[220px]"
                     src={product.img}
                   />
                   <p>{product.name}</p>
@@ -334,16 +334,16 @@ const HomePage: React.FC = () => {
           </p>
           <div
             ref={scrollRefMacbook}
-            className="flex flex-row items-start justify-between gap-x-5 gap-y-5 overflow-x-auto scroll-smooth py-1 scrollbar-hide"
+            className="flex flex-row items-start justify-between gap-3 xl:gap-5 overflow-x-auto scroll-smooth py-1 scrollbar-hide"
           >
             {products.map(product => (
               <div
                 key={product._id}
                 className="dropdown dropdown-hover relative rounded-md bg-white shadow-headerMenu shadow-gray-50"
               >
-                <div className="flex w-[220px] flex-col items-center justify-center xl:w-[220px]">
+                <div className="flex w-[185px]  flex-col items-center justify-center xl:w-[220px]">
                   <img
-                    className="h-[220px] w-[220px] rounded-md object-cover xl:h-[220px] xl:w-[220px]"
+                    className="h-[185px] w-[185px]  rounded-md object-cover xl:h-[220px] xl:w-[220px]"
                     src={product.img}
                   />
                   <p>{product.name}</p>

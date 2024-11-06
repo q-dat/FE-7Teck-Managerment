@@ -1,10 +1,9 @@
 import React, { ReactNode, useCallback, useEffect, useState } from 'react';
 import { Button, Drawer, Menu } from 'react-daisyui';
 import { RxHamburgerMenu } from 'react-icons/rx';
-import { IoSettingsSharp, IoTicket } from 'react-icons/io5';
+import { IoSettingsSharp } from 'react-icons/io5';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { FaHome, FaChevronDown } from 'react-icons/fa';
-import { GiReturnArrow } from 'react-icons/gi';
 import { IconType } from 'react-icons/lib';
 import DarkMode from '../orther/darkmode/DarkMode';
 import { Logo } from '../../assets/images';
@@ -47,18 +46,18 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
     {
       name: 'Liên Hệ',
       link: '/contact',
-      submenu: [
-        {
-          name: '#',
-          icon: GiReturnArrow,
-          link: ''
-        },
-        {
-          name: '#',
-          icon: IoTicket,
-          link: ''
-        }
-      ]
+      // submenu: [
+      //   {
+      //     name: '#',
+      //     icon: GiReturnArrow,
+      //     link: ''
+      //   },
+      //   {
+      //     name: '#',
+      //     icon: IoTicket,
+      //     link: ''
+      //   }
+      // ]
     }
   ];
   useEffect(() => {
