@@ -205,9 +205,9 @@ const HomePage: React.FC = () => {
                   key={product._id}
                   className="dropdown dropdown-hover relative rounded-md bg-white shadow-headerMenu shadow-gray-50"
                 >
-                  <div className="flex w-[190px] flex-col items-center justify-center xl:w-[220px]">
+                  <div className="flex w-[220px] flex-col items-center justify-center xl:w-[220px]">
                     <img
-                      className="h-[190px] w-[190px] rounded-md object-cover xl:h-[220px] xl:w-[220px]"
+                      className="h-[220px] w-[220px] rounded-md object-cover xl:h-[220px] xl:w-[220px]"
                       src={product.img}
                     />
                     <p>{product.name}</p>
@@ -251,9 +251,9 @@ const HomePage: React.FC = () => {
                 key={product._id}
                 className="dropdown dropdown-hover relative rounded-md bg-white shadow-headerMenu shadow-gray-50"
               >
-                <div className="flex w-[190px] flex-col items-center justify-center xl:w-[220px]">
+                <div className="flex w-[220px] flex-col items-center justify-center xl:w-[220px]">
                   <img
-                    className="h-[190px] w-[190px] rounded-md object-cover xl:h-[220px] xl:w-[220px]"
+                    className="h-[220px] w-[220px] rounded-md object-cover xl:h-[220px] xl:w-[220px]"
                     src={product.img}
                   />
                   <p>{product.name}</p>
@@ -296,9 +296,9 @@ const HomePage: React.FC = () => {
                 key={product._id}
                 className="dropdown dropdown-hover relative rounded-md bg-white shadow-headerMenu shadow-gray-50"
               >
-                <div className="flex w-[190px] flex-col items-center justify-center xl:w-[220px]">
+                <div className="flex w-[220px] flex-col items-center justify-center xl:w-[220px]">
                   <img
-                    className="h-[190px] w-[190px] rounded-md object-cover xl:h-[220px] xl:w-[220px]"
+                    className="h-[220px] w-[220px] rounded-md object-cover xl:h-[220px] xl:w-[220px]"
                     src={product.img}
                   />
                   <p>{product.name}</p>
@@ -341,9 +341,9 @@ const HomePage: React.FC = () => {
                 key={product._id}
                 className="dropdown dropdown-hover relative rounded-md bg-white shadow-headerMenu shadow-gray-50"
               >
-                <div className="flex w-[190px] flex-col items-center justify-center xl:w-[220px]">
+                <div className="flex w-[220px] flex-col items-center justify-center xl:w-[220px]">
                   <img
-                    className="h-[190px] w-[190px] rounded-md object-cover xl:h-[220px] xl:w-[220px]"
+                    className="h-[220px] w-[220px] rounded-md object-cover xl:h-[220px] xl:w-[220px]"
                     src={product.img}
                   />
                   <p>{product.name}</p>
