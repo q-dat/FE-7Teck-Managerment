@@ -139,18 +139,18 @@ const HomePage: React.FC = () => {
       scrollRefIpad.current.scrollLeft += scrollOffset;
     }
   };
-  // scrollRefLaptopWindow
-  const scrollRefLaptopWindow = useRef<HTMLDivElement>(null);
-  const scrollLaptopWindow = (scrollOffset: number) => {
-    if (scrollRefLaptopWindow.current) {
-      scrollRefLaptopWindow.current.scrollLeft += scrollOffset;
+  // scrollRefWindow
+  const scrollRefWindow = useRef<HTMLDivElement>(null);
+  const scrollWindow = (scrollOffset: number) => {
+    if (scrollRefWindow.current) {
+      scrollRefWindow.current.scrollLeft += scrollOffset;
     }
   };
-  // scrollRefLaptopMacbook
-  const scrollRefLaptopMacbook = useRef<HTMLDivElement>(null);
-  const scrollLaptopMacbook = (scrollOffset: number) => {
-    if (scrollRefLaptopMacbook.current) {
-      scrollRefLaptopMacbook.current.scrollLeft += scrollOffset;
+  // scrollRefMacbook
+  const scrollRefMacbook = useRef<HTMLDivElement>(null);
+  const scrollMacbook = (scrollOffset: number) => {
+    if (scrollRefMacbook.current) {
+      scrollRefMacbook.current.scrollLeft += scrollOffset;
     }
   };
   return (
@@ -282,13 +282,13 @@ const HomePage: React.FC = () => {
             </Button>
           </div>
         </div>
-        {/* Laptop Window */}
+        {/*  Window */}
         <div className="relative">
           <p className="my-5 text-start font-serif text-2xl font-bold text-primary xl:text-2xl">
-            Laptop Window
+            Window
           </p>
           <div
-            ref={scrollRefLaptopWindow}
+            ref={scrollRefWindow}
             className="flex flex-row items-start justify-between gap-x-5 gap-y-5 overflow-x-auto scroll-smooth py-1 scrollbar-hide"
           >
             {products.map(product => (
@@ -314,26 +314,26 @@ const HomePage: React.FC = () => {
           {/* Navigation Button  */}
           <div className="absolute top-1/2 flex w-full items-center justify-between">
             <Button
-              onClick={() => scrollLaptopWindow(-200)}
+              onClick={() => scrollWindow(-200)}
               className="rounded-full border-transparent bg-transparent p-0 text-primary shadow-none hover:border hover:border-primary dark:text-primary"
             >
               <IoIosArrowDropleftCircle className="text-4xl" />
             </Button>
             <Button
-              onClick={() => scrollLaptopWindow(200)}
+              onClick={() => scrollWindow(200)}
               className="rounded-full border-transparent bg-transparent p-0 text-primary shadow-none hover:border hover:border-primary dark:text-primary"
             >
               <IoIosArrowDroprightCircle className="text-4xl" />
             </Button>
           </div>
         </div>
-        {/* Laptop MacBook */}
+        {/*  MacBook */}
         <div className="relative">
           <p className="my-5 text-start font-serif text-2xl font-bold text-primary xl:text-2xl">
-            Laptop MacBook
+            MacBook
           </p>
           <div
-            ref={scrollRefLaptopMacbook}
+            ref={scrollRefMacbook}
             className="flex flex-row items-start justify-between gap-x-5 gap-y-5 overflow-x-auto scroll-smooth py-1 scrollbar-hide"
           >
             {products.map(product => (
@@ -359,13 +359,13 @@ const HomePage: React.FC = () => {
           {/* Navigation Button  */}
           <div className="absolute top-1/2 flex w-full items-center justify-between">
             <Button
-              onClick={() => scrollLaptopMacbook(-200)}
+              onClick={() => scrollMacbook(-200)}
               className="rounded-full border-transparent bg-transparent p-0 text-primary shadow-none hover:border hover:border-primary dark:text-primary"
             >
               <IoIosArrowDropleftCircle className="text-4xl" />
             </Button>
             <Button
-              onClick={() => scrollLaptopMacbook(200)}
+              onClick={() => scrollMacbook(200)}
               className="rounded-full border-transparent bg-transparent p-0 text-primary shadow-none hover:border hover:border-primary dark:text-primary"
             >
               <IoIosArrowDroprightCircle className="text-4xl" />
