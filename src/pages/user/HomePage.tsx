@@ -182,15 +182,15 @@ const HomePage: React.FC = () => {
         </div>
       </div>
       {/* Body */}
-      <div className="px-[2px] xl:px-[100px] space-y-10">
+      <div className="space-y-10 px-[2px] xl:px-[100px]">
         {/* Best Saller */}
-        <div className=" relative">
+        <div className="relative">
           <p className="text-center font-black">Sản Phẩm Nổi Bật</p>
           <div
             ref={scrollRef}
             className="flex flex-row items-start justify-between gap-x-5 gap-y-5 overflow-x-auto scroll-smooth py-1 scrollbar-hide"
           >
-            {currentProducts.map(product => (
+            {products.map(product => (
               <div
                 key={product._id}
                 className="dropdown dropdown-hover relative rounded-md bg-white shadow-headerMenu shadow-gray-50"
@@ -211,18 +211,18 @@ const HomePage: React.FC = () => {
             ))}
           </div>
           {/* Navigation Button  */}
-          <div className="flex w-full items-center justify-between space-x-2 absolute top-1/2">
+          <div className="absolute top-1/2 flex w-full items-center justify-between">
             <Button
               onClick={() => scroll(-200)}
-              className="bg-primary text-white hover:bg-primary hover:bg-opacity-70 dark:bg-white dark:text-primary"
+              className="border-none bg-transparent p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-70 hover:text-white dark:bg-white dark:text-primary"
             >
-              <FaChevronLeft className="h-5 w-5" />
+              <FaChevronLeft className="text-3xl" />
             </Button>
             <Button
               onClick={() => scroll(200)}
-              className="bg-primary text-white hover:bg-primary hover:bg-opacity-70 dark:bg-white dark:text-primary"
+              className="border-none bg-transparent p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-70 hover:text-white dark:bg-white dark:text-primary"
             >
-              <FaChevronRight className="h-5 w-5" />
+              <FaChevronRight className="text-3xl" />
             </Button>
           </div>
         </div>

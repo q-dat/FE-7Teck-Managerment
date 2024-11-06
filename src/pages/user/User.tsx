@@ -8,10 +8,10 @@ import SearchKey from '../../components/UserPage/SearchKey';
 
 const User: React.FC = () => {
   return (
-    <div>
+    <div className="bg-white dark:bg-gray-900 ">
       <Header />
       <SearchKey />
-      <div className=''><Outlet /></div>
+      <Outlet />
       <ContactForm />
       <NotificationPopup />
       <FooterFC />
