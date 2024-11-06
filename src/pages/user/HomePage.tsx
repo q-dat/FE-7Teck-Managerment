@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { BannerDesktop, BannerTablet, BannerMobile } from '../../assets/images';
 import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
 import { IProduct } from '../../types/type/product/product';
 import { Button } from 'react-daisyui';
 import Pagination from '../../components/UserPage/Pagination';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const HomePage: React.FC = () => {
   const products: IProduct[] = [
@@ -137,6 +138,13 @@ const HomePage: React.FC = () => {
   const handlePrevPage = () => {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
   };
+  // scrollRef
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const scroll = (scrollOffset: number) => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollLeft += scrollOffset;
+    }
+  };
 
   return (
     <div className="pb-[20px] xl:pt-[80px]">
@@ -146,7 +154,7 @@ const HomePage: React.FC = () => {
         {/* Banner */}
         <div className="relative">
           <div className="absolute bottom-0 left-2 top-[50%] md:bottom-4 md:top-[30%] xl:left-[12%] xl:top-[20%]">
-            <p className="bg-gradient-to-r from-blue-300 to-white bg-clip-text text-[25px] font-black italic text-transparent dark:from-primary dark:to-gray-100 md:text-[40px]">
+            <p className="bg-gradient-to-r from-primary to-white bg-clip-text text-[25px] font-black italic text-transparent dark:from-primary dark:to-gray-100 md:text-[40px]">
               Đổi Điện Thoại Cũ, <br /> Nhận Ngay Giá Tốt Nhất!
             </p>
             <p className="bg-gradient-to-r from-white to-white bg-clip-text text-[15px] font-thin text-transparent dark:from-primary dark:to-primary">
@@ -174,24 +182,62 @@ const HomePage: React.FC = () => {
         </div>
       </div>
       {/* Body */}
-      <div className="px-[2px] leading-8 xl:px-[150px]">
+      <div className="px-[2px] xl:px-[100px] space-y-10">
         {/* Best Saller */}
-        <div>
+        <div className=" relative">
           <p className="text-center font-black">Sản Phẩm Nổi Bật</p>
-          <div></div>
+          <div
+            ref={scrollRef}
+            className="flex flex-row items-start justify-between gap-x-5 gap-y-5 overflow-x-auto scroll-smooth py-1 scrollbar-hide"
+          >
+            {currentProducts.map(product => (
+              <div
+                key={product._id}
+                className="dropdown dropdown-hover relative rounded-md bg-white shadow-headerMenu shadow-gray-50"
+              >
+                <div className="flex w-[250px] flex-col items-center justify-center">
+                  <img
+                    className="h-[250px] w-[250px] rounded-md object-cover"
+                    src={product.img}
+                  />
+                  <p>{product.name}</p>
+                  <p>Giá:{(product.price * 1000).toLocaleString('vi-VN')}đ</p>
+                  <div className="dropdown-content absolute left-0 top-0 flex h-full w-full flex-row items-center justify-center gap-2 transition-all duration-1000 ease-in-out">
+                    <Button size="sm">Mua Ngay</Button>
+                    <Button size="sm">Xem Thêm</Button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          {/* Navigation Button  */}
+          <div className="flex w-full items-center justify-between space-x-2 absolute top-1/2">
+            <Button
+              onClick={() => scroll(-200)}
+              className="bg-primary text-white hover:bg-primary hover:bg-opacity-70 dark:bg-white dark:text-primary"
+            >
+              <FaChevronLeft className="h-5 w-5" />
+            </Button>
+            <Button
+              onClick={() => scroll(200)}
+              className="bg-primary text-white hover:bg-primary hover:bg-opacity-70 dark:bg-white dark:text-primary"
+            >
+              <FaChevronRight className="h-5 w-5" />
+            </Button>
+          </div>
         </div>
         {/* Product */}
         <div>
-          <p className="text-center font-black">Sản Phẩm Mới</p>
+          <p className="text-center font-black">Sản Phẩm Giảm Giá</p>
           <div className="grid grid-flow-row grid-cols-4 items-start justify-between gap-x-5 gap-y-5">
             {currentProducts.slice(0, 8).map(product => (
               <div
                 key={product._id}
-                className="dropdown dropdown-hover relative rounded-md shadow-headerMenu shadow-gray-50"
+                className="dropdown dropdown-hover relative rounded-md bg-white shadow-headerMenu shadow-gray-50"
               >
                 <div className="flex flex-col items-center justify-center">
                   <img
-                    className="h-[250px] w-full rounded-md object-cover"
+                    className="h-[280px] w-full rounded-md object-cover"
                     src={product.img}
                   />
                   <p>{product.name}</p>

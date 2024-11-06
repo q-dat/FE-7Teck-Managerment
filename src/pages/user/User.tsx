@@ -11,7 +11,7 @@ const User: React.FC = () => {
     <div>
       <Header />
       <SearchKey />
-      <Outlet />
+      <div className=''><Outlet /></div>
       <ContactForm />
       <NotificationPopup />
       <FooterFC />

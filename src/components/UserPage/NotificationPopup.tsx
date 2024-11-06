@@ -64,7 +64,7 @@ const NotificationPopup: React.FC = () => {
 
           <div
             id="popup"
-            className="fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 transform overflow-auto rounded-lg border border-white bg-white dark:bg-gray-900"
+            className="fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 transform overflow-auto rounded-lg border border-white bg-white"
           >
             <div className="flex flex-col items-end justify-center rounded-lg">
               <Hero>
@@ -79,11 +79,13 @@ const NotificationPopup: React.FC = () => {
                       </p>
                     </div>
                     <div className="flex flex-col items-center justify-center">
-                      <p className="text-[40px] font-bold uppercase text-primary dark:text-white">
-Liên Hệ Với Chúng Tôi
+                      <p className="text-[40px] font-bold uppercase text-primary">
+                        Liên Hệ Với Chúng Tôi
                       </p>
-                      <p className="font-semibold text-primary dark:text-white">
-                      Với bất kì câu hỏi nào? Hãy để lại tin nhắn để được giải đáp thắc mắc                      </p>
+                      <p className="font-semibold text-primary">
+                        Với bất kì câu hỏi nào? Hãy để lại tin nhắn để được giải
+                        đáp thắc mắc{' '}
+                      </p>
                     </div>
                     {/* Form */}
                     <form
@@ -96,29 +98,29 @@ Liên Hệ Với Chúng Tôi
                           <InputForm
                             name="email"
                             type="email"
-                            placeholder='Email'
-                            className="border border-black bg-white text-black focus:border-primary focus:shadow-inner focus:shadow-primary dark:bg-gray-700 dark:text-white dark:shadow-none dark:shadow-white xs:w-[300px] sm:w-[350px] md:w-[650px] xl:w-[350px]"
-                            classNameLabel="bg-white dark:bg-gray-700"
+                            placeholder="Email"
+                            className="border border-black bg-white text-black focus:border-primary focus:shadow-inner focus:shadow-primary dark:text-white dark:shadow-none dark:shadow-white xs:w-[300px] sm:w-[350px] md:w-[650px] xl:w-[350px]"
+                            classNameLabel="dark:peer-placeholder-shown:text-black dark:peer-focus:text-black  bg-white "
                           />
                           <InputForm
                             name="name"
                             type="text"
-                            className="border border-black bg-white text-black focus:border-primary focus:shadow-inner focus:shadow-primary dark:bg-gray-700 dark:text-white dark:shadow-none dark:shadow-white xs:w-[300px] sm:w-[350px] md:w-[650px] xl:w-[250px]"
-                            placeholder='Tên của bạn'
-                            classNameLabel="bg-white dark:bg-gray-700"
+                            className="border border-black bg-white text-black focus:border-primary focus:shadow-inner focus:shadow-primary dark:text-white dark:shadow-none dark:shadow-white xs:w-[300px] sm:w-[350px] md:w-[650px] xl:w-[250px]"
+                            placeholder="Tên của bạn"
+                            classNameLabel="dark:peer-placeholder-shown:text-black dark:peer-focus:text-black  bg-white "
                           />
                         </div>
                         <Textarea
                           name="feedback"
-                          className="border border-black bg-white pb-20 text-black focus:border-primary focus:shadow-inner focus:shadow-primary focus:outline-none dark:bg-gray-700 dark:text-white dark:shadow-none dark:shadow-white xs:w-full sm:w-[350px] md:w-[650px] lg:w-full"
-                          placeholder='Bạn muốn đặt câu hỏi hay góp ý gì?'
+                          className="border border-black bg-white pb-20 text-black focus:border-primary focus:shadow-inner focus:shadow-primary focus:outline-none dark:text-white dark:shadow-none dark:shadow-white xs:w-full sm:w-[350px] md:w-[650px] lg:w-full"
+                          placeholder="Bạn muốn đặt câu hỏi hay góp ý gì?"
                         />
                         <div className="w-full">
                           <Button
                             className="w-20 bg-primary text-sm text-white hover:bg-secondary"
                             type="submit"
                           >
-                           Gửi
+                            Gửi
                           </Button>
                           <span>{result}</span>
                         </div>

@@ -26,7 +26,7 @@ const DarkMode: React.FC = () => {
     <Button
       size="md"
       onClick={toggleDarkMode}
-      className="flex cursor-pointer flex-row items-center justify-center rounded-md border-none bg-white bg-opacity-20 text-black shadow-headerMenu dark:bg-black dark:bg-opacity-20 dark:text-white"
+      className="flex cursor-pointer flex-row items-center justify-center rounded-md border-none bg-white bg-opacity-20 text-black shadow-headerMenu dark:bg-white dark:bg-opacity-20 dark:text-white"
     >
       <div className="cursor-pointer rounded-md">
         {darkMode ? (
