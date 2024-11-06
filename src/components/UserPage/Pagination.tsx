@@ -26,9 +26,9 @@ const Pagination: React.FC<PaginationProps> = ({
         <IoIosArrowDropleft className="text-xl text-black dark:text-white" />{' '}
         Trang Trước
       </Button>
-      <span className="mx-2 text-primary">
-        {currentPage} / {totalPages}
-      </span>
+      <div className="mx-2 flex flex-row items-center justify-center text-primary">
+        <p> {currentPage}</p> / <p> {totalPages}</p>
+      </div>
       <Button
         className="rounded-md shadow-headerMenu shadow-gray-50"
         color="primary"

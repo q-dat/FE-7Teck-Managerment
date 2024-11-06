@@ -144,7 +144,7 @@ const ProductPage: React.FC = () => {
           <p className="my-5 text-start font-serif text-2xl font-bold text-primary xl:text-2xl">
             Danh Sách Sản Phẩm
           </p>
-          <div className="grid grid-flow-row grid-cols-2 items-start justify-between gap-x-5 gap-y-5 md:grid-cols-3 xl:grid-cols-5">
+          <div className="grid grid-flow-row grid-cols-2 items-start justify-between gap-x-5 gap-y-5 md:grid-cols-5">
             {currentProducts.map(product => (
               <div
                 key={product._id}
