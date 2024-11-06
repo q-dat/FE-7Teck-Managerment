@@ -122,13 +122,12 @@ const ProductPage: React.FC = () => {
   const itemsPerPage = 10;
 
   // Lọc sản phẩm có `status` là `sale`
-  const saleProducts = products.filter(product => product.status === 'sale');
-  const totalPages = Math.ceil(saleProducts.length / itemsPerPage);
+  const totalPages = Math.ceil(products.length / itemsPerPage);
 
   // Tính toán sản phẩm hiển thị dựa trên trang hiện tại
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentProducts = saleProducts.slice(indexOfFirstItem, indexOfLastItem);
+  const currentProducts = products.slice(indexOfFirstItem, indexOfLastItem);
 
   const handleNextPage = () => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
