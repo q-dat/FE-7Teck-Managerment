@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
 import { Button } from 'react-daisyui';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 // Định nghĩa kiểu sản phẩm
 interface Product {
@@ -103,6 +103,16 @@ const PriceListPage: React.FC = () => {
   return (
     <div className="pb-[20px] xl:pt-[80px]">
       <HeaderResponsive Title_NavbarMobile="Bảng Giá Thu Mua" />
+      <div className="breadcrumbs glass mb-10 px-[10px] py-2 text-sm text-black dark:text-white lg:px-20">
+        <ul className="font-light">
+          <li>
+            <Link to="/">Trang Chủ</Link>
+          </li>
+          <li>
+            <Link to="/price-list">Bảng Giá Thu Mua</Link>
+          </li>
+        </ul>
+      </div>
       <div>
         {/* Phone Catalog */}
         <div className="px-2 xl:px-[100px]">
@@ -274,3 +284,4 @@ const PriceListPage: React.FC = () => {
 };
 
 export default PriceListPage;
+

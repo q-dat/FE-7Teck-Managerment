@@ -6,6 +6,7 @@ const User = lazy(() => import('../pages/user/User'));
 const HomePage = lazy(() => import('../pages/user/HomePage'));
 const ContactPage = lazy(() => import('../pages/user/ContactPage'));
 const ProductPage = lazy(() => import('../pages/user/ProductPage'));
+const ProductDetailPage = lazy(() => import('../pages/user/ProductDetailPage'));
 const PriceListPage = lazy(() => import('../pages/user/PriceListPage'));
 
 // admin
@@ -23,6 +24,7 @@ export default function AppRoutes() {
             <Route index path="" element={<HomePage />} />
             <Route path="price-list" element={<PriceListPage />} />
             <Route path="product-list" element={<ProductPage />} />
+            <Route path="product-detail" element={<ProductDetailPage />} />
             <Route path="contact" element={<ContactPage />} />
           </Route>
         </Route>

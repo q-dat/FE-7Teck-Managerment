@@ -7,6 +7,7 @@ import {
   IoIosArrowDropleftCircle,
   IoIosArrowDroprightCircle
 } from 'react-icons/io';
+import { Link } from 'react-router-dom';
 
 const HomePage: React.FC = () => {
   const products: IProduct[] = [
@@ -194,30 +195,32 @@ const HomePage: React.FC = () => {
           <p className="my-5 text-start font-serif text-2xl font-bold text-primary xl:text-2xl">
             Điện Thoại Nổi Bật
           </p>
-          <div
-            ref={scrollRefMobile}
-            className="grid grid-flow-col grid-rows-2 items-start justify-between gap-x-5 gap-y-5 overflow-x-auto scroll-smooth py-1 scrollbar-hide"
-          >
-            {products.map(product => (
-              <div
-                key={product._id}
-                className="dropdown dropdown-hover relative rounded-md bg-white shadow-headerMenu shadow-gray-50"
-              >
-                <div className="flex w-[190px] flex-col items-center justify-center xl:w-[220px]">
-                  <img
-                    className="h-[190px] w-[190px] rounded-md object-cover xl:h-[220px] xl:w-[220px]"
-                    src={product.img}
-                  />
-                  <p>{product.name}</p>
-                  <p>Giá:{(product.price * 1000).toLocaleString('vi-VN')}đ</p>
-                  <div className="dropdown-content absolute left-0 top-0 flex h-full w-full flex-row items-center justify-center gap-2 transition-all duration-1000 ease-in-out">
-                    <Button size="sm">Mua Ngay</Button>
-                    <Button size="sm">Xem Thêm</Button>
+          <Link to="product-detail">
+            <div
+              ref={scrollRefMobile}
+              className="grid grid-flow-col grid-rows-2 items-start justify-between gap-x-5 gap-y-5 overflow-x-auto scroll-smooth py-1 scrollbar-hide"
+            >
+              {products.map(product => (
+                <div
+                  key={product._id}
+                  className="dropdown dropdown-hover relative rounded-md bg-white shadow-headerMenu shadow-gray-50"
+                >
+                  <div className="flex w-[190px] flex-col items-center justify-center xl:w-[220px]">
+                    <img
+                      className="h-[190px] w-[190px] rounded-md object-cover xl:h-[220px] xl:w-[220px]"
+                      src={product.img}
+                    />
+                    <p>{product.name}</p>
+                    <p>Giá:{(product.price * 1000).toLocaleString('vi-VN')}đ</p>
+                    <div className="dropdown-content absolute left-0 top-0 flex h-full w-full flex-row items-center justify-center gap-2 transition-all duration-1000 ease-in-out">
+                      <Button size="sm">Mua Ngay</Button>
+                      <Button size="sm">Xem Thêm</Button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </Link>
           {/* Navigation Button  */}
           <div className="absolute top-1/2 flex w-full items-center justify-between">
             <Button

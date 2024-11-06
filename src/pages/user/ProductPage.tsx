@@ -3,6 +3,7 @@ import { IProduct } from '../../types/type/product/product';
 import Pagination from '../../components/UserPage/Pagination';
 import { Button } from 'react-daisyui';
 import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
+import { Link } from 'react-router-dom';
 
 const ProductPage: React.FC = () => {
   const products: IProduct[] = [
@@ -139,6 +140,16 @@ const ProductPage: React.FC = () => {
   return (
     <div className="pb-[20px] xl:pt-[80px]">
       <HeaderResponsive Title_NavbarMobile="Sản Phẩm" />
+      <div className="breadcrumbs glass mb-10 px-[10px] py-2 text-sm text-black dark:text-white lg:px-20">
+        <ul className="font-light">
+          <li>
+            <Link to="/">Trang Chủ</Link>
+          </li>
+          <li>
+            <Link to="/product-list">Sản Phẩm</Link>
+          </li>
+        </ul>
+      </div>
       <div className="space-y-10 px-2 xl:px-[100px]">
         <div>
           <p className="my-5 text-start font-serif text-2xl font-bold text-primary xl:text-2xl">
