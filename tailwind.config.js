@@ -53,7 +53,7 @@ export default {
     themes: [
       {
         mytheme: {
-          primary: "#f97118",
+          primary: "#ff6533",
           secondary: "#5e90cc",
           info: "#312e91",
           success: "#009485",

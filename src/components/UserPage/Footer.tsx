@@ -8,7 +8,7 @@ const FooterFC: React.FC = () => {
   return (
     <div>
       <hr />
-      <Footer className="item-center grid grid-cols-2 justify-between bg-primary p-10 px-2 text-white md:grid-cols-5 xl:px-[100px]">
+      <Footer className="item-center grid grid-cols-2 justify-between bg-black bg-opacity-5 p-10 px-2 text-primary md:grid-cols-5 xl:px-[100px]">
         <div>
           <img
             width={140}
@@ -39,7 +39,7 @@ const FooterFC: React.FC = () => {
             className="hover:text-secondary"
             to="mailto:laclactrip@gmail.com"
           >
-            Email: laclactrip@gmail.com
+            Email: 7Teck@gmail.com
           </Link>
         </div>
         <div>

@@ -6,116 +6,117 @@ import { Button } from 'react-daisyui';
 import { MdArrowBackIosNew } from 'react-icons/md';
 import { MdArrowForwardIos } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import { Sale } from '../../assets/image-represent';
 
 const HomePage: React.FC = () => {
   const products: IProduct[] = [
     {
       _id: '1',
       product_catalog_id: '',
-      name: 'Sản Phẩm 1',
+      name: 'Iphone 25 Pro Max',
       img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
       status: 'sale',
-      price: 100,
+      price: 12345,
       createAt: '',
       updateAt: ''
     },
     {
       _id: '2',
       product_catalog_id: '',
-      name: 'Sản Phẩm 2',
+      name: 'Iphone 25 Pro Max',
       img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
       status: 'sale',
-      price: 0,
+      price: 12345,
       createAt: '',
       updateAt: ''
     },
     {
       _id: '3',
       product_catalog_id: '',
-      name: 'Sản Phẩm 3',
+      name: 'Iphone 25 Pro Max',
       img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
       status: 'sale',
-      price: 0,
+      price: 12345,
       createAt: '',
       updateAt: ''
     },
     {
       _id: '4',
       product_catalog_id: '',
-      name: 'Sản Phẩm 4',
+      name: 'Iphone 25 Pro Max',
       img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
       status: 'sale',
-      price: 0,
+      price: 12345,
       createAt: '',
       updateAt: ''
     },
     {
       _id: '5',
       product_catalog_id: '',
-      name: 'Sản Phẩm 5',
+      name: 'Iphone 25 Pro Max',
       img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
       status: 'sale',
-      price: 0,
+      price: 12345,
       createAt: '',
       updateAt: ''
     },
     {
       _id: '6',
       product_catalog_id: '',
-      name: 'Sản Phẩm 6',
+      name: 'Iphone 25 Pro Max',
       img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
       status: 'sale',
-      price: 0,
+      price: 12345,
       createAt: '',
       updateAt: ''
     },
     {
       _id: '7',
       product_catalog_id: '',
-      name: 'Sản Phẩm 7',
+      name: 'Iphone 25 Pro Max',
       img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
       status: 'sale',
-      price: 0,
+      price: 12345,
       createAt: '',
       updateAt: ''
     },
     {
       _id: '8',
       product_catalog_id: '',
-      name: 'Sản Phẩm 8',
+      name: 'Iphone 25 Pro Max',
       img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
       status: 'sale',
-      price: 0,
+      price: 12345,
       createAt: '',
       updateAt: ''
     },
     {
       _id: '9',
       product_catalog_id: '',
-      name: 'Sản Phẩm 9',
+      name: 'Iphone 25 Pro Max',
       img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
       status: 'sale',
-      price: 0,
+      price: 12345,
       createAt: '',
       updateAt: ''
     },
     {
       _id: '10',
       product_catalog_id: '',
-      name: 'Sản Phẩm 10',
+      name: 'Iphone 25 Pro Max0',
       img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
       status: 'sale',
-      price: 0,
+      price: 12345,
       createAt: '',
       updateAt: ''
     },
     {
       _id: '11',
       product_catalog_id: '',
-      name: 'Sản Phẩm 11',
+      name: 'Iphone 25 Pro Max1',
       img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
       status: 'sale',
-      price: 0,
+      price: 12345,
       createAt: '',
       updateAt: ''
     }
@@ -266,8 +267,8 @@ const HomePage: React.FC = () => {
       <div>
         {/* Banner */}
         <div className="relative">
-          <div className="absolute bottom-0 left-2 top-[50%] md:bottom-4 md:top-[30%] xl:left-[12%] xl:top-[20%]">
-            <p className="bg-gradient-to-r from-primary to-white bg-clip-text text-[25px] font-black italic text-transparent dark:from-primary dark:to-gray-100 md:text-[40px]">
+          <div className="absolute bottom-0 left-2 top-[60%] md:bottom-4 md:top-[30%] lg:top-[30%] md:left-[10%]">
+            <p className="bg-gradient-to-r from-primary to-white bg-clip-text text-[25px] font-black italic text-transparent xl:text-[40px]">
               Đổi Điện Thoại Cũ, <br /> Nhận Ngay Giá Tốt Nhất!
             </p>
             <p className="bg-gradient-to-r from-white to-white bg-clip-text text-[15px] font-thin text-transparent dark:from-primary dark:to-primary">
@@ -323,6 +324,19 @@ const HomePage: React.FC = () => {
                       <Button size="sm">Xem Thêm</Button>
                     </div>
                   </div>
+                  {product.status === 'sale' && (
+                    <>
+                      <img
+                        width={60}
+                        src={Sale}
+                        className="absolute left-0 top-0"
+                        alt="Sale"
+                      />
+                      <p className="absolute top-0 w-full text-sm text-white">
+                        Giảm 20%
+                      </p>
+                    </>
+                  )}
                 </div>
               ))}
             </div>
@@ -331,13 +345,13 @@ const HomePage: React.FC = () => {
           <div className="absolute top-1/2 flex w-full items-center justify-between">
             <Button
               onClick={() => scrollMobile(-200)}
-              className={`rounded-full border-none bg-black bg-opacity-10 px-[5px] py-0 pl-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white dark:bg-primary dark:bg-opacity-60 dark:text-white ${isLeftButtonVisibleMobile ? '' : 'bg-transparent text-transparent'}`}
+              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white dark:bg-primary dark:bg-opacity-60 dark:text-white ${isLeftButtonVisibleMobile ? '' : 'bg-transparent text-transparent'}`}
             >
               <MdArrowBackIosNew className="text-4xl" />
             </Button>
             <Button
               onClick={() => scrollMobile(200)}
-              className={`rounded-full border-none bg-black bg-opacity-10 px-[5px] py-0 pr-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white dark:bg-primary dark:bg-opacity-60 dark:text-white ${isRightButtonVisibleMobile ? '' : 'bg-transparent text-transparent'}`}
+              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white dark:bg-primary dark:bg-opacity-60 dark:text-white ${isRightButtonVisibleMobile ? '' : 'bg-transparent text-transparent'}`}
             >
               <MdArrowForwardIos className="text-4xl" />
             </Button>
@@ -369,6 +383,19 @@ const HomePage: React.FC = () => {
                     <Button size="sm">Xem Thêm</Button>
                   </div>
                 </div>
+                {product.status === 'sale' && (
+                  <>
+                    <img
+                      width={60}
+                      src={Sale}
+                      className="absolute left-0 top-0"
+                      alt="Sale"
+                    />
+                    <p className="absolute top-0 w-full text-sm text-white">
+                      Giảm 20%
+                    </p>
+                  </>
+                )}
               </div>
             ))}
           </div>
@@ -376,13 +403,13 @@ const HomePage: React.FC = () => {
           <div className="absolute top-1/2 flex w-full items-center justify-between">
             <Button
               onClick={() => scrollIpad(-200)}
-              className={`rounded-full border-none bg-black bg-opacity-10 px-[5px] py-0 pl-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white dark:bg-primary dark:bg-opacity-60 dark:text-white ${isLeftButtonVisibleIpad ? '' : 'bg-transparent text-transparent'}`}
+              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white dark:bg-primary dark:bg-opacity-60 dark:text-white ${isLeftButtonVisibleIpad ? '' : 'bg-transparent text-transparent'}`}
             >
               <MdArrowBackIosNew className="text-4xl" />
             </Button>
             <Button
               onClick={() => scrollIpad(200)}
-              className={`rounded-full border-none bg-black bg-opacity-10 px-[5px] py-0 pr-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white dark:bg-primary dark:bg-opacity-60 dark:text-white ${isRightButtonVisibleIpad ? '' : 'bg-transparent text-transparent'}`}
+              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white dark:bg-primary dark:bg-opacity-60 dark:text-white ${isRightButtonVisibleIpad ? '' : 'bg-transparent text-transparent'}`}
             >
               <MdArrowForwardIos className="text-4xl" />
             </Button>
@@ -414,6 +441,19 @@ const HomePage: React.FC = () => {
                     <Button size="sm">Xem Thêm</Button>
                   </div>
                 </div>
+                {product.status === 'sale' && (
+                  <>
+                    <img
+                      width={60}
+                      src={Sale}
+                      className="absolute left-0 top-0"
+                      alt="Sale"
+                    />
+                    <p className="absolute top-0 w-full text-sm text-white">
+                      Giảm 20%
+                    </p>
+                  </>
+                )}
               </div>
             ))}
           </div>
@@ -421,13 +461,13 @@ const HomePage: React.FC = () => {
           <div className="absolute top-1/2 flex w-full items-center justify-between">
             <Button
               onClick={() => scrollWindow(-200)}
-              className={`rounded-full border-none bg-black bg-opacity-10 px-[5px] py-0 pl-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white dark:bg-primary dark:bg-opacity-60 dark:text-white ${isLeftButtonVisibleWindow ? '' : 'bg-transparent text-transparent'}`}
+              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white dark:bg-primary dark:bg-opacity-60 dark:text-white ${isLeftButtonVisibleWindow ? '' : 'bg-transparent text-transparent'}`}
             >
               <MdArrowBackIosNew className="text-4xl" />
             </Button>
             <Button
               onClick={() => scrollWindow(200)}
-              className={`rounded-full border-none bg-black bg-opacity-10 px-[5px] py-0 pr-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white dark:bg-primary dark:bg-opacity-60 dark:text-white ${isRightButtonVisibleWindow ? '' : 'bg-transparent text-transparent'}`}
+              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white dark:bg-primary dark:bg-opacity-60 dark:text-white ${isRightButtonVisibleWindow ? '' : 'bg-transparent text-transparent'}`}
             >
               <MdArrowForwardIos className="text-4xl" />
             </Button>
@@ -459,6 +499,19 @@ const HomePage: React.FC = () => {
                     <Button size="sm">Xem Thêm</Button>
                   </div>
                 </div>
+                {product.status === 'sale' && (
+                  <>
+                    <img
+                      width={60}
+                      src={Sale}
+                      className="absolute left-0 top-0"
+                      alt="Sale"
+                    />
+                    <p className="absolute top-0 w-full text-sm text-white">
+                      Giảm 20%
+                    </p>
+                  </>
+                )}
               </div>
             ))}
           </div>
@@ -466,13 +519,13 @@ const HomePage: React.FC = () => {
           <div className="absolute top-1/2 flex w-full items-center justify-between">
             <Button
               onClick={() => scrollMacbook(-200)}
-              className={`rounded-full border-none bg-black bg-opacity-10 px-[5px] py-0 pl-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white dark:bg-primary dark:bg-opacity-60 dark:text-white ${isLeftButtonVisibleMacbook ? '' : 'bg-transparent text-transparent'}`}
+              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white dark:bg-primary dark:bg-opacity-60 dark:text-white ${isLeftButtonVisibleMacbook ? '' : 'bg-transparent text-transparent'}`}
             >
               <MdArrowBackIosNew className="text-4xl" />
             </Button>
             <Button
               onClick={() => scrollMacbook(200)}
-              className={`rounded-full border-none bg-black bg-opacity-10 px-[5px] py-0 pr-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white dark:bg-primary dark:bg-opacity-60 dark:text-white ${isRightButtonVisibleMacbook ? '' : 'bg-transparent text-transparent'}`}
+              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white dark:bg-primary dark:bg-opacity-60 dark:text-white ${isRightButtonVisibleMacbook ? '' : 'bg-transparent text-transparent'}`}
             >
               <MdArrowForwardIos className="text-4xl" />
             </Button>
