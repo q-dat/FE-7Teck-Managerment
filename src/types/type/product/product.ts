@@ -8,6 +8,6 @@ export interface IProduct {
   status:string;
   price: number;
   quantity?: number;
-  createAt: string;
-  updateAt: string;
+  createAt: Date;
+  updateAt: Date;
 }
