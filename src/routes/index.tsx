@@ -12,6 +12,7 @@ const PriceListPage = lazy(() => import('../pages/user/PriceListPage'));
 // admin
 const Admin = lazy(() => import('../pages/admin/Admin'));
 const DashboardPage = lazy(() => import('../pages/admin/DashboardPage'));
+const ProductManager = lazy(() => import('../pages/admin/ProductManager'));
 // not found page
 const NotFound = lazy(() => import('../pages/404/NotFound'));
 export default function AppRoutes() {
@@ -33,7 +34,7 @@ export default function AppRoutes() {
         <Route element={<DefaultLayout />}>
           <Route path="/admin" element={<Admin />}>
             <Route index path="" element={<DashboardPage />} />
-            {/* <Route path="chat" element={<ChatPage />} /> */}
+            <Route path="product-manager" element={<ProductManager />} />
           </Route>
         </Route>
 

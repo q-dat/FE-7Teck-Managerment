@@ -10,4 +10,4 @@ export interface IProduct {
   quantity?: number;
   createAt: Date;
   updateAt: Date;
-}
+} 
