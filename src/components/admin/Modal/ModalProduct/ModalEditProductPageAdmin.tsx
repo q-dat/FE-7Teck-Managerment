@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 import { Toastify } from '../../../../helper/Toastify';
@@ -12,6 +12,7 @@ interface ModalEditProductProps {
   onClose: () => void;
   ProductId: string;
 }
+
 const ModalEditProductPageAdmin: React.FC<ModalEditProductProps> = ({
   isOpen,
   onClose,
@@ -20,7 +21,13 @@ const ModalEditProductPageAdmin: React.FC<ModalEditProductProps> = ({
   const { getAllProducts, products, getProductById, error, updateProduct } =
     useContext(ProductContext);
 
-  const { register, handleSubmit, reset, setValue } = useForm<IProduct>();
+  const { register, handleSubmit, reset, setValue, watch } =
+    useForm<IProduct>();
+
+  const [existingImg, setExistingImg] = useState<string | undefined>('');
+  const [existingThumbnail, setExistingThumbnail] = useState<
+    string | undefined
+  >('');
 
   useEffect(() => {
     if (ProductId) {
@@ -39,17 +46,51 @@ const ModalEditProductPageAdmin: React.FC<ModalEditProductProps> = ({
       setValue('des', productData.des);
       setValue('img', productData.img);
       setValue('thumbnail', productData.thumbnail);
+
+      // Lưu lại đường dẫn ảnh hiện tại
+      setExistingImg(productData.img);
+      setExistingThumbnail(productData.thumbnail);
     }
   }, [products, ProductId, setValue]);
 
   const onSubmit: SubmitHandler<IProduct> = async formData => {
+    const formDataToSend = new FormData();
+    formDataToSend.append('name', formData.name || '');
+    formDataToSend.append(
+      'product_catalog_id',
+      formData.product_catalog_id || ''
+    );
+    formDataToSend.append('status', formData.status || '');
+    formDataToSend.append('price', formData.price?.toString() || '');
+    formDataToSend.append('quantity', formData.quantity?.toString() || '');
+    formDataToSend.append('des', formData.des || '');
+
+    const imgFile = watch('img');
+    if (imgFile && imgFile[0]) {
+      formDataToSend.append('img', imgFile[0]);
+    } else {
+      if (existingImg) {
+        formDataToSend.append('img', existingImg);
+      }
+    }
+
+    const thumbnailFile = watch('thumbnail');
+    if (thumbnailFile && thumbnailFile[0]) {
+      formDataToSend.append('thumbnail', thumbnailFile[0]);
+    } else {
+      if (existingThumbnail) {
+        formDataToSend.append('thumbnail', existingThumbnail);
+      }
+    }
+
     try {
-      await updateProduct(ProductId, formData);
-      Toastify('Chỉnh sửa địa điểm thành công!', 200);
+      await updateProduct(ProductId, formDataToSend);
+      Toastify('Chỉnh sửa sản phẩm thành công!', 200);
       reset();
       getAllProducts();
       onClose();
     } catch (err) {
+      console.error('Error during product update:', err);
       Toastify(`Lỗi: ${error}`, 500);
     }
   };
@@ -78,7 +119,6 @@ const ModalEditProductPageAdmin: React.FC<ModalEditProductProps> = ({
             <p className="font-bold text-black dark:text-white">
               Tạo sản phẩm mới
             </p>
-            {/* Các trường đầu vào */}
             <InputModal
               type="text"
               {...register('name')}

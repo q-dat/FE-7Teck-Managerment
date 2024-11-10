@@ -15,7 +15,9 @@ const ModalCreateProductPageAdmin: React.FC<ModalCreateProductProps> = ({
   isOpen,
   onClose
 }) => {
-  const { createProduct, getAllProducts, error } = useContext(ProductContext);
+  const { loading, createProduct, getAllProducts, error } =
+    useContext(ProductContext);
+  const isLoading = loading.create;
   const { register, handleSubmit, reset } = useForm<IProduct>();
 
   const onSubmit: SubmitHandler<IProduct> = async formData => {
@@ -49,8 +51,6 @@ const ModalCreateProductPageAdmin: React.FC<ModalCreateProductProps> = ({
     }
   };
 
-  if (!isOpen) return null;
-
   const handleOverlayClick = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
@@ -58,6 +58,8 @@ const ModalCreateProductPageAdmin: React.FC<ModalCreateProductProps> = ({
       onClose();
     }
   };
+
+  if (!isOpen) return null;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -82,7 +84,7 @@ const ModalCreateProductPageAdmin: React.FC<ModalCreateProductProps> = ({
             <InputModal
               type="text"
               {...register('product_catalog_id', { required: true })}
-              placeholder="Danh mục sản phẩm (ID)"
+              placeholder="Danh mục"
             />
             <InputModal
               type="text"
@@ -112,16 +114,28 @@ const ModalCreateProductPageAdmin: React.FC<ModalCreateProductProps> = ({
             <InputModal
               type="file"
               {...register('thumbnail')}
-              placeholder="Ảnh thumbnail (Tùy chọn)"
+              placeholder="Ảnh thumbnail"
             />
           </div>
 
-          <div className="space-x-5 text-center">
+          <div className="flex flex-row items-center justify-center space-x-5 text-center">
             <Button onClick={onClose} className="border-gray-50 text-black">
               Hủy
             </Button>
-            <Button color="primary" type="submit" className="text-white">
-              Xác nhận
+            <Button
+              disabled={isLoading}
+              color="primary"
+              type="submit"
+              className="group text-white"
+            >
+              {isLoading ? (
+                <div className="flex cursor-progress flex-row items-center justify-center bg-primary text-white group-hover:bg-opacity-10">
+                  <span>Đang tạo...</span>
+                  <span className="loading loading-spinner"></span>
+                </div>
+              ) : (
+                'Xác nhận'
+              )}
             </Button>
           </div>
         </div>

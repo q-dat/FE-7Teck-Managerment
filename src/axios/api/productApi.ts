@@ -8,12 +8,12 @@ export const getAllProductsApi = () => {
 
 // Get Product By ID
 export const getProductByIdApi = (_id: string) => {
-  return axios.get<{ product: IProduct }>(`/api/products/${_id}`);
+  return axios.get<{ product: IProduct }>(`/api/product/${_id}`);
 };
 
 // Create Product
 export const createProductApi = (formData: FormData) => {
-  return axios.post('/api/products', formData, {
+  return axios.post('/api/product', formData, {
     headers: {
       'Content-Type': 'multipart/form-data'
     }
@@ -21,12 +21,16 @@ export const createProductApi = (formData: FormData) => {
 };
 
 // Update Product
-export const updateProductApi = (_id: string, product: IProduct) => {
-  return axios.put<{ product: IProduct }>(`/api/products/${_id}`, product);
+export const updateProductApi = async (_id: string, productData: FormData) => {
+  const response = await axios.put(`/api/product/${_id}`, productData, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  });
+  return response.data;
 };
 
 // Delete Product
 export const deleteProductApi = (id: string) => {
-  return axios.delete(`/api/products/${id}`);
+  return axios.delete(`/api/product/${id}`);
 };
-

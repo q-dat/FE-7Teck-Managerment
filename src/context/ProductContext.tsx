@@ -14,7 +14,7 @@ interface ProductContextType {
   getAllProducts: () => void;
   getProductById: (_id: string) => IProduct | undefined;
   createProduct: (product: FormData) => Promise<void>;
-  updateProduct: (_id: string, product: IProduct) => Promise<void>;
+  updateProduct: (_id: string, product: FormData) => Promise<void>;
   deleteProduct: (_id: string) => Promise<void>;
 }
 
@@ -30,7 +30,7 @@ const defaultContextValue: ProductContextType = {
   getAllProducts: () => {},
   getProductById: () => undefined,
   createProduct: async () => {},
-  updateProduct: async () => {},
+  updateProduct: async () => {},  
   deleteProduct: async () => {}
 };
 
@@ -85,27 +85,26 @@ export const ProductProvider = ({ children }: { children: ReactNode }) => {
   );
 
   // Create Product
-const createProduct = useCallback(
-  async (productData: FormData): Promise<void> => {
-    await fetchData(
-      () => createProductApi(productData), 
-      data => {
-        if (data.product) {
-          setProducts(prevProducts => [...prevProducts, data.product]);
-        }
-      },
-      'create'
-    );
-  },
-  []
-);
-
+  const createProduct = useCallback(
+    async (productData: FormData): Promise<void> => {
+      await fetchData(
+        () => createProductApi(productData), 
+        data => {
+          if (data.product) {
+            setProducts(prevProducts => [...prevProducts, data.product]);
+          }
+        },
+        'create'
+      );
+    },
+    []
+  );
 
   // Update Product
   const updateProduct = useCallback(
-    async (_id: string, product: IProduct): Promise<void> => {
+    async (_id: string, product: FormData): Promise<void> => {  
       await fetchData(
-        () => updateProductApi(_id, product),
+        () => updateProductApi(_id, product), 
         data => {
           if (data.product) {
             setProducts(prevProducts =>
@@ -144,7 +143,7 @@ const createProduct = useCallback(
         getAllProducts,
         getProductById,
         createProduct,
-        updateProduct,
+        updateProduct, 
         deleteProduct
       }}
     >

@@ -56,10 +56,10 @@ const SidebarAdmin: React.FC<{}> = () => {
             />
             <div className="">
               <p className="text-base font-bold text-primary dark:text-white">
-                LacLac Trip
+                7Teck
               </p>
               <p className="text-[.8rem] font-light dark:text-white">
-                Booking Ticket Manager
+                Product Management
               </p>
             </div>
           </div>
