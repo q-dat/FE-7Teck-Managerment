@@ -1,127 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { BannerDesktop, BannerTablet, BannerMobile } from '../../assets/images';
 import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
-import { IProduct } from '../../types/type/product/product';
 import { Button } from 'react-daisyui';
 import { MdArrowBackIosNew } from 'react-icons/md';
 import { MdArrowForwardIos } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { Sale } from '../../assets/image-represent';
+import { ProductContext } from '../../context/ProductContext';
 
 const HomePage: React.FC = () => {
-  const products: IProduct[] = [
-    {
-      _id: '1',
-      product_catalog_id: '',
-      name: 'Iphone 25 Pro Max',
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
-      status: 'sale',
-      price: 12345,
-      createAt: '',
-      updateAt: ''
-    },
-    {
-      _id: '2',
-      product_catalog_id: '',
-      name: 'Iphone 25 Pro Max',
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
-      status: 'sale',
-      price: 12345,
-      createAt: '',
-      updateAt: ''
-    },
-    {
-      _id: '3',
-      product_catalog_id: '',
-      name: 'Iphone 25 Pro Max',
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
-      status: 'sale',
-      price: 12345,
-      createAt: '',
-      updateAt: ''
-    },
-    {
-      _id: '4',
-      product_catalog_id: '',
-      name: 'Iphone 25 Pro Max',
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
-      status: 'sale',
-      price: 12345,
-      createAt: '',
-      updateAt: ''
-    },
-    {
-      _id: '5',
-      product_catalog_id: '',
-      name: 'Iphone 25 Pro Max',
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
-      status: 'sale',
-      price: 12345,
-      createAt: '',
-      updateAt: ''
-    },
-    {
-      _id: '6',
-      product_catalog_id: '',
-      name: 'Iphone 25 Pro Max',
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
-      status: 'sale',
-      price: 12345,
-      createAt: '',
-      updateAt: ''
-    },
-    {
-      _id: '7',
-      product_catalog_id: '',
-      name: 'Iphone 25 Pro Max',
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
-      status: 'sale',
-      price: 12345,
-      createAt: '',
-      updateAt: ''
-    },
-    {
-      _id: '8',
-      product_catalog_id: '',
-      name: 'Iphone 25 Pro Max',
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
-      status: 'sale',
-      price: 12345,
-      createAt: '',
-      updateAt: ''
-    },
-    {
-      _id: '9',
-      product_catalog_id: '',
-      name: 'Iphone 25 Pro Max',
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
-      status: 'sale',
-      price: 12345,
-      createAt: '',
-      updateAt: ''
-    },
-    {
-      _id: '10',
-      product_catalog_id: '',
-      name: 'Iphone 25 Pro Max0',
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
-      status: 'sale',
-      price: 12345,
-      createAt: '',
-      updateAt: ''
-    },
-    {
-      _id: '11',
-      product_catalog_id: '',
-      name: 'Iphone 25 Pro Max1',
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
-      status: 'sale',
-      price: 12345,
-      createAt: '',
-      updateAt: ''
-    }
-  ];
-
+  const { products } = useContext(ProductContext);
   // const saleProducts = products.filter(product => product.status === 'sale');
   const [isLeftButtonVisibleMobile, setIsLeftButtonVisibleMobile] =
     useState(true);
@@ -267,7 +155,7 @@ const HomePage: React.FC = () => {
       <div>
         {/* Banner */}
         <div className="relative">
-          <div className="absolute bottom-0 left-2 top-[60%] md:bottom-4 md:top-[30%] lg:top-[30%] md:left-[10%]">
+          <div className="absolute bottom-0 left-2 top-[60%] md:bottom-4 md:left-[10%] md:top-[30%] lg:top-[30%]">
             <p className="bg-gradient-to-r from-primary to-white bg-clip-text text-[25px] font-black italic text-transparent xl:text-[40px]">
               Đổi Điện Thoại Cũ, <br /> Nhận Ngay Giá Tốt Nhất!
             </p>
@@ -302,15 +190,15 @@ const HomePage: React.FC = () => {
           <p className="my-5 text-start font-serif text-2xl font-bold text-primary xl:text-2xl">
             Điện Thoại Nổi Bật
           </p>
-          <Link to="product-detail">
-            <div
-              ref={scrollRefMobile}
-              className="grid grid-flow-col grid-rows-2 items-start justify-between gap-3 overflow-x-auto scroll-smooth py-1 scrollbar-hide xl:gap-5"
-            >
-              {products.map(product => (
+          <div
+            ref={scrollRefMobile}
+            className="grid grid-flow-col grid-rows-2 items-center justify-start gap-3 overflow-x-auto scroll-smooth px-2 py-1 scrollbar-hide xl:gap-5"
+          >
+            {products.map(product => (
+              <Link to="product-detail">
                 <div
                   key={product._id}
-                  className="dropdown dropdown-hover relative rounded-md bg-white shadow-headerMenu shadow-gray-50"
+                  className="relative rounded-md bg-white shadow-headerMenu shadow-gray-50"
                 >
                   <div className="flex w-[185px] flex-col items-center justify-center xl:w-[220px]">
                     <img
@@ -319,17 +207,13 @@ const HomePage: React.FC = () => {
                     />
                     <p>{product.name}</p>
                     <p>Giá:{(product.price * 1000).toLocaleString('vi-VN')}đ</p>
-                    <div className="dropdown-content absolute left-0 top-0 flex h-full w-full flex-row items-center justify-center gap-2 transition-all duration-1000 ease-in-out">
-                      <Button size="sm">Mua Ngay</Button>
-                      <Button size="sm">Xem Thêm</Button>
-                    </div>
                   </div>
                   {product.status === 'sale' && (
                     <>
                       <img
                         width={60}
                         src={Sale}
-                        className="absolute left-0 top-0"
+                        className="absolute -left-[3px] top-0"
                         alt="Sale"
                       />
                       <p className="absolute top-0 w-full text-sm text-white">
@@ -338,9 +222,9 @@ const HomePage: React.FC = () => {
                     </>
                   )}
                 </div>
-              ))}
-            </div>
-          </Link>
+              </Link>
+            ))}
+          </div>
           {/* Navigation Button  */}
           <div className="absolute top-1/2 flex w-full items-center justify-between">
             <Button
@@ -364,39 +248,37 @@ const HomePage: React.FC = () => {
           </p>
           <div
             ref={scrollRefIpad}
-            className="grid grid-flow-col grid-rows-2 items-start justify-between gap-3 overflow-x-auto scroll-smooth py-1 scrollbar-hide xl:gap-5"
+            className="grid grid-flow-col grid-rows-2 items-center justify-start gap-3 overflow-x-auto scroll-smooth px-2 py-1 scrollbar-hide xl:gap-5"
           >
             {products.map(product => (
-              <div
-                key={product._id}
-                className="dropdown dropdown-hover relative rounded-md bg-white shadow-headerMenu shadow-gray-50"
-              >
-                <div className="flex w-[185px] flex-col items-center justify-center xl:w-[220px]">
-                  <img
-                    className="h-[185px] w-[185px] rounded-md object-cover xl:h-[220px] xl:w-[220px]"
-                    src={product.img}
-                  />
-                  <p>{product.name}</p>
-                  <p>Giá:{(product.price * 1000).toLocaleString('vi-VN')}đ</p>
-                  <div className="dropdown-content absolute left-0 top-0 flex h-full w-full flex-row items-center justify-center gap-2 transition-all duration-1000 ease-in-out">
-                    <Button size="sm">Mua Ngay</Button>
-                    <Button size="sm">Xem Thêm</Button>
-                  </div>
-                </div>
-                {product.status === 'sale' && (
-                  <>
+              <Link to="product-detail">
+                <div
+                  key={product._id}
+                  className="relative rounded-md bg-white shadow-headerMenu shadow-gray-50"
+                >
+                  <div className="flex w-[185px] flex-col items-center justify-center xl:w-[220px]">
                     <img
-                      width={60}
-                      src={Sale}
-                      className="absolute left-0 top-0"
-                      alt="Sale"
+                      className="h-[185px] w-[185px] rounded-md object-cover xl:h-[220px] xl:w-[220px]"
+                      src={product.img}
                     />
-                    <p className="absolute top-0 w-full text-sm text-white">
-                      Giảm 20%
-                    </p>
-                  </>
-                )}
-              </div>
+                    <p>{product.name}</p>
+                    <p>Giá:{(product.price * 1000).toLocaleString('vi-VN')}đ</p>
+                  </div>
+                  {product.status === 'sale' && (
+                    <>
+                      <img
+                        width={60}
+                        src={Sale}
+                        className="absolute -left-[3px] top-0"
+                        alt="Sale"
+                      />
+                      <p className="absolute top-0 w-full text-sm text-white">
+                        Giảm 20%
+                      </p>
+                    </>
+                  )}
+                </div>
+              </Link>
             ))}
           </div>
           {/* Navigation Button  */}
@@ -422,39 +304,37 @@ const HomePage: React.FC = () => {
           </p>
           <div
             ref={scrollRefWindow}
-            className="flex flex-row items-start justify-between gap-3 overflow-x-auto scroll-smooth py-1 scrollbar-hide xl:gap-5"
+            className="flex flex-row items-center justify-start gap-3 overflow-x-auto scroll-smooth px-2 py-1 scrollbar-hide xl:gap-5"
           >
             {products.map(product => (
-              <div
-                key={product._id}
-                className="dropdown dropdown-hover relative rounded-md bg-white shadow-headerMenu shadow-gray-50"
-              >
-                <div className="flex w-[185px] flex-col items-center justify-center xl:w-[220px]">
-                  <img
-                    className="h-[185px] w-[185px] rounded-md object-cover xl:h-[220px] xl:w-[220px]"
-                    src={product.img}
-                  />
-                  <p>{product.name}</p>
-                  <p>Giá:{(product.price * 1000).toLocaleString('vi-VN')}đ</p>
-                  <div className="dropdown-content absolute left-0 top-0 flex h-full w-full flex-row items-center justify-center gap-2 transition-all duration-1000 ease-in-out">
-                    <Button size="sm">Mua Ngay</Button>
-                    <Button size="sm">Xem Thêm</Button>
-                  </div>
-                </div>
-                {product.status === 'sale' && (
-                  <>
+              <Link to="product-detail">
+                <div
+                  key={product._id}
+                  className="relative rounded-md bg-white shadow-headerMenu shadow-gray-50"
+                >
+                  <div className="flex w-[185px] flex-col items-center justify-center xl:w-[220px]">
                     <img
-                      width={60}
-                      src={Sale}
-                      className="absolute left-0 top-0"
-                      alt="Sale"
+                      className="h-[185px] w-[185px] rounded-md object-cover xl:h-[220px] xl:w-[220px]"
+                      src={product.img}
                     />
-                    <p className="absolute top-0 w-full text-sm text-white">
-                      Giảm 20%
-                    </p>
-                  </>
-                )}
-              </div>
+                    <p>{product.name}</p>
+                    <p>Giá:{(product.price * 1000).toLocaleString('vi-VN')}đ</p>
+                  </div>
+                  {product.status === 'sale' && (
+                    <>
+                      <img
+                        width={60}
+                        src={Sale}
+                        className="absolute -left-[3px] top-0"
+                        alt="Sale"
+                      />
+                      <p className="absolute top-0 w-full text-sm text-white">
+                        Giảm 20%
+                      </p>
+                    </>
+                  )}
+                </div>
+              </Link>
             ))}
           </div>
           {/* Navigation Button  */}
@@ -480,39 +360,37 @@ const HomePage: React.FC = () => {
           </p>
           <div
             ref={scrollRefMacbook}
-            className="flex flex-row items-start justify-between gap-3 overflow-x-auto scroll-smooth py-1 scrollbar-hide xl:gap-5"
+            className="flex flex-row items-center justify-start gap-3 overflow-x-auto scroll-smooth px-2 py-1 scrollbar-hide xl:gap-5"
           >
             {products.map(product => (
-              <div
-                key={product._id}
-                className="dropdown dropdown-hover relative rounded-md bg-white shadow-headerMenu shadow-gray-50"
-              >
-                <div className="flex w-[185px] flex-col items-center justify-center xl:w-[220px]">
-                  <img
-                    className="h-[185px] w-[185px] rounded-md object-cover xl:h-[220px] xl:w-[220px]"
-                    src={product.img}
-                  />
-                  <p>{product.name}</p>
-                  <p>Giá:{(product.price * 1000).toLocaleString('vi-VN')}đ</p>
-                  <div className="dropdown-content absolute left-0 top-0 flex h-full w-full flex-row items-center justify-center gap-2 transition-all duration-1000 ease-in-out">
-                    <Button size="sm">Mua Ngay</Button>
-                    <Button size="sm">Xem Thêm</Button>
-                  </div>
-                </div>
-                {product.status === 'sale' && (
-                  <>
+              <Link to="product-detail">
+                <div
+                  key={product._id}
+                  className="relative rounded-md bg-white shadow-headerMenu shadow-gray-50"
+                >
+                  <div className="flex w-[185px] flex-col items-center justify-center xl:w-[220px]">
                     <img
-                      width={60}
-                      src={Sale}
-                      className="absolute left-0 top-0"
-                      alt="Sale"
+                      className="h-[185px] w-[185px] rounded-md object-cover xl:h-[220px] xl:w-[220px]"
+                      src={product.img}
                     />
-                    <p className="absolute top-0 w-full text-sm text-white">
-                      Giảm 20%
-                    </p>
-                  </>
-                )}
-              </div>
+                    <p>{product.name}</p>
+                    <p>Giá:{(product.price * 1000).toLocaleString('vi-VN')}đ</p>
+                  </div>
+                  {product.status === 'sale' && (
+                    <>
+                      <img
+                        width={60}
+                        src={Sale}
+                        className="absolute -left-[3px] top-0"
+                        alt="Sale"
+                      />
+                      <p className="absolute top-0 w-full text-sm text-white">
+                        Giảm 20%
+                      </p>
+                    </>
+                  )}
+                </div>
+              </Link>
             ))}
           </div>
           {/* Navigation Button  */}

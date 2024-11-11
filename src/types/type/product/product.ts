@@ -4,10 +4,10 @@ export interface IProduct {
   name: string;
   img: string;
   thumbnail?: string;
-  des?: string;
+  des: string;
   status:string;
   price: number;
-  quantity?: number;
+  quantity: number;
   createAt: Date;
   updateAt: Date;
 } 

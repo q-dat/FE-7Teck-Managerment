@@ -1,130 +1,16 @@
-import React, { useState } from 'react';
-import { IProduct } from '../../types/type/product/product';
+import React, { useContext, useState } from 'react';
 import Pagination from '../../components/UserPage/Pagination';
 import { Button } from 'react-daisyui';
 import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
 import { Link } from 'react-router-dom';
+import { ProductContext } from '../../context/ProductContext';
 
 const ProductPage: React.FC = () => {
-  const products: IProduct[] = [
-    {
-      _id: '1',
-      product_catalog_id: '',
-      name: 'Sản Phẩm 1',
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
-      status: 'sale',
-      price: 100,
-      createAt: '',
-      updateAt: ''
-    },
-    {
-      _id: '2',
-      product_catalog_id: '',
-      name: 'Sản Phẩm 2',
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
-      status: 'sale',
-      price: 0,
-      createAt: '',
-      updateAt: ''
-    },
-    {
-      _id: '3',
-      product_catalog_id: '',
-      name: 'Sản Phẩm 3',
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
-      status: 'sale',
-      price: 0,
-      createAt: '',
-      updateAt: ''
-    },
-    {
-      _id: '4',
-      product_catalog_id: '',
-      name: 'Sản Phẩm 4',
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
-      status: 'sale',
-      price: 0,
-      createAt: '',
-      updateAt: ''
-    },
-    {
-      _id: '5',
-      product_catalog_id: '',
-      name: 'Sản Phẩm 5',
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
-      status: 'sale',
-      price: 0,
-      createAt: '',
-      updateAt: ''
-    },
-    {
-      _id: '6',
-      product_catalog_id: '',
-      name: 'Sản Phẩm 6',
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
-      status: 'sale',
-      price: 0,
-      createAt: '',
-      updateAt: ''
-    },
-    {
-      _id: '7',
-      product_catalog_id: '',
-      name: 'Sản Phẩm 7',
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
-      status: 'sale',
-      price: 0,
-      createAt: '',
-      updateAt: ''
-    },
-    {
-      _id: '8',
-      product_catalog_id: '',
-      name: 'Sản Phẩm 8',
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
-      status: 'sale',
-      price: 0,
-      createAt: '',
-      updateAt: ''
-    },
-    {
-      _id: '9',
-      product_catalog_id: '',
-      name: 'Sản Phẩm 9',
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
-      status: 'sale',
-      price: 0,
-      createAt: '',
-      updateAt: ''
-    },
-    {
-      _id: '10',
-      product_catalog_id: '',
-      name: 'Sản Phẩm 10',
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
-      status: 'sale',
-      price: 0,
-      createAt: '',
-      updateAt: ''
-    },
-    {
-      _id: '11',
-      product_catalog_id: '',
-      name: 'Sản Phẩm 11',
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7yZWI0WnUPXEv2a6mFK_ctxg4Bj4p63ECUk_AjfUCdVKWHLDj4i4HT2QOGWYIlkBDp2ggA&s',
-      status: 'sale',
-      price: 0,
-      createAt: '',
-      updateAt: ''
-    }
-  ];
+  const { products } = useContext(ProductContext);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
-  // Lọc sản phẩm có `status` là `sale`
   const totalPages = Math.ceil(products.length / itemsPerPage);
-
-  // Tính toán sản phẩm hiển thị dựa trên trang hiện tại
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentProducts = products.slice(indexOfFirstItem, indexOfLastItem);
@@ -162,7 +48,7 @@ const ProductPage: React.FC = () => {
               >
                 <div className="flex h-full w-full flex-col items-center justify-center">
                   <img
-                    className="h-[160px] w-full rounded-md object-cover xl:h-[220px]"
+                    className="h-[200px] w-full rounded-md object-cover xl:h-[250px]"
                     src={product.img}
                   />
                   <p>{product.name}</p>

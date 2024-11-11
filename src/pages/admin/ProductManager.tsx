@@ -91,7 +91,7 @@ const ProductManager: React.FC = () => {
             <span>Tên Sản Phẩm</span>
             <span>Danh Mục</span>
             <span>Hình Ảnh</span>
-            <span>Thumbnail</span>
+            <span>Ảnh Phụ</span>
             <span>Giá</span>
             <span>Số Lượng</span>
             <span>Trạng Thái</span>
@@ -106,27 +106,37 @@ const ProductManager: React.FC = () => {
                 <span>#{index + 1}</span>
                 <span>{product.name}</span>
                 <span>{product.product_catalog_id}</span>
-                <span>
+                <span className="flex items-center justify-center">
                   <img
                     src={product.img}
                     alt="Product Image"
-                    className="h-10 w-10"
+                    className="h-14 w-14 object-cover"
                   />
                 </span>
-                <span>
+                <span className="flex items-center justify-center">
                   {product.thumbnail && (
                     <img
                       src={product.thumbnail}
                       alt="Thumbnail"
-                      className="h-10 w-10"
+                      className="h-14 w-14 object-cover"
                     />
                   )}
                 </span>
                 <span>
                   {(product.price * 1000).toLocaleString('vi-VN')} VND
                 </span>
-                <span>{product.quantity ?? 'N/A'}</span>
-                <span>{product.status}</span>
+                <span>{product.quantity}</span>
+                <span
+                  className={`inline-block w-[150px] rounded-lg px-4 py-2 font-medium ${
+                    product.status.toLowerCase() === 'còn hàng'
+                      ? 'border border-green-600 bg-[#a6e3d5] text-green-600'
+                      : product.status.toLowerCase() === 'hết hàng'
+                        ? 'border border-red-600 bg-red-200 text-red-600'
+                        : 'border border-yellow-600 bg-yellow-200 text-yellow-600'
+                  }`}
+                >
+                  {product.status}
+                </span>
                 <span>{product.des || 'Không có mô tả!'}</span>
                 <span>
                   <details>
