@@ -187,7 +187,7 @@ const HomePage: React.FC = () => {
       <div className="space-y-10 px-2 xl:px-[130px]">
         {/* Phone */}
         <div className="relative">
-          <p className="my-5 text-start font-title text-2xl font-bold text-primary xl:text-2xl">
+          <p className="font-title my-5 text-start text-2xl font-bold text-primary xl:text-2xl">
             Điện Thoại Nổi Bật
           </p>
           <div
@@ -229,13 +229,13 @@ const HomePage: React.FC = () => {
           <div className="absolute top-1/2 flex w-full items-center justify-between">
             <Button
               onClick={() => scrollPhone(-200)}
-              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white dark:bg-primary dark:bg-opacity-60 dark:text-white ${isLeftButtonVisiblePhone ? '' : 'bg-transparent text-transparent'}`}
+              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white ${isLeftButtonVisiblePhone ? '' : 'bg-transparent text-transparent'}`}
             >
               <MdArrowBackIosNew className="text-4xl" />
             </Button>
             <Button
               onClick={() => scrollPhone(200)}
-              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white dark:bg-primary dark:bg-opacity-60 dark:text-white ${isRightButtonVisiblePhone ? '' : 'bg-transparent text-transparent'}`}
+              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white ${isRightButtonVisiblePhone ? '' : 'bg-transparent text-transparent'}`}
             >
               <MdArrowForwardIos className="text-4xl" />
             </Button>
@@ -243,7 +243,7 @@ const HomePage: React.FC = () => {
         </div>
         {/* Ipad */}
         <div className="relative">
-          <p className="my-5 text-start font-title text-2xl font-bold text-primary xl:text-2xl">
+          <p className="font-title my-5 text-start text-2xl font-bold text-primary xl:text-2xl">
             Ipad
           </p>
           <div
@@ -285,13 +285,13 @@ const HomePage: React.FC = () => {
           <div className="absolute top-1/2 flex w-full items-center justify-between">
             <Button
               onClick={() => scrollIpad(-200)}
-              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white dark:bg-primary dark:bg-opacity-60 dark:text-white ${isLeftButtonVisibleIpad ? '' : 'bg-transparent text-transparent'}`}
+              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white ${isLeftButtonVisibleIpad ? '' : 'bg-transparent text-transparent'}`}
             >
               <MdArrowBackIosNew className="text-4xl" />
             </Button>
             <Button
               onClick={() => scrollIpad(200)}
-              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white dark:bg-primary dark:bg-opacity-60 dark:text-white ${isRightButtonVisibleIpad ? '' : 'bg-transparent text-transparent'}`}
+              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white ${isRightButtonVisibleIpad ? '' : 'bg-transparent text-transparent'}`}
             >
               <MdArrowForwardIos className="text-4xl" />
             </Button>
@@ -299,7 +299,7 @@ const HomePage: React.FC = () => {
         </div>
         {/*  Window */}
         <div className="relative">
-          <p className="my-5 text-start font-title text-2xl font-bold text-primary xl:text-2xl">
+          <p className="font-title my-5 text-start text-2xl font-bold text-primary xl:text-2xl">
             Window
           </p>
           <div
@@ -341,13 +341,13 @@ const HomePage: React.FC = () => {
           <div className="absolute top-1/2 flex w-full items-center justify-between">
             <Button
               onClick={() => scrollWindow(-200)}
-              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white dark:bg-primary dark:bg-opacity-60 dark:text-white ${isLeftButtonVisibleWindow ? '' : 'bg-transparent text-transparent'}`}
+              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white ${isLeftButtonVisibleWindow ? '' : 'bg-transparent text-transparent'}`}
             >
               <MdArrowBackIosNew className="text-4xl" />
             </Button>
             <Button
               onClick={() => scrollWindow(200)}
-              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white dark:bg-primary dark:bg-opacity-60 dark:text-white ${isRightButtonVisibleWindow ? '' : 'bg-transparent text-transparent'}`}
+              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white ${isRightButtonVisibleWindow ? '' : 'bg-transparent text-transparent'}`}
             >
               <MdArrowForwardIos className="text-4xl" />
             </Button>
@@ -355,7 +355,7 @@ const HomePage: React.FC = () => {
         </div>
         {/*  MacBook */}
         <div className="relative">
-          <p className="my-5 text-start font-title text-2xl font-bold text-primary xl:text-2xl">
+          <p className="font-title my-5 text-start text-2xl font-bold text-primary xl:text-2xl">
             MacBook
           </p>
           <div
@@ -397,13 +397,13 @@ const HomePage: React.FC = () => {
           <div className="absolute top-1/2 flex w-full items-center justify-between">
             <Button
               onClick={() => scrollMacbook(-200)}
-              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white dark:bg-primary dark:bg-opacity-60 dark:text-white ${isLeftButtonVisibleMacbook ? '' : 'bg-transparent text-transparent'}`}
+              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white ${isLeftButtonVisibleMacbook ? '' : 'bg-transparent text-transparent'}`}
             >
               <MdArrowBackIosNew className="text-4xl" />
             </Button>
             <Button
               onClick={() => scrollMacbook(200)}
-              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white dark:bg-primary dark:bg-opacity-60 dark:text-white ${isRightButtonVisibleMacbook ? '' : 'bg-transparent text-transparent'}`}
+              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white ${isRightButtonVisibleMacbook ? '' : 'bg-transparent text-transparent'}`}
             >
               <MdArrowForwardIos className="text-4xl" />
             </Button>
