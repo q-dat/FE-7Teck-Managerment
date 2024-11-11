@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Button, Menu } from 'react-daisyui';
-import { NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { FaHome, FaProductHunt } from 'react-icons/fa';
 import DarkModeToggle from '../orther/darkmode/DarkMode';
 import { Logo } from '../../assets/images';
@@ -22,6 +22,13 @@ const SidebarAdmin: React.FC<{}> = () => {
       name: 'Sản Phẩm',
       icon: FaProductHunt,
       link: '/admin/product-manager',
+      toastify: products.length
+    }
+    ,
+    {
+      name: 'Danh Mục Sản Phẩm',
+      icon: FaProductHunt,
+      link: '/admin/product-catalog',
       toastify: products.length
     }
   ];
@@ -123,14 +130,16 @@ const SidebarAdmin: React.FC<{}> = () => {
       </div>
       {/*  */}
       <div className="flex flex-col items-center">
-        <div className="rounded-lg bg-primary p-4 text-center text-white">
-          <p className="w-40 text-center text-xs">
-            Chọn nút bên dưới để thêm danh mục!
-          </p>
-          <Button className="my-4 rounded-lg bg-white text-primary">
-            +Thêm Danh Mục
-          </Button>
-        </div>
+        <Link to="/admin/product-manager">
+          <div className="rounded-lg bg-primary p-4 text-center text-white">
+            <p className="w-40 text-center text-xs">
+              Chọn nút bên dưới để thêm sản phẩm!
+            </p>
+            <Button className="my-4 rounded-lg bg-white text-primary hover:bg-white">
+              +Thêm Sản Phẩm
+            </Button>
+          </div>
+        </Link>
         <div className="py-4 text-xs text-black dark:text-white">
           <p className="font-bold">Quản trị 7Teck </p>
           <p className="font-light">© 2024 đã đăng ký bản quyền</p>
