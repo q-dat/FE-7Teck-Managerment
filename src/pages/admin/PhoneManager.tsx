@@ -16,7 +16,7 @@ import { IProduct } from '../../types/type/product/product';
 import ModalDeleteProductPageAdmin from '../../components/admin/Modal/ModalProduct/ModalDeleteProductPageAdmin';
 import ModalEditProductPageAdmin from '../../components/admin/Modal/ModalProduct/ModalEditProductPageAdmin';
 
-const ProductManager: React.FC = () => {
+const PhoneManager: React.FC = () => {
   const { loading, products, deleteProduct, getAllProducts, error } =
     useContext(ProductContext);
   const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
@@ -187,5 +187,5 @@ const ProductManager: React.FC = () => {
   );
 };
 
-export default ProductManager;
+export default PhoneManager;
 

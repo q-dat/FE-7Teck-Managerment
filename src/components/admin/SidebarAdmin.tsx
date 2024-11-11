@@ -19,16 +19,16 @@ const SidebarAdmin: React.FC<{}> = () => {
       link: '/admin'
     },
     {
-      name: 'Sản Phẩm',
+      name: 'Điện Thoại',
       icon: FaProductHunt,
-      link: '/admin/product-manager',
+      link: '/admin/phone-manager',
       toastify: products.length
     }
     ,
     {
-      name: 'Danh Mục Sản Phẩm',
+      name: 'Loại Điện Thoại',
       icon: FaProductHunt,
-      link: '/admin/product-catalog',
+      link: '/admin/phone-catalog',
       toastify: products.length
     }
   ];

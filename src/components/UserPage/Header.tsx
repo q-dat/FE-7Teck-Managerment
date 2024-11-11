@@ -36,8 +36,20 @@ const Header: React.FC = () => {
       link: '/'
     },
     {
-      name: 'Sản Phẩm',
-      link: '/product-list'
+      name: 'Điện Thoại',
+      link: '/phone-list'
+    },
+    {
+      name: 'Ipad',
+      link: '/ipad-list'
+    },
+    {
+      name: 'Window',
+      link: '/window-list'
+    },
+    {
+      name: 'Macbook',
+      link: '/macbook-list'
     },
     {
       name: 'Bảng Giá Thu Mua',
@@ -105,7 +117,7 @@ const Header: React.FC = () => {
               >
                 <NavLink
                   to={item.link}
-                  className={`btn relative flex w-full items-center justify-center rounded-none border-none pl-4 ${
+                  className={`btn relative flex w-full items-center justify-center rounded-none border-none pl-4 font-mono ${
                     item.name === activeItem
                       ? 'bg-primary bg-opacity-20 text-sm font-bold text-primary dark:bg-secondary dark:bg-opacity-40 dark:text-white'
                       : 'border-none bg-transparent text-sm font-light text-black shadow-none hover:border hover:border-primary hover:bg-gray-50 hover:bg-opacity-30 hover:text-primary dark:text-white'

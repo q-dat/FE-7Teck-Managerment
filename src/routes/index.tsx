@@ -5,14 +5,14 @@ import DefaultLayout from '../layout/DefaultLayout';
 const User = lazy(() => import('../pages/user/User'));
 const HomePage = lazy(() => import('../pages/user/HomePage'));
 const ContactPage = lazy(() => import('../pages/user/ContactPage'));
-const ProductPage = lazy(() => import('../pages/user/ProductPage'));
+const PhonePage = lazy(() => import('../pages/user/PhonePage'));
 const ProductDetailPage = lazy(() => import('../pages/user/ProductDetailPage'));
 const PriceListPage = lazy(() => import('../pages/user/PriceListPage'));
 
 // admin
 const Admin = lazy(() => import('../pages/admin/Admin'));
 const DashboardPage = lazy(() => import('../pages/admin/DashboardPage'));
-const ProductManager = lazy(() => import('../pages/admin/ProductManager'));
+const PhoneManager = lazy(() => import('../pages/admin/PhoneManager'));
 // not found page
 const NotFound = lazy(() => import('../pages/404/NotFound'));
 export default function AppRoutes() {
@@ -24,7 +24,7 @@ export default function AppRoutes() {
           <Route path="/" element={<User />}>
             <Route index path="" element={<HomePage />} />
             <Route path="price-list" element={<PriceListPage />} />
-            <Route path="product-list" element={<ProductPage />} />
+            <Route path="phone-list" element={<PhonePage />} />
             <Route path="product-detail" element={<ProductDetailPage />} />
             <Route path="contact" element={<ContactPage />} />
           </Route>
@@ -34,7 +34,7 @@ export default function AppRoutes() {
         <Route element={<DefaultLayout />}>
           <Route path="/admin" element={<Admin />}>
             <Route index path="" element={<DashboardPage />} />
-            <Route path="product-manager" element={<ProductManager />} />
+            <Route path="phone-manager" element={<PhoneManager />} />
           </Route>
         </Route>
 

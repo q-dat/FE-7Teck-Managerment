@@ -11,9 +11,9 @@ import { ProductContext } from '../../context/ProductContext';
 const HomePage: React.FC = () => {
   const { products } = useContext(ProductContext);
   // const saleProducts = products.filter(product => product.status === 'sale');
-  const [isLeftButtonVisibleMobile, setIsLeftButtonVisibleMobile] =
+  const [isLeftButtonVisiblePhone, setIsLeftButtonVisiblePhone] =
     useState(true);
-  const [isRightButtonVisibleMobile, setIsRightButtonVisibleMobile] =
+  const [isRightButtonVisiblePhone, setIsRightButtonVisiblePhone] =
     useState(true);
 
   const [isLeftButtonVisibleWindow, setIsLeftButtonVisibleWindow] =
@@ -30,7 +30,7 @@ const HomePage: React.FC = () => {
   const [isRightButtonVisibleMacbook, setIsRightButtonVisibleMacbook] =
     useState(true);
 
-  const scrollRefMobile = useRef<HTMLDivElement>(null);
+  const scrollRefPhone = useRef<HTMLDivElement>(null);
   const scrollRefWindow = useRef<HTMLDivElement>(null);
   const scrollRefIpad = useRef<HTMLDivElement>(null);
   const scrollRefMacbook = useRef<HTMLDivElement>(null);
@@ -38,9 +38,9 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     const handleScrollAndResize = () => {
       checkScrollPosition(
-        scrollRefMobile.current,
-        setIsLeftButtonVisibleMobile,
-        setIsRightButtonVisibleMobile
+        scrollRefPhone.current,
+        setIsLeftButtonVisiblePhone,
+        setIsRightButtonVisiblePhone
       );
       checkScrollPosition(
         scrollRefWindow.current,
@@ -62,8 +62,8 @@ const HomePage: React.FC = () => {
     handleScrollAndResize();
     window.addEventListener('resize', handleScrollAndResize);
 
-    if (scrollRefMobile.current) {
-      scrollRefMobile.current.addEventListener('scroll', handleScrollAndResize);
+    if (scrollRefPhone.current) {
+      scrollRefPhone.current.addEventListener('scroll', handleScrollAndResize);
     }
     if (scrollRefWindow.current) {
       scrollRefWindow.current.addEventListener('scroll', handleScrollAndResize);
@@ -81,8 +81,8 @@ const HomePage: React.FC = () => {
     return () => {
       window.removeEventListener('resize', handleScrollAndResize);
 
-      if (scrollRefMobile.current) {
-        scrollRefMobile.current.removeEventListener(
+      if (scrollRefPhone.current) {
+        scrollRefPhone.current.removeEventListener(
           'scroll',
           handleScrollAndResize
         );
@@ -124,10 +124,10 @@ const HomePage: React.FC = () => {
     }
   };
 
-  // scrollRefMobile
-  const scrollMobile = (scrollOffset: number) => {
-    if (scrollRefMobile.current) {
-      scrollRefMobile.current.scrollLeft += scrollOffset;
+  // scrollRefPhone
+  const scrollPhone = (scrollOffset: number) => {
+    if (scrollRefPhone.current) {
+      scrollRefPhone.current.scrollLeft += scrollOffset;
     }
   };
   // scrollRefIpad
@@ -185,24 +185,24 @@ const HomePage: React.FC = () => {
       </div>
       {/* Body */}
       <div className="space-y-10 px-2 xl:px-[130px]">
-        {/* Mobile */}
+        {/* Phone */}
         <div className="relative">
-          <p className="my-5 text-start font-serif text-2xl font-bold text-primary xl:text-2xl">
+          <p className="my-5 text-start font-title text-2xl font-bold text-primary xl:text-2xl">
             Điện Thoại Nổi Bật
           </p>
           <div
-            ref={scrollRefMobile}
+            ref={scrollRefPhone}
             className="grid grid-flow-col grid-rows-2 items-center justify-start gap-3 overflow-x-auto scroll-smooth px-2 py-1 scrollbar-hide xl:gap-5"
           >
             {products.map(product => (
               <Link to="product-detail">
                 <div
                   key={product._id}
-                  className="relative rounded-md bg-white shadow-headerMenu shadow-gray-50"
+                  className="relative rounded-2xl bg-white shadow shadow-gray-50"
                 >
                   <div className="flex w-[185px] flex-col items-center justify-center xl:w-[220px]">
                     <img
-                      className="h-[185px] w-[185px] rounded-md object-cover xl:h-[220px] xl:w-[220px]"
+                      className="h-[185px] w-[185px] rounded-2xl object-cover xl:h-[250px] xl:w-[220px]"
                       src={product.img}
                     />
                     <p>{product.name}</p>
@@ -228,14 +228,14 @@ const HomePage: React.FC = () => {
           {/* Navigation Button  */}
           <div className="absolute top-1/2 flex w-full items-center justify-between">
             <Button
-              onClick={() => scrollMobile(-200)}
-              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white dark:bg-primary dark:bg-opacity-60 dark:text-white ${isLeftButtonVisibleMobile ? '' : 'bg-transparent text-transparent'}`}
+              onClick={() => scrollPhone(-200)}
+              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white dark:bg-primary dark:bg-opacity-60 dark:text-white ${isLeftButtonVisiblePhone ? '' : 'bg-transparent text-transparent'}`}
             >
               <MdArrowBackIosNew className="text-4xl" />
             </Button>
             <Button
-              onClick={() => scrollMobile(200)}
-              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white dark:bg-primary dark:bg-opacity-60 dark:text-white ${isRightButtonVisibleMobile ? '' : 'bg-transparent text-transparent'}`}
+              onClick={() => scrollPhone(200)}
+              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white dark:bg-primary dark:bg-opacity-60 dark:text-white ${isRightButtonVisiblePhone ? '' : 'bg-transparent text-transparent'}`}
             >
               <MdArrowForwardIos className="text-4xl" />
             </Button>
@@ -243,7 +243,7 @@ const HomePage: React.FC = () => {
         </div>
         {/* Ipad */}
         <div className="relative">
-          <p className="my-5 text-start font-serif text-2xl font-bold text-primary xl:text-2xl">
+          <p className="my-5 text-start font-title text-2xl font-bold text-primary xl:text-2xl">
             Ipad
           </p>
           <div
@@ -254,11 +254,11 @@ const HomePage: React.FC = () => {
               <Link to="product-detail">
                 <div
                   key={product._id}
-                  className="relative rounded-md bg-white shadow-headerMenu shadow-gray-50"
+                  className="relative rounded-2xl bg-white shadow shadow-gray-50"
                 >
                   <div className="flex w-[185px] flex-col items-center justify-center xl:w-[220px]">
                     <img
-                      className="h-[185px] w-[185px] rounded-md object-cover xl:h-[220px] xl:w-[220px]"
+                      className="h-[185px] w-[185px] rounded-2xl object-cover xl:h-[250px] xl:w-[220px]"
                       src={product.img}
                     />
                     <p>{product.name}</p>
@@ -299,7 +299,7 @@ const HomePage: React.FC = () => {
         </div>
         {/*  Window */}
         <div className="relative">
-          <p className="my-5 text-start font-serif text-2xl font-bold text-primary xl:text-2xl">
+          <p className="my-5 text-start font-title text-2xl font-bold text-primary xl:text-2xl">
             Window
           </p>
           <div
@@ -310,11 +310,11 @@ const HomePage: React.FC = () => {
               <Link to="product-detail">
                 <div
                   key={product._id}
-                  className="relative rounded-md bg-white shadow-headerMenu shadow-gray-50"
+                  className="relative rounded-2xl bg-white shadow shadow-gray-50"
                 >
                   <div className="flex w-[185px] flex-col items-center justify-center xl:w-[220px]">
                     <img
-                      className="h-[185px] w-[185px] rounded-md object-cover xl:h-[220px] xl:w-[220px]"
+                      className="h-[185px] w-[185px] rounded-2xl object-cover xl:h-[250px] xl:w-[220px]"
                       src={product.img}
                     />
                     <p>{product.name}</p>
@@ -355,7 +355,7 @@ const HomePage: React.FC = () => {
         </div>
         {/*  MacBook */}
         <div className="relative">
-          <p className="my-5 text-start font-serif text-2xl font-bold text-primary xl:text-2xl">
+          <p className="my-5 text-start font-title text-2xl font-bold text-primary xl:text-2xl">
             MacBook
           </p>
           <div
@@ -366,11 +366,11 @@ const HomePage: React.FC = () => {
               <Link to="product-detail">
                 <div
                   key={product._id}
-                  className="relative rounded-md bg-white shadow-headerMenu shadow-gray-50"
+                  className="relative rounded-2xl bg-white shadow shadow-gray-50"
                 >
                   <div className="flex w-[185px] flex-col items-center justify-center xl:w-[220px]">
                     <img
-                      className="h-[185px] w-[185px] rounded-md object-cover xl:h-[220px] xl:w-[220px]"
+                      className="h-[185px] w-[185px] rounded-2xl object-cover xl:h-[250px] xl:w-[220px]"
                       src={product.img}
                     />
                     <p>{product.name}</p>

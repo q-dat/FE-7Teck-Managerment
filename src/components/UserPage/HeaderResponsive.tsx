@@ -36,8 +36,8 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
       link: '/'
     },
     {
-      name: 'Sản Phẩm',
-      link: '/product-list'
+      name: 'Điện Thoại',
+      link: '/phone-list'
     },
     {
       name: 'Bảng Giá Thu Mua',

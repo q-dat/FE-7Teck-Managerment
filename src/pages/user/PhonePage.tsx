@@ -5,7 +5,7 @@ import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
 import { Link } from 'react-router-dom';
 import { ProductContext } from '../../context/ProductContext';
 
-const ProductPage: React.FC = () => {
+const PhonePage: React.FC = () => {
   const { products } = useContext(ProductContext);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
@@ -31,24 +31,24 @@ const ProductPage: React.FC = () => {
             <Link to="/">Trang Chủ</Link>
           </li>
           <li>
-            <Link to="/product-list">Sản Phẩm</Link>
+            <Link to="/phone-list">Sản Phẩm</Link>
           </li>
         </ul>
       </div>
       <div className="space-y-10 px-2 xl:px-[100px]">
         <div>
-          <p className="my-5 text-start font-serif text-2xl font-bold text-primary xl:text-2xl">
+          <p className="my-5 text-start font-title text-2xl font-bold text-primary xl:text-2xl">
             Danh Sách Sản Phẩm
           </p>
           <div className="grid grid-flow-row grid-cols-2 items-start justify-between gap-x-5 gap-y-5 md:grid-cols-5">
             {currentProducts.map(product => (
               <div
                 key={product._id}
-                className="dropdown dropdown-hover relative rounded-md bg-white shadow-headerMenu shadow-gray-50"
+                className="dropdown dropdown-hover relative rounded-2xl bg-white shadow shadow-gray-50"
               >
                 <div className="flex h-full w-full flex-col items-center justify-center">
                   <img
-                    className="h-[200px] w-full rounded-md object-cover xl:h-[250px]"
+                    className="h-[200px] w-full rounded-2xl object-cover xl:h-[250px]"
                     src={product.img}
                   />
                   <p>{product.name}</p>
@@ -74,5 +74,5 @@ const ProductPage: React.FC = () => {
   );
 };
 
-export default ProductPage;
+export default PhonePage;
 
