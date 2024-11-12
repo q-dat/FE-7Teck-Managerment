@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Button, Menu } from 'react-daisyui';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { FaHome, FaProductHunt } from 'react-icons/fa';
+import { FaHome, FaMobileAlt, FaTabletAlt } from 'react-icons/fa';
 import DarkModeToggle from '../orther/darkmode/DarkMode';
 import { Logo } from '../../assets/images';
 import { ProductContext } from '../../context/ProductContext';
+import { FaList, FaWindows } from 'react-icons/fa6';
+import { BsApple } from 'react-icons/bs';
 
 const SidebarAdmin: React.FC<{}> = () => {
   const { products } = useContext(ProductContext);
@@ -19,16 +21,33 @@ const SidebarAdmin: React.FC<{}> = () => {
       link: '/admin'
     },
     {
+      name: 'Danh Mục Sản Phẩm',
+      icon: FaList,
+      link: '/admin/product-catalog',
+      toastify: products.length
+    },
+    {
       name: 'Điện Thoại',
-      icon: FaProductHunt,
+      icon: FaMobileAlt,
       link: '/admin/phone-manager',
       toastify: products.length
-    }
-    ,
+    },
     {
-      name: 'Loại Điện Thoại',
-      icon: FaProductHunt,
-      link: '/admin/phone-catalog',
+      name: 'Ipad',
+      icon: FaTabletAlt,
+      link: '/admin/ipad-manager',
+      toastify: products.length
+    },
+    {
+      name: 'Window',
+      icon: FaWindows,
+      link: '/admin/window-manager',
+      toastify: products.length
+    },
+    {
+      name: 'Macbook',
+      icon: BsApple,
+      link: '/admin/macbook-manager',
       toastify: products.length
     }
   ];
@@ -45,20 +64,20 @@ const SidebarAdmin: React.FC<{}> = () => {
     <div className="flex min-h-screen flex-col items-center justify-between gap-10 bg-white dark:bg-gray-800 xl:fixed xl:h-full xl:w-64 xl:shadow-lg">
       <div className="w-full">
         {/*  */}
-        <div className="mt-8 flex w-full items-center justify-between px-2">
+        <div className="mt-8 flex w-full items-center justify-between p-2">
           <div className="flex items-center gap-2">
             <img
               width={60}
               height={60}
               src={Logo}
-              className="dark:hidden"
+              className="rounded-full shadow-headerMenu shadow-primary dark:hidden"
               alt="7Teck ."
             />
             <img
               width={60}
               height={60}
               src={Logo}
-              className="hidden dark:block"
+              className="hidden rounded-xl dark:block "
               alt="7Teck ."
             />
             <div className="">
@@ -130,13 +149,13 @@ const SidebarAdmin: React.FC<{}> = () => {
       </div>
       {/*  */}
       <div className="flex flex-col items-center">
-        <Link to="/admin/product-manager">
+        <Link to="/admin/product-catalog">
           <div className="rounded-lg bg-primary p-4 text-center text-white">
             <p className="w-40 text-center text-xs">
               Chọn nút bên dưới để thêm sản phẩm!
             </p>
             <Button className="my-4 rounded-lg bg-white text-primary hover:bg-white">
-              +Thêm Sản Phẩm
+              +Thêm Danh Mục
             </Button>
           </div>
         </Link>

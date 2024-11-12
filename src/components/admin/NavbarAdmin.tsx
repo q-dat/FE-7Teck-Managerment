@@ -76,9 +76,9 @@ const NavbarAdmin: React.FC<{}> = () => {
               />
             </div>
           </nav>
-          <div className="text-black">
-            Hello,
-            <span className="font-semibold text-red-500"></span>
+          <div className="text-black dark:text-white">
+            Hello,&nbsp;
+            <span className="font-semibold text-red-500">Sếp</span>
           </div>
           <div className="ml-4 cursor-pointer" onClick={handleAvatarClick}>
             <Avatar />

@@ -48,12 +48,12 @@ const PhoneManager: React.FC = () => {
       try {
         await deleteProduct(selectedProductId);
         closeModalDeleteAdmin();
-        Toastify('Bạn đã xoá độ tuổi thành công', 201);
+        Toastify('Bạn đã xoá sản phẩm thành công', 201);
         getAllProducts();
       } catch {
         const errorMessProduct = isIErrorResponse(error)
           ? error.data?.message
-          : 'Xoá độ tuổi thất bại!';
+          : 'Xoá sản phẩm thất bại!';
         Toastify(`Lỗi: ${errorMessProduct}`, 500);
       }
     }
@@ -64,10 +64,10 @@ const PhoneManager: React.FC = () => {
 
   return (
     <div className="w-full">
-      <NavbarMobile Title_NavbarMobile="Độ Tuổi" />
+      <NavbarMobile Title_NavbarMobile="Điện Thoại" />
       <div className="px-2 xl:px-0">
         <NavtitleAdmin
-          Title_NavtitleAdmin="Quản Lý Độ Tuổi"
+          Title_NavtitleAdmin="Quản Lý Danh Sách Điện Thoại"
           Btn_Create={
             <div className="flex flex-col items-start justify-center gap-2 md:flex-row md:items-end">
               <Button
@@ -84,7 +84,7 @@ const PhoneManager: React.FC = () => {
       </div>
 
       <TableListAdmin
-        Title_TableListAdmin={`Danh Sách Độ Tuổi (${products.length})`}
+        Title_TableListAdmin={`Danh Sách Điện Thoại (${products.length})`}
         table_head={
           <Table.Head className="bg-primary text-center text-white">
             <span>STT</span>
@@ -110,7 +110,7 @@ const PhoneManager: React.FC = () => {
                   <img
                     src={product.img}
                     alt="Product Image"
-                    className="h-14 w-14 object-cover"
+                    className="h-12 w-12 object-cover"
                   />
                 </span>
                 <span className="flex items-center justify-center">
@@ -118,7 +118,7 @@ const PhoneManager: React.FC = () => {
                     <img
                       src={product.thumbnail}
                       alt="Thumbnail"
-                      className="h-14 w-14 object-cover"
+                      className="h-12 w-12 object-cover"
                     />
                   )}
                 </span>
