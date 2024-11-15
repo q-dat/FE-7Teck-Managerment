@@ -45,7 +45,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
     },
     {
       name: 'Liên Hệ',
-      link: '/contact',
+      link: '/contact'
       // submenu: [
       //   {
       //     name: '#',

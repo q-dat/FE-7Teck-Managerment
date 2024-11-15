@@ -99,7 +99,7 @@ const Header: React.FC = () => {
               alt="LOGO"
             />
             <img
-              className="mr-[200px] hidden object-cover dark:block rounded-full"
+              className="mr-[200px] hidden rounded-full object-cover dark:block"
               width={60}
               loading="lazy"
               src={Logo}

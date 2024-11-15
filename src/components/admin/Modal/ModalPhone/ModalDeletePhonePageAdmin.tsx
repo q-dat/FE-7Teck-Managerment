@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from 'react-daisyui';
 
@@ -33,7 +32,7 @@ const ModalDeleteProductPageAdmin: React.FC<ModalDeleteAdminProps> = ({
       >
         <div className="">
           <p className="font-bold text-black dark:text-white">
-           Sản phẩm này sẽ bị xoá!
+            Sản phẩm này sẽ bị xoá!
             <label className="pl-1 text-secondary">{/*  */}</label>
           </p>
         </div>

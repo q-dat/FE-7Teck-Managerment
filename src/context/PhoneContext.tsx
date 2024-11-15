@@ -1,5 +1,16 @@
-import { createContext, useState, ReactNode, useCallback, useEffect } from 'react';
-import { getAllPhonesApi, createPhoneApi, updatePhoneApi, deletePhoneApi } from '../axios/api/phoneApi';
+import {
+  createContext,
+  useState,
+  ReactNode,
+  useCallback,
+  useEffect
+} from 'react';
+import {
+  getAllPhonesApi,
+  createPhoneApi,
+  updatePhoneApi,
+  deletePhoneApi
+} from '../axios/api/phoneApi';
 import { IPhone } from '../types/type/phone/phone';
 
 interface PhoneContextType {
@@ -30,11 +41,12 @@ const defaultContextValue: PhoneContextType = {
   getAllPhones: () => {},
   getPhoneById: () => undefined,
   createPhone: async () => {},
-  updatePhone: async () => {},  
+  updatePhone: async () => {},
   deletePhone: async () => {}
 };
 
-export const PhoneContext = createContext<PhoneContextType>(defaultContextValue);
+export const PhoneContext =
+  createContext<PhoneContextType>(defaultContextValue);
 
 export const PhoneProvider = ({ children }: { children: ReactNode }) => {
   const [phones, setPhones] = useState<IPhone[]>([]);
@@ -69,11 +81,7 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
 
   // Get All Phones
   const getAllPhones = useCallback(() => {
-    fetchData(
-      getAllPhonesApi,
-      data => setPhones(data.phones || []),
-      'getAll'
-    );
+    fetchData(getAllPhonesApi, data => setPhones(data.phones || []), 'getAll');
   }, []);
 
   // Get Phone By Id
@@ -88,7 +96,7 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
   const createPhone = useCallback(
     async (PhoneData: FormData): Promise<void> => {
       await fetchData(
-        () => createPhoneApi(PhoneData), 
+        () => createPhoneApi(PhoneData),
         data => {
           if (data.phone) {
             setPhones(prevPhones => [...prevPhones, data.phone]);
@@ -102,9 +110,9 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
 
   // Update Phone
   const updatePhone = useCallback(
-    async (_id: string, phone: FormData): Promise<void> => {  
+    async (_id: string, phone: FormData): Promise<void> => {
       await fetchData(
-        () => updatePhoneApi(_id, phone), 
+        () => updatePhoneApi(_id, phone),
         data => {
           if (data.Phone) {
             setPhones(prevPhones =>
@@ -123,9 +131,7 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
     await fetchData(
       () => deletePhoneApi(id),
       () =>
-        setPhones(prevPhones =>
-          prevPhones.filter(phone => phone._id !== id)
-        ),
+        setPhones(prevPhones => prevPhones.filter(phone => phone._id !== id)),
       'delete'
     );
   }, []);
@@ -143,7 +149,7 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
         getAllPhones,
         getPhoneById,
         createPhone,
-        updatePhone, 
+        updatePhone,
         deletePhone
       }}
     >

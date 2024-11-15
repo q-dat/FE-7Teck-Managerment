@@ -7,7 +7,7 @@ import NotificationPopup from '../../components/UserPage/NotificationPopup';
 
 const User: React.FC = () => {
   return (
-    <div className="bg-white dark:bg-gray-900 ">
+    <div className="bg-white dark:bg-gray-900">
       <Header />
       <Outlet />
       <ContactForm />

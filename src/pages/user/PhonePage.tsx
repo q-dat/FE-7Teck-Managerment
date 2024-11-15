@@ -3,7 +3,7 @@ import Pagination from '../../components/UserPage/Pagination';
 import { Button } from 'react-daisyui';
 import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
 import { Link } from 'react-router-dom';
-import {  PhoneContext } from '../../context/PhoneContext';
+import { PhoneContext } from '../../context/PhoneContext';
 
 const PhonePage: React.FC = () => {
   const { phones } = useContext(PhoneContext);
@@ -37,7 +37,7 @@ const PhonePage: React.FC = () => {
       </div>
       <div className="space-y-10 px-2 xl:px-[100px]">
         <div>
-          <p className="my-5 text-start font-title text-2xl font-bold text-primary xl:text-2xl">
+          <p className="font-title my-5 text-start text-2xl font-bold text-primary xl:text-2xl">
             Danh Sách Sản Phẩm
           </p>
           <div className="grid grid-flow-row grid-cols-2 items-start justify-between gap-x-5 gap-y-5 md:grid-cols-5">
@@ -75,4 +75,3 @@ const PhonePage: React.FC = () => {
 };
 
 export default PhonePage;
-

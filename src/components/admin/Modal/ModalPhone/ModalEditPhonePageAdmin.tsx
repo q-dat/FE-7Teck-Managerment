@@ -21,8 +21,7 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
   const { getAllPhones, phones, getPhoneById, error, updatePhone } =
     useContext(PhoneContext);
 
-  const { register, handleSubmit, reset, setValue, watch } =
-    useForm<IPhone>();
+  const { register, handleSubmit, reset, setValue, watch } = useForm<IPhone>();
 
   const [existingImg, setExistingImg] = useState<string | undefined>('');
   const [existingThumbnail, setExistingThumbnail] = useState<
@@ -55,10 +54,7 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
   const onSubmit: SubmitHandler<IPhone> = async formData => {
     const formDataToSend = new FormData();
     formDataToSend.append('name', formData.name || '');
-    formDataToSend.append(
-      'Phone_catalog_id',
-      formData.phone_catalog_id || ''
-    );
+    formDataToSend.append('Phone_catalog_id', formData.phone_catalog_id || '');
     formDataToSend.append('status', formData.status || '');
     formDataToSend.append('price', formData.price?.toString() || '');
     formDataToSend.append('des', formData.des || '');
@@ -169,4 +165,3 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
 };
 
 export default ModalEditPhonePageAdmin;
-

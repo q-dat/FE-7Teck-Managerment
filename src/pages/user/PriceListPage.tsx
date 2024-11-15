@@ -284,4 +284,3 @@ const PriceListPage: React.FC = () => {
 };
 
 export default PriceListPage;
-
