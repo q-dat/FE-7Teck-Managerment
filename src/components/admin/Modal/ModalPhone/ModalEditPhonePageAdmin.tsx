@@ -4,25 +4,25 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { Toastify } from '../../../../helper/Toastify';
 import InputModal from '../../InputModal';
 import { Button } from 'react-daisyui';
-import { ProductContext } from '../../../../context/ProductContext';
-import { IProduct } from '../../../../types/type/product/product';
+import { PhoneContext } from '../../../../context/PhoneContext';
+import { IPhone } from '../../../../types/type/phone/phone';
 
-interface ModalEditProductProps {
+interface ModalEditPhoneProps {
   isOpen: boolean;
   onClose: () => void;
-  ProductId: string;
+  PhoneId: string;
 }
 
-const ModalEditProductPageAdmin: React.FC<ModalEditProductProps> = ({
+const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
   isOpen,
   onClose,
-  ProductId
+  PhoneId
 }) => {
-  const { getAllProducts, products, getProductById, error, updateProduct } =
-    useContext(ProductContext);
+  const { getAllPhones, phones, getPhoneById, error, updatePhone } =
+    useContext(PhoneContext);
 
   const { register, handleSubmit, reset, setValue, watch } =
-    useForm<IProduct>();
+    useForm<IPhone>();
 
   const [existingImg, setExistingImg] = useState<string | undefined>('');
   const [existingThumbnail, setExistingThumbnail] = useState<
@@ -30,39 +30,37 @@ const ModalEditProductPageAdmin: React.FC<ModalEditProductProps> = ({
   >('');
 
   useEffect(() => {
-    if (ProductId) {
-      getProductById(ProductId);
+    if (PhoneId) {
+      getPhoneById(PhoneId);
     }
-  }, [ProductId, getProductById]);
+  }, [PhoneId, getPhoneById]);
 
   useEffect(() => {
-    const productData = products.find(product => product._id === ProductId);
-    if (productData) {
-      setValue('name', productData.name);
-      setValue('product_catalog_id', productData.product_catalog_id);
-      setValue('status', productData.status);
-      setValue('price', productData.price);
-      setValue('quantity', productData.quantity);
-      setValue('des', productData.des);
-      setValue('img', productData.img);
-      setValue('thumbnail', productData.thumbnail);
+    const phoneData = phones.find(phone => phone._id === PhoneId);
+    if (phoneData) {
+      setValue('name', phoneData.name);
+      setValue('phone_catalog_id', phoneData.phone_catalog_id);
+      setValue('status', phoneData.status);
+      setValue('price', phoneData.price);
+      setValue('des', phoneData.des);
+      setValue('img', phoneData.img);
+      setValue('thumbnail', phoneData.thumbnail);
 
       // Lưu lại đường dẫn ảnh hiện tại
-      setExistingImg(productData.img);
-      setExistingThumbnail(productData.thumbnail);
+      setExistingImg(phoneData.img);
+      setExistingThumbnail(phoneData.thumbnail);
     }
-  }, [products, ProductId, setValue]);
+  }, [phones, PhoneId, setValue]);
 
-  const onSubmit: SubmitHandler<IProduct> = async formData => {
+  const onSubmit: SubmitHandler<IPhone> = async formData => {
     const formDataToSend = new FormData();
     formDataToSend.append('name', formData.name || '');
     formDataToSend.append(
-      'product_catalog_id',
-      formData.product_catalog_id || ''
+      'Phone_catalog_id',
+      formData.phone_catalog_id || ''
     );
     formDataToSend.append('status', formData.status || '');
     formDataToSend.append('price', formData.price?.toString() || '');
-    formDataToSend.append('quantity', formData.quantity?.toString() || '');
     formDataToSend.append('des', formData.des || '');
 
     const imgFile = watch('img');
@@ -84,13 +82,13 @@ const ModalEditProductPageAdmin: React.FC<ModalEditProductProps> = ({
     }
 
     try {
-      await updateProduct(ProductId, formDataToSend);
+      await updatePhone(PhoneId, formDataToSend);
       Toastify('Chỉnh sửa sản phẩm thành công!', 200);
       reset();
-      getAllProducts();
+      getAllPhones();
       onClose();
     } catch (err) {
-      console.error('Error during product update:', err);
+      console.error('Error during Phone update:', err);
       Toastify(`Lỗi: ${error}`, 500);
     }
   };
@@ -126,7 +124,7 @@ const ModalEditProductPageAdmin: React.FC<ModalEditProductProps> = ({
             />
             <InputModal
               type="text"
-              {...register('product_catalog_id')}
+              {...register('phone_catalog_id')}
               placeholder="Danh mục"
             />
             <InputModal
@@ -138,11 +136,6 @@ const ModalEditProductPageAdmin: React.FC<ModalEditProductProps> = ({
               type="number"
               {...register('price')}
               placeholder="Giá"
-            />
-            <InputModal
-              type="number"
-              {...register('quantity')}
-              placeholder="Số lượng"
             />
             <InputModal
               type="text"
@@ -175,5 +168,5 @@ const ModalEditProductPageAdmin: React.FC<ModalEditProductProps> = ({
   );
 };
 
-export default ModalEditProductPageAdmin;
+export default ModalEditPhonePageAdmin;
 

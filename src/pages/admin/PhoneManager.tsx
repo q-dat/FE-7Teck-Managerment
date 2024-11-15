@@ -10,51 +10,49 @@ import { FaCircleInfo, FaPenToSquare } from 'react-icons/fa6';
 import { isIErrorResponse } from '../../types/error/error';
 import TableListAdmin from '../../components/admin/TablelistAdmin';
 import NavbarMobile from '../../components/admin/Reponsive/Mobile/NavbarMobile';
-import { ProductContext } from '../../context/ProductContext';
-import ModalCreateProductPageAdmin from '../../components/admin/Modal/ModalProduct/ModalCreateProductPageAdmin';
-import { IProduct } from '../../types/type/product/product';
-import ModalDeleteProductPageAdmin from '../../components/admin/Modal/ModalProduct/ModalDeleteProductPageAdmin';
-import ModalEditProductPageAdmin from '../../components/admin/Modal/ModalProduct/ModalEditProductPageAdmin';
+import { PhoneContext } from '../../context/PhoneContext';
+import ModalCreatePhonePageAdmin from '../../components/admin/Modal/ModalPhone/ModalCreatePhonePageAdmin';
+import ModalDeletePhonePageAdmin from '../../components/admin/Modal/ModalPhone/ModalDeletePhonePageAdmin';
+import ModalEditPhonePageAdmin from '../../components/admin/Modal/ModalPhone/ModalEditPhonePageAdmin';
+import { IPhone } from '../../types/type/phone/phone';
 
 const PhoneManager: React.FC = () => {
-  const { loading, products, deleteProduct, getAllProducts, error } =
-    useContext(ProductContext);
+  const { loading, phones, deletePhone, getAllPhones, error } =
+    useContext(PhoneContext);
   const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
-  const [selectedProductId, setSelectedProductId] = useState<string | null>(
-    null
-  );
+  const [selectedPhoneId, setSelectedPhoneId] = useState<string | null>(null);
 
   const openModalCreateAdmin = () => setIsModalCreateOpen(true);
   const closeModalCreateAdmin = () => setIsModalCreateOpen(false);
   const openModalDeleteAdmin = (id: string) => {
-    setSelectedProductId(id);
+    setSelectedPhoneId(id);
     setIsModalDeleteOpen(true);
   };
   const closeModalDeleteAdmin = () => setIsModalDeleteOpen(false);
   const openModalEditAdmin = (id: string) => {
-    setSelectedProductId(id);
+    setSelectedPhoneId(id);
     setIsModalEditOpen(true);
   };
   const closeModalEditAdmin = () => setIsModalEditOpen(false);
 
   useEffect(() => {
-    getAllProducts();
-  }, [getAllProducts]);
+    getAllPhones();
+  }, [getAllPhones]);
 
-  const handleDeleteProduct = async () => {
-    if (selectedProductId) {
+  const handleDeletePhone = async () => {
+    if (selectedPhoneId) {
       try {
-        await deleteProduct(selectedProductId);
+        await deletePhone(selectedPhoneId);
         closeModalDeleteAdmin();
         Toastify('Bạn đã xoá sản phẩm thành công', 201);
-        getAllProducts();
+        getAllPhones();
       } catch {
-        const errorMessProduct = isIErrorResponse(error)
+        const errorMessPhone = isIErrorResponse(error)
           ? error.data?.message
           : 'Xoá sản phẩm thất bại!';
-        Toastify(`Lỗi: ${errorMessProduct}`, 500);
+        Toastify(`Lỗi: ${errorMessPhone}`, 500);
       }
     }
   };
@@ -84,7 +82,7 @@ const PhoneManager: React.FC = () => {
       </div>
 
       <TableListAdmin
-        Title_TableListAdmin={`Danh Sách Điện Thoại (${products.length})`}
+        Title_TableListAdmin={`Danh Sách Điện Thoại (${phones.length})`}
         table_head={
           <Table.Head className="bg-primary text-center text-white">
             <span>STT</span>
@@ -101,87 +99,159 @@ const PhoneManager: React.FC = () => {
         }
         table_body={
           <Table.Body className="text-center text-sm">
-            {products.map((product: IProduct, index: number) => (
-              <Table.Row key={index}>
-                <span>#{index + 1}</span>
-                <span>{product.name}</span>
-                <span>{product.product_catalog_id}</span>
-                <span className="flex items-center justify-center">
-                  <img
-                    src={product.img}
-                    alt="Product Image"
-                    className="h-12 w-12 object-cover"
-                  />
-                </span>
-                <span className="flex items-center justify-center">
-                  {product.thumbnail && (
-                    <img
-                      src={product.thumbnail}
-                      alt="Thumbnail"
-                      className="h-12 w-12 object-cover"
-                    />
-                  )}
-                </span>
-                <span>
-                  {(product.price * 1000).toLocaleString('vi-VN')} VND
-                </span>
-                <span>{product.quantity}</span>
-                <span
-                  className={`inline-block w-[150px] rounded-lg px-4 py-2 font-medium ${
-                    product.status.toLowerCase() === 'còn hàng'
-                      ? 'border border-green-600 bg-[#a6e3d5] text-green-600'
-                      : product.status.toLowerCase() === 'hết hàng'
-                        ? 'border border-red-600 bg-red-200 text-red-600'
-                        : 'border border-yellow-600 bg-yellow-200 text-yellow-600'
-                  }`}
-                >
-                  {product.status}
-                </span>
-                <span>{product.des || 'Không có mô tả!'}</span>
-                <span>
-                  <details>
-                    <summary className="inline cursor-pointer text-base text-warning">
-                      <div className="flex items-center justify-center px-[55px] py-2">
-                        <FaCircleInfo />
-                      </div>
-                    </summary>
-                    <div className="flex flex-col items-center justify-center space-y-2">
-                      <Button
-                        color="success"
-                        onClick={() => openModalEditAdmin(product._id ?? '')}
-                        className="w-full max-w-[140px] text-sm font-light text-white"
-                      >
-                        <FaPenToSquare />
-                        Cập Nhật
-                      </Button>
-                      <Button
-                        onClick={() => openModalDeleteAdmin(product._id ?? '')}
-                        className="w-full max-w-[140px] bg-red-600 text-sm font-light text-white"
-                      >
-                        <MdDelete />
-                        Xoá
-                      </Button>
+          {phones.map((phone: IPhone, index: number) => (
+            <Table.Row key={index}>
+              <span>#{index + 1}</span>
+              <span>{phone.name}</span>
+              <span>{phone.phone_catalog_id}</span>
+              <span className="flex items-center justify-center">
+                <img src={phone.img} alt="Phone Image" className="h-12 w-12 object-cover" />
+              </span>
+              <span className="flex items-center justify-center">
+                {phone.thumbnail && (
+                  <img src={phone.thumbnail} alt="Thumbnail" className="h-12 w-12 object-cover" />
+                )}
+              </span>
+              <span>{(phone.price * 1000).toLocaleString('vi-VN')} VND</span>
+              <span>{phone.status}</span>
+              <span>{phone.des || 'Không có mô tả!'}</span>
+              <span>{new Date(phone.createAt).toLocaleDateString()}</span>
+              <span>{new Date(phone.updateAt).toLocaleDateString()}</span>
+              
+              {/* Hiển thị các chi tiết về specs */}
+              <span>
+                <details>
+                  <summary>Thông số kỹ thuật</summary>
+                  <ul>
+                    <li>Hệ điều hành: {phone.specs?.os || 'N/A'}</li>
+                    <li>Chipset: {phone.specs?.processor?.chipset || 'N/A'}</li>
+                    <li>CPU: {phone.specs?.processor?.cpu || 'N/A'}</li>
+                    <li>GPU: {phone.specs?.processor?.gpu || 'N/A'}</li>
+                    <li>RAM: {phone.specs?.memory?.ram || 'N/A'}</li>
+                    <li>Bộ nhớ trong: {phone.specs?.memory?.storage || 'N/A'}</li>
+                  </ul>
+                </details>
+              </span>
+        
+              {/* Hiển thị chi tiết về display */}
+              <span>
+                <details>
+                  <summary>Màn hình</summary>
+                  <ul>
+                    <li>Công nghệ: {phone.display?.technology || 'N/A'}</li>
+                    <li>Độ phân giải: {phone.display?.resolution || 'N/A'}</li>
+                    <li>Kích thước: {phone.display?.size || 'N/A'}</li>
+                    <li>Tần số làm mới: {phone.display?.refreshRate || 'N/A'}</li>
+                  </ul>
+                </details>
+              </span>
+        
+              {/* Chi tiết về battery */}
+              <span>
+                <details>
+                  <summary>Pin</summary>
+                  <ul>
+                    <li>Dung lượng: {phone.battery?.capacity || 'N/A'}</li>
+                    <li>Loại pin: {phone.battery?.type || 'N/A'}</li>
+                    <li>Hỗ trợ sạc nhanh: {phone.battery?.fastChargingSupport || 'N/A'}</li>
+                  </ul>
+                </details>
+              </span>
+        
+              {/* Chi tiết về camera */}
+              <span>
+                <details>
+                  <summary>Camera</summary>
+                  <ul>
+                    <li>Camera sau: {phone.camera?.rear?.resolution || 'N/A'}</li>
+                    <li>Flash: {phone.camera?.rear?.flash || 'N/A'}</li>
+                    <li>Camera trước: {phone.camera?.front?.resolution || 'N/A'}</li>
+                  </ul>
+                </details>
+              </span>
+        
+              {/* Tính năng đặc biệt */}
+              <span>
+                {phone.specialFeatures && phone.specialFeatures.length > 0 ? (
+                  <ul>
+                    {phone.specialFeatures.map((feature, i) => (
+                      <li key={i}>{feature}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  'N/A'
+                )}
+              </span>
+        
+              {/* Kết nối */}
+              <span>
+                <details>
+                  <summary>Kết nối</summary>
+                  <ul>
+                    <li>WiFi: {phone.connectivity?.wifi?.join(', ') || 'N/A'}</li>
+                    <li>Bluetooth: {phone.connectivity?.bluetooth?.version || 'N/A'}</li>
+                    <li>Cổng sạc: {phone.connectivity?.ports?.chargingPort || 'N/A'}</li>
+                  </ul>
+                </details>
+              </span>
+        
+              {/* Thiết kế */}
+              <span>
+                <details>
+                  <summary>Thiết kế</summary>
+                  <ul>
+                    <li>Loại: {phone.design?.type || 'N/A'}</li>
+                    <li>Vật liệu: {phone.design?.materials?.join(', ') || 'N/A'}</li>
+                    <li>Kích thước: {phone.design?.dimensions?.length || 'N/A'} x {phone.design?.dimensions?.width || 'N/A'} x {phone.design?.dimensions?.thickness || 'N/A'}</li>
+                  </ul>
+                </details>
+              </span>
+        
+              <span>
+                <details>
+                  <summary className="inline cursor-pointer text-base text-warning">
+                    <div className="flex items-center justify-center px-[55px] py-2">
+                      <FaCircleInfo />
                     </div>
-                  </details>
-                </span>
-              </Table.Row>
-            ))}
-          </Table.Body>
+                  </summary>
+                  <div className="flex flex-col items-center justify-center space-y-2">
+                    <Button
+                      color="success"
+                      onClick={() => openModalEditAdmin(phone._id ?? '')}
+                      className="w-full max-w-[140px] text-sm font-light text-white"
+                    >
+                      <FaPenToSquare />
+                      Cập Nhật
+                    </Button>
+                    <Button
+                      onClick={() => openModalDeleteAdmin(phone._id ?? '')}
+                      className="w-full max-w-[140px] bg-red-600 text-sm font-light text-white"
+                    >
+                      <MdDelete />
+                      Xoá
+                    </Button>
+                  </div>
+                </details>
+              </span>
+            </Table.Row>
+          ))}
+        </Table.Body>
+        
         }
       />
-      <ModalCreateProductPageAdmin
+      <ModalCreatePhonePageAdmin
         isOpen={isModalCreateOpen}
         onClose={closeModalCreateAdmin}
       />
-      <ModalDeleteProductPageAdmin
+      <ModalDeletePhonePageAdmin
         isOpen={isModalDeleteOpen}
         onClose={closeModalDeleteAdmin}
-        onConfirm={handleDeleteProduct}
+        onConfirm={handleDeletePhone}
       />
-      <ModalEditProductPageAdmin
+      <ModalEditPhonePageAdmin
         isOpen={isModalEditOpen}
         onClose={closeModalEditAdmin}
-        ProductId={selectedProductId ?? ''}
+        PhoneId={selectedPhoneId ?? ''}
       />
     </div>
   );

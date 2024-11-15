@@ -3,17 +3,17 @@ import Pagination from '../../components/UserPage/Pagination';
 import { Button } from 'react-daisyui';
 import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
 import { Link } from 'react-router-dom';
-import { ProductContext } from '../../context/ProductContext';
+import {  PhoneContext } from '../../context/PhoneContext';
 
 const PhonePage: React.FC = () => {
-  const { products } = useContext(ProductContext);
+  const { phones } = useContext(PhoneContext);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
-  const totalPages = Math.ceil(products.length / itemsPerPage);
+  const totalPages = Math.ceil(phones.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentProducts = products.slice(indexOfFirstItem, indexOfLastItem);
+  const currentPhones = phones.slice(indexOfFirstItem, indexOfLastItem);
 
   const handleNextPage = () => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
@@ -41,7 +41,7 @@ const PhonePage: React.FC = () => {
             Danh Sách Sản Phẩm
           </p>
           <div className="grid grid-flow-row grid-cols-2 items-start justify-between gap-x-5 gap-y-5 md:grid-cols-5">
-            {currentProducts.map(product => (
+            {currentPhones.map(product => (
               <div
                 key={product._id}
                 className="dropdown dropdown-hover relative rounded-2xl bg-white shadow shadow-gray-50"

@@ -5,16 +5,16 @@ import App from './App.tsx';
 import './index.css';
 import ErrorBoundary from './components/orther/error/ErrorBoundary.tsx';
 import LoadingPage from './pages/LoadingPage/LoadingPage.tsx';
-import { ProductProvider } from './context/ProductContext.tsx';
+import { PhoneProvider } from './context/PhoneContext.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>
       <Suspense fallback={<LoadingPage loading={true} />}>
         <ErrorBoundary>
-          <ProductProvider>
+          <PhoneProvider>
             <App />
-          </ProductProvider>
+          </PhoneProvider>
         </ErrorBoundary>
       </Suspense>
     </BrowserRouter>

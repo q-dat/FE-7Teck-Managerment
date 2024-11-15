@@ -4,12 +4,12 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { FaHome, FaMobileAlt, FaTabletAlt } from 'react-icons/fa';
 import DarkModeToggle from '../orther/darkmode/DarkMode';
 import { Logo } from '../../assets/images';
-import { ProductContext } from '../../context/ProductContext';
+import { PhoneContext } from '../../context/PhoneContext';
 import { FaList, FaWindows } from 'react-icons/fa6';
 import { BsApple } from 'react-icons/bs';
 
 const SidebarAdmin: React.FC<{}> = () => {
-  const { products } = useContext(ProductContext);
+  const { phones } = useContext(PhoneContext);
   const [activeItem, setActiveItem] = useState('Dashboard');
 
   const location = useLocation();
@@ -24,31 +24,31 @@ const SidebarAdmin: React.FC<{}> = () => {
       name: 'Danh Mục Sản Phẩm',
       icon: FaList,
       link: '/admin/product-catalog',
-      toastify: products.length
+      toastify: phones.length
     },
     {
       name: 'Điện Thoại',
       icon: FaMobileAlt,
       link: '/admin/phone-manager',
-      toastify: products.length
+      toastify: phones.length
     },
     {
       name: 'Ipad',
       icon: FaTabletAlt,
       link: '/admin/ipad-manager',
-      toastify: products.length
+      toastify: phones.length
     },
     {
       name: 'Window',
       icon: FaWindows,
       link: '/admin/window-manager',
-      toastify: products.length
+      toastify: phones.length
     },
     {
       name: 'Macbook',
       icon: BsApple,
       link: '/admin/macbook-manager',
-      toastify: products.length
+      toastify: phones.length
     }
   ];
 
@@ -77,7 +77,7 @@ const SidebarAdmin: React.FC<{}> = () => {
               width={60}
               height={60}
               src={Logo}
-              className="hidden rounded-xl dark:block "
+              className="hidden rounded-xl dark:block"
               alt="7Teck ."
             />
             <div className="">
