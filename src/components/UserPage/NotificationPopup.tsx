@@ -8,7 +8,10 @@ const NotificationPopup: React.FC = () => {
 
   useEffect(() => {
     if (!sessionStorage.getItem('popupShown')) {
-      setIsVisible(true);
+      const timer = setTimeout(() => {
+        setIsVisible(true);
+      }, 20000);
+      return () => clearTimeout(timer);
     }
   }, []);
 
