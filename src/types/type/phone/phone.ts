@@ -1,97 +1,74 @@
 export interface IPhone {
   _id: string;
-  phone_catalog_id: string;
-  name: string; // Tên sản phẩm
-  img: string; // Đường dẫn ảnh chính
-  thumbnail?: string; // Đường dẫn ảnh thu nhỏ
-  des?: string; // Mô tả sản phẩm
-  status: string; // Trạng thái sản phẩm
-  price: number; // Giá sản phẩm
-  createAt: Date; // Thời gian tạo
-  updateAt: Date; // Thời gian cập nhật
-
-  // Các thông tin chi tiết khác về sản phẩm
-  specs?: {
-    os?: string; // Hệ điều hành
-    processor?: {
-      chipset?: string; // Chipset của sản phẩm
-      cpu?: string; // Mô tả chi tiết CPU
-      gpu?: string; // GPU của sản phẩm
-    };
-    memory?: {
-      ram?: string; // Dung lượng RAM
-      storage?: string; // Bộ nhớ trong
-      availableStorage?: string; // Bộ nhớ còn lại
-      contactsLimit?: string; // Giới hạn danh bạ
-    };
+  phone_catalog_id: string; // Phone catalog ID // Danh mục điện thoại
+  name: string; // Name // Tên
+  img: string; // Main image URL // Đường dẫn ảnh chính
+  thumbnail?: string; // Thumbnail image URL // Đường dẫn ảnh thu nhỏ
+  des?: string; // Product description // Mô tả sản phẩm
+  status: string; // Product status // Trạng thái sản phẩm
+  price: number; // Product price // Giá sản phẩm
+  createdAt: Date; // Creation date // Thời gian tạo
+  updatedAt: Date; // Last updated date // Thời gian cập nhật
+  configuration_and_memory: {
+    // Configuration and memory // Cấu hình và bộ nhớ
+    operating_system: string; // Operating system // Hệ điều hành
+    cpu_chip: string; // CPU chip // Chip xử lý CPU
+    cpu_speed: string; // CPU speed // Tốc độ CPU
+    gpu: string; // Graphics chip (GPU) // Chip đồ họa (GPU)
+    ram: string; // RAM // RAM
+    storage_capacity: string; // Storage capacity // Dung lượng lưu trữ
+    remaining_capacity: string; // Remaining available storage // Dung lượng còn lại/Dung lượng khả dụng
+    memory_card: string; // Memory card // Thẻ nhớ
+    contacts: string; // Contacts // Danh bạ
   };
-
-  display?: {
-    technology?: string; // Công nghệ màn hình
-    resolution?: string; // Độ phân giải
-    size?: string; // Kích thước màn hình
-    refreshRate?: string; // Tần số làm mới màn hình
-    maxBrightness?: string; // Độ sáng tối đa
-    glassType?: string; // Loại kính bảo vệ màn hình
+  camera_and_screen: {
+    // Camera and screen // Camera và màn hình
+    rear_camera_resolution: string; // Rear camera resolution // Độ phân giải camera sau
+    rear_camera_video: string[]; // Rear camera video recording // Quay phim camera sau
+    rear_camera_flash: string; // Rear camera flash // Đèn Flash camera sau
+    rear_camera_features: string[]; // Rear camera features // Tính năng camera sau
+    front_camera_resolution: string; // Front camera resolution // Độ phân giải camera trước
+    front_camera_features: string[]; // Front camera features // Tính năng camera trước
+    screen_technology: string; // Screen technology // Công nghệ màn hình
+    screen_resolution: string; // Screen resolution // Độ phân giải màn hình
+    screen_size: string; // Screen size // Màn hình rộng
+    max_brightness: string; // Maximum brightness // Độ sáng tối đa
+    touchscreen_glass: string; // Touchscreen glass // Mặt kính cảm ứng
   };
-
-  battery?: {
-    capacity?: string; // Dung lượng pin
-    type?: string; // Loại pin
-    fastChargingSupport?: string; // Hỗ trợ sạc nhanh
-    features?: string[]; // Các tính năng pin
+  battery_and_charging: {
+    // Battery and charging // Pin và sạc
+    battery_capacity: string; // Battery capacity // Dung lượng pin
+    battery_type: string; // Battery type // Loại pin
+    max_charging_support: string; // Maximum charging support // Hỗ trợ sạc tối đa
+    battery_technology: string[]; // Battery technology // Công nghệ pin
   };
-
-  camera?: {
-    rear?: {
-      resolution?: string; // Độ phân giải camera sau
-      videoRecording?: { resolution: string; frameRate: string }[]; // Các chế độ quay video
-      flash?: string; // Loại đèn flash
-      features?: string[]; // Các tính năng của camera sau
-    };
-    front?: {
-      resolution?: string; // Độ phân giải camera trước
-      features?: string[]; // Các tính năng của camera trước
-    };
+  features: {
+    // Features // Tiện ích
+    advanced_security: string[]; // Advanced security // Bảo mật nâng cao
+    special_features: string[]; // Special features // Tính năng đặc biệt
+    water_dust_resistant: string; // Water/dust resistance // Kháng nước/bụi
+    voice_recording: string[]; // Voice recording // Ghi âm
+    radio: string[]; // Radio // Radio
+    video_playback: string; // Video playback // Xem phim
+    music_playback: string[]; // Music playback // Nghe nhạc
   };
-
-  security?: {
-    faceUnlock?: string; // Tính năng nhận diện khuôn mặt
+  connectivity: {
+    // Connectivity // Kết nối
+    mobile_network: string; // Mobile network // Mạng di động
+    sim: string; // SIM // Sim
+    wifi: string[]; // Wi-Fi // WIFI
+    gps: string[]; // GPS // GPS
+    bluetooth: string; // Bluetooth // Bluetooth
+    charging_connection_port: string; // Charging/connection port // Cổng kết nối/sạc
+    headphone_jack: string; // Headphone jack // Jack tai nghe
+    other_connectivity: string; // Other connectivity // Kết nối khác
   };
-
-  specialFeatures?: string[]; // Các tính năng đặc biệt của sản phẩm
-  media?: {
-    recording?: string; // Chức năng ghi âm
-    videoPlayback?: string; // Định dạng video playback
-    audioPlayback?: string[]; // Các định dạng âm thanh hỗ trợ
-  };
-
-  connectivity?: {
-    network?: {
-      cellular?: string; // Hỗ trợ mạng di động
-      sim?: string; // Loại SIM
-    };
-    wifi?: string[]; // Các tính năng Wi-Fi hỗ trợ
-    gps?: string[]; // Các hệ thống GPS hỗ trợ
-    bluetooth?: {
-      version?: string; // Phiên bản Bluetooth
-      features?: string[]; // Các tính năng Bluetooth
-    };
-    ports?: {
-      chargingPort?: string; // Cổng sạc
-      headphoneJack?: string; // Cổng tai nghe
-    };
-    otherConnections?: string[]; // Các kết nối khác
-  };
-
-  design?: {
-    type?: string; // Kiểu thiết kế
-    materials?: string[]; // Vật liệu làm sản phẩm
-    dimensions?: {
-      length?: string; // Chiều dài
-      width?: string; // Chiều rộng
-      thickness?: string; // Độ dày
-      weight?: string; // Trọng lượng
-    };
+  design_and_material: {
+    // Design and material // Thiết kế và chất liệu
+    design: string; // Design // Thiết kế
+    material: string; // Material // Chất liệu
+    dimensions_and_weight: string; // Dimensions and weight // Kích thước và khối lượng
+    release_date: string; // Release date // Thời điểm ra mắt
+    brand: string; // Brand // Hãng
   };
 }
