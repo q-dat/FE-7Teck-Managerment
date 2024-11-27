@@ -9,6 +9,7 @@ import { FaList, FaWindows } from 'react-icons/fa6';
 import { BsApple } from 'react-icons/bs';
 import { PostContext } from '../../context/PostContext';
 import { BsFilePost } from 'react-icons/bs';
+import { AiOutlineMenuFold } from "react-icons/ai";
 
 const SidebarAdmin: React.FC<{}> = () => {
   const { phones } = useContext(PhoneContext);
@@ -52,6 +53,12 @@ const SidebarAdmin: React.FC<{}> = () => {
       icon: BsApple,
       link: '/admin/macbook-manager',
       toastify: phones.length
+    },
+    {
+      name: 'Danh mục bài viết',
+      icon: AiOutlineMenuFold,
+      link: '/admin/post-catalog',
+      toastify: posts.length
     },
     {
       name: 'Quản lý bài viết',

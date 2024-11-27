@@ -109,7 +109,7 @@ const ModalEditPostPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({
               <InputModal
               type="text"
               {...register('catalog')}
-              placeholder="Tiêu đề bài viết"
+              placeholder="Danh mục"
             />
             <Controller
               name="content"

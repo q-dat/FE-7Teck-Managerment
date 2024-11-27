@@ -84,6 +84,7 @@ const PostManagerPage: React.FC = () => {
             <span>STT</span>
             <span>Tiêu Đề</span>
             <span>Ảnh Đại Diện</span>
+            <span>Danh Mục</span>
             <span>Ngày Tạo</span>
             <span>Ngày Cập Nhật</span>
             <span>Nội dung</span>
@@ -103,6 +104,7 @@ const PostManagerPage: React.FC = () => {
                     className="h-12 w-12 object-cover"
                   />
                 </span>
+                <span className="line-clamp-1">{post?.catalog}</span>
                 <span>{new Date(post?.createdAt).toLocaleString('vi-VN')}</span>
                 <span>{new Date(post?.updatedAt).toLocaleString('vi-VN')}</span>
                 <span
