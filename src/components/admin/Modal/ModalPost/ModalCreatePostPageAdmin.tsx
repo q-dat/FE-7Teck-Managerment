@@ -2,25 +2,24 @@ import React, { useContext } from 'react';
 import { Button } from 'react-daisyui';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css'; // Import style Quill
+import 'react-quill/dist/quill.snow.css';
 import { PostContext } from '../../../../context/PostContext';
 import { IPost } from '../../../../types/type/post/post';
 import { Toastify } from '../../../../helper/Toastify';
-import InputModal from '../../InputModal'; // Giữ lại phần nhập liệu như input modal
+import InputModal from '../../InputModal';
 
-// Cấu hình các modules cho Quill
 const modules = {
   toolbar: [
-    [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
-    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+    [{ header: '1' }, { header: '2' }, { font: [] }],
+    [{ list: 'ordered' }, { list: 'bullet' }],
     ['bold', 'italic', 'underline'],
     ['link', 'image', 'video'],
-    [{ 'align': [] }],
-    ['clean'], // Xóa định dạng
-    [{ 'indent': '-1'}, { 'indent': '+1' }],
+    [{ align: [] }],
+    ['clean'],
+    [{ indent: '-1' }, { indent: '+1' }],
     ['blockquote'],
-    [{ 'color': [] }, { 'background': [] }],
-    [{ 'script': 'sub' }, { 'script': 'super' }]
+    [{ color: [] }, { background: [] }],
+    [{ script: 'sub' }, { script: 'super' }]
   ]
 };
 
@@ -33,33 +32,34 @@ const ModalCreatePostPageAdmin: React.FC<ModalCreatePostProps> = ({
   isOpen,
   onClose
 }) => {
-  const { loading, createPost, getAllPosts, error } = useContext(PostContext);
-  const isLoading = loading;
+  const { createPost, getAllPosts } = useContext(PostContext);
   const { register, handleSubmit, reset } = useForm<IPost>();
   const [editorValue, setEditorValue] = React.useState<string>('');
 
-  // Hàm xử lý submit
+  //
   const onSubmit: SubmitHandler<IPost> = async formData => {
     const data = new FormData();
     data.append('title', formData.title);
-    data.append('content', editorValue); 
-    // Thêm ảnh (nếu có)
+    data.append('catalog', formData.catalog);
+    data.append('content', editorValue);
     if (formData.imageUrl) {
       data.append('image', formData.imageUrl[0]);
     }
 
     try {
       await createPost(data);
-      Toastify('Tạo bài viết thành công!', 201);
       reset();
       getAllPosts();
+      Toastify('Tạo bài viết thành công!', 201);
       onClose();
     } catch (err) {
-      Toastify(`Lỗi: ${error}`, 500);
+      Toastify(`Lỗi khi tạo bài viết`, 500);
     }
   };
 
-  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const handleOverlayClick = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
     if ((e.target as HTMLElement).classList.contains('modal-overlay')) {
       onClose();
     }
@@ -75,23 +75,28 @@ const ModalCreatePostPageAdmin: React.FC<ModalCreatePostProps> = ({
       >
         <div
           onClick={e => e.stopPropagation()}
-          className="mx-2 flex w-[400px] flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800"
+          className="mx-2 flex w-full xl:w-1/2 flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800"
         >
           <div>
-            <p className="font-bold text-black dark:text-white">Tạo bài viết mới</p>
-            {/* Các trường đầu vào */}
+            <p className="font-bold text-black dark:text-white">
+              Tạo bài viết mới
+            </p>
             <InputModal
               type="text"
               {...register('title', { required: true })}
               placeholder="Tiêu đề bài viết"
-            />            
-            {/* Quill Text Editor */}
+            />
+              <InputModal
+              type="text"
+              {...register('catalog', { required: true })}
+              placeholder="Danh mục"
+            />
             <ReactQuill
               value={editorValue}
-              onChange={setEditorValue}  
+              onChange={setEditorValue}
               theme="snow"
               modules={modules}
-              className="mb-4 rounded-md border"
+              className="mb-4 h-[400px] overflow-auto rounded-md border scrollbar-hide"
               placeholder="Nội dung bài viết"
             />
 
@@ -106,20 +111,8 @@ const ModalCreatePostPageAdmin: React.FC<ModalCreatePostProps> = ({
             <Button onClick={onClose} className="border-gray-50 text-black">
               Hủy
             </Button>
-            <Button
-              disabled={isLoading}
-              color="primary"
-              type="submit"
-              className="group text-white"
-            >
-              {isLoading ? (
-                <div className="flex cursor-progress flex-row items-center justify-center bg-primary text-white group-hover:bg-opacity-10">
-                  <span>Đang tạo...</span>
-                  <span className="loading loading-spinner"></span>
-                </div>
-              ) : (
-                'Xác nhận'
-              )}
+            <Button color="primary" type="submit" className="group text-white">
+              Xác Nhận
             </Button>
           </div>
         </div>
@@ -129,3 +122,4 @@ const ModalCreatePostPageAdmin: React.FC<ModalCreatePostProps> = ({
 };
 
 export default ModalCreatePostPageAdmin;
+

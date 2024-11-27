@@ -68,11 +68,12 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
 
     try {
       await createPhone(data);
-      Toastify('Tạo sản phẩm thành công!', 201);
       reset();
       getAllPhones();
+      Toastify('Tạo sản phẩm thành công!', 201);
       onClose();
     } catch (err) {
+      getAllPhones();
       Toastify(`Lỗi: ${error}`, 500);
     }
   };

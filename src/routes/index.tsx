@@ -8,12 +8,14 @@ const ContactPage = lazy(() => import('../pages/user/ContactPage'));
 const PhonePage = lazy(() => import('../pages/user/PhonePage'));
 const ProductDetailPage = lazy(() => import('../pages/user/ProductDetailPage'));
 const PriceListPage = lazy(() => import('../pages/user/PriceListPage'));
-const PostManagerPage = lazy(() => import('../pages/admin/PostManagerPage'));
+const NewsPage = lazy(() => import('../pages/user/post/NewsPage'));
+const TipsAndTricksPage = lazy(() => import('../pages/user/post/TipsAndTricksPage'));
 
 // admin
 const Admin = lazy(() => import('../pages/admin/Admin'));
 const DashboardPage = lazy(() => import('../pages/admin/DashboardPage'));
 const PhoneManager = lazy(() => import('../pages/admin/PhoneManager'));
+const PostManagerPage = lazy(() => import('../pages/admin/PostManagerPage'));
 // not found page
 const NotFound = lazy(() => import('../pages/404/NotFound'));
 export default function AppRoutes() {
@@ -28,6 +30,8 @@ export default function AppRoutes() {
             <Route path="phone-list" element={<PhonePage />} />
             <Route path="product-detail" element={<ProductDetailPage />} />
             <Route path="contact" element={<ContactPage />} />
+            <Route path="news" element={<NewsPage />} />
+            <Route path="tips-and-tricks" element={<TipsAndTricksPage />} />
           </Route>
         </Route>
 

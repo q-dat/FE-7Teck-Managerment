@@ -7,7 +7,6 @@ import { Button, Table } from 'react-daisyui';
 import { MdDelete } from 'react-icons/md';
 import ErrorLoading from '../../components/orther/error/ErrorLoading';
 import { FaCircleInfo, FaPenToSquare } from 'react-icons/fa6';
-import { isIErrorResponse } from '../../types/error/error';
 import TableListAdmin from '../../components/admin/TablelistAdmin';
 import NavbarMobile from '../../components/admin/Reponsive/Mobile/NavbarMobile';
 import { PostContext } from '../../context/PostContext';
@@ -17,7 +16,8 @@ import ModalEditPostPageAdmin from '../../components/admin/Modal/ModalPost/Modal
 import { IPost } from '../../types/type/post/post';
 
 const PostManagerPage: React.FC = () => {
-  const { loading, posts, deletePost, getAllPosts, error } = useContext(PostContext);
+  const { loading, posts, deletePost, getAllPosts, error } =
+    useContext(PostContext);
   const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
@@ -48,15 +48,12 @@ const PostManagerPage: React.FC = () => {
         Toastify('Bạn đã xoá bài viết thành công', 201);
         getAllPosts();
       } catch {
-        const errorMessPost = isIErrorResponse(error)
-          ? error.data?.message
-          : 'Xoá bài viết thất bại!';
-        Toastify(`Lỗi: ${errorMessPost}`, 500);
+        Toastify(`Lỗi khi xoá bài viết!`, 500);
       }
     }
   };
 
-  if (loading) return <LoadingLocal />;
+  if (loading.getAll) return <LoadingLocal />;
   if (error) return <ErrorLoading />;
 
   return (
@@ -90,7 +87,7 @@ const PostManagerPage: React.FC = () => {
             <span>Ngày Tạo</span>
             <span>Ngày Cập Nhật</span>
             <span>Nội dung</span>
-            <span>Hành Động</span>
+            <span>Hành Động</span>  
           </Table.Head>
         }
         table_body={
@@ -98,18 +95,20 @@ const PostManagerPage: React.FC = () => {
             {posts.map((post: IPost, index: number) => (
               <Table.Row key={index}>
                 <span>#{index + 1}</span>
-                <span>{post?.title}</span>
+                <span className="line-clamp-2">{post?.title}</span>
                 <span className="flex items-center justify-center">
                   <img
                     src={post?.imageUrl}
-                    alt="Post Image"
+                    alt="Ảnh đại diện"
                     className="h-12 w-12 object-cover"
                   />
                 </span>
-                <span>{post?.createdAt}</span>
-                <span>{post?.updatedAt}</span>
-                <span className=' line-clamp-1'>{post?.content || 'Không có mô tả!'}</span>
-
+                <span>{new Date(post?.createdAt).toLocaleString('vi-VN')}</span>
+                <span>{new Date(post?.updatedAt).toLocaleString('vi-VN')}</span>
+                <span
+                  className="line-clamp-2"
+                  dangerouslySetInnerHTML={{ __html: post.content }}
+                ></span>
                 <span>
                   <details>
                     <summary className="inline cursor-pointer text-base text-warning">
@@ -153,10 +152,11 @@ const PostManagerPage: React.FC = () => {
       <ModalEditPostPageAdmin
         isOpen={isModalEditOpen}
         onClose={closeModalEditAdmin}
-        PostId={selectedPostId ?? ''}
+        postId={selectedPostId ?? ''}
       />
     </div>
   );
 };
 
 export default PostManagerPage;
+

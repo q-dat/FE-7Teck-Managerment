@@ -3,10 +3,11 @@ import { Button, Drawer, Menu } from 'react-daisyui';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { IoSettingsSharp } from 'react-icons/io5';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { FaHome, FaChevronDown } from 'react-icons/fa';
+import { FaHome, FaChevronDown, FaMagic } from 'react-icons/fa';
 import { IconType } from 'react-icons/lib';
 import DarkMode from '../orther/darkmode/DarkMode';
 import { Logo } from '../../assets/images';
+import { RiPagesLine } from 'react-icons/ri';
 
 interface HeaderResponsiveProps {
   Title_NavbarMobile: ReactNode;
@@ -44,20 +45,24 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
       link: '/price-list'
     },
     {
+      name: 'Tin tức',
+      link: '',
+      submenu: [
+        {
+          name: 'Bản tin nổi bật',
+          icon: RiPagesLine,
+          link: '/news'
+        },
+        {
+          name: 'Thủ thuật - Mẹo',
+          icon: FaMagic,
+          link: '/tips-and-tricks'
+        }
+      ]
+    },
+    {
       name: 'Liên Hệ',
       link: '/contact'
-      // submenu: [
-      //   {
-      //     name: '#',
-      //     icon: GiReturnArrow,
-      //     link: ''
-      //   },
-      //   {
-      //     name: '#',
-      //     icon: IoTicket,
-      //     link: ''
-      //   }
-      // ]
     }
   ];
   useEffect(() => {

@@ -79,12 +79,12 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
 
     try {
       await updatePhone(PhoneId, formDataToSend);
-      Toastify('Chỉnh sửa sản phẩm thành công!', 200);
       reset();
       getAllPhones();
+      Toastify('Chỉnh sửa sản phẩm thành công!', 200);
       onClose();
     } catch (err) {
-      console.error('Error during Phone update:', err);
+      getAllPhones();
       Toastify(`Lỗi: ${error}`, 500);
     }
   };

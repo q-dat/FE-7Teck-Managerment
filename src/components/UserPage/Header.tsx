@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Menu } from 'react-daisyui';
-import { FaChevronDown, FaHome } from 'react-icons/fa';
+import { FaChevronDown, FaHome, FaMagic } from 'react-icons/fa';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { IconType } from 'react-icons/lib';
-import { GiReturnArrow } from 'react-icons/gi';
-import { IoTicket } from 'react-icons/io5';
 import DarkMode from '../orther/darkmode/DarkMode';
 import { Logo } from '../../assets/images';
+import { RiPagesLine } from 'react-icons/ri';
 interface MenuItem {
   name: string;
   icon?: IconType;
@@ -56,20 +55,24 @@ const Header: React.FC = () => {
       link: '/price-list'
     },
     {
-      name: 'Liên Hệ',
-      link: '/contact',
+      name: 'Tin tức',
+      link: 'news',
       submenu: [
         {
-          name: '#',
-          icon: GiReturnArrow,
-          link: ''
+          name: 'Bản tin nổi bật',
+          icon: RiPagesLine,
+          link: '/news'
         },
         {
-          name: '#',
-          icon: IoTicket,
-          link: ''
+          name: 'Thủ thuật - Mẹo',
+          icon: FaMagic,
+          link: '/tips-and-tricks'
         }
       ]
+    },
+    {
+      name: 'Liên Hệ',
+      link: '/contact'
     }
   ];
 

@@ -7,9 +7,12 @@ import { Logo } from '../../assets/images';
 import { PhoneContext } from '../../context/PhoneContext';
 import { FaList, FaWindows } from 'react-icons/fa6';
 import { BsApple } from 'react-icons/bs';
+import { PostContext } from '../../context/PostContext';
+import { BsFilePost } from 'react-icons/bs';
 
 const SidebarAdmin: React.FC<{}> = () => {
   const { phones } = useContext(PhoneContext);
+  const { posts } = useContext(PostContext);
   const [activeItem, setActiveItem] = useState('Dashboard');
 
   const location = useLocation();
@@ -49,6 +52,12 @@ const SidebarAdmin: React.FC<{}> = () => {
       icon: BsApple,
       link: '/admin/macbook-manager',
       toastify: phones.length
+    },
+    {
+      name: 'Quản lý bài viết',
+      icon: BsFilePost,
+      link: '/admin/post-manager',
+      toastify: posts.length
     }
   ];
 
@@ -65,37 +74,39 @@ const SidebarAdmin: React.FC<{}> = () => {
       <div className="w-full">
         {/*  */}
         <div className="mt-8 flex w-full items-center justify-between p-2">
-          <div className="flex items-center gap-2">
-            <img
-              width={60}
-              height={60}
-              src={Logo}
-              className="rounded-full shadow-headerMenu shadow-primary dark:hidden"
-              alt="7Teck ."
-            />
-            <img
-              width={60}
-              height={60}
-              src={Logo}
-              className="hidden rounded-xl dark:block"
-              alt="7Teck ."
-            />
-            <div className="">
-              <p className="text-base font-bold text-primary dark:text-white">
-                7Teck
-              </p>
-              <p className="text-[.8rem] font-light dark:text-white">
-                Product Management
-              </p>
+          <Link to="/">
+            <div className="flex items-center gap-2">
+              <img
+                width={60}
+                height={60}
+                src={Logo}
+                className="rounded-full shadow-headerMenu shadow-primary dark:hidden"
+                alt="7Teck ."
+              />
+              <img
+                width={60}
+                height={60}
+                src={Logo}
+                className="hidden rounded-xl dark:block"
+                alt="7Teck ."
+              />
+              <div className="">
+                <p className="text-base font-bold text-primary dark:text-white">
+                  7Teck
+                </p>
+                <p className="text-[.8rem] font-light dark:text-white">
+                  Product Management
+                </p>
+              </div>
             </div>
-          </div>
+          </Link>
           <div className="">
             <DarkModeToggle />
           </div>
         </div>
         {/*  */}
         <div className="relative flex w-full flex-col justify-between bg-white dark:bg-gray-800 dark:text-white">
-          <div className="mb-2 mt-5 h-[250px] overflow-y-scroll scrollbar-hide md:h-[300px]">
+          <div className="mb-2 mt-5 h-[250px] overflow-y-scroll scrollbar-hide md:h-[400px]">
             <Menu className="flex-grow">
               {menuItems.map(item => {
                 const Icon = item.icon;

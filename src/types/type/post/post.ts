@@ -1,10 +1,9 @@
-// Define the structure of a Post object
 export interface IPost {
   _id: string;
   title: string;
+  catalog:string;
   content: string;
-  // author: string;
-  imageUrl?: string;
+  imageUrl: string;
   createdAt: string;
   updatedAt: string;
 }
