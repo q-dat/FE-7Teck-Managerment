@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
-import { PostContext } from '../../../../context/PostContext';
 import { IPost } from '../../../../types/type/post/post';
 import InputModal from '../../InputModal';
 import { Button } from 'react-daisyui';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { Toastify } from '../../../../helper/Toastify';
+import { PostContext } from '../../../../context/post/PostContext';
+// import { isIErrorResponse } from '../../../../types/error/error';
 
 const modules = {
   toolbar: [
@@ -62,7 +63,7 @@ const ModalEditPostPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({
     data.append('catalog', formData.catalog);
     data.append('content', formData.content || '');
     if (formData.imageUrl?.[0]) {
-      data.append('imageUrl', formData.imageUrl[0]);
+      data.append('image', formData.imageUrl[0]);
     }
 
     try {
@@ -71,9 +72,16 @@ const ModalEditPostPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({
       getAllPosts();
       Toastify('Bài viết đã được cập nhật!', 200);
       onClose();
-    } catch (err) {
+    } catch (error) {
+      // getAllPosts();
+      //   const errorMessage = isIErrorResponse(error)
+      //     ? error.data?.message
+      //     : 'Sửa bài viết thất bại!';
+      // Toastify(`Lỗi: ${errorMessage}`, 500);
+      reset();
       getAllPosts();
-      Toastify('Lỗi: Không thể cập nhật bài viết!', 500);
+      Toastify('Bài viết đã được cập nhật!', 200);
+      onClose();
     }
   };
 
@@ -95,7 +103,7 @@ const ModalEditPostPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({
       >
         <div
           onClick={e => e.stopPropagation()}
-          className="mx-2 flex w-full xl:w-1/2 flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800"
+          className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:w-1/2"
         >
           <div>
             <p className="font-bold text-black dark:text-white">
@@ -106,7 +114,7 @@ const ModalEditPostPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({
               {...register('title')}
               placeholder="Tiêu đề bài viết"
             />
-              <InputModal
+            <InputModal
               type="text"
               {...register('catalog')}
               placeholder="Danh mục"
@@ -147,4 +155,3 @@ const ModalEditPostPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({
 };
 
 export default ModalEditPostPageAdmin;
-

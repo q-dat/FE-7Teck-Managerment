@@ -3,7 +3,7 @@ import Pagination from '../../components/UserPage/Pagination';
 import { Button } from 'react-daisyui';
 import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
 import { Link } from 'react-router-dom';
-import { PhoneContext } from '../../context/PhoneContext';
+import { PhoneContext } from '../../context/phone/PhoneContext';
 
 const PhonePage: React.FC = () => {
   const { phones } = useContext(PhoneContext);

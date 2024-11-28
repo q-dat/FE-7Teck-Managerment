@@ -4,10 +4,10 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { FaHome, FaMobileAlt, FaTabletAlt } from 'react-icons/fa';
 import DarkModeToggle from '../orther/darkmode/DarkMode';
 import { Logo } from '../../assets/images';
-import { PhoneContext } from '../../context/PhoneContext';
+import { PhoneContext } from '../../context/phone/PhoneContext';
 import { FaList, FaWindows } from 'react-icons/fa6';
 import { BsApple } from 'react-icons/bs';
-import { PostContext } from '../../context/PostContext';
+import { PostContext } from '../../context/post/PostContext';
 import { BsFilePost } from 'react-icons/bs';
 import { AiOutlineMenuFold } from "react-icons/ai";
 

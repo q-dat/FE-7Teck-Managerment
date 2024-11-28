@@ -4,7 +4,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { Toastify } from '../../../../helper/Toastify';
 import InputModal from '../../InputModal';
 import { Button } from 'react-daisyui';
-import { PhoneContext } from '../../../../context/PhoneContext';
+import { PhoneContext } from '../../../../context/phone/PhoneContext';
 import { IPhone } from '../../../../types/type/phone/phone';
 
 interface ModalEditPhoneProps {

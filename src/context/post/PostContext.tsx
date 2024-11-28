@@ -1,11 +1,17 @@
-import { createContext, useState, useCallback, ReactNode, useEffect } from 'react';
 import {
-  createPostApi,
+  createContext,
+  useState,
+  useCallback,
+  ReactNode,
+  useEffect
+} from 'react';
+import {
   getAllPostsApi,
+  createPostApi,
   updatePostApi,
   deletePostApi
-} from '../axios/api/postApi';
-import { IPost } from '../types/type/post/post';
+} from '../../axios/api/postApi';
+import { IPost } from '../../types/type/post/post';
 import { AxiosResponse } from 'axios';
 
 interface PostContextType {
@@ -82,11 +88,7 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
 
   // Get All
   const getAllPosts = useCallback(() => {
-    fetchData(
-      getAllPostsApi,
-      data => setPosts(data.posts || []),
-      'getAll'
-    );
+    fetchData(getAllPostsApi, data => setPosts(data.posts || []), 'getAll');
   }, []);
 
   // Get By Id

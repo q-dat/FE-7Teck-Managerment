@@ -1,12 +1,12 @@
 import { createContext, useState, ReactNode, useCallback, useEffect } from 'react';
 import { AxiosResponse } from 'axios';
-import { IPhone } from '../types/type/phone/phone';
+import { IPhone } from '../../types/type/phone/phone';
 import {
   getAllPhonesApi,
   createPhoneApi,
   updatePhoneApi,
   deletePhoneApi
-} from '../axios/api/phoneApi';
+} from '../../axios/api/phoneApi';
 
 interface PhoneContextType {
   phones: IPhone[];

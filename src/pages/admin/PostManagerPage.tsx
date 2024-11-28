@@ -9,11 +9,12 @@ import ErrorLoading from '../../components/orther/error/ErrorLoading';
 import { FaCircleInfo, FaPenToSquare } from 'react-icons/fa6';
 import TableListAdmin from '../../components/admin/TablelistAdmin';
 import NavbarMobile from '../../components/admin/Reponsive/Mobile/NavbarMobile';
-import { PostContext } from '../../context/PostContext';
 import ModalCreatePostPageAdmin from '../../components/admin/Modal/ModalPost/ModalCreatePostPageAdmin';
 import ModalDeletePostPageAdmin from '../../components/admin/Modal/ModalPost/ModalDeletePostPageAdmin';
 import ModalEditPostPageAdmin from '../../components/admin/Modal/ModalPost/ModalEditPostPageAdmin';
 import { IPost } from '../../types/type/post/post';
+import { PostContext } from '../../context/post/PostContext';
+import { isIErrorResponse } from '../../types/error/error';
 
 const PostManagerPage: React.FC = () => {
   const { loading, posts, deletePost, getAllPosts, error } =
@@ -47,8 +48,11 @@ const PostManagerPage: React.FC = () => {
         closeModalDeleteAdmin();
         Toastify('Bạn đã xoá bài viết thành công', 201);
         getAllPosts();
-      } catch {
-        Toastify(`Lỗi khi xoá bài viết!`, 500);
+      }  catch (error) {
+        const errorMessage = isIErrorResponse(error)
+          ? error.data?.message
+          : 'Xoá bài viết thất bại!';
+        Toastify(`Lỗi: ${errorMessage}`, 500);
       }
     }
   };
@@ -86,7 +90,7 @@ const PostManagerPage: React.FC = () => {
             <span>Ảnh Đại Diện</span>
             <span>Danh Mục</span>
             <span>Ngày Tạo</span>
-            <span>Ngày Cập Nhật</span>
+            {/* <span>Ngày Cập Nhật</span> */}
             <span>Nội dung</span>
             <span>Hành Động</span>  
           </Table.Head>
@@ -105,8 +109,8 @@ const PostManagerPage: React.FC = () => {
                   />
                 </span>
                 <span className="line-clamp-1">{post?.catalog}</span>
-                <span>{new Date(post?.createdAt).toLocaleString('vi-VN')}</span>
-                <span>{new Date(post?.updatedAt).toLocaleString('vi-VN')}</span>
+                {/* <span>{new Date(post?.createdAt).toLocaleString('vi-VN')}</span> */}
+                <span>{new Date(post?.updatedAt).toLocaleDateString('vi-VN')}</span>
                 <span
                   className="line-clamp-2"
                   dangerouslySetInnerHTML={{ __html: post.content }}
@@ -161,4 +165,3 @@ const PostManagerPage: React.FC = () => {
 };
 
 export default PostManagerPage;
-

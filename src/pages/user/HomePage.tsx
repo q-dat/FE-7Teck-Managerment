@@ -6,7 +6,7 @@ import { MdArrowBackIosNew } from 'react-icons/md';
 import { MdArrowForwardIos } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { Sale } from '../../assets/image-represent';
-import { PhoneContext } from '../../context/PhoneContext';
+import { PhoneContext } from '../../context/phone/PhoneContext';
 
 const HomePage: React.FC = () => {
   const { phones } = useContext(PhoneContext);
