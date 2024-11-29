@@ -40,7 +40,7 @@ const NewsPage: React.FC = () => {
         </ul>
       </div>
       <div className="px-2 xl:px-[100px]">
-        <div className="text-center text-[30px] py-3 font-bold">Bản tin nổi bật</div>
+        <div className="text-center text-[30px] py-3 font-bold text-primary">Bản tin nổi bật</div>
         <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
           {posts.map(post => (
             <div
@@ -60,7 +60,7 @@ const NewsPage: React.FC = () => {
               <hr />
               <div
                 dangerouslySetInnerHTML={{ __html: post.content }}
-                className="line-clamp-5 text-[14px] xl:line-clamp-6"
+                className="line-clamp-5 text-[14px] text-black xl:line-clamp-6"
               ></div>
               <p className="pt-2 text-[12px] text-primary">
                 {new Date(post.updatedAt).toLocaleDateString('vi-VN')}

@@ -59,7 +59,7 @@ const PostDetail: React.FC = () => {
               <hr className="my-4" />
               <div
                 dangerouslySetInnerHTML={{ __html: selectedPost.content }}
-                className="text-[18px]"
+                className="text-[18px] text-black"
               ></div>
             </div>
           ) : (
@@ -88,7 +88,7 @@ const PostDetail: React.FC = () => {
               <hr />
               <div
                 dangerouslySetInnerHTML={{ __html: post.content }}
-                className="line-clamp-5 text-[14px] xl:line-clamp-6"
+                className="line-clamp-5 text-[14px] text-black xl:line-clamp-6"
               ></div>
               <p className="pt-2 text-[12px] text-primary">
                 {new Date(post.updatedAt).toLocaleDateString('vi-VN')}

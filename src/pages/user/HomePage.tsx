@@ -195,11 +195,11 @@ const HomePage: React.FC = () => {
               <Link to="phone-detail">
                 <div
                   key={phone._id}
-                  className="relative rounded-2xl bg-white shadow shadow-gray-50"
+                  className="relative rounded-md bg-white shadow shadow-gray-50"
                 >
                   <div className="flex w-[185px] flex-col items-center justify-center xl:w-[220px]">
                     <img
-                      className="h-[185px] w-[185px] rounded-2xl object-cover xl:h-[250px] xl:w-[220px]"
+                      className="h-[185px] w-[185px] rounded-md object-cover xl:h-[250px] xl:w-[220px]"
                       src={phone.img}
                     />
                     <p>{phone.name}</p>
@@ -251,11 +251,11 @@ const HomePage: React.FC = () => {
               <Link to="phone-detail">
                 <div
                   key={phone._id}
-                  className="relative rounded-2xl bg-white shadow shadow-gray-50"
+                  className="relative rounded-md bg-white shadow shadow-gray-50"
                 >
                   <div className="flex w-[185px] flex-col items-center justify-center xl:w-[220px]">
                     <img
-                      className="h-[185px] w-[185px] rounded-2xl object-cover xl:h-[250px] xl:w-[220px]"
+                      className="h-[185px] w-[185px] rounded-md object-cover xl:h-[250px] xl:w-[220px]"
                       src={phone.img}
                     />
                     <p>{phone.name}</p>
@@ -307,11 +307,11 @@ const HomePage: React.FC = () => {
               <Link to="phone-detail">
                 <div
                   key={phone._id}
-                  className="relative rounded-2xl bg-white shadow shadow-gray-50"
+                  className="relative rounded-md bg-white shadow shadow-gray-50"
                 >
                   <div className="flex w-[185px] flex-col items-center justify-center xl:w-[220px]">
                     <img
-                      className="h-[185px] w-[185px] rounded-2xl object-cover xl:h-[250px] xl:w-[220px]"
+                      className="h-[185px] w-[185px] rounded-md object-cover xl:h-[250px] xl:w-[220px]"
                       src={phone.img}
                     />
                     <p>{phone.name}</p>
@@ -363,11 +363,11 @@ const HomePage: React.FC = () => {
               <Link to="phone-detail">
                 <div
                   key={phone._id}
-                  className="relative rounded-2xl bg-white shadow shadow-gray-50"
+                  className="relative rounded-md bg-white shadow shadow-gray-50"
                 >
                   <div className="flex w-[185px] flex-col items-center justify-center xl:w-[220px]">
                     <img
-                      className="h-[185px] w-[185px] rounded-2xl object-cover xl:h-[250px] xl:w-[220px]"
+                      className="h-[185px] w-[185px] rounded-md object-cover xl:h-[250px] xl:w-[220px]"
                       src={phone.img}
                     />
                     <p>{phone.name}</p>

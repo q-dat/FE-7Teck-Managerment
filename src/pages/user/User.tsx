@@ -8,9 +8,10 @@ import ScrollToTopButton from '../../components/orther/scrollToTop/ScrollToTopBu
 
 const User: React.FC = () => {
   return (
-    <div className="bg-white dark:bg-[#3e3e3f]">
+    // dark:bg-[#3e3e3f]
+    <div className="bg-white dark:bg-gray-900 xl:dark:bg-[#3e3e3f]">
       <Header />
-      <ScrollToTopButton/>
+      <ScrollToTopButton />
       <Outlet />
       <ContactForm />
       {/* <NotificationPopup /> */}

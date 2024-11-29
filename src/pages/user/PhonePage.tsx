@@ -44,11 +44,11 @@ const PhonePage: React.FC = () => {
             {currentPhones.map(product => (
               <div
                 key={product._id}
-                className="dropdown dropdown-hover relative rounded-2xl bg-white shadow shadow-gray-50"
+                className="dropdown dropdown-hover relative rounded-md bg-white shadow shadow-gray-50"
               >
                 <div className="flex h-full w-full flex-col items-center justify-center">
                   <img
-                    className="h-[200px] w-full rounded-2xl object-cover xl:h-[250px]"
+                    className="h-[200px] w-full rounded-md object-cover xl:h-[250px]"
                     src={product.img}
                   />
                   <p>{product.name}</p>
