@@ -50,12 +50,11 @@ const PostDetail: React.FC = () => {
           {selectedPost ? (
             <div className="mb-10">
               <p className="text-[35px] font-bold">{selectedPost.title}</p>
+              <p className="text-[14px] text-blue-500">
+                {new Date(selectedPost.updatedAt).toLocaleDateString('vi-VN')}
+              </p>
               <p className="text-[14px] font-light">
                 Danh mục:&nbsp;{selectedPost.catalog}
-              </p>
-              <p className="text-[14px]">
-                Xuất bản:&nbsp;
-                {new Date(selectedPost.updatedAt).toLocaleDateString('vi-VN')}
               </p>
               <hr className="my-4" />
               <div
@@ -68,32 +67,30 @@ const PostDetail: React.FC = () => {
           )}
         </div>
         <div>
-          <h1 className=' uppercase p-1 font-semibold'>Bài viết khác</h1>
+          <h1 className="p-1 font-semibold uppercase">Bài viết khác</h1>
         </div>
         <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
           {otherPosts.map(post => (
             <div
               key={post._id}
-              className="cursor-pointer rounded border bg-white p-2 shadow-inner hover:shadow-lg relative"
+              className="relative cursor-pointer rounded border bg-white p-2 shadow-inner hover:shadow-lg"
               onClick={() => handlePostSelect(post)}
             >
               <p className="absolute left-1 top-1 rounded-sm bg-white px-2 text-[12px] text-primary shadow-headerMenu shadow-primary">
-            {post.catalog}
+                {post.catalog}
               </p>
               <img
                 src={post.imageUrl}
                 alt="Ảnh đại diện"
                 className="h-[150px] w-full rounded-sm object-cover xl:h-[230px]"
               />
-              <p className="line-clamp-2 font-bold text-[18px]">
-                {post.title}
-              </p>
+              <p className="line-clamp-2 text-[18px] font-bold">{post.title}</p>
               <hr />
               <div
                 dangerouslySetInnerHTML={{ __html: post.content }}
                 className="line-clamp-5 text-[14px] xl:line-clamp-6"
               ></div>
-              <p className="text-[12px] text-primary pt-2">
+              <p className="pt-2 text-[12px] text-primary">
                 {new Date(post.updatedAt).toLocaleDateString('vi-VN')}
               </p>
             </div>

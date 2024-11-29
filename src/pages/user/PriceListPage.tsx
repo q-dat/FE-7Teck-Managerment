@@ -103,7 +103,7 @@ const PriceListPage: React.FC = () => {
   return (
     <div className="pb-[20px] xl:pt-[80px]">
       <HeaderResponsive Title_NavbarMobile="Bảng Giá Thu Mua" />
-      <div className="breadcrumbs glass mb-10 px-[10px] py-2 text-sm text-black dark:text-white lg:px-20">
+      <div className="breadcrumbs glass px-[10px] py-2 text-sm text-black dark:text-white lg:px-20">
         <ul className="font-light">
           <li>
             <Link to="/">Trang Chủ</Link>
@@ -139,7 +139,7 @@ const PriceListPage: React.FC = () => {
           {/* Bảng sản phẩm */}
           <table className="mt-5 min-w-full border-collapse border border-gray-200">
             <thead>
-              <tr className="bg-[#ff6a00] text-white">
+              <tr className="bg-secondary text-white">
                 <th className="border border-primary px-4 py-2 text-left">
                   Tên sản phẩm
                 </th>
@@ -194,7 +194,7 @@ const PriceListPage: React.FC = () => {
           {/* Bảng sản phẩm */}
           <table className="mt-5 min-w-full border-collapse border border-gray-200">
             <thead>
-              <tr className="bg-[#ff6a00] text-white">
+              <tr className="bg-secondary text-white">
                 <th className="border border-primary px-4 py-2 text-left">
                   Tên sản phẩm
                 </th>
@@ -249,7 +249,7 @@ const PriceListPage: React.FC = () => {
           {/* Bảng sản phẩm */}
           <table className="mt-5 min-w-full border-collapse border border-gray-200">
             <thead>
-              <tr className="bg-[#ff6a00] text-white">
+              <tr className="bg-secondary text-white">
                 <th className="border border-primary px-4 py-2 text-left">
                   Tên sản phẩm
                 </th>

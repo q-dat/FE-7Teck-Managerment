@@ -40,7 +40,7 @@ const NewsPage: React.FC = () => {
         </ul>
       </div>
       <div className="px-2 xl:px-[100px]">
-        <div className="text-center text-[40px] font-bold">Bản tin nổi bật</div>
+        <div className="text-center text-[30px] py-3 font-bold">Bản tin nổi bật</div>
         <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
           {posts.map(post => (
             <div

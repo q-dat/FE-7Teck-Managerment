@@ -35,7 +35,7 @@ const Header: React.FC = () => {
       link: '/'
     },
     {
-      name: 'Điện Thoại',
+      name: 'IPhone',
       link: '/phone-list'
     },
     {
@@ -92,23 +92,23 @@ const Header: React.FC = () => {
     <div>
       {/* Desktop */}
       <div className="fixed z-[99999] hidden h-[80px] w-full flex-row items-center justify-evenly bg-white bg-opacity-90 py-2 uppercase shadow-md dark:bg-black dark:bg-opacity-50 xl:flex">
+        <Link to="/">
+          <img
+            className="block object-cover dark:hidden"
+            width={60}
+            loading="lazy"
+            src={Logo}
+            alt="LOGO"
+          />
+          <img
+            className="hidden rounded-full object-cover dark:block"
+            width={60}
+            loading="lazy"
+            src={Logo}
+            alt="LOGO"
+          />
+        </Link>
         <Menu className="flex flex-row items-center justify-center">
-          <Link to="/">
-            <img
-              className="mr-[200px] block object-cover dark:hidden"
-              width={60}
-              loading="lazy"
-              src={Logo}
-              alt="LOGO"
-            />
-            <img
-              className="mr-[200px] hidden rounded-full object-cover dark:block"
-              width={60}
-              loading="lazy"
-              src={Logo}
-              alt="LOGO"
-            />
-          </Link>
           {menuItems.map(item => {
             const Icon = item.icon;
             return (
@@ -120,7 +120,7 @@ const Header: React.FC = () => {
               >
                 <NavLink
                   to={item.link}
-                  className={`btn relative flex w-full items-center justify-center rounded-none border-none pl-4 font-mono ${
+                  className={`btn relative flex w-full items-center justify-center rounded-none border-none pl-4 ${
                     item.name === activeItem
                       ? 'bg-primary bg-opacity-20 text-sm font-bold text-primary dark:bg-secondary dark:bg-opacity-40 dark:text-white'
                       : 'border-none bg-transparent text-sm font-light text-black shadow-none hover:border hover:border-primary hover:bg-gray-50 hover:bg-opacity-30 hover:text-primary dark:text-white'
