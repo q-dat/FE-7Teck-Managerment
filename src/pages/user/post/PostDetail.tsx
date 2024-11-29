@@ -33,10 +33,9 @@ const PostDetail: React.FC = () => {
   const otherPosts = posts.filter(post => post._id !== selectedPost?._id);
 
   return (
-    <div>
-      <div className="pb-[20px] xl:pt-[80px]">
-        <HeaderResponsive Title_NavbarMobile="Bài viết" />
-        <div className="breadcrumbs glass mb-10 px-[10px] py-2 text-sm text-black dark:text-white lg:px-20">
+    <div className="pb-[20px] xl:pt-[80px]">
+      <HeaderResponsive Title_NavbarMobile="Bài viết" />
+      <div className="breadcrumbs glass mb-10 px-[10px] py-2 text-sm text-black dark:text-white lg:px-20">
         <ul className="font-light">
           <li>
             <Link to="/">Trang Chủ</Link>
@@ -46,7 +45,8 @@ const PostDetail: React.FC = () => {
           </li>
         </ul>
       </div>
-        <div className="px-2 dark:bg-white xl:px-[100px]">
+      <div className="px-2">
+        <div className="dark:bg-white xl:px-[100px]">
           {selectedPost ? (
             <div className="mb-10">
               <p className="text-[35px] font-bold">{selectedPost.title}</p>
@@ -68,33 +68,36 @@ const PostDetail: React.FC = () => {
           )}
         </div>
         <div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {otherPosts.map(post => (
+          <h1 className=' uppercase p-1 font-semibold'>Bài viết khác</h1>
+        </div>
+        <div className="relative grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
+          {otherPosts.map(post => (
+            <div
+              key={post._id}
+              className="cursor-pointer rounded border bg-white p-2 shadow-inner hover:shadow-lg"
+              onClick={() => handlePostSelect(post)}
+            >
+              <p className="absolute left-1 top-1 rounded-sm bg-white px-2 text-[12px] text-primary shadow-headerMenu shadow-primary">
+            {post.catalog}
+              </p>
+              <img
+                src={post.imageUrl}
+                alt="Ảnh đại diện"
+                className="h-[150px] w-[300px] rounded-sm object-cover xl:h-[230px]"
+              />
+              <p className="line-clamp-2 font-bold text-[18px]">
+                {post.title}
+              </p>
+              <hr />
               <div
-                key={post._id}
-                className="cursor-pointer rounded border p-4 shadow transition hover:shadow-lg"
-                onClick={() => handlePostSelect(post)}
-              >
-                <img
-                  src={post.imageUrl}
-                  alt="Ảnh đại diện"
-                  className="h-[250px] w-full object-cover"
-                />
-                <p className="text-[30px] font-bold">{post.title}</p>
-                <p className="text-[14px] font-light">
-                  Danh mục:&nbsp;{post.catalog}
-                </p>
-                <p className="text-[14px]">
-                  Xuất bản:&nbsp;
-                  {new Date(post.updatedAt).toLocaleDateString('vi-VN')}
-                </p>
-                <div
-                  dangerouslySetInnerHTML={{ __html: post.content }}
-                  className="line-clamp-6 text-[18px]"
-                ></div>
-              </div>
-            ))}
-          </div>
+                dangerouslySetInnerHTML={{ __html: post.content }}
+                className="line-clamp-5 text-[14px] xl:line-clamp-6"
+              ></div>
+              <p className="text-[12px] text-primary pt-2">
+                {new Date(post.updatedAt).toLocaleDateString('vi-VN')}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </div>

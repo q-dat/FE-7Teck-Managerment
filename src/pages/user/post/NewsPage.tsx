@@ -28,8 +28,8 @@ const NewsPage: React.FC = () => {
 
   return (
     <div className="pb-[20px] xl:pt-[80px]">
-      <HeaderResponsive Title_NavbarMobile="Bản tin nổi bật" />
-      <div className="breadcrumbs glass mb-10 px-[10px] py-2 text-sm text-black dark:text-white lg:px-20">
+      <HeaderResponsive Title_NavbarMobile="Tin Tức" />
+      <div className="breadcrumbs glass px-[10px] py-2 text-sm text-black dark:text-white lg:px-20">
         <ul className="font-light">
           <li>
             <Link to="/">Trang Chủ</Link>
@@ -39,31 +39,34 @@ const NewsPage: React.FC = () => {
           </li>
         </ul>
       </div>
-      <div className="px-2 dark:bg-white xl:px-[100px]">
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="px-2 xl:px-[100px]">
+        <div className="text-center text-[40px] font-bold">Bản tin nổi bật</div>
+        <div className="relative grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
           {posts.map(post => (
             <div
               key={post._id}
-              className="cursor-pointer rounded border p-4 shadow transition hover:shadow-lg"
+              className="cursor-pointer rounded border bg-white p-2 shadow-inner hover:shadow-lg"
               onClick={() => handlePostClick(post)}
             >
+              <p className="absolute left-1 top-1 rounded-sm bg-white px-2 text-[12px] text-primary shadow-headerMenu shadow-primary">
+            {post.catalog}
+              </p>
               <img
                 src={post.imageUrl}
                 alt="Ảnh đại diện"
-                className="h-[250px] w-full object-cover"
+                className="h-[150px] w-[300px] rounded-sm object-cover xl:h-[230px]"
               />
-              <p className="text-[30px] font-bold">{post.title}</p>
-              <p className="text-[14px] font-light">
-                Danh mục:&nbsp;{post.catalog}
+              <p className="line-clamp-2 font-bold text-[18px]">
+                {post.title}
               </p>
-              <p className="text-[14px]">
-                Xuất bản:&nbsp;
-                {new Date(post.updatedAt).toLocaleDateString('vi-VN')}
-              </p>
+              <hr />
               <div
                 dangerouslySetInnerHTML={{ __html: post.content }}
-                className="line-clamp-6 text-[18px]"
-              ></div>{' '}
+                className="line-clamp-5 text-[14px] xl:line-clamp-6"
+              ></div>
+              <p className="text-[12px] text-primary pt-2">
+                {new Date(post.updatedAt).toLocaleDateString('vi-VN')}
+              </p>
             </div>
           ))}
         </div>
