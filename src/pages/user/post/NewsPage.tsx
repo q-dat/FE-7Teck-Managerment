@@ -41,30 +41,28 @@ const NewsPage: React.FC = () => {
       </div>
       <div className="px-2 xl:px-[100px]">
         <div className="text-center text-[40px] font-bold">Bản tin nổi bật</div>
-        <div className="relative grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
           {posts.map(post => (
             <div
               key={post._id}
-              className="cursor-pointer rounded border bg-white p-2 shadow-inner hover:shadow-lg"
+              className="relative cursor-pointer rounded border bg-white p-2 shadow-inner hover:shadow-lg"
               onClick={() => handlePostClick(post)}
             >
               <p className="absolute left-1 top-1 rounded-sm bg-white px-2 text-[12px] text-primary shadow-headerMenu shadow-primary">
-            {post.catalog}
+                {post.catalog}
               </p>
               <img
                 src={post.imageUrl}
                 alt="Ảnh đại diện"
-                className="h-[150px] w-[300px] rounded-sm object-cover xl:h-[230px]"
+                className="h-[150px] w-full rounded-sm object-cover xl:h-[230px]"
               />
-              <p className="line-clamp-2 font-bold text-[18px]">
-                {post.title}
-              </p>
+              <p className="line-clamp-2 text-[18px] font-bold">{post.title}</p>
               <hr />
               <div
                 dangerouslySetInnerHTML={{ __html: post.content }}
                 className="line-clamp-5 text-[14px] xl:line-clamp-6"
               ></div>
-              <p className="text-[12px] text-primary pt-2">
+              <p className="pt-2 text-[12px] text-primary">
                 {new Date(post.updatedAt).toLocaleDateString('vi-VN')}
               </p>
             </div>
