@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-axios.defaults.withCredentials = true;
-axios.defaults.baseURL = import.meta.env.VITE_API_PORT;
+const axiosInstance = axios.create({
+  baseURL: import.meta.env.VITE_API_PORT, // URL backend từ .env
+  withCredentials: true,                 // Bật gửi thông tin xác thực
+});
 
-export default axios;
+export default axiosInstance;

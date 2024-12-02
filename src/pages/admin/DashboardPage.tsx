@@ -1,6 +1,7 @@
 import React from 'react';
 import NavtitleAdmin from '../../components/admin/NavtitleAdmin';
 import NavbarMobile from '../../components/admin/Reponsive/Mobile/NavbarMobile';
+import ChatAdmin from './ChatAdmin';
 
 interface DashboardCardProps {
   Icons: React.ReactNode;
@@ -81,6 +82,7 @@ const DashboardPage: React.FC<{}> = () => {
           <p className="text-xs text-gray-500">Xem danh sách tạo gần đây.</p>
         </div>
         {/* Cart */}
+        <ChatAdmin/>
       </div>
     </div>
   );

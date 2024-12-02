@@ -90,150 +90,153 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
   }, []);
 
   return (
-    <div className="flex flex-col px-2 xl:hidden xl:px-0">
-      <div className="flex items-center justify-between">
-        <div className="z-50">
-          <Drawer
-            open={leftVisible}
-            onClickOverlay={toggleLeftVisible}
-            side={
-              <Menu className="fixed h-full w-[280px] bg-white dark:bg-gray-800">
-                {/* LOGO */}
-                <div className="flex items-center justify-center">
-                  <img
-                    className="-mb-0.5 rounded-full object-cover"
-                    width={120}
-                    loading="lazy"
-                    src={Logo}
-                    alt="LOGO"
-                  />
-                </div>
-                {/* Menu */}
-                {menuItems.map(item => {
-                  const Icon = item.icon;
-                  return (
-                    <div key={item.name} className="relative">
-                      <Menu.Item
-                        className="group relative"
-                        onClick={() =>
-                          item.submenu && handleMenuClick(item.name)
-                        }
-                      >
-                        <NavLink
-                          to={item.link}
-                          className={`btn relative mt-2 flex w-full flex-row items-center justify-between rounded-none border-none pl-4 pr-3 ${
-                            item.name === activeItem
-                              ? 'bg-primary bg-opacity-30 text-sm font-bold text-primary dark:bg-opacity-50 dark:text-white'
-                              : 'border-none bg-primary bg-opacity-10 text-sm font-light text-black shadow-headerMenu dark:text-white'
-                          } `}
-                        >
-                          <>
-                            {item.name === activeItem && (
-                              <div className="absolute bottom-0 left-0 h-[2px] w-full bg-primary dark:bg-white" />
-                            )}
-                            {Icon && (
-                              <div
-                                className={
-                                  item.name === activeItem
-                                    ? 'h-5 w-5 text-primary dark:text-white'
-                                    : 'h-5 w-5'
-                                }
-                              >
-                                <Icon />
-                              </div>
-                            )}
-                            <span className={Icon ? '' : ''}>{item.name}</span>
-                            {item.submenu && (
-                              <div
-                                className={`ml-2 h-4 w-4 ${openSubmenu === item.name ? 'rotate-180' : ''}`}
-                              >
-                                <FaChevronDown />
-                              </div>
-                            )}
-                          </>
-                        </NavLink>
-                      </Menu.Item>
-                      {/* SubMenu */}
-                      {item.submenu && openSubmenu === item.name && (
-                        <div className="relative w-full space-y-2 rounded-sm bg-white p-4 shadow-md dark:bg-gray-700 dark:bg-opacity-80">
-                          {item.submenu.map((subItem, index) => (
-                            <Link
-                              key={index}
-                              to={subItem.link}
-                              className="block"
-                            >
-                              <Button
-                                size="sm"
-                                className="flex w-full flex-row items-center justify-start rounded-sm border-none bg-primary text-sm uppercase text-white shadow-headerMenu"
-                              >
-                                {subItem.icon && <subItem.icon />}
-                                {subItem.name}
-                              </Button>
-                            </Link>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </Menu>
-            }
-          >
-            <div
-              onClick={toggleLeftVisible}
-              className="flex flex-row items-center justify-center gap-2 py-4 text-2xl text-black dark:text-white xl:hidden"
-            >
-              <div className="rounded-md p-1 text-[25px] text-primary">
-                <RxHamburgerMenu />
-              </div>
-            </div>
-          </Drawer>
-        </div>
-        {/* Title */}
-        <p className="text-base font-bold uppercase text-primary">
-          {Title_NavbarMobile}
-        </p>
-        {/* RightVisible */}
-        <div className="z-50">
-          <Drawer
-            open={rightVisible}
-            onClickOverlay={toggleRightVisible}
-            side={
-              <Menu className="fixed h-full w-[280px] bg-white dark:bg-gray-800">
-                {/* LOGO */}
-                <div className="flex items-center justify-center">
-                  <img
-                    className="mb-5 rounded-full object-cover"
-                    width={120}
-                    loading="lazy"
-                    src={Logo}
-                    alt="LOGO"
-                  />
-                </div>
-                <div className="w-full space-y-5">
-                  <div className="flex flex-row items-center justify-between rounded-md bg-gray-700 bg-opacity-20 p-2">
-                    <p className="text-lg font-light text-black dark:text-white">
-                      Giao Diện
-                    </p>
-                    <DarkMode />
+    <div>
+      <div className="flex flex-col px-2 xl:hidden xl:px-0">
+        <div className="flex items-center justify-between">
+          <div className="z-50">
+            <Drawer
+              open={leftVisible}
+              onClickOverlay={toggleLeftVisible}
+              side={
+                <Menu className="fixed h-full w-[280px] bg-white dark:bg-gray-800">
+                  {/* LOGO */}
+                  <div className="flex items-center justify-center">
+                    <img
+                      className="-mb-0.5 rounded-full object-cover"
+                      width={120}
+                      loading="lazy"
+                      src={Logo}
+                      alt="LOGO"
+                    />
                   </div>
-                </div>
-              </Menu>
-            }
-          >
-            <div
-              onClick={toggleRightVisible}
-              className="flex flex-row items-center justify-center gap-2 py-4 text-2xl text-black dark:text-white xl:hidden"
+                  {/* Menu */}
+                  {menuItems.map(item => {
+                    const Icon = item.icon;
+                    return (
+                      <div key={item.name} className="relative">
+                        <Menu.Item
+                          className="group relative"
+                          onClick={() =>
+                            item.submenu && handleMenuClick(item.name)
+                          }
+                        >
+                          <NavLink
+                            to={item.link}
+                            className={`btn relative mt-2 flex w-full flex-row items-center justify-between rounded-none border-none pl-4 pr-3 ${
+                              item.name === activeItem
+                                ? 'bg-primary bg-opacity-30 text-sm font-bold text-primary dark:bg-opacity-50 dark:text-white'
+                                : 'border-none bg-primary bg-opacity-10 text-sm font-light text-black shadow-headerMenu dark:text-white'
+                            } `}
+                          >
+                            <>
+                              {item.name === activeItem && (
+                                <div className="absolute bottom-0 left-0 h-[2px] w-full bg-primary dark:bg-white" />
+                              )}
+                              {Icon && (
+                                <div
+                                  className={
+                                    item.name === activeItem
+                                      ? 'h-5 w-5 text-primary dark:text-white'
+                                      : 'h-5 w-5'
+                                  }
+                                >
+                                  <Icon />
+                                </div>
+                              )}
+                              <span className={Icon ? '' : ''}>
+                                {item.name}
+                              </span>
+                              {item.submenu && (
+                                <div
+                                  className={`ml-2 h-4 w-4 ${openSubmenu === item.name ? 'rotate-180' : ''}`}
+                                >
+                                  <FaChevronDown />
+                                </div>
+                              )}
+                            </>
+                          </NavLink>
+                        </Menu.Item>
+                        {/* SubMenu */}
+                        {item.submenu && openSubmenu === item.name && (
+                          <div className="relative w-full space-y-2 rounded-sm bg-white p-4 shadow-md dark:bg-gray-700 dark:bg-opacity-80">
+                            {item.submenu.map((subItem, index) => (
+                              <Link
+                                key={index}
+                                to={subItem.link}
+                                className="block"
+                              >
+                                <Button
+                                  size="sm"
+                                  className="flex w-full flex-row items-center justify-start rounded-sm border-none bg-primary text-sm uppercase text-white shadow-headerMenu"
+                                >
+                                  {subItem.icon && <subItem.icon />}
+                                  {subItem.name}
+                                </Button>
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </Menu>
+              }
             >
-              <div className="rounded-md p-1 text-[20px] text-primary">
-                <IoSettingsSharp />
+              <div
+                onClick={toggleLeftVisible}
+                className="flex flex-row items-center justify-center gap-2 py-4 text-2xl text-black dark:text-white xl:hidden"
+              >
+                <div className="rounded-md p-1 text-[25px] text-primary">
+                  <RxHamburgerMenu />
+                </div>
               </div>
-            </div>
-          </Drawer>
+            </Drawer>
+          </div>
+          {/* Title */}
+          <p className="text-base font-bold uppercase text-primary">
+            {Title_NavbarMobile}
+          </p>
+          {/* RightVisible */}
+          <div className="z-50">
+            <Drawer
+              open={rightVisible}
+              onClickOverlay={toggleRightVisible}
+              side={
+                <Menu className="fixed h-full w-[280px] bg-white dark:bg-gray-800">
+                  {/* LOGO */}
+                  <div className="flex items-center justify-center">
+                    <img
+                      className="mb-5 rounded-full object-cover"
+                      width={120}
+                      loading="lazy"
+                      src={Logo}
+                      alt="LOGO"
+                    />
+                  </div>
+                  <div className="w-full space-y-5">
+                    <div className="flex flex-row items-center justify-between rounded-md bg-gray-700 bg-opacity-20 p-2">
+                      <p className="text-lg font-light text-black dark:text-white">
+                        Giao Diện
+                      </p>
+                      <DarkMode />
+                    </div>
+                  </div>
+                </Menu>
+              }
+            >
+              <div
+                onClick={toggleRightVisible}
+                className="flex flex-row items-center justify-center gap-2 py-4 text-2xl text-black dark:text-white xl:hidden"
+              >
+                <div className="rounded-md p-1 text-[20px] text-primary">
+                  <IoSettingsSharp />
+                </div>
+              </div>
+            </Drawer>
+          </div>
         </div>
-      </div>
-      {/* Input Search */}
-      {/* <div className="relative flex items-center">
+        {/* Input Search */}
+        {/* <div className="relative flex items-center">
         <Input
           className="w-full text-black focus:outline-none dark:border-white dark:bg-transparent dark:text-white"
           type="text"
@@ -242,6 +245,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
           <IoSearchOutline />
         </div>
       </div> */}
+      </div>
     </div>
   );
 };
