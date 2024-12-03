@@ -44,68 +44,70 @@ const ContactPage: React.FC = () => {
   return (
     <div className="pb-[20px] xl:pt-[80px]">
       <HeaderResponsive Title_NavbarMobile="Trang Chủ" />
-      <div className="breadcrumbs glass mb-10 px-[10px] py-2 text-sm text-black dark:text-white lg:px-20">
-        <ul className="font-light">
-          <li>
-            <Link to="/">Trang Chủ</Link>
-          </li>
-          <li>
-            <Link to="/contact">Liên Hệ</Link>
-          </li>
-        </ul>
-      </div>
-      {/* Form */}
-      <div className="px-2 xl:px-[100px]">
-        <form
-          ref={formRef}
-          onSubmit={onSubmit}
-          className="flex flex-col items-center justify-center gap-y-10 rounded-xl px-0 py-5 shadow-none dark:bg-white xl:flex-row xl:gap-x-10 xl:gap-y-0 xl:px-10 xl:py-10 xl:shadow-mainMenu"
-        >
-          <div className="">
-            <img
-              src={Logo}
-              alt="Logo"
-              className="w-[150px] rounded-full border border-primary xl:w-[300px]"
-            />
-          </div>
-          <div className="flex w-full flex-col gap-5">
-            <h1 className="text-2xl font-bold">Thông tin liên hệ:</h1>
-            <div className="flex w-full flex-col gap-5 xl:flex-row">
-              <div className="w-full">
-                <InputForm
-                  name="email"
-                  type="email"
-                  placeholder="Email"
-                  className="border border-gray-300 bg-white text-black focus:border-primary"
-                  classNameLabel="bg-white dark:peer-placeholder-shown:text-black dark:peer-focus:text-black"
-                />
+      <div className="pt-[70px] xl:pt-0">
+        <div className="breadcrumbs glass mb-10 px-[10px] py-2 text-sm text-black dark:text-white lg:px-20">
+          <ul className="font-light">
+            <li>
+              <Link to="/">Trang Chủ</Link>
+            </li>
+            <li>
+              <Link to="/contact">Liên Hệ</Link>
+            </li>
+          </ul>
+        </div>
+        {/* Form */}
+        <div className="px-2 xl:px-[100px]">
+          <form
+            ref={formRef}
+            onSubmit={onSubmit}
+            className="flex flex-col items-center justify-center gap-y-10 rounded-xl px-0 py-5 shadow-none dark:bg-white xl:flex-row xl:gap-x-10 xl:gap-y-0 xl:px-10 xl:py-10 xl:shadow-mainMenu"
+          >
+            <div className="">
+              <img
+                src={Logo}
+                alt="Logo"
+                className="w-[150px] rounded-full border border-primary xl:w-[300px]"
+              />
+            </div>
+            <div className="flex w-full flex-col gap-5">
+              <h1 className="text-2xl font-bold">Thông tin liên hệ:</h1>
+              <div className="flex w-full flex-col gap-5 xl:flex-row">
+                <div className="w-full">
+                  <InputForm
+                    name="email"
+                    type="email"
+                    placeholder="Email"
+                    className="border border-gray-300 bg-white text-black focus:border-primary"
+                    classNameLabel="bg-white dark:peer-placeholder-shown:text-black dark:peer-focus:text-black"
+                  />
+                </div>
+                <div className="w-full">
+                  <InputForm
+                    name="name"
+                    type="text"
+                    className="border border-gray-300 bg-white text-black focus:border-primary"
+                    placeholder="Tên của bạn"
+                    classNameLabel="bg-white dark:peer-placeholder-shown:text-black dark:peer-focus:text-black"
+                  />
+                </div>
               </div>
+              <Textarea
+                name="feedback"
+                className="border border-gray-300 bg-white pb-20 text-black focus:border-primary focus:outline-none"
+                placeholder="Bạn muốn đặt câu hỏi hay góp ý gì?"
+              />
               <div className="w-full">
-                <InputForm
-                  name="name"
-                  type="text"
-                  className="border border-gray-300 bg-white text-black focus:border-primary"
-                  placeholder="Tên của bạn"
-                  classNameLabel="bg-white dark:peer-placeholder-shown:text-black dark:peer-focus:text-black"
-                />
+                <Button
+                  className="w-full bg-primary text-sm text-white hover:border-primary hover:bg-secondary hover:text-white dark:hover:bg-opacity-50"
+                  type="submit"
+                >
+                  Gửi
+                </Button>
+                <span>{result}</span>
               </div>
             </div>
-            <Textarea
-              name="feedback"
-              className="border border-gray-300 bg-white pb-20 text-black focus:border-primary focus:outline-none"
-              placeholder="Bạn muốn đặt câu hỏi hay góp ý gì?"
-            />
-            <div className="w-full">
-              <Button
-                className="w-full bg-primary text-sm text-white hover:border-primary hover:bg-secondary hover:text-white dark:hover:bg-opacity-50"
-                type="submit"
-              >
-                Gửi
-              </Button>
-              <span>{result}</span>
-            </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );

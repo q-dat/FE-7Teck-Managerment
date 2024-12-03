@@ -35,66 +35,70 @@ const PostDetail: React.FC = () => {
   return (
     <div className="pb-[20px] xl:pt-[80px]">
       <HeaderResponsive Title_NavbarMobile="Bài viết" />
-      <div className="breadcrumbs glass mb-10 px-[10px] py-2 text-sm text-black dark:text-white lg:px-20">
-        <ul className="font-light">
-          <li>
-            <Link to="/">Trang Chủ</Link>
-          </li>
-          <li>
-            <Link to="/news">Tin Tức</Link>
-          </li>
-        </ul>
-      </div>
-      <div className="px-2">
-        <div className="dark:bg-white xl:px-[100px]">
-          {selectedPost ? (
-            <div className="mb-10">
-              <p className="text-[35px] font-bold">{selectedPost.title}</p>
-              <p className="text-[14px] text-blue-500">
-                {new Date(selectedPost.updatedAt).toLocaleDateString('vi-VN')}
-              </p>
-              <p className="text-[14px] font-light">
-                Danh mục:&nbsp;{selectedPost.catalog}
-              </p>
-              <hr className="my-4" />
-              <div
-                dangerouslySetInnerHTML={{ __html: selectedPost.content }}
-                className="text-[18px] text-black"
-              ></div>
-            </div>
-          ) : (
-            <p>Không tìm thấy bài viết</p>
-          )}
+      <div className="pt-[70px] xl:pt-0">
+        <div className="breadcrumbs glass mb-10 px-[10px] py-2 text-sm text-black dark:text-white lg:px-20">
+          <ul className="font-light">
+            <li>
+              <Link to="/">Trang Chủ</Link>
+            </li>
+            <li>
+              <Link to="/news">Tin Tức</Link>
+            </li>
+          </ul>
         </div>
-        <div>
-          <h1 className="p-1 font-semibold uppercase">Bài viết khác</h1>
-        </div>
-        <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
-          {otherPosts.map(post => (
-            <div
-              key={post._id}
-              className="relative cursor-pointer rounded border bg-white p-2 shadow-inner hover:shadow-lg"
-              onClick={() => handlePostSelect(post)}
-            >
-              <p className="absolute left-1 top-1 rounded-sm bg-white px-2 text-[12px] text-primary shadow-headerMenu shadow-primary">
-                {post.catalog}
-              </p>
-              <img
-                src={post.imageUrl}
-                alt="Ảnh đại diện"
-                className="h-[150px] w-full rounded-sm object-cover xl:h-[230px]"
-              />
-              <p className="line-clamp-2 text-[18px] font-bold">{post.title}</p>
-              <hr />
+        <div className="px-2">
+          <div className="dark:bg-white xl:px-[100px]">
+            {selectedPost ? (
+              <div className="mb-10">
+                <p className="text-[35px] font-bold">{selectedPost.title}</p>
+                <p className="text-[14px] text-blue-500">
+                  {new Date(selectedPost.updatedAt).toLocaleDateString('vi-VN')}
+                </p>
+                <p className="text-[14px] font-light">
+                  Danh mục:&nbsp;{selectedPost.catalog}
+                </p>
+                <hr className="my-4" />
+                <div
+                  dangerouslySetInnerHTML={{ __html: selectedPost.content }}
+                  className="text-[18px] text-black"
+                ></div>
+              </div>
+            ) : (
+              <p>Không tìm thấy bài viết</p>
+            )}
+          </div>
+          <div>
+            <h1 className="p-1 font-semibold uppercase">Bài viết khác</h1>
+          </div>
+          <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
+            {otherPosts.map(post => (
               <div
-                dangerouslySetInnerHTML={{ __html: post.content }}
-                className="line-clamp-5 text-[14px] text-black xl:line-clamp-6"
-              ></div>
-              <p className="pt-2 text-[12px] text-primary">
-                {new Date(post.updatedAt).toLocaleDateString('vi-VN')}
-              </p>
-            </div>
-          ))}
+                key={post._id}
+                className="relative cursor-pointer rounded border bg-white p-2 shadow-inner hover:shadow-lg"
+                onClick={() => handlePostSelect(post)}
+              >
+                <p className="absolute left-1 top-1 rounded-sm bg-white px-2 text-[12px] text-primary shadow-headerMenu shadow-primary">
+                  {post.catalog}
+                </p>
+                <img
+                  src={post.imageUrl}
+                  alt="Ảnh đại diện"
+                  className="h-[150px] w-full rounded-sm object-cover xl:h-[230px]"
+                />
+                <p className="line-clamp-2 text-[18px] font-bold">
+                  {post.title}
+                </p>
+                <hr />
+                <div
+                  dangerouslySetInnerHTML={{ __html: post.content }}
+                  className="line-clamp-5 text-[14px] text-black xl:line-clamp-6"
+                ></div>
+                <p className="pt-2 text-[12px] text-primary">
+                  {new Date(post.updatedAt).toLocaleDateString('vi-VN')}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

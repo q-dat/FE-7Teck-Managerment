@@ -90,7 +90,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
   }, []);
 
   return (
-    <div>
+    <div className="fixed z-[99999] block h-[70px] w-full bg-primary xl:hidden">
       <div className="flex flex-col px-2 xl:hidden xl:px-0">
         <div className="flex items-center justify-between">
           <div className="z-50">
@@ -182,18 +182,22 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                 </Menu>
               }
             >
+              {/*  */}
+              {/*  */}
               <div
                 onClick={toggleLeftVisible}
                 className="flex flex-row items-center justify-center gap-2 py-4 text-2xl text-black dark:text-white xl:hidden"
               >
-                <div className="rounded-md p-1 text-[25px] text-primary">
+                <div className="rounded-md p-1 text-[25px] text-white">
                   <RxHamburgerMenu />
                 </div>
               </div>
             </Drawer>
           </div>
           {/* Title */}
-          <p className="text-base font-bold uppercase text-primary">
+          {/*  */}
+          {/*  */}
+          <p className="text-base font-bold uppercase text-white">
             {Title_NavbarMobile}
           </p>
           {/* RightVisible */}
@@ -224,11 +228,13 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                 </Menu>
               }
             >
+              {/*  */}
+              {/*  */}
               <div
                 onClick={toggleRightVisible}
-                className="flex flex-row items-center justify-center gap-2 py-4 text-2xl text-black dark:text-white xl:hidden"
+                className="flex flex-row items-center justify-center gap-2 py-4 text-2xl dark:text-white xl:hidden"
               >
-                <div className="rounded-md p-1 text-[20px] text-primary">
+                <div className="rounded-md p-1 text-[20px] text-white">
                   <IoSettingsSharp />
                 </div>
               </div>

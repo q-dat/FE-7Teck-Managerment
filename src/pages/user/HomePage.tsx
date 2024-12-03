@@ -151,8 +151,9 @@ const HomePage: React.FC = () => {
   return (
     <div className="pb-[20px] xl:pt-[80px]">
       <HeaderResponsive Title_NavbarMobile="Trang Chủ" />
+      <div className="pt-[70px] xl:pt-0">
         {/* Banner */}
-        <div className='relative'>
+        <div className="relative">
           <div className="absolute bottom-0 left-2 top-[60%] md:bottom-4 md:left-[10%] md:top-[30%] lg:top-[30%]">
             <p className="bg-gradient-to-r from-primary to-white bg-clip-text text-[25px] font-black italic text-transparent xl:text-[40px]">
               Đổi Điện Thoại Cũ, <br /> Nhận Ngay Giá Tốt Nhất!
@@ -180,233 +181,234 @@ const HomePage: React.FC = () => {
             />
           </div>
         </div>
-      {/* Body */}
-      <div className="space-y-10 px-2 xl:px-[130px]">
-        {/* Phone */}
-        <div className={`relative ${phones.length === 0 ? 'hidden' : ''}`}>
-          <p className="font-title my-5 text-start text-2xl font-bold text-primary xl:text-2xl">
-            Điện Thoại Nổi Bật
-          </p>
-          <div
-            ref={scrollRefPhone}
-            className="grid grid-flow-col grid-rows-2 items-center justify-start gap-3 overflow-x-auto scroll-smooth px-2 py-1 scrollbar-hide xl:gap-5"
-          >
-            {phones.map(phone => (
-              <Link to="phone-detail">
-                <div
-                  key={phone._id}
-                  className="relative rounded-md bg-white shadow shadow-gray-50"
-                >
-                  <div className="flex w-[185px] flex-col items-center justify-center xl:w-[220px]">
-                    <img
-                      className="h-[185px] w-[185px] rounded-md object-cover xl:h-[250px] xl:w-[220px]"
-                      src={phone.img}
-                    />
-                    <p>{phone.name}</p>
-                    <p>Giá:{(phone.price * 1000).toLocaleString('vi-VN')}đ</p>
-                  </div>
-                  {phone.status === 'sale' && (
-                    <>
+        {/* Body */}
+        <div className="space-y-10 px-2 xl:px-[130px]">
+          {/* Phone */}
+          <div className={`relative ${phones.length === 0 ? 'hidden' : ''}`}>
+            <p className="font-title my-5 text-start text-2xl font-bold text-primary xl:text-2xl">
+              Điện Thoại Nổi Bật
+            </p>
+            <div
+              ref={scrollRefPhone}
+              className="grid grid-flow-col grid-rows-2 items-center justify-start gap-3 overflow-x-auto scroll-smooth px-2 py-1 scrollbar-hide xl:gap-5"
+            >
+              {phones.map(phone => (
+                <Link to="phone-detail">
+                  <div
+                    key={phone._id}
+                    className="relative rounded-md bg-white shadow shadow-gray-50"
+                  >
+                    <div className="flex w-[185px] flex-col items-center justify-center xl:w-[220px]">
                       <img
-                        width={60}
-                        src={Sale}
-                        className="absolute -left-[3px] top-0"
-                        alt="Sale"
+                        className="h-[185px] w-[185px] rounded-md object-cover xl:h-[250px] xl:w-[220px]"
+                        src={phone.img}
                       />
-                      <p className="absolute top-0 w-full text-sm text-white">
-                        Giảm 20%
-                      </p>
-                    </>
-                  )}
-                </div>
-              </Link>
-            ))}
-          </div>
-          {/* Navigation Button  */}
-          <div className="absolute top-1/2 flex w-full items-center justify-between">
-            <Button
-              onClick={() => scrollPhone(-200)}
-              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white ${isLeftButtonVisiblePhone ? '' : 'bg-transparent text-transparent'}`}
-            >
-              <MdArrowBackIosNew className="text-4xl" />
-            </Button>
-            <Button
-              onClick={() => scrollPhone(200)}
-              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white ${isRightButtonVisiblePhone ? '' : 'bg-transparent text-transparent'}`}
-            >
-              <MdArrowForwardIos className="text-4xl" />
-            </Button>
-          </div>
-        </div>
-        {/* Ipad */}
-        <div className={`relative ${phones.length === 0 ? 'hidden' : ''}`}>
-          <p className="font-title my-5 text-start text-2xl font-bold text-primary xl:text-2xl">
-            Ipad
-          </p>
-          <div
-            ref={scrollRefIpad}
-            className="grid grid-flow-col grid-rows-2 items-center justify-start gap-3 overflow-x-auto scroll-smooth px-2 py-1 scrollbar-hide xl:gap-5"
-          >
-            {phones.map(phone => (
-              <Link to="phone-detail">
-                <div
-                  key={phone._id}
-                  className="relative rounded-md bg-white shadow shadow-gray-50"
-                >
-                  <div className="flex w-[185px] flex-col items-center justify-center xl:w-[220px]">
-                    <img
-                      className="h-[185px] w-[185px] rounded-md object-cover xl:h-[250px] xl:w-[220px]"
-                      src={phone.img}
-                    />
-                    <p>{phone.name}</p>
-                    <p>Giá:{(phone.price * 1000).toLocaleString('vi-VN')}đ</p>
+                      <p>{phone.name}</p>
+                      <p>Giá:{(phone.price * 1000).toLocaleString('vi-VN')}đ</p>
+                    </div>
+                    {phone.status === 'sale' && (
+                      <>
+                        <img
+                          width={60}
+                          src={Sale}
+                          className="absolute -left-[3px] top-0"
+                          alt="Sale"
+                        />
+                        <p className="absolute top-0 w-full text-sm text-white">
+                          Giảm 20%
+                        </p>
+                      </>
+                    )}
                   </div>
-                  {phone.status === 'sale' && (
-                    <>
+                </Link>
+              ))}
+            </div>
+            {/* Navigation Button  */}
+            <div className="absolute top-1/2 flex w-full items-center justify-between">
+              <Button
+                onClick={() => scrollPhone(-200)}
+                className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white ${isLeftButtonVisiblePhone ? '' : 'bg-transparent text-transparent'}`}
+              >
+                <MdArrowBackIosNew className="text-4xl" />
+              </Button>
+              <Button
+                onClick={() => scrollPhone(200)}
+                className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white ${isRightButtonVisiblePhone ? '' : 'bg-transparent text-transparent'}`}
+              >
+                <MdArrowForwardIos className="text-4xl" />
+              </Button>
+            </div>
+          </div>
+          {/* Ipad */}
+          <div className={`relative ${phones.length === 0 ? 'hidden' : ''}`}>
+            <p className="font-title my-5 text-start text-2xl font-bold text-primary xl:text-2xl">
+              Ipad
+            </p>
+            <div
+              ref={scrollRefIpad}
+              className="grid grid-flow-col grid-rows-2 items-center justify-start gap-3 overflow-x-auto scroll-smooth px-2 py-1 scrollbar-hide xl:gap-5"
+            >
+              {phones.map(phone => (
+                <Link to="phone-detail">
+                  <div
+                    key={phone._id}
+                    className="relative rounded-md bg-white shadow shadow-gray-50"
+                  >
+                    <div className="flex w-[185px] flex-col items-center justify-center xl:w-[220px]">
                       <img
-                        width={60}
-                        src={Sale}
-                        className="absolute -left-[3px] top-0"
-                        alt="Sale"
+                        className="h-[185px] w-[185px] rounded-md object-cover xl:h-[250px] xl:w-[220px]"
+                        src={phone.img}
                       />
-                      <p className="absolute top-0 w-full text-sm text-white">
-                        Giảm 20%
-                      </p>
-                    </>
-                  )}
-                </div>
-              </Link>
-            ))}
-          </div>
-          {/* Navigation Button  */}
-          <div className="absolute top-1/2 flex w-full items-center justify-between">
-            <Button
-              onClick={() => scrollIpad(-200)}
-              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white ${isLeftButtonVisibleIpad ? '' : 'bg-transparent text-transparent'}`}
-            >
-              <MdArrowBackIosNew className="text-4xl" />
-            </Button>
-            <Button
-              onClick={() => scrollIpad(200)}
-              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white ${isRightButtonVisibleIpad ? '' : 'bg-transparent text-transparent'}`}
-            >
-              <MdArrowForwardIos className="text-4xl" />
-            </Button>
-          </div>
-        </div>
-        {/*  Window */}
-        <div className={`relative ${phones.length === 0 ? 'hidden' : ''}`}>
-          <p className="font-title my-5 text-start text-2xl font-bold text-primary xl:text-2xl">
-            Window
-          </p>
-          <div
-            ref={scrollRefWindow}
-            className="flex flex-row items-center justify-start gap-3 overflow-x-auto scroll-smooth px-2 py-1 scrollbar-hide xl:gap-5"
-          >
-            {phones.map(phone => (
-              <Link to="phone-detail">
-                <div
-                  key={phone._id}
-                  className="relative rounded-md bg-white shadow shadow-gray-50"
-                >
-                  <div className="flex w-[185px] flex-col items-center justify-center xl:w-[220px]">
-                    <img
-                      className="h-[185px] w-[185px] rounded-md object-cover xl:h-[250px] xl:w-[220px]"
-                      src={phone.img}
-                    />
-                    <p>{phone.name}</p>
-                    <p>Giá:{(phone.price * 1000).toLocaleString('vi-VN')}đ</p>
+                      <p>{phone.name}</p>
+                      <p>Giá:{(phone.price * 1000).toLocaleString('vi-VN')}đ</p>
+                    </div>
+                    {phone.status === 'sale' && (
+                      <>
+                        <img
+                          width={60}
+                          src={Sale}
+                          className="absolute -left-[3px] top-0"
+                          alt="Sale"
+                        />
+                        <p className="absolute top-0 w-full text-sm text-white">
+                          Giảm 20%
+                        </p>
+                      </>
+                    )}
                   </div>
-                  {phone.status === 'sale' && (
-                    <>
+                </Link>
+              ))}
+            </div>
+            {/* Navigation Button  */}
+            <div className="absolute top-1/2 flex w-full items-center justify-between">
+              <Button
+                onClick={() => scrollIpad(-200)}
+                className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white ${isLeftButtonVisibleIpad ? '' : 'bg-transparent text-transparent'}`}
+              >
+                <MdArrowBackIosNew className="text-4xl" />
+              </Button>
+              <Button
+                onClick={() => scrollIpad(200)}
+                className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white ${isRightButtonVisibleIpad ? '' : 'bg-transparent text-transparent'}`}
+              >
+                <MdArrowForwardIos className="text-4xl" />
+              </Button>
+            </div>
+          </div>
+          {/*  Window */}
+          <div className={`relative ${phones.length === 0 ? 'hidden' : ''}`}>
+            <p className="font-title my-5 text-start text-2xl font-bold text-primary xl:text-2xl">
+              Window
+            </p>
+            <div
+              ref={scrollRefWindow}
+              className="flex flex-row items-center justify-start gap-3 overflow-x-auto scroll-smooth px-2 py-1 scrollbar-hide xl:gap-5"
+            >
+              {phones.map(phone => (
+                <Link to="phone-detail">
+                  <div
+                    key={phone._id}
+                    className="relative rounded-md bg-white shadow shadow-gray-50"
+                  >
+                    <div className="flex w-[185px] flex-col items-center justify-center xl:w-[220px]">
                       <img
-                        width={60}
-                        src={Sale}
-                        className="absolute -left-[3px] top-0"
-                        alt="Sale"
+                        className="h-[185px] w-[185px] rounded-md object-cover xl:h-[250px] xl:w-[220px]"
+                        src={phone.img}
                       />
-                      <p className="absolute top-0 w-full text-sm text-white">
-                        Giảm 20%
-                      </p>
-                    </>
-                  )}
-                </div>
-              </Link>
-            ))}
-          </div>
-          {/* Navigation Button  */}
-          <div className="absolute top-1/2 flex w-full items-center justify-between">
-            <Button
-              onClick={() => scrollWindow(-200)}
-              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white ${isLeftButtonVisibleWindow ? '' : 'bg-transparent text-transparent'}`}
-            >
-              <MdArrowBackIosNew className="text-4xl" />
-            </Button>
-            <Button
-              onClick={() => scrollWindow(200)}
-              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white ${isRightButtonVisibleWindow ? '' : 'bg-transparent text-transparent'}`}
-            >
-              <MdArrowForwardIos className="text-4xl" />
-            </Button>
-          </div>
-        </div>
-        {/*  MacBook */}
-        <div className={`relative ${phones.length === 0 ? 'hidden' : ''}`}>
-          <p className="font-title my-5 text-start text-2xl font-bold text-primary xl:text-2xl">
-            MacBook
-          </p>
-          <div
-            ref={scrollRefMacbook}
-            className="flex flex-row items-center justify-start gap-3 overflow-x-auto scroll-smooth px-2 py-1 scrollbar-hide xl:gap-5"
-          >
-            {phones.map(phone => (
-              <Link to="phone-detail">
-                <div
-                  key={phone._id}
-                  className="relative rounded-md bg-white shadow shadow-gray-50"
-                >
-                  <div className="flex w-[185px] flex-col items-center justify-center xl:w-[220px]">
-                    <img
-                      className="h-[185px] w-[185px] rounded-md object-cover xl:h-[250px] xl:w-[220px]"
-                      src={phone.img}
-                    />
-                    <p>{phone.name}</p>
-                    <p>Giá:{(phone.price * 1000).toLocaleString('vi-VN')}đ</p>
+                      <p>{phone.name}</p>
+                      <p>Giá:{(phone.price * 1000).toLocaleString('vi-VN')}đ</p>
+                    </div>
+                    {phone.status === 'sale' && (
+                      <>
+                        <img
+                          width={60}
+                          src={Sale}
+                          className="absolute -left-[3px] top-0"
+                          alt="Sale"
+                        />
+                        <p className="absolute top-0 w-full text-sm text-white">
+                          Giảm 20%
+                        </p>
+                      </>
+                    )}
                   </div>
-                  {phone.status === 'sale' && (
-                    <>
+                </Link>
+              ))}
+            </div>
+            {/* Navigation Button  */}
+            <div className="absolute top-1/2 flex w-full items-center justify-between">
+              <Button
+                onClick={() => scrollWindow(-200)}
+                className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white ${isLeftButtonVisibleWindow ? '' : 'bg-transparent text-transparent'}`}
+              >
+                <MdArrowBackIosNew className="text-4xl" />
+              </Button>
+              <Button
+                onClick={() => scrollWindow(200)}
+                className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white ${isRightButtonVisibleWindow ? '' : 'bg-transparent text-transparent'}`}
+              >
+                <MdArrowForwardIos className="text-4xl" />
+              </Button>
+            </div>
+          </div>
+          {/*  MacBook */}
+          <div className={`relative ${phones.length === 0 ? 'hidden' : ''}`}>
+            <p className="font-title my-5 text-start text-2xl font-bold text-primary xl:text-2xl">
+              MacBook
+            </p>
+            <div
+              ref={scrollRefMacbook}
+              className="flex flex-row items-center justify-start gap-3 overflow-x-auto scroll-smooth px-2 py-1 scrollbar-hide xl:gap-5"
+            >
+              {phones.map(phone => (
+                <Link to="phone-detail">
+                  <div
+                    key={phone._id}
+                    className="relative rounded-md bg-white shadow shadow-gray-50"
+                  >
+                    <div className="flex w-[185px] flex-col items-center justify-center xl:w-[220px]">
                       <img
-                        width={60}
-                        src={Sale}
-                        className="absolute -left-[3px] top-0"
-                        alt="Sale"
+                        className="h-[185px] w-[185px] rounded-md object-cover xl:h-[250px] xl:w-[220px]"
+                        src={phone.img}
                       />
-                      <p className="absolute top-0 w-full text-sm text-white">
-                        Giảm 20%
-                      </p>
-                    </>
-                  )}
-                </div>
-              </Link>
-            ))}
+                      <p>{phone.name}</p>
+                      <p>Giá:{(phone.price * 1000).toLocaleString('vi-VN')}đ</p>
+                    </div>
+                    {phone.status === 'sale' && (
+                      <>
+                        <img
+                          width={60}
+                          src={Sale}
+                          className="absolute -left-[3px] top-0"
+                          alt="Sale"
+                        />
+                        <p className="absolute top-0 w-full text-sm text-white">
+                          Giảm 20%
+                        </p>
+                      </>
+                    )}
+                  </div>
+                </Link>
+              ))}
+            </div>
+            {/* Navigation Button  */}
+            <div className="absolute top-1/2 flex w-full items-center justify-between">
+              <Button
+                onClick={() => scrollMacbook(-200)}
+                className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white ${isLeftButtonVisibleMacbook ? '' : 'bg-transparent text-transparent'}`}
+              >
+                <MdArrowBackIosNew className="text-4xl" />
+              </Button>
+              <Button
+                onClick={() => scrollMacbook(200)}
+                className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white ${isRightButtonVisibleMacbook ? '' : 'bg-transparent text-transparent'}`}
+              >
+                <MdArrowForwardIos className="text-4xl" />
+              </Button>
+            </div>
           </div>
-          {/* Navigation Button  */}
-          <div className="absolute top-1/2 flex w-full items-center justify-between">
-            <Button
-              onClick={() => scrollMacbook(-200)}
-              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white ${isLeftButtonVisibleMacbook ? '' : 'bg-transparent text-transparent'}`}
-            >
-              <MdArrowBackIosNew className="text-4xl" />
-            </Button>
-            <Button
-              onClick={() => scrollMacbook(200)}
-              className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white ${isRightButtonVisibleMacbook ? '' : 'bg-transparent text-transparent'}`}
-            >
-              <MdArrowForwardIos className="text-4xl" />
-            </Button>
-          </div>
+          {/*  */}
         </div>
-        {/*  */}
       </div>
     </div>
   );

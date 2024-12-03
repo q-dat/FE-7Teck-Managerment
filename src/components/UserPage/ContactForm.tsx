@@ -30,7 +30,7 @@ const ContactForm: React.FC = () => {
   }, [isExpanded]);
 
   return (
-    <div className="fixed bottom-5 right-2 z-[99999]">
+    <div className="fixed bottom-5 right-0 z-[99999] xl:right-2">
       <div className="flex w-full justify-end">
         <button
           onClick={toggleDropdown}
@@ -41,10 +41,9 @@ const ContactForm: React.FC = () => {
         </button>
         <button
           onClick={toggleDropdown}
-          className={` relative flex items-center rounded-full border border-white bg-primary p-2 text-sm text-white ${isExpanded ? 'hidden' : ''}`}
+          className={`relative flex items-center rounded-full border border-white bg-primary p-2 text-sm text-white ${isExpanded ? 'hidden' : ''}`}
         >
-                <span className="animation-zoomBorder-Btn" />
-
+          <span className="animation-zoomBorder-Btn" />
           Chat <IoChatbubbleEllipsesOutline className="text-2xl" />
         </button>
       </div>
@@ -57,7 +56,8 @@ const ContactForm: React.FC = () => {
             : '0'
         }}
       >
-        <div className="bg-white m-2 space-y-4 rounded-lg p-2 outline outline-offset-0 outline-primary">
+        {/*  */}
+        <div className="m-2 space-y-4 rounded-lg bg-white p-2 outline outline-offset-0 outline-primary">
           <div className="flex flex-row items-start justify-between">
             {/*  */}
             <div className="flex flex-row items-center gap-1 text-xl text-primary">
@@ -68,7 +68,7 @@ const ContactForm: React.FC = () => {
             <div>
               <img
                 src={Logo}
-                className="h-12 w-12 border rounded-full object-cover"
+                className="h-12 w-12 rounded-full border object-cover"
                 alt="7Teck"
               />
             </div>

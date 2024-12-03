@@ -103,180 +103,191 @@ const PriceListPage: React.FC = () => {
   return (
     <div className="pb-[20px] xl:pt-[80px]">
       <HeaderResponsive Title_NavbarMobile="Bảng Giá Thu Mua" />
-      <div className="breadcrumbs glass px-[10px] py-2 text-sm text-black dark:text-white lg:px-20">
-        <ul className="font-light">
-          <li>
-            <Link to="/">Trang Chủ</Link>
-          </li>
-          <li>
-            <Link to="/price-list">Bảng Giá Thu Mua</Link>
-          </li>
-        </ul>
-      </div>
-      <div>
-        {/* Phone Catalog */}
-        <div className="px-2 xl:px-[100px]">
-          {/* Tittle */}
-          <div className="my-5 font-bold text-primary dark:text-white">
-            Danh Mục Thu Mua Điện Thoại
-          </div>
-          <div className="grid grid-cols-2 gap-2 xl:grid-flow-col xl:grid-cols-none xl:grid-rows-1">
-            {FecthPhoneCatalog.map(item => (
-              <Button
-                key={item._id}
-                className={`flex w-full items-center justify-center transition-all duration-500 ease-in-out hover:rounded-badge hover:bg-secondary hover:text-white ${
-                  item.name === activePhoneItem
-                    ? 'bg-primary text-white hover:bg-primary hover:text-white'
-                    : 'bg-white text-primary'
-                }`}
-                onClick={() => handlePhoneItemClick(item.name)}
-              >
-                {item.name}
-              </Button>
-            ))}
-          </div>
-
-          {/* Bảng sản phẩm */}
-          <table className="mt-5 min-w-full border-collapse border border-gray-200">
-            <thead>
-              <tr className="bg-secondary text-white">
-                <th className="border border-primary px-4 py-2 text-left">
-                  Tên sản phẩm
-                </th>
-                <th className="border border-primary px-4 py-2 text-left">
-                  Giá
-                </th>
-                <th className="border border-primary px-4 py-2 text-left">
-                  Dung lượng
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {phoneProducts[activePhoneItem]?.map((product, index) => (
-                <tr key={index} className="hover:bg-black hover:bg-opacity-10">
-                  <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
-                    {product.name}
-                  </td>
-                  <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
-                    {product.price}
-                  </td>
-                  <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
-                    {product.storage}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+      <div className="pt-[70px] xl:pt-0">
+        <div className="breadcrumbs glass px-[10px] py-2 text-sm text-black dark:text-white lg:px-20">
+          <ul className="font-light">
+            <li>
+              <Link to="/">Trang Chủ</Link>
+            </li>
+            <li>
+              <Link to="/price-list">Bảng Giá Thu Mua</Link>
+            </li>
+          </ul>
         </div>
-
-        {/* Ipad Catalog */}
-        <div className="px-2 xl:px-[100px]">
-          {/* Tittle */}
-          <div className="my-5 font-bold text-primary dark:text-white">
-            Danh Mục Thu Mua Ipad
-          </div>
-          <div className="grid grid-cols-2 gap-2 xl:grid-flow-col xl:grid-cols-none xl:grid-rows-1">
-            {FecthIpadCatalog.map(item => (
-              <Button
-                key={item._id}
-                className={`flex w-full items-center justify-center transition-all duration-500 ease-in-out hover:rounded-badge hover:bg-secondary hover:text-white ${
-                  item.name === activeIpadItem
-                    ? 'bg-primary text-white hover:bg-primary hover:text-white'
-                    : 'bg-white text-primary'
-                }`}
-                onClick={() => handleIpadItemClick(item.name)}
-              >
-                {item.name}
-              </Button>
-            ))}
-          </div>
-
-          {/* Bảng sản phẩm */}
-          <table className="mt-5 min-w-full border-collapse border border-gray-200">
-            <thead>
-              <tr className="bg-secondary text-white">
-                <th className="border border-primary px-4 py-2 text-left">
-                  Tên sản phẩm
-                </th>
-                <th className="border border-primary px-4 py-2 text-left">
-                  Giá
-                </th>
-                <th className="border border-primary px-4 py-2 text-left">
-                  Dung lượng
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {ipadProducts[activeIpadItem]?.map((product, index) => (
-                <tr key={index} className="hover:bg-black hover:bg-opacity-10">
-                  <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
-                    {product.name}
-                  </td>
-                  <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
-                    {product.price}
-                  </td>
-                  <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
-                    {product.storage}
-                  </td>
-                </tr>
+        <div>
+          {/* Phone Catalog */}
+          <div className="px-2 xl:px-[100px]">
+            {/* Tittle */}
+            <div className="my-5 font-bold text-primary dark:text-white">
+              Danh Mục Thu Mua Điện Thoại
+            </div>
+            <div className="grid grid-cols-2 gap-2 xl:grid-flow-col xl:grid-cols-none xl:grid-rows-1">
+              {FecthPhoneCatalog.map(item => (
+                <Button
+                  key={item._id}
+                  className={`flex w-full items-center justify-center transition-all duration-500 ease-in-out hover:rounded-badge hover:bg-secondary hover:text-white ${
+                    item.name === activePhoneItem
+                      ? 'bg-primary text-white hover:bg-primary hover:text-white'
+                      : 'bg-white text-primary'
+                  }`}
+                  onClick={() => handlePhoneItemClick(item.name)}
+                >
+                  {item.name}
+                </Button>
               ))}
-            </tbody>
-          </table>
-        </div>
+            </div>
 
-        {/* Laptop Catalog */}
-        <div className="px-2 xl:px-[100px]">
-          {/* Tittle */}
-          <div className="my-5 font-bold text-primary dark:text-white">
-            Danh Mục Thu Mua Laptop
-          </div>
-          <div className="grid grid-cols-2 gap-2 xl:grid-flow-col xl:grid-cols-none xl:grid-rows-1">
-            {FecthLaptopCatalog.map(item => (
-              <Button
-                key={item._id}
-                className={`flex w-full items-center justify-center transition-all duration-500 ease-in-out hover:rounded-badge hover:bg-secondary hover:text-white ${
-                  item.name === activeLaptopItem
-                    ? 'bg-primary text-white hover:bg-primary hover:text-white'
-                    : 'bg-white text-primary'
-                }`}
-                onClick={() => handleLaptopItemClick(item.name)}
-              >
-                {item.name}
-              </Button>
-            ))}
-          </div>
-
-          {/* Bảng sản phẩm */}
-          <table className="mt-5 min-w-full border-collapse border border-gray-200">
-            <thead>
-              <tr className="bg-secondary text-white">
-                <th className="border border-primary px-4 py-2 text-left">
-                  Tên sản phẩm
-                </th>
-                <th className="border border-primary px-4 py-2 text-left">
-                  Giá
-                </th>
-                <th className="border border-primary px-4 py-2 text-left">
-                  Dung lượng
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {laptopProducts[activeLaptopItem]?.map((product, index) => (
-                <tr key={index} className="hover:bg-black hover:bg-opacity-10">
-                  <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
-                    {product.name}
-                  </td>
-                  <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
-                    {product.price}
-                  </td>
-                  <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
-                    {product.storage}
-                  </td>
+            {/* Bảng sản phẩm */}
+            <table className="mt-5 min-w-full border-collapse border border-gray-200">
+              <thead>
+                <tr className="bg-secondary text-white">
+                  <th className="border border-primary px-4 py-2 text-left">
+                    Tên sản phẩm
+                  </th>
+                  <th className="border border-primary px-4 py-2 text-left">
+                    Giá
+                  </th>
+                  <th className="border border-primary px-4 py-2 text-left">
+                    Dung lượng
+                  </th>
                 </tr>
+              </thead>
+              <tbody>
+                {phoneProducts[activePhoneItem]?.map((product, index) => (
+                  <tr
+                    key={index}
+                    className="hover:bg-black hover:bg-opacity-10"
+                  >
+                    <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
+                      {product.name}
+                    </td>
+                    <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
+                      {product.price}
+                    </td>
+                    <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
+                      {product.storage}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Ipad Catalog */}
+          <div className="px-2 xl:px-[100px]">
+            {/* Tittle */}
+            <div className="my-5 font-bold text-primary dark:text-white">
+              Danh Mục Thu Mua Ipad
+            </div>
+            <div className="grid grid-cols-2 gap-2 xl:grid-flow-col xl:grid-cols-none xl:grid-rows-1">
+              {FecthIpadCatalog.map(item => (
+                <Button
+                  key={item._id}
+                  className={`flex w-full items-center justify-center transition-all duration-500 ease-in-out hover:rounded-badge hover:bg-secondary hover:text-white ${
+                    item.name === activeIpadItem
+                      ? 'bg-primary text-white hover:bg-primary hover:text-white'
+                      : 'bg-white text-primary'
+                  }`}
+                  onClick={() => handleIpadItemClick(item.name)}
+                >
+                  {item.name}
+                </Button>
               ))}
-            </tbody>
-          </table>
+            </div>
+
+            {/* Bảng sản phẩm */}
+            <table className="mt-5 min-w-full border-collapse border border-gray-200">
+              <thead>
+                <tr className="bg-secondary text-white">
+                  <th className="border border-primary px-4 py-2 text-left">
+                    Tên sản phẩm
+                  </th>
+                  <th className="border border-primary px-4 py-2 text-left">
+                    Giá
+                  </th>
+                  <th className="border border-primary px-4 py-2 text-left">
+                    Dung lượng
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {ipadProducts[activeIpadItem]?.map((product, index) => (
+                  <tr
+                    key={index}
+                    className="hover:bg-black hover:bg-opacity-10"
+                  >
+                    <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
+                      {product.name}
+                    </td>
+                    <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
+                      {product.price}
+                    </td>
+                    <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
+                      {product.storage}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Laptop Catalog */}
+          <div className="px-2 xl:px-[100px]">
+            {/* Tittle */}
+            <div className="my-5 font-bold text-primary dark:text-white">
+              Danh Mục Thu Mua Laptop
+            </div>
+            <div className="grid grid-cols-2 gap-2 xl:grid-flow-col xl:grid-cols-none xl:grid-rows-1">
+              {FecthLaptopCatalog.map(item => (
+                <Button
+                  key={item._id}
+                  className={`flex w-full items-center justify-center transition-all duration-500 ease-in-out hover:rounded-badge hover:bg-secondary hover:text-white ${
+                    item.name === activeLaptopItem
+                      ? 'bg-primary text-white hover:bg-primary hover:text-white'
+                      : 'bg-white text-primary'
+                  }`}
+                  onClick={() => handleLaptopItemClick(item.name)}
+                >
+                  {item.name}
+                </Button>
+              ))}
+            </div>
+
+            {/* Bảng sản phẩm */}
+            <table className="mt-5 min-w-full border-collapse border border-gray-200">
+              <thead>
+                <tr className="bg-secondary text-white">
+                  <th className="border border-primary px-4 py-2 text-left">
+                    Tên sản phẩm
+                  </th>
+                  <th className="border border-primary px-4 py-2 text-left">
+                    Giá
+                  </th>
+                  <th className="border border-primary px-4 py-2 text-left">
+                    Dung lượng
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {laptopProducts[activeLaptopItem]?.map((product, index) => (
+                  <tr
+                    key={index}
+                    className="hover:bg-black hover:bg-opacity-10"
+                  >
+                    <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
+                      {product.name}
+                    </td>
+                    <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
+                      {product.price}
+                    </td>
+                    <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
+                      {product.storage}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

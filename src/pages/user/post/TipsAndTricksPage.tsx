@@ -28,45 +28,55 @@ const TipsAndTricksPage: React.FC = () => {
   return (
     <div className="pb-[20px] xl:pt-[80px]">
       <HeaderResponsive Title_NavbarMobile="Thủ thuật - Mẹo" />
-      <div className="px-2 dark:bg-white xl:px-[100px]">
-        {selectedPost && (
-          <div className="mb-10">
-            <p className="text-[35px] font-bold">{selectedPost.title}</p>
-            <p className="font-light text-[14px]">Danh mục:&nbsp;{selectedPost.catalog}</p>
-            <p className="text-[14px]">
-              Xuất bản:&nbsp;
-              {new Date(selectedPost.updatedAt).toLocaleDateString('vi-VN')}
-            </p>
-            <hr className="my-4" />
-            <div
-              dangerouslySetInnerHTML={{ __html: selectedPost.content }}
-              className="text-[18px]"
-            ></div>
-          </div>
-        )}
-
-        <div>
-          <h2 className="mb-6 text-[24px] font-semibold">Bài viết khác</h2>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {otherPosts.map(post => (
+      <div className="pt-[70px] xl:pt-0">
+        <div className="px-2 dark:bg-white xl:px-[100px]">
+          {selectedPost && (
+            <div className="mb-10">
+              <p className="text-[35px] font-bold">{selectedPost.title}</p>
+              <p className="text-[14px] font-light">
+                Danh mục:&nbsp;{selectedPost.catalog}
+              </p>
+              <p className="text-[14px]">
+                Xuất bản:&nbsp;
+                {new Date(selectedPost.updatedAt).toLocaleDateString('vi-VN')}
+              </p>
+              <hr className="my-4" />
               <div
-                key={post._id}
-                className="cursor-pointer rounded border p-4 shadow transition hover:shadow-lg"
-                onClick={() => handlePostSelect(post)}
-              >
-                <img src={post.imageUrl} alt="Ảnh đại diện" className='w-full h-[250px] object-cover' />
-                <p className="text-[30px] font-bold">{post.title}</p>
-                <p className="font-light text-[14px]">Danh mục:&nbsp;{post.catalog}</p>
-                <p className="text-[14px]">
-                  Xuất bản:&nbsp;
-                  {new Date(post.updatedAt).toLocaleDateString('vi-VN')}
-                </p>
+                dangerouslySetInnerHTML={{ __html: selectedPost.content }}
+                className="text-[18px]"
+              ></div>
+            </div>
+          )}
+
+          <div>
+            <h2 className="mb-6 text-[24px] font-semibold">Bài viết khác</h2>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {otherPosts.map(post => (
                 <div
-                  dangerouslySetInnerHTML={{ __html: post.content }}
-                  className="line-clamp-6 text-[18px]"
-                ></div>{' '}
-              </div>
-            ))}
+                  key={post._id}
+                  className="cursor-pointer rounded border p-4 shadow transition hover:shadow-lg"
+                  onClick={() => handlePostSelect(post)}
+                >
+                  <img
+                    src={post.imageUrl}
+                    alt="Ảnh đại diện"
+                    className="h-[250px] w-full object-cover"
+                  />
+                  <p className="text-[30px] font-bold">{post.title}</p>
+                  <p className="text-[14px] font-light">
+                    Danh mục:&nbsp;{post.catalog}
+                  </p>
+                  <p className="text-[14px]">
+                    Xuất bản:&nbsp;
+                    {new Date(post.updatedAt).toLocaleDateString('vi-VN')}
+                  </p>
+                  <div
+                    dangerouslySetInnerHTML={{ __html: post.content }}
+                    className="line-clamp-6 text-[18px]"
+                  ></div>{' '}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -74,4 +84,5 @@ const TipsAndTricksPage: React.FC = () => {
   );
 };
 
-export default TipsAndTricksPage
+export default TipsAndTricksPage;
+
