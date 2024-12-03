@@ -1,13 +1,14 @@
 import React, { ReactNode, useCallback, useEffect, useState } from 'react';
 import { Button, Drawer, Menu } from 'react-daisyui';
 import { RxHamburgerMenu } from 'react-icons/rx';
-import { IoSettingsSharp } from 'react-icons/io5';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { FaHome, FaChevronDown, FaMagic } from 'react-icons/fa';
 import { IconType } from 'react-icons/lib';
 import DarkMode from '../orther/darkmode/DarkMode';
 import { Logo } from '../../assets/images';
 import { RiPagesLine } from 'react-icons/ri';
+import { SlClose } from 'react-icons/sl';
+// import { IoSettingsSharp } from 'react-icons/io5';
 
 interface HeaderResponsiveProps {
   Title_NavbarMobile: ReactNode;
@@ -22,7 +23,7 @@ interface MenuItem {
 const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
   Title_NavbarMobile
 }) => {
-  const [leftVisible, setLeftVisible] = useState(false);
+  // const [leftVisible, setLeftVisible] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
   const [rightVisible, setRightVisible] = useState(false);
 
@@ -81,9 +82,9 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
     setOpenSubmenu(prev => (prev === name ? null : name));
   };
 
-  const toggleLeftVisible = useCallback(() => {
-    setLeftVisible(visible => !visible);
-  }, []);
+  // const toggleLeftVisible = useCallback(() => {
+  //   setLeftVisible(visible => !visible);
+  // }, []);
 
   const toggleRightVisible = useCallback(() => {
     setRightVisible(visible => !visible);
@@ -93,10 +94,56 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
     <div className="fixed z-[99999] block h-[70px] w-full bg-primary xl:hidden">
       <div className="flex flex-col px-2 xl:hidden xl:px-0">
         <div className="flex items-center justify-between">
-          <div className="z-50">
+          {/* <div className="z-50">
             <Drawer
               open={leftVisible}
               onClickOverlay={toggleLeftVisible}
+              side={
+                <Menu className="fixed h-full w-[280px] bg-white dark:bg-gray-800">
+                  {/* LOGO */}
+          {/* <div className="flex items-center justify-center">
+                    <img
+                      className="mb-5 rounded-full object-cover"
+                      width={120}
+                      loading="lazy"
+                      src={Logo}
+                      alt="LOGO"
+                    />
+                  </div>
+                  <div className="w-full space-y-5">
+                    <div className="flex flex-row items-center justify-between rounded-md bg-gray-700 bg-opacity-20 p-2">
+                      <p className="text-lg font-light text-black dark:text-white">
+                        Giao Diện
+                      </p>
+                      <DarkMode />
+                    </div>
+                  </div>
+                </Menu>
+              }
+            > */}
+          {/*  */}
+          {/*  */}
+          {/* <div
+                onClick={toggleLeftVisible}
+                className="flex flex-row items-center justify-center gap-2 py-4 text-2xl text-black dark:text-white xl:hidden"
+              >
+                <div className="rounded-md p-1 text-[20px] text-white">
+                  <IoSettingsSharp />
+                </div>
+              </div>
+            </Drawer>
+          </div> */}
+          {/* Title */}
+          {/*  */}
+          {/*  */}
+          <p className="text-base font-bold uppercase text-white">
+            {Title_NavbarMobile}
+          </p>
+          {/* RightVisible */}
+          <div className="z-50">
+            <Drawer
+              open={rightVisible}
+              onClickOverlay={toggleRightVisible}
               side={
                 <Menu className="fixed h-full w-[280px] bg-white dark:bg-gray-800">
                   {/* LOGO */}
@@ -108,6 +155,11 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                       src={Logo}
                       alt="LOGO"
                     />
+                  </div>
+                  {/* Orther */}
+                  <div className="flex w-full items-center justify-between">
+                    <div></div>
+                    <DarkMode />
                   </div>
                   {/* Menu */}
                   {menuItems.map(item => {
@@ -185,57 +237,15 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
               {/*  */}
               {/*  */}
               <div
-                onClick={toggleLeftVisible}
-                className="flex flex-row items-center justify-center gap-2 py-4 text-2xl text-black dark:text-white xl:hidden"
-              >
-                <div className="rounded-md p-1 text-[25px] text-white">
-                  <RxHamburgerMenu />
-                </div>
-              </div>
-            </Drawer>
-          </div>
-          {/* Title */}
-          {/*  */}
-          {/*  */}
-          <p className="text-base font-bold uppercase text-white">
-            {Title_NavbarMobile}
-          </p>
-          {/* RightVisible */}
-          <div className="z-50">
-            <Drawer
-              open={rightVisible}
-              onClickOverlay={toggleRightVisible}
-              side={
-                <Menu className="fixed h-full w-[280px] bg-white dark:bg-gray-800">
-                  {/* LOGO */}
-                  <div className="flex items-center justify-center">
-                    <img
-                      className="mb-5 rounded-full object-cover"
-                      width={120}
-                      loading="lazy"
-                      src={Logo}
-                      alt="LOGO"
-                    />
-                  </div>
-                  <div className="w-full space-y-5">
-                    <div className="flex flex-row items-center justify-between rounded-md bg-gray-700 bg-opacity-20 p-2">
-                      <p className="text-lg font-light text-black dark:text-white">
-                        Giao Diện
-                      </p>
-                      <DarkMode />
-                    </div>
-                  </div>
-                </Menu>
-              }
-            >
-              {/*  */}
-              {/*  */}
-              <div
                 onClick={toggleRightVisible}
                 className="flex flex-row items-center justify-center gap-2 py-4 text-2xl dark:text-white xl:hidden"
               >
-                <div className="rounded-md p-1 text-[20px] text-white">
-                  <IoSettingsSharp />
+                <div
+                  className={`transform rounded-md p-1 text-[25px] text-white transition-transform duration-300 ease-in-out ${
+                    rightVisible ? 'rotate-180 animate-ping' : 'rotate-0'
+                  }`}
+                >
+                  {rightVisible ? <SlClose /> : <RxHamburgerMenu />}
                 </div>
               </div>
             </Drawer>
