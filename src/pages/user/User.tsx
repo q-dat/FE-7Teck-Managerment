@@ -4,6 +4,7 @@ import Header from '../../components/UserPage/Header';
 import FooterFC from '../../components/UserPage/Footer';
 import ContactForm from '../../components/UserPage/ContactForm';
 import ScrollToTopButton from '../../components/orther/scrollToTop/ScrollToTopButton';
+import NavBottom from '../../components/UserPage/NavBottom';
 
 const User: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const User: React.FC = () => {
       <Outlet />
       <ContactForm />
       <FooterFC />
+      <NavBottom/>
     </div>
   );
 };

@@ -103,7 +103,7 @@ const PriceListPage: React.FC = () => {
   return (
     <div className="pb-[20px] xl:pt-[80px]">
       <HeaderResponsive Title_NavbarMobile="Bảng Giá Thu Mua" />
-      <div className="pt-[70px] xl:pt-0">
+      <div className="pt-[60px] xl:pt-0">
         <div className="breadcrumbs glass px-[10px] py-2 text-sm text-black dark:text-white lg:px-20">
           <ul className="font-light">
             <li>
