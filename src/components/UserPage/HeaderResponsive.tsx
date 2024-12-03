@@ -91,7 +91,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
   }, []);
 
   return (
-    <div className="fixed z-[99999] block h-[60px] w-full bg-gradient-to-r from-primary via-primary to-secondary box-decoration-clone px-2 xl:hidden xl:px-0">
+    <div className="fixed z-[99999] block h-[60px] w-full bg-gradient-to-r from-primary via-primary to-primary box-decoration-clone px-2 xl:hidden xl:px-0">
       <div className="flex flex-row items-center justify-between">
         {/* <div className="z-50">
             <Drawer
