@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
-import { PostContext } from '../../../context/PostContext';
+import { PostContext } from '../../../context/post/PostContext';
 
 const TipsAndTricksPage: React.FC = () => {
   const { posts, getAllPosts } = useContext(PostContext);

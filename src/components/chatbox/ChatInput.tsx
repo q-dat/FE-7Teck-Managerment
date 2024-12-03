@@ -24,7 +24,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ sender }) => {
   };
 
   return (
-    <div className="relative mt-5 flex w-full items-center justify-between gap-x-2 rounded-lg border p-1 shadow-inner">
+    <div className="relative mt-5 flex w-full items-center justify-between gap-x-2 rounded-lg border p-1 shadow">
       <input
         className="w-full rounded-md p-1 text-black focus:outline-none"
         type="text"
@@ -35,10 +35,10 @@ const ChatInput: React.FC<ChatInputProps> = ({ sender }) => {
       <Button
         size="xs"
         color="primary"
-        className="absolute outline outline-offset-2 right-2  rounded-md  text-white"
+        className="absolute right-2 rounded-md text-white outline outline-offset-2"
         onClick={handleSend}
       >
-        <IoPaperPlane/>
+        <IoPaperPlane />
         Gửi
       </Button>
     </div>

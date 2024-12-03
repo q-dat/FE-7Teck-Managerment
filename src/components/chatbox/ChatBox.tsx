@@ -25,7 +25,7 @@ const ChatBox: React.FC<ChatBoxProps> = ({ sender }) => {
   }, [messages]);
   return (
     <div
-      ref={chatBoxRef}
+      ref={chatBoxRef}  
       className="h-[300px] w-[300px] space-y-2 overflow-y-auto scrollbar-hide xl:h-[300px]"
     >
       {messages.map(message => (
@@ -33,10 +33,10 @@ const ChatBox: React.FC<ChatBoxProps> = ({ sender }) => {
           key={message._id}
           className={`w-full rounded-md bg-white text-black ${message.sender}`}
         >
-          <div className="rounded-md border border-dashed border-gray-50 p-1">
-            <p className="font-semibold">
+          <div className="rounded-md border border-dotted shadow border-gray-50 p-1">
+            <p className="font-light text-xs text-black">
               {message.sender === sender ? 'Bạn' : 'Hỗ trợ'}:
-              <span className="w-full font-light text-blue-500">
+              <span className="w-full text-sm font-semibold text-blue-500">
                 {' '}
                 {message.content}
               </span>
