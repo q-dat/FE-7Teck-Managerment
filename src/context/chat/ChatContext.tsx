@@ -8,16 +8,10 @@ import React, {
 } from 'react';
 import io from 'socket.io-client';
 import axios from '../../config/axiosConfig';
-
-type Message = {
-  _id: string;
-  sender: 'user' | 'admin';
-  content: string;
-  timestamp: string;
-};
+import { IMessage } from '../../types/chat/chat';
 
 type ChatContextType = {
-  messages: Message[];
+  messages: IMessage[];
   sendMessage: (content: string, sender: 'user' | 'admin') => void;
   fetchMessages: () => void;
 };
@@ -33,11 +27,11 @@ const ChatContext = createContext<ChatContextType | undefined>(undefined);
 export const ChatProvider: React.FC<{ children: ReactNode }> = ({
   children
 }) => {
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<IMessage[]>([]);
 
   const fetchMessages = async () => {
     try {
-      const response = await axios.get<Message[]>('/api/messages');
+      const response = await axios.get<IMessage[]>('/api/messages');
       setMessages(response.data);
     } catch (error) {
       console.error('Không thể tải tin nhắn:', error);
@@ -49,7 +43,10 @@ export const ChatProvider: React.FC<{ children: ReactNode }> = ({
     async (content: string, sender: 'user' | 'admin') => {
       try {
         const newMessage = { content, sender };
-        const response = await axios.post<Message>('/api/messages', newMessage);
+        const response = await axios.post<IMessage>(
+          '/api/messages',
+          newMessage
+        );
         socket.emit('send_message', response.data);
       } catch (error) {
         console.error('Không thể gửi tin nhắn:', error);
@@ -59,7 +56,7 @@ export const ChatProvider: React.FC<{ children: ReactNode }> = ({
   );
 
   useEffect(() => {
-    socket.on('new_message', (message: Message) => {
+    socket.on('new_message', (message: IMessage) => {
       setMessages(prevMessages => [...prevMessages, message]);
     });
 
