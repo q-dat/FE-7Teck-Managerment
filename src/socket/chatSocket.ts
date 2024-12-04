@@ -1,5 +1,5 @@
 import io from 'socket.io-client';
-import { IMessage } from '../types/chat/chat';
+import { IMessage } from '../types/type/chat/chat';
 
 // Khởi tạo socket
 const socket = io(import.meta.env.VITE_API_PORT, {

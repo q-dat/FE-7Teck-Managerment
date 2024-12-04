@@ -13,7 +13,7 @@ import {
   onSocketDisconnect,
   offSocketEvents
 } from '../../socket/chatSocket';
-import { IMessage } from '../../types/chat/chat';
+import { IMessage } from '../../types/type/chat/chat';
 import { fetchMessagesApi, sendMessageApi } from '../../axios/api/chatApi';
 
 type ChatContextType = {
