@@ -6,9 +6,15 @@ import React, {
   ReactNode,
   useCallback
 } from 'react';
-import io from 'socket.io-client';
-import axios from '../../config/axiosConfig';
+import {
+  listenToNewMessages,
+  emitMessage,
+  onSocketConnect,
+  onSocketDisconnect,
+  offSocketEvents
+} from '../../socket/chatSocket';
 import { IMessage } from '../../types/chat/chat';
+import { fetchMessagesApi, sendMessageApi } from '../../axios/api/chatApi';
 
 type ChatContextType = {
   messages: IMessage[];
@@ -16,38 +22,27 @@ type ChatContextType = {
   fetchMessages: () => void;
 };
 
-// Lấy URL từ biến môi trường
-const socket = io(import.meta.env.VITE_API_PORT, {
-  transports: ['websocket'],
-  withCredentials: true
-});
-
 const ChatContext = createContext<ChatContextType | undefined>(undefined);
 
 export const ChatProvider: React.FC<{ children: ReactNode }> = ({
   children
 }) => {
   const [messages, setMessages] = useState<IMessage[]>([]);
-
+  // Get All
   const fetchMessages = async () => {
     try {
-      const response = await axios.get<IMessage[]>('/api/messages');
-      setMessages(response.data);
+      const fetchedMessages = await fetchMessagesApi();
+      setMessages(fetchedMessages);
     } catch (error) {
       console.error('Không thể tải tin nhắn:', error);
     }
   };
-
-  // Gửi tin nhắn
+  //Post
   const sendMessage = useCallback(
     async (content: string, sender: 'user' | 'admin') => {
       try {
-        const newMessage = { content, sender };
-        const response = await axios.post<IMessage>(
-          '/api/messages',
-          newMessage
-        );
-        socket.emit('send_message', response.data);
+        const message = await sendMessageApi(content, sender);
+        emitMessage(message); // Phát tin nhắn qua socket
       } catch (error) {
         console.error('Không thể gửi tin nhắn:', error);
       }
@@ -56,27 +51,20 @@ export const ChatProvider: React.FC<{ children: ReactNode }> = ({
   );
 
   useEffect(() => {
-    socket.on('new_message', (message: IMessage) => {
+    listenToNewMessages(message => {
       setMessages(prevMessages => [...prevMessages, message]);
     });
 
-    return () => {
-      socket.off('new_message');
-    };
-  }, []);
-
-  useEffect(() => {
-    socket.on('connect', () => {
+    onSocketConnect(() => {
       console.log('Đã kết nối tới máy chủ Socket.IO');
     });
 
-    socket.on('disconnect', () => {
+    onSocketDisconnect(() => {
       console.log('Đã ngắt kết nối khỏi máy chủ Socket.IO');
     });
 
     return () => {
-      socket.off('connect');
-      socket.off('disconnect');
+      offSocketEvents();
     };
   }, []);
 
