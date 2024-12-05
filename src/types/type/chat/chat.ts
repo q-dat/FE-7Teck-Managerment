@@ -5,7 +5,7 @@ export interface IMessage {
   chat_catalog_id: IChatCatalog;
   sender: 'user' | 'admin';
   content: string;
-  createdAt?: Date;
-  updatedAt?: Date;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
