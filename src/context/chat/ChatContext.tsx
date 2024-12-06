@@ -1,10 +1,9 @@
 import React, {
   createContext,
   useState,
+  useCallback,
   useEffect,
-  useContext,
-  ReactNode,
-  useCallback
+  ReactNode
 } from 'react';
 import {
   listenToNewMessages,
@@ -13,43 +12,92 @@ import {
   onSocketDisconnect,
   offSocketEvents
 } from '../../socket/chatSocket';
-import { IMessage } from '../../types/type/chat/chat';
+import { IMessage } from '../../types/type/chat/chat'; // Import IMessage
 import { fetchMessagesApi, sendMessageApi } from '../../axios/api/chatApi';
+import { AxiosResponse } from 'axios';
 
-type ChatContextType = {
+interface ChatContextType {
   messages: IMessage[];
-  sendMessage: (content: string, sender: 'user' | 'admin') => void;
+  loading: {
+    fetch: boolean;
+    send: boolean;
+  };
+  error: string | null;
   fetchMessages: () => void;
+  sendMessage: (message: IMessage) => Promise<AxiosResponse<any>>;
+}
+
+const defaultContextValue: ChatContextType = {
+  messages: [],
+  loading: {
+    fetch: false,
+    send: false
+  },
+  error: null,
+  fetchMessages: () => {},
+  sendMessage: async () => ({ data: {} }) as AxiosResponse
 };
 
-const ChatContext = createContext<ChatContextType | undefined>(undefined);
+export const ChatContext = createContext<ChatContextType>(defaultContextValue);
 
-export const ChatProvider: React.FC<{ children: ReactNode }> = ({
-  children
-}) => {
+export const ChatProvider = ({ children }: { children: ReactNode }) => {
   const [messages, setMessages] = useState<IMessage[]>([]);
-  // Get All
-  const fetchMessages = async () => {
+  const [loading, setLoading] = useState({
+    fetch: false,
+    send: false
+  });
+  const [error, setError] = useState<string | null>(null);
+
+  const handleError = (err: any) => {
+    setError(err.response?.data?.message || 'Đã xảy ra lỗi!');
+  };
+
+  const fetchData = async (
+    apiCall: () => Promise<AxiosResponse<any>>,
+    onSuccess: (data: any) => void,
+    requestType: keyof typeof loading
+  ): Promise<AxiosResponse<any>> => {
+    setLoading(prev => ({ ...prev, [requestType]: true }));
+    setError(null);
     try {
-      const fetchedMessages = await fetchMessagesApi();
-      setMessages(fetchedMessages);
-    } catch (error) {
-      console.error('Không thể tải tin nhắn:', error);
+      const response = await apiCall();
+      onSuccess(response.data);
+      return response;
+    } catch (err: any) {
+      handleError(err);
+      throw err;
+    } finally {
+      setLoading(prev => ({ ...prev, [requestType]: false }));
     }
   };
-  //Post
+
+  // Get All
+  const fetchMessages = useCallback(() => {
+    fetchData(
+      fetchMessagesApi,
+      data => {
+        const chats = data?.chats || [];
+        setMessages(chats);
+      },
+      'fetch'
+    );
+  }, []);
+
+  // Post
   const sendMessage = useCallback(
-    async (content: string, sender: 'user' | 'admin') => {
-      try {
-        const message = await sendMessageApi(content, sender);
-        emitMessage(message); // Phát tin nhắn qua socket
-      } catch (error) {
-        console.error('Không thể gửi tin nhắn:', error);
-      }
+    async (chatMessage: IMessage): Promise<AxiosResponse<any>> => {
+      return await fetchData(
+        () => sendMessageApi(chatMessage),
+        data => {
+          if (data) emitMessage(data);
+        },
+        'send'
+      );
     },
     []
   );
 
+  // Socket Connect
   useEffect(() => {
     listenToNewMessages(message => {
       setMessages(prevMessages => [...prevMessages, message]);
@@ -68,15 +116,27 @@ export const ChatProvider: React.FC<{ children: ReactNode }> = ({
     };
   }, []);
 
+  useEffect(() => {
+    fetchMessages();
+  }, [fetchMessages]);
+
   return (
-    <ChatContext.Provider value={{ messages, sendMessage, fetchMessages }}>
+    <ChatContext.Provider
+      value={{
+        messages,
+        loading,
+        error,
+        fetchMessages,
+        sendMessage
+      }}
+    >
       {children}
     </ChatContext.Provider>
   );
 };
 
 export const useChat = (): ChatContextType => {
-  const context = useContext(ChatContext);
+  const context = React.useContext(ChatContext);
   if (!context) {
     throw new Error('useChat phải được sử dụng trong ChatProvider');
   }

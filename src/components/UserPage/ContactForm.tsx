@@ -8,7 +8,6 @@ import {
 } from '../../assets/images';
 import { FaUsers } from 'react-icons/fa';
 import ChatBox from '../chatbox/ChatBox';
-import ChatInput from '../chatbox/ChatInput';
 import { IoIosCloseCircle } from 'react-icons/io';
 import { IoChatbubbleEllipsesOutline } from 'react-icons/io5';
 import { MdPhoneInTalk } from 'react-icons/md';
@@ -74,7 +73,7 @@ const ContactForm: React.FC = () => {
             </div>
           </div>
           <ChatBox sender="user" />
-          <ChatInput sender="user" />
+          {/* <ChatInput sender="user" /> */}
           {/*  */}
           <div className="flex justify-between">
             {/*  */}

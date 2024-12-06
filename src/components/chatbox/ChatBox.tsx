@@ -1,8 +1,8 @@
-// import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { ChatCatalogContext } from '../../context/chat/ChatCatalogContext';
 import { useChat } from '../../context/chat/ChatContext';
-import { useState, useRef, useEffect, useContext } from 'react';
 import { IChatCatalog } from '../../types/type/chat/chat-catalog';
+import ChatInput from './ChatInput';
 
 type ChatBoxProps = {
   sender: 'user' | 'admin';
@@ -24,7 +24,6 @@ const ChatBox: React.FC<ChatBoxProps> = ({ sender }) => {
   const handleInfoSubmit = async () => {
     if (username.trim() && phone.trim()) {
       try {
-        // Tạo danh mục chat mới
         const newChatCatalog: Omit<IChatCatalog, '_id'> = {
           username,
           phone,
@@ -115,11 +114,12 @@ const ChatBox: React.FC<ChatBoxProps> = ({ sender }) => {
               </span>
             </p>
             <p className="text-xs font-light">
-              {new Date(message.createdAt).toLocaleString('vi-VN')}
+              {new Date(message?.createdAt).toLocaleString('vi-VN')}
             </p>
           </div>
         </div>
       ))}
+      <ChatInput sender="user" />
     </div>
   );
 };
