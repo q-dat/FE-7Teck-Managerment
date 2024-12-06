@@ -1,28 +1,101 @@
-import React, { useEffect, useRef } from 'react';
+// import React, { useContext, useEffect, useRef, useState } from 'react';
+import { ChatCatalogContext } from '../../context/chat/ChatCatalogContext';
 import { useChat } from '../../context/chat/ChatContext';
+import { useState, useRef, useEffect, useContext } from 'react';
+import { IChatCatalog } from '../../types/type/chat/chat-catalog';
 
 type ChatBoxProps = {
   sender: 'user' | 'admin';
 };
 
 const ChatBox: React.FC<ChatBoxProps> = ({ sender }) => {
+  const { createChatCatalog } = useContext(ChatCatalogContext);
   const { messages, fetchMessages } = useChat();
 
-  useEffect(() => {
-    fetchMessages();
-  }, []);
-
+  const [isInfoEntered, setIsInfoEntered] = useState(false);
+  const [username, setUsername] = useState('');
+  const [phone, setPhone] = useState('');
   const chatBoxRef = useRef<HTMLDivElement | null>(null);
-
+  //
   useEffect(() => {
     fetchMessages();
   }, []);
+  //
+  const handleInfoSubmit = async () => {
+    if (username.trim() && phone.trim()) {
+      try {
+        // Tạo danh mục chat mới
+        const newChatCatalog: Omit<IChatCatalog, '_id'> = {
+          username,
+          phone,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        };
 
+        const response = await createChatCatalog(newChatCatalog);
+        const createdCatalogId = response.data.savedChatCatalog._id;
+        sessionStorage.setItem('chat_catalog_id', createdCatalogId);
+        setIsInfoEntered(true);
+      } catch (error) {
+        alert('Không thể tạo danh mục chat. Vui lòng thử lại!');
+        console.error('Lỗi khi tạo danh mục chat:', error);
+      }
+    } else {
+      alert('Vui lòng nhập đầy đủ thông tin!');
+    }
+  };
+  //
+  useEffect(() => {
+    if (sender === 'user') {
+      const storedUsername = sessionStorage.getItem('username');
+      const storedPhone = sessionStorage.getItem('phone');
+      if (storedUsername && storedPhone) {
+        setIsInfoEntered(true);
+        setUsername(storedUsername);
+        setPhone(storedPhone);
+      }
+    } else {
+      setIsInfoEntered(true);
+    }
+  }, [sender]);
+
+  //
   useEffect(() => {
     if (chatBoxRef.current) {
       chatBoxRef.current.scrollTop = chatBoxRef.current.scrollHeight;
     }
   }, [messages]);
+
+  if (!isInfoEntered) {
+    return (
+      <div className="flex flex-col items-center justify-center space-y-4 p-4">
+        <h2 className="text-lg font-semibold">
+          Nhập thông tin để bắt đầu chat
+        </h2>
+        <input
+          type="text"
+          placeholder="Tên của bạn"
+          value={username}
+          onChange={e => setUsername(e.target.value)}
+          className="w-full rounded-md border p-2 text-sm"
+        />
+        <input
+          type="text"
+          placeholder="Số điện thoại"
+          value={phone}
+          onChange={e => setPhone(e.target.value)}
+          className="w-full rounded-md border p-2 text-sm"
+        />
+        <button
+          onClick={handleInfoSubmit}
+          className="rounded-md bg-blue-500 px-4 py-2 text-white"
+        >
+          Bắt đầu chat
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div
       ref={chatBoxRef}

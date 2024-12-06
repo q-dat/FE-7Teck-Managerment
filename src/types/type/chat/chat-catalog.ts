@@ -1,7 +1,8 @@
 export interface IChatCatalog {
-  _id: string;
+  _id?: string;
   username: string;
   phone: string;
   createdAt: Date;
   updatedAt: Date;
 }
+
