@@ -33,8 +33,9 @@ const ChatBox: React.FC<ChatBoxProps> = ({ sender }) => {
 
         const response = await createChatCatalog(newChatCatalog);
         const createdCatalogId = response.data.savedChatCatalog._id;
+        sessionStorage.setItem('username', username);
         sessionStorage.setItem('chat_catalog_id', createdCatalogId);
-        setIsInfoEntered(true);
+        setIsInfoEntered(true); 
       } catch (error) {
         alert('Không thể tạo danh mục chat. Vui lòng thử lại!');
         console.error('Lỗi khi tạo danh mục chat:', error);
@@ -47,11 +48,9 @@ const ChatBox: React.FC<ChatBoxProps> = ({ sender }) => {
   useEffect(() => {
     if (sender === 'user') {
       const storedUsername = sessionStorage.getItem('username');
-      const storedPhone = sessionStorage.getItem('phone');
-      if (storedUsername && storedPhone) {
+      if (storedUsername ) {
         setIsInfoEntered(true);
         setUsername(storedUsername);
-        setPhone(storedPhone);
       }
     } else {
       setIsInfoEntered(true);
