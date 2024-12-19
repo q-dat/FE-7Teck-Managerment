@@ -8,24 +8,18 @@ import LoadingPage from './pages/LoadingPage/LoadingPage.tsx';
 import { PhoneProvider } from './context/phone/PhoneContext.tsx';
 import { PostProvider } from './context/post/PostContext.tsx';
 import { ToastContainer } from 'react-toastify';
-import { ChatProvider } from './context/chat/ChatContext.tsx';
-import { ChatCatalogProvider } from './context/chat/ChatCatalogContext.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>
       <Suspense fallback={<LoadingPage loading={true} />}>
         <ErrorBoundary>
-          <ChatCatalogProvider>
-            <ChatProvider>
-              <PostProvider>
-                <PhoneProvider>
-                  <App />
-                  <ToastContainer />
-                </PhoneProvider>
-              </PostProvider>
-            </ChatProvider>
-          </ChatCatalogProvider>
+          <PostProvider>
+            <PhoneProvider>
+              <App />
+              <ToastContainer />
+            </PhoneProvider>
+          </PostProvider>
         </ErrorBoundary>
       </Suspense>
     </BrowserRouter>

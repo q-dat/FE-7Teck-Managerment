@@ -21,18 +21,9 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
   const isLoading = loading.create;
   const { register, handleSubmit, reset, setValue } = useForm<IPhone>();
 
-  // Các options cho select
-  const specialFeaturesOptions = [
-    { value: 'Waterproof', label: 'Waterproof' },
-    { value: '5G', label: '5G' },
-    { value: 'Dual SIM', label: 'Dual SIM' }
-    // Các lựa chọn khác...
-  ];
-
   const wifiOptions = [
     { value: 'Wi-Fi 5', label: 'Wi-Fi 5' },
     { value: 'Wi-Fi 6', label: 'Wi-Fi 6' }
-    // Các lựa chọn khác...
   ];
 
   // Hàm xử lý submit
@@ -52,12 +43,6 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
       data.append('thumbnail', formData.thumbnail[0]);
     }
 
-    // Xử lý trường mảng đặc biệt (specialFeatures) chọn qua react-select
-    if (formData.specialFeatures) {
-      formData.specialFeatures.forEach(feature => {
-        data.append('specialFeatures[]', feature); // Chỉ cần lưu giá trị feature (chuỗi)
-      });
-    }
 
     // Xử lý các mảng khác như wifi, gps...
     if (formData.connectivity?.wifi) {
@@ -139,23 +124,6 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
               placeholder="Ảnh thumbnail"
             />
 
-            {/* React Select cho specialFeatures */}
-            <div className="my-2">
-              <label className="block text-sm">Các tính năng đặc biệt</label>
-              <Select
-                isMulti
-                name="specialFeatures"
-                options={specialFeaturesOptions}
-                onChange={(
-                  selectedOptions: MultiValue<{ value: string; label: string }>
-                ) => {
-                  const selectedValues = selectedOptions.map(
-                    option => option.value
-                  ); // Lấy giá trị 'value'
-                  setValue('specialFeatures', selectedValues); // Cập nhật form với mảng chuỗi
-                }}
-              />
-            </div>
 
             {/* React Select cho Wi-Fi */}
             <div className="my-2">

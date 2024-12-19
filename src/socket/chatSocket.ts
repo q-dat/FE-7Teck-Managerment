@@ -1,6 +1,6 @@
 import io from 'socket.io-client';
-import { IMessage } from '../types/type/chat/chat';
 
+type IMessage = {};
 // Khởi tạo socket
 const socket = io(import.meta.env.VITE_API_PORT, {
   transports: ['websocket'],
@@ -34,3 +34,4 @@ export const offSocketEvents = (): void => {
   socket.off('connect');
   socket.off('disconnect');
 };
+
