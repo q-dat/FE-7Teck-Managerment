@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import DefaultLayout from '../layout/DefaultLayout';
 // UserPage
 const User = lazy(() => import('../pages/user/User'));
-const HomePage = lazy(() => import('../pages/user/HomePage'));
+const HomePage = lazy(() => import('../pages/user/HomePage/HomePage'));
 const ContactPage = lazy(() => import('../pages/user/ContactPage'));
 const PhonePage = lazy(() => import('../pages/user/PhonePage'));
 const ProductDetailPage = lazy(() => import('../pages/user/ProductDetailPage'));
