@@ -67,7 +67,9 @@ const PhoneFC: React.FC = () => {
   };
 
   return (
-    <div className={`relative ${phones.length === 0 ? 'hidden' : ''}`}>
+    <div
+      className={`relative rounded-lg bg-white shadow ${phones.length === 0 ? 'hidden' : ''}`}
+    >
       {/* Title */}
       <div className="my-5 flex w-full flex-col items-center justify-center">
         <p className="font-title bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold text-transparent xl:text-[40px]">
@@ -81,10 +83,7 @@ const PhoneFC: React.FC = () => {
       >
         {phones.map(phone => (
           <Link to="phone-detail">
-            <div
-              key={phone._id}
-              className="relative rounded-md bg-white shadow shadow-gray-50"
-            >
+            <div key={phone._id} className="relative rounded-md bg-white">
               <div className="flex w-[185px] flex-col items-center justify-center xl:w-[220px]">
                 <img
                   className="h-[185px] w-[185px] rounded-md object-cover xl:h-[250px] xl:w-[220px]"

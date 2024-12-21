@@ -51,7 +51,7 @@ const HomePage: React.FC = () => {
             />
           </div>
         </div>
-        <div className="relative mx-2 mt-2 flex flex-col items-center justify-between gap-2 rounded-2xl bg-gradient-to-tr from-primary to-black py-5 font-sub uppercase text-white shadow-headerMenu shadow-black md:flex-row xl:mx-[100px]">
+        <div className="relative mx-2 my-10 flex flex-col items-center justify-between gap-2 rounded-2xl bg-gradient-to-tr from-primary to-black py-5 font-sub uppercase text-white shadow-headerMenu shadow-black md:flex-row xl:mx-[100px]">
           <div className="absolute right-1 top-1 block md:hidden">
             <img
               src={Logo}
