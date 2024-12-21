@@ -90,9 +90,13 @@ const MacbookFC: React.FC = () => {
   };
   return (
     <div className={`relative ${phones.length === 0 ? 'hidden' : ''}`}>
-      <p className="font-title my-5 text-start text-2xl font-bold text-primary xl:text-2xl">
-        MacBook
-      </p>
+      {/* Title */}
+      <div className="my-5 flex w-full flex-col items-center justify-center">
+        <p className="font-title bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold text-transparent xl:text-[40px]">
+          MacBook
+        </p>
+        <div className="h-[1px] w-[100px] animate-ping bg-primary"></div>
+      </div>
       <div
         ref={scrollRefMacbook}
         className="flex flex-row items-center justify-start gap-3 overflow-x-auto scroll-smooth px-2 py-1 scrollbar-hide xl:gap-5"

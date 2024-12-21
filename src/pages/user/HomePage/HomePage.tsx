@@ -1,9 +1,15 @@
 import React from 'react';
-
+import {
+  TbDeviceMobileCog,
+  TbDeviceMobileSearch,
+  TbDeviceMobileUp,
+  TbTruckDelivery
+} from 'react-icons/tb';
 import {
   BannerDesktop,
   BannerTablet,
-  BannerMobile
+  BannerMobile,
+  Logo
 } from '../../../assets/images';
 import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
 import PhoneFC from './PhoneFC';
@@ -45,7 +51,43 @@ const HomePage: React.FC = () => {
             />
           </div>
         </div>
-        <div className="space-y-10 px-2 xl:px-[130px]">
+        <div className="relative mx-2 mt-2 flex flex-col items-center justify-between gap-2 rounded-2xl bg-gradient-to-tr from-primary to-black py-5 font-sub uppercase text-white shadow-headerMenu shadow-black md:flex-row xl:mx-[100px]">
+          <div className="absolute right-1 top-1 block md:hidden">
+            <img
+              src={Logo}
+              className="h-[50px] w-[50px] rounded-box"
+              alt="7Teck"
+            />
+          </div>
+          <div className="flex w-full gap-2 text-lg md:text-xs xl:text-lg">
+            <TbDeviceMobileSearch className="text-[50px]" />
+            <p className="bg-gradient-to-tl from-primary via-white to-white bg-clip-text text-transparent">
+              Bao test 7 ngày.
+            </p>
+          </div>
+          <div className="flex w-full gap-2 text-lg md:text-xs xl:text-lg">
+            <TbDeviceMobileUp className="text-[50px]" />
+            <p className="bg-gradient-to-tl from-primary via-white to-white bg-clip-text text-transparent">
+              Thu cũ đổi mới <br />
+              hỗ trợ giá lên đời.
+            </p>
+          </div>
+          <div className="flex w-full gap-2 text-lg md:text-xs xl:text-lg">
+            <TbDeviceMobileCog className="text-[50px]" />
+            <p className="bg-gradient-to-tl from-primary via-white to-white bg-clip-text text-transparent">
+              Bảo hành
+              <br /> 3 tháng/ 6 tháng/ 1 năm.
+            </p>
+          </div>
+          <div className="flex w-full gap-2 px-2 text-lg md:px-0 md:text-xs xl:text-lg">
+            <TbTruckDelivery className="text-[50px]" />
+            <p className="bg-gradient-to-tl from-primary via-white to-white bg-clip-text text-transparent">
+              FreeShip thành phố HCM <br />
+              và các tỉnh lân cận.
+            </p>
+          </div>
+        </div>
+        <div className="space-y-10 px-2 xl:px-[100px]">
           {/* Phone */}
           <PhoneFC />
           {/* Ipad */}
