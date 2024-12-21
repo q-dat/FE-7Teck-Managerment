@@ -7,8 +7,8 @@ export interface IPhone {
   des?: string; // Product description // Mô tả sản phẩm
   status: string; // Product status // Trạng thái sản phẩm
   price: number; // Product price // Giá sản phẩm
-  createdAt: Date; // Creation date // Thời gian tạo
-  updatedAt: Date; // Last updated date // Thời gian cập nhật
+  createdAt: string; // Creation date // Thời gian tạo
+  updatedAt: string; // Last updated date // Thời gian cập nhật
   configuration_and_memory: {
     // Configuration and memory // Cấu hình và bộ nhớ
     operating_system: string; // Operating system // Hệ điều hành

@@ -80,7 +80,6 @@ const PhoneManager: React.FC = () => {
           }
         />
       </div>
-
       <TableListAdmin
         Title_TableListAdmin={`Danh Sách Điện Thoại (${phones.length})`}
         table_head={
@@ -91,9 +90,15 @@ const PhoneManager: React.FC = () => {
             <span>Hình Ảnh</span>
             <span>Ảnh Phụ</span>
             <span>Giá</span>
-            <span>Số Lượng</span>
             <span>Trạng Thái</span>
             <span>Mô Tả</span>
+            <span>Ngày tạo</span>
+            <span>Cấu hình và bộ nhớ</span>
+            <span>Camera và màn hình</span>
+            <span>Pin và sạc</span>
+            <span>Tiện ích</span>
+            <span>Kết nối</span>
+            <span>Thiết kế và chất liệu</span>
             <span>Hành Động</span>
           </Table.Head>
         }
@@ -123,8 +128,235 @@ const PhoneManager: React.FC = () => {
                 <span>{(phone.price * 1000).toLocaleString('vi-VN')} VND</span>
                 <span>{phone.status}</span>
                 <span>{phone.des || 'Không có mô tả!'}</span>
-             
+                <span>
+                  {new Date(phone?.createdAt).toLocaleString('vi-VN')}
+                </span>
+                {/* Cấu hình và bộ nhớ */}
+                <span>
+                  <details>
+                    <summary>Chi tiết</summary>
+                    <div>
+                      <p>
+                        <span>Hệ điều hành:</span>
+                        {phone.configuration_and_memory?.operating_system}
+                      </p>
+                      <p>
+                        <span>Chip xử lý CPU:</span>
+                        {phone.configuration_and_memory?.cpu_chip}
+                      </p>
+                      <p>
+                        <span>Tốc độ CPU</span>
+                        {phone.configuration_and_memory?.cpu_speed}
+                      </p>
+                      <p>
+                        <span>Chip đồ hoạ(GPU)</span>
+                        {phone.configuration_and_memory?.gpu}
+                      </p>
+                      <p>
+                        <span>RAM</span>
+                        {phone.configuration_and_memory?.ram}
+                      </p>
+                      <p>
+                        <span>Dung lượng lưu trữ</span>
+                        {phone.configuration_and_memory?.storage_capacity}
+                      </p>
+                      <p>
+                        <span>Dung lượng còn lại</span>
+                        {phone.configuration_and_memory?.remaining_capacity}
+                      </p>
+                      <p>
+                        <span>Thẻ nhớ</span>
+                        {phone.configuration_and_memory?.memory_card}
+                      </p>
+                      <p>
+                        <span>Danh bạ</span>
+                        {phone.configuration_and_memory?.contacts}
+                      </p>
+                    </div>
+                  </details>
+                </span>
+                {/* Camera và màn hình */}
+                <span>
+                  <details>
+                    <summary>Chi tiết</summary>
+                    <div>
+                      <p>
+                        <span>Độ phân giải cammera sau:</span>
+                        {phone.camera_and_screen?.rear_camera_resolution}
+                      </p>
+                      <p>
+                        <span>Quay phim camera sau:</span>
+                        {phone.camera_and_screen?.rear_camera_video}
+                      </p>
+                      <p>
+                        <span> Đèn Flash camera sau:</span>
+                        {phone.camera_and_screen?.rear_camera_flash}
+                      </p>
+                      <p>
+                        <span>Tính năng camera sau:</span>
+                        {phone.camera_and_screen?.rear_camera_features}
+                      </p>
+                      <p>
+                        <span> Độ phân giải camera trước:</span>
+                        {phone.camera_and_screen?.front_camera_resolution}
+                      </p>
+                      <p>
+                        <span> Tính năng camera trước:</span>
+                        {phone.camera_and_screen?.front_camera_features}
+                      </p>
+                      <p>
+                        <span> Công nghệ màn hình:</span>
+                        {phone.camera_and_screen?.screen_technology}
+                      </p>
+                      <p>
+                        <span>Độ phân giải màn hình:</span>
+                        {phone.camera_and_screen?.screen_resolution}
+                      </p>
+                      <p>
+                        <span>Màn hình rộng:</span>
+                        {phone.camera_and_screen?.screen_size}
+                      </p>
+                      <p>
+                        <span>Độ sáng tối đa:</span>
+                        {phone.camera_and_screen?.max_brightness}
+                      </p>
+                      <p>
+                        <span>Mặt kính cảm ứng:</span>
+                        {phone.camera_and_screen?.touchscreen_glass}
+                      </p>
+                    </div>
+                  </details>
+                </span>
+                {/* Pin và sạc */}
+                <span>
+                  <details>
+                    <summary>Chi tiết</summary>
+                    <div>
+                      <p>
+                        <span>Dung lượng pin:</span>
+                        {phone.battery_and_charging?.battery_capacity}
+                      </p>
+                      <p>
+                        <span>Loại pin:</span>
+                        {phone.battery_and_charging?.battery_type}
+                      </p>
+                      <p>
+                        <span>Hỗ trợ sạc tối đa:</span>
+                        {phone.battery_and_charging?.max_charging_support}
+                      </p>
+                      <p>
+                        <span>Công nghệ pin:</span>
+                        {phone.battery_and_charging?.battery_technology}
+                      </p>
+                    </div>
+                  </details>
+                </span>
+                {/* Tiện ích */}
+                <span>
+                  <details>
+                    <summary>Chi tiết</summary>
+                    <div>
+                      <p>
+                        <span>Bảo mật nâng cao:</span>
+                        {phone.features?.advanced_security}
+                      </p>
+                      <p>
+                        <span>Tính năng đặc biệt:</span>
+                        {phone.features?.special_features}
+                      </p>
+                      <p>
+                        <span>Kháng nước bụi:</span>
+                        {phone.features?.water_dust_resistant}
+                      </p>
+                      <p>
+                        <span>Ghi âm:</span>
+                        {phone.features?.voice_recording}
+                      </p>
+                      <p>
+                        <span>Radio:</span>
+                        {phone.features?.radio}
+                      </p>
+                      <p>
+                        <span>Xem phim:</span>
+                        {phone.features?.video_playback}
+                      </p>
+                      <p>
+                        <span>Nghe nhạc:</span>
+                        {phone.features?.music_playback}
+                      </p>
+                    </div>
+                  </details>
+                </span>
+                {/* Kết nối */}
+                <span>
+                  <details>
+                    <summary>Chi tiết</summary>
+                    <div>
+                      <p>
+                        <span>Mạng di động:</span>
+                        {phone.connectivity?.mobile_network}
+                      </p>
+                      <p>
+                        <span>Sim:</span>
+                        {phone.connectivity?.sim}
+                      </p>
+                      <p>
+                        <span>Wi-Fi:</span>
+                        {phone.connectivity?.wifi}
+                      </p>
+                      <p>
+                        <span>GPS:</span>
+                        {phone.connectivity?.gps}
+                      </p>
+                      <p>
+                        <span>Bluetooth</span>
+                        {phone.connectivity?.bluetooth}
+                      </p>
+                      <p>
+                        <span>Cổng kết nối/Sạc:</span>
+                        {phone.connectivity?.charging_connection_port}
+                      </p>
+                      <p>
+                        <span>Jack tai nghe:</span>
+                        {phone.connectivity?.headphone_jack}
+                      </p>
+                      <p>
+                        <span>Kết nối khác:</span>
+                        {phone.connectivity?.other_connectivity}
+                      </p>
+                    </div>
+                  </details>
+                </span>
+                {/* Thiết kế và chất liệu */}
+                <span>
+                  <details>
+                    <summary>Chi tiết</summary>
+                    <div>
+                      <p>
+                        <span>Thiết kế:</span>
+                        {phone.design_and_material?.design}
+                      </p>
+                      <p>
+                        <span>Chất liệu:</span>
+                        {phone.design_and_material?.material}
+                      </p>
+                      <p>
+                        <span>Kích thước khối lượng:</span>
+                        {phone.design_and_material?.dimensions_and_weight}
+                      </p>
+                      <p>
+                        <span>Thời điểm ra mắt:</span>
+                        {phone.design_and_material?.release_date}
+                      </p>
+                      <p>
+                        <span>Hãng:</span>
+                        {phone.design_and_material?.brand}
+                      </p>
+                    </div>
+                  </details>
+                </span>
 
+                {/* Hành động */}
                 <span>
                   <details>
                     <summary className="inline cursor-pointer text-base text-warning">

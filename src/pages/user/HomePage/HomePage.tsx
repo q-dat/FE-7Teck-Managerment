@@ -59,27 +59,27 @@ const HomePage: React.FC = () => {
               alt="7Teck"
             />
           </div>
-          <div className="flex w-full gap-2 text-lg md:text-xs xl:text-lg">
+          <div className="flex w-full items-center justify-center gap-2 text-lg md:text-xs xl:text-lg">
             <TbDeviceMobileSearch className="text-[50px]" />
             <p className="bg-gradient-to-tl from-primary via-white to-white bg-clip-text text-transparent">
               Bao test 7 ngày.
             </p>
           </div>
-          <div className="flex w-full gap-2 text-lg md:text-xs xl:text-lg">
+          <div className="flex w-full items-center justify-center gap-2 text-lg md:text-xs xl:text-lg">
             <TbDeviceMobileUp className="text-[50px]" />
             <p className="bg-gradient-to-tl from-primary via-white to-white bg-clip-text text-transparent">
               Thu cũ đổi mới <br />
               hỗ trợ giá lên đời.
             </p>
           </div>
-          <div className="flex w-full gap-2 text-lg md:text-xs xl:text-lg">
+          <div className="flex w-full items-center justify-center gap-2 text-lg md:text-xs xl:text-lg">
             <TbDeviceMobileCog className="text-[50px]" />
             <p className="bg-gradient-to-tl from-primary via-white to-white bg-clip-text text-transparent">
               Bảo hành
               <br /> 3 tháng/ 6 tháng/ 1 năm.
             </p>
           </div>
-          <div className="flex w-full gap-2 px-2 text-lg md:px-0 md:text-xs xl:text-lg">
+          <div className="flex w-full items-center justify-center gap-2 px-2 text-lg md:px-0 md:text-xs xl:text-lg">
             <TbTruckDelivery className="text-[50px]" />
             <p className="bg-gradient-to-tl from-primary via-white to-white bg-clip-text text-transparent">
               FreeShip thành phố HCM <br />
