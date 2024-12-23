@@ -27,6 +27,9 @@ const Header: React.FC = () => {
   // Naviga Active
   const [activeItem, setActiveItem] = useState('Trang Chủ');
   const location = useLocation();
+  //
+  const [showMenu, setShowMenu] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const menuItems: MenuItem[] = [
     {
@@ -88,10 +91,29 @@ const Header: React.FC = () => {
     }
   }, [location.pathname, menuItems]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        setShowMenu(false);
+      } else {
+        setShowMenu(true);
+      }
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
+
   return (
     <div>
       {/* Desktop */}
-      <div className="fixed z-[99999] hidden h-[80px] w-full flex-row items-center justify-evenly bg-white bg-opacity-90 py-2 uppercase shadow-md dark:bg-black dark:bg-opacity-80 xl:flex">
+      <div
+        className={`fixed z-[99999] hidden h-[80px] w-full transform flex-row items-center justify-evenly bg-white bg-opacity-90 py-2 uppercase shadow-md transition-transform delay-100 duration-300 dark:bg-black dark:bg-opacity-80 xl:flex ${
+          showMenu ? 'translate-y-0' : '-translate-y-full'
+        }`}
+      >
         <Link to="/">
           <img
             className="block object-cover dark:hidden"
@@ -149,7 +171,7 @@ const Header: React.FC = () => {
                 </NavLink>
                 {/* SubMenu */}
                 {item.submenu && (
-                  <Menu className="glass absolute top-full m-0 hidden w-[260px] flex-col gap-2 rounded-sm bg-white bg-opacity-40 p-4 shadow-mainMenu group-hover:flex">
+                  <Menu className=" absolute top-full m-0 hidden w-[260px] transform flex-col gap-2 rounded-sm bg-white bg-opacity-90 p-1 ease-in-out shadow-mainMenu transition-transform duration-300 group-hover:flex">
                     {item.submenu.map((subItem, index) => (
                       <Link
                         key={index}

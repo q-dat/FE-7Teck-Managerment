@@ -201,7 +201,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                       </Menu.Item>
                       {/* SubMenu */}
                       {item.submenu && openSubmenu === item.name && (
-                        <div className="relative w-full space-y-2 rounded-sm bg-white p-4 shadow-md dark:bg-gray-700 dark:bg-opacity-80">
+                        <div className="relative w-full transform space-y-2 rounded-sm bg-white p-1 shadow-md transition-transform duration-300 ease-in-out dark:bg-gray-700 dark:bg-opacity-80">
                           {item.submenu.map((subItem, index) => (
                             <Link
                               key={index}
