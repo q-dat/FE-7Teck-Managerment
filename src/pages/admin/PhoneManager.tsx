@@ -81,9 +81,10 @@ const PhoneManager: React.FC = () => {
         />
       </div>
       <TableListAdmin
+        className="xl:w-[1120px] 2xl:w-full"
         Title_TableListAdmin={`Danh Sách Điện Thoại (${phones.length})`}
         table_head={
-          <Table.Head className="bg-primary text-center text-white">
+          <Table.Head className="bg-primary text-center text-white xl:w-[1130px]">
             <span>STT</span>
             <span>Tên Sản Phẩm</span>
             <span>Danh Mục</span>
