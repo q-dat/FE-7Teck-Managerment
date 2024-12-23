@@ -44,8 +44,8 @@ const ContactPage: React.FC = () => {
   return (
     <div className="pb-[20px] xl:pt-[80px]">
       <HeaderResponsive Title_NavbarMobile="Trang Chủ" />
-      <div className="pt-[70px] xl:pt-0">
-        <div className="breadcrumbs glass mb-10 px-[10px] py-2 text-sm text-black dark:text-white lg:px-20">
+      <div className="pt-[60px] xl:pt-0">
+        <div className="breadcrumbs mb-10 px-[10px] py-2 text-sm text-black shadow dark:text-white lg:px-20">
           <ul className="font-light">
             <li>
               <Link to="/">Trang Chủ</Link>
