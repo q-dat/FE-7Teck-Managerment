@@ -16,8 +16,7 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
   isOpen,
   onClose
 }) => {
-  const { loading, createPhone, getAllPhones, error } =
-    useContext(PhoneContext);
+  const { loading, createPhone, getAllPhones } = useContext(PhoneContext);
   const isLoading = loading.create;
   const { register, handleSubmit, reset, setValue } = useForm<IPhone>();
 
@@ -70,12 +69,15 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
 
   const onSubmit: SubmitHandler<IPhone> = async formData => {
     const data = new FormData();
+
+    // Append các trường chính
     data.append('name', formData.name);
     data.append('phone_catalog_id', formData.phone_catalog_id);
     data.append('status', formData.status);
     data.append('price', formData.price.toString());
     data.append('des', formData.des || '');
 
+    // Append ảnh
     if (formData.img && formData.img[0]) {
       data.append('img', formData.img[0]);
     }
@@ -83,12 +85,71 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
       data.append('thumbnail', formData.thumbnail[0]);
     }
 
-    if (formData.connectivity?.wifi) {
-      formData.connectivity.wifi.forEach(wifi => {
-        data.append('connectivity[wifi][]', wifi);
+    // Append các trường trong configuration_and_memory
+    if (formData.configuration_and_memory) {
+      Object.entries(formData.configuration_and_memory).forEach(
+        ([key, value]) => {
+          data.append(`configuration_and_memory[${key}]`, value);
+        }
+      );
+    }
+
+    // Append các trường trong camera_and_screen
+    if (formData.camera_and_screen) {
+      Object.entries(formData.camera_and_screen).forEach(([key, value]) => {
+        if (Array.isArray(value)) {
+          value.forEach(item =>
+            data.append(`camera_and_screen[${key}][]`, item)
+          );
+        } else {
+          data.append(`camera_and_screen[${key}]`, value);
+        }
       });
     }
 
+    // Append các trường trong battery_and_charging
+    if (formData.battery_and_charging) {
+      Object.entries(formData.battery_and_charging).forEach(([key, value]) => {
+        if (Array.isArray(value)) {
+          value.forEach(item =>
+            data.append(`battery_and_charging[${key}][]`, item)
+          );
+        } else {
+          data.append(`battery_and_charging[${key}]`, value);
+        }
+      });
+    }
+
+    // Append các trường trong features
+    if (formData.features) {
+      Object.entries(formData.features).forEach(([key, value]) => {
+        if (Array.isArray(value)) {
+          value.forEach(item => data.append(`features[${key}][]`, item));
+        } else {
+          data.append(`features[${key}]`, value);
+        }
+      });
+    }
+
+    // Append các trường trong connectivity
+    if (formData.connectivity) {
+      Object.entries(formData.connectivity).forEach(([key, value]) => {
+        if (Array.isArray(value)) {
+          value.forEach(item => data.append(`connectivity[${key}][]`, item));
+        } else {
+          data.append(`connectivity[${key}]`, value);
+        }
+      });
+    }
+
+    // Append các trường trong design_and_material
+    if (formData.design_and_material) {
+      Object.entries(formData.design_and_material).forEach(([key, value]) => {
+        data.append(`design_and_material[${key}]`, value);
+      });
+    }
+
+    // Gửi dữ liệu
     try {
       await createPhone(data);
       reset();
@@ -97,15 +158,26 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
       onClose();
     } catch (err) {
       getAllPhones();
-      Toastify(`Lỗi: ${error}`, 500);
+      Toastify(`Lỗi: ${err}`, 500);
     }
   };
 
   if (!isOpen) return null;
 
+  const handleOverlayClick = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    if ((e.target as HTMLElement).classList.contains('modal-overlay')) {
+      onClose();
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="modal-overlay fixed inset-0 z-50 flex w-full items-center justify-center bg-black bg-opacity-40">
+      <div
+        onClick={handleOverlayClick}
+        className="modal-overlay fixed inset-0 z-50 flex w-full items-center justify-center bg-black bg-opacity-40"
+      >
         <div className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800">
           <p className="font-bold text-black dark:text-white">
             Tạo sản phẩm mới
@@ -149,7 +221,7 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
                 placeholder="Ảnh thumbnail"
               />
             </div>
-            {/* Trường cấu hình và bộ nhớ */}
+            {/* Cấu hình và bộ nhớ */}
             <div className="">
               <InputModal
                 type="text"
@@ -181,7 +253,7 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
                 />
               </div>
             </div>
-            {/* Trường camera và màn hình */}
+            {/* Camera và màn hình */}
             <div className="">
               <InputModal
                 type="text"
@@ -263,7 +335,7 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
                 placeholder="Mặt kính cảm ứng"
               />
             </div>
-            {/* Trường pin và sạc */}
+            {/* Pin và sạc */}
             <div className="">
               <InputModal
                 type="text"
@@ -294,7 +366,7 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
                 />
               </div>
             </div>
-            {/* Trường tiện ích */}
+            {/* Tiện ích */}
             <div className="">
               <div className="my-2">
                 <label className="block text-sm">Bảo mật nâng cao</label>
@@ -372,7 +444,7 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
                 />
               </div>
             </div>
-            {/* Trường kết nối */}
+            {/* Kết nối */}
             <div className="">
               <InputModal
                 type="text"
@@ -431,7 +503,7 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
                 placeholder="Kết nối khác"
               />
             </div>
-            {/* Trường thiết kế và chất liệu */}
+            {/* Thiết kế và chất liệu */}
             <div className="">
               <InputModal
                 type="text"

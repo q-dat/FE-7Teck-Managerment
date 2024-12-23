@@ -91,7 +91,7 @@ const Header: React.FC = () => {
   return (
     <div>
       {/* Desktop */}
-      <div className="fixed z-[99999] hidden h-[80px] w-full flex-row items-center justify-evenly bg-white bg-opacity-90 py-2 uppercase shadow-md dark:bg-black dark:bg-opacity-50 xl:flex">
+      <div className="fixed z-[99999] hidden h-[80px] w-full flex-row items-center justify-evenly bg-white bg-opacity-90 py-2 uppercase shadow-md dark:bg-black dark:bg-opacity-80 xl:flex">
         <Link to="/">
           <img
             className="block object-cover dark:hidden"
@@ -158,7 +158,7 @@ const Header: React.FC = () => {
                       >
                         <Button
                           size="sm"
-                          className="flex w-full flex-row items-center justify-start rounded-sm border-none bg-primary text-sm text-white shadow-headerMenu hover:h-[50px] hover:bg-primary hover:bg-opacity-50 dark:hover:bg-opacity-70"
+                          className="flex w-full flex-row items-center justify-start rounded-sm border-none bg-primary text-sm text-white shadow-headerMenu hover:h-[50px] hover:bg-primary hover:bg-opacity-50 dark:hover:bg-opacity-80"
                         >
                           {subItem.icon && <subItem.icon />}
                           {subItem.name}

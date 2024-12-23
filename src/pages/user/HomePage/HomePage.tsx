@@ -82,7 +82,7 @@ const HomePage: React.FC = () => {
           <div className="flex w-full items-start justify-start gap-2 px-2 text-lg md:px-0 md:text-xs xl:text-lg">
             <TbTruckDelivery className="text-[50px]" />
             <p className="bg-gradient-to-tl from-primary via-white to-white bg-clip-text text-transparent">
-              FreeShip thành phố HCM <br />
+              FreeShip nội thành HCM <br />
               và các tỉnh lân cận.
             </p>
           </div>
