@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Menu } from 'react-daisyui';
+import { Button, Input, Menu } from 'react-daisyui';
 import { FaChevronDown, FaHome, FaMagic } from 'react-icons/fa';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { IconType } from 'react-icons/lib';
 import DarkMode from '../orther/darkmode/DarkMode';
 import { Logo } from '../../assets/images';
 import { RiPagesLine } from 'react-icons/ri';
-import { IoLogoFacebook } from 'react-icons/io5';
+import { IoLogoFacebook, IoSearch } from 'react-icons/io5';
 import { RiExternalLinkFill } from 'react-icons/ri';
 import { HiLocationMarker } from 'react-icons/hi';
 
@@ -114,36 +114,57 @@ const Header: React.FC = () => {
     <div>
       {/* Desktop */}
       <div className="fixed z-[99999] hidden w-full flex-col xl:flex">
-        <div
-          className={`flex h-[30px] w-full transform flex-row items-center justify-end gap-5 border-b bg-primary px-10 text-xs text-white transition-transform delay-100 duration-300 ease-in-out dark:bg-black ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}
-        >
-          <div className="flex flex-row items-center justify-center">
-            <HiLocationMarker />
-            <Link
-              to="https://maps.app.goo.gl/pmk3d7i2tmjc3pP8A"
-              target="_blank"
-              className="flex items-start"
-            >
-              <p>136/11 Trần Quang Diệu, P.14, Q.3, TP.HCM</p>
-              <RiExternalLinkFill className="text-xs" />
-            </Link>
+        {/* Search Result */}
+        <div className="absolute left-0 top-9 z-[99999] hidden bg-primary font-light text-white shadow">
+          <div className="flex items-center justify-start gap-2 p-2">
+            <img src={Logo} className="h-10 w-10 object-cover" />
+            <p>IPhone 16 ProMax</p>
           </div>
-          <div className="flex flex-row items-center justify-center">
-            <IoLogoFacebook />
-            Fanpage: &nbsp;
-            <Link
-              to="https://www.facebook.com/7teck.vn"
-              target="_blank"
-              className="flex items-start"
-            >
-              <p>7Teck</p>
-              <RiExternalLinkFill className="text-xs" />
-            </Link>
+        </div>
+        <div
+          className={`flex h-[40px] w-full transform flex-row items-center justify-between border-b bg-primary px-10 text-xs text-white transition-transform delay-100 duration-300 ease-in-out dark:bg-black ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}
+        >
+          <div className="relative z-[99999]">
+            <Input
+              size="sm"
+              className="text-md w-[400px] rounded-sm border-none bg-transparent pl-7 text-white placeholder-white focus:outline-none"
+              placeholder="Nhập tìm kiếm của bạn..."
+              type="text"
+            />
+            <span className="absolute left-1 top-[6px] text-xl text-white">
+              <IoSearch />
+            </span>
+          </div>
+
+          <div className="flex flex-row gap-5">
+            <div className="flex items-center justify-center">
+              <HiLocationMarker />
+              <Link
+                to="https://maps.app.goo.gl/pmk3d7i2tmjc3pP8A"
+                target="_blank"
+                className="flex items-start gap-[1px]"
+              >
+                <p>136/11 Trần Quang Diệu, P.14, Q.3, TP.HCM</p>
+                <RiExternalLinkFill className="text-xs" />
+              </Link>
+            </div>
+            <div className="flex items-center justify-center">
+              <IoLogoFacebook />
+              Fanpage: &nbsp;
+              <Link
+                to="https://www.facebook.com/7teck.vn"
+                target="_blank"
+                className="flex items-start gap-[1px]"
+              >
+                <p>7Teck</p>
+                <RiExternalLinkFill className="text-xs" />
+              </Link>
+            </div>
           </div>
         </div>
         {/*  */}
         <div
-          className={`h-[70px] w-full transform flex-row items-center justify-evenly bg-white py-2 uppercase shadow-md transition-transform delay-100 duration-300 ease-in-out dark:bg-black xl:flex ${showMenu ? 'translate-y-0' : '-translate-y-[30px]'}`}
+          className={`h-[60px] w-full transform flex-row items-center justify-evenly bg-white py-2 uppercase shadow-md transition-transform delay-100 duration-300 ease-in-out dark:bg-black xl:flex ${showMenu ? 'translate-y-0' : '-translate-y-[40px]'}`}
         >
           <Link to="/">
             <img
