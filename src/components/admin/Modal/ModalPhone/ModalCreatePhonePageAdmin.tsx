@@ -177,7 +177,7 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
         onClick={handleOverlayClick}
         className="modal-overlay fixed inset-0 z-50 flex w-full items-center justify-center bg-black bg-opacity-40"
       >
-        <div className="mx-2 flex w-1/2 flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800">
+        <div className="mx-2 flex w-full xl:w-1/2 flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800">
           <p className="font-bold text-black dark:text-white">
             Tạo sản phẩm mới
           </p>
