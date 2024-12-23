@@ -233,63 +233,81 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
                 {...register('configuration_and_memory.cpu_chip')}
                 placeholder="Chip xử lý CPU"
               />
+
+              <InputModal
+                type="text"
+                {...register('configuration_and_memory.cpu_speed')}
+                placeholder="Tốc độ CPU"
+              />
+              <InputModal
+                type="text"
+                {...register('configuration_and_memory.gpu')}
+                placeholder="Chip đồ họa (GPU)"
+              />
               <InputModal
                 type="text"
                 {...register('configuration_and_memory.ram')}
                 placeholder="RAM"
               />
-              {/* Mảng cho Rear Camera Features */}
-              <div className="my-2">
-                <label className="block text-sm">Rear Camera Features</label>
-                <Select
-                  isMulti
-                  options={optionsData.rear_camera_features}
-                  onChange={selected =>
-                    setValue(
-                      'camera_and_screen.rear_camera_features',
-                      selected.map(option => option.value)
-                    )
-                  }
-                />
-              </div>
-            </div>
-            {/* Camera và màn hình */}
-            <div className="">
               <InputModal
                 type="text"
-                {...register('camera_and_screen.rear_camera_resolution')}
-                placeholder="Độ phân giải camera sau"
+                {...register('configuration_and_memory.storage_capacity')}
+                placeholder="Dung lượng lưu trữ"
               />
-              <div className="my-2">
-                <label className="block text-sm">Quay phim camera sau</label>
-                <Select
-                  isMulti
-                  options={optionsData.rear_camera_video}
-                  onChange={selected =>
-                    setValue(
-                      'camera_and_screen.rear_camera_video',
-                      selected.map(option => option.value)
-                    )
-                  }
-                />
-              </div>
               <InputModal
                 type="text"
-                {...register('camera_and_screen.rear_camera_flash')}
-                placeholder="Đèn Flash camera sau"
+                {...register('configuration_and_memory.remaining_capacity')}
+                placeholder="Dung lượng còn lại/Dung lượng khả dụng"
               />
-              <div className="my-2">
-                <label className="block text-sm">Tính năng camera sau</label>
-                <Select
-                  isMulti
-                  options={optionsData.rear_camera_features}
-                  onChange={selected =>
-                    setValue(
-                      'camera_and_screen.rear_camera_features',
-                      selected.map(option => option.value)
-                    )
-                  }
+              <InputModal
+                type="text"
+                {...register('configuration_and_memory.memory_card')}
+                placeholder="Thẻ nhớ"
+              />
+              <InputModal
+                type="text"
+                {...register('configuration_and_memory.contacts')}
+                placeholder="Danh bạ"
+              />
+
+              {/* Camera và màn hình */}
+              <div className="">
+                <InputModal
+                  type="text"
+                  {...register('camera_and_screen.rear_camera_resolution')}
+                  placeholder="Độ phân giải camera sau"
                 />
+                <div className="my-2">
+                  <label className="block text-sm">Quay phim camera sau</label>
+                  <Select
+                    isMulti
+                    options={optionsData.rear_camera_video}
+                    onChange={selected =>
+                      setValue(
+                        'camera_and_screen.rear_camera_video',
+                        selected.map(option => option.value)
+                      )
+                    }
+                  />
+                </div>
+                <InputModal
+                  type="text"
+                  {...register('camera_and_screen.rear_camera_flash')}
+                  placeholder="Đèn Flash camera sau"
+                />
+                <div className="my-2">
+                  <label className="block text-sm">Tính năng camera sau</label>
+                  <Select
+                    isMulti
+                    options={optionsData.rear_camera_features}
+                    onChange={selected =>
+                      setValue(
+                        'camera_and_screen.rear_camera_features',
+                        selected.map(option => option.value)
+                      )
+                    }
+                  />
+                </div>
               </div>
               <InputModal
                 type="text"
