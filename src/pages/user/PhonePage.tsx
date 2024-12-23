@@ -23,7 +23,7 @@ const PhonePage: React.FC = () => {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
   };
   return (
-    <div className="pb-[20px] xl:pt-[80px]">
+    <div className="pb-[20px] xl:pt-[100px]">
       <HeaderResponsive Title_NavbarMobile="Sản Phẩm" />
       <div className="pt-[60px] xl:pt-0">
         <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow dark:text-white lg:px-20">

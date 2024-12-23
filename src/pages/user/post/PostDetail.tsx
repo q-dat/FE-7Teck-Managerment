@@ -33,7 +33,7 @@ const PostDetail: React.FC = () => {
   const otherPosts = posts.filter(post => post._id !== selectedPost?._id);
 
   return (
-    <div className="pb-[20px] xl:pt-[80px]">
+    <div className="pb-[20px] xl:pt-[100px]">
       <HeaderResponsive Title_NavbarMobile="Bài viết" />
       <div className="pt-[60px] xl:pt-0">
         <div className="breadcrumbs shadow mb-10 px-[10px] py-2 text-sm text-black dark:text-white lg:px-20">
