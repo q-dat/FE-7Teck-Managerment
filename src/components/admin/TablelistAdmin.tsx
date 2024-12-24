@@ -7,7 +7,7 @@ interface TableListAdminProps {
   table_head: React.ReactNode;
   table_body: React.ReactNode;
   Title_TableListAdmin: string;
-  className: React.ReactNode;
+  className?: React.ReactNode;
 }
 const TableListAdmin: React.FC<TableListAdminProps> = ({
   className,
