@@ -158,12 +158,12 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
             <div className="">
               <InputModal
                 type="text"
-                {...register('name', { required: true })}
+                {...register('name')}
                 placeholder="Tên sản phẩm"
               />
               <InputModal
                 type="text"
-                {...register('phone_catalog_id', { required: true })}
+                {...register('phone_catalog_id')}
                 placeholder="Danh mục"
               />
               <InputModal
@@ -173,7 +173,7 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
               />
               <InputModal
                 type="number"
-                {...register('price', { required: true })}
+                {...register('price')}
                 placeholder="Giá"
               />
               <InputModal
@@ -183,7 +183,7 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
               />
               <InputModal
                 type="file"
-                {...register('img', { required: true })}
+                {...register('img')}
                 placeholder="Ảnh sản phẩm"
               />
               <InputModal

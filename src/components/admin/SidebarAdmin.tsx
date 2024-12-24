@@ -147,7 +147,7 @@ const SidebarAdmin: React.FC<{}> = () => {
                         </div>
                         <div className="">
                           {item.toastify ? (
-                            <div className="flex w-[22px] justify-center rounded-md bg-green-500 py-1">
+                            <div className="flex w-[22px] justify-center rounded-md bg-secondary py-1">
                               <p className="text-[.8rem] font-light text-white">
                                 {item.toastify > 99 ? '99+' : item.toastify}
                               </p>
