@@ -75,7 +75,7 @@ const PhoneFC: React.FC = () => {
         <p className="font-title bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold text-transparent xl:text-[40px]">
           Điện Thoại Nổi Bật
         </p>
-        <div className="h-[1px] w-[200px] animate-ping bg-primary"></div>
+        <div className="h-[1px] w-[150px] xl:w-[200px] animate-ping bg-primary"></div>
       </div>
       <div
         ref={scrollRefPhone}
