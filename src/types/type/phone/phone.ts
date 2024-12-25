@@ -1,12 +1,12 @@
 export interface IPhone {
   _id: string;
-  phone_catalog_id: string; // Phone catalog ID // Danh mục điện thoại
   name: string; // Name // Tên
-  img: string; // Main image URL // Đường dẫn ảnh chính
-  thumbnail?: string; // Thumbnail image URL // Đường dẫn ảnh thu nhỏ
-  des?: string; // Product description // Mô tả sản phẩm
+  phone_catalog_id: string; // Phone catalog ID // Danh mục điện thoại
   status: string; // Product status // Trạng thái sản phẩm
   price: number; // Product price // Giá sản phẩm
+  des?: string; // Product description // Mô tả sản phẩm
+  img: string; // Main image URL // Đường dẫn ảnh chính
+  thumbnail?: string; // Thumbnail image URL // Đường dẫn ảnh thu nhỏ
   createdAt: string; // Creation date // Thời gian tạo
   updatedAt: string; // Last updated date // Thời gian cập nhật
   configuration_and_memory: {
@@ -14,7 +14,7 @@ export interface IPhone {
     operating_system: string; // Operating system // Hệ điều hành
     cpu_chip: string; // CPU chip // Chip xử lý CPU
     cpu_speed: string; // CPU speed // Tốc độ CPU
-    gpu: string; // Graphics chip (GPU) // Chip đồ họa (GPU)
+    gpu: string; // Graphics chip GPU // Chip đồ họa GPU
     ram: string; // RAM // RAM
     storage_capacity: string; // Storage capacity // Dung lượng lưu trữ
     remaining_capacity: string; // Remaining available storage // Dung lượng còn lại/Dung lượng khả dụng
