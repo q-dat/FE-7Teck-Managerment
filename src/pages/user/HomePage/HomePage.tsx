@@ -101,11 +101,11 @@ const HomePage: React.FC = () => {
           >
             {items.map((item, index) => (
               <SwiperSlide key={index}>
-                <div className="my-5 flex flex-col items-center gap-2 text-center text-lg font-semibold text-primary">
+                <div className="my-4 flex flex-col items-center gap-2 text-center text-md font-semibold text-primary">
                   <div>
                     {React.cloneElement(item.icon, {
                       className:
-                        'rounded-full bg-gradient-to-tr from-primary via-primary to-black text-[120px] text-white'
+                        'rounded-full bg-gradient-to-tr from-primary via-primary to-black text-[100px] text-white'
                     })}
                   </div>
                   <p>{item.text}</p>
