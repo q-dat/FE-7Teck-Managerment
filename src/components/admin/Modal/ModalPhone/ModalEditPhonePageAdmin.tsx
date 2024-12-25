@@ -19,7 +19,7 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
   onClose,
   PhoneId
 }) => {
-  const { getAllPhones, phones, getPhoneById, error, updatePhone } =
+  const { getAllPhones, phones, getPhoneById, updatePhone } =
     useContext(PhoneContext);
 
   const { register, handleSubmit, reset, setValue, watch } = useForm<IPhone>();
@@ -263,11 +263,11 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
       );
     }
   }, [phones, PhoneId, setValue]);
-
   const onSubmit: SubmitHandler<IPhone> = async formData => {
     const data = new FormData();
+
     data.append('name', formData.name || '');
-    data.append('Phone_catalog_id', formData.phone_catalog_id || '');
+    data.append('phone_catalog_id', formData.phone_catalog_id || '');
     data.append('status', formData.status || '');
     data.append('price', formData.price?.toString() || '');
     data.append('des', formData.des || '');
@@ -290,60 +290,25 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
       }
     }
 
-    // Append các trường trong camera_and_screen
-    if (formData.camera_and_screen) {
-      Object.entries(formData.camera_and_screen).forEach(([key, value]) => {
-        if (Array.isArray(value)) {
-          value.forEach(item =>
-            data.append(`camera_and_screen[${key}][]`, item)
-          );
-        } else {
-          data.append(`camera_and_screen[${key}]`, value);
-        }
-      });
-    }
-
-    // Append các trường trong battery_and_charging
-    if (formData.battery_and_charging) {
-      Object.entries(formData.battery_and_charging).forEach(([key, value]) => {
-        if (Array.isArray(value)) {
-          value.forEach(item =>
-            data.append(`battery_and_charging[${key}][]`, item)
-          );
-        } else {
-          data.append(`battery_and_charging[${key}]`, value);
-        }
-      });
-    }
-
-    // Append các trường trong features
-    if (formData.features) {
-      Object.entries(formData.features).forEach(([key, value]) => {
-        if (Array.isArray(value)) {
-          value.forEach(item => data.append(`features[${key}][]`, item));
-        } else {
-          data.append(`features[${key}]`, value);
-        }
-      });
-    }
-
-    // Append các trường trong connectivity
-    if (formData.connectivity) {
-      Object.entries(formData.connectivity).forEach(([key, value]) => {
-        if (Array.isArray(value)) {
-          value.forEach(item => data.append(`connectivity[${key}][]`, item));
-        } else {
-          data.append(`connectivity[${key}]`, value);
-        }
-      });
-    }
-
-    // Append các trường trong design_and_material
-    if (formData.design_and_material) {
-      Object.entries(formData.design_and_material).forEach(([key, value]) => {
-        data.append(`design_and_material[${key}]`, value);
-      });
-    }
+    // Convert nested fields to JSON string
+    data.append(
+      'configuration_and_memory',
+      JSON.stringify(formData.configuration_and_memory || {})
+    );
+    data.append(
+      'camera_and_screen',
+      JSON.stringify(formData.camera_and_screen || {})
+    );
+    data.append(
+      'battery_and_charging',
+      JSON.stringify(formData.battery_and_charging || {})
+    );
+    data.append('features', JSON.stringify(formData.features || {}));
+    data.append('connectivity', JSON.stringify(formData.connectivity || {}));
+    data.append(
+      'design_and_material',
+      JSON.stringify(formData.design_and_material || {})
+    );
 
     try {
       await updatePhone(PhoneId, data);
@@ -353,7 +318,7 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
       onClose();
     } catch (err) {
       getAllPhones();
-      Toastify(`Lỗi: ${error}`, 500);
+      Toastify(`Lỗi: ${err}`, 500);
     }
   };
 
