@@ -265,33 +265,88 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
   }, [phones, PhoneId, setValue]);
 
   const onSubmit: SubmitHandler<IPhone> = async formData => {
-    const formDataToSend = new FormData();
-    formDataToSend.append('name', formData.name || '');
-    formDataToSend.append('Phone_catalog_id', formData.phone_catalog_id || '');
-    formDataToSend.append('status', formData.status || '');
-    formDataToSend.append('price', formData.price?.toString() || '');
-    formDataToSend.append('des', formData.des || '');
+    const data = new FormData();
+    data.append('name', formData.name || '');
+    data.append('Phone_catalog_id', formData.phone_catalog_id || '');
+    data.append('status', formData.status || '');
+    data.append('price', formData.price?.toString() || '');
+    data.append('des', formData.des || '');
 
     const imgFile = watch('img');
     if (imgFile && imgFile[0]) {
-      formDataToSend.append('img', imgFile[0]);
+      data.append('img', imgFile[0]);
     } else {
       if (existingImg) {
-        formDataToSend.append('img', existingImg);
+        data.append('img', existingImg);
       }
     }
 
     const thumbnailFile = watch('thumbnail');
     if (thumbnailFile && thumbnailFile[0]) {
-      formDataToSend.append('thumbnail', thumbnailFile[0]);
+      data.append('thumbnail', thumbnailFile[0]);
     } else {
       if (existingThumbnail) {
-        formDataToSend.append('thumbnail', existingThumbnail);
+        data.append('thumbnail', existingThumbnail);
       }
     }
 
+    // Append các trường trong camera_and_screen
+    if (formData.camera_and_screen) {
+      Object.entries(formData.camera_and_screen).forEach(([key, value]) => {
+        if (Array.isArray(value)) {
+          value.forEach(item =>
+            data.append(`camera_and_screen[${key}][]`, item)
+          );
+        } else {
+          data.append(`camera_and_screen[${key}]`, value);
+        }
+      });
+    }
+
+    // Append các trường trong battery_and_charging
+    if (formData.battery_and_charging) {
+      Object.entries(formData.battery_and_charging).forEach(([key, value]) => {
+        if (Array.isArray(value)) {
+          value.forEach(item =>
+            data.append(`battery_and_charging[${key}][]`, item)
+          );
+        } else {
+          data.append(`battery_and_charging[${key}]`, value);
+        }
+      });
+    }
+
+    // Append các trường trong features
+    if (formData.features) {
+      Object.entries(formData.features).forEach(([key, value]) => {
+        if (Array.isArray(value)) {
+          value.forEach(item => data.append(`features[${key}][]`, item));
+        } else {
+          data.append(`features[${key}]`, value);
+        }
+      });
+    }
+
+    // Append các trường trong connectivity
+    if (formData.connectivity) {
+      Object.entries(formData.connectivity).forEach(([key, value]) => {
+        if (Array.isArray(value)) {
+          value.forEach(item => data.append(`connectivity[${key}][]`, item));
+        } else {
+          data.append(`connectivity[${key}]`, value);
+        }
+      });
+    }
+
+    // Append các trường trong design_and_material
+    if (formData.design_and_material) {
+      Object.entries(formData.design_and_material).forEach(([key, value]) => {
+        data.append(`design_and_material[${key}]`, value);
+      });
+    }
+
     try {
-      await updatePhone(PhoneId, formDataToSend);
+      await updatePhone(PhoneId, data);
       reset();
       getAllPhones();
       Toastify('Chỉnh sửa sản phẩm thành công!', 200);
@@ -329,7 +384,6 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
                 {...register('name')}
                 placeholder="Nhập tên sản phẩm"
               />
-
               <LabelForm title={'Danh mục'} />
               <InputModal
                 type="text"
@@ -355,13 +409,28 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
                 placeholder="Nhập mô tả"
               />
               <LabelForm title={'Hình ảnh'} />
+              {existingImg && (
+                <div className="my-2">
+                  <img
+                    src={existingImg}
+                    className="h-10 w-10 rounded-md object-cover"
+                  />
+                </div>
+              )}
               <InputModal
                 type="file"
                 {...register('img')}
-                placeholder="Chèn ảnh thu nhỏ"
+                placeholder="Chèn ảnh hình ảnh"
               />
               <LabelForm title={'Ảnh thu nhỏ'} />
-
+              {existingThumbnail && (
+                <div className="my-2">
+                  <img
+                    src={existingThumbnail}
+                    className="h-10 w-10 rounded-md object-cover"
+                  />
+                </div>
+              )}
               <InputModal
                 type="file"
                 {...register('thumbnail')}
@@ -382,7 +451,6 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
                 {...register('configuration_and_memory.cpu_chip')}
                 placeholder="Nhập chip xử lý CPU"
               />
-
               <LabelForm title={'Tốc độ CPU'} />
               <InputModal
                 type="text"
@@ -439,6 +507,11 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
                   <Select
                     isMulti
                     options={optionsData.rear_camera_video}
+                    value={optionsData.rear_camera_video.filter(option =>
+                      watch('camera_and_screen.rear_camera_video')?.includes(
+                        option.value
+                      )
+                    )}
                     onChange={selected =>
                       setValue(
                         'camera_and_screen.rear_camera_video',
