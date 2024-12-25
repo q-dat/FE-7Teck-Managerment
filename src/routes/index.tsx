@@ -9,12 +9,17 @@ const PhonePage = lazy(() => import('../pages/user/PhonePage'));
 const ProductDetailPage = lazy(() => import('../pages/user/ProductDetailPage'));
 const PriceListPage = lazy(() => import('../pages/user/PriceListPage'));
 const NewsPage = lazy(() => import('../pages/user/post/NewsPage'));
-const TipsAndTricksPage = lazy(() => import('../pages/user/post/TipsAndTricksPage'));
+const TipsAndTricksPage = lazy(
+  () => import('../pages/user/post/TipsAndTricksPage')
+);
 const PostDetail = lazy(() => import('../pages/user/post/PostDetail'));
 
 // admin
 const Admin = lazy(() => import('../pages/admin/Admin'));
 const DashboardPage = lazy(() => import('../pages/admin/DashboardPage'));
+const PhoneCatalogManager = lazy(
+  () => import('../pages/admin/PhoneCatalogManager')
+);
 const PhoneManager = lazy(() => import('../pages/admin/PhoneManager'));
 const PostManagerPage = lazy(() => import('../pages/admin/PostManagerPage'));
 // not found page
@@ -41,6 +46,10 @@ export default function AppRoutes() {
         <Route element={<DefaultLayout />}>
           <Route path="/admin" element={<Admin />}>
             <Route index path="" element={<DashboardPage />} />
+            <Route
+              path="phone-catalog-manager"
+              element={<PhoneCatalogManager />}
+            />
             <Route path="phone-manager" element={<PhoneManager />} />
             <Route path="post-manager" element={<PostManagerPage />} />
           </Route>

@@ -5,6 +5,7 @@ import App from './App.tsx';
 import './index.css';
 import ErrorBoundary from './components/orther/error/ErrorBoundary.tsx';
 import LoadingPage from './pages/LoadingPage/LoadingPage.tsx';
+import { PhoneCatalogProvider } from './context/phone-catalog/PhoneCatalogContext.tsx';
 import { PhoneProvider } from './context/phone/PhoneContext.tsx';
 import { PostProvider } from './context/post/PostContext.tsx';
 import { ToastContainer } from 'react-toastify';
@@ -15,10 +16,12 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <Suspense fallback={<LoadingPage loading={true} />}>
         <ErrorBoundary>
           <PostProvider>
-            <PhoneProvider>
-              <App />
-              <ToastContainer />
-            </PhoneProvider>
+            <PhoneCatalogProvider>
+              <PhoneProvider>
+                <App />
+                <ToastContainer />
+              </PhoneProvider>
+            </PhoneCatalogProvider>
           </PostProvider>
         </ErrorBoundary>
       </Suspense>
