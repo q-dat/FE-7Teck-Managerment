@@ -6,6 +6,7 @@ import { Toastify } from '../../../../helper/Toastify';
 import { PhoneContext } from '../../../../context/phone/PhoneContext';
 import { IPhone } from '../../../../types/type/phone/phone';
 import Select from 'react-select';
+import LabelForm from '../../LabelForm';
 
 interface ModalCreatePhoneProps {
   isOpen: boolean;
@@ -183,101 +184,120 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
           </p>
           <div className="h-[500px] w-full overflow-y-auto scrollbar-hide">
             {/* Các trường cơ bản */}
-            <div className="">
+            <div className="mt-5">
+              <LabelForm title={'Tên sản phẩm'} />
               <InputModal
                 type="text"
-                {...register('name', { required: true })}
-                placeholder="Tên sản phẩm"
+                {...register('name')}
+                placeholder="Nhập tên sản phẩm"
               />
+
+              <LabelForm title={'Danh mục'} />
               <InputModal
                 type="text"
-                {...register('phone_catalog_id', { required: true })}
-                placeholder="Danh mục"
+                {...register('phone_catalog_id')}
+                placeholder="Nhập danh mục"
               />
+              <LabelForm title={'Trạng thái'} />
               <InputModal
                 type="text"
                 {...register('status')}
-                placeholder="Trạng thái"
+                placeholder="Nhập trạng thái"
               />
+              <LabelForm title={'Giá'} />
               <InputModal
                 type="number"
-                {...register('price', { required: true })}
-                placeholder="Giá"
+                {...register('price')}
+                placeholder="Nhập giá"
               />
+              <LabelForm title={'Mô tả'} />
               <InputModal
                 type="text"
                 {...register('des')}
-                placeholder="Mô tả sản phẩm"
+                placeholder="Nhập mô tả"
               />
+              <LabelForm title={'Hình ảnh'} />
               <InputModal
                 type="file"
-                {...register('img', { required: true })}
-                placeholder="Ảnh sản phẩm"
+                {...register('img')}
+                placeholder="Chèn ảnh thu nhỏ"
               />
+              <LabelForm title={'Ảnh thu nhỏ'} />
+
               <InputModal
                 type="file"
                 {...register('thumbnail')}
-                placeholder="Ảnh thumbnail"
+                placeholder="Chèn ảnh thu nhỏ"
               />
             </div>
             {/* Cấu hình và bộ nhớ */}
             <div className="">
+              <LabelForm title={'Hệ điều hành'} />
               <InputModal
                 type="text"
                 {...register('configuration_and_memory.operating_system')}
-                placeholder="Hệ điều hành"
+                placeholder="Nhập hệ điều hành"
               />
+              <LabelForm title={'Chip xử lý CPU'} />
               <InputModal
                 type="text"
                 {...register('configuration_and_memory.cpu_chip')}
-                placeholder="Chip xử lý CPU"
+                placeholder="Nhập chip xử lý CPU"
               />
 
+              <LabelForm title={'Tốc độ CPU'} />
               <InputModal
                 type="text"
                 {...register('configuration_and_memory.cpu_speed')}
-                placeholder="Tốc độ CPU"
+                placeholder="Nhập tốc độ CPU"
               />
+              <LabelForm title={'Chip đồ hoạ GPU'} />
               <InputModal
                 type="text"
                 {...register('configuration_and_memory.gpu')}
-                placeholder="Chip đồ họa (GPU)"
+                placeholder="Nhập chip đồ họa GPU"
               />
+              <LabelForm title={'RAM'} />
               <InputModal
                 type="text"
                 {...register('configuration_and_memory.ram')}
-                placeholder="RAM"
+                placeholder="Nhập RAM"
               />
+              <LabelForm title={'Dung lượng lưu trữ'} />
               <InputModal
                 type="text"
                 {...register('configuration_and_memory.storage_capacity')}
-                placeholder="Dung lượng lưu trữ"
+                placeholder="Nhập dung lượng lưu trữ"
               />
+              <LabelForm title={'Dung lượng còn lại/Dung lượng khả dụng'} />
               <InputModal
                 type="text"
                 {...register('configuration_and_memory.remaining_capacity')}
-                placeholder="Dung lượng còn lại/Dung lượng khả dụng"
+                placeholder="Nhập dung lượng còn lại/Dung lượng khả dụng"
               />
+              <LabelForm title={'Thẻ nhớ'} />
               <InputModal
                 type="text"
                 {...register('configuration_and_memory.memory_card')}
-                placeholder="Thẻ nhớ"
+                placeholder="Nhập thẻ nhớ"
               />
+              <LabelForm title={'Danh bạ'} />
               <InputModal
                 type="text"
                 {...register('configuration_and_memory.contacts')}
-                placeholder="Danh bạ"
+                placeholder="Nhập danh bạ"
               />
 
               {/* Camera và màn hình */}
               <div className="">
+                <LabelForm title={' Độ phân giải camera sau'} />
                 <InputModal
                   type="text"
                   {...register('camera_and_screen.rear_camera_resolution')}
-                  placeholder="Độ phân giải camera sau"
+                  placeholder="Nhập độ phân giải camera sau"
                 />
                 <div className="my-2">
-                  <label className="block text-sm">Quay phim camera sau</label>
+                  <LabelForm title={'Quay phim camera sau'} />
                   <Select
                     isMulti
                     options={optionsData.rear_camera_video}
@@ -289,13 +309,14 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
                     }
                   />
                 </div>
+                <LabelForm title={'Đèn Flash camera sau'} />
                 <InputModal
                   type="text"
                   {...register('camera_and_screen.rear_camera_flash')}
-                  placeholder="Đèn Flash camera sau"
+                  placeholder="Nhập đèn Flash camera sau"
                 />
                 <div className="my-2">
-                  <label className="block text-sm">Tính năng camera sau</label>
+                  <LabelForm title={'Tính năng camera sau'} />
                   <Select
                     isMulti
                     options={optionsData.rear_camera_features}
@@ -308,13 +329,14 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
                   />
                 </div>
               </div>
+              <LabelForm title={'Độ phân giải camera trước'} />
               <InputModal
                 type="text"
                 {...register('camera_and_screen.front_camera_resolution')}
-                placeholder="Độ phân giải camera trước"
+                placeholder="Nhập độ phân giải camera trước"
               />
               <div className="my-2">
-                <label className="block text-sm">Tính năng camera trước</label>
+                <LabelForm title={'Tính năng camera trước'} />
                 <Select
                   isMulti
                   options={optionsData.front_camera_features}
@@ -326,51 +348,59 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
                   }
                 />
               </div>
+              <LabelForm title={'Công nghệ màn hình'} />
               <InputModal
                 type="text"
                 {...register('camera_and_screen.screen_technology')}
-                placeholder="Công nghệ màn hình"
+                placeholder="Nhập công nghệ màn hình"
               />
+              <LabelForm title={'Độ phân giải màn hình'} />
               <InputModal
                 type="text"
                 {...register('camera_and_screen.screen_resolution')}
-                placeholder="Độ phân giải màn hình"
+                placeholder="Nhập độ phân giải màn hình"
               />
+              <LabelForm title={'Màn hình rộng'} />
               <InputModal
                 type="text"
                 {...register('camera_and_screen.screen_size')}
-                placeholder="Màn hình rộng"
+                placeholder="Nhập màn hình rộng"
               />
+              <LabelForm title={'Độ sáng tối đa'} />
               <InputModal
                 type="text"
                 {...register('camera_and_screen.max_brightness')}
-                placeholder="Độ sáng tối đa"
+                placeholder="Nhập độ sáng tối đa"
               />
+              <LabelForm title={'Mặt kính cảm ứng'} />
               <InputModal
                 type="text"
                 {...register('camera_and_screen.touchscreen_glass')}
-                placeholder="Mặt kính cảm ứng"
+                placeholder="Nhập mặt kính cảm ứng"
               />
             </div>
             {/* Pin và sạc */}
             <div className="">
+              <LabelForm title={'Dung lượng pin'} />
               <InputModal
                 type="text"
                 {...register('battery_and_charging.battery_capacity')}
-                placeholder="Dung lượng pin"
+                placeholder="Nhập dung lượng pin"
               />
+              <LabelForm title={'Loại pin'} />
               <InputModal
                 type="text"
                 {...register('battery_and_charging.battery_type')}
-                placeholder="Loại pin"
+                placeholder="Nhập loại pin"
               />
+              <LabelForm title={'Hỗ trợ sạc tối đa'} />
               <InputModal
                 type="text"
                 {...register('battery_and_charging.max_charging_support')}
-                placeholder="Hỗ trợ sạc tối đa"
+                placeholder="Nhập hỗ trợ sạc tối đa"
               />
               <div className="my-2">
-                <label className="block text-sm">Công nghệ pin</label>
+                <LabelForm title={'Công nghệ pin'} />
                 <Select
                   isMulti
                   options={optionsData.battery_technology}
@@ -386,7 +416,7 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
             {/* Tiện ích */}
             <div className="">
               <div className="my-2">
-                <label className="block text-sm">Bảo mật nâng cao</label>
+                <LabelForm title={'Bảo mật nâng cao'} />
                 <Select
                   isMulti
                   options={optionsData.advanced_security}
@@ -399,7 +429,7 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
                 />
               </div>
               <div className="my-2">
-                <label className="block text-sm">Tính năng đặc biệt</label>
+                <LabelForm title={'Tính năng đặc biệt'} />
                 <Select
                   isMulti
                   options={optionsData.special_features}
@@ -411,13 +441,14 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
                   }
                 />
               </div>
+              <LabelForm title={'Tên sản phẩm'} />
               <InputModal
                 type="text"
                 {...register('features.water_dust_resistant')}
-                placeholder="Kháng nước/bụi"
+                placeholder="Nhập Kháng nước/bụi"
               />
               <div className="my-2">
-                <label className="block text-sm">Ghi âm</label>
+                <LabelForm title={'Ghi âm'} />
                 <Select
                   isMulti
                   options={optionsData.voice_recording}
@@ -430,7 +461,7 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
                 />
               </div>
               <div className="my-2">
-                <label className="block text-sm">Radio</label>
+                <LabelForm title={'Radio'} />
                 <Select
                   isMulti
                   options={optionsData.radio}
@@ -442,13 +473,14 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
                   }
                 />
               </div>
+              <LabelForm title={'Xem phim'} />
               <InputModal
                 type="text"
                 {...register('features.video_playback')}
-                placeholder="Xem phim"
+                placeholder="Nhập xem phim"
               />
               <div className="my-2">
-                <label className="block text-sm">Nghe nhạc</label>
+                <LabelForm title={'Nghe nhạc'} />
                 <Select
                   isMulti
                   options={optionsData.music_playback}
@@ -463,18 +495,20 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
             </div>
             {/* Kết nối */}
             <div className="">
+              <LabelForm title={'Mạng di động'} />
               <InputModal
                 type="text"
                 {...register('connectivity.mobile_network')}
-                placeholder="Mạng di động"
+                placeholder="Nhập mạng di động"
               />
+              <LabelForm title={'Sim'} />
               <InputModal
                 type="text"
                 {...register('connectivity.sim')}
-                placeholder="Sim"
+                placeholder="Nhập Sim"
               />
               <div className="my-2">
-                <label className="block text-sm">Wi-Fi</label>
+                <LabelForm title={'Wi-Fi'} />
                 <Select
                   isMulti
                   options={optionsData.wifiOptions}
@@ -487,7 +521,7 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
                 />
               </div>
               <div className="my-2">
-                <label className="block text-sm">GPS</label>
+                <LabelForm title={'GPS'} />
                 <Select
                   isMulti
                   options={optionsData.gpsOptions}
@@ -499,53 +533,62 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
                   }
                 />
               </div>
+              <LabelForm title={'Bluetooth'} />
               <InputModal
                 type="text"
                 {...register('connectivity.bluetooth')}
-                placeholder="Bluetooth"
+                placeholder="Nhập bluetooth"
               />
+              <LabelForm title={'Cổng kết nối/sạc'} />
               <InputModal
                 type="text"
                 {...register('connectivity.charging_connection_port')}
-                placeholder="Cổng kết nối/sạc"
+                placeholder="Nhập cổng kết nối/sạc"
               />
+              <LabelForm title={'Jack tai nghe'} />
               <InputModal
                 type="text"
                 {...register('connectivity.headphone_jack')}
-                placeholder="Jack tai nghe"
+                placeholder="Nhập jack tai nghe"
               />
+              <LabelForm title={'Kết nối khác'} />
               <InputModal
                 type="text"
                 {...register('connectivity.other_connectivity')}
-                placeholder="Kết nối khác"
+                placeholder="Nhập kết nối khác"
               />
             </div>
             {/* Thiết kế và chất liệu */}
             <div className="">
+              <LabelForm title={'Thiết kế'} />
               <InputModal
                 type="text"
                 {...register('design_and_material.design')}
-                placeholder="Thiết kế"
+                placeholder="Nhập thiết kế"
               />
+              <LabelForm title={'Chất liệu'} />
               <InputModal
                 type="text"
                 {...register('design_and_material.material')}
-                placeholder="Chất liệu"
+                placeholder="Nhập chất liệu"
               />
+              <LabelForm title={'Kích thước và khối lượng'} />
               <InputModal
                 type="text"
                 {...register('design_and_material.dimensions_and_weight')}
-                placeholder="Kích thước và khối lượng"
+                placeholder="Nhập kích thước và khối lượng"
               />
+              <LabelForm title={'Thời điểm ra mắt'} />
               <InputModal
                 type="text"
                 {...register('design_and_material.release_date')}
-                placeholder="Thời điểm ra mắt"
+                placeholder="Nhập thời điểm ra mắt"
               />
+              <LabelForm title={'Hãng'} />
               <InputModal
                 type="text"
                 {...register('design_and_material.brand')}
-                placeholder="Hãng"
+                placeholder="Nhập hãng"
               />
             </div>
           </div>
