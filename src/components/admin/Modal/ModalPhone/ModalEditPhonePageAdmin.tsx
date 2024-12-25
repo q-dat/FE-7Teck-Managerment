@@ -101,165 +101,165 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
       // Các trường con trong `configuration_and_memory`
       setValue(
         'configuration_and_memory.operating_system',
-        phoneData.configuration_and_memory.operating_system
+        phoneData.configuration_and_memory?.operating_system
       );
       setValue(
         'configuration_and_memory.cpu_chip',
-        phoneData.configuration_and_memory.cpu_chip
+        phoneData.configuration_and_memory?.cpu_chip
       );
       setValue(
         'configuration_and_memory.cpu_speed',
-        phoneData.configuration_and_memory.cpu_speed
+        phoneData.configuration_and_memory?.cpu_speed
       );
       setValue(
         'configuration_and_memory.gpu',
-        phoneData.configuration_and_memory.gpu
+        phoneData.configuration_and_memory?.gpu
       );
       setValue(
         'configuration_and_memory.ram',
-        phoneData.configuration_and_memory.ram
+        phoneData.configuration_and_memory?.ram
       );
       setValue(
         'configuration_and_memory.storage_capacity',
-        phoneData.configuration_and_memory.storage_capacity
+        phoneData.configuration_and_memory?.storage_capacity
       );
       setValue(
         'configuration_and_memory.remaining_capacity',
-        phoneData.configuration_and_memory.remaining_capacity
+        phoneData.configuration_and_memory?.remaining_capacity
       );
       setValue(
         'configuration_and_memory.memory_card',
-        phoneData.configuration_and_memory.memory_card
+        phoneData.configuration_and_memory?.memory_card
       );
       setValue(
         'configuration_and_memory.contacts',
-        phoneData.configuration_and_memory.contacts
+        phoneData.configuration_and_memory?.contacts
       );
 
       // Các trường con trong `camera_and_screen`
       setValue(
         'camera_and_screen.rear_camera_resolution',
-        phoneData.camera_and_screen.rear_camera_resolution
+        phoneData.camera_and_screen?.rear_camera_resolution
       );
       setValue(
         'camera_and_screen.rear_camera_video',
-        phoneData.camera_and_screen.rear_camera_video
+        phoneData.camera_and_screen?.rear_camera_video
       );
       setValue(
         'camera_and_screen.rear_camera_flash',
-        phoneData.camera_and_screen.rear_camera_flash
+        phoneData.camera_and_screen?.rear_camera_flash
       );
       setValue(
         'camera_and_screen.rear_camera_features',
-        phoneData.camera_and_screen.rear_camera_features
+        phoneData.camera_and_screen?.rear_camera_features
       );
       setValue(
         'camera_and_screen.front_camera_resolution',
-        phoneData.camera_and_screen.front_camera_resolution
+        phoneData.camera_and_screen?.front_camera_resolution
       );
       setValue(
         'camera_and_screen.front_camera_features',
-        phoneData.camera_and_screen.front_camera_features
+        phoneData.camera_and_screen?.front_camera_features
       );
       setValue(
         'camera_and_screen.screen_technology',
-        phoneData.camera_and_screen.screen_technology
+        phoneData.camera_and_screen?.screen_technology
       );
       setValue(
         'camera_and_screen.screen_resolution',
-        phoneData.camera_and_screen.screen_resolution
+        phoneData.camera_and_screen?.screen_resolution
       );
       setValue(
         'camera_and_screen.screen_size',
-        phoneData.camera_and_screen.screen_size
+        phoneData.camera_and_screen?.screen_size
       );
       setValue(
         'camera_and_screen.max_brightness',
-        phoneData.camera_and_screen.max_brightness
+        phoneData.camera_and_screen?.max_brightness
       );
       setValue(
         'camera_and_screen.touchscreen_glass',
-        phoneData.camera_and_screen.touchscreen_glass
+        phoneData.camera_and_screen?.touchscreen_glass
       );
 
       // Các trường con trong `battery_and_charging`
       setValue(
         'battery_and_charging.battery_capacity',
-        phoneData.battery_and_charging.battery_capacity
+        phoneData.battery_and_charging?.battery_capacity
       );
       setValue(
         'battery_and_charging.battery_type',
-        phoneData.battery_and_charging.battery_type
+        phoneData.battery_and_charging?.battery_type
       );
       setValue(
         'battery_and_charging.max_charging_support',
-        phoneData.battery_and_charging.max_charging_support
+        phoneData.battery_and_charging?.max_charging_support
       );
       setValue(
         'battery_and_charging.battery_technology',
-        phoneData.battery_and_charging.battery_technology
+        phoneData.battery_and_charging?.battery_technology
       );
 
       // Các trường con trong `features`
       setValue(
         'features.advanced_security',
-        phoneData.features.advanced_security
+        phoneData.features?.advanced_security
       );
       setValue(
         'features.special_features',
-        phoneData.features.special_features
+        phoneData.features?.special_features
       );
       setValue(
         'features.water_dust_resistant',
-        phoneData.features.water_dust_resistant
+        phoneData.features?.water_dust_resistant
       );
-      setValue('features.voice_recording', phoneData.features.voice_recording);
-      setValue('features.radio', phoneData.features.radio);
-      setValue('features.video_playback', phoneData.features.video_playback);
-      setValue('features.music_playback', phoneData.features.music_playback);
+      setValue('features.voice_recording', phoneData.features?.voice_recording);
+      setValue('features.radio', phoneData.features?.radio);
+      setValue('features.video_playback', phoneData.features?.video_playback);
+      setValue('features.music_playback', phoneData.features?.music_playback);
 
       // Các trường con trong `connectivity`
       setValue(
         'connectivity.mobile_network',
-        phoneData.connectivity.mobile_network
+        phoneData.connectivity?.mobile_network
       );
-      setValue('connectivity.sim', phoneData.connectivity.sim);
-      setValue('connectivity.wifi', phoneData.connectivity.wifi);
-      setValue('connectivity.gps', phoneData.connectivity.gps);
-      setValue('connectivity.bluetooth', phoneData.connectivity.bluetooth);
+      setValue('connectivity.sim', phoneData.connectivity?.sim);
+      setValue('connectivity.wifi', phoneData.connectivity?.wifi);
+      setValue('connectivity.gps', phoneData.connectivity?.gps);
+      setValue('connectivity.bluetooth', phoneData.connectivity?.bluetooth);
       setValue(
         'connectivity.charging_connection_port',
-        phoneData.connectivity.charging_connection_port
+        phoneData.connectivity?.charging_connection_port
       );
       setValue(
         'connectivity.headphone_jack',
-        phoneData.connectivity.headphone_jack
+        phoneData.connectivity?.headphone_jack
       );
       setValue(
         'connectivity.other_connectivity',
-        phoneData.connectivity.other_connectivity
+        phoneData.connectivity?.other_connectivity
       );
 
       // Các trường con trong `design_and_material`
       setValue(
         'design_and_material.design',
-        phoneData.design_and_material.design
+        phoneData.design_and_material?.design
       );
       setValue(
         'design_and_material.material',
-        phoneData.design_and_material.material
+        phoneData.design_and_material?.material
       );
       setValue(
         'design_and_material.dimensions_and_weight',
-        phoneData.design_and_material.dimensions_and_weight
+        phoneData.design_and_material?.dimensions_and_weight
       );
       setValue(
         'design_and_material.release_date',
-        phoneData.design_and_material.release_date
+        phoneData.design_and_material?.release_date
       );
       setValue(
         'design_and_material.brand',
-        phoneData.design_and_material.brand
+        phoneData.design_and_material?.brand
       );
     }
   }, [phones, PhoneId, setValue]);
