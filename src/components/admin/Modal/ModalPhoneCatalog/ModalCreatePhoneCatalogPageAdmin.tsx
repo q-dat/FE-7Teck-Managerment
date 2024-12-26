@@ -91,7 +91,7 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreatePostProps> = ({
           </div>
 
           <div className="flex flex-row items-center justify-center space-x-5 text-center">
-            <Button onClick={onClose} className="border-gray-50 text-black">
+            <Button onClick={onClose} className=" dark:text-white  border-gray-50 text-black">
               Hủy
             </Button>
             <Button color="primary" type="submit" className="group text-white">

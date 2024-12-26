@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Button } from 'react-daisyui';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import InputModal from '../../InputModal';
@@ -7,19 +7,39 @@ import { PhoneContext } from '../../../../context/phone/PhoneContext';
 import { IPhone } from '../../../../types/type/phone/phone';
 import Select from 'react-select';
 import LabelForm from '../../LabelForm';
+import { PhoneCatalogContext } from '../../../../context/phone-catalog/PhoneCatalogContext';
+import ReactSelect from '../../../orther/react-select/ ReactSelect';
 
 interface ModalCreatePhoneProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
+interface Option {
+  value: string;
+  label: string;
+}
 const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
   isOpen,
   onClose
 }) => {
   const { loading, createPhone, getAllPhones } = useContext(PhoneContext);
   const isLoading = loading.create;
-  const { register, handleSubmit, reset, setValue } = useForm<IPhone>();
+  const { control, register, handleSubmit, reset, setValue } =
+    useForm<IPhone>();
+
+  // PhoneCatalog
+  const { phoneCatalogs, getAllPhoneCatalogs } =
+    useContext(PhoneCatalogContext);
+
+  useEffect(() => {
+    getAllPhoneCatalogs();
+  }, []);
+  //react-select
+  const phoneCatalog: Option[] = phoneCatalogs.map(phoneCatalog => ({
+    value: phoneCatalog._id,
+    label: phoneCatalog.name
+  }));
 
   const optionsData = {
     rear_camera_video: [
@@ -70,7 +90,6 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
 
   const onSubmit: SubmitHandler<IPhone> = async formData => {
     const data = new FormData();
-
     // Append các trường chính
     data.append('name', formData.name);
     data.append('phone_catalog_id', formData.phone_catalog_id);
@@ -178,7 +197,7 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
         onClick={handleOverlayClick}
         className="modal-overlay fixed inset-0 z-50 flex w-full items-center justify-center bg-black bg-opacity-40"
       >
-        <div className="mx-2 flex w-full xl:w-1/2 flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800">
+        <div className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:w-1/2">
           <p className="font-bold text-black dark:text-white">
             Tạo sản phẩm mới
           </p>
@@ -193,22 +212,27 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
               />
 
               <LabelForm title={'Danh mục'} />
+              <div className="flex items-center">
+                <ReactSelect
+                  placeholder="Chọn danh mục"
+                  name="phone_catalog_id"
+                  control={control}
+                  options={phoneCatalog}
+                  isMulti={false}
+                  className="xl:rounded-l-none"
+                />
+              </div>
+              <LabelForm title={'Giá'} />
               <InputModal
-                type="text"
-                {...register('phone_catalog_id')}
-                placeholder="Nhập danh mục"
+                type="number"
+                {...register('price')}
+                placeholder="Nhập giá"
               />
               <LabelForm title={'Trạng thái'} />
               <InputModal
                 type="text"
                 {...register('status')}
                 placeholder="Nhập trạng thái"
-              />
-              <LabelForm title={'Giá'} />
-              <InputModal
-                type="number"
-                {...register('price')}
-                placeholder="Nhập giá"
               />
               <LabelForm title={'Mô tả'} />
               <InputModal
@@ -593,7 +617,10 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
             </div>
           </div>
           <div className="flex flex-row items-center justify-center space-x-5 text-center">
-            <Button onClick={onClose} className="border-gray-50 text-black">
+            <Button
+              onClick={onClose}
+              className="border-gray-50 text-black dark:text-white"
+            >
               Hủy
             </Button>
             <Button

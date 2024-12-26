@@ -7,6 +7,8 @@ import { PhoneContext } from '../../../../context/phone/PhoneContext';
 import { IPhone } from '../../../../types/type/phone/phone';
 import Select from 'react-select';
 import LabelForm from '../../LabelForm';
+import { PhoneCatalogContext } from '../../../../context/phone-catalog/PhoneCatalogContext';
+import ReactSelect from '../../../orther/react-select/ ReactSelect';
 
 interface ModalEditPhoneProps {
   isOpen: boolean;
@@ -14,6 +16,10 @@ interface ModalEditPhoneProps {
   PhoneId: string;
 }
 
+interface Option {
+  value: string;
+  label: string;
+}
 const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
   isOpen,
   onClose,
@@ -22,7 +28,20 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
   const { getAllPhones, phones, getPhoneById, updatePhone } =
     useContext(PhoneContext);
 
-  const { register, handleSubmit, reset, setValue, watch } = useForm<IPhone>();
+  const { control, register, handleSubmit, reset, setValue, watch } =
+    useForm<IPhone>();
+
+  // PhoneCatalog
+  const { phoneCatalogs, getAllPhoneCatalogs } =
+    useContext(PhoneCatalogContext);
+  useEffect(() => {
+    getAllPhoneCatalogs();
+  }, []);
+  //react-select
+  const phoneCatalog: Option[] = phoneCatalogs.map(phoneCatalog => ({
+    value: phoneCatalog._id,
+    label: phoneCatalog.name
+  }));
 
   const [existingImg, setExistingImg] = useState<string | undefined>('');
   const [existingThumbnail, setExistingThumbnail] = useState<
@@ -350,11 +369,16 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
                 placeholder="Nhập tên sản phẩm"
               />
               <LabelForm title={'Danh mục'} />
-              <InputModal
-                type="text"
-                {...register('phone_catalog_id')}
-                placeholder="Nhập danh mục"
-              />
+              <div className="flex items-center">
+                <ReactSelect
+                  placeholder="Chọn danh mục"
+                  name="phone_catalog_id"
+                  control={control}
+                  options={phoneCatalog}
+                  isMulti={false}
+                  className="xl:rounded-l-none"
+                />
+              </div>
               <LabelForm title={'Trạng thái'} />
               <InputModal
                 type="text"
@@ -769,7 +793,10 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
             </div>
           </div>
           <div className="space-x-5 text-center">
-            <Button onClick={onClose} className="border-gray-50 text-black">
+            <Button
+              onClick={onClose}
+              className="border-gray-50 text-black dark:text-white"
+            >
               Hủy
             </Button>
             <Button color="primary" type="submit" className="text-white">

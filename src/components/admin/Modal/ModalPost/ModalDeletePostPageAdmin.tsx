@@ -50,7 +50,10 @@ const ModalDeletePostPageAdmin: React.FC<ModalDeletePostProps> = ({
             Xác Nhận
           </Button>
 
-          <Button onClick={onClose} className="border-gray-50 text-black">
+          <Button
+            onClick={onClose}
+            className="border-gray-50 text-black dark:text-white"
+          >
             Huỷ
           </Button>
         </div>
