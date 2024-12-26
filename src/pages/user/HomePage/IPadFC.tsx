@@ -90,25 +90,28 @@ const IPadFC: React.FC = () => {
 
   return (
     <div
-      className={`relative rounded-lg bg-white shadow ${phones.length === 0 ? 'hidden' : ''}`}
+      className={`relative rounded-lg bg-white dark:bg-black${phones.length === 0 ? 'hidden' : ''}`}
     >
       {/* Title */}
       <div className="my-5 flex w-full flex-col items-center justify-center">
-        <p className="font-title bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold text-transparent xl:text-[40px]">
+        <p className="font-title bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold text-transparent dark:from-white dark:via-primary dark:to-white dark:bg-clip-text xl:text-[40px]">
           IPad
         </p>
         <div className="h-[1px] w-[50px] animate-ping bg-primary"></div>
       </div>
       <div
         ref={scrollRefIpad}
-        className="grid grid-flow-col grid-rows-2 items-center justify-start gap-3 overflow-x-auto scroll-smooth px-2 py-1 scrollbar-hide xl:gap-5"
+        className="grid grid-flow-col grid-rows-2 items-center justify-start gap-3 overflow-x-auto scroll-smooth p-2 scrollbar-hide xl:gap-5"
       >
         {phones.map(phone => (
           <Link to="phone-detail">
-            <div key={phone._id} className="relative rounded-md bg-white">
-              <div className="flex w-[185px] flex-col items-center justify-center xl:w-[220px]">
+            <div
+              key={phone._id}
+              className="relative rounded-md border border-gray-50 text-black dark:text-white"
+            >
+              <div className="flex w-[175px] flex-col items-center justify-center xl:w-[200px]">
                 <img
-                  className="h-[185px] w-[185px] rounded-md object-cover xl:h-[250px] xl:w-[220px]"
+                  className="h-[200px] w-[175px] rounded-md rounded-b-none object-cover xl:h-[250px] xl:w-[200px]"
                   src={phone.img}
                 />
                 <p>{phone.name}</p>
@@ -135,13 +138,13 @@ const IPadFC: React.FC = () => {
       <div className="absolute top-1/2 flex w-full items-center justify-between">
         <Button
           onClick={() => scrollIpad(-200)}
-          className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white ${isLeftButtonVisibleIpad ? '' : 'bg-transparent text-transparent'}`}
+          className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-white shadow-none hover:bg-black hover:bg-opacity-10 hover:text-white dark:bg-white dark:bg-opacity-20 ${isLeftButtonVisibleIpad ? '' : 'bg-transparent text-transparent dark:bg-transparent'}`}
         >
           <MdArrowBackIosNew className="text-4xl" />
         </Button>
         <Button
           onClick={() => scrollIpad(200)}
-          className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-primary shadow-none hover:bg-primary hover:bg-opacity-50 hover:text-white ${isRightButtonVisibleIpad ? '' : 'bg-transparent text-transparent'}`}
+          className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-white shadow-none hover:bg-black hover:bg-opacity-10 hover:text-white dark:bg-white dark:bg-opacity-20 ${isRightButtonVisibleIpad ? '' : 'bg-transparent text-transparent dark:bg-transparent'}`}
         >
           <MdArrowForwardIos className="text-4xl" />
         </Button>
