@@ -8,16 +8,20 @@ const NavtableAdmin: React.FC<{ Title_NavtableAdmin: string }> = ({
 }) => {
   const [value, setValue] = React.useState('default');
   return (
-    <div className="hidden items-center justify-between rounded-t-md bg-white px-4 py-5 md:flex">
+    <div className="hidden items-center justify-between rounded-t-md bg-white px-4 py-5 dark:bg-primary dark:bg-opacity-50 md:flex">
       <div>
-        <h2 className="text-lg font-bold text-black">{Title_NavtableAdmin}</h2>
-        <p className="mt-1 text-sm text-primary">Đang sử dụng</p>
+        <h2 className="text-lg font-bold text-black dark:text-white">
+          {Title_NavtableAdmin}
+        </h2>
+        <p className="mt-1 text-sm text-primary dark:text-white">
+          Đang sử dụng
+        </p>
       </div>
       <div className="flex items-center">
         {/* Thanh Search */}
         <div className="relative mr-4 flex items-center">
           <Input
-            className="min-w-[300px] bg-white text-black focus:outline-none"
+            className="min-w-[300px] bg-white placeholder-black text-black focus:outline-none"
             type="text"
             placeholder="Tìm Kiếm..."
           />
@@ -26,7 +30,9 @@ const NavtableAdmin: React.FC<{ Title_NavtableAdmin: string }> = ({
           </div>
         </div>
         <div className="flex items-center gap-3 rounded-lg">
-          <label className="text-sm text-gray-600">Sắp xếp theo:</label>
+          <label className="text-sm text-gray-600 dark:text-white">
+            Sắp xếp theo:
+          </label>
           <Select
             className="bg-white text-black focus:outline-none"
             value={value}

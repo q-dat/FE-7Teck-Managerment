@@ -26,7 +26,7 @@ const NavbarAdmin: React.FC<{}> = () => {
         {/* Input Search */}
         <div className="relative mr-4 flex items-center">
           <Input
-            className="min-w-[400px] bg-white text-black focus:outline-none"
+            className="min-w-[400px] bg-white text-black placeholder-black focus:outline-none"
             type="text"
             placeholder="Tìm Kiếm..."
           />
