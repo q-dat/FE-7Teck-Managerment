@@ -101,7 +101,7 @@ const IPadFC: React.FC = () => {
       </div>
       <div
         ref={scrollRefIpad}
-        className="grid grid-flow-col grid-rows-2 items-center justify-start gap-3 overflow-x-auto scroll-smooth p-2 scrollbar-hide xl:gap-5"
+        className="grid grid-flow-col grid-rows-2 items-center justify-start gap-3 overflow-x-auto scroll-smooth p-2 scrollbar-hide xl:gap-5 xl:p-[22px]"
       >
         {phones.map(phone => (
           <Link to="phone-detail">
