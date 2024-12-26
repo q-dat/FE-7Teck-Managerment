@@ -9,9 +9,11 @@ import { FaList, FaWindows } from 'react-icons/fa6';
 import { BsApple } from 'react-icons/bs';
 import { PostContext } from '../../context/post/PostContext';
 import { BsFilePost } from 'react-icons/bs';
-import { AiOutlineMenuFold } from "react-icons/ai";
+import { AiOutlineMenuFold } from 'react-icons/ai';
+import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
 
 const SidebarAdmin: React.FC<{}> = () => {
+  const { phoneCatalogs } = useContext(PhoneCatalogContext);
   const { phones } = useContext(PhoneContext);
   const { posts } = useContext(PostContext);
   const [activeItem, setActiveItem] = useState('Dashboard');
@@ -28,7 +30,7 @@ const SidebarAdmin: React.FC<{}> = () => {
       name: 'Danh Mục Điện Thoại',
       icon: FaList,
       link: '/admin/phone-catalog-manager',
-      toastify: phones.length
+      toastify: phoneCatalogs.length
     },
     {
       name: 'Điện Thoại',
