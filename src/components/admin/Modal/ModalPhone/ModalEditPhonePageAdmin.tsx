@@ -286,7 +286,7 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
     const data = new FormData();
 
     data.append('name', formData.name || '');
-    data.append('phone_catalog_id', formData.phone_catalog_id || '');
+    data.append('phone_catalog_id', formData.phone_catalog_id._id);
     data.append('status', formData.status || '');
     data.append('price', formData.price?.toString() || '');
     data.append('des', formData.des || '');

@@ -1,7 +1,9 @@
+import { IPhoneCatalog } from "../phone-catalog/phoneCatalog";
+
 export interface IPhone {
   _id: string;
   name: string; // Name // Tên
-  phone_catalog_id: string; // Phone catalog ID // Danh mục điện thoại
+  phone_catalog_id: IPhoneCatalog; // Phone catalog ID // Danh mục điện thoại
   status: string; // Product status // Trạng thái sản phẩm
   price: number; // Product price // Giá sản phẩm
   des?: string; // Product description // Mô tả sản phẩm
