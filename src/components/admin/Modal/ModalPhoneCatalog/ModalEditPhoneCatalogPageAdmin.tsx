@@ -45,7 +45,6 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({
       setValue('des', phoneCatalogData.des);
       setValue('status', phoneCatalogData.status);
       setValue('createdAt', phoneCatalogData.createdAt);
-      setValue('updatedAt', phoneCatalogData.updatedAt);
 
       setExistingImg(phoneCatalogData.img);
     }
@@ -54,17 +53,15 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({
   const onSubmit: SubmitHandler<IPhoneCatalog> = async formData => {
     const data = new FormData();
     data.append('name', formData.name);
-    data.append('price', formData.price);
-    data.append('price', formData.img);
+    data.append('price', formData.price.toString());
     data.append('des', formData.des || '');
+    data.append('status', formData.status || '');
 
     const imgFile = watch('img');
     if (imgFile && imgFile[0]) {
       data.append('img', imgFile[0]);
-    } else {
-      if (existingImg) {
-        data.append('img', existingImg);
-      }
+    } else if (existingImg) {
+      data.append('img', existingImg);
     }
 
     try {
@@ -114,16 +111,15 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({
               placeholder="Giá"
             />
             <InputModal
-              type="number"
+              type="text"
               {...register('status')}
               placeholder="Trạng thái(*Không bắt buộc!)"
             />
             <InputModal
-              type="number"
+              type="text"
               {...register('des')}
               placeholder="Mô tả (*Không bắt buộc!)"
             />
-
             <LabelForm title={'Hình ảnh'} />
             {existingImg && (
               <div className="my-2">

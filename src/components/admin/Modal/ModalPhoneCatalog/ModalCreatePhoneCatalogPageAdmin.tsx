@@ -22,7 +22,9 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreatePostProps> = ({
   const onSubmit: SubmitHandler<IPhoneCatalog> = async formData => {
     const data = new FormData();
     data.append('name', formData.name);
-    data.append('price', formData.price);
+    data.append('price', formData.price.toString());
+    data.append('des', formData.des || '');
+    data.append('status', formData.status || '');
     if (formData.img) {
       data.append('img', formData.img[0]);
     }
@@ -31,13 +33,13 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreatePostProps> = ({
       await createPhoneCatalog(data);
       reset();
       getAllPhoneCatalogs();
-      Toastify('Tạo bài viết thành công!', 201);
+      Toastify('Tạo danh mục thành công!', 201);
       onClose();
     } catch (error) {
       getAllPhoneCatalogs();
       const errorMessage = isIErrorResponse(error)
         ? error.data?.message
-        : 'Tạo bài viết thất bại!';
+        : 'Tạo danh mục thất bại!';
       Toastify(`Lỗi: ${errorMessage}`, 500);
     }
   };
@@ -75,13 +77,13 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreatePostProps> = ({
               {...register('price', { required: true })}
               placeholder="Giá"
             />
-              <InputModal
-              type="number"
+            <InputModal
+              type="text"
               {...register('status')}
               placeholder="Trạng thái(*Không bắt buộc!)"
             />
-              <InputModal
-              type="number"
+            <InputModal
+              type="text"
               {...register('des')}
               placeholder="Mô tả (*Không bắt buộc!)"
             />
