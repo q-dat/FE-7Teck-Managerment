@@ -105,8 +105,9 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
     if (phoneData) {
       setValue('name', phoneData.name);
       setValue('phone_catalog_id', phoneData.phone_catalog_id);
-      setValue('status', phoneData.status);
+      setValue('color', phoneData.color);
       setValue('price', phoneData.price);
+      setValue('status', phoneData.status);
       setValue('des', phoneData.des);
       setValue('img', phoneData.img);
       setValue('thumbnail', phoneData.thumbnail);
@@ -287,8 +288,9 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
 
     data.append('name', formData.name || '');
     data.append('phone_catalog_id', formData.phone_catalog_id._id);
-    data.append('status', formData.status || '');
+    data.append('color', formData.color);
     data.append('price', formData.price?.toString() || '');
+    data.append('status', formData.status);
     data.append('des', formData.des || '');
 
     const imgFile = watch('img');
@@ -376,7 +378,7 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
                   control={control}
                   options={phoneCatalog}
                   isMulti={false}
-                  className="xl:rounded-l-none"
+                  className=""
                 />
               </div>
               <LabelForm title={'Trạng thái'} />
@@ -384,6 +386,12 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
                 type="text"
                 {...register('status')}
                 placeholder="Nhập trạng thái"
+              />
+              <LabelForm title={'Màu sắc'} />
+              <InputModal
+                type="text"
+                {...register('color')}
+                placeholder="Nhập màu"
               />
               <LabelForm title={'Giá'} />
               <InputModal

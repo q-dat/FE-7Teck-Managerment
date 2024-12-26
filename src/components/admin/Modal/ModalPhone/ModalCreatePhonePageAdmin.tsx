@@ -90,11 +90,12 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
 
   const onSubmit: SubmitHandler<IPhone> = async formData => {
     const data = new FormData();
-    // Append các trường chính
-    data.append('name', formData.name);
+
+    data.append('name', formData.name || '');
     data.append('phone_catalog_id', formData.phone_catalog_id._id);
+    data.append('color', formData.color);
+    data.append('price', formData.price?.toString() || '');
     data.append('status', formData.status);
-    data.append('price', formData.price.toString());
     data.append('des', formData.des || '');
 
     // Append ảnh
@@ -219,9 +220,15 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
                   control={control}
                   options={phoneCatalog}
                   isMulti={false}
-                  className="xl:rounded-l-none"
+                  className=""
                 />
               </div>
+              <LabelForm title={'Màu sắc'} />
+              <InputModal
+                type="text"
+                {...register('color')}
+                placeholder="Nhập màu"
+              />
               <LabelForm title={'Giá'} />
               <InputModal
                 type="number"
