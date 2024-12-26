@@ -25,7 +25,7 @@ const SidebarAdmin: React.FC<{}> = () => {
       link: '/admin'
     },
     {
-      name: 'Danh Mục Sản Phẩm',
+      name: 'Danh Mục Điện Thoại',
       icon: FaList,
       link: '/admin/phone-catalog-manager',
       toastify: phones.length

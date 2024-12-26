@@ -7,7 +7,6 @@ import { IPost } from '../../../../types/type/post/post';
 import { Toastify } from '../../../../helper/Toastify';
 import InputModal from '../../InputModal';
 import { PostContext } from '../../../../context/post/PostContext';
-import { isIErrorResponse } from '../../../../types/error/error';
 
 const modules = {
   toolbar: [
@@ -53,12 +52,9 @@ const ModalCreatePostPageAdmin: React.FC<ModalCreatePostProps> = ({
       getAllPosts();
       Toastify('Tạo bài viết thành công!', 201);
       onClose();
-    } catch (error) {
+    } catch (err) {
       getAllPosts();
-      const errorMessage = isIErrorResponse(error)
-        ? error.data?.message
-        : 'Tạo bài viết thất bại!';
-      Toastify(`Lỗi: ${errorMessage}`, 500);
+      Toastify(`Lỗi: ${err}`, 500);
     }
   };
 
@@ -80,7 +76,7 @@ const ModalCreatePostPageAdmin: React.FC<ModalCreatePostProps> = ({
       >
         <div
           onClick={e => e.stopPropagation()}
-          className="mx-2 flex w-full xl:w-1/2 flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800"
+          className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:w-1/2"
         >
           <div>
             <p className="font-bold text-black dark:text-white">
@@ -91,7 +87,7 @@ const ModalCreatePostPageAdmin: React.FC<ModalCreatePostProps> = ({
               {...register('title', { required: true })}
               placeholder="Tiêu đề bài viết"
             />
-              <InputModal
+            <InputModal
               type="text"
               {...register('catalog', { required: true })}
               placeholder="Danh mục"

@@ -7,7 +7,6 @@ import { Toastify } from '../../../../helper/Toastify';
 import { PhoneCatalogContext } from '../../../../context/phone-catalog/PhoneCatalogContext';
 import { IPhoneCatalog } from '../../../../types/type/phone-catalog/phoneCatalog';
 import LabelForm from '../../LabelForm';
-// import { isIErrorResponse } from '../../../../types/error/error';
 
 interface ModalEditPostPageAdminProps {
   isOpen: boolean;
@@ -60,8 +59,10 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({
     const imgFile = watch('img');
     if (imgFile && imgFile[0]) {
       data.append('img', imgFile[0]);
-    } else if (existingImg) {
-      data.append('img', existingImg);
+    } else {
+      if (existingImg) {
+        data.append('img', existingImg);
+      }
     }
 
     try {
@@ -98,7 +99,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({
         >
           <div>
             <p className="font-bold text-black dark:text-white">
-              Chỉnh sửa bài viết
+              Chỉnh sửa danh mục điện thoại
             </p>
             <InputModal
               type="text"

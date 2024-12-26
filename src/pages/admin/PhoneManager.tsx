@@ -105,39 +105,40 @@ const PhoneManager: React.FC = () => {
         }
         table_body={
           <Table.Body className="text-center text-sm">
-            {phones.map((phone: IPhone, index: number) => (
-              <Table.Row key={index}>
-                <span>#{index + 1}</span>
-                <span className="flex items-center justify-center">
-                  <img
-                    src={phone.img}
-                    alt="Phone Image"
-                    className="h-12 w-12 object-cover"
-                  />
-                </span>
-                <span className="flex items-center justify-center">
-                  {phone.thumbnail && (
+            {phones && phones.length > 0 ? (
+              phones.map((phone: IPhone, index: number) => (
+                <Table.Row key={index}>
+                  <span>#{index + 1}</span>
+                  <span className="flex items-center justify-center">
                     <img
-                      src={phone.thumbnail}
-                      alt="Thumbnail"
+                      src={phone.img}
+                      alt="Phone Image"
                       className="h-12 w-12 object-cover"
                     />
-                  )}
-                </span>
-                <span>{phone.name}</span>
-                {/* <span className="line-clamp-1">{phone.phone_catalog_id}</span> */}
-                <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
-                  {(phone.price * 1000).toLocaleString('vi-VN')}đ
-                </span>
-                <span className="line-clamp-1">{phone.status}</span>
-                <span className="line-clamp-1">
-                  {phone.des || 'Không có mô tả!'}
-                </span>
-                <span>
-                  {new Date(phone?.createdAt).toLocaleString('vi-VN')}
-                </span>
-                {/* Cấu hình và bộ nhớ */}
-                {/* <span>
+                  </span>
+                  <span className="flex items-center justify-center">
+                    {phone.thumbnail && (
+                      <img
+                        src={phone.thumbnail}
+                        alt="Thumbnail"
+                        className="h-12 w-12 object-cover"
+                      />
+                    )}
+                  </span>
+                  <span>{phone.name}</span>
+                  {/* <span className="line-clamp-1">{phone.phone_catalog_id}</span> */}
+                  <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
+                    {(phone.price * 1000).toLocaleString('vi-VN')}đ
+                  </span>
+                  <span className="line-clamp-1">{phone.status}</span>
+                  <span className="line-clamp-1">
+                    {phone.des || 'Không có mô tả!'}
+                  </span>
+                  <span>
+                    {new Date(phone?.createdAt).toLocaleString('vi-VN')}
+                  </span>
+                  {/* Cấu hình và bộ nhớ */}
+                  {/* <span>
                   <div className='text-start divide-y-4'>
                     <p>
                       <span>Hệ điều hành:</span>
@@ -177,8 +178,8 @@ const PhoneManager: React.FC = () => {
                     </p>
                   </div>
                 </span> */}
-                {/* Camera và màn hình */}
-                {/* <span>
+                  {/* Camera và màn hình */}
+                  {/* <span>
                   <div className='text-start divide-y-4'>
                     <p>
                       <span>Độ phân giải cammera sau:</span>
@@ -226,8 +227,8 @@ const PhoneManager: React.FC = () => {
                     </p>
                   </div>
                 </span> */}
-                {/* Pin và sạc */}
-                {/* <span>
+                  {/* Pin và sạc */}
+                  {/* <span>
                   <div className='text-start divide-y-4'>
                     <p>
                       <span>Dung lượng pin:</span>
@@ -247,8 +248,8 @@ const PhoneManager: React.FC = () => {
                     </p>
                   </div>
                 </span> */}
-                {/* Tiện ích */}
-                {/* <span>
+                  {/* Tiện ích */}
+                  {/* <span>
                   <div className='text-start divide-y-4'>
                     <p>
                       <span>Bảo mật nâng cao:</span>
@@ -280,8 +281,8 @@ const PhoneManager: React.FC = () => {
                     </p>
                   </div>
                 </span> */}
-                {/* Kết nối */}
-                {/* <span>
+                  {/* Kết nối */}
+                  {/* <span>
                   <div className='text-start divide-y-4'>
                     <p>
                       <span>Mạng di động:</span>
@@ -317,8 +318,8 @@ const PhoneManager: React.FC = () => {
                     </p>
                   </div>
                 </span> */}
-                {/* Thiết kế và chất liệu */}
-                {/* <span>
+                  {/* Thiết kế và chất liệu */}
+                  {/* <span>
                   <div className='text-start divide-y-4'>
                     <p>
                       <span>Thiết kế:</span>
@@ -343,35 +344,40 @@ const PhoneManager: React.FC = () => {
                   </div>
                 </span> */}
 
-                {/* Hành động */}
-                <span>
-                  <details>
-                    <summary className="inline cursor-pointer text-base text-warning">
-                      <div className="flex items-center justify-center px-[55px] py-2">
-                        <FaCircleInfo />
+                  {/* Hành động */}
+                  <span>
+                    <details>
+                      <summary className="inline cursor-pointer text-base text-warning">
+                        <div className="flex items-center justify-center px-[55px] py-2">
+                          <FaCircleInfo />
+                        </div>
+                      </summary>
+                      <div className="flex flex-col items-center justify-center space-y-2">
+                        <Button
+                          color="success"
+                          onClick={() => openModalEditAdmin(phone._id ?? '')}
+                          className="w-full max-w-[140px] text-sm font-light text-white"
+                        >
+                          <FaPenToSquare />
+                          Cập Nhật
+                        </Button>
+                        <Button
+                          onClick={() => openModalDeleteAdmin(phone._id ?? '')}
+                          className="w-full max-w-[140px] bg-red-600 text-sm font-light text-white"
+                        >
+                          <MdDelete />
+                          Xoá
+                        </Button>
                       </div>
-                    </summary>
-                    <div className="flex flex-col items-center justify-center space-y-2">
-                      <Button
-                        color="success"
-                        onClick={() => openModalEditAdmin(phone._id ?? '')}
-                        className="w-full max-w-[140px] text-sm font-light text-white"
-                      >
-                        <FaPenToSquare />
-                        Cập Nhật
-                      </Button>
-                      <Button
-                        onClick={() => openModalDeleteAdmin(phone._id ?? '')}
-                        className="w-full max-w-[140px] bg-red-600 text-sm font-light text-white"
-                      >
-                        <MdDelete />
-                        Xoá
-                      </Button>
-                    </div>
-                  </details>
-                </span>
-              </Table.Row>
-            ))}
+                    </details>
+                  </span>
+                </Table.Row>
+              ))
+            ) : (
+              <tr>
+                <td colSpan={9}>Không có sản phẩm điện thoại nào!</td>
+              </tr>
+            )}
           </Table.Body>
         }
       />

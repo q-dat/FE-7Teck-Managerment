@@ -67,10 +67,10 @@ const PhoneCatalogManager: React.FC = () => {
 
   return (
     <div className="w-full">
-      <NavbarMobile Title_NavbarMobile="Bài Viết" />
+      <NavbarMobile Title_NavbarMobile="Danh Mục Điện Thoại" />
       <div className="px-2 xl:px-0">
         <NavtitleAdmin
-          Title_NavtitleAdmin="Quản Lý Danh Sách Bài Viết"
+          Title_NavtitleAdmin="Quản Lý Danh Sách Danh Mục Điện Thoại"
           Btn_Create={
             <div className="flex flex-col items-start justify-center gap-2 md:flex-row md:items-end">
               <Button
@@ -87,7 +87,7 @@ const PhoneCatalogManager: React.FC = () => {
       </div>
 
       <TableListAdmin
-        Title_TableListAdmin={`Danh Sách Bài Viết (${phoneCatalogs.length})`}
+        Title_TableListAdmin={`Danh Sách Danh Mục Điện Thoại (${phoneCatalogs.length})`}
         table_head={
           <Table.Head className="bg-primary text-center text-white">
             <span>STT</span>
@@ -100,53 +100,63 @@ const PhoneCatalogManager: React.FC = () => {
         }
         table_body={
           <Table.Body className="text-center text-sm">
-            {phoneCatalogs.map((phoneCatalog: IPhoneCatalog, index: number) => (
-              <Table.Row key={index}>
-                <span>#{index + 1}</span>
-                <img
-                  src={phoneCatalog?.img}
-                  alt="Phone Image"
-                  className="h-12 w-12 object-cover"
-                />
-                <span>{phoneCatalog?.name}</span>
-                <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
-                  {(phoneCatalog.price * 1000).toLocaleString('vi-VN')}đ
-                </span>
-                <span>
-                  {new Date(phoneCatalog?.createdAt).toLocaleString('vi-VN')}
-                </span>
-                <span>
-                  <details>
-                    <summary className="inline cursor-pointer text-base text-warning">
-                      <div className="flex items-center justify-center px-[55px] py-2">
-                        <FaCircleInfo />
-                      </div>
-                    </summary>
-                    <div className="flex flex-col items-center justify-center space-y-2">
-                      <Button
-                        color="success"
-                        onClick={() =>
-                          openModalEditAdmin(phoneCatalog?._id ?? '')
-                        }
-                        className="w-full max-w-[140px] text-sm font-light text-white"
-                      >
-                        <FaPenToSquare />
-                        Cập Nhật
-                      </Button>
-                      <Button
-                        onClick={() =>
-                          openModalDeleteAdmin(phoneCatalog?._id ?? '')
-                        }
-                        className="w-full max-w-[140px] bg-red-600 text-sm font-light text-white"
-                      >
-                        <MdDelete />
-                        Xoá
-                      </Button>
-                    </div>
-                  </details>
-                </span>
-              </Table.Row>
-            ))}
+            {phoneCatalogs && phoneCatalogs.length > 0 ? (
+              phoneCatalogs.map(
+                (phoneCatalog: IPhoneCatalog, index: number) => (
+                  <Table.Row key={index}>
+                    <span>#{index + 1}</span>
+                    <img
+                      src={phoneCatalog?.img}
+                      alt="Phone Image"
+                      className="h-12 w-12 object-cover"
+                    />
+                    <span>{phoneCatalog?.name}</span>
+                    <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
+                      {(phoneCatalog.price * 1000).toLocaleString('vi-VN')}đ
+                    </span>
+                    <span>
+                      {new Date(phoneCatalog?.createdAt).toLocaleString(
+                        'vi-VN'
+                      )}
+                    </span>
+                    <span>
+                      <details>
+                        <summary className="inline cursor-pointer text-base text-warning">
+                          <div className="flex items-center justify-center px-[55px] py-2">
+                            <FaCircleInfo />
+                          </div>
+                        </summary>
+                        <div className="flex flex-col items-center justify-center space-y-2">
+                          <Button
+                            color="success"
+                            onClick={() =>
+                              openModalEditAdmin(phoneCatalog?._id ?? '')
+                            }
+                            className="w-full max-w-[140px] text-sm font-light text-white"
+                          >
+                            <FaPenToSquare />
+                            Cập Nhật
+                          </Button>
+                          <Button
+                            onClick={() =>
+                              openModalDeleteAdmin(phoneCatalog?._id ?? '')
+                            }
+                            className="w-full max-w-[140px] bg-red-600 text-sm font-light text-white"
+                          >
+                            <MdDelete />
+                            Xoá
+                          </Button>
+                        </div>
+                      </details>
+                    </span>
+                  </Table.Row>
+                )
+              )
+            ) : (
+              <tr>
+                <td colSpan={6}>Không có danh mục điện thoại nào!</td>
+              </tr>
+            )}
           </Table.Body>
         }
       />

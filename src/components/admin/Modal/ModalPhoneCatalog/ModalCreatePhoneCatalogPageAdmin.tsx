@@ -3,7 +3,6 @@ import { PhoneCatalogContext } from '../../../../context/phone-catalog/PhoneCata
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { IPhoneCatalog } from '../../../../types/type/phone-catalog/phoneCatalog';
 import { Toastify } from '../../../../helper/Toastify';
-import { isIErrorResponse } from '../../../../types/error/error';
 import InputModal from '../../InputModal';
 import { Button } from 'react-daisyui';
 
@@ -35,12 +34,9 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreatePostProps> = ({
       getAllPhoneCatalogs();
       Toastify('Tạo danh mục thành công!', 201);
       onClose();
-    } catch (error) {
+    } catch (err) {
       getAllPhoneCatalogs();
-      const errorMessage = isIErrorResponse(error)
-        ? error.data?.message
-        : 'Tạo danh mục thất bại!';
-      Toastify(`Lỗi: ${errorMessage}`, 500);
+      Toastify(`Lỗi: ${err}`, 500);
     }
   };
 
