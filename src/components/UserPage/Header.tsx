@@ -82,7 +82,7 @@ const Header: React.FC = () => {
       link: '/contact'
     }
   ];
-
+  //
   useEffect(() => {
     const pathname = location.pathname;
     const foundItem = menuItems.find(
@@ -94,7 +94,7 @@ const Header: React.FC = () => {
       setActiveItem(foundItem.name);
     }
   }, [location.pathname, menuItems]);
-
+  //
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -113,7 +113,7 @@ const Header: React.FC = () => {
   return (
     <div>
       {/* Desktop */}
-      <div className="fixed z-[99999] hidden w-full flex-col xl:flex">
+      <div className="fixed z-[99999] hidden w-full flex-col xl:block">
         {/* Search Result */}
         <div className="absolute left-0 top-9 z-50 hidden bg-primary font-light text-white shadow">
           <div className="flex items-center justify-start gap-2 p-2">
@@ -121,19 +121,16 @@ const Header: React.FC = () => {
             <p>IPhone 16 ProMax</p>
           </div>
         </div>
+        {/* Menu 1 */}
         <div
           className={`flex h-[40px] w-full transform flex-row items-center justify-between border-b bg-primary px-10 text-xs text-white transition-transform delay-100 duration-300 ease-in-out dark:bg-black ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}
         >
-          <div className="relative">
+          <div className="flex w-[400px] transform flex-row items-center justify-start">
+            <IoSearch className="animate-bounce text-xl" />
             <Input
-              size="sm"
-              className="w-[400px] rounded-md border-none bg-transparent pl-7 text-[16px] text-white placeholder-white focus:border focus:border-white focus:placeholder-black focus:outline-none"
-              placeholder="Nhập tìm kiếm của bạn..."
-              type="text"
-            />
-            <span className="absolute left-0 top-[4px] text-2xl text-white">
-              <IoSearch />
-            </span>
+              className="w-full border-none bg-transparent pl-1 text-sm placeholder-white shadow-none focus:placeholder-black focus:outline-none"
+              placeholder="Bạn đang tìm gì..."
+            ></Input>
           </div>
 
           <div className="flex flex-row gap-5">
