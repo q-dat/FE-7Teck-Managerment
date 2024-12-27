@@ -65,7 +65,7 @@ const PhoneFC: React.FC = () => {
             <div className="w-[175px] xl:w-[200px]">
               <Link to="phone-detail">
                 <img
-                  className="h-[200px] w-[175px] rounded-md rounded-b-none object-cover xl:h-[250px] xl:w-[200px]"
+                  className="h-[200px] w-[175px] rounded-[5px] rounded-b-none object-cover xl:h-[250px] xl:w-[200px]"
                   src={phone.img}
                 />
               </Link>

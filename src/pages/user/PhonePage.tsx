@@ -54,7 +54,7 @@ const PhonePage: React.FC = () => {
             <p className="font-title my-5 text-start text-2xl font-bold text-primary xl:text-2xl">
               Danh Sách Sản Phẩm
             </p>
-            <div className="grid grid-flow-row grid-cols-2 items-start gap-x-5 gap-y-5 md:grid-cols-4 xl:grid-cols-6">
+            <div className="grid grid-flow-row grid-cols-2 items-start gap-2 md:grid-cols-4 md:gap-3 xl:grid-cols-6">
               {currentPhones.map(phone => (
                 <div
                   key={phone._id}
@@ -63,7 +63,7 @@ const PhonePage: React.FC = () => {
                   <Link to="phone-detail">
                     <div className="flex flex-col items-start">
                       <img
-                        className="h-[200px] w-full rounded-md rounded-b-none object-cover xl:h-[250px]"
+                        className="h-[200px] w-full rounded-[5px] rounded-b-none object-cover xl:h-[250px]"
                         src={phone.img}
                       />
 
