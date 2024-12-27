@@ -19,7 +19,7 @@ const PhonePage: React.FC = () => {
   useEffect(() => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: 'smooth'
     });
   }, [currentPage]);
 
@@ -36,9 +36,9 @@ const PhonePage: React.FC = () => {
   };
 
   return (
-    <div className="pb-[20px] xl:pt-[100px]">
+    <div>
       <HeaderResponsive Title_NavbarMobile="Sản Phẩm" />
-      <div className="pt-[60px] xl:pt-0">
+      <div className="pt-[100px] xl:pt-0">
         <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow dark:text-white lg:px-20">
           <ul className="font-light">
             <li>

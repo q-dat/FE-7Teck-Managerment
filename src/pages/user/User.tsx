@@ -11,7 +11,9 @@ const User: React.FC = () => {
     <div className="bg-[#f2f4f7] dark:bg-black dark:bg-opacity-80">
       <Header />
       <ScrollToTopButton />
-      <Outlet />
+      <div className="pb-[20px] xl:pt-[100px]">
+        <Outlet />
+      </div>
       <ContactForm />
       <FooterFC />
       <NavBottom />

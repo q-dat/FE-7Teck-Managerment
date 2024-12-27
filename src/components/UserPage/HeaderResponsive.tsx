@@ -111,16 +111,25 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
   }, []);
 
   return (
-    <div className="fixed z-[99999] block w-full bg-primary xl:hidden">
+    <div className="fixed z-[99999] block w-full bg-gradient-to-b from-white to-primary xl:hidden">
       {/* Menu 1 */}
       <div
-        className={`flex h-[40px] w-full transform flex-row items-center justify-start border-b bg-primary px-2 text-white transition-transform duration-300 ease-in-out ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}
+        className={`flex h-[40px] w-full transform flex-row items-center justify-between border-b bg-primary px-2 text-white transition-transform duration-300 ease-in-out ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}
       >
-        <IoSearch className="animate-bounce text-xl" />
-        <Input
-          className="text-md w-full border-none bg-transparent pl-1 placeholder-white shadow-none focus:placeholder-black focus:outline-none"
-          placeholder="Bạn đang tìm gì..."
-        ></Input>
+        <div className="flex w-full flex-row items-center justify-center">
+          <IoSearch className="animate-bounce text-xl" />
+          <Input
+            className="text-md w-full border-none bg-transparent pl-1 placeholder-white shadow-none focus:placeholder-black focus:outline-none"
+            placeholder="Bạn đang tìm gì..."
+          ></Input>
+        </div>
+        <div>
+          <img
+            src={Logo}
+            className="h-full w-[30px] rounded-full object-cover"
+            alt=""
+          />
+        </div>
       </div>
 
       <div
@@ -268,7 +277,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                 className="flex flex-row items-center justify-center gap-2 py-4 text-2xl dark:text-white xl:hidden"
               >
                 <div
-                  className={`transform rounded-md p-1 text-[25px] text-white transition-transform duration-300 ease-in-out ${
+                  className={`transform rounded-md text-[25px] text-white transition-transform duration-300 ease-in-out ${
                     rightVisible ? 'rotate-180 animate-ping' : 'rotate-0'
                   }`}
                 >

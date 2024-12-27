@@ -27,10 +27,10 @@ const NewsPage: React.FC = () => {
   };
 
   return (
-    <div className="pb-[20px] xl:pt-[100px]">
+    <div>
       <HeaderResponsive Title_NavbarMobile="Tin Tức" />
-      <div className="pt-[60px] xl:pt-0">
-        <div className="breadcrumbs shadow px-[10px] py-2 text-sm text-black dark:text-white lg:px-20">
+      <div className="pt-[100px] xl:pt-0">
+        <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow dark:text-white lg:px-20">
           <ul className="font-light">
             <li>
               <Link to="/">Trang Chủ</Link>
