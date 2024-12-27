@@ -1,27 +1,40 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import Pagination from '../../components/UserPage/Pagination';
 import { Button } from 'react-daisyui';
 import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
 import { Link } from 'react-router-dom';
-import { PhoneContext } from '../../context/phone/PhoneContext';
+import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
 
 const PhonePage: React.FC = () => {
-  const { phones } = useContext(PhoneContext);
+  const { phoneCatalogs } = useContext(PhoneCatalogContext);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
-  const totalPages = Math.ceil(phones.length / itemsPerPage);
+  const totalPages = Math.ceil(phoneCatalogs.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentPhones = phones.slice(indexOfFirstItem, indexOfLastItem);
+  const currentPhones = phoneCatalogs.slice(indexOfFirstItem, indexOfLastItem);
+
+  // Cuộn lên top khi currentPage thay đổi
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, [currentPage]);
 
   const handleNextPage = () => {
-    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
   };
 
   const handlePrevPage = () => {
-    if (currentPage > 1) setCurrentPage(currentPage - 1);
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
   };
+
   return (
     <div className="pb-[20px] xl:pt-[100px]">
       <HeaderResponsive Title_NavbarMobile="Sản Phẩm" />

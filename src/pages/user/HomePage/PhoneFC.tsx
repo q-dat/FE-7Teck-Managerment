@@ -55,7 +55,7 @@ const PhoneFC: React.FC = () => {
       </div>
       <div
         ref={scrollRef}
-        className="grid w-full grid-flow-col grid-rows-2 items-center justify-start gap-3 overflow-x-auto scroll-smooth pt-0 scrollbar-hide xl:gap-5 xl:border-[22px] xl:border-white xl:pt-0"
+        className="grid w-full grid-flow-col grid-rows-2 items-center justify-start gap-3 overflow-x-auto scroll-smooth pt-0 scrollbar-hide xl:gap-5 xl:border-[22px] xl:border-transparent xl:pt-0"
       >
         {phoneCatalogs.map(phone => (
           <Link to="phone-detail">
@@ -109,13 +109,13 @@ const PhoneFC: React.FC = () => {
         <div className="relative w-full">
           <button
             onClick={() => scrollBy(-370)}
-            className={`absolute left-0 z-[100] mt-7 rounded-full border-none bg-black bg-opacity-20 text-white ${isLeftVisible ? '' : 'hidden'}`}
+            className={`absolute left-0 z-[100] mt-7 rounded-full border-none bg-black bg-opacity-20 text-white dark:bg-white dark:bg-opacity-40 dark:text-black ${isLeftVisible ? '' : 'hidden'}`}
           >
             <MdArrowBackIosNew className="text-4xl" />
           </button>
           <button
             onClick={() => scrollBy(370)}
-            className={`absolute right-0 z-[100] mt-7 rounded-full border-none bg-black bg-opacity-20 text-white ${isRightVisible ? '' : 'hidden'}`}
+            className={`absolute right-0 z-[100] mt-7 rounded-full border-none bg-black bg-opacity-20 text-white dark:bg-white dark:bg-opacity-40 dark:text-black ${isRightVisible ? '' : 'hidden'}`}
           >
             <MdArrowForwardIos className="text-4xl" />
           </button>

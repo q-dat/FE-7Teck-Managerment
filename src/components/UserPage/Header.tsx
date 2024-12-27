@@ -124,10 +124,10 @@ const Header: React.FC = () => {
         <div
           className={`flex h-[40px] w-full transform flex-row items-center justify-between border-b bg-primary px-10 text-xs text-white transition-transform delay-100 duration-300 ease-in-out dark:bg-black ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}
         >
-          <div className="relative ">
+          <div className="relative">
             <Input
               size="sm"
-              className="text-[16px] w-[400px] rounded-md border-none focus:border-white focus:border focus:placeholder-black bg-transparent pl-7 text-white placeholder-white focus:outline-none"
+              className="w-[400px] rounded-md border-none bg-transparent pl-7 text-[16px] text-white placeholder-white focus:border focus:border-white focus:placeholder-black focus:outline-none"
               placeholder="Nhập tìm kiếm của bạn..."
               type="text"
             />
@@ -198,7 +198,7 @@ const Header: React.FC = () => {
                     to={item.link}
                     className={`btn relative flex w-full items-center justify-center rounded-none border-none pl-4 ${
                       item.name === activeItem
-                        ? 'bg-primary bg-opacity-20 text-sm font-bold text-primary dark:bg-secondary dark:bg-opacity-40 dark:text-white'
+                        ? 'bg-primary bg-opacity-20 text-sm font-bold text-primary dark:bg-opacity-40 dark:text-white'
                         : 'border-none bg-transparent text-sm font-light text-black shadow-none hover:border hover:border-primary hover:bg-gray-50 hover:bg-opacity-30 hover:text-primary dark:text-white'
                     }`}
                   >
