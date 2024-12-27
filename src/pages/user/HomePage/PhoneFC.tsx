@@ -4,9 +4,11 @@ import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { Sale } from '../../../assets/image-represent';
 import { PhoneContext } from '../../../context/phone/PhoneContext';
+import { PhoneCatalogContext } from '../../../context/phone-catalog/PhoneCatalogContext';
 
 const PhoneFC: React.FC = () => {
   const { phones } = useContext(PhoneContext);
+  const { phoneCatalogs } = useContext(PhoneCatalogContext);
   // const salePhones = phones.filter(phone => phone.status === 'sale');
   const [isLeftButtonVisiblePhone, setIsLeftButtonVisiblePhone] =
     useState(true);
@@ -71,7 +73,7 @@ const PhoneFC: React.FC = () => {
       className={`relative rounded-lg bg-white dark:bg-black ${phones.length === 0 ? 'hidden' : ''}`}
     >
       {/* Title */}
-      <div className="my-5 flex w-full flex-col items-center justify-center">
+      <div className="mt-5 flex w-full flex-col items-center justify-center p-5">
         <p className="font-title bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold text-transparent dark:from-white dark:via-primary dark:to-white dark:bg-clip-text xl:text-[40px]">
           Điện Thoại Nổi Bật
         </p>
@@ -79,21 +81,37 @@ const PhoneFC: React.FC = () => {
       </div>
       <div
         ref={scrollRefPhone}
-        className="grid grid-flow-col grid-rows-2 items-center justify-start gap-3 overflow-x-auto scroll-smooth p-2 scrollbar-hide xl:gap-5 xl:p-[22px]"
+        className="grid grid-flow-col grid-rows-2 items-center justify-start gap-3 overflow-x-auto scroll-smooth p-2 pt-0 scrollbar-hide xl:gap-5 xl:p-[22px] xl:pt-0"
       >
-        {phones.map(phone => (
+        {phoneCatalogs.map(phone => (
           <Link to="phone-detail">
             <div
               key={phone._id}
               className="relative rounded-md border border-gray-50 text-black dark:text-white"
             >
-              <div className="flex w-[175px] flex-col items-center justify-center xl:w-[200px]">
+              <div className="flex w-[175px] flex-col items-start justify-center xl:w-[200px]">
                 <img
                   className="h-[200px] w-[175px] rounded-md rounded-b-none object-cover xl:h-[250px] xl:w-[200px]"
                   src={phone.img}
                 />
-                <p>{phone.name}</p>
-                <p>Giá:{(phone.price * 1000).toLocaleString('vi-VN')}đ</p>
+                <div className="px-1">
+                  <p>Điện thoại {phone.name}</p>
+                  <p className="text-gray-500">
+                    Từ:
+                    <span className="font-bold text-red-700">
+                      {' '}
+                      {(phone.price * 1000).toLocaleString('vi-VN')}đ
+                    </span>
+                  </p>
+                </div>
+                <Link to="checkout" className="z-50 w-full p-1">
+                  <Button
+                    size="xs"
+                    className="w-full rounded-md border border-primary border-opacity-30 bg-primary bg-opacity-20 text-primary"
+                  >
+                    Mua Ngay
+                  </Button>
+                </Link>
               </div>
               {phone.status === 'sale' && (
                 <>
@@ -116,13 +134,13 @@ const PhoneFC: React.FC = () => {
       <div className="absolute top-1/2 flex w-full items-center justify-between">
         <Button
           onClick={() => scrollPhone(-200)}
-          className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-white shadow-none hover:bg-black hover:bg-opacity-10 hover:text-white dark:bg-white dark:bg-opacity-20 ${isLeftButtonVisiblePhone ? '' : 'bg-transparent text-transparent dark:bg-transparent'}`}
+          className={`z-[100] rounded-full border-none bg-black bg-opacity-10 p-0 text-white shadow-none hover:bg-black hover:bg-opacity-10 hover:text-white dark:bg-white dark:bg-opacity-20 ${isLeftButtonVisiblePhone ? '' : 'bg-transparent text-transparent dark:bg-transparent'}`}
         >
           <MdArrowBackIosNew className="text-4xl" />
         </Button>
         <Button
           onClick={() => scrollPhone(200)}
-          className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-white shadow-none hover:bg-black hover:bg-opacity-10 hover:text-white dark:bg-white dark:bg-opacity-20 ${isRightButtonVisiblePhone ? '' : 'bg-transparent text-transparent dark:bg-transparent'}`}
+          className={`z-[100] rounded-full border-none bg-black bg-opacity-10 p-0 text-white shadow-none hover:bg-black hover:bg-opacity-10 hover:text-white dark:bg-white dark:bg-opacity-20 ${isRightButtonVisiblePhone ? '' : 'bg-transparent text-transparent dark:bg-transparent'}`}
         >
           <MdArrowForwardIos className="text-4xl" />
         </Button>

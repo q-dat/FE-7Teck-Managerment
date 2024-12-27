@@ -27,7 +27,15 @@ import { Pagination } from 'swiper/modules';
 
 // Items Data
 const items = [
-  { icon: <TbDeviceMobileSearch />, text: 'Bao test 7 ngày.' },
+  {
+    icon: <TbDeviceMobileSearch />,
+    text: (
+      <>
+        Đổi trả <br />
+        Bao test 7 ngày.
+      </>
+    )
+  },
   {
     icon: <TbDeviceMobileUp />,
     text: (
@@ -51,7 +59,7 @@ const items = [
     text: (
       <>
         FreeShip nội thành HCM <br />
-        và các tỉnh lân cận.
+        và các tỉnh thành lân cận.
       </>
     )
   }
@@ -101,33 +109,39 @@ const HomePage: React.FC = () => {
           >
             {items.map((item, index) => (
               <SwiperSlide key={index}>
-                <div className="my-4 flex flex-col items-center gap-2 text-center text-md font-semibold text-primary">
-                  <div>
-                    {React.cloneElement(item.icon, {
-                      className:
-                        'rounded-full bg-gradient-to-tr from-primary via-primary to-black text-[100px] text-white'
-                    })}
+                <div className="text-md my-4 flex flex-col items-center gap-2 text-center font-semibold text-primary">
+                  <div className="rounded-full bg-gradient-to-tr from-primary via-primary to-black p-4">
+                    <div>
+                      {React.cloneElement(item.icon, {
+                        className: 'text-[100px] text-white'
+                      })}
+                    </div>
                   </div>
-                  <p>{item.text}</p>
+                  <div>
+                    <p>{item.text}</p>
+                  </div>
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
         {/* Desktop */}
-        <div className="mx-2 my-5 hidden flex-col items-center justify-between gap-2 rounded-2xl from-primary to-black py-5 font-sub uppercase text-primary shadow-headerMenu shadow-black md:flex md:flex-row md:bg-gradient-to-tr md:text-white xl:mx-[100px]">
+        <div className="mx-[100px] my-5 hidden flex-row items-start justify-between gap-2 rounded-2xl py-5 font-sub uppercase md:flex">
           {items.map((item, index) => (
             <div
               key={index}
-              className="flex w-full flex-col items-center gap-2 text-center text-lg md:flex-row md:items-start md:text-start md:text-xs xl:text-lg"
+              className="flex w-full flex-col items-center justify-start gap-4 text-center md:text-xs xl:text-lg"
             >
-              <div>
-                {React.cloneElement(item.icon, {
-                  className:
-                    'rounded-full bg-gradient-to-tr from-primary via-primary to-black text-[120px] text-white md:rounded-none md:bg-transparent md:from-transparent md:to-transparent md:text-[50px]'
-                })}
+              <div className="rounded-full p-4 bg-gradient-to-tr from-primary via-primary to-black text-white">
+                <p>
+                  {React.cloneElement(item.icon, {
+                    className: 'text-[90px]'
+                  })}
+                </p>
               </div>
-              <p>{item.text}</p>
+              <div className='text-primary'>
+                <p>{item.text}</p>
+              </div>
             </div>
           ))}
         </div>

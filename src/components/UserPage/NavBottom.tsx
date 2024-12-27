@@ -25,10 +25,10 @@ const navLink = [
 const NavBottom: React.FC = () => {
   return (
     <div className="fixed bottom-0 left-0 w-full xl:hidden">
-      <div className="flex w-full text-xs text-white ">
+      <div className="flex w-full text-xs  gap-[1px] justify-between bg-white">
         {navLink.map(item => (
           <Link to={item.link} className="flex-grow">
-            <button className="h-full w-full bg-gradient-to-tr from-primary to-black p-2 uppercase">
+            <button className="h-full w-full text-white bg-black py-2 px-1 uppercase">
               {item.name}
             </button>
           </Link>

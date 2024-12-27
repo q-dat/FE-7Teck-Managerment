@@ -93,7 +93,7 @@ const MacbookFC: React.FC = () => {
       className={`relative rounded-lg bg-white dark:bg-black ${phones.length === 0 ? 'hidden' : ''}`}
     >
       {/* Title */}
-      <div className="my-5 flex w-full flex-col items-center justify-center">
+      <div className="mt-5 flex w-full flex-col items-center justify-center p-5">
         <p className="font-title bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold text-transparent dark:from-white dark:via-primary dark:to-white dark:bg-clip-text xl:text-[40px]">
           MacBook
         </p>
@@ -101,7 +101,7 @@ const MacbookFC: React.FC = () => {
       </div>
       <div
         ref={scrollRefMacbook}
-        className="flex flex-row items-center justify-start gap-3 overflow-x-auto scroll-smooth p-2 scrollbar-hide xl:gap-5 xl:p-[22px]"
+        className="flex flex-row items-center justify-start gap-3 overflow-x-auto scroll-smooth p-2 scrollbar-hide xl:gap-5 xl:p-[22px] xl:pt-0 pt-0"
       >
         {phones.map(phone => (
           <Link to="phone-detail">
@@ -138,13 +138,13 @@ const MacbookFC: React.FC = () => {
       <div className="absolute top-1/2 flex w-full items-center justify-between">
         <Button
           onClick={() => scrollMacbook(-200)}
-          className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-white shadow-none hover:bg-black hover:bg-opacity-10 hover:text-white dark:bg-white dark:bg-opacity-20 ${isLeftButtonVisibleMacbook ? '' : 'bg-transparent text-transparent dark:bg-transparent'}`}
+          className={`z-[100] rounded-full border-none bg-black bg-opacity-10 p-0 text-white shadow-none hover:bg-black hover:bg-opacity-10 hover:text-white dark:bg-white dark:bg-opacity-20 ${isLeftButtonVisibleMacbook ? '' : 'bg-transparent text-transparent dark:bg-transparent'}`}
         >
           <MdArrowBackIosNew className="text-4xl" />
         </Button>
         <Button
           onClick={() => scrollMacbook(200)}
-          className={`rounded-full border-none bg-black bg-opacity-10 p-0 text-white shadow-none hover:bg-black hover:bg-opacity-10 hover:text-white dark:bg-white dark:bg-opacity-20 ${isRightButtonVisibleMacbook ? '' : 'bg-transparent text-transparent dark:bg-transparent'}`}
+          className={`z-[100] rounded-full border-none bg-black bg-opacity-10 p-0 text-white shadow-none hover:bg-black hover:bg-opacity-10 hover:text-white dark:bg-white dark:bg-opacity-20 ${isRightButtonVisibleMacbook ? '' : 'bg-transparent text-transparent dark:bg-transparent'}`}
         >
           <MdArrowForwardIos className="text-4xl" />
         </Button>
