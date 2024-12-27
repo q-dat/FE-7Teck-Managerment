@@ -17,13 +17,12 @@ import WindowFC from './WindowFC';
 import MacbookFC from './MacbookFC';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
-
+import 'swiper/css/autoplay';
 // import required modules
-import { Pagination } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
 
 // Items Data
 const items = [
@@ -104,7 +103,11 @@ const HomePage: React.FC = () => {
         <div className="block md:hidden">
           <Swiper
             pagination={{ dynamicBullets: true }}
-            modules={[Pagination]}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false // Vẫn giữ autoplay sau khi người dùng tương tác
+            }}
+            modules={[Pagination, Autoplay]}
             className="mySwiper"
           >
             {items.map((item, index) => (
@@ -132,14 +135,14 @@ const HomePage: React.FC = () => {
               key={index}
               className="flex w-full flex-col items-center justify-start gap-4 text-center md:text-xs xl:text-lg"
             >
-              <div className="rounded-full p-4 bg-gradient-to-tr from-primary via-primary to-black text-white">
+              <div className="rounded-full bg-gradient-to-tr from-primary via-primary to-black p-4 text-white">
                 <p>
                   {React.cloneElement(item.icon, {
                     className: 'text-[90px]'
                   })}
                 </p>
               </div>
-              <div className='text-primary'>
+              <div className="text-primary">
                 <p>{item.text}</p>
               </div>
             </div>
