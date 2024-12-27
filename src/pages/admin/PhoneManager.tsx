@@ -62,10 +62,10 @@ const PhoneManager: React.FC = () => {
 
   return (
     <div className="w-full">
-      <NavbarMobile Title_NavbarMobile="Bài Viết" />
+      <NavbarMobile Title_NavbarMobile="Điện Thoại" />
       <div className="px-2 xl:px-0">
         <NavtitleAdmin
-          Title_NavtitleAdmin="Quản Lý Danh Sách Bài Viết"
+          Title_NavtitleAdmin="Quản Lý Danh Sách Điện Thoại"
           Btn_Create={
             <div className="flex flex-col items-start justify-center gap-2 md:flex-row md:items-end">
               <Button
