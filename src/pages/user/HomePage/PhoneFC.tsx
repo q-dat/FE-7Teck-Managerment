@@ -8,63 +8,39 @@ import { PhoneCatalogContext } from '../../../context/phone-catalog/PhoneCatalog
 const PhoneFC: React.FC = () => {
   const { phoneCatalogs } = useContext(PhoneCatalogContext);
   // const salePhones = phones.filter(phone => phone.status === 'sale');
-  const [isLeftButtonVisiblePhone, setIsLeftButtonVisiblePhone] =
-    useState(true);
-  const [isRightButtonVisiblePhone, setIsRightButtonVisiblePhone] =
-    useState(true);
+  const [isLeftVisible, setIsLeftVisible] = useState(true);
+  const [isRightVisible, setIsRightVisible] = useState(true);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-  const scrollRefPhone = useRef<HTMLDivElement>(null);
+  const updateScrollButtons = () => {
+    const scrollContainer = scrollRef.current;
+    if (scrollContainer) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollContainer;
+      setIsLeftVisible(scrollLeft > 0);
+      setIsRightVisible(scrollLeft + clientWidth < scrollWidth);
+    }
+  };
+
+  const scrollBy = (offset: number) => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollLeft += offset;
+    }
+  };
 
   useEffect(() => {
-    const handleScrollAndResize = () => {
-      checkScrollPosition(
-        scrollRefPhone.current,
-        setIsLeftButtonVisiblePhone,
-        setIsRightButtonVisiblePhone
-      );
-    };
+    if (phoneCatalogs.length > 0) updateScrollButtons();
 
-    handleScrollAndResize();
-    window.addEventListener('resize', handleScrollAndResize);
+    const handleResize = () => updateScrollButtons();
+    const scrollContainer = scrollRef.current;
 
-    if (scrollRefPhone.current) {
-      scrollRefPhone.current.addEventListener('scroll', handleScrollAndResize);
-    }
+    window.addEventListener('resize', handleResize);
+    scrollContainer?.addEventListener('scroll', updateScrollButtons);
 
     return () => {
-      window.removeEventListener('resize', handleScrollAndResize);
-
-      if (scrollRefPhone.current) {
-        scrollRefPhone.current.removeEventListener(
-          'scroll',
-          handleScrollAndResize
-        );
-      }
+      window.removeEventListener('resize', handleResize);
+      scrollContainer?.removeEventListener('scroll', updateScrollButtons);
     };
-  }, []);
-
-  const checkScrollPosition = (
-    scrollContainer: HTMLElement | null,
-    setLeftButtonVisible: React.Dispatch<React.SetStateAction<boolean>>,
-    setRightButtonVisible: React.Dispatch<React.SetStateAction<boolean>>
-  ) => {
-    if (scrollContainer) {
-      const isAtStart = scrollContainer.scrollLeft === 0;
-      const isAtEnd =
-        scrollContainer.scrollLeft + scrollContainer.clientWidth >=
-        scrollContainer.scrollWidth;
-
-      setLeftButtonVisible(!isAtStart);
-      setRightButtonVisible(!isAtEnd);
-    }
-  };
-
-  // scrollRefPhone
-  const scrollPhone = (scrollOffset: number) => {
-    if (scrollRefPhone.current) {
-      scrollRefPhone.current.scrollLeft += scrollOffset;
-    }
-  };
+  }, [phoneCatalogs]);
 
   return (
     <div
@@ -78,8 +54,8 @@ const PhoneFC: React.FC = () => {
         <div className="h-[1px] w-[150px] animate-ping bg-primary xl:w-[200px]"></div>
       </div>
       <div
-        ref={scrollRefPhone}
-        className="grid grid-flow-col grid-rows-2 items-center justify-start gap-3 overflow-x-auto scroll-smooth p-2 pt-0 scrollbar-hide xl:gap-5 xl:p-[22px] xl:pt-0"
+        ref={scrollRef}
+        className="grid w-full grid-flow-col grid-rows-2 items-center justify-start gap-3 overflow-x-auto scroll-smooth pt-0 scrollbar-hide xl:gap-5 xl:border-[22px] xl:border-white xl:pt-0"
       >
         {phoneCatalogs.map(phone => (
           <Link to="phone-detail">
@@ -130,18 +106,20 @@ const PhoneFC: React.FC = () => {
       </div>
       {/* Navigation Button  */}
       <div className="absolute top-1/2 flex w-full items-center justify-between">
-        <Button
-          onClick={() => scrollPhone(-200)}
-          className={`z-[100] rounded-full border-none bg-black bg-opacity-10 p-0 text-white shadow-none hover:bg-black hover:bg-opacity-10 hover:text-white dark:bg-white dark:bg-opacity-20 ${isLeftButtonVisiblePhone ? '' : 'bg-transparent text-transparent dark:bg-transparent'}`}
-        >
-          <MdArrowBackIosNew className="text-4xl" />
-        </Button>
-        <Button
-          onClick={() => scrollPhone(200)}
-          className={`z-[100] rounded-full border-none bg-black bg-opacity-10 p-0 text-white shadow-none hover:bg-black hover:bg-opacity-10 hover:text-white dark:bg-white dark:bg-opacity-20 ${isRightButtonVisiblePhone ? '' : 'bg-transparent text-transparent dark:bg-transparent'}`}
-        >
-          <MdArrowForwardIos className="text-4xl" />
-        </Button>
+        <div className="relative w-full">
+          <button
+            onClick={() => scrollBy(-370)}
+            className={`absolute left-0 z-[100] mt-7 rounded-full border-none bg-black bg-opacity-20 text-white ${isLeftVisible ? '' : 'hidden'}`}
+          >
+            <MdArrowBackIosNew className="text-4xl" />
+          </button>
+          <button
+            onClick={() => scrollBy(370)}
+            className={`absolute right-0 z-[100] mt-7 rounded-full border-none bg-black bg-opacity-20 text-white ${isRightVisible ? '' : 'hidden'}`}
+          >
+            <MdArrowForwardIos className="text-4xl" />
+          </button>
+        </div>
       </div>
     </div>
   );
