@@ -27,7 +27,7 @@ const NavBottom: React.FC = () => {
     <div className="fixed bottom-0 left-0 z-[99999] w-full xl:hidden">
       <div className="flex w-full justify-between gap-[1px] bg-white text-xs">
         {navLink.map((item, index) => (
-          <Link key={index + 1} to={item.link} className="flex-grow">
+          <Link key={index} to={item.link} className="flex-grow">
             <button className="h-full w-full bg-black px-1 py-2 uppercase text-white">
               {item.name}
             </button>

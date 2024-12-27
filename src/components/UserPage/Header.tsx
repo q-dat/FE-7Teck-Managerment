@@ -42,11 +42,11 @@ const Header: React.FC = () => {
       link: '/'
     },
     {
-      name: 'IPhone',
+      name: 'iPhone',
       link: '/phone-list'
     },
     {
-      name: 'Ipad',
+      name: 'iPad',
       link: '/ipad-list'
     },
     {
@@ -63,7 +63,7 @@ const Header: React.FC = () => {
     },
     {
       name: 'Tin tức',
-      link: 'news',
+      link: '',
       submenu: [
         {
           name: 'Bản tin nổi bật',
@@ -76,6 +76,10 @@ const Header: React.FC = () => {
           link: '/tips-and-tricks'
         }
       ]
+    },
+    {
+      name: 'Album',
+      link: '/album'
     },
     {
       name: 'Liên Hệ',
@@ -161,7 +165,7 @@ const Header: React.FC = () => {
         </div>
         {/*  */}
         <div
-          className={`h-[60px] w-full transform flex-row items-center justify-evenly bg-white py-2 uppercase shadow-md transition-transform delay-100 duration-300 ease-in-out dark:bg-black xl:flex ${showMenu ? 'translate-y-0' : '-translate-y-[40px]'}`}
+          className={`h-[60px] w-full transform flex-row items-center justify-evenly bg-white py-2 shadow-md transition-transform delay-100 duration-300 ease-in-out dark:bg-black xl:flex ${showMenu ? 'translate-y-0' : '-translate-y-[40px]'}`}
         >
           <Link to="/">
             <img

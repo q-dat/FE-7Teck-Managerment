@@ -51,7 +51,7 @@ const NewsPage: React.FC = () => {
                 className="relative cursor-pointer rounded border bg-white p-2 shadow-inner hover:shadow-lg"
                 onClick={() => handlePostClick(post)}
               >
-                <p className="absolute left-1 top-1 rounded-sm bg-white px-2 text-[12px] text-primary shadow-headerMenu shadow-primary">
+                <p className="absolute left-1 top-1 rounded-sm bg-white px-2 text-[12px] text-primary border">
                   {post.catalog}
                 </p>
                 <img

@@ -42,8 +42,20 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
       link: '/'
     },
     {
-      name: 'IPhone',
+      name: 'iPhone',
       link: '/phone-list'
+    },
+    {
+      name: 'iPad',
+      link: '/ipad-list'
+    },
+    {
+      name: 'Window',
+      link: '/window-list'
+    },
+    {
+      name: 'Macbook',
+      link: '/macbook-list'
     },
     {
       name: 'Bảng Giá Thu Mua',
@@ -64,6 +76,10 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
           link: '/tips-and-tricks'
         }
       ]
+    },
+    {
+      name: 'Album',
+      link: '/album'
     },
     {
       name: 'Liên Hệ',
