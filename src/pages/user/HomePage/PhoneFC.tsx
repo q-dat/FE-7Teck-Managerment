@@ -3,11 +3,9 @@ import { Button } from 'react-daisyui';
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { Sale } from '../../../assets/image-represent';
-import { PhoneContext } from '../../../context/phone/PhoneContext';
 import { PhoneCatalogContext } from '../../../context/phone-catalog/PhoneCatalogContext';
 
 const PhoneFC: React.FC = () => {
-  const { phones } = useContext(PhoneContext);
   const { phoneCatalogs } = useContext(PhoneCatalogContext);
   // const salePhones = phones.filter(phone => phone.status === 'sale');
   const [isLeftButtonVisiblePhone, setIsLeftButtonVisiblePhone] =
@@ -70,7 +68,7 @@ const PhoneFC: React.FC = () => {
 
   return (
     <div
-      className={`relative rounded-lg bg-white dark:bg-black ${phones.length === 0 ? 'hidden' : ''}`}
+      className={`relative rounded-lg bg-white dark:bg-black ${phoneCatalogs.length === 0 ? 'hidden' : ''}`}
     >
       {/* Title */}
       <div className="mt-5 flex w-full flex-col items-center justify-center p-5">
