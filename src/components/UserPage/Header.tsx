@@ -115,7 +115,7 @@ const Header: React.FC = () => {
       {/* Desktop */}
       <div className="fixed z-[99999] hidden w-full flex-col xl:flex">
         {/* Search Result */}
-        <div className="absolute left-0 top-9 z-[99999] hidden bg-primary font-light text-white shadow">
+        <div className="absolute left-0 top-9 z-50 hidden bg-primary font-light text-white shadow">
           <div className="flex items-center justify-start gap-2 p-2">
             <img src={Logo} className="h-10 w-10 object-cover" />
             <p>IPhone 16 ProMax</p>
@@ -124,14 +124,14 @@ const Header: React.FC = () => {
         <div
           className={`flex h-[40px] w-full transform flex-row items-center justify-between border-b bg-primary px-10 text-xs text-white transition-transform delay-100 duration-300 ease-in-out dark:bg-black ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}
         >
-          <div className="relative z-[99999]">
+          <div className="relative ">
             <Input
               size="sm"
-              className="text-md w-[400px] rounded-sm border-none bg-transparent pl-7 text-white placeholder-white focus:outline-none"
+              className="text-[16px] w-[400px] rounded-md border-none focus:border-white focus:border focus:placeholder-black bg-transparent pl-7 text-white placeholder-white focus:outline-none"
               placeholder="Nhập tìm kiếm của bạn..."
               type="text"
             />
-            <span className="absolute left-1 top-[6px] text-xl text-white">
+            <span className="absolute left-0 top-[4px] text-2xl text-white">
               <IoSearch />
             </span>
           </div>
