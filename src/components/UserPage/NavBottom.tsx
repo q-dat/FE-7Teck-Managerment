@@ -24,11 +24,11 @@ const navLink = [
 ];
 const NavBottom: React.FC = () => {
   return (
-    <div className="fixed bottom-0 left-0 w-full xl:hidden z-[99999]">
-      <div className="flex w-full text-xs  gap-[1px] justify-between bg-white">
-        {navLink.map(item => (
-          <Link to={item.link} className="flex-grow">
-            <button className="h-full w-full text-white bg-black py-2 px-1 uppercase">
+    <div className="fixed bottom-0 left-0 z-[99999] w-full xl:hidden">
+      <div className="flex w-full justify-between gap-[1px] bg-white text-xs">
+        {navLink.map((item, index) => (
+          <Link key={index + 1} to={item.link} className="flex-grow">
+            <button className="h-full w-full bg-black px-1 py-2 uppercase text-white">
               {item.name}
             </button>
           </Link>

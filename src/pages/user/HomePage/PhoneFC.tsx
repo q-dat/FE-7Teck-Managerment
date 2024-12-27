@@ -58,50 +58,52 @@ const PhoneFC: React.FC = () => {
         className="grid w-full grid-flow-col grid-rows-2 items-center justify-start gap-3 overflow-x-auto scroll-smooth pt-0 scrollbar-hide xl:gap-5 xl:border-[22px] xl:border-transparent xl:pt-0"
       >
         {phoneCatalogs.map(phone => (
-          <Link to="phone-detail">
-            <div
-              key={phone._id}
-              className="relative rounded-md border border-gray-50 text-black dark:text-white"
-            >
-              <div className="flex w-[175px] flex-col items-start justify-center xl:w-[200px]">
+          <div
+            key={phone._id}
+            className="relative flex h-full flex-col justify-between rounded-md border border-gray-50 text-black dark:text-white"
+          >
+            <div className="w-[175px] xl:w-[200px]">
+              <Link to="phone-detail">
                 <img
                   className="h-[200px] w-[175px] rounded-md rounded-b-none object-cover xl:h-[250px] xl:w-[200px]"
                   src={phone.img}
                 />
-                <div className="px-1">
-                  <p>Điện thoại {phone.name}</p>
-                  <p className="text-gray-500">
-                    Từ:
-                    <span className="font-bold text-red-700">
-                      {' '}
-                      {(phone.price * 1000).toLocaleString('vi-VN')}đ
-                    </span>
-                  </p>
-                </div>
-                <Link to="checkout" className="z-50 w-full p-1">
-                  <Button
-                    size="xs"
-                    className="w-full rounded-md border border-primary border-opacity-30 bg-primary bg-opacity-20 text-primary"
-                  >
-                    Mua Ngay
-                  </Button>
-                </Link>
+              </Link>
+              <div className="px-1">
+                <p>Điện thoại {phone.name}</p>
               </div>
-              {phone.status === 'sale' && (
-                <>
-                  <img
-                    width={60}
-                    src={Sale}
-                    className="absolute -left-[3px] top-0"
-                    alt="Sale"
-                  />
-                  <p className="absolute top-0 w-full text-sm text-white">
-                    Giảm 20%
-                  </p>
-                </>
-              )}
             </div>
-          </Link>
+            {/*  */}
+            <div className="flex flex-col items-start justify-center gap-1 p-1">
+              <p className="text-gray-500">
+                Từ:&nbsp;
+                <span className="text-red-500">
+                  {(phone.price * 1000).toLocaleString('vi-VN')} <sup>đ</sup>
+                </span>
+              </p>
+              <Link to="checkout" className="z-50 w-full">
+                <Button
+                  size="xs"
+                  className="w-full rounded-md border border-primary border-opacity-30 bg-primary bg-opacity-10 text-primary"
+                >
+                  Mua Ngay
+                </Button>
+              </Link>
+            </div>
+            {phone.status === 'sale' && (
+              <>
+                <img
+                  width={60}
+                  src={Sale}
+                  className="absolute -left-[3px] top-0"
+                  alt="Sale"
+                />
+                <p className="absolute top-0 w-full text-sm text-white">
+                  Giảm 20%
+                </p>
+              </>
+            )}
+          </div>
         ))}
       </div>
       {/* Navigation Button  */}
