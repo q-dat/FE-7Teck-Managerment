@@ -216,7 +216,7 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
               <div className="flex items-center">
                 <ReactSelect
                   placeholder="Chọn danh mục"
-                  name="phone_catalog_id"
+                  name="phone_catalog_id._id"
                   control={control}
                   options={phoneCatalog}
                   isMulti={false}
