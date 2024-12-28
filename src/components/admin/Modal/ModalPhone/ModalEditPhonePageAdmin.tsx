@@ -504,11 +504,6 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
                   <Select
                     isMulti
                     options={optionsData.rear_camera_video}
-                    value={optionsData.rear_camera_video.filter(option =>
-                      watch('camera_and_screen.rear_camera_video')?.includes(
-                        option.value
-                      )
-                    )}
                     onChange={selected =>
                       setValue(
                         'camera_and_screen.rear_camera_video',
