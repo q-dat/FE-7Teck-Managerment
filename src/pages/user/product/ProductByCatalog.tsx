@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { PhoneContext } from '../../context/phone/PhoneContext';
+import { PhoneContext } from '../../../context/phone/PhoneContext';
 import { Button } from 'react-daisyui';
-import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
+import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
 
 const ProductByCatalog = () => {
   const { phones, loading, error } = useContext(PhoneContext);
@@ -52,7 +52,7 @@ const ProductByCatalog = () => {
                     key={phone._id}
                     className="flex h-full w-full flex-col justify-between rounded-md border border-[#f2f4f7] bg-white text-black"
                   >
-                    <Link to="phone-detail">
+                    <Link to={`/product-detail/${phone._id}`}>
                       <div className="flex flex-col items-start">
                         <img
                           className="h-[200px] w-full rounded-[5px] rounded-b-none object-cover xl:h-[250px]"
