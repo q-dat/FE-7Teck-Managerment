@@ -194,11 +194,13 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
           {/* Title */}
           {/*  */}
           {/*  */}
-          <img
-            src={Logo}
-            className="h-full w-[30px] rounded-full object-cover"
-            alt=""
-          />{' '}
+          <Link to="/">
+            <img
+              src={Logo}
+              className="h-full w-[30px] rounded-full object-cover"
+              alt=""
+            />
+          </Link>
           <p className="font-bold uppercase text-white">{Title_NavbarMobile}</p>
           {/* RightVisible */}
           <div className="z-50">
