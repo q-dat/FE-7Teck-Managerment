@@ -55,12 +55,12 @@ const PhoneFC: React.FC = () => {
       </div>
       <div
         ref={scrollRef}
-        className="grid w-full grid-flow-col grid-rows-2 items-center justify-start gap-3 overflow-x-auto scroll-smooth pt-0 scrollbar-hide xl:gap-5 xl:border-[22px] xl:border-transparent xl:pt-0"
+        className="grid w-full grid-flow-col grid-rows-2 items-center justify-start gap-[10px] overflow-x-auto scroll-smooth pt-0 scrollbar-hide xl:border-[22px] xl:border-transparent xl:pt-0"
       >
         {phoneCatalogs.map(phone => (
           <div
             key={phone._id}
-            className="relative flex h-full flex-col justify-between rounded-md border border-gray-50 text-black dark:text-white"
+            className="relative flex h-full flex-col justify-between rounded-md border border-[#f2f4f7] text-black dark:text-white"
           >
             <div className="w-[175px] xl:w-[200px]">
               <Link to="phone-detail">
@@ -84,7 +84,7 @@ const PhoneFC: React.FC = () => {
               <Link to="checkout" className="z-50 w-full">
                 <Button
                   size="xs"
-                  className="w-full rounded-md border border-primary border-opacity-30 bg-primary bg-opacity-10 text-primary"
+                  className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary"
                 >
                   Mua Ngay
                 </Button>

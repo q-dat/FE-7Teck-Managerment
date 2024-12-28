@@ -37,7 +37,7 @@ const PhonePage: React.FC = () => {
 
   return (
     <div>
-      <HeaderResponsive Title_NavbarMobile="Sản Phẩm" />
+      <HeaderResponsive Title_NavbarMobile="Điện Thoại" />
       <div className="pt-[100px] xl:pt-0">
         <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow dark:text-white xl:px-20">
           <ul className="font-light">
@@ -45,20 +45,20 @@ const PhonePage: React.FC = () => {
               <Link to="/">Trang Chủ</Link>
             </li>
             <li>
-              <Link to="/phone-list">Sản Phẩm</Link>
+              <Link to="/phone-list">Điện Thoại</Link>
             </li>
           </ul>
         </div>
         <div className="space-y-10 px-2 xl:px-20">
           <div>
-            <p className="font-title my-5 text-start text-2xl font-bold text-primary xl:text-2xl">
-              Danh Sách Sản Phẩm
-            </p>
-            <div className="grid grid-flow-row grid-cols-2 items-start gap-2 md:grid-cols-4 md:gap-3 xl:grid-cols-6">
+            {/* <p className="font-title my-5 text-start text-2xl font-bold text-primary xl:text-2xl">
+              Danh Sách Điện Thoại
+            </p> */}
+            <div className="grid grid-flow-row grid-cols-2 items-start gap-[10px] md:grid-cols-4 xl:grid-cols-6">
               {currentPhones.map(phone => (
                 <div
                   key={phone._id}
-                  className="flex h-full w-full flex-col justify-between rounded-md border border-gray-50 bg-white text-black"
+                  className="flex h-full w-full flex-col justify-between rounded-md border border-[#f2f4f7] bg-white text-black"
                 >
                   <Link to="phone-detail">
                     <div className="flex flex-col items-start">
@@ -84,7 +84,7 @@ const PhonePage: React.FC = () => {
                     <Link to="checkout" className="z-50 w-full">
                       <Button
                         size="xs"
-                        className="w-full rounded-md border border-primary border-opacity-30 bg-primary bg-opacity-10 text-primary"
+                        className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary"
                       >
                         Mua Ngay
                       </Button>

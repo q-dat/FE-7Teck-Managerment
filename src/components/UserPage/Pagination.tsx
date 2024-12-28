@@ -16,29 +16,31 @@ const Pagination: React.FC<PaginationProps> = ({
 }) => {
   return (
     <div className="mt-10 flex flex-row items-center justify-center gap-x-10 px-2 text-primary">
-      <Button
-        className="rounded-md shadow-headerMenu shadow-gray-50"
-        color="primary"
-        size="sm"
-        disabled={currentPage === 1}
-        onClick={onPrevPage}
-      >
-        <IoIosArrowDropleft className="text-xl text-black dark:text-white" />{' '}
-        Trang Trước
-      </Button>
-      <div className="mx-2 flex flex-row items-center justify-center text-primary">
-        <p> {currentPage}</p> / <p> {totalPages}</p>
+      <div className="text-primary">
+        <Button
+          className="rounded-md shadow-headerMenu shadow-gray-50"
+          color="primary"
+          size="sm"
+          disabled={currentPage === 1}
+          onClick={onPrevPage}
+        >
+          <IoIosArrowDropleft className="text-xl" /> Trang Trước
+        </Button>
       </div>
-      <Button
-        className="rounded-md shadow-headerMenu shadow-gray-50"
-        color="primary"
-        size="sm"
-        disabled={currentPage === totalPages}
-        onClick={onNextPage}
-      >
-        Trang Tiếp{' '}
-        <IoIosArrowDropright className="text-xl text-black dark:text-white" />
-      </Button>
+      <div className="mx-2 flex flex-row items-center justify-center text-primary">
+        <p>{currentPage}</p> / <p>{totalPages}</p>
+      </div>
+      <div className="text-primary">
+        <Button
+          className="rounded-md shadow-headerMenu shadow-gray-50"
+          color="primary"
+          size="sm"
+          disabled={currentPage === totalPages}
+          onClick={onNextPage}
+        >
+          Trang Tiếp <IoIosArrowDropright className="text-xl" />
+        </Button>
+      </div>
     </div>
   );
 };
