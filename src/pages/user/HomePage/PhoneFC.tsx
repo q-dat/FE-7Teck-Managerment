@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Button } from 'react-daisyui';
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Sale } from '../../../assets/image-represent';
 import { PhoneCatalogContext } from '../../../context/phone-catalog/PhoneCatalogContext';
 
 const PhoneFC: React.FC = () => {
+  const navigate = useNavigate();
   const { phoneCatalogs } = useContext(PhoneCatalogContext);
   // const salePhones = phones.filter(phone => phone.status === 'sale');
   const [isLeftVisible, setIsLeftVisible] = useState(true);
@@ -63,12 +64,12 @@ const PhoneFC: React.FC = () => {
             className="relative flex h-full flex-col justify-between rounded-md border border-[#f2f4f7] text-black dark:text-white"
           >
             <div className="w-[175px] xl:w-[200px]">
-              <Link to="phone-detail">
+              <div onClick={() => navigate(`/phones/${phone._id}`)}>
                 <img
                   className="h-[200px] w-[175px] rounded-[5px] rounded-b-none object-cover xl:h-[250px] xl:w-[200px]"
                   src={phone.img}
                 />
-              </Link>
+              </div>
               <div className="px-1">
                 <p>Điện thoại {phone.name}</p>
               </div>

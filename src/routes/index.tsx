@@ -1,6 +1,7 @@
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import DefaultLayout from '../layout/DefaultLayout';
+import PhonesByCatalog from '../pages/user/PhonesByCatalog';
 // UserPage
 const User = lazy(() => import('../pages/user/User'));
 const HomePage = lazy(() => import('../pages/user/HomePage/HomePage'));
@@ -32,8 +33,9 @@ export default function AppRoutes() {
         <Route element={<DefaultLayout />}>
           <Route path="/" element={<User />}>
             <Route index path="" element={<HomePage />} />
-            <Route path="price-list" element={<PriceListPage />} />
+            <Route path="/phones/:catalog" element={<PhonesByCatalog />} />
             <Route path="phone-list" element={<PhonePage />} />
+            <Route path="price-list" element={<PriceListPage />} />
             <Route path="product-detail" element={<ProductDetailPage />} />
             <Route path="contact" element={<ContactPage />} />
             <Route path="news" element={<NewsPage />} />
