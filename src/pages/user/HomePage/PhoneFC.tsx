@@ -7,6 +7,15 @@ import { PhoneCatalogContext } from '../../../context/phone-catalog/PhoneCatalog
 
 const PhoneFC: React.FC = () => {
   const navigate = useNavigate();
+  const slugify = (text: string) => {
+    return text
+      .toString()
+      .normalize('NFD') // Chuyển sang Unicode
+      .replace(/\p{Diacritic}/gu, '') // Loại bỏ dấu
+      .toLowerCase() // Chuyển tất cả thành chữ thường
+      .replace(/[^a-z0-9]+/g, '-') // Thay thế khoảng trắng và ký tự không phải chữ cái bằng dấu gạch ngang
+      .replace(/^-+|-+$/g, ''); // Loại bỏ dấu gạch ngang ở đầu và cuối chuỗi
+  };
   const { phoneCatalogs } = useContext(PhoneCatalogContext);
   // const salePhones = phones.filter(phone => phone.status === 'sale');
   const [isLeftVisible, setIsLeftVisible] = useState(true);
@@ -58,54 +67,61 @@ const PhoneFC: React.FC = () => {
         ref={scrollRef}
         className="grid w-full grid-flow-col grid-rows-2 items-center justify-start gap-[10px] overflow-x-auto scroll-smooth pt-0 scrollbar-hide xl:border-[22px] xl:border-transparent xl:pt-0"
       >
-        {phoneCatalogs.map(phone => (
-          <div
-            key={phone._id}
-            className="relative flex h-full flex-col justify-between rounded-md border border-[#f2f4f7] text-black dark:text-white"
-          >
-            <div className="w-[175px] xl:w-[200px]">
-              <div onClick={() => navigate(`/phones/${phone._id}`)}>
-                <img
-                  className="h-[200px] w-[175px] rounded-[5px] rounded-b-none object-cover xl:h-[250px] xl:w-[200px]"
-                  src={phone.img}
-                />
-              </div>
-              <div className="px-1">
-                <p>Điện thoại {phone.name}</p>
-              </div>
-            </div>
-            {/*  */}
-            <div className="flex flex-col items-start justify-center gap-1 p-1">
-              <p className="text-gray-500">
-                Từ:&nbsp;
-                <span className="text-red-500">
-                  {(phone.price * 1000).toLocaleString('vi-VN')} <sup>đ</sup>
-                </span>
-              </p>
-              <Link to="checkout" className="z-50 w-full">
-                <Button
-                  size="xs"
-                  className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary"
+        {phoneCatalogs.map(phone => {
+          const phoneUrl = slugify(phone.name);
+          return (
+            <div
+              key={phone._id}
+              className="relative flex h-full flex-col justify-between rounded-md border border-[#f2f4f7] text-black dark:text-white"
+            >
+              <div className="w-[175px] xl:w-[200px]">
+                <div
+                  // GetByID
+                  // onClick={() => navigate(`/phones/${phone._id}`)}
+                  onClick={() => navigate(`/${phoneUrl}`)}
                 >
-                  Mua Ngay
-                </Button>
-              </Link>
-            </div>
-            {phone.status === 'sale' && (
-              <>
-                <img
-                  width={60}
-                  src={Sale}
-                  className="absolute -left-[3px] top-0"
-                  alt="Sale"
-                />
-                <p className="absolute top-0 w-full text-sm text-white">
-                  Giảm 20%
+                  <img
+                    className="h-[200px] w-[175px] rounded-[5px] rounded-b-none object-cover xl:h-[250px] xl:w-[200px]"
+                    src={phone.img}
+                  />
+                </div>
+                <div className="px-1">
+                  <p>Điện thoại {phone.name}</p>
+                </div>
+              </div>
+              {/*  */}
+              <div className="flex flex-col items-start justify-center gap-1 p-1">
+                <p className="text-gray-500">
+                  Từ:&nbsp;
+                  <span className="text-red-500">
+                    {(phone.price * 1000).toLocaleString('vi-VN')} <sup>đ</sup>
+                  </span>
                 </p>
-              </>
-            )}
-          </div>
-        ))}
+                <Link to="checkout" className="z-50 w-full">
+                  <Button
+                    size="xs"
+                    className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary"
+                  >
+                    Mua Ngay
+                  </Button>
+                </Link>
+              </div>
+              {phone.status === 'sale' && (
+                <>
+                  <img
+                    width={60}
+                    src={Sale}
+                    className="absolute -left-[3px] top-0"
+                    alt="Sale"
+                  />
+                  <p className="absolute top-0 w-full text-sm text-white">
+                    Giảm 20%
+                  </p>
+                </>
+              )}
+            </div>
+          );
+        })}
       </div>
       {/* Navigation Button  */}
       <div className="absolute top-1/2 flex w-full items-center justify-between">
