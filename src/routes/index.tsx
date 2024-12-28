@@ -6,8 +6,8 @@ const User = lazy(() => import('../pages/user/User'));
 const HomePage = lazy(() => import('../pages/user/HomePage/HomePage'));
 const ContactPage = lazy(() => import('../pages/user/ContactPage'));
 const PhonePage = lazy(() => import('../pages/user/PhonePage'));
-const ProductByCatalog = lazy(() => import('../pages/user/product/ProductByCatalog'));
-const ProductDetailPage = lazy(() => import('../pages/user/product/ProductDetailPage'));
+const PhoneByCatalog = lazy(() => import('../pages/user/phone/PhoneByCatalog'));
+const PhoneDetailPage = lazy(() => import('../pages/user/phone/PhoneDetailPage'));
 const PriceListPage = lazy(() => import('../pages/user/PriceListPage'));
 const NewsPage = lazy(() => import('../pages/user/post/NewsPage'));
 const TipsAndTricksPage = lazy(
@@ -33,10 +33,10 @@ export default function AppRoutes() {
         <Route element={<DefaultLayout />}>
           <Route path="/" element={<User />}>
             <Route index path="" element={<HomePage />} />
-            <Route path="/:catalog" element={<ProductByCatalog />} />
+            <Route path="/:catalog" element={<PhoneByCatalog />} />
             <Route path="phone-list" element={<PhonePage />} />
             <Route path="price-list" element={<PriceListPage />} />
-            <Route path="product-detail/:id" element={<ProductDetailPage />} />
+            <Route path="product-detail/:id" element={<PhoneDetailPage />} />
             <Route path="contact" element={<ContactPage />} />
             <Route path="news" element={<NewsPage />} />
             <Route path="post-detail/:title" element={<PostDetail />} />

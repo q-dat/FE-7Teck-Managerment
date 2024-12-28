@@ -51,9 +51,9 @@ const PhonePage: React.FC = () => {
         </div>
         <div className="space-y-10 px-2 xl:px-20">
           <div>
-            {/* <p className="font-title my-5 text-start text-2xl font-bold text-primary xl:text-2xl">
-              Danh Sách Điện Thoại
-            </p> */}
+            <p className="font-title my-5 text-start text-2xl font-bold text-primary xl:text-2xl">
+              {/* Danh Sách Điện Thoại */}
+            </p>
             <div className="grid grid-flow-row grid-cols-2 items-start gap-[10px] md:grid-cols-4 xl:grid-cols-6">
               {currentPhones.map(phone => (
                 <div
