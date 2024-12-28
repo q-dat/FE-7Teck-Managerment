@@ -33,7 +33,7 @@ const navLink = [
 const NavBottom: React.FC = () => {
   return (
     <div className="fixed bottom-0 left-0 z-[99999] w-full xl:hidden">
-      <div className="flex w-full justify-between gap-[1px] bg-white text-xs">
+      <div className="flex h-[40px] w-full justify-between gap-[1px] bg-white text-xs">
         {navLink.map((item, index) => {
           const Icon = item.icon;
           return (

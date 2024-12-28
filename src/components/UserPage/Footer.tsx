@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { Logo } from '../../assets/images';
 const FooterFC: React.FC = () => {
   return (
-    <div className="mb-[30px] xl:mb-0">
+    <div className="mb-[40px] xl:mb-0">
       <hr />
       <Footer className="item-center grid grid-cols-2 justify-between bg-black bg-opacity-5 p-10 px-2 text-primary dark:text-white md:grid-cols-5 xl:px-[100px]">
         <div>

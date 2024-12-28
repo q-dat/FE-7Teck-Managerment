@@ -129,16 +129,16 @@ const Header: React.FC = () => {
         <div
           className={`flex h-[40px] w-full transform flex-row items-center justify-between border-b bg-primary px-10 text-xs text-white transition-transform delay-100 duration-300 ease-in-out dark:bg-black ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}
         >
-          <div className="flex w-[400px] transform flex-row items-center justify-start">
+          <div className="flex w-full flex-row items-center justify-center gap-1">
             <IoSearch className="animate-bounce text-xl" />
             <Input
               className="w-full border-none bg-transparent pl-1 text-sm placeholder-white shadow-none focus:placeholder-black focus:outline-none"
-              placeholder="Bạn đang tìm gì..."
+              placeholder="Bạn muốn tìm gì..."
             ></Input>
           </div>
 
-          <div className="flex flex-row gap-5">
-            <div className="flex items-center justify-center">
+          <div className="flex w-full flex-row items-center justify-end gap-5">
+            <div className="flex items-center">
               <HiLocationMarker />
               <Link
                 to="https://maps.app.goo.gl/pmk3d7i2tmjc3pP8A"
@@ -149,7 +149,7 @@ const Header: React.FC = () => {
                 <RiExternalLinkFill className="text-xs" />
               </Link>
             </div>
-            <div className="flex items-center justify-center">
+            <div className="flex items-center">
               <IoLogoFacebook />
               Fanpage: &nbsp;
               <Link

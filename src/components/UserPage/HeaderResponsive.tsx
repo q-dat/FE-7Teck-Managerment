@@ -132,19 +132,19 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
       <div
         className={`flex h-[40px] w-full transform flex-row items-center justify-between border-b bg-primary px-2 text-white transition-transform duration-300 ease-in-out ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}
       >
-        <div className="flex w-full flex-row items-center justify-center">
+        <div className="flex w-full flex-row items-center justify-center gap-1">
           <IoSearch className="animate-bounce text-xl" />
           <Input
             className="text-md w-full border-none bg-transparent pl-1 placeholder-white shadow-none focus:placeholder-black focus:outline-none"
-            placeholder="Bạn đang tìm gì..."
+            placeholder="Bạn muốn tìm gì..."
           ></Input>
         </div>
         <div>
-          <img
+          {/* <img
             src={Logo}
             className="h-full w-[30px] rounded-full object-cover"
             alt=""
-          />
+          /> */}
         </div>
       </div>
 
@@ -194,6 +194,11 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
           {/* Title */}
           {/*  */}
           {/*  */}
+          <img
+            src={Logo}
+            className="h-full w-[30px] rounded-full object-cover"
+            alt=""
+          />{' '}
           <p className="font-bold uppercase text-white">{Title_NavbarMobile}</p>
           {/* RightVisible */}
           <div className="z-50">
