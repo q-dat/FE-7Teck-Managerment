@@ -63,7 +63,7 @@ const Header: React.FC = () => {
     },
     {
       name: 'Tin tức',
-      link: '',
+      link: '/news',
       submenu: [
         {
           name: 'Bản tin nổi bật',

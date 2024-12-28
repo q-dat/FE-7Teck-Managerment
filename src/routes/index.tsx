@@ -6,7 +6,7 @@ const User = lazy(() => import('../pages/user/User'));
 const HomePage = lazy(() => import('../pages/user/HomePage/HomePage'));
 const ContactPage = lazy(() => import('../pages/user/ContactPage'));
 const PhonePage = lazy(() => import('../pages/user/PhonePage'));
-const PhoneByCatalog = lazy(() => import('../pages/user/phone/PhoneByCatalog'));
+const PhoneByCatalog = lazy(() => import('../pages/user/phone/PhoneByCatalogPage'));
 const PhoneDetailPage = lazy(() => import('../pages/user/phone/PhoneDetailPage'));
 const PriceListPage = lazy(() => import('../pages/user/PriceListPage'));
 const NewsPage = lazy(() => import('../pages/user/post/NewsPage'));
