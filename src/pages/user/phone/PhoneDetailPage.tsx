@@ -39,29 +39,27 @@ const ProductDetailPage: React.FC = () => {
             Điện thoại {phone?.name}
           </p>
           {/*  */}
-          <div className="flex flex-col items-start justify-start gap-0 xl:flex-row xl:gap-2">
-            <div className="flex flex-col items-start justify-between gap-2 rounded-md bg-white p-2 xl:flex-row">
-              <div className="w-[400px] flex-1">
+          <div className="flex flex-col items-start justify-start gap-2 xl:flex-row">
+            <div className="flex flex-col items-start justify-between gap-2">
+              <div className="w-full flex-1 rounded-md bg-white xl:w-[400px]">
                 <img
                   src={phone?.img}
                   alt={phone?.name}
-                  className="rounded-md border"
+                  className="rounded-md"
                 />
               </div>
-              <div className="w-[100px]">
+              <div className="w-[80px] rounded-md bg-white">
                 <img
                   src={phone?.thumbnail}
                   alt={phone?.name}
-                  className="rounded-md border"
+                  className="rounded-md"
                 />
               </div>
             </div>
             {/*  */}
             <div className="flex w-full flex-col rounded-md bg-white p-2">
-              <p>{phone?.description}</p>
-              <p>
-                Giá: {(phone?.price * 1000).toLocaleString('vi-VN')}{' '}
-                <sup>đ</sup>
+              <p className="text-lg text-red-500 font-bold">
+                {(phone?.price * 1000).toLocaleString('vi-VN')} <sup>đ</sup>
               </p>
             </div>
           </div>
