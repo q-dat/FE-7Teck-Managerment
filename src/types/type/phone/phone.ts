@@ -9,7 +9,7 @@ export interface IPhone {
   status: string; // Product status // Trạng thái sản phẩm
   des?: string; // Product description // Mô tả sản phẩm
   img: string; // Main image URL // Đường dẫn ảnh chính
-  thumbnail?: string[]; // Thumbnail image URL // Đường dẫn ảnh thu nhỏ
+  thumbnail?: string; // Thumbnail image URL // Đường dẫn ảnh thu nhỏ
   createdAt: string; // Creation date // Thời gian tạo
   updatedAt: string; // Last updated date // Thời gian cập nhật
   configuration_and_memory: {

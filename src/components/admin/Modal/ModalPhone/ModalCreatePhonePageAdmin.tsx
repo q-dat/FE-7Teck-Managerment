@@ -106,11 +106,6 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
       console.log('thumbnail:', formData.thumbnail);
       data.append('thumbnail', formData.thumbnail[0]);
     }
-    if (formData.thumbnail) {
-      Array.from(formData.thumbnail).forEach(file => {
-        data.append('thumbnail[]', file);
-      });
-    }
 
     // Append các trường trong configuration_and_memory
     if (formData.configuration_and_memory) {
