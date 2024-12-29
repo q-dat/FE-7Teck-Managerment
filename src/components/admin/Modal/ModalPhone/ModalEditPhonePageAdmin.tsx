@@ -45,8 +45,8 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
 
   const [existingImg, setExistingImg] = useState<string | undefined>('');
   const [existingThumbnail, setExistingThumbnail] = useState<
-    string | undefined
-  >('');
+    string[] | undefined
+  >([]);
   const optionsData = {
     rear_camera_video: [
       { value: '4K@30fps', label: '4K@30fps' },
@@ -302,13 +302,21 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
       }
     }
 
+    // const thumbnailFile = watch('thumbnail');
+    // if (thumbnailFile && thumbnailFile[0]) {
+    //   data.append('thumbnail', thumbnailFile[0]);
+    // } else {
+    //   if (existingThumbnail) {
+    //     data.append('thumbnail', existingThumbnail);
+    //   }
+    // }
     const thumbnailFile = watch('thumbnail');
     if (thumbnailFile && thumbnailFile[0]) {
-      data.append('thumbnail', thumbnailFile[0]);
+      data.append('thumbnail', thumbnailFile[0]); // Nếu có file từ input
+    } else if (existingThumbnail && existingThumbnail.length > 0) {
+      data.append('thumbnail', JSON.stringify(existingThumbnail)); // Nếu tồn tại mảng `existingThumbnail`
     } else {
-      if (existingThumbnail) {
-        data.append('thumbnail', existingThumbnail);
-      }
+      data.append('thumbnail', JSON.stringify([])); // Mặc định mảng rỗng nếu không có dữ liệu
     }
 
     // Convert nested fields to JSON string
@@ -423,7 +431,7 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
               {existingThumbnail && (
                 <div className="my-2">
                   <img
-                    src={existingThumbnail}
+                    src={existingThumbnail[0]}
                     className="h-10 w-10 rounded-md object-cover"
                   />
                 </div>
@@ -432,6 +440,7 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
                 type="file"
                 {...register('thumbnail')}
                 placeholder="Chèn ảnh thu nhỏ"
+                multiple
               />
             </div>
             {/* Cấu hình và bộ nhớ */}

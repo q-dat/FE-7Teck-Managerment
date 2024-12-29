@@ -7,10 +7,11 @@ interface InputModalProps {
   value?: string | number;
   name?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  multiple?: boolean;
 }
 
 const InputModal = forwardRef<HTMLInputElement, InputModalProps>(
-  ({ placeholder, type, value, name, onChange }, ref) => {
+  ({ placeholder, type, value, name, onChange, multiple }, ref) => {
     return (
       <div className="mb-4 border-b">
         <Input
@@ -25,6 +26,7 @@ const InputModal = forwardRef<HTMLInputElement, InputModalProps>(
             outline: 'none',
             boxShadow: 'none'
           }}
+          multiple={multiple}
         />
       </div>
     );

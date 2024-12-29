@@ -103,7 +103,13 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
       data.append('img', formData.img[0]);
     }
     if (formData.thumbnail && formData.thumbnail[0]) {
+      console.log('thumbnail:', formData.thumbnail);
       data.append('thumbnail', formData.thumbnail[0]);
+    }
+    if (formData.thumbnail) {
+      Array.from(formData.thumbnail).forEach(file => {
+        data.append('thumbnail[]', file);
+      });
     }
 
     // Append các trường trong configuration_and_memory
@@ -259,6 +265,7 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
                 type="file"
                 {...register('thumbnail')}
                 placeholder="Chèn ảnh thu nhỏ"
+                multiple
               />
             </div>
             {/* Cấu hình và bộ nhớ */}
