@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   TbDeviceMobileCog,
+  TbDeviceMobileDollar,
   TbDeviceMobileSearch,
   TbDeviceMobileUp,
   TbTruckDelivery
@@ -22,7 +23,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 // import required modules
-import { Autoplay, Pagination } from 'swiper/modules';
+import { Autoplay, EffectCoverflow, Pagination } from 'swiper/modules';
 
 // Items Data
 const items = [
@@ -32,6 +33,15 @@ const items = [
       <>
         Đổi trả <br />
         Bao test 7 ngày.
+      </>
+    )
+  },
+  {
+    icon: <TbDeviceMobileDollar />,
+    text: (
+      <>
+        Hỗ trợ trả góp <br />
+        qua thẻ tín dụng.
       </>
     )
   },
@@ -102,12 +112,23 @@ const HomePage: React.FC = () => {
         {/*  Mobile */}
         <div className="block md:hidden">
           <Swiper
-            pagination={{ dynamicBullets: true }}
+            pagination={{ dynamicBullets: true, clickable: true }}
             autoplay={{
-              delay: 3000,
+              delay: 2500,
               disableOnInteraction: false // Vẫn giữ autoplay sau khi người dùng tương tác
             }}
-            modules={[Pagination, Autoplay]}
+            effect={'coverflow'}
+            grabCursor={true}
+            centeredSlides={true}
+            slidesPerView={'auto'}
+            coverflowEffect={{
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true
+            }}
+            modules={[EffectCoverflow, Autoplay]}
             className="mySwiper"
           >
             {items.map((item, index) => (
@@ -129,24 +150,38 @@ const HomePage: React.FC = () => {
           </Swiper>
         </div>
         {/* Desktop */}
-        <div className="mx-[100px] my-5 hidden flex-row items-start justify-between gap-2 rounded-2xl py-5 font-sub uppercase md:flex">
-          {items.map((item, index) => (
-            <div
-              key={index}
-              className="flex w-full flex-col items-center justify-start gap-4 text-center md:text-xs xl:text-lg"
-            >
-              <div className="rounded-full bg-gradient-to-tr from-primary via-primary to-black p-4 text-white">
-                <p>
-                  {React.cloneElement(item.icon, {
-                    className: 'text-[90px]'
-                  })}
-                </p>
-              </div>
-              <div className="text-primary">
-                <p>{item.text}</p>
-              </div>
-            </div>
-          ))}
+        <div className="mx-[100px] my-5 hidden flex-row items-start justify-between gap-2 rounded-2xl py-5 font-sub md:flex">
+          <Swiper
+            slidesPerView={4}
+            pagination={{ dynamicBullets: true, clickable: true }}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false
+            }}
+            modules={[Pagination, Autoplay]}
+            className="mySwiper"
+          >
+            {' '}
+            {items.map((item, index) => (
+              <SwiperSlide key={index}>
+                <div
+                  key={index}
+                  className="flex w-full flex-col items-center justify-start gap-4 text-center md:text-xs xl:text-lg"
+                >
+                  <div className="rounded-full bg-gradient-to-tr from-primary via-primary to-black p-4 text-white">
+                    <p>
+                      {React.cloneElement(item.icon, {
+                        className: 'text-[90px]'
+                      })}
+                    </p>
+                  </div>
+                  <div className="text-primary">
+                    <p>{item.text}</p>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
 
         <div className="space-y-10 px-2 xl:px-[100px]">
