@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { PhoneContext } from '../../../context/phone/PhoneContext';
 import ErrorLoading from '../../../components/orther/error/ErrorLoading';
 import { LoadingLocal } from '../../../components/orther/loading';
-import { phoneFieldMap } from '../../../types/type/phone/phoneFieldMap';
+import { phoneFieldMap } from '../../../components/orther/data/phoneFieldMap';
 
 const ProductDetailPage: React.FC = () => {
   const { id } = useParams();
