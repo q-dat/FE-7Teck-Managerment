@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { PhoneContext } from '../../../context/phone/PhoneContext';
 import ErrorLoading from '../../../components/orther/error/ErrorLoading';
 import { LoadingLocal } from '../../../components/orther/loading';
+import { phoneFieldMap } from '../../../types/type/phone/phoneFieldMap';
 
 const ProductDetailPage: React.FC = () => {
   const { id } = useParams();
@@ -29,7 +30,7 @@ const ProductDetailPage: React.FC = () => {
               <Link to="/">Trang Chủ</Link>
             </li>
             <li>
-              <Link to="/phone-list">Điện Thoại</Link>
+              <Link to="/phone-list">Thông Tin Sản Phẩm</Link>
             </li>
           </ul>
         </div>
@@ -58,12 +59,35 @@ const ProductDetailPage: React.FC = () => {
             </div>
             {/*  */}
             <div className="flex w-full flex-col rounded-md bg-white p-2">
-              <p className="text-lg text-red-500 font-bold">
+              <p className="text-lg font-bold text-red-500">
                 {(phone?.price * 1000).toLocaleString('vi-VN')} <sup>đ</sup>
+              </p>
+              <p>
+                Màu sắc:
+                <strong>{phone?.color}</strong>
               </p>
             </div>
           </div>
-          <div className="mt-2 rounded-md bg-white p-2">hi</div>
+          <div className="mt-2 rounded-md bg-white p-2">
+            {/*  */}
+            <div>
+              {phoneFieldMap.map(group => (
+                <div key={group?.group}>
+                  <details>
+                    <summary>{group?.name}</summary>
+                    {group?.fields.map(field => (
+                      <div  className=' divide-y-[1px]' key={field?.field}>
+                        <strong>{field?.name}</strong>
+                        <div>
+                          {phone?.[group?.group]?.[field?.field]}
+                        </div>
+                      </div>
+                    ))}
+                  </details>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
