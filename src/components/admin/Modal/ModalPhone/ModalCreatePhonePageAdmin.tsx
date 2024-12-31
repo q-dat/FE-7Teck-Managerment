@@ -49,6 +49,7 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
     data.append('phone_catalog_id', formData.phone_catalog_id._id);
     data.append('color', formData.color);
     data.append('price', formData.price?.toString() || '');
+    data.append('sale', formData.sale?.toString() || '');
     data.append('status', formData.status);
     data.append('des', formData.des || '');
 
@@ -160,14 +161,14 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
           <div className="h-[500px] w-full overflow-y-auto scrollbar-hide">
             {/* Các trường cơ bản */}
             <div className="mt-5">
-              <LabelForm title={'Tên sản phẩm'} />
+              <LabelForm title={'Tên sản phẩm*'} />
               <InputModal
                 type="text"
                 {...register('name')}
                 placeholder="Nhập tên sản phẩm"
               />
 
-              <LabelForm title={'Danh mục'} />
+              <LabelForm title={'Danh mục*'} />
               <div className="flex items-center">
                 <ReactSelect
                   placeholder="Chọn danh mục"
@@ -178,19 +179,25 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
                   className=""
                 />
               </div>
-              <LabelForm title={'Màu sắc'} />
+              <LabelForm title={'Màu sắc*'} />
               <InputModal
                 type="text"
                 {...register('color')}
                 placeholder="Nhập màu"
               />
-              <LabelForm title={'Giá'} />
+              <LabelForm title={'Giá*'} />
               <InputModal
                 type="number"
                 {...register('price')}
-                placeholder="Nhập giá"
+                placeholder="Nhập giá (Hệ số x1000: 1triệu = 1000)"
               />
-              <LabelForm title={'Trạng thái'} />
+              <LabelForm title={'Giá giảm'} />
+              <InputModal
+                type="number"
+                {...register('sale')}
+                placeholder="Nhập giá giảm (Hệ số x1000: 1triệu = 1000)"
+              />
+              <LabelForm title={'Trạng thái*'} />
               <InputModal
                 type="text"
                 {...register('status')}
@@ -202,14 +209,13 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
                 {...register('des')}
                 placeholder="Nhập mô tả"
               />
-              <LabelForm title={'Hình ảnh'} />
+              <LabelForm title={'Hình ảnh*'} />
               <InputModal
                 type="file"
                 {...register('img')}
                 placeholder="Chèn ảnh thu nhỏ"
               />
               <LabelForm title={'Ảnh thu nhỏ'} />
-
               <InputModal
                 type="file"
                 {...register('thumbnail')}

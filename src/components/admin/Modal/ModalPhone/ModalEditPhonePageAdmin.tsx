@@ -61,6 +61,7 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
       setValue('phone_catalog_id', phoneData.phone_catalog_id);
       setValue('color', phoneData.color);
       setValue('price', phoneData.price);
+      setValue('sale', phoneData.sale);
       setValue('status', phoneData.status);
       setValue('des', phoneData.des);
       setValue('img', phoneData.img);
@@ -244,6 +245,7 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
     data.append('phone_catalog_id', formData.phone_catalog_id._id);
     data.append('color', formData.color);
     data.append('price', formData.price?.toString() || '');
+    data.append('sale', formData.sale?.toString() || '');
     data.append('status', formData.status);
     data.append('des', formData.des || '');
 
@@ -351,6 +353,12 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
                 type="number"
                 {...register('price')}
                 placeholder="Nhập giá"
+              />
+                <LabelForm title={'Giá giảm'} />
+              <InputModal
+                type="number"
+                {...register('sale')}
+                placeholder="Nhập giá giảm"
               />
               <LabelForm title={'Mô tả'} />
               <InputModal

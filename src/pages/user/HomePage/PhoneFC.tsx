@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Button } from 'react-daisyui';
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
 import { Link, useNavigate } from 'react-router-dom';
-import { Sale } from '../../../assets/image-represent';
 import { PhoneCatalogContext } from '../../../context/phone-catalog/PhoneCatalogContext';
 
 const PhoneFC: React.FC = () => {
@@ -107,19 +106,6 @@ const PhoneFC: React.FC = () => {
                 </Link>
               </div>
               {/*  */}
-              {phone?.status && (
-                <div>
-                  <img
-                    width={60}
-                    src={Sale}
-                    className="absolute -left-[3px] top-0"
-                    alt="Sale"
-                  />
-                  <p className="absolute top-[1px] w-full text-xs text-white">
-                    {phone?.status}
-                  </p>
-                </div>
-              )}
             </div>
           );
         })}

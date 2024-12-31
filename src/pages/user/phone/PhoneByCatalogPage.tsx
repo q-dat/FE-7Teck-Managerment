@@ -88,14 +88,9 @@ const ProductByCatalog = () => {
                   </div>
                   {/*  */}
                   {phone?.status && (
-                    <div>
-                      <img
-                        width={60}
-                        src={Sale}
-                        className="absolute -left-[3px] top-0"
-                        alt="Sale"
-                      />
-                      <p className="absolute top-[1px] w-full text-xs text-white">
+                    <div className="absolute -left-[3px] top-0">
+                      <img width={60} src={Sale} />
+                      <p className="absolute top-[1px] w-full pl-1 text-xs text-white">
                         {phone?.status}
                       </p>
                     </div>
