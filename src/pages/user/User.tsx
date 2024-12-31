@@ -8,7 +8,7 @@ import NavBottom from '../../components/UserPage/NavBottom';
 
 const User: React.FC = () => {
   return (
-    <div className="bg-[#f2f4f7] dark:bg-black dark:bg-opacity-80 min-h-screen flex flex-col">
+    <div className="bg-[#f2f4f7] dark:bg-black dark:bg-opacity-80 min-h-screen flex flex-col select-none">
       <Header />
       <ScrollToTopButton />
       <div className="pb-[20px] xl:pt-[100px] flex-1">

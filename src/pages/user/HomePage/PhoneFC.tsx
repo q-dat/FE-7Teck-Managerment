@@ -98,7 +98,7 @@ const PhoneFC: React.FC = () => {
                     {(phone.price * 1000).toLocaleString('vi-VN')} <sup>đ</sup>
                   </span>
                 </p>
-                <Link to="checkout" className="z-50 w-full">
+                <Link to="/checkout" className="z-50 w-full">
                   <Button
                     size="xs"
                     className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary"
