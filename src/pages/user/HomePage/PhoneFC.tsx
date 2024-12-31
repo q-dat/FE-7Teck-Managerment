@@ -54,7 +54,7 @@ const PhoneFC: React.FC = () => {
 
   return (
     <div
-      className={`relative rounded-lg bg-white dark:bg-black ${phoneCatalogs.length === 0 ? 'hidden' : ''}`}
+      className={`relative rounded-none bg-white dark:bg-black xl:rounded-lg ${phoneCatalogs.length === 0 ? 'hidden' : ''}`}
     >
       {/* Title */}
       <div className="mt-5 flex w-full flex-col items-center justify-center p-5">
@@ -65,7 +65,7 @@ const PhoneFC: React.FC = () => {
       </div>
       <div
         ref={scrollRef}
-        className="grid w-full grid-flow-col grid-rows-2 items-center justify-start gap-[10px] overflow-x-auto scroll-smooth pt-0 scrollbar-hide xl:border-[22px] xl:border-transparent xl:pt-0"
+        className="grid w-full grid-flow-col grid-rows-2 items-center justify-start gap-[10px] overflow-x-auto scroll-smooth border-[10px] border-transparent pt-0 scrollbar-hide xl:pt-0"
       >
         {phoneCatalogs.map(phone => {
           const phoneUrl = slugify(phone.name);
@@ -74,14 +74,15 @@ const PhoneFC: React.FC = () => {
               key={phone._id}
               className="relative flex h-full flex-col justify-between rounded-md border border-[#f2f4f7] text-black dark:text-white"
             >
-              <div className="w-[175px] xl:w-[200px]">
-                <div
-                  // GetByID
-                  // onClick={() => navigate(`/phones/${phone._id}`)}
-                  onClick={() => navigate(`/${phoneUrl}`)}
-                >
+              <div
+                className="w-[175px] cursor-pointer xl:w-[200px]"
+                // GetByID
+                // onClick={() => navigate(`/phones/${phone._id}`)}
+                onClick={() => navigate(`/${phoneUrl}`)}
+              >
+                <div className="w-full">
                   <img
-                    className="h-[200px] w-[175px] rounded-[5px] rounded-b-none object-cover xl:h-[250px] xl:w-[200px]"
+                    className="h-[200px] w-[175px] rounded-[5px] rounded-b-none object-cover xl:h-[250px] xl:w-full"
                     src={phone.img}
                   />
                 </div>

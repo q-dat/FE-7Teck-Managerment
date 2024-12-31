@@ -150,7 +150,7 @@ const HomePage: React.FC = () => {
           </Swiper>
         </div>
         {/* Desktop */}
-        <div className="mx-[100px] my-5 hidden flex-row items-start justify-between gap-2 rounded-2xl py-5 font-sub md:flex">
+        <div className="mx-0 xl:mx-[100px] my-5 hidden flex-row items-start justify-between gap-2 rounded-2xl py-5 font-sub md:flex">
           <Swiper
             slidesPerView={4}
             pagination={{ dynamicBullets: true, clickable: true }}
@@ -184,7 +184,7 @@ const HomePage: React.FC = () => {
           </Swiper>
         </div>
 
-        <div className="space-y-10 px-2 xl:px-[100px]">
+        <div className="space-y-10 p-0 xl:px-[100px]">
           {/* Phone */}
           <PhoneFC />
           {/* Ipad */}
