@@ -49,14 +49,14 @@ const ProductDetailPage: React.FC = () => {
                 <img
                   src={phone?.img}
                   alt={phone?.name}
-                  className="w-ful rounded-md object-cover xl:w-[700px] rounded-r-none"
+                  className="w-ful rounded-md object-cover xl:w-[700px] xl:rounded-r-none"
                 />
               </div>
               <div className="w-20 rounded-md">
                 <img
                   src={phone?.thumbnail}
                   alt={phone?.name}
-                  className="rounded-md rounded-l-none"
+                  className="rounded-md xl:rounded-l-none"
                 />
               </div>
             </div>
