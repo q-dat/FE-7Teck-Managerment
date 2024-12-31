@@ -91,6 +91,7 @@ const PhoneManager: React.FC = () => {
             <span>Tên Sản Phẩm</span>
             {/* <span>Danh Mục</span> */}
             <span>Giá</span>
+            <span>Giá giảm</span>
             <span>Trạng Thái</span>
             <span>Mô Tả</span>
             <span>Ngày tạo</span>
@@ -111,28 +112,30 @@ const PhoneManager: React.FC = () => {
                   <span>#{index + 1}</span>
                   <span className="flex items-center justify-center">
                     <img
-                      src={phone.img}
+                      src={phone?.img}
                       alt="Phone Image"
                       className="h-12 w-12 object-cover"
                     />
                   </span>
                   <span className="flex items-center justify-center">
-                    {phone.thumbnail && (
+                    {phone?.thumbnail && (
                       <img
-                        src={phone.thumbnail}
+                        src={phone?.thumbnail}
                         alt="Thumbnail"
                         className="h-12 w-12 object-cover"
                       />
                     )}
                   </span>
-                  <span>{phone.name}</span>
-                  {/* <span className="line-clamp-1">{phone.phone_catalog_id}</span> */}
+                  <span>{phone?.name}</span>
                   <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
-                    {(phone.price * 1000).toLocaleString('vi-VN')}đ
+                    {(phone?.price * 1000).toLocaleString('vi-VN')}đ
                   </span>
-                  <span className="line-clamp-1">{phone.status}</span>
+                  <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
+                    {(phone?.sale * 1000).toLocaleString('vi-VN')}đ
+                  </span>
+                  <span className="line-clamp-1">{phone?.status}</span>
                   <span className="line-clamp-1">
-                    {phone.des || 'Không có mô tả!'}
+                    {phone?.des || 'Không có mô tả!'}
                   </span>
                   <span>
                     {new Date(phone?.createdAt).toLocaleString('vi-VN')}

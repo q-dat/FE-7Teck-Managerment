@@ -5,7 +5,7 @@ export interface IPhone {
   name: string; // Tên
   phone_catalog_id: IPhoneCatalog; // Danh mục điện thoại
   price: number; // Giá sản phẩm
-  sale?: number; // Giảm giá
+  sale: number; // Giảm giá
   color: string; // Màu
   status: string; // Trạng thái sản phẩm
   des?: string; // Mô tả sản phẩm
