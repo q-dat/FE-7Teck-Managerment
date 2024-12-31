@@ -38,30 +38,30 @@ const ProductDetailPage: React.FC = () => {
         </div>
         {/*  */}
         <div className="px-2 xl:px-20">
-          <h1 className="py-5 text-2xl font-semibold">
+          <h1 className="py-5 text-2xl font-semibold text-black dark:text-white">
             Điện thoại {phone?.name}
           </h1>
           {/*  */}
-          <div className="flex flex-col items-start justify-start gap-5 xl:flex-row">
+          <div className="flex flex-col items-start justify-start gap-5 xl:flex-row ">
             {/* IMG */}
             <div className="flex flex-col gap-2 xl:flex-row">
               <div className="w-full flex-1 rounded-md">
                 <img
                   src={phone?.img}
                   alt={phone?.name}
-                  className="w-ful rounded-md object-cover xl:w-[700px]"
+                  className="w-ful rounded-md object-cover xl:w-[700px] rounded-r-none"
                 />
               </div>
               <div className="w-20 rounded-md">
                 <img
                   src={phone?.thumbnail}
                   alt={phone?.name}
-                  className="rounded-md"
+                  className="rounded-md rounded-l-none"
                 />
               </div>
             </div>
             {/* Info */}
-            <div className="flex w-full flex-col items-start justify-between gap-5 rounded-md bg-white p-2 leading-10">
+            <div className="flex w-full flex-col items-start justify-between gap-5 rounded-md bg-white p-2 leading-10 border border-primary">
               <div>
                 <p className="text-2xl font-semibold text-red-500">
                   {(phone?.price * 1000).toLocaleString('vi-VN')} <sup>đ</sup>
@@ -97,8 +97,8 @@ const ProductDetailPage: React.FC = () => {
             </div>
           </div>
           {/* Details */}
-          <div className="mt-5 rounded-md bg-white leading-10">
-            <h1 className="rounded-md bg-gradient-to-tr from-primary to-black p-2 text-2xl font-semibold uppercase text-white outline outline-[1px] outline-offset-2 outline-primary">
+          <div className="mt-5 rounded-md border border-primary bg-white leading-10 text-black">
+            <h1 className="rounded-md rounded-b-none bg-primary p-2 text-2xl font-semibold uppercase text-white">
               Thông số kĩ thuật:
             </h1>
             {phoneFieldMap.map(group => (

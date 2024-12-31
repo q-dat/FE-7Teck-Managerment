@@ -17,7 +17,6 @@ const PhoneFC: React.FC = () => {
       .replace(/^-+|-+$/g, ''); // Loại bỏ dấu gạch ngang ở đầu và cuối chuỗi
   };
   const { phoneCatalogs } = useContext(PhoneCatalogContext);
-  // const salePhones = phones.filter(phone => phone.status === 'sale');
   const [isLeftVisible, setIsLeftVisible] = useState(true);
   const [isRightVisible, setIsRightVisible] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -107,18 +106,19 @@ const PhoneFC: React.FC = () => {
                   </Button>
                 </Link>
               </div>
-              {phone.status === 'sale' && (
-                <>
+              {/*  */}
+              {phone?.status && (
+                <div>
                   <img
                     width={60}
                     src={Sale}
                     className="absolute -left-[3px] top-0"
                     alt="Sale"
                   />
-                  <p className="absolute top-0 w-full text-sm text-white">
-                    Giảm 20%
+                  <p className="absolute top-[1px] w-full text-xs text-white">
+                    {phone?.status}
                   </p>
-                </>
+                </div>
               )}
             </div>
           );

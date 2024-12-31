@@ -5,6 +5,7 @@ import { Button } from 'react-daisyui';
 import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
 import ErrorLoading from '../../../components/orther/error/ErrorLoading';
 import { LoadingLocal } from '../../../components/orther/loading';
+import { Sale } from '../../../assets/image-represent';
 
 const ProductByCatalog = () => {
   const { phones, loading, error } = useContext(PhoneContext);
@@ -47,13 +48,13 @@ const ProductByCatalog = () => {
         <div className="space-y-10 px-2 xl:px-20">
           <div>
             <p className="font-title my-5 text-start text-2xl font-bold text-primary xl:text-2xl">
-            {/* Danh Sách Điện Thoại */}
-          </p>
+              {/* Danh Sách Điện Thoại */}
+            </p>
             <div className="grid grid-flow-row grid-cols-2 items-start gap-[10px] md:grid-cols-4 xl:grid-cols-6">
               {filteredPhones.map(phone => (
                 <div
                   key={phone?._id}
-                  className="flex h-full w-full flex-col justify-between rounded-md border border-[#f2f4f7] bg-white text-black"
+                  className="relative flex h-full flex-col justify-between rounded-md border border-[#f2f4f7] text-black dark:text-white"
                 >
                   <Link to={`/product-detail/${phone?._id}`}>
                     <div className="flex flex-col items-start">
@@ -85,6 +86,20 @@ const ProductByCatalog = () => {
                       </Button>
                     </Link>
                   </div>
+                  {/*  */}
+                  {phone?.status && (
+                    <div>
+                      <img
+                        width={60}
+                        src={Sale}
+                        className="absolute -left-[3px] top-0"
+                        alt="Sale"
+                      />
+                      <p className="absolute top-[1px] w-full text-xs text-white">
+                        {phone?.status}
+                      </p>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
