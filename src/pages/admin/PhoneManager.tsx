@@ -128,10 +128,10 @@ const PhoneManager: React.FC = () => {
                   </span>
                   <span>{phone?.name}</span>
                   <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
-                    {(phone?.price * 1000).toLocaleString('vi-VN')}đ
+                    {(phone?.price * 1000).toLocaleString('vi-VN')}₫
                   </span>
                   <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
-                    {(phone?.sale * 1000).toLocaleString('vi-VN')}đ
+                    {(phone?.sale * 1000).toLocaleString('vi-VN')}₫
                   </span>
                   <span className="line-clamp-1">{phone?.status}</span>
                   <span className="line-clamp-1">

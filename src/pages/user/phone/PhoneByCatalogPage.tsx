@@ -71,11 +71,15 @@ const ProductByCatalog = () => {
                   {/*  */}
                   <div className="flex flex-col items-start justify-center gap-1 p-1">
                     <p className="text-gray-500">
-                      Từ:&nbsp;
                       <span className="text-red-500">
-                        {(phone?.price * 1000).toLocaleString('vi-VN')}{' '}
-                        <sup>đ</sup>
+                        {(phone?.price * 1000).toLocaleString('vi-VN')}₫
                       </span>
+                      &nbsp;
+                      <del className="text-xs font-light text-gray-100">
+                        {phone?.sale &&
+                          (phone?.sale * 1000).toLocaleString('vi-VN')}
+                        ₫
+                      </del>
                     </p>
                     <Link to="checkout" className="z-50 w-full">
                       <Button

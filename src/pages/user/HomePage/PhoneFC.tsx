@@ -93,7 +93,7 @@ const PhoneFC: React.FC = () => {
                 <p className="text-gray-500">
                   Từ:&nbsp;
                   <span className="text-red-500">
-                    {(phone.price * 1000).toLocaleString('vi-VN')} <sup>đ</sup>
+                    {(phone.price * 1000).toLocaleString('vi-VN')}₫ 
                   </span>
                 </p>
                 <Link to="/checkout" className="z-50 w-full">
