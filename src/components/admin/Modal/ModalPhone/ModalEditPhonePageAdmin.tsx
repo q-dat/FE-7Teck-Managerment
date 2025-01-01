@@ -295,6 +295,7 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
     } catch (err) {
       getAllPhones();
       Toastify(`Lỗi: ${err}`, 500);
+      console.error(err);
     }
   };
 
@@ -329,7 +330,7 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
               <div className="flex items-center">
                 <ReactSelect
                   placeholder="Chọn danh mục"
-                  name="phone_catalog_id"
+                  name="phone_catalog_id._id"
                   control={control}
                   options={phoneCatalog}
                   isMulti={false}
@@ -354,7 +355,7 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPhoneProps> = ({
                 {...register('price')}
                 placeholder="Nhập giá"
               />
-                <LabelForm title={'Giá giảm'} />
+              <LabelForm title={'Giá giảm'} />
               <InputModal
                 type="number"
                 {...register('sale')}

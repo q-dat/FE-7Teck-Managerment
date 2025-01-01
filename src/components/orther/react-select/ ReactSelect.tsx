@@ -99,7 +99,7 @@ const ReactSelect: React.FC<ReactSelectProps> = ({
       options={options}
       isMulti={isMulti}
       placeholder={placeholder}
-      className={`min-w-full rounded-md border border-primary my-2 bg-white text-black hover:border-gray-900 hover:border-opacity-50 focus:border-primary focus:outline-none ${className}`}
+      className={`min-w-full rounded-md border border-gray-50 my-2 bg-white text-black hover:border-gray-900 hover:border-opacity-50 focus:border-primary focus:outline-none ${className}`}
       styles={customStyles}
       components={{ DropdownIndicator }}
     />

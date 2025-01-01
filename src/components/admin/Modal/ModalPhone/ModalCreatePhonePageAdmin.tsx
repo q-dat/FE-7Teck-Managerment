@@ -135,6 +135,7 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreatePhoneProps> = ({
     } catch (err) {
       getAllPhones();
       Toastify(`Lỗi: ${err}`, 500);
+      console.error(err);
     }
   };
 

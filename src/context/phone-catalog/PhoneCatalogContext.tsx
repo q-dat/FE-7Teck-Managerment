@@ -91,7 +91,7 @@ export const PhoneCatalogProvider = ({ children }: { children: ReactNode }) => {
   const getAllPhoneCatalogs = useCallback(() => {
     fetchData(
       getAllPhoneCatalogsApi,
-      data => setPhoneCatalogs(data.phoneCatalogs || []),
+      data => setPhoneCatalogs(data?.phoneCatalogs || []),
       'getAll'
     );
   }, []);
@@ -110,10 +110,10 @@ export const PhoneCatalogProvider = ({ children }: { children: ReactNode }) => {
       return await fetchData(
         () => createPhoneCatalogApi(phoneCatalogData),
         data => {
-          if (data.phoneCatalog) {
+          if (data?.phoneCatalog) {
             setPhoneCatalogs(prevPhoneCatalogs => [
               ...prevPhoneCatalogs,
-              data.phoneCatalog
+              data?.phoneCatalog
             ]);
           }
         },
@@ -132,10 +132,10 @@ export const PhoneCatalogProvider = ({ children }: { children: ReactNode }) => {
       return await fetchData(
         () => updatePhoneCatalogApi(_id, phoneCatalog),
         data => {
-          if (data.phoneCatalog) {
+          if (data?.phoneCatalog) {
             setPhoneCatalogs(prevPhoneCatalogs =>
               prevPhoneCatalogs.map(prod =>
-                prod._id === _id ? data.phoneCatalog : prod
+                prod._id === _id ? data?.phoneCatalog : prod
               )
             );
           }

@@ -1,4 +1,10 @@
-import { createContext, useState, ReactNode, useCallback, useEffect } from 'react';
+import {
+  createContext,
+  useState,
+  ReactNode,
+  useCallback,
+  useEffect
+} from 'react';
 import { AxiosResponse } from 'axios';
 import { IPhone } from '../../types/type/phone/phone';
 import {
@@ -40,7 +46,8 @@ const defaultContextValue: PhoneContextType = {
   deletePhone: async () => ({ data: { deleted: true } }) as AxiosResponse
 };
 
-export const PhoneContext = createContext<PhoneContextType>(defaultContextValue);
+export const PhoneContext =
+  createContext<PhoneContextType>(defaultContextValue);
 
 export const PhoneProvider = ({ children }: { children: ReactNode }) => {
   const [phones, setPhones] = useState<IPhone[]>([]);
@@ -77,7 +84,7 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
 
   // Get All Phones
   const getAllPhones = useCallback(() => {
-    fetchData(getAllPhonesApi, data => setPhones(data.phones || []), 'getAll');
+    fetchData(getAllPhonesApi, data => setPhones(data?.phones || []), 'getAll');
   }, []);
 
   // Get Phone By Id
@@ -94,8 +101,8 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
       return await fetchData(
         () => createPhoneApi(phoneData),
         data => {
-          if (data.phone) {
-            setPhones(prevPhones => [...prevPhones, data.phone]);
+          if (data?.phone) {
+            setPhones(prevPhones => [...prevPhones, data?.phone]);
           }
         },
         'create'
@@ -110,9 +117,9 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
       return await fetchData(
         () => updatePhoneApi(_id, phone),
         data => {
-          if (data.phone) {
+          if (data?.phone) {
             setPhones(prevPhones =>
-              prevPhones.map(prod => (prod._id === _id ? data.phone : prod))
+              prevPhones.map(prod => (prod._id === _id ? data?.phone : prod))
             );
           }
         },
@@ -127,7 +134,8 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
     async (id: string): Promise<AxiosResponse<any>> => {
       return await fetchData(
         () => deletePhoneApi(id),
-        () => setPhones(prevPhones => prevPhones.filter(phone => phone._id !== id)),
+        () =>
+          setPhones(prevPhones => prevPhones.filter(phone => phone._id !== id)),
         'delete'
       );
     },
