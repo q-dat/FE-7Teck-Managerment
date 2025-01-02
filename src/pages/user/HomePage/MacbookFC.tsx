@@ -101,7 +101,7 @@ const MacbookFC: React.FC = () => {
       </div>
       <div
         ref={scrollRefMacbook}
-        className="flex flex-row items-center justify-start gap-3 overflow-x-auto scroll-smooth p-2 scrollbar-hide xl:gap-5 xl:p-[22px] xl:pt-0 pt-0"
+        className="flex flex-row items-center justify-start gap-3 overflow-x-auto scroll-smooth p-2 pt-0 scrollbar-hide xl:gap-5 xl:p-[22px] xl:pt-0"
       >
         {phones.map(phone => (
           <Link to="phone-detail">
@@ -154,4 +154,3 @@ const MacbookFC: React.FC = () => {
 };
 
 export default MacbookFC;
-

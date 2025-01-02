@@ -154,4 +154,3 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({
 };
 
 export default ModalEditPhoneCatalogPageAdmin;
-

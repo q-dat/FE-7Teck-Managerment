@@ -21,7 +21,7 @@ const NavtableAdmin: React.FC<{ Title_NavtableAdmin: string }> = ({
         {/* Thanh Search */}
         <div className="relative mr-4 flex items-center">
           <Input
-            className="min-w-[300px] bg-white placeholder-black text-black focus:outline-none"
+            className="min-w-[300px] bg-white text-black placeholder-black focus:outline-none"
             type="text"
             placeholder="Tìm Kiếm..."
           />

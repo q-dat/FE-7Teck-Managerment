@@ -155,4 +155,3 @@ const WindowFC: React.FC = () => {
 };
 
 export default WindowFC;
-

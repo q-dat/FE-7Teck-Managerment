@@ -51,4 +51,3 @@ const NavBottom: React.FC = () => {
 };
 
 export default NavBottom;
-

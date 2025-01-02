@@ -77,7 +77,7 @@ const PostDetail: React.FC = () => {
                 className="relative cursor-pointer rounded border bg-white p-2 shadow-inner hover:shadow-lg"
                 onClick={() => handlePostSelect(post)}
               >
-                <p className="absolute left-1 top-1 rounded-sm bg-white px-2 text-[12px] text-primary border">
+                <p className="absolute left-1 top-1 rounded-sm border bg-white px-2 text-[12px] text-primary">
                   {post.catalog}
                 </p>
                 <img
@@ -106,4 +106,3 @@ const PostDetail: React.FC = () => {
 };
 
 export default PostDetail;
-

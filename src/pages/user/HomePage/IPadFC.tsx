@@ -154,4 +154,3 @@ const IPadFC: React.FC = () => {
 };
 
 export default IPadFC;
-

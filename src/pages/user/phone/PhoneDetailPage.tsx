@@ -70,7 +70,8 @@ const ProductDetailPage: React.FC = () => {
                     </span>{' '}
                     <del className="text-sm font-light text-gray-100">
                       {phone?.sale &&
-                        (phone?.sale * 1000).toLocaleString('vi-VN')}₫
+                        (phone?.sale * 1000).toLocaleString('vi-VN')}
+                      ₫
                     </del>
                   </p>
                   {phone?.color && (

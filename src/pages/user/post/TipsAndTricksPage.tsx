@@ -85,4 +85,3 @@ const TipsAndTricksPage: React.FC = () => {
 };
 
 export default TipsAndTricksPage;
-

@@ -126,4 +126,3 @@ const ModalCreatePostPageAdmin: React.FC<ModalCreatePostProps> = ({
 };
 
 export default ModalCreatePostPageAdmin;
-

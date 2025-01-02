@@ -110,4 +110,3 @@ const ProductByCatalog = () => {
 };
 
 export default ProductByCatalog;
-
