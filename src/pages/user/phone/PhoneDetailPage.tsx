@@ -120,14 +120,14 @@ const ProductDetailPage: React.FC = () => {
                         </span>
                       </summary>
                       {group?.fields
-                        .filter(field => phone?.[group?.group]?.[field?.field])
+                        .filter(field => phone?.phone_catalog_id?.[group?.group]?.[field?.field])
                         .map(field => (
                           <div
                             className="flex w-full flex-row items-start justify-between bg-white p-2"
                             key={field?.field}
                           >
                             <p>{field?.name}</p>
-                            <p>{phone?.[group?.group]?.[field?.field]}</p>
+                            <p>{phone?.phone_catalog_id?.[group?.group]?.[field?.field]}</p>
                           </div>
                         ))}
                     </details>
