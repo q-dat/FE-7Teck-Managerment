@@ -1,43 +1,45 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
-import ErrorLoading from '../../components/orther/error/ErrorLoading';
-import { LoadingLocal } from '../../components/orther/loading';
+import React, { useState, useEffect, useContext } from 'react';
 import { Toastify } from '../../helper/Toastify';
-import { isIErrorResponse } from '../../types/error/error';
-import { Button, Table } from 'react-daisyui';
-import { FaCircleInfo, FaPenToSquare } from 'react-icons/fa6';
-import { MdDelete } from 'react-icons/md';
-import { RiAddBoxLine } from 'react-icons/ri';
+import LoadingLocal from '../../components/orther/loading/LoadingLocal';
 import NavtitleAdmin from '../../components/admin/NavtitleAdmin';
-import NavbarMobile from '../../components/admin/Reponsive/Mobile/NavbarMobile';
+import { RiAddBoxLine } from 'react-icons/ri';
+import { Button, Table } from 'react-daisyui';
+import { MdDelete } from 'react-icons/md';
+import ErrorLoading from '../../components/orther/error/ErrorLoading';
+import { FaCircleInfo, FaPenToSquare } from 'react-icons/fa6';
+import { isIErrorResponse } from '../../types/error/error';
 import TableListAdmin from '../../components/admin/TablelistAdmin';
-import { IPhoneCatalog } from '../../types/type/phone-catalog/phoneCatalog';
+import NavbarMobile from '../../components/admin/Reponsive/Mobile/NavbarMobile';
 import ModalCreatePhoneCatalogPageAdmin from '../../components/admin/Modal/ModalPhoneCatalog/ModalCreatePhoneCatalogPageAdmin';
 import ModalDeletePhoneCatalogPageAdmin from '../../components/admin/Modal/ModalPhoneCatalog/ModalDeletePhoneCatalogPageAdmin';
 import ModalEditPhoneCatalogPageAdmin from '../../components/admin/Modal/ModalPhoneCatalog/ModalEditPhoneCatalogPageAdmin';
+import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
+import { IPhoneCatalog } from '../../types/type/phone-catalog/phone-catalog';
 
 const PhoneCatalogManager: React.FC = () => {
   const {
-    phoneCatalogs,
     loading,
-    error,
+    phoneCatalogs,
+    deletePhoneCatalog,
     getAllPhoneCatalogs,
-    deletePhoneCatalog
+    error
   } = useContext(PhoneCatalogContext);
   const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
-  const [selectedPostId, setSelectedPostId] = useState<string | null>(null);
+  const [selectedPhoneCatalogId, setSelectedPhoneCatalogId] = useState<
+    string | null
+  >(null);
 
   const openModalCreateAdmin = () => setIsModalCreateOpen(true);
   const closeModalCreateAdmin = () => setIsModalCreateOpen(false);
   const openModalDeleteAdmin = (id: string) => {
-    setSelectedPostId(id);
+    setSelectedPhoneCatalogId(id);
     setIsModalDeleteOpen(true);
   };
   const closeModalDeleteAdmin = () => setIsModalDeleteOpen(false);
   const openModalEditAdmin = (id: string) => {
-    setSelectedPostId(id);
+    setSelectedPhoneCatalogId(id);
     setIsModalEditOpen(true);
   };
   const closeModalEditAdmin = () => setIsModalEditOpen(false);
@@ -47,17 +49,17 @@ const PhoneCatalogManager: React.FC = () => {
   }, [getAllPhoneCatalogs]);
 
   const handleDeletePhoneCatalog = async () => {
-    if (selectedPostId) {
+    if (selectedPhoneCatalogId) {
       try {
-        await deletePhoneCatalog(selectedPostId);
+        await deletePhoneCatalog(selectedPhoneCatalogId);
         closeModalDeleteAdmin();
         Toastify('Bạn đã xoá danh mục điện thoại thành công', 201);
         getAllPhoneCatalogs();
-      } catch (error) {
-        const errorMessage = isIErrorResponse(error)
+      } catch {
+        const errorMessPhoneCatalog = isIErrorResponse(error)
           ? error.data?.message
-          : 'Xoá danh mục điện thoại thất bại!';
-        Toastify(`Lỗi: ${errorMessage}`, 500);
+          : 'Xoá sản phẩm thất bại!';
+        Toastify(`Lỗi: ${errorMessPhoneCatalog}`, 500);
       }
     }
   };
@@ -68,6 +70,7 @@ const PhoneCatalogManager: React.FC = () => {
   return (
     <div className="w-full">
       <NavbarMobile Title_NavbarMobile="Danh Mục Điện Thoại" />
+
       <div className="px-2 xl:px-0">
         <NavtitleAdmin
           Title_NavtitleAdmin="Quản Lý Danh Sách Danh Mục Điện Thoại"
@@ -87,7 +90,7 @@ const PhoneCatalogManager: React.FC = () => {
       </div>
 
       <TableListAdmin
-        Title_TableListAdmin={`Danh Sách Danh Mục Điện Thoại (${phoneCatalogs.length})`}
+        Title_TableListAdmin={`Danh Sách Danh Mục Điện Thoại(${phoneCatalogs.length})`}
         table_head={
           <Table.Head className="bg-primary text-center text-white">
             <span>STT</span>
@@ -105,20 +108,28 @@ const PhoneCatalogManager: React.FC = () => {
                 (phoneCatalog: IPhoneCatalog, index: number) => (
                   <Table.Row key={index}>
                     <span>#{index + 1}</span>
-                    <img
-                      src={phoneCatalog?.img}
-                      alt="Phone Image"
-                      className="h-12 w-12 object-cover"
-                    />
+                    <span className="flex items-center justify-center">
+                      <img
+                        src={phoneCatalog?.img}
+                        alt="PhoneCatalog Image"
+                        className="h-12 w-12 object-cover"
+                      />
+                    </span>
                     <span>{phoneCatalog?.name}</span>
                     <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
-                      {(phoneCatalog.price * 1000).toLocaleString('vi-VN')}đ
+                      {(phoneCatalog?.price * 1000).toLocaleString('vi-VN')}₫
+                    </span>
+
+                    <span className="line-clamp-1">{phoneCatalog?.status}</span>
+                    <span className="line-clamp-1">
+                      {phoneCatalog?.des || 'Không có mô tả!'}
                     </span>
                     <span>
                       {new Date(phoneCatalog?.createdAt).toLocaleString(
                         'vi-VN'
                       )}
                     </span>
+                    {/* Hành động */}
                     <span>
                       <details>
                         <summary className="inline cursor-pointer text-base text-warning">
@@ -130,7 +141,7 @@ const PhoneCatalogManager: React.FC = () => {
                           <Button
                             color="success"
                             onClick={() =>
-                              openModalEditAdmin(phoneCatalog?._id ?? '')
+                              openModalEditAdmin(phoneCatalog._id ?? '')
                             }
                             className="w-full max-w-[140px] text-sm font-light text-white"
                           >
@@ -139,7 +150,7 @@ const PhoneCatalogManager: React.FC = () => {
                           </Button>
                           <Button
                             onClick={() =>
-                              openModalDeleteAdmin(phoneCatalog?._id ?? '')
+                              openModalDeleteAdmin(phoneCatalog._id ?? '')
                             }
                             className="w-full max-w-[140px] bg-red-600 text-sm font-light text-white"
                           >
@@ -172,7 +183,7 @@ const PhoneCatalogManager: React.FC = () => {
       <ModalEditPhoneCatalogPageAdmin
         isOpen={isModalEditOpen}
         onClose={closeModalEditAdmin}
-        postId={selectedPostId ?? ''}
+        PhoneCatalogId={selectedPhoneCatalogId ?? ''}
       />
     </div>
   );

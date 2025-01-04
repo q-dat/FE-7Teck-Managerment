@@ -1,23 +1,23 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { Toastify } from '../../helper/Toastify';
-import LoadingLocal from '../../components/orther/loading/LoadingLocal';
-import NavtitleAdmin from '../../components/admin/NavtitleAdmin';
-import { RiAddBoxLine } from 'react-icons/ri';
-import { Button, Table } from 'react-daisyui';
-import { MdDelete } from 'react-icons/md';
+import React, { useContext, useEffect, useState } from 'react';
 import ErrorLoading from '../../components/orther/error/ErrorLoading';
-import { FaCircleInfo, FaPenToSquare } from 'react-icons/fa6';
+import { LoadingLocal } from '../../components/orther/loading';
+import { Toastify } from '../../helper/Toastify';
 import { isIErrorResponse } from '../../types/error/error';
-import TableListAdmin from '../../components/admin/TablelistAdmin';
+import { Button, Table } from 'react-daisyui';
+import { FaCircleInfo, FaPenToSquare } from 'react-icons/fa6';
+import { MdDelete } from 'react-icons/md';
+import { RiAddBoxLine } from 'react-icons/ri';
+import NavtitleAdmin from '../../components/admin/NavtitleAdmin';
 import NavbarMobile from '../../components/admin/Reponsive/Mobile/NavbarMobile';
-import { PhoneContext } from '../../context/phone/PhoneContext';
+import TableListAdmin from '../../components/admin/TablelistAdmin';
 import ModalCreatePhonePageAdmin from '../../components/admin/Modal/ModalPhone/ModalCreatePhonePageAdmin';
 import ModalDeletePhonePageAdmin from '../../components/admin/Modal/ModalPhone/ModalDeletePhonePageAdmin';
 import ModalEditPhonePageAdmin from '../../components/admin/Modal/ModalPhone/ModalEditPhonePageAdmin';
+import { PhoneContext } from '../../context/phone/PhoneContext';
 import { IPhone } from '../../types/type/phone/phone';
 
 const PhoneManager: React.FC = () => {
-  const { loading, phones, deletePhone, getAllPhones, error } =
+  const { phones, loading, error, getAllPhones, deletePhone } =
     useContext(PhoneContext);
   const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
@@ -47,12 +47,13 @@ const PhoneManager: React.FC = () => {
         await deletePhone(selectedPhoneId);
         closeModalDeleteAdmin();
         Toastify('Bạn đã xoá sản phẩm thành công', 201);
+
         getAllPhones();
-      } catch {
-        const errorMessPhone = isIErrorResponse(error)
+      } catch (error) {
+        const errorMessage = isIErrorResponse(error)
           ? error.data?.message
-          : 'Xoá sản phẩm thất bại!';
-        Toastify(`Lỗi: ${errorMessPhone}`, 500);
+          : 'Xoá danh mục điện thoại thất bại!';
+        Toastify(`Lỗi: ${errorMessage}`, 500);
       }
     }
   };
@@ -82,25 +83,18 @@ const PhoneManager: React.FC = () => {
       </div>
 
       <TableListAdmin
-        Title_TableListAdmin={`Danh Sách Điện Thoại (${phones.length})`}
+        Title_TableListAdmin={`Danh Sách Điện Thoại(${phones.length})`}
         table_head={
           <Table.Head className="bg-primary text-center text-white">
             <span>STT</span>
             <span>Hình Ảnh</span>
             <span>Ảnh Thu Nhỏ</span>
             <span>Tên Sản Phẩm</span>
-            {/* <span>Danh Mục</span> */}
             <span>Giá</span>
             <span>Giá giảm</span>
             <span>Trạng Thái</span>
             <span>Mô Tả</span>
             <span>Ngày tạo</span>
-            {/* <span>Cấu hình và bộ nhớ</span>
-            <span>Camera và màn hình</span>
-            <span>Pin và sạc</span>
-            <span>Tiện ích</span>
-            <span>Kết nối</span>
-            <span>Thiết kế và chất liệu</span> */}
             <span>Hành Động</span>
           </Table.Head>
         }
@@ -117,6 +111,7 @@ const PhoneManager: React.FC = () => {
                       className="h-12 w-12 object-cover"
                     />
                   </span>
+
                   <span className="flex items-center justify-center">
                     {phone?.thumbnail && (
                       <img
@@ -128,226 +123,14 @@ const PhoneManager: React.FC = () => {
                   </span>
                   <span>{phone?.name}</span>
                   <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
-                    {(phone?.price * 1000).toLocaleString('vi-VN')}₫
+                    {(phone.price * 1000).toLocaleString('vi-VN')}đ
                   </span>
                   <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
                     {(phone?.sale * 1000).toLocaleString('vi-VN')}₫
                   </span>
-                  <span className="line-clamp-1">{phone?.status}</span>
-                  <span className="line-clamp-1">
-                    {phone?.des || 'Không có mô tả!'}
-                  </span>
                   <span>
                     {new Date(phone?.createdAt).toLocaleString('vi-VN')}
                   </span>
-                  {/* Cấu hình và bộ nhớ */}
-                  {/* <span>
-                  <div className='text-start divide-y-4'>
-                    <p>
-                      <span>Hệ điều hành:</span>
-                      {phone.configuration_and_memory?.operating_system}
-                    </p>
-                    <p>
-                      <span>Chip xử lý CPU:</span>
-                      {phone.configuration_and_memory?.cpu_chip}
-                    </p>
-                    <p>
-                      <span>Tốc độ CPU</span>
-                      {phone.configuration_and_memory?.cpu_speed}
-                    </p>
-                    <p>
-                      <span>Chip đồ hoạ(GPU)</span>
-                      {phone.configuration_and_memory?.gpu}
-                    </p>
-                    <p>
-                      <span>RAM</span>
-                      {phone.configuration_and_memory?.ram}
-                    </p>
-                    <p>
-                      <span>Dung lượng lưu trữ</span>
-                      {phone.configuration_and_memory?.storage_capacity}
-                    </p>
-                    <p>
-                      <span>Dung lượng còn lại</span>
-                      {phone.configuration_and_memory?.remaining_capacity}
-                    </p>
-                    <p>
-                      <span>Thẻ nhớ</span>
-                      {phone.configuration_and_memory?.memory_card}
-                    </p>
-                    <p>
-                      <span>Danh bạ</span>
-                      {phone.configuration_and_memory?.contacts}
-                    </p>
-                  </div>
-                </span> */}
-                  {/* Camera và màn hình */}
-                  {/* <span>
-                  <div className='text-start divide-y-4'>
-                    <p>
-                      <span>Độ phân giải cammera sau:</span>
-                      {phone.camera_and_screen?.rear_camera_resolution}
-                    </p>
-                    <p>
-                      <span>Quay phim camera sau:</span>
-                      {phone.camera_and_screen?.rear_camera_video}
-                    </p>
-                    <p>
-                      <span> Đèn Flash camera sau:</span>
-                      {phone.camera_and_screen?.rear_camera_flash}
-                    </p>
-                    <p>
-                      <span>Tính năng camera sau:</span>
-                      {phone.camera_and_screen?.rear_camera_features}
-                    </p>
-                    <p>
-                      <span> Độ phân giải camera trước:</span>
-                      {phone.camera_and_screen?.front_camera_resolution}
-                    </p>
-                    <p>
-                      <span> Tính năng camera trước:</span>
-                      {phone.camera_and_screen?.front_camera_features}
-                    </p>
-                    <p>
-                      <span> Công nghệ màn hình:</span>
-                      {phone.camera_and_screen?.screen_technology}
-                    </p>
-                    <p>
-                      <span>Độ phân giải màn hình:</span>
-                      {phone.camera_and_screen?.screen_resolution}
-                    </p>
-                    <p>
-                      <span>Màn hình rộng:</span>
-                      {phone.camera_and_screen?.screen_size}
-                    </p>
-                    <p>
-                      <span>Độ sáng tối đa:</span>
-                      {phone.camera_and_screen?.max_brightness}
-                    </p>
-                    <p>
-                      <span>Mặt kính cảm ứng:</span>
-                      {phone.camera_and_screen?.touchscreen_glass}
-                    </p>
-                  </div>
-                </span> */}
-                  {/* Pin và sạc */}
-                  {/* <span>
-                  <div className='text-start divide-y-4'>
-                    <p>
-                      <span>Dung lượng pin:</span>
-                      {phone.battery_and_charging?.battery_capacity}
-                    </p>
-                    <p>
-                      <span>Loại pin:</span>
-                      {phone.battery_and_charging?.battery_type}
-                    </p>
-                    <p>
-                      <span>Hỗ trợ sạc tối đa:</span>
-                      {phone.battery_and_charging?.max_charging_support}
-                    </p>
-                    <p>
-                      <span>Công nghệ pin:</span>
-                      {phone.battery_and_charging?.battery_technology}
-                    </p>
-                  </div>
-                </span> */}
-                  {/* Tiện ích */}
-                  {/* <span>
-                  <div className='text-start divide-y-4'>
-                    <p>
-                      <span>Bảo mật nâng cao:</span>
-                      {phone.features?.advanced_security}
-                    </p>
-                    <p>
-                      <span>Tính năng đặc biệt:</span>
-                      {phone.features?.special_features}
-                    </p>
-                    <p>
-                      <span>Kháng nước bụi:</span>
-                      {phone.features?.water_dust_resistant}
-                    </p>
-                    <p>
-                      <span>Ghi âm:</span>
-                      {phone.features?.voice_recording}
-                    </p>
-                    <p>
-                      <span>Radio:</span>
-                      {phone.features?.radio}
-                    </p>
-                    <p>
-                      <span>Xem phim:</span>
-                      {phone.features?.video_playback}
-                    </p>
-                    <p>
-                      <span>Nghe nhạc:</span>
-                      {phone.features?.music_playback}
-                    </p>
-                  </div>
-                </span> */}
-                  {/* Kết nối */}
-                  {/* <span>
-                  <div className='text-start divide-y-4'>
-                    <p>
-                      <span>Mạng di động:</span>
-                      {phone.connectivity?.mobile_network}
-                    </p>
-                    <p>
-                      <span>Sim:</span>
-                      {phone.connectivity?.sim}
-                    </p>
-                    <p>
-                      <span>Wi-Fi:</span>
-                      {phone.connectivity?.wifi}
-                    </p>
-                    <p>
-                      <span>GPS:</span>
-                      {phone.connectivity?.gps}
-                    </p>
-                    <p>
-                      <span>Bluetooth</span>
-                      {phone.connectivity?.bluetooth}
-                    </p>
-                    <p>
-                      <span>Cổng kết nối/Sạc:</span>
-                      {phone.connectivity?.charging_connection_port}
-                    </p>
-                    <p>
-                      <span>Jack tai nghe:</span>
-                      {phone.connectivity?.headphone_jack}
-                    </p>
-                    <p>
-                      <span>Kết nối khác:</span>
-                      {phone.connectivity?.other_connectivity}
-                    </p>
-                  </div>
-                </span> */}
-                  {/* Thiết kế và chất liệu */}
-                  {/* <span>
-                  <div className='text-start divide-y-4'>
-                    <p>
-                      <span>Thiết kế:</span>
-                      {phone.design_and_material?.design}
-                    </p>
-                    <p>
-                      <span>Chất liệu:</span>
-                      {phone.design_and_material?.material}
-                    </p>
-                    <p>
-                      <span>Kích thước khối lượng:</span>
-                      {phone.design_and_material?.dimensions_and_weight}
-                    </p>
-                    <p>
-                      <span>Thời điểm ra mắt:</span>
-                      {phone.design_and_material?.release_date}
-                    </p>
-                    <p>
-                      <span>Hãng:</span>
-                      {phone.design_and_material?.brand}
-                    </p>
-                  </div>
-                </span> */}
-
-                  {/* Hành động */}
                   <span>
                     <details>
                       <summary className="inline cursor-pointer text-base text-warning">
@@ -358,14 +141,14 @@ const PhoneManager: React.FC = () => {
                       <div className="flex flex-col items-center justify-center space-y-2">
                         <Button
                           color="success"
-                          onClick={() => openModalEditAdmin(phone._id ?? '')}
+                          onClick={() => openModalEditAdmin(phone?._id ?? '')}
                           className="w-full max-w-[140px] text-sm font-light text-white"
                         >
                           <FaPenToSquare />
                           Cập Nhật
                         </Button>
                         <Button
-                          onClick={() => openModalDeleteAdmin(phone._id ?? '')}
+                          onClick={() => openModalDeleteAdmin(phone?._id ?? '')}
                           className="w-full max-w-[140px] bg-red-600 text-sm font-light text-white"
                         >
                           <MdDelete />
@@ -378,7 +161,7 @@ const PhoneManager: React.FC = () => {
               ))
             ) : (
               <tr>
-                <td colSpan={9}>Không có sản phẩm điện thoại nào!</td>
+                <td colSpan={10}>Không có sản phẩm điện thoại nào!</td>
               </tr>
             )}
           </Table.Body>

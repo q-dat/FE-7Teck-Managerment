@@ -7,7 +7,7 @@ interface ModalDeleteAdminProps {
   onConfirm: () => void;
 }
 
-const ModalDeleteProductPageAdmin: React.FC<ModalDeleteAdminProps> = ({
+const ModalDeletePhonePageAdmin: React.FC<ModalDeleteAdminProps> = ({
   isOpen,
   onClose,
   onConfirm
@@ -62,4 +62,4 @@ const ModalDeleteProductPageAdmin: React.FC<ModalDeleteAdminProps> = ({
   );
 };
 
-export default ModalDeleteProductPageAdmin;
+export default ModalDeletePhonePageAdmin

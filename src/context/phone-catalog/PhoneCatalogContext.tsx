@@ -6,13 +6,9 @@ import {
   useEffect
 } from 'react';
 import { AxiosResponse } from 'axios';
-import {
-  getAllPhoneCatalogsApi,
-  createPhoneCatalogApi,
-  updatePhoneCatalogApi,
-  deletePhoneCatalogApi
-} from '../../axios/api/phoneCatalogApi';
-import { IPhoneCatalog } from '../../types/type/phone-catalog/phoneCatalog';
+import { getAllPhoneCatalogsApi, createPhoneCatalogApi, updatePhoneCatalogApi, deletePhoneCatalogApi } from '../../axios/api/phoneCatalogApi';
+import { IPhoneCatalog } from '../../types/type/phone-catalog/phone-catalog';
+
 
 interface PhoneContextType {
   phoneCatalogs: IPhoneCatalog[];

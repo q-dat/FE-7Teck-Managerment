@@ -6,13 +6,9 @@ import {
   useEffect
 } from 'react';
 import { AxiosResponse } from 'axios';
+import { getAllPhonesApi, createPhoneApi, updatePhoneApi, deletePhoneApi } from '../../axios/api/phoneApi';
 import { IPhone } from '../../types/type/phone/phone';
-import {
-  getAllPhonesApi,
-  createPhoneApi,
-  updatePhoneApi,
-  deletePhoneApi
-} from '../../axios/api/phoneApi';
+
 
 interface PhoneContextType {
   phones: IPhone[];
