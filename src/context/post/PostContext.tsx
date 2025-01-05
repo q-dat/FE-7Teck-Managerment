@@ -88,7 +88,7 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
 
   // Get All
   const getAllPosts = useCallback(() => {
-    fetchData(getAllPostsApi, data => setPosts(data.posts || []), 'getAll');
+    fetchData(getAllPostsApi, data => setPosts(data?.posts || []), 'getAll');
   }, []);
 
   // Get By Id
@@ -105,8 +105,8 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
       return await fetchData(
         () => createPostApi(post),
         data => {
-          if (data.post) {
-            setPosts(prevPosts => [...prevPosts, data.post]);
+          if (data?.post) {
+            setPosts(prevPosts => [...prevPosts, data?.post]);
           }
         },
         'create'
@@ -121,10 +121,10 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
       return await fetchData(
         () => updatePostApi(id, post),
         data => {
-          if (data.post) {
+          if (data?.post) {
             setPosts(prevPosts =>
               prevPosts.map(existingPost =>
-                existingPost._id === id ? data.post : existingPost
+                existingPost._id === id ? data?.post : existingPost
               )
             );
           }
