@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from 'react-daisyui';
-import { IoCloudyNightSharp } from 'react-icons/io5';
+import { FaCloudMoon } from 'react-icons/fa';
 import { MdLightMode } from 'react-icons/md';
 
 const DarkMode: React.FC = () => {
@@ -26,7 +26,7 @@ const DarkMode: React.FC = () => {
     <Button
       size="md"
       onClick={toggleDarkMode}
-      className="flex cursor-pointer flex-row items-center justify-center rounded-md border-none bg-white bg-opacity-20 text-black shadow-headerMenu dark:bg-white dark:bg-opacity-20 dark:text-white"
+      className="flex cursor-pointer flex-row items-center justify-center rounded-md border-none bg-transparent shadow-none"
     >
       <div className="cursor-pointer rounded-md">
         {darkMode ? (
@@ -35,7 +35,7 @@ const DarkMode: React.FC = () => {
           </div>
         ) : (
           <div className="text-xl text-black">
-            <IoCloudyNightSharp />
+            <FaCloudMoon />
           </div>
         )}
       </div>

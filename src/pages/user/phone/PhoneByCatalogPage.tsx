@@ -84,8 +84,8 @@ const ProductByCatalog = () => {
                     <Link to="checkout" className="z-50 w-full">
                       <Button
                         size="xs"
-                        className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary"
-                      >
+                        className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary dark:bg-white dark:bg-opacity-10 dark:text-white"
+                        >
                         Mua Ngay
                       </Button>
                     </Link>

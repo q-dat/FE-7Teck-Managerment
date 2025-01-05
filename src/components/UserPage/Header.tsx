@@ -3,7 +3,6 @@ import { Button, Input, Menu } from 'react-daisyui';
 import { FaChevronDown, FaHome, FaMagic } from 'react-icons/fa';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { IconType } from 'react-icons/lib';
-import DarkMode from '../orther/darkmode/DarkMode';
 import { Logo } from '../../assets/images';
 import { RiPagesLine } from 'react-icons/ri';
 import { IoLogoFacebook, IoSearch } from 'react-icons/io5';
@@ -169,14 +168,7 @@ const Header: React.FC = () => {
         >
           <Link to="/">
             <img
-              className="block object-cover dark:hidden"
-              width={60}
-              loading="lazy"
-              src={Logo}
-              alt="LOGO"
-            />
-            <img
-              className="hidden rounded-full object-cover dark:block"
+              className="rounded-full object-cover"
               width={60}
               loading="lazy"
               src={Logo}
@@ -250,7 +242,7 @@ const Header: React.FC = () => {
           </Menu>
           <div className="flex items-center justify-center gap-5">
             {/* DarkMode Button */}
-            <DarkMode />
+            {/* <DarkMode /> */}
           </div>
         </div>
       </div>

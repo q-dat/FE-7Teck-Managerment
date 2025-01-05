@@ -72,7 +72,7 @@ const PhonePage: React.FC = () => {
                 return (
                   <div
                     key={phone?._id}
-                    className="flex h-full w-full flex-col justify-between rounded-md border border-[#f2f4f7] bg-white text-black"
+                    className="flex h-full w-full flex-col justify-between rounded-md border border-[#f2f4f7] text-black dark:text-white"
                   >
                     <div
                       onClick={() => navigate(`/${phoneUrl}`)}
@@ -99,7 +99,7 @@ const PhonePage: React.FC = () => {
                       <Link to="checkout" className="z-50 w-full">
                         <Button
                           size="xs"
-                          className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary"
+                          className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary dark:bg-white dark:bg-opacity-10 dark:text-white"
                         >
                           Mua Ngay
                         </Button>

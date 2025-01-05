@@ -56,10 +56,10 @@ const PhoneFC: React.FC = () => {
     >
       {/* Title */}
       <div className="mt-5 flex w-full flex-col items-center justify-center p-5">
-        <p className="font-title bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold text-transparent dark:from-white dark:via-primary dark:to-white dark:bg-clip-text xl:text-[40px]">
+        <p className="font-title bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold text-transparent dark:from-white dark:to-white dark:bg-clip-text xl:text-[40px]">
           Điện Thoại Nổi Bật
         </p>
-        <div className="h-[1px] w-[150px] animate-ping bg-primary xl:w-[200px]"></div>
+        <div className="h-[1px] w-[150px] animate-ping bg-primary dark:bg-white xl:w-[200px]"></div>
       </div>
       <div
         ref={scrollRef}
@@ -99,7 +99,7 @@ const PhoneFC: React.FC = () => {
                 <Link to="/checkout" className="z-50 w-full">
                   <Button
                     size="xs"
-                    className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary"
+                    className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary dark:bg-white dark:bg-opacity-10 dark:text-white"
                   >
                     Mua Ngay
                   </Button>
