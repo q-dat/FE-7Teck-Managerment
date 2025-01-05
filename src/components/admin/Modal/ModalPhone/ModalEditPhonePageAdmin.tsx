@@ -130,86 +130,91 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
           onClick={e => e.stopPropagation()}
           className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:w-1/2"
         >
-          <div>
-            <p className="font-bold text-black dark:text-white">
-              Cập nhật sản phẩm
-            </p>
-            <InputModal
-              type="text"
-              {...register('name', { required: true })}
-              placeholder="Tên danh mục"
-            />
-            <LabelForm title={'Danh mục'} />
-            <div className="flex items-center">
-              <ReactSelect
-                placeholder="Chọn danh mục"
-                name="phone_catalog_id._id"
-                control={control}
-                options={phoneCatalog}
-                isMulti={false}
-                className=""
+          <p className="font-bold text-black dark:text-white">
+            Cập nhật sản phẩm
+          </p>
+          <div className="flex w-full flex-row items-start justify-between gap-10">
+            <div className="flex w-full flex-col items-start justify-center">
+              <LabelForm title={'Tên danh mục'} />
+              <InputModal
+                type="text"
+                {...register('name', { required: true })}
+                placeholder="Tên danh mục"
               />
-            </div>
-            <LabelForm title={'Giá'} />
-            <InputModal
-              type="number"
-              {...register('price', { required: true })}
-              placeholder="Giá"
-            />
-            <LabelForm title={'Giá giảm'} />
-            <InputModal
-              type="number"
-              {...register('sale')}
-              placeholder="Nhập giá giảm"
-            />
-            <LabelForm title={'Màu sắc'} />
-            <InputModal
-              type="text"
-              {...register('color')}
-              placeholder="Nhập màu"
-            />
-            <LabelForm title={'Trạng thái'} />
-            <InputModal
-              type="text"
-              {...register('status')}
-              placeholder="Trạng thái(*Không bắt buộc!)"
-            />
-            <LabelForm title={'Mô tả'} />
-            <InputModal
-              type="text"
-              {...register('des')}
-              placeholder="Mô tả (*Không bắt buộc!)"
-            />
-            <LabelForm title={'Hình ảnh'} />
-            {existingImg && (
-              <div className="my-2">
-                <img
-                  src={existingImg}
-                  className="h-10 w-10 rounded-md object-cover"
+              <LabelForm title={'Danh mục'} />
+              <div className="flex w-full items-center">
+                <ReactSelect
+                  placeholder="Chọn danh mục"
+                  name="phone_catalog_id._id"
+                  control={control}
+                  options={phoneCatalog}
+                  isMulti={false}
+                  className="w-full"
                 />
               </div>
-            )}
-            <InputModal
-              type="file"
-              {...register('img')}
-              placeholder="Chèn ảnh hình ảnh"
-            />
-          </div>
-          <LabelForm title={'Ảnh thu nhỏ'} />
-          {existingThumbnail && (
-            <div className="my-2">
-              <img
-                src={existingThumbnail}
-                className="h-10 w-10 rounded-md object-cover"
+              <LabelForm title={'Giá'} />
+              <InputModal
+                type="number"
+                {...register('price', { required: true })}
+                placeholder="Giá"
+              />
+              <LabelForm title={'Giá giảm'} />
+              <InputModal
+                type="number"
+                {...register('sale')}
+                placeholder="Nhập giá giảm"
+              />
+              <LabelForm title={'Màu sắc'} />
+              <InputModal
+                type="text"
+                {...register('color')}
+                placeholder="Nhập màu"
               />
             </div>
-          )}
-          <InputModal
-            type="file"
-            {...register('thumbnail')}
-            placeholder="Chèn ảnh thu nhỏ"
-            multiple
-          />
+            <div className="flex w-full flex-col items-start justify-center">
+              <LabelForm title={'Trạng thái'} />
+              <InputModal
+                type="text"
+                {...register('status')}
+                placeholder="Trạng thái(*Không bắt buộc!)"
+              />
+              <LabelForm title={'Mô tả'} />
+              <InputModal
+                type="text"
+                {...register('des')}
+                placeholder="Mô tả (*Không bắt buộc!)"
+              />
+              <LabelForm title={'Hình ảnh'} />
+              {existingImg && (
+                <div className="my-2">
+                  <img
+                    src={existingImg}
+                    className="h-10 w-10 rounded-md object-cover"
+                  />
+                </div>
+              )}
+              <InputModal
+                type="file"
+                {...register('img')}
+                placeholder="Chèn ảnh hình ảnh"
+              />
+              <LabelForm title={'Ảnh thu nhỏ'} />
+              {existingThumbnail && (
+                <div className="my-2">
+                  <img
+                    src={existingThumbnail}
+                    className="h-10 w-10 rounded-md object-cover"
+                  />
+                </div>
+              )}
+              <InputModal
+                type="file"
+                {...register('thumbnail')}
+                placeholder="Chèn ảnh thu nhỏ"
+                multiple
+              />
+            </div>
+          </div>
           <div className="flex flex-row items-center justify-center space-x-5 text-center">
             <Button
               onClick={onClose}

@@ -13,7 +13,7 @@ interface InputModalProps {
 const InputModal = forwardRef<HTMLInputElement, InputModalProps>(
   ({ placeholder, type, value, name, onChange, multiple }, ref) => {
     return (
-      <div className="mb-4 border-b">
+      <div className="mb-4 border-b w-full">
         <Input
           ref={ref}
           value={value}

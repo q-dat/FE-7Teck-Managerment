@@ -26,7 +26,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
     getPhoneCatalogById,
     updatePhoneCatalog
   } = useContext(PhoneCatalogContext);
-  const {  register, handleSubmit, reset, setValue, watch } =
+  const { register, handleSubmit, reset, setValue, watch } =
     useForm<IPhoneCatalog>();
 
   const [existingImg, setExistingImg] = useState<string | undefined>('');
@@ -51,7 +51,6 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
       // Lưu lại đường dẫn ảnh hiện tại
       setExistingImg(phoneData.img);
 
-    
       // Các trường con trong `configuration_and_memory`
       setValue(
         'configuration_and_memory.operating_system',
@@ -284,7 +283,9 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
         className="modal-overlay fixed inset-0 z-50 flex w-full items-center justify-center bg-black bg-opacity-40"
       >
         <div className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:w-1/2">
-          <p className="font-bold text-black dark:text-white">Cập nhật danh mục</p>
+          <p className="font-bold text-black dark:text-white">
+            Cập nhật danh mục
+          </p>
           <div className="h-[500px] w-full overflow-y-auto scrollbar-hide">
             {/* Các trường cơ bản */}
             <div className="mt-5">
@@ -294,23 +295,18 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                 {...register('name')}
                 placeholder="Nhập tên sản phẩm"
               />
-
-              <LabelForm title={'Trạng thái'} />
-              <InputModal
-                type="text"
-                {...register('status')}
-                placeholder="Nhập trạng thái"
-              />
-              <LabelForm title={'Màu sắc'} />
-
               <LabelForm title={'Giá'} />
               <InputModal
                 type="number"
                 {...register('price')}
                 placeholder="Nhập giá"
               />
-              <LabelForm title={'Giá giảm'} />
-
+              <LabelForm title={'Trạng thái'} />
+              <InputModal
+                type="text"
+                {...register('status')}
+                placeholder="Nhập trạng thái"
+              />
               <LabelForm title={'Mô tả'} />
               <InputModal
                 type="text"

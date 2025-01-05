@@ -128,6 +128,12 @@ const PhoneManager: React.FC = () => {
                   <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
                     {(phone?.sale * 1000).toLocaleString('vi-VN')}₫
                   </span>
+                  <span className="line-clamp-1">
+                    {phone?.status || 'Không có trạng thái!'}
+                  </span>
+                  <span className="line-clamp-1">
+                    {phone?.des || 'Không có mô tả!'}
+                  </span>
                   <span>
                     {new Date(phone?.createdAt).toLocaleString('vi-VN')}
                   </span>

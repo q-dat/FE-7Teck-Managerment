@@ -97,6 +97,8 @@ const PhoneCatalogManager: React.FC = () => {
             <span>Ảnh Đại Diện</span>
             <span>Tên</span>
             <span>Giá</span>
+            <span>Trạng thái</span>
+            <span>Mô tả</span>
             <span>Ngày Tạo</span>
             <span>Hành Động</span>
           </Table.Head>
@@ -120,7 +122,7 @@ const PhoneCatalogManager: React.FC = () => {
                       {(phoneCatalog?.price * 1000).toLocaleString('vi-VN')}₫
                     </span>
 
-                    <span className="line-clamp-1">{phoneCatalog?.status}</span>
+                    <span className="line-clamp-1">{phoneCatalog?.status||'Không có trạng thái!'}</span>
                     <span className="line-clamp-1">
                       {phoneCatalog?.des || 'Không có mô tả!'}
                     </span>
