@@ -9,13 +9,13 @@ import { PhoneCatalogContext } from '../../../../context/phone-catalog/PhoneCata
 import { optionsData } from '../../../orther/data/optionsData';
 import { IPhoneCatalog } from '../../../../types/type/phone-catalog/phone-catalog';
 
-interface ModalEditPhoneProps {
+interface ModalEditAdminProps {
   isOpen: boolean;
   onClose: () => void;
   PhoneCatalogId: string;
 }
 
-const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditPhoneProps> = ({
+const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
   isOpen,
   onClose,
   PhoneCatalogId

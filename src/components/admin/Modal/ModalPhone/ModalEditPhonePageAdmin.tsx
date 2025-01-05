@@ -10,7 +10,7 @@ import { PhoneContext } from '../../../../context/phone/PhoneContext';
 import { PhoneCatalogContext } from '../../../../context/phone-catalog/PhoneCatalogContext';
 import ReactSelect from '../../../orther/react-select/ ReactSelect';
 
-interface ModalEditPostPageAdminProps {
+interface ModalEditPageAdminProps {
   isOpen: boolean;
   onClose: () => void;
   PhoneId: string;
@@ -20,7 +20,7 @@ interface Option {
   label: string;
 }
 
-const ModalEditPhonePageAdmin: React.FC<ModalEditPostPageAdminProps> = ({
+const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
   isOpen,
   onClose,
   PhoneId

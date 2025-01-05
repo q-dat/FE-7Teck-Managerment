@@ -9,7 +9,7 @@ import { PhoneCatalogContext } from '../../../../context/phone-catalog/PhoneCata
 import LabelForm from '../../LabelForm';
 import ReactSelect from '../../../orther/react-select/ ReactSelect';
 
-interface ModalCreatePostProps {
+interface ModalCreateAdminProps {
   isOpen: boolean;
   onClose: () => void;
 }
@@ -17,7 +17,7 @@ interface Option {
   value: string;
   label: string;
 }
-const ModalCreatePhonePageAdmin: React.FC<ModalCreatePostProps> = ({
+const ModalCreatePhonePageAdmin: React.FC<ModalCreateAdminProps> = ({
   isOpen,
   onClose
 }) => {

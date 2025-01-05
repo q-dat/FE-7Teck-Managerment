@@ -1,13 +1,13 @@
 import React from 'react';
 import { Button } from 'react-daisyui';
 
-interface ModalDeletePostProps {
+interface ModalDeleteAdminProps {
   isOpen: boolean;
   onClose: () => void;
   onConfirm: () => void;
 }
 
-const ModalDeletePhoneCatalogPageAdmin: React.FC<ModalDeletePostProps> = ({
+const ModalDeletePhoneCatalogPageAdmin: React.FC<ModalDeleteAdminProps> = ({
   isOpen,
   onClose,
   onConfirm

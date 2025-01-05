@@ -9,12 +9,12 @@ import { PhoneCatalogContext } from '../../../../context/phone-catalog/PhoneCata
 import { optionsData } from '../../../orther/data/optionsData';
 import { IPhoneCatalog } from '../../../../types/type/phone-catalog/phone-catalog';
 
-interface ModalCreatePhoneProps {
+interface ModalCreateAdminProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreatePhoneProps> = ({
+const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
   isOpen,
   onClose
 }) => {
