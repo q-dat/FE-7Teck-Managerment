@@ -107,18 +107,22 @@ const PhoneManager: React.FC = () => {
                   <span className="flex items-center justify-center">
                     <img
                       src={phone?.img}
-                      alt="Phone Image"
+                      alt="Hình ảnh"
                       className="h-12 w-12 object-cover"
                     />
                   </span>
-
-                  <span className="flex items-center justify-center">
-                    {phone?.thumbnail && (
-                      <img
-                        src={phone?.thumbnail}
-                        alt="Thumbnail"
-                        className="h-12 w-12 object-cover"
-                      />
+                  <span className="flex flex-wrap items-center justify-center gap-2">
+                    {phone?.thumbnail && Array.isArray(phone.thumbnail) ? (
+                      phone.thumbnail.map((thumb, index) => (
+                        <img
+                          key={index}
+                          src={thumb}
+                          alt="Ảnh thu nhỏ"
+                          className="h-12 w-12 object-cover"
+                        />
+                      ))
+                    ) : (
+                      <span>Không có ảnh thu nhỏ</span>
                     )}
                   </span>
                   <span>{phone?.name}</span>

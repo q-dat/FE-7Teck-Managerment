@@ -113,7 +113,7 @@ const PhoneCatalogManager: React.FC = () => {
                     <span className="flex items-center justify-center">
                       <img
                         src={phoneCatalog?.img}
-                        alt="PhoneCatalog Image"
+                        alt="Hình ảnh"
                         className="h-12 w-12 object-cover"
                       />
                     </span>

@@ -6,7 +6,7 @@ export interface  IPhone{
   name: string;
   color: string;
   img: string;
-  thumbnail?: string;
+  thumbnail?: string[];
   price: number;
   sale: number; 
   status?: string;
