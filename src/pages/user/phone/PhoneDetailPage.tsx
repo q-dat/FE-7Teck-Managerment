@@ -41,20 +41,27 @@ const ProductDetailPage: React.FC = () => {
           {/*  */}
           <div className="flex flex-col items-start justify-start gap-5 xl:flex-row">
             {/* IMG */}
-            <div className="flex flex-col gap-2 xl:flex-row">
+            <div className="flex flex-col gap-2 xl:flex-col">
               <div className="w-full flex-1 rounded-md">
                 <img
                   src={phone?.img}
                   alt={phone?.name}
-                  className="w-ful rounded-md object-cover xl:w-[1000px]"
+                  className="w-ful rounded-md object-cover xl:w-[650px]"
                 />
               </div>
-              <div className="w-[100px] rounded-md">
-                <img
-                  src={phone?.thumbnail}
-                  alt={phone?.name}
-                  className="rounded-md"
-                />
+              <div className="flex flex-row gap-2 xl:flex-row">
+                {phone?.thumbnail && Array.isArray(phone.thumbnail) ? (
+                  phone.thumbnail.map((thumb: string, index: string) => (
+                    <img
+                      key={index}
+                      src={thumb}
+                      alt="Ảnh thu nhỏ"
+                      className="h-[80px] w-[80px] rounded-md object-cover"
+                    />
+                  ))
+                ) : (
+                  <span>Không có ảnh thu nhỏ</span>
+                )}
               </div>
             </div>
             <div className="w-full">
@@ -120,16 +127,33 @@ const ProductDetailPage: React.FC = () => {
                         </span>
                       </summary>
                       {group?.fields
-                        .filter(field => phone?.phone_catalog_id?.[group?.group]?.[field?.field])
-                        .map(field => (
-                          <div
-                            className="flex w-full flex-row items-start justify-between bg-white p-2"
-                            key={field?.field}
-                          >
-                            <p>{field?.name}</p>
-                            <p>{phone?.phone_catalog_id?.[group?.group]?.[field?.field]}</p>
-                          </div>
-                        ))}
+                        .filter(
+                          field =>
+                            phone?.phone_catalog_id?.[group?.group]?.[
+                              field?.field
+                            ]
+                        )
+                        .map(field => {
+                          const fieldValue =
+                            phone?.phone_catalog_id?.[group?.group]?.[
+                              field?.field
+                            ];
+                          return (
+                            <div
+                              className="flex w-full flex-row items-start justify-between bg-white p-2"
+                              key={field?.field}
+                            >
+                              <p>{field?.name}</p>
+                              <p className="font-light italic text-gray-700">
+                                {Array.isArray(fieldValue) ? (
+                                  <span>{fieldValue.join(',')}</span>
+                                ) : (
+                                  fieldValue
+                                )}
+                              </p>
+                            </div>
+                          );
+                        })}
                     </details>
                   </div>
                 ))}
