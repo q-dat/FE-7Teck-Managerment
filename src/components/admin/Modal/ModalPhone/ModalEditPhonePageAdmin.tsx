@@ -1,13 +1,12 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import React, { useContext, useEffect, useState } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { Toastify } from '../../../../helper/Toastify';
 import InputModal from '../../InputModal';
 import { Button } from 'react-daisyui';
-import 'react-quill/dist/quill.snow.css';
-import { Toastify } from '../../../../helper/Toastify';
-import LabelForm from '../../LabelForm';
 import { IPhone } from '../../../../types/type/phone/phone';
 import { PhoneContext } from '../../../../context/phone/PhoneContext';
 import { PhoneCatalogContext } from '../../../../context/phone-catalog/PhoneCatalogContext';
+import LabelForm from '../../LabelForm';
 import ReactSelect from '../../../orther/react-select/ ReactSelect';
 
 interface ModalEditPageAdminProps {
@@ -15,6 +14,7 @@ interface ModalEditPageAdminProps {
   onClose: () => void;
   PhoneId: string;
 }
+
 interface Option {
   value: string;
   label: string;
@@ -27,7 +27,6 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
 }) => {
   const { phones, getPhoneById, getAllPhones, updatePhone } =
     useContext(PhoneContext);
-  // PhoneCatalog
   const { phoneCatalogs, getAllPhoneCatalogs } =
     useContext(PhoneCatalogContext);
 
@@ -41,10 +40,16 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
   }));
   const { control, register, handleSubmit, watch, setValue, reset } =
     useForm<IPhone>();
+
   const [existingImg, setExistingImg] = useState<string | undefined>('');
   const [existingThumbnail, setExistingThumbnail] = useState<
-    string | undefined
-  >('');
+    string[] | undefined
+  >([]);
+
+  useEffect(() => {
+    getAllPhoneCatalogs();
+  }, []);
+
   useEffect(() => {
     if (PhoneId) {
       getPhoneById(PhoneId);
@@ -82,22 +87,26 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
     data.append('status', formData.status || '');
     data.append('des', formData.des || '');
 
+    // Thêm ảnh chính
     const imgFile = watch('img');
     if (imgFile && imgFile[0]) {
       data.append('img', imgFile[0]);
-    } else {
-      if (existingImg) {
-        data.append('img', existingImg);
-      }
+    } else if (existingImg) {
+      data.append('img', existingImg);
     }
-    const thumbnailFile = watch('thumbnail');
-    if (thumbnailFile && thumbnailFile[0]) {
-      data.append('thumbnail', thumbnailFile[0]);
-    } else {
-      if (existingThumbnail) {
-        data.append('thumbnail', existingThumbnail);
-      }
+
+    // Thêm nhiều ảnh thu nhỏ
+    const thumbnailFiles = watch('thumbnail');
+    if (thumbnailFiles && thumbnailFiles.length > 0) {
+      Array.from(thumbnailFiles).forEach(file => {
+        data.append('thumbnail', file);
+      });
+    } else if (existingThumbnail && existingThumbnail.length > 0) {
+      existingThumbnail.forEach(thumbnail => {
+        data.append('thumbnail', thumbnail);
+      });
     }
+
     try {
       await updatePhone(PhoneId, data);
       reset();
@@ -199,12 +208,15 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
                 placeholder="Chèn ảnh hình ảnh"
               />
               <LabelForm title={'Ảnh thu nhỏ'} />
-              {existingThumbnail && (
-                <div className="my-2">
-                  <img
-                    src={existingThumbnail}
-                    className="h-10 w-10 rounded-md object-cover"
-                  />
+              {existingThumbnail && existingThumbnail.length > 0 && (
+                <div className="my-2 flex gap-2">
+                  {existingThumbnail.map((thumbnail, index) => (
+                    <img
+                      key={index}
+                      src={thumbnail}
+                      className="h-10 w-10 rounded-md object-cover"
+                    />
+                  ))}
                 </div>
               )}
               <InputModal
