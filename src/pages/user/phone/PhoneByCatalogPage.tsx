@@ -54,22 +54,20 @@ const ProductByCatalog = () => {
               {filteredPhones.map(phone => (
                 <div
                   key={phone?._id}
-                  className="relative flex h-full flex-col justify-between rounded-md border border-[#f2f4f7] text-black dark:text-white"
+                  className="relative flex h-full flex-col justify-between rounded-md border border-white text-black dark:text-white"
                 >
-                  <Link to={`/product-detail/${phone?._id}`}>
-                    <div className="flex flex-col items-start">
-                      <img
-                        className="h-[200px] w-full rounded-[5px] rounded-b-none object-cover xl:h-[250px]"
-                        src={phone?.img}
-                      />
-
-                      <div className="px-1">
-                        <p>Điện thoại {phone?.name}</p>
-                      </div>
-                    </div>
+                  <Link
+                    className="flex h-full w-full items-center justify-center rounded-md rounded-b-none bg-white"
+                    to={`/product-detail/${phone?._id}`}
+                  >
+                    <img
+                      className="h-full w-full rounded-[5px] rounded-b-none object-contain"
+                      src={phone?.img}
+                    />
                   </Link>
                   {/*  */}
                   <div className="flex flex-col items-start justify-center gap-1 p-1">
+                    <p>Điện thoại {phone?.name}</p>
                     <p className="text-gray-500">
                       <span className="text-red-500">
                         {(phone?.price * 1000).toLocaleString('vi-VN')}₫
@@ -85,7 +83,7 @@ const ProductByCatalog = () => {
                       <Button
                         size="xs"
                         className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary dark:bg-white dark:bg-opacity-10 dark:text-white"
-                        >
+                      >
                         Mua Ngay
                       </Button>
                     </Link>

@@ -1,4 +1,10 @@
-import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, {
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState
+} from 'react';
 import { Button } from 'react-daisyui';
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
 import { Link, useNavigate } from 'react-router-dom';
@@ -76,23 +82,19 @@ const PhoneFC: React.FC = () => {
               className="relative flex h-full flex-col justify-between rounded-md border border-[#f2f4f7] text-black dark:text-white"
             >
               <div
-                className="w-[175px] cursor-pointer xl:w-[200px]"
+                className="flex h-full w-[175px] cursor-pointer items-center justify-center xl:w-[200px]"
                 // GetByID
                 // onClick={() => navigate(`/phones/${phone._id}`)}
                 onClick={() => navigate(`/${phoneUrl}`)}
               >
-                <div className="w-full">
-                  <img
-                    className="h-[200px] w-[175px] rounded-[5px] rounded-b-none object-cover xl:h-[250px] xl:w-full"
-                    src={phone.img}
-                  />
-                </div>
-                <div className="px-1">
-                  <p>Điện thoại {phone.name}</p>
-                </div>
+                <img
+                  className="h-full w-full rounded-[5px] rounded-b-none object-contain"
+                  src={phone.img}
+                />
               </div>
               {/*  */}
               <div className="flex flex-col items-start justify-center gap-1 p-1">
+                <p>Điện thoại {phone.name}</p>
                 <p className="text-gray-500">
                   Từ:&nbsp;
                   <span className="text-red-500">

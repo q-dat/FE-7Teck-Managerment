@@ -13,7 +13,11 @@ import { LoadingLocal } from '../../../components/orther/loading';
 import { phoneFieldMap } from '../../../components/orther/data/phoneFieldMap';
 import { IoIosArrowDropdownCircle } from 'react-icons/io';
 import { Button } from 'react-daisyui';
-import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
+import {
+  MdArrowBackIosNew,
+  MdArrowForwardIos,
+  MdZoomOutMap
+} from 'react-icons/md';
 import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
 
@@ -92,13 +96,18 @@ const ProductDetailPage: React.FC = () => {
         <div className="mt-2 px-2 xl:px-20">
           <div className="flex flex-col items-start justify-start gap-5 xl:flex-row">
             {/* IMG */}
-            <div className="flex flex-col gap-2 xl:w-[760px]">
+            <div className="flex w-full flex-col gap-2 xl:w-[760px]">
               <Zoom>
-                <img
-                  src={selectedImage || phone?.img}
-                  alt={phone?.name}
-                  className="h-[500px] w-full rounded-md object-cover"
-                />
+                <div className="relative">
+                  <img
+                    src={selectedImage || phone?.img}
+                    alt={phone?.name}
+                    className="h-[500px] w-full rounded-md object-cover"
+                  />
+                  <div className="pointer-events-none absolute bottom-1 right-1">
+                    <MdZoomOutMap className="rounded-md bg-black bg-opacity-40 p-[1px] text-2xl text-white" />
+                  </div>
+                </div>
               </Zoom>
               <div className="relative">
                 <div

@@ -76,23 +76,21 @@ const PhonePage: React.FC = () => {
                 return (
                   <div
                     key={phone?._id}
-                    className="flex h-full w-full flex-col justify-between rounded-md border border-[#f2f4f7] text-black dark:text-white"
+                    className="flex h-full w-full flex-col justify-between rounded-md border border-white text-black dark:text-white"
                   >
                     <div
                       onClick={() => navigate(`/${phoneUrl}`)}
-                      className="flex flex-col items-start"
+                      className="flex h-full w-full items-center justify-center rounded-md rounded-b-none bg-white"
                     >
                       <img
-                        className="h-[200px] w-full rounded-[5px] rounded-b-none object-cover xl:h-[250px]"
+                        className="h-full w-full rounded-[5px] rounded-b-none object-contain"
                         src={phone?.img}
                       />
-
-                      <div className="px-1">
-                        <p>Điện thoại {phone?.name}</p>
-                      </div>
                     </div>
                     {/*  */}
                     <div className="flex flex-col items-start justify-center gap-1 p-1">
+                      <p>Điện thoại {phone?.name}</p>
+
                       <p className="text-gray-500">
                         Từ:&nbsp;
                         <span className="text-red-500">
