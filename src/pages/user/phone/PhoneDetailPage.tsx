@@ -1,4 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState
+} from 'react';
 import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
 import { Link, useParams } from 'react-router-dom';
 import { PhoneContext } from '../../../context/phone/PhoneContext';
@@ -7,21 +13,66 @@ import { LoadingLocal } from '../../../components/orther/loading';
 import { phoneFieldMap } from '../../../components/orther/data/phoneFieldMap';
 import { IoIosArrowDropdownCircle } from 'react-icons/io';
 import { Button } from 'react-daisyui';
+import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
 
 const ProductDetailPage: React.FC = () => {
   const { id } = useParams();
-  const { getPhoneById, loading, error } = useContext(PhoneContext);
+  const { getPhoneById, loading, error, phones } = useContext(PhoneContext);
   const [phone, setPhone] = useState<any>(null);
-
+  const [selectedImage, setSelectedImage] = useState<string | null | undefined>(
+    null
+  );
+  const [isLeftVisible, setIsLeftVisible] = useState(true);
+  const [isRightVisible, setIsRightVisible] = useState(true);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  //
   useEffect(() => {
     if (id) {
       const fetchedPhone = getPhoneById(id);
       setPhone(fetchedPhone);
+      setSelectedImage(fetchedPhone?.img);
     }
   }, [id, getPhoneById]);
 
+  const updateScrollButtons = () => {
+    const scrollContainer = scrollRef.current;
+    if (scrollContainer) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollContainer;
+      setIsLeftVisible(scrollLeft > 0);
+      setIsRightVisible(scrollLeft + clientWidth < scrollWidth);
+    }
+  };
+
+  const scrollBy = (offset: number) => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollLeft += offset;
+    }
+  };
+  useLayoutEffect(() => {
+    updateScrollButtons();
+  }, [phone, phone?.thumbnail]);
+
+  useEffect(() => {
+    if (phones.length > 0) updateScrollButtons();
+
+    const handleResize = () => updateScrollButtons();
+    const scrollContainer = scrollRef.current;
+
+    window.addEventListener('resize', handleResize);
+    scrollContainer?.addEventListener('scroll', updateScrollButtons);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      scrollContainer?.removeEventListener('scroll', updateScrollButtons);
+    };
+  }, [phones]);
+  //
+  const handleThumbnailClick = (thumb: string) => {
+    setSelectedImage(thumb);
+  };
   if (loading.getAll) return <LoadingLocal />;
   if (error) return <ErrorLoading />;
+
   return (
     <div>
       <HeaderResponsive Title_NavbarMobile={phone?.name} />
@@ -36,37 +87,58 @@ const ProductDetailPage: React.FC = () => {
             </li>
           </ul>
         </div>
-        {/*  */}
         <div className="mt-2 px-2 xl:px-20">
-          {/*  */}
           <div className="flex flex-col items-start justify-start gap-5 xl:flex-row">
             {/* IMG */}
-            <div className="flex flex-col gap-2 xl:flex-col">
-              <div className="w-full flex-1 rounded-md">
+            <div className="flex flex-col gap-2 xl:w-[760px]">
+              <div>
                 <img
-                  src={phone?.img}
+                  src={selectedImage || phone?.img}
                   alt={phone?.name}
-                  className="w-ful rounded-md object-cover xl:w-[650px]"
+                  className="h-full w-full rounded-md object-cover"
                 />
               </div>
-              <div className="flex flex-row gap-2 xl:flex-row">
-                {phone?.thumbnail && Array.isArray(phone.thumbnail) ? (
-                  phone.thumbnail.map((thumb: string, index: string) => (
-                    <img
-                      key={index}
-                      src={thumb}
-                      alt="Ảnh thu nhỏ"
-                      className="h-[80px] w-[80px] rounded-md object-cover"
-                    />
-                  ))
-                ) : (
-                  <span>Không có ảnh thu nhỏ</span>
-                )}
+              <div className="relative">
+                <div
+                  ref={scrollRef}
+                  className="flex flex-row items-start justify-start gap-2 overflow-x-auto scroll-smooth scrollbar-hide"
+                >
+                  {phone?.thumbnail && Array.isArray(phone.thumbnail) ? (
+                    phone.thumbnail.map((thumb: string, index: string) => (
+                      <img
+                        key={index}
+                        src={thumb}
+                        alt="Ảnh thu nhỏ"
+                        className="h-[70px] w-[70px] cursor-pointer rounded-md border object-cover"
+                        onClick={() => handleThumbnailClick(thumb)}
+                      />
+                    ))
+                  ) : (
+                    <span>Không có ảnh thu nhỏ</span>
+                  )}
+                </div>
+                {/* Navigation Button  */}
+                <div className="absolute left-0 top-4 flex w-full items-center justify-between">
+                  <div className="relative w-full">
+                    <button
+                      onClick={() => scrollBy(-70)}
+                      className={`absolute left-0 z-[100] rounded-xl bg-black bg-opacity-20 py-2 text-white dark:bg-white dark:bg-opacity-40 xl:-left-4 ${isLeftVisible ? '' : 'hidden'}`}
+                    >
+                      <MdArrowBackIosNew className="text-2xl" />
+                    </button>
+                    <button
+                      onClick={() => scrollBy(70)}
+                      className={`absolute right-0 z-[100] rounded-xl bg-black bg-opacity-20 py-2 text-white dark:bg-white dark:bg-opacity-40 xl:-right-4 ${isRightVisible ? '' : 'hidden'}`}
+                    >
+                      <MdArrowForwardIos className="text-2xl" />
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
             <div className="w-full">
               {/* Info */}
-              <div className="flex flex-col items-start justify-between gap-5 rounded-md border border-primary bg-white p-2 leading-10">
+              <div className="flex flex-col items-start justify-between gap-5 rounded-md border bg-white p-2 leading-10">
                 <div>
                   <h1 className="text-xl font-semibold text-black">
                     Điện thoại {phone?.name}
@@ -117,7 +189,7 @@ const ProductDetailPage: React.FC = () => {
                 </h1>
                 {phoneFieldMap.map(group => (
                   <div key={group?.group}>
-                    <details className="group transform divide-y-[1px] bg-primary bg-opacity-10">
+                    <details className="group transform divide-y-[1px] bg-primary bg-opacity-5">
                       <summary className="flex cursor-pointer items-center justify-between p-2">
                         <span className="font-semibold text-primary">
                           {group?.name}

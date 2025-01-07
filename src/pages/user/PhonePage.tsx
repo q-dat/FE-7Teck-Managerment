@@ -4,9 +4,11 @@ import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
 import { Link, useNavigate } from 'react-router-dom';
 import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
 import { Button } from 'react-daisyui';
+import LoadingLocal from '../../components/orther/loading/LoadingLocal';
+import ErrorLoading from '../../components/orther/error/ErrorLoading';
 
 const PhonePage: React.FC = () => {
-  const { phoneCatalogs } = useContext(PhoneCatalogContext);
+  const { loading, error, phoneCatalogs } = useContext(PhoneCatalogContext);
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
   const slugify = (text: string) => {
@@ -45,6 +47,8 @@ const PhonePage: React.FC = () => {
       setCurrentPage(currentPage - 1);
     }
   };
+  if (loading.getAll) return <LoadingLocal />;
+  if (error) return <ErrorLoading />;
 
   return (
     <div>

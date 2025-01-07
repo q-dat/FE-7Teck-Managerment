@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Button } from 'react-daisyui';
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
 import { Link, useNavigate } from 'react-router-dom';
@@ -35,6 +35,9 @@ const PhoneFC: React.FC = () => {
     }
   };
 
+  useLayoutEffect(() => {
+    updateScrollButtons();
+  }, [phoneCatalogs]);
   useEffect(() => {
     if (phoneCatalogs.length > 0) updateScrollButtons();
 

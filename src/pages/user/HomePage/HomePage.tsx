@@ -78,7 +78,7 @@ const HomePage: React.FC = () => {
   return (
     <div>
       <HeaderResponsive Title_NavbarMobile="Trang Chủ" />
-      <div className="pt-[100px] xl:pt-0">
+      <div className="bg-[#f2f4f7] pb-10 pt-[100px] xl:pt-0">
         {/* Banner */}
         <div className="relative">
           <div className="absolute bottom-0 left-2 top-[60%] md:bottom-4 md:left-[10%] md:top-[30%] lg:top-[30%]">

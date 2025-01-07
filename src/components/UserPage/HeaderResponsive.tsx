@@ -139,13 +139,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
             placeholder="Bạn muốn tìm gì..."
           ></Input>
         </div>
-        <div>
-          {/* <img
-            src={Logo}
-            className="h-full w-[30px] rounded-full object-cover"
-            alt=""
-          /> */}
-        </div>
+        {/*  */}
       </div>
 
       <div
@@ -195,11 +189,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
           {/*  */}
           {/*  */}
           <Link to="/">
-            <img
-              src={Logo}
-              className="h-full w-[30px] rounded-full object-cover"
-              alt=""
-            />
+           <FaHome className='text-2xl text-white'/>
           </Link>
           <p className="font-bold uppercase text-white">{Title_NavbarMobile}</p>
           {/* RightVisible */}
