@@ -95,7 +95,7 @@ const ProductDetailPage: React.FC = () => {
                 <img
                   src={selectedImage || phone?.img}
                   alt={phone?.name}
-                  className="h-full w-full rounded-md object-cover"
+                  className="h-[500px] w-full rounded-md object-cover"
                 />
               </div>
               <div className="relative">
