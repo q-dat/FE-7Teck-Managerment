@@ -14,6 +14,8 @@ import { phoneFieldMap } from '../../../components/orther/data/phoneFieldMap';
 import { IoIosArrowDropdownCircle } from 'react-icons/io';
 import { Button } from 'react-daisyui';
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
+import Zoom from 'react-medium-image-zoom';
+import 'react-medium-image-zoom/dist/styles.css';
 
 const ProductDetailPage: React.FC = () => {
   const { id } = useParams();
@@ -91,13 +93,13 @@ const ProductDetailPage: React.FC = () => {
           <div className="flex flex-col items-start justify-start gap-5 xl:flex-row">
             {/* IMG */}
             <div className="flex flex-col gap-2 xl:w-[760px]">
-              <div>
+              <Zoom>
                 <img
                   src={selectedImage || phone?.img}
                   alt={phone?.name}
                   className="h-[500px] w-full rounded-md object-cover"
                 />
-              </div>
+              </Zoom>
               <div className="relative">
                 <div
                   ref={scrollRef}
