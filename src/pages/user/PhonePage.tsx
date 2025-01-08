@@ -6,6 +6,7 @@ import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogCon
 import { Button } from 'react-daisyui';
 import LoadingLocal from '../../components/orther/loading/LoadingLocal';
 import ErrorLoading from '../../components/orther/error/ErrorLoading';
+import { TbZoomExclamationFilled } from 'react-icons/tb';
 
 const PhonePage: React.FC = () => {
   const { loading, error, phoneCatalogs } = useContext(PhoneCatalogContext);
@@ -80,12 +81,15 @@ const PhonePage: React.FC = () => {
                   >
                     <div
                       onClick={() => navigate(`/${phoneUrl}`)}
-                      className="flex h-full w-full items-center justify-center rounded-md rounded-b-none bg-white"
+                      className="h-full w-full rounded-md rounded-b-none bg-white relative"
                     >
                       <img
                         className="h-full w-full rounded-[5px] rounded-b-none object-contain"
                         src={phone?.img}
                       />
+                      <p className="absolute bottom-0 right-0">
+                        <TbZoomExclamationFilled className="text-2xl text-white" />
+                      </p>
                     </div>
                     {/*  */}
                     <div className="flex flex-col items-start justify-center gap-1 p-1">

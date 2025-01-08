@@ -93,23 +93,24 @@ const ProductDetailPage: React.FC = () => {
             </li>
           </ul>
         </div>
-        <div className="mt-2 px-2 xl:px-20">
+        <div className="mt-2 px-2 xl:px-[150px]">
           <div className="flex flex-col items-start justify-start gap-5 xl:flex-row">
             {/* IMG */}
-            <div className="flex w-full flex-col gap-2 xl:w-[760px]">
+            <div className="flex w-full flex-col gap-2">
               <Zoom>
                 <div className="relative">
                   <img
                     src={selectedImage || phone?.img}
                     alt={phone?.name}
-                    className="h-[500px] w-full rounded-md object-cover"
+                    className="h-[500px] w-full rounded-md bg-white object-cover xl:object-contain"
                   />
                   <div className="pointer-events-none absolute bottom-1 right-1">
-                    <MdZoomOutMap className="rounded-md bg-black bg-opacity-40 p-[1px] text-2xl text-white" />
+                    <MdZoomOutMap className="rounded-sm bg-black bg-opacity-30 p-[1px] text-2xl text-white" />
                   </div>
                 </div>
               </Zoom>
-              <div className="relative">
+              {/* Thumbnails */}
+              <div className="relative border border-primary rounded-md p-1">
                 <div
                   ref={scrollRef}
                   className="flex flex-row items-start justify-start gap-2 overflow-x-auto scroll-smooth scrollbar-hide"
@@ -133,13 +134,13 @@ const ProductDetailPage: React.FC = () => {
                   <div className="relative w-full">
                     <button
                       onClick={() => scrollBy(-70)}
-                      className={`absolute left-0 z-[100] rounded-xl bg-black bg-opacity-20 py-2 text-white dark:bg-white dark:bg-opacity-40 xl:-left-4 ${isLeftVisible ? '' : 'hidden'}`}
+                      className={`absolute -left-2 z-[100] rounded-xl bg-black bg-opacity-20 py-2 text-white dark:bg-white dark:bg-opacity-40 xl:-left-4 ${isLeftVisible ? '' : 'hidden'}`}
                     >
                       <MdArrowBackIosNew className="text-2xl" />
                     </button>
                     <button
                       onClick={() => scrollBy(70)}
-                      className={`absolute right-0 z-[100] rounded-xl bg-black bg-opacity-20 py-2 text-white dark:bg-white dark:bg-opacity-40 xl:-right-4 ${isRightVisible ? '' : 'hidden'}`}
+                      className={`absolute -right-2 z-[100] rounded-xl bg-black bg-opacity-20 py-2 text-white dark:bg-white dark:bg-opacity-40 xl:-right-4 ${isRightVisible ? '' : 'hidden'}`}
                     >
                       <MdArrowForwardIos className="text-2xl" />
                     </button>
@@ -147,10 +148,11 @@ const ProductDetailPage: React.FC = () => {
                 </div>
               </div>
             </div>
+            {/* Description */}
             <div className="w-full">
               {/* Info */}
-              <div className="flex flex-col items-start justify-between gap-5 rounded-md border bg-white p-2 leading-10">
-                <div>
+              <div className="flex flex-col items-start justify-between gap-5 rounded-md border border-primary bg-white p-2 leading-10">
+                <div className="w-full">
                   <h1 className="text-xl font-semibold text-black">
                     Điện thoại {phone?.name}
                   </h1>
@@ -182,7 +184,7 @@ const ProductDetailPage: React.FC = () => {
                     </p>
                   )}
                 </div>
-                <div>
+                <div className="w-full flex items-center justify-center">
                   <Link to="/checkout">
                     <Button
                       size="sm"
@@ -223,7 +225,7 @@ const ProductDetailPage: React.FC = () => {
                             ];
                           return (
                             <div
-                              className="flex w-full flex-row items-start justify-between bg-white p-2"
+                              className="flex w-full flex-row items-start justify-between rounded-md bg-white p-2"
                               key={field?.field}
                             >
                               <p>{field?.name}</p>
@@ -243,6 +245,20 @@ const ProductDetailPage: React.FC = () => {
               </div>
             </div>
           </div>
+          {/* Detailed description */}
+          <details className="group my-5 flex w-full flex-col items-center justify-center">
+            <summary className="flex w-full cursor-pointer items-center justify-center gap-1 rounded-sm bg-gradient-to-r from-white via-primary to-primary">
+              <span className="font-semibold text-white">Xem Thêm</span>
+              <span className="transform text-white transition-transform duration-300 ease-in-out group-open:rotate-180">
+                <IoIosArrowDropdownCircle className="text-xl" />
+              </span>
+            </summary>
+            <p
+              dangerouslySetInnerHTML={{
+                __html: phone?.phone_catalog_id?.content
+              }}
+            ></p>
+          </details>
         </div>
       </div>
     </div>

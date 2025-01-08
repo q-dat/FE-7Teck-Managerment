@@ -6,6 +6,7 @@ import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
 import ErrorLoading from '../../../components/orther/error/ErrorLoading';
 import { LoadingLocal } from '../../../components/orther/loading';
 import { Sale } from '../../../assets/image-represent';
+import { TbZoomExclamationFilled } from 'react-icons/tb';
 
 const ProductByCatalog = () => {
   const { phones, loading, error } = useContext(PhoneContext);
@@ -56,15 +57,20 @@ const ProductByCatalog = () => {
                   key={phone?._id}
                   className="relative flex h-full flex-col justify-between rounded-md border border-white text-black dark:text-white"
                 >
-                  <Link
-                    className="flex h-full w-full items-center justify-center rounded-md rounded-b-none bg-white"
-                    to={`/product-detail/${phone?._id}`}
-                  >
-                    <img
-                      className="h-full w-full rounded-[5px] rounded-b-none object-contain"
-                      src={phone?.img}
-                    />
-                  </Link>
+                  <div className="relative">
+                    <Link
+                      className="flex h-full w-full items-center justify-center rounded-md rounded-b-none bg-white"
+                      to={`/product-detail/${phone?._id}`}
+                    >
+                      <img
+                        className="h-full w-full rounded-[5px] rounded-b-none object-contain"
+                        src={phone?.img}
+                      />
+                      <p className="absolute bottom-0 right-0">
+                        <TbZoomExclamationFilled className="text-2xl text-white" />
+                      </p>
+                    </Link>
+                  </div>
                   {/*  */}
                   <div className="flex flex-col items-start justify-center gap-1 p-1">
                     <p>Điện thoại {phone?.name}</p>

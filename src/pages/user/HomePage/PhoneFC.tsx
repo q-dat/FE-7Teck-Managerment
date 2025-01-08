@@ -9,6 +9,7 @@ import { Button } from 'react-daisyui';
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
 import { Link, useNavigate } from 'react-router-dom';
 import { PhoneCatalogContext } from '../../../context/phone-catalog/PhoneCatalogContext';
+import { TbZoomExclamationFilled } from "react-icons/tb";
 
 const PhoneFC: React.FC = () => {
   const navigate = useNavigate();
@@ -82,7 +83,7 @@ const PhoneFC: React.FC = () => {
               className="relative flex h-full flex-col justify-between rounded-md border border-[#f2f4f7] text-black dark:text-white"
             >
               <div
-                className="flex h-full w-[175px] cursor-pointer items-center justify-center xl:w-[200px]"
+                className="relative h-full w-[175px] cursor-pointer xl:w-[200px]"
                 // GetByID
                 // onClick={() => navigate(`/phones/${phone._id}`)}
                 onClick={() => navigate(`/${phoneUrl}`)}
@@ -91,6 +92,9 @@ const PhoneFC: React.FC = () => {
                   className="h-full w-full rounded-[5px] rounded-b-none object-contain"
                   src={phone.img}
                 />
+                <p className="absolute bottom-0 right-0">
+                  <TbZoomExclamationFilled className="text-2xl text-white" />
+                </p>
               </div>
               {/*  */}
               <div className="flex flex-col items-start justify-center gap-1 p-1">
