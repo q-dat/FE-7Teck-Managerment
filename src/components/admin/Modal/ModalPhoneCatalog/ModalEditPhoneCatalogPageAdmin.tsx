@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { Toastify } from '../../../../helper/Toastify';
 import InputModal from '../../InputModal';
 import { Button } from 'react-daisyui';
@@ -8,7 +8,23 @@ import LabelForm from '../../LabelForm';
 import { PhoneCatalogContext } from '../../../../context/phone-catalog/PhoneCatalogContext';
 import { optionsData } from '../../../orther/data/optionsData';
 import { IPhoneCatalog } from '../../../../types/type/phone-catalog/phone-catalog';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
+const modules = {
+  toolbar: [
+    [{ header: '1' }, { header: '2' }, { font: [] }],
+    [{ list: 'ordered' }, { list: 'bullet' }],
+    ['bold', 'italic', 'underline'],
+    ['link', 'image', 'video'],
+    [{ align: [] }],
+    ['clean'],
+    [{ indent: '-1' }, { indent: '+1' }],
+    ['blockquote'],
+    [{ color: [] }, { background: [] }],
+    [{ script: 'sub' }, { script: 'super' }]
+  ]
+};
 interface ModalEditAdminProps {
   isOpen: boolean;
   onClose: () => void;
@@ -26,10 +42,12 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
     getPhoneCatalogById,
     updatePhoneCatalog
   } = useContext(PhoneCatalogContext);
-  const { register, handleSubmit, reset, setValue, watch } =
+  const { control,register, handleSubmit, reset, setValue, watch } =
     useForm<IPhoneCatalog>();
+    const [existingImg, setExistingImg] = useState<string | undefined>('');
+  const [editorValue, setEditorValue] = useState<string>('');
 
-  const [existingImg, setExistingImg] = useState<string | undefined>('');
+
   useEffect(() => {
     if (PhoneCatalogId) {
       getPhoneCatalogById(PhoneCatalogId);
@@ -46,6 +64,8 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
       setValue('price', phoneData.price);
       setValue('status', phoneData.status);
       setValue('des', phoneData.des);
+      setValue('content', phoneData.content || '');
+      setEditorValue(phoneData.content || '');
       setValue('createdAt', phoneData.createdAt);
 
       // Lưu lại đường dẫn ảnh hiện tại
@@ -223,6 +243,8 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
     data.append('price', formData.price.toString());
     data.append('des', formData.des || '');
     data.append('status', formData.status || '');
+    data.append('content', formData.content || '');
+
 
     const imgFile = watch('img');
     if (imgFile && imgFile[0]) {
@@ -280,7 +302,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
     <form onSubmit={handleSubmit(onSubmit)}>
       <div
         onClick={handleOverlayClick}
-        className="modal-overlay fixed inset-0 z-50 flex w-full items-center justify-center bg-black bg-opacity-40"
+        className="modal-overlay fixed inset-0 z-50 flex w-full cursor-pointer items-center justify-center bg-black bg-opacity-40"
       >
         <div className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:w-1/2">
           <p className="font-bold text-black dark:text-white">
@@ -688,8 +710,25 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                 placeholder="Nhập hãng"
               />
             </div>
+            <div className="flex w-full flex-col items-start justify-center">
+                <LabelForm title={'Nội dung'} />
+                <Controller
+                  name="content"
+                  control={control}
+                  defaultValue={editorValue}
+                  render={({ field }) => (
+                    <ReactQuill
+                      value={field.value || ''}
+                      onChange={value => field.onChange(value)}
+                      theme="snow"
+                      modules={modules}
+                      placeholder="Nội dung mô tả..."
+                    />
+                  )}
+                />
+              </div>
           </div>
-          <div className="space-x-5 text-center">
+          <div className="space-x-5 text-center mt-5">
             <Button
               onClick={onClose}
               className="border-gray-50 text-black dark:text-white"

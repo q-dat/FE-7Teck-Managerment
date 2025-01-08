@@ -88,7 +88,7 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreateAdminProps> = ({
     <form onSubmit={handleSubmit(onSubmit)}>
       <div
         onClick={handleOverlayClick}
-        className="modal-overlay fixed inset-0 z-50 flex w-full items-center justify-center bg-black bg-opacity-40"
+        className="modal-overlay cursor-pointer fixed inset-0 z-50 flex w-full items-center justify-center bg-black bg-opacity-40"
       >
         <div
           onClick={(e) => e.stopPropagation()}
@@ -106,7 +106,7 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreateAdminProps> = ({
             />
             <div className="flex items-center">
               <ReactSelect
-                placeholder="Chọn danh mục"
+                placeholder="Chọn danh mục*"
                 name="phone_catalog_id._id"
                 control={control}
                 options={phoneCatalog}
@@ -118,13 +118,13 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreateAdminProps> = ({
             <InputModal
               type="text"
               {...register('color')}
-              placeholder="Nhập màu"
+              placeholder="Nhập màu*"
             />
 
             <InputModal
               type="number"
               {...register('price', { required: true })}
-              placeholder="Giá (Hệ số x1000: 1triệu = 1000)"
+              placeholder="Giá* (Hệ số x1000: 1triệu = 1000)"
             />
             <InputModal
               type="number"
@@ -135,19 +135,18 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreateAdminProps> = ({
             <InputModal
               type="text"
               {...register('status')}
-              placeholder="Trạng thái(*Không bắt buộc!)"
+              placeholder="Trạng thái*"
             />
             <InputModal
               type="text"
               {...register('des')}
-              placeholder="Mô tả (*Không bắt buộc!)"
+              placeholder="Mô tả (Không bắt buộc!)"
             />
-            <LabelForm title={'Hình ảnh'} />
-
+            <LabelForm title={'Hình ảnh*'} />
             <InputModal
               type="file"
               {...register('img')}
-              placeholder="Hình ảnh"
+              placeholder="Hình ảnh*"
             />
             <LabelForm title={'Ảnh thu nhỏ'} />
             <InputModal

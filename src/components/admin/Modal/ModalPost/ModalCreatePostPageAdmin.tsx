@@ -72,7 +72,7 @@ const ModalCreatePostPageAdmin: React.FC<ModalCreatePostProps> = ({
     <form onSubmit={handleSubmit(onSubmit)}>
       <div
         onClick={handleOverlayClick}
-        className="modal-overlay fixed inset-0 z-50 flex w-full items-center justify-center bg-black bg-opacity-40"
+        className="modal-overlay fixed inset-0 z-50 flex w-full cursor-pointer items-center justify-center bg-black bg-opacity-40"
       >
         <div
           onClick={e => e.stopPropagation()}
@@ -98,7 +98,7 @@ const ModalCreatePostPageAdmin: React.FC<ModalCreatePostProps> = ({
               theme="snow"
               modules={modules}
               className="mb-4 h-[400px] overflow-auto rounded-md border scrollbar-hide"
-              placeholder="Nội dung bài viết"
+              placeholder="Nội dung bài viết..."
             />
 
             <InputModal

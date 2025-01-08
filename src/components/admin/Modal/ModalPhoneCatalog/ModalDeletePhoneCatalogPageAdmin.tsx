@@ -25,7 +25,7 @@ const ModalDeletePhoneCatalogPageAdmin: React.FC<ModalDeleteAdminProps> = ({
   return (
     <div
       onClick={handleOverlayClick}
-      className="modal-overlay fixed inset-0 z-50 flex w-full items-center justify-center bg-black bg-opacity-40"
+      className="modal-overlay fixed inset-0 z-50 flex w-full cursor-pointer items-center justify-center bg-black bg-opacity-40"
     >
       <div
         onClick={e => e.stopPropagation()}

@@ -9,6 +9,23 @@ import { PhoneCatalogContext } from '../../../../context/phone-catalog/PhoneCata
 import { optionsData } from '../../../orther/data/optionsData';
 import { IPhoneCatalog } from '../../../../types/type/phone-catalog/phone-catalog';
 
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+
+const modules = {
+  toolbar: [
+    [{ header: '1' }, { header: '2' }, { font: [] }],
+    [{ list: 'ordered' }, { list: 'bullet' }],
+    ['bold', 'italic', 'underline'],
+    ['link', 'image', 'video'],
+    [{ align: [] }],
+    ['clean'],
+    [{ indent: '-1' }, { indent: '+1' }],
+    ['blockquote'],
+    [{ color: [] }, { background: [] }],
+    [{ script: 'sub' }, { script: 'super' }]
+  ]
+};
 interface ModalCreateAdminProps {
   isOpen: boolean;
   onClose: () => void;
@@ -22,6 +39,7 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
     useContext(PhoneCatalogContext);
   const isLoading = loading.create;
   const { register, handleSubmit, reset, setValue } = useForm<IPhoneCatalog>();
+  const [editorValue, setEditorValue] = React.useState<string>('');
 
   const onSubmit: SubmitHandler<IPhoneCatalog> = async formData => {
     const data = new FormData();
@@ -30,6 +48,8 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
     data.append('price', formData.price.toString());
     data.append('des', formData.des || '');
     data.append('status', formData.status || '');
+    data.append('content', editorValue);
+
 
     // Append ảnh
     if (formData.img && formData.img[0]) {
@@ -127,9 +147,9 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
     <form onSubmit={handleSubmit(onSubmit)}>
       <div
         onClick={handleOverlayClick}
-        className="modal-overlay fixed inset-0 z-50 flex w-full items-center justify-center bg-black bg-opacity-40"
+        className="modal-overlay fixed inset-0 z-50 flex w-full cursor-pointer items-center justify-center bg-black bg-opacity-40"
       >
-        <div className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:w-1/2">
+        <div className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:w-2/3">
           <p className="font-bold text-black dark:text-white">
             Tạo danh mục mới
           </p>
@@ -148,7 +168,7 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
                 {...register('price')}
                 placeholder="Nhập giá (Hệ số x1000: 1triệu = 1000)"
               />
-              <LabelForm title={'Trạng thái*'} />
+              <LabelForm title={'Trạng thái'} />
               <InputModal
                 type="text"
                 {...register('status')}
@@ -528,8 +548,17 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
                 placeholder="Nhập hãng"
               />
             </div>
+            <div className="w-full">
+              <ReactQuill
+                value={editorValue}
+                onChange={setEditorValue}
+                theme="snow"
+                modules={modules}
+                placeholder="Nội dung mô tả..."
+              />
+            </div>
           </div>
-          <div className="flex flex-row items-center justify-center space-x-5 text-center">
+          <div className="mt-5 flex flex-row items-center justify-center space-x-5 text-center">
             <Button
               onClick={onClose}
               className="border-gray-50 text-black dark:text-white"

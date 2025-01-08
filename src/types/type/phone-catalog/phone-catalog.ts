@@ -1,12 +1,13 @@
 export interface IPhoneCatalog {
   _id: string;
-  name: string; // Tên
-  img: string; // Đường dẫn ảnh chính
-  price: number; // Giá sản phẩm
-  status: string; // Trạng thái sản phẩm
-  des?: string; // Mô tả sản phẩm
-  createdAt: string; // Thời gian tạo
-  updatedAt: string; // Thời gian cập nhật
+  name: string;
+  img: string;
+  price: number;
+  status: string;
+  des?: string;
+  content?: string;
+  createdAt: string;
+  updatedAt: string;
   configuration_and_memory: {
     // Cấu hình và bộ nhớ
     operating_system: string; // Hệ điều hành
@@ -70,3 +71,4 @@ export interface IPhoneCatalog {
     brand: string; // Hãng
   };
 }
+

@@ -133,7 +133,7 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
     <form onSubmit={handleSubmit(onSubmit)}>
       <div
         onClick={handleOverlayClick}
-        className="modal-overlay fixed inset-0 z-50 flex w-full items-center justify-center bg-black bg-opacity-40"
+        className="modal-overlay cursor-pointer fixed inset-0 z-50 flex w-full items-center justify-center bg-black bg-opacity-40"
       >
         <div
           onClick={e => e.stopPropagation()}
@@ -185,13 +185,13 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
               <InputModal
                 type="text"
                 {...register('status')}
-                placeholder="Trạng thái(*Không bắt buộc!)"
+                placeholder="Trạng thái(Không bắt buộc!)"
               />
               <LabelForm title={'Mô tả'} />
               <InputModal
                 type="text"
                 {...register('des')}
-                placeholder="Mô tả (*Không bắt buộc!)"
+                placeholder="Mô tả (Không bắt buộc!)"
               />
               <LabelForm title={'Hình ảnh'} />
               {existingImg && (
