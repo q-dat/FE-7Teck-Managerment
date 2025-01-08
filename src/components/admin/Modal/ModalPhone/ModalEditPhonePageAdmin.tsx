@@ -209,7 +209,7 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
               />
               <LabelForm title={'Ảnh thu nhỏ'} />
               {existingThumbnail && existingThumbnail.length > 0 && (
-                <div className="my-2 flex gap-2">
+                <div className="my-2 flex gap-2 flex-wrap">
                   {existingThumbnail.map((thumbnail, index) => (
                     <img
                       key={index}
