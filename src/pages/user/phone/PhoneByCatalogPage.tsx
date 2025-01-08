@@ -35,7 +35,7 @@ const ProductByCatalog = () => {
     <div>
       <HeaderResponsive Title_NavbarMobile="Điện Thoại" />
       <div className="pt-[100px] xl:pt-0">
-        <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow dark:text-white xl:px-20">
+        <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow xl:px-20">
           <ul className="font-light">
             <li>
               <Link to="/">Trang Chủ</Link>
@@ -55,7 +55,7 @@ const ProductByCatalog = () => {
               {filteredPhones.map(phone => (
                 <div
                   key={phone?._id}
-                  className="relative flex h-full flex-col justify-between rounded-md border border-white text-black dark:text-white"
+                  className="relative flex h-full flex-col justify-between rounded-md border border-white text-black"
                 >
                   <div className="relative">
                     <Link
@@ -88,7 +88,7 @@ const ProductByCatalog = () => {
                     <Link to="checkout" className="z-50 w-full">
                       <Button
                         size="xs"
-                        className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary dark:bg-white dark:bg-opacity-10 dark:text-white"
+                        className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary"
                       >
                         Mua Ngay
                       </Button>

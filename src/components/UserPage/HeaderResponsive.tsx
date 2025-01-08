@@ -4,7 +4,6 @@ import { RxHamburgerMenu } from 'react-icons/rx';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { FaHome, FaChevronDown, FaMagic } from 'react-icons/fa';
 import { IconType } from 'react-icons/lib';
-import DarkMode from '../orther/darkmode/DarkMode';
 import { Logo } from '../../assets/images';
 import { RiPagesLine } from 'react-icons/ri';
 import { SlClose } from 'react-icons/sl';
@@ -151,7 +150,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
               open={leftVisible}
               onClickOverlay={toggleLeftVisible}
               side={
-                <Menu className="fixed h-full w-[280px] bg-white dark:bg-gray-800">
+                <Menu className="fixed h-full w-[280px] bg-white ">
                   {/* LOGO */}
           {/* <div className="flex items-center justify-center">
                     <img
@@ -164,10 +163,9 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                   </div>
                   <div className="w-full space-y-5">
                     <div className="flex flex-row items-center justify-between rounded-md bg-gray-700 bg-opacity-20 p-2">
-                      <p className="text-lg font-light text-black dark:text-white">
+                      <p className="text-lg font-light text-black ">
                         Giao Diện
                       </p>
-                      <DarkMode />
                     </div>
                   </div>
                 </Menu>
@@ -177,7 +175,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
           {/*  */}
           {/* <div
                 onClick={toggleLeftVisible}
-                className="flex flex-row items-center justify-center gap-2 py-4 text-2xl text-black dark:text-white xl:hidden"
+                className="flex flex-row items-center justify-center gap-2 py-4 text-2xl text-black  xl:hidden"
               >
                 <div className="rounded-md p-1 text-[20px] text-white">
                   <IoSettingsSharp />
@@ -189,7 +187,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
           {/*  */}
           {/*  */}
           <Link to="/">
-           <FaHome className='text-2xl text-white'/>
+            <FaHome className="text-2xl text-white" />
           </Link>
           <p className="font-bold uppercase text-white">{Title_NavbarMobile}</p>
           {/* RightVisible */}
@@ -198,17 +196,16 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
               open={rightVisible}
               onClickOverlay={toggleRightVisible}
               side={
-                <Menu className="fixed h-full w-[280px] bg-white dark:bg-gray-800">
+                <Menu className="fixed h-full w-[280px] bg-white">
                   {/* LOGO */}
-                  <div className="flex items-end justify-between">
+                  <div>
                     <img
-                      className="rounded-full object-cover"
+                      className="rounded-full border object-cover"
                       width={120}
                       loading="lazy"
                       src={Logo}
                       alt="LOGO"
                     />
-                    <DarkMode />
                   </div>
                   {/* Menu */}
                   {menuItems.map(item => {
@@ -225,19 +222,19 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                             to={item.link}
                             className={`btn relative mt-2 flex w-full flex-row items-center justify-between rounded-none border-none pl-4 pr-3 ${
                               item.name === activeItem
-                                ? 'bg-primary bg-opacity-30 text-sm font-bold text-primary dark:bg-opacity-50 dark:text-white'
-                                : 'border-none bg-primary bg-opacity-10 text-sm font-light text-black shadow-headerMenu dark:text-white'
+                                ? 'bg-primary bg-opacity-30 text-sm font-bold text-primary'
+                                : 'border-none bg-primary bg-opacity-10 text-sm font-light text-black shadow-headerMenu'
                             } `}
                           >
                             <>
                               {item.name === activeItem && (
-                                <div className="absolute bottom-0 left-0 h-[2px] w-full bg-primary dark:bg-white" />
+                                <div className="absolute bottom-0 left-0 h-[2px] w-full bg-primary" />
                               )}
                               {Icon && (
                                 <div
                                   className={
                                     item.name === activeItem
-                                      ? 'h-5 w-5 text-2xl text-primary dark:text-white'
+                                      ? 'h-5 w-5 text-2xl text-primary'
                                       : 'h-5 w-5'
                                   }
                                 >
@@ -259,7 +256,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                         </Menu.Item>
                         {/* SubMenu */}
                         {item.submenu && openSubmenu === item.name && (
-                          <div className="relative w-full transform space-y-2 rounded-sm bg-white p-1 shadow-md transition-transform duration-300 ease-in-out dark:bg-gray-700 dark:bg-opacity-80">
+                          <div className="relative w-full transform space-y-2 rounded-sm bg-white p-1 shadow-md transition-transform duration-300 ease-in-out">
                             {item.submenu.map((subItem, index) => (
                               <Link
                                 key={index}
@@ -287,7 +284,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
               {/*  */}
               <div
                 onClick={toggleRightVisible}
-                className="flex flex-row items-center justify-center gap-2 py-4 text-2xl dark:text-white xl:hidden"
+                className="flex flex-row items-center justify-center gap-2 py-4 text-2xl xl:hidden"
               >
                 <div
                   className={`transform rounded-md text-[25px] text-white transition-transform duration-300 ease-in-out ${
@@ -304,7 +301,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
       {/* Input Search */}
       {/* <div className="relative flex items-center">
         <Input
-          className="w-full text-black focus:outline-none dark:border-white dark:bg-transparent dark:text-white"
+          className="w-full text-black focus:outline-none"
           type="text"
         />
         <div className="absolute right-2 h-5 w-5 cursor-pointer text-gray-50">

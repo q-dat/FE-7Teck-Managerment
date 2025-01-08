@@ -83,7 +83,7 @@ const ProductDetailPage: React.FC = () => {
     <div>
       <HeaderResponsive Title_NavbarMobile={phone?.name} />
       <div className="pt-[100px] xl:pt-0">
-        <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow dark:text-white xl:px-20">
+        <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow xl:px-20">
           <ul className="font-light">
             <li>
               <Link to="/">Trang Chủ</Link>
@@ -110,7 +110,7 @@ const ProductDetailPage: React.FC = () => {
                 </div>
               </Zoom>
               {/* Thumbnails */}
-              <div className="relative border border-primary rounded-md p-1">
+              <div className="relative rounded-md border border-primary p-1">
                 <div
                   ref={scrollRef}
                   className="flex flex-row items-start justify-start gap-2 overflow-x-auto scroll-smooth scrollbar-hide"
@@ -134,13 +134,13 @@ const ProductDetailPage: React.FC = () => {
                   <div className="relative w-full">
                     <button
                       onClick={() => scrollBy(-70)}
-                      className={`absolute -left-2 z-[100] rounded-xl bg-black bg-opacity-20 py-2 text-white dark:bg-white dark:bg-opacity-40 xl:-left-4 ${isLeftVisible ? '' : 'hidden'}`}
+                      className={`absolute -left-2 z-[100] rounded-xl bg-black bg-opacity-20 py-2 text-white xl:-left-4 ${isLeftVisible ? '' : 'hidden'}`}
                     >
                       <MdArrowBackIosNew className="text-2xl" />
                     </button>
                     <button
                       onClick={() => scrollBy(70)}
-                      className={`absolute -right-2 z-[100] rounded-xl bg-black bg-opacity-20 py-2 text-white dark:bg-white dark:bg-opacity-40 xl:-right-4 ${isRightVisible ? '' : 'hidden'}`}
+                      className={`absolute -right-2 z-[100] rounded-xl bg-black bg-opacity-20 py-2 text-white xl:-right-4 ${isRightVisible ? '' : 'hidden'}`}
                     >
                       <MdArrowForwardIos className="text-2xl" />
                     </button>
@@ -184,7 +184,7 @@ const ProductDetailPage: React.FC = () => {
                     </p>
                   )}
                 </div>
-                <div className="w-full flex items-center justify-center">
+                <div className="flex w-full items-center justify-center">
                   <Link to="/checkout">
                     <Button
                       size="sm"

@@ -55,7 +55,7 @@ const PhonePage: React.FC = () => {
     <div>
       <HeaderResponsive Title_NavbarMobile="Điện Thoại" />
       <div className="pt-[100px] xl:pt-0">
-        <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow dark:text-white xl:px-20">
+        <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow xl:px-20">
           <ul className="font-light">
             <li>
               <Link to="/">Trang Chủ</Link>
@@ -77,11 +77,11 @@ const PhonePage: React.FC = () => {
                 return (
                   <div
                     key={phone?._id}
-                    className="flex h-full w-full flex-col justify-between rounded-md border border-white text-black dark:text-white"
+                    className="flex h-full w-full flex-col justify-between rounded-md border border-white text-black"
                   >
                     <div
                       onClick={() => navigate(`/${phoneUrl}`)}
-                      className="h-full w-full rounded-md rounded-b-none bg-white relative"
+                      className="relative h-full w-full rounded-md rounded-b-none bg-white"
                     >
                       <img
                         className="h-full w-full rounded-[5px] rounded-b-none object-contain"
@@ -105,7 +105,7 @@ const PhonePage: React.FC = () => {
                       <Link to="checkout" className="z-50 w-full">
                         <Button
                           size="xs"
-                          className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary dark:bg-white dark:bg-opacity-10 dark:text-white"
+                          className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary"
                         >
                           Mua Ngay
                         </Button>

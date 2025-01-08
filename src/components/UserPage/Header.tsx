@@ -126,7 +126,7 @@ const Header: React.FC = () => {
         </div>
         {/* Menu 1 */}
         <div
-          className={`flex h-[40px] w-full transform flex-row items-center justify-between border-b bg-primary px-10 text-xs text-white transition-transform delay-100 duration-300 ease-in-out dark:bg-black ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}
+          className={`flex h-[40px] w-full transform flex-row items-center justify-between border-b bg-primary px-10 text-xs text-white transition-transform delay-100 duration-300 ease-in-out ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}
         >
           <div className="flex w-full flex-row items-center justify-center gap-1">
             <IoSearch className="animate-bounce text-xl" />
@@ -164,7 +164,7 @@ const Header: React.FC = () => {
         </div>
         {/*  */}
         <div
-          className={`h-[60px] w-full transform flex-row items-center justify-evenly bg-white py-2 shadow-md transition-transform delay-100 duration-300 ease-in-out dark:bg-black xl:flex ${showMenu ? 'translate-y-0' : '-translate-y-[40px]'}`}
+          className={`h-[60px] w-full transform flex-row items-center justify-evenly bg-white py-2 shadow-md transition-transform delay-100 duration-300 ease-in-out xl:flex ${showMenu ? 'translate-y-0' : '-translate-y-[40px]'}`}
         >
           <Link to="/">
             <img
@@ -191,19 +191,19 @@ const Header: React.FC = () => {
                     to={item.link}
                     className={`btn relative flex w-full items-center justify-center rounded-none border-none pl-4 ${
                       item.name === activeItem
-                        ? 'bg-primary bg-opacity-20 text-sm font-bold text-primary dark:bg-opacity-40 dark:text-white'
-                        : 'border-none bg-transparent text-sm font-light text-black shadow-none hover:border hover:border-primary hover:bg-gray-50 hover:bg-opacity-30 hover:text-primary dark:text-white'
+                        ? 'bg-primary bg-opacity-20 text-sm font-bold text-primary'
+                        : 'border-none bg-transparent text-sm font-light text-black shadow-none hover:border hover:border-primary hover:bg-gray-50 hover:bg-opacity-30 hover:text-primary'
                     }`}
                   >
                     <>
                       {item.name === activeItem && (
-                        <div className="absolute bottom-0 left-0 h-[2px] w-full bg-primary dark:bg-white" />
+                        <div className="absolute bottom-0 left-0 h-[2px] w-full bg-primary" />
                       )}
                       {Icon && (
                         <Icon
                           className={
                             item.name === activeItem
-                              ? 'h-5 w-5 text-primary dark:text-white'
+                              ? 'h-5 w-5 text-primary'
                               : 'h-5 w-5'
                           }
                         />
@@ -227,7 +227,7 @@ const Header: React.FC = () => {
                         >
                           <Button
                             size="sm"
-                            className="flex w-full flex-row items-center justify-start rounded-sm border-none bg-primary text-sm text-white shadow-headerMenu hover:h-[50px] hover:bg-primary hover:bg-opacity-50 dark:hover:bg-opacity-80"
+                            className="flex w-full flex-row items-center justify-start rounded-sm border-none bg-primary text-sm text-white shadow-headerMenu hover:h-[50px] hover:bg-primary hover:bg-opacity-50"
                           >
                             {subItem.icon && <subItem.icon />}
                             {subItem.name}

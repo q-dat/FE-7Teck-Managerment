@@ -9,7 +9,7 @@ import { Button } from 'react-daisyui';
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
 import { Link, useNavigate } from 'react-router-dom';
 import { PhoneCatalogContext } from '../../../context/phone-catalog/PhoneCatalogContext';
-import { TbZoomExclamationFilled } from "react-icons/tb";
+import { TbZoomExclamationFilled } from 'react-icons/tb';
 
 const PhoneFC: React.FC = () => {
   const navigate = useNavigate();
@@ -62,14 +62,14 @@ const PhoneFC: React.FC = () => {
 
   return (
     <div
-      className={`relative rounded-none bg-white dark:bg-black xl:rounded-lg ${phoneCatalogs.length === 0 ? 'hidden' : ''}`}
+      className={`relative rounded-none bg-white xl:rounded-lg ${phoneCatalogs.length === 0 ? 'hidden' : ''}`}
     >
       {/* Title */}
       <div className="mt-5 flex w-full flex-col items-center justify-center p-5">
-        <p className="font-title bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold text-transparent dark:from-white dark:to-white dark:bg-clip-text xl:text-[40px]">
+        <p className="font-title text-transparentxl:text-[40px] bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold">
           Điện Thoại Nổi Bật
         </p>
-        <div className="h-[1px] w-[150px] animate-ping bg-primary dark:bg-white xl:w-[200px]"></div>
+        <div className="h-[1px] w-[150px] animate-ping bg-primary xl:w-[200px]"></div>
       </div>
       <div
         ref={scrollRef}
@@ -80,7 +80,7 @@ const PhoneFC: React.FC = () => {
           return (
             <div
               key={phone._id}
-              className="relative flex h-full flex-col justify-between rounded-md border border-[#f2f4f7] text-black dark:text-white"
+              className="relative flex h-full flex-col justify-between rounded-md border border-[#f2f4f7] text-black"
             >
               <div
                 className="relative h-full w-[175px] cursor-pointer xl:w-[200px]"
@@ -108,7 +108,7 @@ const PhoneFC: React.FC = () => {
                 <Link to="/checkout" className="z-50 w-full">
                   <Button
                     size="xs"
-                    className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary dark:bg-white dark:bg-opacity-10 dark:text-white"
+                    className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary"
                   >
                     Mua Ngay
                   </Button>
@@ -124,13 +124,13 @@ const PhoneFC: React.FC = () => {
         <div className="relative w-full">
           <button
             onClick={() => scrollBy(-370)}
-            className={`absolute left-0 z-[100] mt-7 rounded-full border-none bg-black bg-opacity-20 text-white dark:bg-white dark:bg-opacity-40 dark:text-black ${isLeftVisible ? '' : 'hidden'}`}
+            className={`absolute left-0 z-[100] mt-7 rounded-full border-none bg-black bg-opacity-20 text-white ${isLeftVisible ? '' : 'hidden'}`}
           >
             <MdArrowBackIosNew className="text-4xl" />
           </button>
           <button
             onClick={() => scrollBy(370)}
-            className={`absolute right-0 z-[100] mt-7 rounded-full border-none bg-black bg-opacity-20 text-white dark:bg-white dark:bg-opacity-40 dark:text-black ${isRightVisible ? '' : 'hidden'}`}
+            className={`absolute right-0 z-[100] mt-7 rounded-full border-none bg-black bg-opacity-20 text-white ${isRightVisible ? '' : 'hidden'}`}
           >
             <MdArrowForwardIos className="text-4xl" />
           </button>

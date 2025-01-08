@@ -104,7 +104,7 @@ const PriceListPage: React.FC = () => {
     <div>
       <HeaderResponsive Title_NavbarMobile="Bảng Giá Thu Mua" />
       <div className="pt-[100px] xl:pt-0">
-        <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow dark:text-white lg:px-20">
+        <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow lg:px-20">
           <ul className="font-light">
             <li>
               <Link to="/">Trang Chủ</Link>
@@ -118,7 +118,7 @@ const PriceListPage: React.FC = () => {
           {/* Phone Catalog */}
           <div className="px-2 xl:px-[100px]">
             {/* Tittle */}
-            <div className="my-5 font-bold text-primary dark:text-white">
+            <div className="my-5 font-bold text-primary ">
               Danh Mục Thu Mua Điện Thoại
             </div>
             <div className="grid grid-cols-2 gap-2 xl:grid-flow-col xl:grid-cols-none xl:grid-rows-1">
@@ -158,13 +158,13 @@ const PriceListPage: React.FC = () => {
                     key={index}
                     className="hover:bg-black hover:bg-opacity-10"
                   >
-                    <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
+                    <td className="border border-primary px-4 py-2 text-black">
                       {product.name}
                     </td>
-                    <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
+                    <td className="border border-primary px-4 py-2 text-black">
                       {product.price}
                     </td>
-                    <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
+                    <td className="border border-primary px-4 py-2 text-black">
                       {product.storage}
                     </td>
                   </tr>
@@ -176,7 +176,7 @@ const PriceListPage: React.FC = () => {
           {/* Ipad Catalog */}
           <div className="px-2 xl:px-[100px]">
             {/* Tittle */}
-            <div className="my-5 font-bold text-primary dark:text-white">
+            <div className="my-5 font-bold text-primary">
               Danh Mục Thu Mua Ipad
             </div>
             <div className="grid grid-cols-2 gap-2 xl:grid-flow-col xl:grid-cols-none xl:grid-rows-1">
@@ -216,13 +216,13 @@ const PriceListPage: React.FC = () => {
                     key={index}
                     className="hover:bg-black hover:bg-opacity-10"
                   >
-                    <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
+                    <td className="border border-primary px-4 py-2 text-black">
                       {product.name}
                     </td>
-                    <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
+                    <td className="border border-primary px-4 py-2 text-black">
                       {product.price}
                     </td>
-                    <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
+                    <td className="border border-primary px-4 py-2 text-black">
                       {product.storage}
                     </td>
                   </tr>
@@ -234,7 +234,7 @@ const PriceListPage: React.FC = () => {
           {/* Laptop Catalog */}
           <div className="px-2 xl:px-[100px]">
             {/* Tittle */}
-            <div className="my-5 font-bold text-primary dark:text-white">
+            <div className="my-5 font-bold text-primary">
               Danh Mục Thu Mua Laptop
             </div>
             <div className="grid grid-cols-2 gap-2 xl:grid-flow-col xl:grid-cols-none xl:grid-rows-1">
@@ -274,13 +274,13 @@ const PriceListPage: React.FC = () => {
                     key={index}
                     className="hover:bg-black hover:bg-opacity-10"
                   >
-                    <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
+                    <td className="border border-primary px-4 py-2 text-black">
                       {product.name}
                     </td>
-                    <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
+                    <td className="border border-primary px-4 py-2 text-black">
                       {product.price}
                     </td>
-                    <td className="border border-primary px-4 py-2 text-black dark:border-white dark:text-white">
+                    <td className="border border-primary px-4 py-2 text-black">
                       {product.storage}
                     </td>
                   </tr>

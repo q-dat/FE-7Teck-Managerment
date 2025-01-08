@@ -27,7 +27,7 @@ const NavbarMobile: React.FC<{ Title_NavbarMobile: string }> = ({
             open={leftVisible}
             onClickOverlay={toggleLeftVisible}
             side={
-              <Menu className="fixed h-full w-[280px] bg-white">
+              <Menu className="fixed h-full w-[280px] bg-white dark:bg-gray-800">
                 <Menu.Item>
                   <div className="p-0">
                     <SidebarAdmin />
@@ -38,7 +38,7 @@ const NavbarMobile: React.FC<{ Title_NavbarMobile: string }> = ({
           >
             <div
               onClick={toggleLeftVisible}
-              className="py-4 text-2xl text-black xl:hidden"
+              className="py-4 text-2xl text-black dark:text-white xl:hidden"
             >
               <RxHamburgerMenu />
             </div>
@@ -46,7 +46,9 @@ const NavbarMobile: React.FC<{ Title_NavbarMobile: string }> = ({
         </div>
         {/* Title_NavbarMobile */}
         <div>
-          <p className="font-semibold text-black">{Title_NavbarMobile}</p>
+          <p className="font-semibold text-black dark:text-white">
+            {Title_NavbarMobile}
+          </p>
         </div>
         {/* Sidebar Right */}
         <div className="z-50">
@@ -54,7 +56,7 @@ const NavbarMobile: React.FC<{ Title_NavbarMobile: string }> = ({
             open={rightVisible}
             onClickOverlay={toggleRightVisible}
             side={
-              <Menu className="fixed h-full w-[280px] bg-white">
+              <Menu className="fixed h-full w-[280px] bg-white dark:bg-gray-800">
                 <Menu.Item className="space-y-2"></Menu.Item>
               </Menu>
             }

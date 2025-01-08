@@ -85,7 +85,7 @@ const HomePage: React.FC = () => {
             <p className="bg-gradient-to-r from-primary to-white bg-clip-text text-[25px] font-black italic text-transparent xl:text-[40px]">
               Đổi Điện Thoại Cũ, <br /> Nhận Ngay Giá Tốt Nhất!
             </p>
-            <p className="bg-gradient-to-r from-white to-white bg-clip-text text-[15px] font-thin text-transparent dark:from-primary dark:to-primary">
+            <p className="bg-gradient-to-r from-white to-white bg-clip-text text-[15px] font-thin text-transparent">
               up to 90%
             </p>
           </div>
@@ -133,7 +133,7 @@ const HomePage: React.FC = () => {
           >
             {items.map((item, index) => (
               <SwiperSlide key={index}>
-                <div className="text-md my-4 flex flex-col items-center gap-2 text-center font-semibold text-primary dark:text-white">
+                <div className="text-md my-4 flex flex-col items-center gap-2 text-center font-semibold text-primary">
                   <div className="rounded-full bg-gradient-to-tr from-primary via-primary to-black p-4">
                     <div>
                       {React.cloneElement(item.icon, {
