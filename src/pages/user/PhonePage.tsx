@@ -54,7 +54,7 @@ const PhonePage: React.FC = () => {
   return (
     <div>
       <HeaderResponsive Title_NavbarMobile="Điện Thoại" />
-      <div className="pt-[100px] xl:pt-0">
+      <div className="py-[100px] xl:pt-0">
         <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow xl:px-20">
           <ul className="font-light">
             <li>

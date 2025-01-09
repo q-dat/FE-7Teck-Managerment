@@ -66,7 +66,7 @@ const PhoneFC: React.FC = () => {
     >
       {/* Title */}
       <div className="mt-5 flex w-full flex-col items-center justify-center p-5">
-        <p className="font-title text-transparentxl:text-[40px] bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold">
+        <p className="font-title bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold text-transparent xl:text-[40px]">
           Điện Thoại Nổi Bật
         </p>
         <div className="h-[1px] w-[150px] animate-ping bg-primary xl:w-[200px]"></div>

@@ -82,7 +82,7 @@ const ProductDetailPage: React.FC = () => {
   return (
     <div>
       <HeaderResponsive Title_NavbarMobile={phone?.name} />
-      <div className="pt-[100px] xl:pt-0">
+      <div className="py-[100px] xl:pt-0">
         <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow xl:px-20">
           <ul className="font-light">
             <li>
@@ -254,6 +254,7 @@ const ProductDetailPage: React.FC = () => {
               </span>
             </summary>
             <p
+              className="mt-5"
               dangerouslySetInnerHTML={{
                 __html: phone?.phone_catalog_id?.content
               }}

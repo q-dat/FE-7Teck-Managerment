@@ -199,13 +199,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                 <Menu className="fixed h-full w-[280px] bg-white">
                   {/* LOGO */}
                   <div>
-                    <img
-                      className="rounded-full border object-cover"
-                      width={120}
-                      loading="lazy"
-                      src={Logo}
-                      alt="LOGO"
-                    />
+                    <img width={120} loading="lazy" src={Logo} alt="LOGO" />
                   </div>
                   {/* Menu */}
                   {menuItems.map(item => {

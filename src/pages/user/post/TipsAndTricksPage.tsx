@@ -28,8 +28,8 @@ const TipsAndTricksPage: React.FC = () => {
   return (
     <div>
       <HeaderResponsive Title_NavbarMobile="Thủ thuật - Mẹo" />
-      <div className="pt-[100px] xl:pt-0">
-        <div className="px-2 dark:bg-white xl:px-[100px]">
+      <div className="py-[100px] xl:pt-0">
+        <div className="px-2 xl:px-[100px]">
           {selectedPost && (
             <div className="mb-10">
               <p className="text-[35px] font-bold">{selectedPost.title}</p>

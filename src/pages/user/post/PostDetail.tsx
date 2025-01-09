@@ -35,8 +35,8 @@ const PostDetail: React.FC = () => {
   return (
     <div>
       <HeaderResponsive Title_NavbarMobile="Bài viết" />
-      <div className="pt-[100px] xl:pt-0">
-        <div className="breadcrumbs mb-10 px-[10px] py-2 text-sm text-black shadow dark:text-white lg:px-20">
+      <div className="py-[100px] xl:pt-0">
+        <div className="breadcrumbs mb-10 px-[10px] py-2 text-sm text-black shadow lg:px-20">
           <ul className="font-light">
             <li>
               <Link to="/">Trang Chủ</Link>
@@ -46,7 +46,7 @@ const PostDetail: React.FC = () => {
             </li>
           </ul>
         </div>
-        <div className="px-2 dark:bg-white">
+        <div className="px-2">
           <div className="xl:px-[100px]">
             {selectedPost ? (
               <div className="mb-10">
@@ -70,8 +70,8 @@ const PostDetail: React.FC = () => {
           <div>
             <h1 className="p-1 font-semibold uppercase">Bài viết khác</h1>
           </div>
-          <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
-            {otherPosts.map(post => (
+          <div className="grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-4">
+            {otherPosts.slice(0,6).map(post => (
               <div
                 key={post._id}
                 className="relative cursor-pointer rounded border bg-white p-2 shadow-inner hover:shadow-lg"
@@ -83,7 +83,7 @@ const PostDetail: React.FC = () => {
                 <img
                   src={post.imageUrl}
                   alt="Ảnh đại diện"
-                  className="h-[150px] w-full rounded-sm object-cover xl:h-[230px]"
+                  className="h-[200px] w-full rounded-sm border border-primary object-cover xl:h-[350px]"
                 />
                 <p className="line-clamp-2 text-[18px] font-bold">
                   {post.title}

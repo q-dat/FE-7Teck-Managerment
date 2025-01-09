@@ -29,8 +29,8 @@ const NewsPage: React.FC = () => {
   return (
     <div>
       <HeaderResponsive Title_NavbarMobile="Tin Tức" />
-      <div className="pt-[100px] xl:pt-0">
-        <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow dark:text-white lg:px-20">
+      <div className="py-[100px] xl:pt-0">
+        <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow lg:px-20">
           <ul className="font-light">
             <li>
               <Link to="/">Trang Chủ</Link>
@@ -48,18 +48,18 @@ const NewsPage: React.FC = () => {
             {posts.map(post => (
               <div
                 key={post._id}
-                className="relative cursor-pointer rounded border bg-white p-2 shadow-inner hover:shadow-lg"
+                className="relative cursor-pointer rounded border border-gray-50 bg-white p-2 shadow-inner hover:shadow-lg"
                 onClick={() => handlePostClick(post)}
               >
-                <p className="absolute left-1 top-1 rounded-sm border bg-white px-2 text-[12px] text-primary">
+                <p className="absolute left-1 top-1 rounded-sm bg-primary px-2 text-[12px] text-white">
                   {post.catalog}
                 </p>
                 <img
                   src={post.imageUrl}
                   alt="Ảnh đại diện"
-                  className="h-[150px] w-full rounded-sm object-cover xl:h-[230px]"
+                  className="h-[200px] w-full rounded-sm border border-primary object-cover xl:h-[300px]"
                 />
-                <p className="line-clamp-2 text-[18px] font-bold">
+                <p className="line-clamp-2 text-[18px] font-bold text-primary">
                   {post.title}
                 </p>
                 <hr />
