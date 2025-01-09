@@ -10,6 +10,12 @@ const PostDetail: React.FC = () => {
   const [selectedPost, setSelectedPost] = useState<(typeof posts)[0] | null>(
     null
   );
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }, []);
 
   useEffect(() => {
     if (posts.length > 0 && title) {
@@ -71,7 +77,7 @@ const PostDetail: React.FC = () => {
             <h1 className="p-1 font-semibold uppercase">Bài viết khác</h1>
           </div>
           <div className="grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-4">
-            {otherPosts.slice(0,6).map(post => (
+            {otherPosts.slice(0, 6).map(post => (
               <div
                 key={post._id}
                 className="relative cursor-pointer rounded border bg-white p-2 shadow-inner hover:shadow-lg"
@@ -85,13 +91,13 @@ const PostDetail: React.FC = () => {
                   alt="Ảnh đại diện"
                   className="h-[200px] w-full rounded-sm border object-fill xl:h-[350px]"
                 />
-                <p className="line-clamp-3 py-1 text-sm xl:text-[18px] font-bold text-primary">
+                <p className="line-clamp-3 py-1 text-sm font-bold text-primary xl:text-[18px]">
                   {post.title}
                 </p>
                 <hr />
                 <div
                   dangerouslySetInnerHTML={{ __html: post.content }}
-                  className="line-clamp-5 text-xs xl:text-[14px] text-black xl:line-clamp-6"
+                  className="line-clamp-5 text-xs text-black xl:line-clamp-6 xl:text-[14px]"
                 ></div>
                 <p className="pt-2 text-[12px] text-primary">
                   {new Date(post.updatedAt).toLocaleDateString('vi-VN')}

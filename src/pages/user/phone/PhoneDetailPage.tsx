@@ -33,6 +33,14 @@ const ProductDetailPage: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   //
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }, []);
+
+  //
+  useEffect(() => {
     if (id) {
       const fetchedPhone = getPhoneById(id);
       setPhone(fetchedPhone);

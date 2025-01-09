@@ -86,7 +86,7 @@ const FooterFC: React.FC = () => {
             <Link
               title="Zalo"
               target="_blank"
-              className="black rounded-full bg-white px-[2px] py-[6px] text-sm font-semibold text-[#69181b]"
+              className="black rounded-full bg-white px-[2px] py-[6px] text-sm font-semibold text-black"
               to={'https://zalo.me/0983699993'}
             >
               Zalo

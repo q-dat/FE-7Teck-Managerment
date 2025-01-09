@@ -8,6 +8,13 @@ const NewsPage: React.FC = () => {
   const [selectedPost, setSelectedPost] = useState<(typeof posts)[0] | null>(
     null
   );
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }, []);
+
   const navigate = useNavigate();
   useEffect(() => {
     getAllPosts();

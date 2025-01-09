@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { PhoneContext } from '../../../context/phone/PhoneContext';
 import { Button } from 'react-daisyui';
@@ -27,7 +27,13 @@ const ProductByCatalog = () => {
   const filteredPhones = phones.filter(
     phone => slugify(phone?.name) === catalog
   );
-
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }, []);
+  
   if (loading.getAll) return <LoadingLocal />;
   if (error) return <ErrorLoading />;
 

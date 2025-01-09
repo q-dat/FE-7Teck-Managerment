@@ -74,6 +74,12 @@ const PriceListPage: React.FC = () => {
       { name: 'MacBook Pro 512GB', price: '50,000,000 VND', storage: '512GB' }
     ]
   };
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }, []);
 
   useEffect(() => {
     const storedPhoneItem = sessionStorage.getItem('activePhoneItem');
@@ -118,7 +124,7 @@ const PriceListPage: React.FC = () => {
           {/* Phone Catalog */}
           <div className="px-2 xl:px-[100px]">
             {/* Tittle */}
-            <div className="my-5 font-bold text-primary ">
+            <div className="my-5 font-bold text-primary">
               Danh Mục Thu Mua Điện Thoại
             </div>
             <div className="grid grid-cols-2 gap-2 xl:grid-flow-col xl:grid-cols-none xl:grid-rows-1">
