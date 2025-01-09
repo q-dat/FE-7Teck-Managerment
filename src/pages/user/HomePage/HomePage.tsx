@@ -218,8 +218,9 @@ const HomePage: React.FC = () => {
           {/* MacBook */}
           <MacbookFC />
         </div>
-
-        <div className="bg-post mt-10 py-5">
+        <div
+          className={`bg-post mt-10 py-5 ${posts.length === 0 ? 'hidden' : ''}`}
+        >
           <p className="mb-2 text-center text-xl font-semibold uppercase text-primary">
             Bản tin mới nhất
           </p>
@@ -238,13 +239,13 @@ const HomePage: React.FC = () => {
                   alt="Ảnh đại diện"
                   className="h-[200px] w-full rounded-sm border object-cover xl:h-[300px]"
                 />
-                <p className="line-clamp-3 py-1 text-sm xl:text-[18px] font-bold text-primary">
+                <p className="line-clamp-3 py-1 text-sm font-bold text-primary xl:text-[18px]">
                   {post.title}
                 </p>
                 <hr />
                 <div
                   dangerouslySetInnerHTML={{ __html: post.content }}
-                  className="line-clamp-5 text-xs xl:text-[14px] text-black xl:line-clamp-6"
+                  className="line-clamp-5 text-xs text-black xl:line-clamp-6 xl:text-[14px]"
                 ></div>
                 <p className="pt-2 text-[12px] text-primary">
                   {new Date(post.updatedAt).toLocaleDateString('vi-VN')}
