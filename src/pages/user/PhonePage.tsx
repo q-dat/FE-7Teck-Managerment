@@ -80,8 +80,8 @@ const PhonePage: React.FC = () => {
                     className="flex h-full w-full flex-col justify-between rounded-md border border-white text-black"
                   >
                     <div
-                      onClick={() => navigate(`/${phoneUrl}`)}
-                      className="relative h-full w-full rounded-md rounded-b-none bg-white"
+                      onClick={() => navigate(`/phone/${phoneUrl}`)}
+                      className="relative h-full w-full cursor-pointer rounded-md rounded-b-none bg-white"
                     >
                       <img
                         className="h-full w-full rounded-[5px] rounded-b-none object-contain"

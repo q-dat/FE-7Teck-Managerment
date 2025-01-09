@@ -37,7 +37,7 @@ export default function AppRoutes() {
         <Route element={<DefaultLayout />}>
           <Route path="/" element={<User />}>
             <Route index path="" element={<HomePage />} />
-            <Route path="/:catalog" element={<PhoneByCatalog />} />
+            <Route path="phone/:catalog" element={<PhoneByCatalog />} />
             <Route path="phone-list" element={<PhonePage />} />
             <Route path="price-list" element={<PriceListPage />} />
             <Route path="product-detail/:id" element={<PhoneDetailPage />} />

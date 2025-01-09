@@ -85,8 +85,8 @@ const PhoneFC: React.FC = () => {
               <div
                 className="relative h-full w-[175px] cursor-pointer xl:w-[200px]"
                 // GetByID
-                // onClick={() => navigate(`/phones/${phone._id}`)}
-                onClick={() => navigate(`/${phoneUrl}`)}
+                // onClick={() => navigate(`/phone/${phone._id}`)}
+                onClick={() => navigate(`/phone/${phoneUrl}`)}
               >
                 <img
                   className="h-full w-full rounded-[5px] rounded-b-none object-contain"
