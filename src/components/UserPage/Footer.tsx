@@ -22,52 +22,84 @@ const FooterFC: React.FC = () => {
         </div>
         {/* 1 */}
         <div className="w-full">
-          <Footer.Title className="border-b-[1px]">Sesstion 1</Footer.Title>
-          <Link className="font-light hover:font-semibold" to={''}>
-            a
+          <Footer.Title className="border-b-[1px]">Thông Tin</Footer.Title>
+          <Link className="font-light hover:font-semibold" to="/phone-list">
+            Điện Thoại IPhone
           </Link>
-          <Link className="font-light hover:font-semibold" to={''}>
-            a
+          <Link className="font-light hover:font-semibold" to="/ipad-list">
+            iPad/ Máy Tính Bảng
           </Link>
-          <Link className="font-light hover:font-semibold" to={''}>
-            a
+          <Link className="font-light hover:font-semibold" to="/window-list">
+            Laptop Window
+          </Link>
+          <Link className="font-light hover:font-semibold" to="/macbook-list">
+            Laptop Macbook
+          </Link>
+          <Link className="font-light hover:font-semibold" to="/price-list">
+            Bảng Giá Thu Mua
+          </Link>
+          <Link className="font-light hover:font-semibold" to="/about-us">
+            Về Chúng Tôi
+          </Link>
+          <Link
+            className="font-light hover:font-semibold"
+            to="/warranty-policy"
+          >
+            Chính Sách Bảo Hành
           </Link>
         </div>
         {/* 2 */}
         <div className="w-full">
-          <Footer.Title className="border-b-[1px]">Sesstion 2</Footer.Title>
-
-          <Link className="font-light hover:font-semibold" to={''}>
-            a
+          <Footer.Title className="border-b-[1px]">Chính Sách</Footer.Title>
+          <Link
+            className="font-light hover:font-semibold"
+            to="/terms-of-service"
+          >
+            Điều Khoản Dịch Vụ
           </Link>
-          <Link className="font-light hover:font-semibold" to={''}>
-            a
+          <Link className="font-light hover:font-semibold" to="/privacy-policy">
+            Chính Sách Bảo Mật
           </Link>
         </div>
         {/* 3 */}
         <div className="w-full">
-          <Footer.Title className="border-b-[1px]">Liên Hệ</Footer.Title>
+          <Footer.Title className="border-b-[1px]">
+            Liên Hệ Với Chúng Tôi
+          </Footer.Title>
           <div className="mb-2 flex flex-row items-center justify-center gap-5 text-3xl">
-            <Link to={''} className="rounded-full">
+            <Link
+              title="Fanpage"
+              target="_blank"
+              to={'https://www.facebook.com/7teck.vn'}
+              className="rounded-full"
+            >
               <FaFacebook />
             </Link>
-            <Link to={''} className="rounded-full">
+            <Link
+              title="Messenger"
+              target="_blank"
+              to={'https://www.messenger.com/t/dangkhoa.pham.93'}
+              className="rounded-full"
+            >
               <FaFacebookMessenger />
             </Link>
             <Link
+              title="Zalo"
+              target="_blank"
               className="black rounded-full bg-white px-[2px] py-[6px] text-sm font-semibold text-[#69181b]"
-              to={''}
+              to={'https://zalo.me/0983699993'}
             >
               Zalo
             </Link>
           </div>
           <Link
             className="flex items-center gap-2 font-light hover:font-semibold"
-            to="tel:0333133050"
+            to="tel:0983699993"
           >
-            <FaPhone /> 0333133050
+            <FaPhone /> (+84) 983.699.993 (Khoa)
           </Link>
           <Link
+            target="_blank"
             className="flex items-center gap-2 font-light hover:font-semibold"
             to="mailto:cskh.7teck@gmail.com"
           >
