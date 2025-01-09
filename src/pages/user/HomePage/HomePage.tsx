@@ -220,14 +220,14 @@ const HomePage: React.FC = () => {
         </div>
 
         <div className="bg-post mt-10 py-5">
-          <p className="mb-2 text-center text-2xl font-semibold uppercase text-primary">
+          <p className="mb-2 text-center text-xl font-semibold uppercase text-primary">
             Bản tin mới nhất
           </p>
           <div className="grid grid-cols-2 gap-2 px-2 md:grid-cols-3 lg:grid-cols-4 xl:px-[100px]">
             {posts.slice(0, 4).map(post => (
               <div
                 key={post._id}
-                className="relative cursor-pointer rounded bg-white p-2 shadow-inner hover:shadow-lg"
+                className="relative cursor-pointer rounded border border-dashed border-black bg-white p-2 shadow-inner hover:shadow-lg"
                 onClick={() => handlePostClick(post)}
               >
                 <p className="absolute left-1 top-1 rounded-sm bg-primary px-2 text-[12px] text-white">
@@ -236,15 +236,15 @@ const HomePage: React.FC = () => {
                 <img
                   src={post.imageUrl}
                   alt="Ảnh đại diện"
-                  className="h-[200px] w-full rounded-sm border border-primary object-cover xl:h-[300px]"
+                  className="h-[200px] w-full rounded-sm border object-cover xl:h-[300px]"
                 />
-                <p className="line-clamp-2 text-[18px] font-bold text-primary">
+                <p className="line-clamp-3 py-1 text-sm xl:text-[18px] font-bold text-primary">
                   {post.title}
                 </p>
                 <hr />
                 <div
                   dangerouslySetInnerHTML={{ __html: post.content }}
-                  className="line-clamp-5 text-[14px] text-black xl:line-clamp-6"
+                  className="line-clamp-5 text-xs xl:text-[14px] text-black xl:line-clamp-6"
                 ></div>
                 <p className="pt-2 text-[12px] text-primary">
                   {new Date(post.updatedAt).toLocaleDateString('vi-VN')}
@@ -253,7 +253,7 @@ const HomePage: React.FC = () => {
             ))}
           </div>
           <Link to="/news">
-            <p className="mt-2 flex w-full items-center justify-center gap-1 bg-black bg-opacity-50 text-lg font-light text-white">
+            <p className="mt-2 flex w-full items-center justify-center gap-1 bg-black bg-opacity-50 text-base font-light text-white">
               Xem Thêm
               <span>
                 <IoIosArrowDropdownCircle />

@@ -77,21 +77,21 @@ const PostDetail: React.FC = () => {
                 className="relative cursor-pointer rounded border bg-white p-2 shadow-inner hover:shadow-lg"
                 onClick={() => handlePostSelect(post)}
               >
-                <p className="absolute left-1 top-1 rounded-sm border bg-white px-2 text-[12px] text-primary">
+                <p className="absolute left-1 top-1 rounded-sm border bg-primary px-2 text-[12px] text-white">
                   {post.catalog}
                 </p>
                 <img
                   src={post.imageUrl}
                   alt="Ảnh đại diện"
-                  className="h-[200px] w-full rounded-sm border border-primary object-cover xl:h-[350px]"
+                  className="h-[200px] w-full rounded-sm border object-fill xl:h-[350px]"
                 />
-                <p className="line-clamp-2 text-[18px] font-bold">
+                <p className="line-clamp-3 py-1 text-sm xl:text-[18px] font-bold text-primary">
                   {post.title}
                 </p>
                 <hr />
                 <div
                   dangerouslySetInnerHTML={{ __html: post.content }}
-                  className="line-clamp-5 text-[14px] text-black xl:line-clamp-6"
+                  className="line-clamp-5 text-xs xl:text-[14px] text-black xl:line-clamp-6"
                 ></div>
                 <p className="pt-2 text-[12px] text-primary">
                   {new Date(post.updatedAt).toLocaleDateString('vi-VN')}

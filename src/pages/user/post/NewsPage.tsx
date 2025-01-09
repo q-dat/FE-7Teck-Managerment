@@ -57,7 +57,7 @@ const NewsPage: React.FC = () => {
                 <img
                   src={post.imageUrl}
                   alt="Ảnh đại diện"
-                  className="h-[200px] w-full rounded-sm border border-primary object-cover xl:h-[300px]"
+                  className="h-[200px] w-full rounded-sm border object-cover xl:h-[300px]"
                 />
                 <p className="line-clamp-2 text-[18px] font-bold text-primary">
                   {post.title}
