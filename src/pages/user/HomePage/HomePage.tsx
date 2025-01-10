@@ -26,7 +26,7 @@ import 'swiper/css/autoplay';
 import { Autoplay, EffectCoverflow, Pagination } from 'swiper/modules';
 import { Link, useNavigate } from 'react-router-dom';
 import { PostContext } from '../../../context/post/PostContext';
-import { IoIosArrowDropdownCircle } from 'react-icons/io';
+import { IoIosArrowForward } from 'react-icons/io';
 
 // Items Data
 const items = [
@@ -157,7 +157,7 @@ const HomePage: React.FC = () => {
           >
             {items.map((item, index) => (
               <SwiperSlide key={index}>
-                <div className="text-md my-4 flex flex-col items-center gap-2 text-center font-semibold text-primary">
+                <div className="text-md my-4 flex flex-col items-center gap-2 text-center font-semibold">
                   <div className="rounded-full bg-gradient-to-tr from-primary via-primary to-black p-4">
                     <div>
                       {React.cloneElement(item.icon, {
@@ -165,7 +165,7 @@ const HomePage: React.FC = () => {
                       })}
                     </div>
                   </div>
-                  <div>
+                  <div className="text-black">
                     <p>{item.text}</p>
                   </div>
                 </div>
@@ -185,7 +185,6 @@ const HomePage: React.FC = () => {
             modules={[Pagination, Autoplay]}
             className="mySwiper"
           >
-            {' '}
             {items.map((item, index) => (
               <SwiperSlide key={index}>
                 <div
@@ -199,7 +198,7 @@ const HomePage: React.FC = () => {
                       })}
                     </p>
                   </div>
-                  <div className="text-primary">
+                  <div className="text-black">
                     <p>{item.text}</p>
                   </div>
                 </div>
@@ -255,9 +254,9 @@ const HomePage: React.FC = () => {
           </div>
           <Link to="/news">
             <p className="mt-2 flex w-full items-center justify-center gap-1 bg-black bg-opacity-50 text-base font-light text-white">
-              Xem Thêm
+              Xem Thêm Bản Tin
               <span>
-                <IoIosArrowDropdownCircle />
+                <IoIosArrowForward />
               </span>
             </p>
           </Link>

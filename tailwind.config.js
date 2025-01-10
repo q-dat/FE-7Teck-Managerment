@@ -54,7 +54,7 @@ export default {
       {
         mytheme: {
           primary: "#a92d30",
-          secondary: "#a92d3099",
+          secondary: "#009485",
           info: "#312e91",
           success: "#009485",
           warning: "#ff9900",

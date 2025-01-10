@@ -10,6 +10,7 @@ import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
 import { Link, useNavigate } from 'react-router-dom';
 import { PhoneCatalogContext } from '../../../context/phone-catalog/PhoneCatalogContext';
 import { TbZoomExclamationFilled } from 'react-icons/tb';
+import { IoIosArrowForward } from 'react-icons/io';
 
 const PhoneFC: React.FC = () => {
   const navigate = useNavigate();
@@ -65,11 +66,11 @@ const PhoneFC: React.FC = () => {
       className={`relative rounded-none bg-white xl:rounded-lg ${phoneCatalogs.length === 0 ? 'hidden' : ''}`}
     >
       {/* Title */}
-      <div className="mt-5 flex w-full flex-col items-center justify-center p-5">
-        <p className="font-title bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold text-transparent xl:text-[40px]">
+      <div className="flex w-full flex-col items-center justify-center p-5 xl:rounded-t-lg">
+        <p className="font-title bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold text-transparent xl:text-[30px]">
           Điện Thoại Nổi Bật
         </p>
-        <div className="h-[1px] w-[150px] animate-ping bg-primary xl:w-[200px]"></div>
+        <span className="h-[1px] w-[150px] animate-ping bg-primary"></span>
       </div>
       <div
         ref={scrollRef}
@@ -80,7 +81,7 @@ const PhoneFC: React.FC = () => {
           return (
             <div
               key={phone._id}
-              className="relative flex h-full flex-col justify-between rounded-md border border-[#f2f4f7] text-black"
+              className="group relative flex h-full flex-col justify-between rounded-md border border-[#f2f4f7] text-black"
             >
               <div
                 className="relative h-full w-[175px] cursor-pointer xl:w-[200px]"
@@ -98,7 +99,9 @@ const PhoneFC: React.FC = () => {
               </div>
               {/*  */}
               <div className="flex flex-col items-start justify-center gap-1 p-1">
-                <p>Điện thoại {phone.name}</p>
+                <p className="group-hover:text-secondary">
+                  Điện thoại {phone.name}
+                </p>
                 <p className="text-gray-500">
                   Từ:&nbsp;
                   <span className="text-red-500">
@@ -108,7 +111,7 @@ const PhoneFC: React.FC = () => {
                 <Link to="/checkout" className="z-50 w-full">
                   <Button
                     size="xs"
-                    className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary"
+                    className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary hover:bg-primary hover:bg-opacity-20"
                   >
                     Mua Ngay
                   </Button>
@@ -119,6 +122,13 @@ const PhoneFC: React.FC = () => {
           );
         })}
       </div>
+      <Link to="/phone-list">
+        <p className="flex cursor-pointer items-center justify-center py-2 text-sm font-semibold text-secondary xl:rounded-b-lg">
+          Xem Thêm Điện Thoại
+          {/* ({phoneCatalogs.length}) */}
+          <IoIosArrowForward className="text-xl" />
+        </p>
+      </Link>
       {/* Navigation Button  */}
       <div className="absolute top-1/2 flex w-full items-center justify-between">
         <div className="relative w-full">

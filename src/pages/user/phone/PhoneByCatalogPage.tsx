@@ -33,7 +33,7 @@ const ProductByCatalog = () => {
       behavior: 'smooth'
     });
   }, []);
-  
+
   if (loading.getAll) return <LoadingLocal />;
   if (error) return <ErrorLoading />;
 
@@ -61,7 +61,7 @@ const ProductByCatalog = () => {
               {filteredPhones.map(phone => (
                 <div
                   key={phone?._id}
-                  className="relative flex h-full flex-col justify-between rounded-md border border-white text-black"
+                  className="group relative flex h-full flex-col justify-between rounded-md border border-white text-black"
                 >
                   <div className="relative">
                     <Link
@@ -79,7 +79,9 @@ const ProductByCatalog = () => {
                   </div>
                   {/*  */}
                   <div className="flex flex-col items-start justify-center gap-1 p-1">
-                    <p>Điện thoại {phone?.name}</p>
+                    <p className="group-hover:text-secondary">
+                      Điện thoại {phone?.name}
+                    </p>
                     <p className="text-gray-500">
                       <span className="text-red-500">
                         {(phone?.price * 1000).toLocaleString('vi-VN')}₫
@@ -94,7 +96,7 @@ const ProductByCatalog = () => {
                     <Link to="checkout" className="z-50 w-full">
                       <Button
                         size="xs"
-                        className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary"
+                        className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary hover:bg-primary hover:bg-opacity-20"
                       >
                         Mua Ngay
                       </Button>

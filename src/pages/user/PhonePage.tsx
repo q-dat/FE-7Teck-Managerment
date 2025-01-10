@@ -77,7 +77,7 @@ const PhonePage: React.FC = () => {
                 return (
                   <div
                     key={phone?._id}
-                    className="flex h-full w-full flex-col justify-between rounded-md border border-white text-black"
+                    className="group flex h-full w-full flex-col justify-between rounded-md border border-white text-black"
                   >
                     <div
                       onClick={() => navigate(`/phone/${phoneUrl}`)}
@@ -93,7 +93,9 @@ const PhonePage: React.FC = () => {
                     </div>
                     {/*  */}
                     <div className="flex flex-col items-start justify-center gap-1 p-1">
-                      <p>Điện thoại {phone?.name}</p>
+                      <p className="group-hover:text-secondary">
+                        Điện thoại {phone?.name}
+                      </p>
 
                       <p className="text-gray-500">
                         Từ:&nbsp;
@@ -105,7 +107,7 @@ const PhonePage: React.FC = () => {
                       <Link to="checkout" className="z-50 w-full">
                         <Button
                           size="xs"
-                          className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary"
+                          className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary hover:bg-primary hover:bg-opacity-20"
                         >
                           Mua Ngay
                         </Button>
