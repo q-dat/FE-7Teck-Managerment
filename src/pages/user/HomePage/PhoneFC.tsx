@@ -84,7 +84,7 @@ const PhoneFC: React.FC = () => {
               className="group relative flex h-full flex-col justify-between rounded-md border border-[#f2f4f7] text-black"
             >
               <div
-                className="relative h-full w-[175px] cursor-pointer xl:w-[200px]"
+                className="relative h-full w-[180px] cursor-pointer"
                 // GetByID
                 // onClick={() => navigate(`/phone/${phone._id}`)}
                 onClick={() => navigate(`/phone/${phoneUrl}`)}
@@ -94,7 +94,7 @@ const PhoneFC: React.FC = () => {
                   src={phone.img}
                 />
                 <p className="absolute bottom-0 right-0">
-                  <TbZoomExclamationFilled className="text-2xl text-white" />
+                  <TbZoomExclamationFilled className="text-lg text-white" />
                 </p>
               </div>
               {/*  */}
@@ -123,7 +123,7 @@ const PhoneFC: React.FC = () => {
         })}
       </div>
       <Link to="/phone-list">
-        <p className="flex cursor-pointer items-center justify-center py-2 text-sm font-semibold text-secondary xl:rounded-b-lg">
+        <p className="flex cursor-pointer items-center justify-center bg-gradient-to-r from-white via-secondary to-white py-1 text-sm text-white xl:rounded-b-lg">
           Xem Thêm Điện Thoại
           {/* ({phoneCatalogs.length}) */}
           <IoIosArrowForward className="text-xl" />
@@ -133,13 +133,13 @@ const PhoneFC: React.FC = () => {
       <div className="absolute top-1/2 flex w-full items-center justify-between">
         <div className="relative w-full">
           <button
-            onClick={() => scrollBy(-370)}
+            onClick={() => scrollBy(-380)}
             className={`absolute left-0 z-[100] mt-7 rounded-full border-none bg-black bg-opacity-20 text-white ${isLeftVisible ? '' : 'hidden'}`}
           >
             <MdArrowBackIosNew className="text-4xl" />
           </button>
           <button
-            onClick={() => scrollBy(370)}
+            onClick={() => scrollBy(380)}
             className={`absolute right-0 z-[100] mt-7 rounded-full border-none bg-black bg-opacity-20 text-white ${isRightVisible ? '' : 'hidden'}`}
           >
             <MdArrowForwardIos className="text-4xl" />

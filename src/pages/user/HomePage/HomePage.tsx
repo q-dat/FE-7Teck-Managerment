@@ -238,13 +238,13 @@ const HomePage: React.FC = () => {
                   alt="Ảnh đại diện"
                   className="h-[200px] w-full rounded-sm border object-cover xl:h-[300px]"
                 />
-                <p className="line-clamp-3 py-1 text-sm font-bold text-primary xl:text-[18px]">
+                <p className="line-clamp-3 py-1 text-sm font-bold text-primary">
                   {post.title}
                 </p>
                 <hr />
                 <div
                   dangerouslySetInnerHTML={{ __html: post.content }}
-                  className="line-clamp-5 text-xs text-black xl:line-clamp-6 xl:text-[14px]"
+                  className="line-clamp-4 text-xs text-black"
                 ></div>
                 <p className="pt-2 text-[12px] text-primary">
                   {new Date(post.updatedAt).toLocaleDateString('vi-VN')}
@@ -253,7 +253,7 @@ const HomePage: React.FC = () => {
             ))}
           </div>
           <Link to="/news">
-            <p className="mt-2 flex w-full items-center justify-center gap-1 bg-black bg-opacity-50 text-base font-light text-white">
+            <p className="mt-2 flex w-full items-center justify-center gap-1 bg-gradient-to-r from-white via-secondary to-white py-1 text-sm text-white">
               Xem Thêm Bản Tin
               <span>
                 <IoIosArrowForward />

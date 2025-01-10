@@ -73,7 +73,7 @@ const ProductByCatalog = () => {
                         src={phone?.img}
                       />
                       <p className="absolute bottom-0 right-0">
-                        <TbZoomExclamationFilled className="text-2xl text-white" />
+                        <TbZoomExclamationFilled className="text-lg text-white" />
                       </p>
                     </Link>
                   </div>
