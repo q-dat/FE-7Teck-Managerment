@@ -32,19 +32,32 @@ const ProductDetailPage: React.FC = () => {
   const [isRightVisible, setIsRightVisible] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
   //
+  useLayoutEffect(() => {
+    updateScrollButtons();
+  }, [phone, phone?.thumbnail]);
+  //
   useEffect(() => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
   }, []);
-
   //
   useEffect(() => {
     if (id) {
-      const fetchedPhone = getPhoneById(id);
-      setPhone(fetchedPhone);
-      setSelectedImage(fetchedPhone?.img);
+      const fetchPhone = async () => {
+        try {
+          const fetchedPhone = await getPhoneById(id);
+          if (fetchedPhone) {
+            setPhone(fetchedPhone);
+            setSelectedImage(fetchedPhone.img);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      fetchPhone();
     }
   }, [id, getPhoneById]);
 
@@ -53,7 +66,7 @@ const ProductDetailPage: React.FC = () => {
     if (scrollContainer) {
       const { scrollLeft, scrollWidth, clientWidth } = scrollContainer;
       setIsLeftVisible(scrollLeft > 0);
-      setIsRightVisible(scrollLeft + clientWidth < scrollWidth);
+      setIsRightVisible(scrollLeft + clientWidth < scrollWidth - 1);
     }
   };
 
@@ -62,9 +75,6 @@ const ProductDetailPage: React.FC = () => {
       scrollRef.current.scrollLeft += offset;
     }
   };
-  useLayoutEffect(() => {
-    updateScrollButtons();
-  }, [phone, phone?.thumbnail]);
 
   useEffect(() => {
     if (phones.length > 0) updateScrollButtons();
@@ -113,7 +123,7 @@ const ProductDetailPage: React.FC = () => {
                     className="h-[500px] w-full rounded-md bg-white object-cover xl:object-contain"
                   />
                   <div className="pointer-events-none absolute bottom-1 right-1">
-                    <MdZoomOutMap className="rounded-sm bg-black bg-opacity-30 p-[1px] text-2xl text-white" />
+                    <MdZoomOutMap className="rounded-sm bg-black bg-opacity-10 p-[1px] text-2xl text-white" />
                   </div>
                 </div>
               </Zoom>

@@ -11,6 +11,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { PhoneCatalogContext } from '../../../context/phone-catalog/PhoneCatalogContext';
 import { TbZoomExclamationFilled } from 'react-icons/tb';
 import { IoIosArrowForward } from 'react-icons/io';
+import ErrorLoading from '../../../components/orther/error/ErrorLoading';
+import { LoadingLocal } from '../../../components/orther/loading';
 
 const PhoneFC: React.FC = () => {
   const navigate = useNavigate();
@@ -23,17 +25,21 @@ const PhoneFC: React.FC = () => {
       .replace(/[^a-z0-9]+/g, '-') // Thay thế khoảng trắng và ký tự không phải chữ cái bằng dấu gạch ngang
       .replace(/^-+|-+$/g, ''); // Loại bỏ dấu gạch ngang ở đầu và cuối chuỗi
   };
-  const { phoneCatalogs } = useContext(PhoneCatalogContext);
+  const { phoneCatalogs, loading, error } = useContext(PhoneCatalogContext);
   const [isLeftVisible, setIsLeftVisible] = useState(true);
   const [isRightVisible, setIsRightVisible] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  useLayoutEffect(() => {
+    updateScrollButtons();
+  }, [phoneCatalogs]);
+  //
   const updateScrollButtons = () => {
     const scrollContainer = scrollRef.current;
     if (scrollContainer) {
       const { scrollLeft, scrollWidth, clientWidth } = scrollContainer;
       setIsLeftVisible(scrollLeft > 0);
-      setIsRightVisible(scrollLeft + clientWidth < scrollWidth);
+      setIsRightVisible(scrollLeft + clientWidth < scrollWidth - 1);
     }
   };
 
@@ -43,9 +49,6 @@ const PhoneFC: React.FC = () => {
     }
   };
 
-  useLayoutEffect(() => {
-    updateScrollButtons();
-  }, [phoneCatalogs]);
   useEffect(() => {
     if (phoneCatalogs.length > 0) updateScrollButtons();
 
@@ -60,6 +63,8 @@ const PhoneFC: React.FC = () => {
       scrollContainer?.removeEventListener('scroll', updateScrollButtons);
     };
   }, [phoneCatalogs]);
+  if (loading.getAll) return <LoadingLocal />;
+  if (error) return <ErrorLoading />;
 
   return (
     <div

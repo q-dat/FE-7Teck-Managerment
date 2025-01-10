@@ -6,9 +6,14 @@ import {
   useEffect
 } from 'react';
 import { AxiosResponse } from 'axios';
-import { getAllPhonesApi, createPhoneApi, updatePhoneApi, deletePhoneApi } from '../../axios/api/phoneApi';
+import {
+  getAllPhonesApi,
+  createPhoneApi,
+  updatePhoneApi,
+  deletePhoneApi,
+  getPhoneByIdApi
+} from '../../axios/api/phoneApi';
 import { IPhone } from '../../types/type/phone/phone';
-
 
 interface PhoneContextType {
   phones: IPhone[];
@@ -20,7 +25,7 @@ interface PhoneContextType {
   };
   error: string | null;
   getAllPhones: () => void;
-  getPhoneById: (_id: string) => IPhone | undefined;
+  getPhoneById: (_id: string) => Promise<IPhone | undefined>;
   createPhone: (phone: FormData) => Promise<AxiosResponse<any>>;
   updatePhone: (_id: string, phone: FormData) => Promise<AxiosResponse<any>>;
   deletePhone: (_id: string) => Promise<AxiosResponse<any>>;
@@ -36,7 +41,7 @@ const defaultContextValue: PhoneContextType = {
   },
   error: null,
   getAllPhones: () => {},
-  getPhoneById: () => undefined,
+  getPhoneById: async () => undefined,
   createPhone: async () => ({ data: { phone: null } }) as AxiosResponse,
   updatePhone: async () => ({ data: { phone: null } }) as AxiosResponse,
   deletePhone: async () => ({ data: { deleted: true } }) as AxiosResponse
@@ -85,8 +90,19 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
 
   // Get Phone By Id
   const getPhoneById = useCallback(
-    (id: string) => {
-      return phones.find(phone => phone._id === id);
+    async (id: string): Promise<IPhone | undefined> => {
+      const cachedPhone = phones.find(phone => phone._id === id);
+      if (cachedPhone) return cachedPhone;
+      const response = await fetchData(
+        () => getPhoneByIdApi(id),
+        data => {
+          if (data?.phone) {
+            setPhones(prevPhones => [...prevPhones, data.phone]);
+          }
+        },
+        'getAll'
+      );
+      return response.data?.phone;
     },
     [phones]
   );
