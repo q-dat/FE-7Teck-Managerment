@@ -7,4 +7,5 @@ export { default as LogoFacebook } from './LogoFacebook.jpg';
 export { default as LogoEmail } from './LogoEmail.jpg';
 export { default as LogoZalo } from './LogoZalo.jpg';
 export { default as LogoMessenger } from './LogoMessenger.jpg';
-export { default as BannerBlog } from './BannerBlog.jpg';
+export { default as bgBlog } from './bgBlog.jpg';
+export { default as bgFixed } from './bgFixed.jpg';

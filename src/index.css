@@ -18,12 +18,6 @@
   background-clip: text; /* Thuộc tính chuẩn */
   -webkit-text-fill-color: transparent; /* Đảm bảo màu chữ trong suốt */
 }
-.bg-post{
-  background-image: url('../src/assets/images/BannerBlog.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
 /* Contact-Form */
 @keyframes zoomBorder {
   0%,
