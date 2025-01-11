@@ -6,9 +6,14 @@ import {
   useEffect
 } from 'react';
 import { AxiosResponse } from 'axios';
-import { getAllPhoneCatalogsApi, createPhoneCatalogApi, updatePhoneCatalogApi, deletePhoneCatalogApi } from '../../axios/api/phoneCatalogApi';
+import {
+  getAllPhoneCatalogsApi,
+  createPhoneCatalogApi,
+  updatePhoneCatalogApi,
+  deletePhoneCatalogApi,
+  getPhoneCatalogByIdApi
+} from '../../axios/api/phoneCatalogApi';
 import { IPhoneCatalog } from '../../types/type/phone-catalog/phone-catalog';
-
 
 interface PhoneContextType {
   phoneCatalogs: IPhoneCatalog[];
@@ -20,7 +25,7 @@ interface PhoneContextType {
   };
   error: string | null;
   getAllPhoneCatalogs: () => void;
-  getPhoneCatalogById: (_id: string) => IPhoneCatalog | undefined;
+  getPhoneCatalogById: (_id: string) => Promise<IPhoneCatalog | undefined>;
   createPhoneCatalog: (phone: FormData) => Promise<AxiosResponse<any>>;
   updatePhoneCatalog: (
     _id: string,
@@ -39,7 +44,7 @@ const defaultContextValue: PhoneContextType = {
   },
   error: null,
   getAllPhoneCatalogs: () => {},
-  getPhoneCatalogById: () => undefined,
+  getPhoneCatalogById: async () => undefined,
   createPhoneCatalog: async () =>
     ({ data: { phoneCatalog: null } }) as AxiosResponse,
   updatePhoneCatalog: async () =>
@@ -94,8 +99,24 @@ export const PhoneCatalogProvider = ({ children }: { children: ReactNode }) => {
 
   // Get Phone By Id
   const getPhoneCatalogById = useCallback(
-    (id: string) => {
-      return phoneCatalogs.find(phoneCatalog => phoneCatalog._id === id);
+    async (id: string): Promise<IPhoneCatalog | undefined> => {
+      const cachedPhone = phoneCatalogs.find(
+        phoneCatalog => phoneCatalog._id === id
+      );
+      if (cachedPhone) return cachedPhone;
+      const response = await fetchData(
+        () => getPhoneCatalogByIdApi(id),
+        data => {
+          if (data?.phone) {
+            setPhoneCatalogs(prevPhoneCatalogs => [
+              ...prevPhoneCatalogs,
+              data.prevPhoneCatalog
+            ]);
+          }
+        },
+        'getAll'
+      );
+      return response.data?.phone;
     },
     [phoneCatalogs]
   );
