@@ -51,7 +51,10 @@ const NewsPage: React.FC = () => {
           <div className="py-3 text-center text-[30px] font-bold text-primary">
             Bản tin nổi bật
           </div>
-          <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
+          <div
+            className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4"
+            data-aos="fade-up"
+          >
             {posts.map(post => (
               <div
                 key={post._id}

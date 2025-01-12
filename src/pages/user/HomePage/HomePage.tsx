@@ -228,17 +228,18 @@ const HomePage: React.FC = () => {
             </i>
           </div>
         </div>
-        <div className="mt-10 p-0 xl:px-[100px]">
+        <div data-aos="fade-up" className="mt-10 p-0 xl:px-[100px]">
           <IPadFC />
         </div>
-        <div className="mt-10 p-0 xl:px-[100px]">
+        <div data-aos="fade-up" className="mt-10 p-0 xl:px-[100px]">
           <WindowFC />
         </div>
-        <div className="mt-10 p-0 xl:px-[100px]">
+        <div data-aos="fade-up" className="mt-10 p-0 xl:px-[100px]">
           <MacbookFC />
         </div>
         {/* Post */}
         <div
+          data-aos="fade-down"
           style={{
             backgroundImage: `url(${bgBlog})`
           }}
