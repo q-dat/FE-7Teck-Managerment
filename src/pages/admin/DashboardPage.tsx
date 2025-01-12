@@ -19,7 +19,13 @@ const DashboardCard: React.FC<DashboardCardProps> = ({
 }) => {
   return (
     <div className="flex w-full flex-row items-center justify-center rounded-lg bg-white to-primary to-90% p-7 shadow-md md:space-x-4">
-      <img width={`50px`} height={`auto`} src={`${Icons}`} alt="" />
+      <img
+        loading="lazy"
+        width={`50px`}
+        height={`auto`}
+        src={`${Icons}`}
+        alt=""
+      />
       <div className="text-start">
         {isLoading ? (
           <div className="text-md font-semibold text-black">Đang tải...</div>

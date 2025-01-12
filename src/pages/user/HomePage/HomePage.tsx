@@ -23,6 +23,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { PostContext } from '../../../context/post/PostContext';
 import { IoIosArrowForward } from 'react-icons/io';
 import ParallaxBannerFC from './ParallaxBannerFC';
+import { bgBlog, bgFixed } from '../../../assets/images';
 
 // Items Data
 const items = [
@@ -111,16 +112,19 @@ const HomePage: React.FC = () => {
           </div>
          <div>
             <img
+              loading="lazy"
               src={BannerDesktop}
               className="hidden w-full xl:block"
               alt="BannerDesktop"
             />
             <img
+              loading="lazy"
               src={BannerTablet}
               className="hidden w-full md:block xl:hidden"
               alt="BannerTablet"
             />
             <img
+              loading="lazy"
               src={BannerMobile}
               className="w-full md:hidden"
               alt="BannerMobile"
@@ -212,7 +216,7 @@ const HomePage: React.FC = () => {
         <div
           className="relative my-10 h-40 w-full bg-cover bg-fixed bg-center bg-no-repeat xl:h-60"
           style={{
-            backgroundImage: "url('../src/assets/images/bgFixed.jpg')"
+            backgroundImage: `url(${bgFixed})`
           }}
         >
           <div className="absolute left-1/2 top-1/2 flex h-full w-full -translate-x-1/2 -translate-y-1/2 transform flex-col items-center justify-center bg-black bg-opacity-30 px-2 text-xl font-light text-white xl:px-[100px] xl:text-3xl">
@@ -235,11 +239,11 @@ const HomePage: React.FC = () => {
         {/* Post */}
         <div
           style={{
-            backgroundImage: "url('../src/assets/images/bgBlog.jpg')"
+            backgroundImage: `url(${bgBlog})`
           }}
           className={`mt-10 bg-cover bg-fixed bg-center bg-no-repeat py-5 ${posts.length === 0 ? 'hidden' : ''}`}
         >
-          <p className="mb-2 text-center text-xl font-semibold uppercase text-black">
+          <p className="mb-2 bg-black bg-opacity-20 text-center text-xl font-semibold uppercase text-white">
             Bản tin mới nhất
           </p>
           <div className="grid grid-cols-2 gap-2 px-2 md:grid-cols-3 lg:grid-cols-4 xl:px-[100px]">
@@ -253,6 +257,7 @@ const HomePage: React.FC = () => {
                   {post.catalog}
                 </p>
                 <img
+                  loading="lazy"
                   src={post.imageUrl}
                   alt="Ảnh đại diện"
                   className="h-[200px] w-full rounded-sm border object-cover xl:h-[300px]"

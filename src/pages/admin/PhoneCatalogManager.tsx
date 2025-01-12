@@ -112,6 +112,7 @@ const PhoneCatalogManager: React.FC = () => {
                     <span>#{index + 1}</span>
                     <span className="flex items-center justify-center">
                       <img
+                        loading="lazy"
                         src={phoneCatalog?.img}
                         alt="Hình ảnh"
                         className="h-12 w-12 object-cover"
@@ -122,7 +123,9 @@ const PhoneCatalogManager: React.FC = () => {
                       {(phoneCatalog?.price * 1000).toLocaleString('vi-VN')}₫
                     </span>
 
-                    <span className="line-clamp-1">{phoneCatalog?.status||'Không có trạng thái!'}</span>
+                    <span className="line-clamp-1">
+                      {phoneCatalog?.status || 'Không có trạng thái!'}
+                    </span>
                     <span className="line-clamp-1">
                       {phoneCatalog?.des || 'Không có mô tả!'}
                     </span>

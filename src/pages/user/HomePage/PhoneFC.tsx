@@ -72,7 +72,7 @@ const PhoneFC: React.FC = () => {
     >
       {/* Title */}
       <div className="flex w-full flex-col items-center justify-center py-5 xl:rounded-t-lg">
-        <p className=" bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold text-transparent xl:text-[30px]">
+        <p className="bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold text-transparent xl:text-[30px]">
           Điện Thoại Nổi Bật
         </p>
         <span className="h-[1px] w-[150px] animate-ping bg-primary"></span>
@@ -95,6 +95,7 @@ const PhoneFC: React.FC = () => {
                 onClick={() => navigate(`/phone/${phoneUrl}`)}
               >
                 <img
+                  loading="lazy"
                   className="h-full w-full rounded-[5px] rounded-b-none object-contain"
                   src={phone.img}
                 />

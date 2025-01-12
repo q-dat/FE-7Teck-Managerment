@@ -106,6 +106,7 @@ const PhoneManager: React.FC = () => {
                   <span>#{index + 1}</span>
                   <span className="flex items-center justify-center">
                     <img
+                      loading="lazy"
                       src={phone?.img}
                       alt="Hình ảnh"
                       className="h-12 w-12 object-cover"
@@ -116,6 +117,7 @@ const PhoneManager: React.FC = () => {
                       <>
                         {phone.thumbnail.slice(0, 1).map((thumb, index) => (
                           <img
+                            loading="lazy"
                             key={index}
                             src={thumb}
                             alt="Ảnh thu nhỏ"

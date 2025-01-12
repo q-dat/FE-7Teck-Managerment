@@ -118,6 +118,7 @@ const ProductDetailPage: React.FC = () => {
               <Zoom>
                 <div className="relative">
                   <img
+                    loading="lazy"
                     src={selectedImage || phone?.img}
                     alt={phone?.name}
                     className="h-[500px] w-full rounded-md bg-white object-cover xl:object-contain"
@@ -136,6 +137,7 @@ const ProductDetailPage: React.FC = () => {
                   {phone?.thumbnail && Array.isArray(phone.thumbnail) ? (
                     phone.thumbnail.map((thumb: string, index: string) => (
                       <img
+                        loading="lazy"
                         key={index}
                         src={thumb}
                         alt="Ảnh thu nhỏ"

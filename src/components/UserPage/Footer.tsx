@@ -13,8 +13,8 @@ const FooterFC: React.FC = () => {
         {/* Logo */}
         <div className="w-full">
           <img
-            width={140}
             loading="lazy"
+            width={140}
             src={Logo}
             alt="LOGO"
             className="rounded-full border border-white"

@@ -103,6 +103,7 @@ const PostManagerPage: React.FC = () => {
                 <span className="line-clamp-2">{post?.title}</span>
                 <span className="flex items-center justify-center">
                   <img
+                    loading="lazy"
                     src={post?.imageUrl}
                     alt="Ảnh đại diện"
                     className="h-12 w-12 object-cover"

@@ -86,6 +86,7 @@ const SidebarAdmin: React.FC<{}> = () => {
           <Link to="/">
             <div className="flex items-center gap-2">
               <img
+                loading="lazy"
                 width={60}
                 height={60}
                 src={Logo}
@@ -93,6 +94,7 @@ const SidebarAdmin: React.FC<{}> = () => {
                 alt="7Teck ."
               />
               <img
+                loading="lazy"
                 width={60}
                 height={60}
                 src={Logo}

@@ -17,7 +17,7 @@ const ParallaxBannerFC: React.FC = () => {
     expanded: false,
     children: (
       <div className="absolute inset-0 flex items-center justify-center">
-        <p className="px-2 text-[34px] text-white md:text-6xl xl:text-[75px]">
+        <p className="px-2 text-[34px] text-white md:text-6xl xl:text-[75px] font-semibold">
           Đổi điện thoại cũ, hỗ trợ giá lên đời.
         </p>
       </div>

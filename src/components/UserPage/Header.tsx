@@ -120,7 +120,7 @@ const Header: React.FC = () => {
         {/* Search Result */}
         <div className="absolute left-0 top-9 z-50 hidden bg-primary font-light text-white shadow">
           <div className="flex items-center justify-start gap-2 p-2">
-            <img src={Logo} className="h-10 w-10 object-cover" />
+            <img loading="lazy" src={Logo} className="h-10 w-10 object-cover" />
             <p>IPhone 16 ProMax</p>
           </div>
         </div>
@@ -169,8 +169,8 @@ const Header: React.FC = () => {
           <Link to="/">
             <img
               className="rounded-full object-cover"
-              width={60}
               loading="lazy"
+              width={60}
               src={Logo}
               alt="LOGO"
             />

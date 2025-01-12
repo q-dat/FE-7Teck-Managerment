@@ -155,8 +155,8 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
           {/* <div className="flex items-center justify-center">
                     <img
                       className="mb-5 rounded-full object-cover"
-                      width={120}
                       loading="lazy"
+                      width={120}
                       src={Logo}
                       alt="LOGO"
                     />
