@@ -209,17 +209,17 @@ const HomePage: React.FC = () => {
           </div>
         </div>
         {/* Section Product */}
-        <div className="space-y-10 p-0 xl:px-[100px]">
+        <div className="mt-10 p-0 xl:px-[100px]">
           <PhoneFC />
         </div>
         {/* Bg Fixed */}
         <div
-          className="relative my-10 h-40 w-full bg-cover bg-fixed bg-center bg-no-repeat xl:h-60"
+          className="relative my-10 h-[200px] w-full bg-cover bg-fixed bg-center bg-no-repeat xl:h-[300px]"
           style={{
             backgroundImage: `url(${bgFixed})`
           }}
         >
-          <div className="absolute left-1/2 top-1/2 flex h-full w-full -translate-x-1/2 -translate-y-1/2 transform flex-col items-center justify-center bg-black bg-opacity-30 px-2 text-xl font-light text-white xl:px-[100px] xl:text-3xl">
+          <div className="absolute left-1/2 top-1/2 flex h-full w-full -translate-x-1/2 -translate-y-1/2 transform flex-col items-center justify-center bg-black bg-opacity-30 px-2 text-lg font-light text-white xl:px-[100px] xl:text-3xl">
             <p className="font-semibold">iPhone 16 Pro Max</p>
             <i className="text-center">
               Trải nghiệm công nghệ đỉnh cao với thiết kế mới mẻ, hiệu suất vượt
@@ -227,13 +227,13 @@ const HomePage: React.FC = () => {
             </i>
           </div>
         </div>
-        <div className="space-y-10 p-0 xl:px-[100px]">
+        <div className="mt-10 p-0 xl:px-[100px]">
           <IPadFC />
         </div>
-        <div className="space-y-10 p-0 xl:px-[100px]">
+        <div className="mt-10 p-0 xl:px-[100px]">
           <WindowFC />
         </div>
-        <div className="space-y-10 p-0 xl:px-[100px]">
+        <div className="mt-10 p-0 xl:px-[100px]">
           <MacbookFC />
         </div>
         {/* Post */}
