@@ -1,9 +1,9 @@
 import React from 'react';
 import { BannerLayer, ParallaxBanner } from 'react-scroll-parallax';
+import { bannerBackground, bannerForeground } from '../../../assets/images';
 const ParallaxBannerFC: React.FC = () => {
   const background: BannerLayer = {
-    image:
-      'https://s3-us-west-2.amazonaws.com/s.cdpn.io/105988/banner-background.jpg',
+    image: `${bannerBackground}`,
     translateY: [0, 10],
     opacity: [1, 0.3],
     scale: [1.05, 1, 'easeOutCubic'],
@@ -16,11 +16,11 @@ const ParallaxBannerFC: React.FC = () => {
     shouldAlwaysCompleteAnimation: true,
     expanded: true,
     children: (
-      <div className="absolute opacity-0 animate-fadeIn inset-0 flex -translate-y-10 flex-col items-start justify-center px-2 xl:translate-y-0 xl:px-5 gap-1">
+      <div className="animate-fadeIn absolute inset-0 flex -translate-y-10 flex-col items-start justify-center gap-1 px-2 opacity-0 xl:translate-y-0 xl:px-5">
         <p className="text-[34px] font-semibold text-white md:text-6xl xl:text-[75px]">
           Đổi điện thoại cũ, hỗ trợ giá lên đời.
         </p>
-        <p className="bg-gradient-to-r from-white to-white bg-clip-text text-[15px] font-extralight xl:font-thin text-transparent md:text-2xl xl:text-4xl">
+        <p className="bg-gradient-to-r from-white to-white bg-clip-text text-[15px] font-extralight text-transparent md:text-2xl xl:text-4xl xl:font-thin">
           up to 90%
         </p>
       </div>
@@ -28,8 +28,7 @@ const ParallaxBannerFC: React.FC = () => {
   };
 
   const foreground: BannerLayer = {
-    image:
-      'https://s3-us-west-2.amazonaws.com/s.cdpn.io/105988/banner-foreground.png',
+    image: `${bannerForeground}`,
     translateY: [0, 30],
     scale: [1, 1.1, 'easeOutCubic'],
     shouldAlwaysCompleteAnimation: true

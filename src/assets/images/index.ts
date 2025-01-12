@@ -9,3 +9,5 @@ export { default as LogoZalo } from './LogoZalo.jpg';
 export { default as LogoMessenger } from './LogoMessenger.jpg';
 export { default as bgBlog } from './bgBlog.jpg';
 export { default as bgFixed } from './bgFixed.jpg';
+export { default as bannerBackground } from './bannerBackground.jpg';
+export { default as bannerForeground } from './bannerForeground.png';
