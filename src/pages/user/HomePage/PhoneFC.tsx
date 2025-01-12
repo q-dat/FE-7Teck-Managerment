@@ -89,7 +89,7 @@ const PhoneFC: React.FC = () => {
               className="group relative flex h-full flex-col justify-between rounded-md border border-[#f2f4f7] text-black"
             >
               <div
-                className="relative h-full w-[180px] cursor-pointer"
+                className="relative h-full w-[185px] cursor-pointer"
                 // GetByID
                 // onClick={() => navigate(`/phone/${phone._id}`)}
                 onClick={() => navigate(`/phone/${phoneUrl}`)}

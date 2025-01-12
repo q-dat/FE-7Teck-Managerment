@@ -9,6 +9,7 @@ import { PhoneCatalogProvider } from './context/phone-catalog/PhoneCatalogContex
 import { PhoneProvider } from './context/phone/PhoneContext.tsx';
 import { PostProvider } from './context/post/PostContext.tsx';
 import { ToastContainer } from 'react-toastify';
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -18,8 +19,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <PostProvider>
             <PhoneCatalogProvider>
               <PhoneProvider>
-                <App />
-                <ToastContainer />
+                <ParallaxProvider>
+                  <App />
+                  <ToastContainer />
+                </ParallaxProvider>
               </PhoneProvider>
             </PhoneCatalogProvider>
           </PostProvider>

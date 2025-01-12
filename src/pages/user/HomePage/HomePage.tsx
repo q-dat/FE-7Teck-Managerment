@@ -6,11 +6,6 @@ import {
   TbDeviceMobileUp,
   TbTruckDelivery
 } from 'react-icons/tb';
-import {
-  BannerDesktop,
-  BannerTablet,
-  BannerMobile
-} from '../../../assets/images';
 import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
 import PhoneFC from './PhoneFC';
 import IPadFC from './IPadFC';
@@ -27,6 +22,7 @@ import { Autoplay, EffectCoverflow, Pagination } from 'swiper/modules';
 import { Link, useNavigate } from 'react-router-dom';
 import { PostContext } from '../../../context/post/PostContext';
 import { IoIosArrowForward } from 'react-icons/io';
+import ParallaxBannerFC from './ParallaxBannerFC';
 
 // Items Data
 const items = [
@@ -104,7 +100,7 @@ const HomePage: React.FC = () => {
       <HeaderResponsive Title_NavbarMobile="Trang Chủ" />
       <div className="pt-[100px] xl:pt-0">
         {/* Banner */}
-        <div className="relative">
+        {/* <div className="relative">
           <div className="absolute bottom-0 left-2 top-[60%] md:bottom-4 md:left-[10%] md:top-[30%] lg:top-[30%]">
             <p className="bg-gradient-to-r from-primary to-white bg-clip-text text-[25px] font-black italic text-transparent xl:text-[40px]">
               Đổi Điện Thoại Cũ, <br /> Nhận Ngay Giá Tốt Nhất!
@@ -113,8 +109,7 @@ const HomePage: React.FC = () => {
               up to 90%
             </p>
           </div>
-          {/* Banner IMG */}
-          <div>
+         <div>
             <img
               src={BannerDesktop}
               className="hidden w-full xl:block"
@@ -131,7 +126,8 @@ const HomePage: React.FC = () => {
               alt="BannerMobile"
             />
           </div>
-        </div>
+        </div> */}
+        <ParallaxBannerFC />
         {/* Benefits Section */}
         <div className="w-full">
           {/*   Mobile */}
@@ -240,11 +236,10 @@ const HomePage: React.FC = () => {
         <div
           style={{
             backgroundImage: "url('../src/assets/images/bgBlog.jpg')"
-            // backgroundImage: "url('../src/assets/images/bgBlog.jpg')"
           }}
           className={`mt-10 bg-cover bg-fixed bg-center bg-no-repeat py-5 ${posts.length === 0 ? 'hidden' : ''}`}
         >
-          <p className="mb-2 text-center text-xl font-semibold uppercase text-primary">
+          <p className="mb-2 text-center text-xl font-semibold uppercase text-black">
             Bản tin mới nhất
           </p>
           <div className="grid grid-cols-2 gap-2 px-2 md:grid-cols-3 lg:grid-cols-4 xl:px-[100px]">
