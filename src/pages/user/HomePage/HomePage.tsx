@@ -80,16 +80,17 @@ const HomePage: React.FC = () => {
     null
   );
   const navigate = useNavigate();
+  //
   useEffect(() => {
     getAllPosts();
   }, [getAllPosts]);
-
+  //
   useEffect(() => {
     if (posts.length > 0 && !selectedPost) {
       setSelectedPost(posts[0]);
     }
   }, [posts, selectedPost]);
-
+  //
   const handlePostClick = (post: (typeof posts)[0]) => {
     const titleSlug = encodeURIComponent(
       post.title.toLowerCase().replace(/\s+/g, '-')
@@ -209,7 +210,7 @@ const HomePage: React.FC = () => {
           </div>
         </div>
         {/* Section Product */}
-        <div className="mt-10 p-0 xl:px-[100px]">
+        <div data-aos="fade-down" className="mt-10 p-0 xl:px-[100px]">
           <PhoneFC />
         </div>
         {/* Bg Fixed */}
