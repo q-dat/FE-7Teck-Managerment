@@ -6,7 +6,7 @@ export interface IPhoneCatalog {
   status: string;
   des?: string;
   content?: string;
-  phoneCount?: number;
+  phoneCount: number;
   createdAt: string;
   updatedAt: string;
   configuration_and_memory: {

@@ -81,11 +81,11 @@ const PhonePage: React.FC = () => {
                   >
                     <div
                       onClick={() => navigate(`/phone/${phoneUrl}`)}
-                      className="relative h-full w-full cursor-pointer rounded-md rounded-b-none bg-white"
+                      className="relative min-h-[270px] w-full cursor-pointer rounded-md rounded-b-none bg-white"
                     >
                       <img
                         loading="lazy"
-                        className="h-full w-full rounded-[5px] rounded-b-none object-contain"
+                        className="h-full w-full rounded-[5px] rounded-b-none object-cover"
                         src={phone?.img}
                       />
                       <p className="absolute bottom-0 right-0">
@@ -93,26 +93,33 @@ const PhonePage: React.FC = () => {
                       </p>
                     </div>
                     {/*  */}
-                    <div className="flex flex-col items-start justify-center gap-1 p-1">
-                      <p className="xl:group-hover:text-secondary">
-                        Điện thoại {phone?.name}
-                      </p>
+                    <div className="flex h-full w-full flex-col items-start justify-between gap-1 p-1">
+                      <div className="w-full">
+                        <p className="w-[75px] rounded-sm bg-gray-100 p-[2px] text-center text-[10px] text-white">
+                          {phone?.phoneCount > 99 ? '99+' : phone?.phoneCount}{' '}
+                          Sản phẩm
+                        </p>
 
-                      <p className="text-gray-500">
-                        Từ:&nbsp;
-                        <span className="text-red-500">
-                          {(phone?.price * 1000).toLocaleString('vi-VN')}{' '}
-                          <sup>đ</sup>
-                        </span>
-                      </p>
-                      <Link to="checkout" className="z-50 w-full">
-                        <Button
-                          size="xs"
-                          className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary hover:bg-primary hover:bg-opacity-20"
-                        >
-                          Mua Ngay
-                        </Button>
-                      </Link>
+                        <p className="xl:group-hover:text-secondary">
+                          Điện thoại {phone.name}
+                        </p>
+                      </div>
+                      <div className="w-full">
+                        <p className="text-gray-500">
+                          Từ:&nbsp;
+                          <span className="text-red-500">
+                            {(phone.price * 1000).toLocaleString('vi-VN')}₫
+                          </span>
+                        </p>
+                        <Link to="/checkout" className="z-50 w-full">
+                          <Button
+                            size="xs"
+                            className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary hover:bg-primary hover:bg-opacity-20"
+                          >
+                            Mua Ngay
+                          </Button>
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 );
