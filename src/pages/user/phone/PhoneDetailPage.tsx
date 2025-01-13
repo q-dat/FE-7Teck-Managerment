@@ -129,7 +129,7 @@ const ProductDetailPage: React.FC = () => {
                 </div>
               </Zoom>
               {/* Thumbnails */}
-              <div className="relative rounded-md border border-primary p-1">
+              <div className="relative rounded-md border border-gray-50 p-1">
                 <div
                   ref={scrollRef}
                   className="flex flex-row items-start justify-start gap-2 overflow-x-auto scroll-smooth scrollbar-hide"
@@ -171,7 +171,7 @@ const ProductDetailPage: React.FC = () => {
             {/* Description */}
             <div className="w-full">
               {/* Info */}
-              <div className="flex flex-col items-start justify-between gap-5 rounded-md border border-primary bg-white p-2 leading-10">
+              <div className="flex flex-col items-start justify-between gap-5 rounded-md border border-gray-50 bg-white p-2 leading-10">
                 <div className="w-full">
                   <h1 className="text-xl font-semibold text-black">
                     Điện thoại {phone?.name}
