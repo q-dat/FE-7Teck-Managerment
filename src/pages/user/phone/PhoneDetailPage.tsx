@@ -121,7 +121,7 @@ const ProductDetailPage: React.FC = () => {
                     loading="lazy"
                     src={selectedImage || phone?.img}
                     alt={phone?.name}
-                    className="h-[500px] w-full rounded-md bg-white object-cover xl:object-contain"
+                    className="h-[500px] w-full rounded-md bg-white object-cover xl:h-full"
                   />
                   <div className="pointer-events-none absolute bottom-1 right-1">
                     <MdZoomOutMap className="rounded-sm bg-black bg-opacity-10 p-[1px] text-2xl text-white" />
@@ -129,7 +129,7 @@ const ProductDetailPage: React.FC = () => {
                 </div>
               </Zoom>
               {/* Thumbnails */}
-              <div className="relative rounded-md border border-gray-50 p-1">
+              <div className="relative rounded-md p-1">
                 <div
                   ref={scrollRef}
                   className="flex flex-row items-start justify-start gap-2 overflow-x-auto scroll-smooth scrollbar-hide"
