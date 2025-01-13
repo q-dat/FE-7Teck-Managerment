@@ -18,6 +18,20 @@
   background-clip: text; /* Thuộc tính chuẩn */
   -webkit-text-fill-color: transparent; /* Đảm bảo màu chữ trong suốt */
 }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animation-fadeIn {
+  animation: fadeIn 1.5s ease-in-out forwards;
+}
+
 /* Contact-Form */
 @keyframes zoomBorder {
   0%,

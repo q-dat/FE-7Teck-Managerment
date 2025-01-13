@@ -32,25 +32,25 @@ export default {
         "gray-300": "#6f6f6f",
       },
       boxShadow: {
+        //shadow-sideBar, shadow-mainMenu, ...
         sideBar: "10px 0 30px -2px #D9D9D9",
         mainMenu: "0px 4px 12.100000381469727px 0px #00000040",
         tableItem: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
         headerMenu: "rgba(0, 0, 0, 0.1) 0px 2px 1px 0px",
       },
       borderRadius: {
+        //rounded-modal
         modal: "16px",
       },
-      backgroundImage: {},
-    },
-    animation: {
-      fadeIn: 'fadeIn 1.5s ease-in-out forwards',
-    },
-    keyframes: {
-      fadeIn: {
-        '0%': { opacity: '0' },
-        '100%': { opacity: '1' },
+      animation: {
+        fadeIn: "fadeIn 1.5s ease-in-out forwards",
+        zoomBorder: "zoomBorder 2s infinite ease-in-out",
+        zoomBorderBtn: "zoomBorderBtn 2s infinite ease-in-out",
       },
     },
+  },
+  corePlugins: {
+    animation: true,
   },
   plugins: [
     require("daisyui"),

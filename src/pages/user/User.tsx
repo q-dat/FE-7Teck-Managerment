@@ -10,7 +10,7 @@ import 'aos/dist/aos.css';
 
 const User: React.FC = () => {
   useEffect(() => {
-    AOS.init({ duration: 3000});
+    AOS.init({ duration: 1000});
   }, []);
   return (
     <div className="flex min-h-screen select-none flex-col bg-[#f2f4f7]">
