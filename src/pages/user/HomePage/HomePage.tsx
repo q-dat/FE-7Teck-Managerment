@@ -221,8 +221,16 @@ const HomePage: React.FC = () => {
           }}
         >
           <div className="absolute left-1/2 top-1/2 flex h-full w-full -translate-x-1/2 -translate-y-1/2 transform flex-col items-center justify-center bg-black bg-opacity-30 px-2 text-lg font-light text-white xl:px-[100px] xl:text-3xl">
-            <p className="font-semibold">iPhone 16 Pro Max</p>
-            <i className="text-center">
+            <p
+              className="font-semibold"
+              uk-parallax="opacity: 0,9; y: -50,0; scale: 2,1; end: 50vh + 50%;"
+            >
+              iPhone 16 Pro Max
+            </p>
+            <i
+              className="text-center"
+              uk-parallax="opacity: 0,9; y: 50,0; scale: 0.5,1; end: 50vh + 50%;"
+            >
               Trải nghiệm công nghệ đỉnh cao với thiết kế mới mẻ, hiệu suất vượt
               trội và camera siêu nét.
             </i>
@@ -239,44 +247,45 @@ const HomePage: React.FC = () => {
         </div>
         {/* Post */}
         <div
-          data-aos="fade-down"
           style={{
             backgroundImage: `url(${bgBlog})`
           }}
           className={`mt-10 bg-cover bg-fixed bg-center bg-no-repeat py-5 ${posts.length === 0 ? 'hidden' : ''}`}
         >
-          <p className="mb-2 bg-black bg-opacity-20 text-center text-xl font-semibold uppercase text-white">
-            Bản tin mới nhất
-          </p>
-          <div className="grid grid-cols-2 gap-2 px-2 md:grid-cols-3 lg:grid-cols-4 xl:px-[100px]">
-            {posts.slice(0, 4).map(post => (
-              <div
-                key={post._id}
-                className="relative cursor-pointer rounded border border-dashed border-black bg-white p-2 shadow-inner hover:shadow-lg"
-                onClick={() => handlePostClick(post)}
-              >
-                <p className="absolute left-1 top-1 rounded-sm bg-primary px-2 text-[12px] text-white">
-                  {post.catalog}
-                </p>
-                <img
-                  loading="lazy"
-                  src={post.imageUrl}
-                  alt="Ảnh đại diện"
-                  className="h-[200px] w-full rounded-sm border object-cover xl:h-[300px]"
-                />
-                <p className="line-clamp-3 py-1 text-sm font-bold text-primary">
-                  {post.title}
-                </p>
-                <hr />
+          <div data-aos="fade-down">
+            <p className="mb-2 bg-black bg-opacity-20 text-center text-xl font-semibold uppercase text-white">
+              Bản tin mới nhất
+            </p>
+            <div className="grid grid-cols-2 gap-2 px-2 md:grid-cols-3 lg:grid-cols-4 xl:px-[100px]">
+              {posts.slice(0, 4).map(post => (
                 <div
-                  dangerouslySetInnerHTML={{ __html: post.content }}
-                  className="line-clamp-4 text-xs text-black"
-                ></div>
-                <p className="pt-2 text-[12px] text-primary">
-                  {new Date(post.updatedAt).toLocaleDateString('vi-VN')}
-                </p>
-              </div>
-            ))}
+                  key={post._id}
+                  className="relative cursor-pointer rounded border border-gray-50 bg-white p-2 shadow-inner hover:shadow-lg"
+                  onClick={() => handlePostClick(post)}
+                >
+                  <p className="absolute left-1 top-1 rounded-sm bg-primary px-2 text-[12px] text-white">
+                    {post.catalog}
+                  </p>
+                  <img
+                    loading="lazy"
+                    src={post.imageUrl}
+                    alt="Ảnh đại diện"
+                    className="h-[200px] w-full rounded-sm border object-cover xl:h-[300px]"
+                  />
+                  <p className="line-clamp-3 py-1 text-sm font-bold text-primary">
+                    {post.title}
+                  </p>
+                  <hr />
+                  <div
+                    dangerouslySetInnerHTML={{ __html: post.content }}
+                    className="line-clamp-4 text-xs text-black"
+                  ></div>
+                  <p className="pt-2 text-[12px] text-primary">
+                    {new Date(post.updatedAt).toLocaleDateString('vi-VN')}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
           <Link to="/news">
             <p className="mt-2 flex w-full items-center justify-center gap-1 bg-gradient-to-r from-white via-secondary to-white py-1 text-sm text-white">
