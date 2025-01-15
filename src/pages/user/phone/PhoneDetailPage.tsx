@@ -31,6 +31,7 @@ const ProductDetailPage: React.FC = () => {
   const [isLeftVisible, setIsLeftVisible] = useState(true);
   const [isRightVisible, setIsRightVisible] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeTab, setActiveTab] = useState<string>('specs');
   //
   useLayoutEffect(() => {
     updateScrollButtons();
@@ -114,7 +115,7 @@ const ProductDetailPage: React.FC = () => {
         <div className="mt-2 px-2 xl:px-[150px]">
           <div className="flex flex-col items-start justify-start gap-5 xl:flex-row">
             {/* IMG */}
-            <div className="flex w-full flex-col gap-2">
+            <div className="flex w-full flex-col gap-5">
               <Zoom>
                 <div className="relative">
                   <img
@@ -129,7 +130,7 @@ const ProductDetailPage: React.FC = () => {
                 </div>
               </Zoom>
               {/* Thumbnails */}
-              <div className="relative rounded-md p-1">
+              <div className="relative rounded-md border border-gray-50 p-1">
                 <div
                   ref={scrollRef}
                   className="flex flex-row items-start justify-start gap-2 overflow-x-auto scroll-smooth scrollbar-hide"
@@ -169,9 +170,9 @@ const ProductDetailPage: React.FC = () => {
               </div>
             </div>
             {/* Description */}
-            <div className="w-full">
+            <div className="flex w-full flex-col gap-5">
               {/* Info */}
-              <div className="flex flex-col items-start justify-between gap-5 rounded-md border border-gray-50 bg-white p-2 leading-10">
+              <div className="flex h-full flex-col items-start justify-between gap-5 rounded-md border border-gray-50 bg-white p-2 leading-10 xl:aspect-[1]">
                 <div className="w-full">
                   <h1 className="text-xl font-semibold text-black">
                     Điện thoại {phone?.name}
@@ -204,19 +205,36 @@ const ProductDetailPage: React.FC = () => {
                     </p>
                   )}
                 </div>
-                <div className="flex w-full items-center justify-center">
+                <div className="flex w-full flex-col items-center justify-center gap-1">
                   <Link to="/checkout">
                     <Button
                       size="sm"
-                      className="w-[200px] rounded-md border-none bg-primary text-white hover:bg-primary hover:bg-opacity-60"
+                      className="w-[300px] rounded-md border-none bg-primary text-white hover:bg-primary hover:bg-opacity-60 xl:w-[400px]"
                     >
-                      Mua Ngay
+                      Mua ngay
                     </Button>
                   </Link>
+                  <i className="w-full text-start text-sm font-light text-secondary">
+                    *Nhấn "Mua ngay" để xác nhận sản phẩm bạn muốn mua!
+                  </i>
                 </div>
               </div>
+              {/* Note */}
+              <div className="h-[80px] w-full rounded-md border border-gray-50 bg-white p-2">
+                <p className="text-center text-2xl font-light xl:text-3xl">
+                  Hỗ trợ khách hàng:
+                  <Link to="tel:0983699993">
+                    <span className="font-bold text-secondary">
+                      &nbsp; 0983.699.993
+                    </span>
+                  </Link>
+                </p>
+                <i className="text-sm font-light text-secondary">
+                  *Nhấn vào hotline để gọi ngay!
+                </i>
+              </div>
               {/* Details */}
-              <div className="mt-5 divide-y-[1px] divide-primary divide-opacity-20 rounded-md border border-primary bg-white leading-10 text-black">
+              {/* <div className="mt-5 divide-y-[1px] divide-primary divide-opacity-20 rounded-md border border-primary bg-white leading-10 text-black">
                 <h1 className="rounded-md rounded-b-none bg-primary p-2 text-2xl font-semibold uppercase text-white">
                   Thông số kĩ thuật:
                 </h1>
@@ -262,11 +280,11 @@ const ProductDetailPage: React.FC = () => {
                     </details>
                   </div>
                 ))}
-              </div>
+              </div> */}
             </div>
           </div>
           {/* Detailed description */}
-          <details className="group my-5 flex w-full flex-col items-center justify-center">
+          {/* <details className="group my-5 flex w-full flex-col items-center justify-center">
             <summary className="flex w-full cursor-pointer items-center justify-center gap-1 rounded-sm bg-gradient-to-r from-white via-primary to-primary">
               <span className="font-semibold text-white">Xem Thêm</span>
               <span className="transform text-white transition-transform duration-300 ease-in-out group-open:rotate-180">
@@ -279,7 +297,86 @@ const ProductDetailPage: React.FC = () => {
                 __html: phone?.phone_catalog_id?.content
               }}
             ></p>
-          </details>
+          </details> */}
+          {/* Tab */}
+          <div className="w-full">
+            <div className="mt-5 flex flex-row items-center justify-center rounded-md border-b-2 border-primary uppercase">
+              <div
+                className={`w-full cursor-pointer rounded-l-md py-2 text-center font-light transition-all duration-500 ease-in-out ${activeTab === 'specs' ? 'bg-primary font-semibold text-white' : 'bg-white text-primary'}`}
+                onClick={() => setActiveTab('specs')}
+              >
+                <p>Thông số kĩ thuật</p>
+              </div>
+              <div
+                className={`w-full cursor-pointer rounded-r-md py-2 text-center font-light transition-all duration-500 ease-in-out ${activeTab === 'details' ? 'bg-primary font-semibold text-white' : 'bg-white text-primary'}`}
+                onClick={() => setActiveTab('details')}
+              >
+                <p>Xem thêm</p>
+              </div>
+            </div>
+            {/*  */}
+            <div className="w-full">
+              {/* Details */}
+              {activeTab === 'specs' && (
+                <div className="mt-5 divide-y-[1px] divide-primary divide-opacity-20 rounded-md border border-primary bg-white leading-10 text-black">
+                  <h1 className="rounded-sm rounded-b-none bg-primary p-2 text-center text-lg font-light uppercase text-white">
+                    Các thông số chi tiết
+                  </h1>
+                  {phoneFieldMap.map(group => (
+                    <div key={group?.group}>
+                      <details className="group transform divide-y-[1px] bg-primary bg-opacity-5">
+                        <summary className="flex cursor-pointer items-center justify-between p-2">
+                          <span className="font-semibold text-primary">
+                            {group?.name}
+                          </span>
+                          <span className="transform text-primary transition-transform duration-300 ease-in-out group-open:rotate-180">
+                            <IoIosArrowDropdownCircle className="text-2xl" />
+                          </span>
+                        </summary>
+                        {group?.fields
+                          .filter(
+                            field =>
+                              phone?.phone_catalog_id?.[group?.group]?.[
+                                field?.field
+                              ]
+                          )
+                          .map(field => {
+                            const fieldValue =
+                              phone?.phone_catalog_id?.[group?.group]?.[
+                                field?.field
+                              ];
+                            return (
+                              <div
+                                className="flex w-full flex-row items-start justify-between rounded-md bg-white p-2"
+                                key={field?.field}
+                              >
+                                <p>{field?.name}</p>
+                                <p className="font-light italic text-gray-700">
+                                  {Array.isArray(fieldValue) ? (
+                                    <span>{fieldValue.join(',')}</span>
+                                  ) : (
+                                    fieldValue
+                                  )}
+                                </p>
+                              </div>
+                            );
+                          })}
+                      </details>
+                    </div>
+                  ))}
+                </div>
+              )}
+              {/* Detailed description */}
+              {activeTab === 'details' && (
+                <p
+                  className="mt-5"
+                  dangerouslySetInnerHTML={{
+                    __html: phone?.phone_catalog_id?.content
+                  }}
+                ></p>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>
