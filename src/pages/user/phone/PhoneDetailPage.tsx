@@ -92,9 +92,27 @@ const ProductDetailPage: React.FC = () => {
     };
   }, [phones]);
   //
-  const handleThumbnailClick = (thumb: string) => {
+  const handleThumbnailClick = (thumb: string, index: number) => {
     setSelectedImage(thumb);
+    const scrollContainer = scrollRef.current;
+    if (scrollContainer) {
+      const thumbnailElement = scrollContainer.children[index] as HTMLElement;
+      if (thumbnailElement) {
+        const containerWidth = scrollContainer.offsetWidth;
+        const elementOffsetLeft = thumbnailElement.offsetLeft;
+        const elementWidth = thumbnailElement.offsetWidth;
+
+        // Tính toán vị trí cần scroll sao cho ảnh nằm ở giữa
+        const scrollPosition =
+          elementOffsetLeft - (containerWidth - elementWidth) / 2;
+        scrollContainer.scrollTo({
+          left: scrollPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
   };
+
   if (loading.getAll) return <LoadingLocal />;
   if (error) return <ErrorLoading />;
 
@@ -122,7 +140,7 @@ const ProductDetailPage: React.FC = () => {
                     loading="lazy"
                     src={selectedImage || phone?.img}
                     alt={phone?.name}
-                    className="h-[500px] w-full rounded-md bg-white object-cover xl:h-full"
+                    className="h-[500px] w-full rounded-md object-contain xl:h-[490px]"
                   />
                   <div className="pointer-events-none absolute bottom-1 right-1">
                     <MdZoomOutMap className="rounded-sm bg-black bg-opacity-10 p-[1px] text-2xl text-white" />
@@ -130,20 +148,20 @@ const ProductDetailPage: React.FC = () => {
                 </div>
               </Zoom>
               {/* Thumbnails */}
-              <div className="relative rounded-md border border-gray-50 p-1">
+              <div className="relative rounded-md p-1">
                 <div
                   ref={scrollRef}
-                  className="flex flex-row items-start justify-start gap-2 overflow-x-auto scroll-smooth scrollbar-hide"
+                  className="flex flex-row items-start w-[550px] justify-start gap-2 overflow-x-auto scroll-smooth scrollbar-hide"
                 >
                   {phone?.thumbnail && Array.isArray(phone.thumbnail) ? (
-                    phone.thumbnail.map((thumb: string, index: string) => (
+                    phone.thumbnail.map((thumb: string, index: number) => (
                       <img
                         loading="lazy"
                         key={index}
                         src={thumb}
                         alt="Ảnh thu nhỏ"
                         className="h-[70px] w-[70px] cursor-pointer rounded-md border object-cover"
-                        onClick={() => handleThumbnailClick(thumb)}
+                        onClick={() => handleThumbnailClick(thumb, index)}
                       />
                     ))
                   ) : (
@@ -172,7 +190,7 @@ const ProductDetailPage: React.FC = () => {
             {/* Description */}
             <div className="flex w-full flex-col gap-5">
               {/* Info */}
-              <div className="flex h-full flex-col items-start justify-between gap-5 rounded-md border border-gray-50 bg-white p-2 leading-10 xl:aspect-[1]">
+              <div className="flex h-full flex-col items-start justify-between gap-5 rounded-md border border-gray-50 bg-white p-2 leading-10 xl:h-[490px]">
                 <div className="w-full">
                   <h1 className="text-xl font-semibold text-black">
                     Điện thoại {phone?.name}
@@ -311,7 +329,7 @@ const ProductDetailPage: React.FC = () => {
                 className={`w-full cursor-pointer rounded-r-md py-2 text-center font-light transition-all duration-500 ease-in-out ${activeTab === 'details' ? 'bg-primary font-semibold text-white' : 'bg-white text-primary'}`}
                 onClick={() => setActiveTab('details')}
               >
-                <p>Xem thêm</p>
+                <p>Thông tin sản phẩm</p>
               </div>
             </div>
             {/*  */}
