@@ -21,7 +21,7 @@ interface Option {
 
 const ModalCreatePhonePageAdmin: React.FC<ModalCreateAdminProps> = ({
   isOpen,
-  onClose,
+  onClose
 }) => {
   const { createPhone, getAllPhones } = useContext(PhoneContext);
   const { control, register, handleSubmit, reset } = useForm<IPhone>();
@@ -35,12 +35,12 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreateAdminProps> = ({
   }, []);
 
   // react-select
-  const phoneCatalog: Option[] = phoneCatalogs.map((phoneCatalog) => ({
+  const phoneCatalog: Option[] = phoneCatalogs.map(phoneCatalog => ({
     value: phoneCatalog._id,
-    label: phoneCatalog.name,
+    label: phoneCatalog.name
   }));
 
-  const onSubmit: SubmitHandler<IPhone> = async (formData) => {
+  const onSubmit: SubmitHandler<IPhone> = async formData => {
     const data = new FormData();
     data.append('name', formData.name || '');
     data.append('phone_catalog_id', formData.phone_catalog_id._id);
@@ -57,7 +57,7 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreateAdminProps> = ({
 
     // Thêm nhiều ảnh thu nhỏ
     if (formData.thumbnail && formData.thumbnail.length > 0) {
-      Array.from(formData.thumbnail).forEach((file) => {
+      Array.from(formData.thumbnail).forEach(file => {
         data.append('thumbnail', file); // Thêm từng file vào FormData
       });
     }
@@ -88,10 +88,10 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreateAdminProps> = ({
     <form onSubmit={handleSubmit(onSubmit)}>
       <div
         onClick={handleOverlayClick}
-        className="modal-overlay cursor-pointer fixed inset-0 z-50 flex w-full items-center justify-center bg-black bg-opacity-40"
+        className="modal-overlay fixed inset-0 z-50 flex w-full cursor-pointer items-center justify-center bg-black bg-opacity-40"
       >
         <div
-          onClick={(e) => e.stopPropagation()}
+          onClick={e => e.stopPropagation()}
           className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:w-1/2"
         >
           <div>
@@ -135,13 +135,9 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreateAdminProps> = ({
             <InputModal
               type="text"
               {...register('status')}
-              placeholder="Trạng thái*"
+              placeholder="Tình trạng*"
             />
-            <InputModal
-              type="text"
-              {...register('des')}
-              placeholder="Mô tả (Không bắt buộc!)"
-            />
+            <InputModal type="text" {...register('des')} placeholder="Mô tả" />
             <LabelForm title={'Hình ảnh*'} />
             <InputModal
               type="file"

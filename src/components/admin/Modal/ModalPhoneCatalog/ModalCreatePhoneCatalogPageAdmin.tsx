@@ -43,13 +43,9 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
 
   const onSubmit: SubmitHandler<IPhoneCatalog> = async formData => {
     const data = new FormData();
-
     data.append('name', formData.name);
     data.append('price', formData.price.toString());
-    data.append('des', formData.des || '');
-    data.append('status', formData.status || '');
     data.append('content', editorValue);
-
 
     // Append ảnh
     if (formData.img && formData.img[0]) {
@@ -167,18 +163,6 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
                 type="number"
                 {...register('price')}
                 placeholder="Nhập giá (Hệ số x1000: 1triệu = 1000)"
-              />
-              <LabelForm title={'Trạng thái'} />
-              <InputModal
-                type="text"
-                {...register('status')}
-                placeholder="Nhập trạng thái"
-              />
-              <LabelForm title={'Mô tả'} />
-              <InputModal
-                type="text"
-                {...register('des')}
-                placeholder="Nhập mô tả"
               />
               <LabelForm title={'Hình ảnh*'} />
               <InputModal

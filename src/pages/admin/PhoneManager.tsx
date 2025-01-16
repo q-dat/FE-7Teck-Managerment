@@ -92,7 +92,7 @@ const PhoneManager: React.FC = () => {
             <span>Tên Sản Phẩm</span>
             <span>Giá</span>
             <span>Giá giảm</span>
-            <span>Trạng Thái</span>
+            <span>Tình trạng</span>
             <span>Mô Tả</span>
             <span>Ngày tạo</span>
             <span>Hành Động</span>

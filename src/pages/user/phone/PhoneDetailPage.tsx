@@ -151,7 +151,7 @@ const ProductDetailPage: React.FC = () => {
               <div className="relative rounded-md p-1">
                 <div
                   ref={scrollRef}
-                  className="flex flex-row items-start w-full xl:w-[550px] justify-start gap-2 overflow-x-auto scroll-smooth scrollbar-hide"
+                  className="flex w-full flex-row items-start justify-start gap-2 overflow-x-auto scroll-smooth scrollbar-hide xl:w-[550px]"
                 >
                   {phone?.thumbnail && Array.isArray(phone.thumbnail) ? (
                     phone.thumbnail.map((thumb: string, index: number) => (
@@ -206,14 +206,14 @@ const ProductDetailPage: React.FC = () => {
                     </del>
                   </p>
                   {phone?.color && (
-                    <p className="text-gray-500">
+                    <p className="space-x-1 text-gray-500">
                       <span>Màu sắc:</span>
                       <strong className="text-black">{phone?.color}</strong>
                     </p>
                   )}
                   {phone?.status && (
-                    <p className="text-gray-500">
-                      <span>Trạng thái:</span>
+                    <p className="space-x-1 text-gray-500">
+                      <span>Tình trạng:</span>
                       <strong className="text-black">{phone?.status}</strong>
                     </p>
                   )}

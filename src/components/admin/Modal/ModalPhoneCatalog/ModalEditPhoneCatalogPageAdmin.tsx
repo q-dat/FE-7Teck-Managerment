@@ -42,11 +42,10 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
     getPhoneCatalogById,
     updatePhoneCatalog
   } = useContext(PhoneCatalogContext);
-  const { control,register, handleSubmit, reset, setValue, watch } =
+  const { control, register, handleSubmit, reset, setValue, watch } =
     useForm<IPhoneCatalog>();
-    const [existingImg, setExistingImg] = useState<string | undefined>('');
+  const [existingImg, setExistingImg] = useState<string | undefined>('');
   const [editorValue, setEditorValue] = useState<string>('');
-
 
   useEffect(() => {
     if (PhoneCatalogId) {
@@ -62,8 +61,6 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
       setValue('name', phoneData.name);
       setValue('img', phoneData.img);
       setValue('price', phoneData.price);
-      setValue('status', phoneData.status);
-      setValue('des', phoneData.des);
       setValue('content', phoneData.content || '');
       setEditorValue(phoneData.content || '');
       setValue('createdAt', phoneData.createdAt);
@@ -241,10 +238,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
 
     data.append('name', formData.name);
     data.append('price', formData.price.toString());
-    data.append('des', formData.des || '');
-    data.append('status', formData.status || '');
     data.append('content', formData.content || '');
-
 
     const imgFile = watch('img');
     if (imgFile && imgFile[0]) {
@@ -322,18 +316,6 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                 type="number"
                 {...register('price')}
                 placeholder="Nhập giá"
-              />
-              <LabelForm title={'Trạng thái'} />
-              <InputModal
-                type="text"
-                {...register('status')}
-                placeholder="Nhập trạng thái"
-              />
-              <LabelForm title={'Mô tả'} />
-              <InputModal
-                type="text"
-                {...register('des')}
-                placeholder="Nhập mô tả"
               />
               <LabelForm title={'Hình ảnh'} />
               {existingImg && (
@@ -711,24 +693,24 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
               />
             </div>
             <div className="flex w-full flex-col items-start justify-center">
-                <LabelForm title={'Nội dung'} />
-                <Controller
-                  name="content"
-                  control={control}
-                  defaultValue={editorValue}
-                  render={({ field }) => (
-                    <ReactQuill
-                      value={field.value || ''}
-                      onChange={value => field.onChange(value)}
-                      theme="snow"
-                      modules={modules}
-                      placeholder="Nội dung mô tả..."
-                    />
-                  )}
-                />
-              </div>
+              <LabelForm title={'Nội dung'} />
+              <Controller
+                name="content"
+                control={control}
+                defaultValue={editorValue}
+                render={({ field }) => (
+                  <ReactQuill
+                    value={field.value || ''}
+                    onChange={value => field.onChange(value)}
+                    theme="snow"
+                    modules={modules}
+                    placeholder="Nội dung mô tả..."
+                  />
+                )}
+              />
+            </div>
           </div>
-          <div className="space-x-5 text-center mt-5">
+          <div className="mt-5 space-x-5 text-center">
             <Button
               onClick={onClose}
               className="border-gray-50 text-black dark:text-white"

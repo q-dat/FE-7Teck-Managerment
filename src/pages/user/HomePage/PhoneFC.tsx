@@ -69,7 +69,7 @@ const PhoneFC: React.FC = () => {
       {/* Title */}
       <div className="flex w-full flex-col items-center justify-center py-5 xl:rounded-t-lg">
         <p className="bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold text-transparent xl:text-[30px]">
-         Nổi Bật
+          Nổi Bật
         </p>
         <span className="h-[1px] w-[150px] animate-ping bg-primary"></span>
       </div>
@@ -92,7 +92,7 @@ const PhoneFC: React.FC = () => {
               >
                 <img
                   loading="lazy"
-                  className="h-full w-full rounded-[5px] rounded-b-none object-contain"
+                  className="h-full w-full rounded-[5px] rounded-b-none object-cover"
                   src={phone.img}
                 />
                 <p className="absolute bottom-0 right-0">
@@ -100,8 +100,11 @@ const PhoneFC: React.FC = () => {
                 </p>
               </div>
               {/*  */}
-              <div className="flex h-full w-full flex-col items-start justify-between gap-1 p-1">
-                <div className="w-full">
+              <div className="flex h-full w-full flex-col items-start justify-between gap-1">
+                <div
+                  className="w-full cursor-pointer p-1"
+                  onClick={() => navigate(`/iphone/${phoneUrl}`)}
+                >
                   <p className="w-[75px] rounded-sm bg-gray-100 p-[2px] text-center text-[10px] text-white">
                     {phone?.phoneCount > 99 ? '99+' : phone?.phoneCount} Sản
                     phẩm
@@ -111,7 +114,7 @@ const PhoneFC: React.FC = () => {
                     Điện thoại {phone.name}
                   </p>
                 </div>
-                <div className="w-full">
+                <div className="w-full p-1">
                   <p className="text-gray-500">
                     Từ:&nbsp;
                     <span className="text-red-500">

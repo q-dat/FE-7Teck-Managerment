@@ -133,7 +133,7 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
     <form onSubmit={handleSubmit(onSubmit)}>
       <div
         onClick={handleOverlayClick}
-        className="modal-overlay cursor-pointer fixed inset-0 z-50 flex w-full items-center justify-center bg-black bg-opacity-40"
+        className="modal-overlay fixed inset-0 z-50 flex w-full cursor-pointer items-center justify-center bg-black bg-opacity-40"
       >
         <div
           onClick={e => e.stopPropagation()}
@@ -181,17 +181,17 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
               />
             </div>
             <div className="flex w-full flex-col items-start justify-center">
-              <LabelForm title={'Trạng thái'} />
+              <LabelForm title={'Tình trạng'} />
               <InputModal
                 type="text"
                 {...register('status')}
-                placeholder="Trạng thái(Không bắt buộc!)"
+                placeholder="Tình trạng"
               />
               <LabelForm title={'Mô tả'} />
               <InputModal
                 type="text"
                 {...register('des')}
-                placeholder="Mô tả (Không bắt buộc!)"
+                placeholder="Mô tả"
               />
               <LabelForm title={'Hình ảnh'} />
               {existingImg && (
@@ -209,7 +209,7 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
               />
               <LabelForm title={'Ảnh thu nhỏ'} />
               {existingThumbnail && existingThumbnail.length > 0 && (
-                <div className="my-2 flex gap-2 flex-wrap">
+                <div className="my-2 flex flex-wrap gap-2">
                   {existingThumbnail.map((thumbnail, index) => (
                     <img
                       key={index}

@@ -93,8 +93,11 @@ const PhonePage: React.FC = () => {
                       </p>
                     </div>
                     {/*  */}
-                    <div className="flex h-full w-full flex-col items-start justify-between gap-1 p-1">
-                      <div className="w-full">
+                    <div className="flex h-full w-full flex-col items-start justify-between gap-1">
+                      <div
+                        className="w-full cursor-pointer p-1"
+                        onClick={() => navigate(`/iphone/${phoneUrl}`)}
+                      >
                         <p className="w-[75px] rounded-sm bg-gray-100 p-[2px] text-center text-[10px] text-white">
                           {phone?.phoneCount > 99 ? '99+' : phone?.phoneCount}{' '}
                           Sản phẩm
@@ -104,7 +107,7 @@ const PhonePage: React.FC = () => {
                           Điện thoại {phone.name}
                         </p>
                       </div>
-                      <div className="w-full">
+                      <div className="w-full p-1">
                         <p className="text-gray-500">
                           Từ:&nbsp;
                           <span className="text-red-500">

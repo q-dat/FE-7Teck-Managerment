@@ -3,8 +3,6 @@ export interface IPhoneCatalog {
   name: string;
   img: string;
   price: number;
-  status: string;
-  des?: string;
   content?: string;
   phoneCount: number;
   createdAt: string;
