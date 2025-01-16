@@ -7,27 +7,27 @@ const navLink = [
   {
     icon: FaMobileAlt,
     name: 'iPhone',
-    link: '/phone-list'
+    link: '/iPhone'
   },
   {
     icon: FaTabletAlt,
     name: 'ipad',
-    link: '/ipad-list'
+    link: '/ipad'
   },
   {
     icon: RiMacbookFill,
     name: 'Macbook',
-    link: '/macbook-list'
+    link: '/macbook'
   },
   {
     icon: FaWindows,
     name: 'Window',
-    link: '/window-list'
+    link: '/window'
   },
   {
     icon: MdListAlt,
     name: 'Giá thu cũ',
-    link: '/price-list'
+    link: '/bang-gia-thu-mua'
   }
 ];
 const NavBottom: React.FC = () => {
