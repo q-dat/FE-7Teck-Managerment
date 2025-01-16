@@ -5,11 +5,6 @@ import { RiMacbookFill } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 const navLink = [
   {
-    icon: MdListAlt,
-    name: 'Giá thu cũ',
-    link: '/price-list'
-  },
-  {
     icon: FaMobileAlt,
     name: 'iPhone',
     link: '/phone-list'
@@ -28,6 +23,11 @@ const navLink = [
     icon: FaWindows,
     name: 'Window',
     link: '/window-list'
+  },
+  {
+    icon: MdListAlt,
+    name: 'Giá thu cũ',
+    link: '/price-list'
   }
 ];
 const NavBottom: React.FC = () => {

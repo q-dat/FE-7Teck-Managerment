@@ -28,7 +28,7 @@ const TipsAndTricksPage: React.FC = () => {
   return (
     <div>
       <HeaderResponsive Title_NavbarMobile="Thủ thuật - Mẹo" />
-      <div className="py-[100px] xl:pt-0">
+      <div className="py-[60px] xl:pt-0">
         <div className="px-2 xl:px-[100px]">
           {selectedPost && (
             <div className="mb-10">

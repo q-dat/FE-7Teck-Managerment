@@ -44,14 +44,14 @@ const ContactPage: React.FC = () => {
   return (
     <div>
       <HeaderResponsive Title_NavbarMobile="Trang Chủ" />
-      <div className="py-[100px] xl:pt-0">
+      <div className="py-[60px] xl:pt-0">
         <div className="breadcrumbs mb-10 px-[10px] py-2 text-sm text-black shadow dark:text-white lg:px-20">
           <ul className="font-light">
             <li>
               <Link to="/">Trang Chủ</Link>
             </li>
             <li>
-              <Link to="/contact">Liên Hệ</Link>
+              <Link to="">Chính Sách Bảo Hành</Link>
             </li>
           </ul>
         </div>
@@ -64,7 +64,7 @@ const ContactPage: React.FC = () => {
           >
             <div className="">
               <img
-              loading="lazy"
+                loading="lazy"
                 src={Logo}
                 alt="Logo"
                 className="w-[150px] rounded-full border border-primary xl:w-[300px]"

@@ -1,5 +1,5 @@
 import React, { ReactNode, useCallback, useEffect, useState } from 'react';
-import { Button, Drawer, Input, Menu } from 'react-daisyui';
+import { Button, Drawer, Menu } from 'react-daisyui';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { FaHome, FaChevronDown, FaMagic } from 'react-icons/fa';
@@ -7,7 +7,7 @@ import { IconType } from 'react-icons/lib';
 import { Logo } from '../../assets/images';
 import { RiPagesLine } from 'react-icons/ri';
 import { SlClose } from 'react-icons/sl';
-import { IoSearch } from 'react-icons/io5';
+// import { IoSearch } from 'react-icons/io5';
 // import { IoSettingsSharp } from 'react-icons/io5';
 
 interface HeaderResponsiveProps {
@@ -36,53 +36,53 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
 
   const menuItems: MenuItem[] = [
     {
-      name: 'Trang Chủ',
-      icon: FaHome,
-      link: '/'
+      name: 'Thiết bị đã qua sử dụng',
+      // icon: FaHome,
+      link: '/thiet-bi-da-qua-su-dung'
     },
     {
       name: 'iPhone',
-      link: '/phone-list'
+      link: '/iphone'
     },
     {
       name: 'iPad',
-      link: '/ipad-list'
+      link: '/ipad'
     },
     {
       name: 'Window',
-      link: '/window-list'
+      link: '/window'
     },
     {
       name: 'Macbook',
-      link: '/macbook-list'
+      link: '/macbook'
     },
     {
       name: 'Bảng Giá Thu Mua',
-      link: '/price-list'
+      link: '/bang-gia-thu-mua'
     },
     {
       name: 'Tin tức',
-      link: '',
+      link: ' ',
       submenu: [
         {
-          name: 'Bản tin nổi bật',
+          name: 'Tin tức nổi bật',
           icon: RiPagesLine,
-          link: '/news'
+          link: '/tin-tuc-moi-nhat'
         },
         {
           name: 'Thủ thuật - Mẹo',
           icon: FaMagic,
-          link: '/tips-and-tricks'
+          link: '/thu-thuat-meo'
         }
       ]
     },
     {
-      name: 'Album',
-      link: '/album'
+      name: 'Hành trình',
+      link: '/hanh-trinh'
     },
     {
-      name: 'Liên Hệ',
-      link: '/contact'
+      name: 'Chính sách bảo hành',
+      link: '/chinh-sach-bao-hanh'
     }
   ];
   //
@@ -128,7 +128,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
   return (
     <div className="fixed z-[99999] block w-full bg-gradient-to-b from-white to-primary xl:hidden">
       {/* Menu 1 */}
-      <div
+      {/* <div
         className={`flex h-[40px] w-full transform flex-row items-center justify-between border-b bg-primary px-2 text-white transition-transform duration-300 ease-in-out ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}
       >
         <div className="flex w-full flex-row items-center justify-center gap-1">
@@ -138,11 +138,11 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
             placeholder="Bạn muốn tìm gì..."
           ></Input>
         </div>
-        {/*  */}
-      </div>
-
+      </div> */}
+      {/* Menu 2 */}
       <div
-        className={`fixed h-[60px] w-full bg-gradient-to-r from-primary via-primary to-primary px-2 transition-all delay-200 duration-300 ease-in-out ${showMenu ? 'top-[40px]' : 'top-0'}`}
+        // className={`fixed h-[60px] w-full bg-gradient-to-r from-primary via-primary to-primary px-2 transition-all delay-200 duration-300 ease-in-out ${showMenu ? 'top-[40px]' : 'top-0'}`}
+        className={`fixed h-[60px] w-full bg-gradient-to-r from-primary via-primary to-primary px-2 transition-all delay-200 duration-300 ease-in-out ${showMenu ? 'top-0' : 'top-0'}`}
       >
         <div className="flex flex-row items-center justify-between">
           {/* <div className="z-50">
@@ -198,9 +198,9 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
               side={
                 <Menu className="fixed h-full w-[280px] bg-white">
                   {/* LOGO */}
-                  <div>
+                  <Link to="/">
                     <img width={120} loading="lazy" src={Logo} alt="LOGO" />
-                  </div>
+                  </Link>
                   {/* Menu */}
                   {menuItems.map(item => {
                     const Icon = item.icon;

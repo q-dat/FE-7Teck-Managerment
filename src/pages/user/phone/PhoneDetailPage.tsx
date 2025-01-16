@@ -119,14 +119,14 @@ const ProductDetailPage: React.FC = () => {
   return (
     <div>
       <HeaderResponsive Title_NavbarMobile={phone?.name} />
-      <div className="py-[100px] xl:pt-0">
+      <div className="py-[60px] xl:pt-0">
         <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow xl:px-20">
           <ul className="font-light">
             <li>
               <Link to="/">Trang Chủ</Link>
             </li>
             <li>
-              <Link to="/phone-list">Thông Tin Sản Phẩm</Link>
+              <Link to="">Thông Tin Sản Phẩm</Link>
             </li>
           </ul>
         </div>
@@ -151,7 +151,7 @@ const ProductDetailPage: React.FC = () => {
               <div className="relative rounded-md p-1">
                 <div
                   ref={scrollRef}
-                  className="flex flex-row items-start w-[550px] justify-start gap-2 overflow-x-auto scroll-smooth scrollbar-hide"
+                  className="flex flex-row items-start w-full xl:w-[550px] justify-start gap-2 overflow-x-auto scroll-smooth scrollbar-hide"
                 >
                   {phone?.thumbnail && Array.isArray(phone.thumbnail) ? (
                     phone.thumbnail.map((thumb: string, index: number) => (

@@ -30,26 +30,26 @@ const NewsPage: React.FC = () => {
     const titleSlug = encodeURIComponent(
       post.title.toLowerCase().replace(/\s+/g, '-')
     );
-    navigate(`/post-detail/${titleSlug}`);
+    navigate(`/tin-tuc/${titleSlug}`);
   };
 
   return (
     <div>
       <HeaderResponsive Title_NavbarMobile="Tin Tức" />
-      <div className="py-[100px] xl:pt-0">
+      <div className="py-[60px] xl:pt-0">
         <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow lg:px-20">
           <ul className="font-light">
             <li>
               <Link to="/">Trang Chủ</Link>
             </li>
             <li>
-              <Link to="/news">Tin Tức</Link>
+              <Link to="">Tin Tức</Link>
             </li>
           </ul>
         </div>
         <div className="px-2 xl:px-[100px]">
           <div className="py-3 text-center text-[30px] font-bold text-primary">
-            Bản tin nổi bật
+            Tin mới nhất
           </div>
           <div
             className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4"

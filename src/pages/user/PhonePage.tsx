@@ -54,14 +54,14 @@ const PhonePage: React.FC = () => {
   return (
     <div>
       <HeaderResponsive Title_NavbarMobile="Điện Thoại" />
-      <div className="py-[100px] xl:pt-0">
+      <div className="py-[60px] xl:pt-0">
         <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow xl:px-20">
           <ul className="font-light">
             <li>
               <Link to="/">Trang Chủ</Link>
             </li>
             <li>
-              <Link to="/phone-list">Điện Thoại</Link>
+              <Link to="">Điện Thoại</Link>
             </li>
           </ul>
         </div>
@@ -80,7 +80,7 @@ const PhonePage: React.FC = () => {
                     className="group flex h-full w-full flex-col justify-between rounded-md border border-white text-black"
                   >
                     <div
-                      onClick={() => navigate(`/phone/${phoneUrl}`)}
+                      onClick={() => navigate(`/iphone/${phoneUrl}`)}
                       className="relative min-h-[270px] w-full cursor-pointer rounded-md rounded-b-none bg-white"
                     >
                       <img

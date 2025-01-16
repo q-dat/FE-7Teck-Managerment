@@ -32,7 +32,7 @@ const PostDetail: React.FC = () => {
     const titleSlug = encodeURIComponent(
       post.title.toLowerCase().replace(/\s+/g, '-')
     );
-    navigate(`/post-detail/${titleSlug}`);
+    navigate(`/tin-tuc/${titleSlug}`);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -41,14 +41,14 @@ const PostDetail: React.FC = () => {
   return (
     <div>
       <HeaderResponsive Title_NavbarMobile="Bài viết" />
-      <div className="py-[100px] xl:pt-0">
+      <div className="py-[60px] xl:pt-0">
         <div className="breadcrumbs mb-10 px-[10px] py-2 text-sm text-black shadow lg:px-20">
           <ul className="font-light">
             <li>
               <Link to="/">Trang Chủ</Link>
             </li>
             <li>
-              <Link to="/news">Tin Tức</Link>
+              <Link to="">Tin Tức</Link>
             </li>
           </ul>
         </div>

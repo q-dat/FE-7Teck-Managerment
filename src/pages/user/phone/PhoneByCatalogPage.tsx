@@ -40,14 +40,14 @@ const ProductByCatalog = () => {
   return (
     <div>
       <HeaderResponsive Title_NavbarMobile="Điện Thoại" />
-      <div className="py-[100px] xl:pt-0">
+      <div className="py-[60px] xl:pt-0">
         <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow xl:px-20">
           <ul className="font-light">
             <li>
               <Link to="/">Trang Chủ</Link>
             </li>
             <li>
-              <Link to="/phone-list">Điện Thoại</Link>
+              <Link to="">Điện Thoại</Link>
             </li>
           </ul>
         </div>
@@ -66,7 +66,7 @@ const ProductByCatalog = () => {
                   <div className="relative">
                     <Link
                       className="flex h-full w-full items-center justify-center rounded-md rounded-b-none bg-white"
-                      to={`/product-detail/${phone?._id}`}
+                      to={`/chi-tiet-iphone/${phone?._id}`}
                     >
                       <img
                         loading="lazy"

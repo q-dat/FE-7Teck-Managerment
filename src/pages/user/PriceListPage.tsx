@@ -109,14 +109,14 @@ const PriceListPage: React.FC = () => {
   return (
     <div>
       <HeaderResponsive Title_NavbarMobile="Bảng Giá Thu Mua" />
-      <div className="py-[100px] xl:pt-0">
+      <div className="py-[60px] xl:pt-0">
         <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow lg:px-20">
           <ul className="font-light">
             <li>
               <Link to="/">Trang Chủ</Link>
             </li>
             <li>
-              <Link to="/price-list">Bảng Giá Thu Mua</Link>
+              <Link to="">Bảng Giá Thu Mua</Link>
             </li>
           </ul>
         </div>

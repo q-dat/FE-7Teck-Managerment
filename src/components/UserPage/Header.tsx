@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Input, Menu } from 'react-daisyui';
-import { FaChevronDown, FaHome, FaMagic } from 'react-icons/fa';
+import { FaChevronDown, FaMagic } from 'react-icons/fa';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { IconType } from 'react-icons/lib';
 import { Logo } from '../../assets/images';
@@ -36,53 +36,53 @@ const Header: React.FC = () => {
 
   const menuItems: MenuItem[] = [
     {
-      name: 'Trang Chủ',
-      icon: FaHome,
-      link: '/'
+      name: 'Thiết bị đã qua sử dụng',
+      // icon: FaHome,
+      link: '/thiet-bi-da-qua-su-dung'
     },
     {
       name: 'iPhone',
-      link: '/phone-list'
+      link: '/iphone'
     },
     {
       name: 'iPad',
-      link: '/ipad-list'
+      link: '/ipad'
     },
     {
       name: 'Window',
-      link: '/window-list'
+      link: '/window'
     },
     {
       name: 'Macbook',
-      link: '/macbook-list'
+      link: '/macbook'
     },
     {
       name: 'Bảng Giá Thu Mua',
-      link: '/price-list'
+      link: '/bang-gia-thu-mua'
     },
     {
       name: 'Tin tức',
-      link: '/news',
+      link: '/tin-tuc-moi-nhat',
       submenu: [
         {
-          name: 'Bản tin nổi bật',
+          name: 'Tin tức nổi bật',
           icon: RiPagesLine,
-          link: '/news'
+          link: '/tin-tuc-moi-nhat'
         },
         {
           name: 'Thủ thuật - Mẹo',
           icon: FaMagic,
-          link: '/tips-and-tricks'
+          link: '/thu-thuat-meo'
         }
       ]
     },
     {
-      name: 'Album',
-      link: '/album'
+      name: 'Hành trình',
+      link: '/hanh-trinh'
     },
     {
-      name: 'Liên Hệ',
-      link: '/contact'
+      name: 'Chính sách bảo hành',
+      link: '/chinh-sach-bao-hanh'
     }
   ];
   //
