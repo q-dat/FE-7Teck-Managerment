@@ -8,6 +8,8 @@ import { RiPagesLine } from 'react-icons/ri';
 import { IoLogoFacebook, IoSearch } from 'react-icons/io5';
 import { RiExternalLinkFill } from 'react-icons/ri';
 import { HiLocationMarker } from 'react-icons/hi';
+import { FaWindows } from 'react-icons/fa';
+import { RiMacbookFill } from 'react-icons/ri';
 
 interface MenuItem {
   name: string;
@@ -37,7 +39,6 @@ const Header: React.FC = () => {
   const menuItems: MenuItem[] = [
     {
       name: 'Thiết bị đã qua sử dụng',
-      // icon: FaHome,
       link: '/thiet-bi-da-qua-su-dung'
     },
     {
@@ -49,12 +50,20 @@ const Header: React.FC = () => {
       link: '/ipad'
     },
     {
-      name: 'Window',
-      link: '/window'
-    },
-    {
-      name: 'Macbook',
-      link: '/macbook'
+      name: 'Laptop',
+      link: '/window',
+      submenu: [
+        {
+          icon: FaWindows,
+          name: 'Window',
+          link: '/window'
+        },
+        {
+          icon: RiMacbookFill,
+          name: 'Macbook',
+          link: '/macbook'
+        }
+      ]
     },
     {
       name: 'Bảng Giá Thu Mua',
@@ -166,7 +175,7 @@ const Header: React.FC = () => {
         <div
           className={`h-[60px] w-full transform flex-row items-center justify-evenly bg-white py-2 shadow-md transition-transform delay-100 duration-300 ease-in-out xl:flex ${showMenu ? 'translate-y-0' : '-translate-y-[40px]'}`}
         >
-          <Link to="/">
+          <Link to="/" onClick={() => setActiveItem('Trang Chủ')}>
             <img
               className="rounded-full object-cover"
               loading="lazy"

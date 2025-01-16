@@ -2,10 +2,10 @@ import React, { ReactNode, useCallback, useEffect, useState } from 'react';
 import { Button, Drawer, Menu } from 'react-daisyui';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { FaHome, FaChevronDown, FaMagic } from 'react-icons/fa';
+import { FaHome, FaChevronDown, FaMagic, FaWindows } from 'react-icons/fa';
 import { IconType } from 'react-icons/lib';
 import { Logo } from '../../assets/images';
-import { RiPagesLine } from 'react-icons/ri';
+import { RiMacbookFill, RiPagesLine } from 'react-icons/ri';
 import { SlClose } from 'react-icons/sl';
 // import { IoSearch } from 'react-icons/io5';
 // import { IoSettingsSharp } from 'react-icons/io5';
@@ -37,7 +37,6 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
   const menuItems: MenuItem[] = [
     {
       name: 'Thiết bị đã qua sử dụng',
-      // icon: FaHome,
       link: '/thiet-bi-da-qua-su-dung'
     },
     {
@@ -49,12 +48,20 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
       link: '/ipad'
     },
     {
-      name: 'Window',
-      link: '/window'
-    },
-    {
-      name: 'Macbook',
-      link: '/macbook'
+      name: 'Laptop',
+      link: '',
+      submenu: [
+        {
+          icon: FaWindows,
+          name: 'Window',
+          link: '/window'
+        },
+        {
+          icon: RiMacbookFill,
+          name: 'Macbook',
+          link: '/macbook'
+        }
+      ]
     },
     {
       name: 'Bảng Giá Thu Mua',
@@ -198,7 +205,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
               side={
                 <Menu className="fixed h-full w-[280px] bg-white">
                   {/* LOGO */}
-                  <Link to="/">
+                  <Link to="/" onClick={() => setActiveItem('Trang Chủ')}>
                     <img width={120} loading="lazy" src={Logo} alt="LOGO" />
                   </Link>
                   {/* Menu */}
