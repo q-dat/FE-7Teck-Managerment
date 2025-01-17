@@ -18,7 +18,7 @@ const ParallaxBannerFC: React.FC = () => {
     children: (
       <div className="animate-fadeIn absolute inset-0 flex -translate-y-10 flex-col items-start justify-center gap-1 px-2 xl:translate-y-0 xl:px-5">
         <p className="text-[34px] font-semibold text-white md:text-6xl xl:text-[75px]">
-          Đổi điện thoại cũ, hỗ trợ giá lên đời.
+          Thu cũ đổi mới, hỗ trợ giá lên đời.
         </p>
         <p className="bg-gradient-to-r from-white to-white bg-clip-text text-[15px] font-extralight text-transparent md:text-2xl xl:text-4xl xl:font-thin">
           up to 90%

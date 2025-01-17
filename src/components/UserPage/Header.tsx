@@ -133,7 +133,6 @@ const Header: React.FC = () => {
       }
       setLastScrollY(currentScrollY);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
@@ -151,81 +150,81 @@ const Header: React.FC = () => {
     setSearchResults(phoneCatalogResults);
   };
   return (
-    <div>
-      {/* Desktop */}
-      <div className="fixed z-[99999] hidden w-full flex-col xl:block">
-        {/* Search Result */}
-
-        {searchResults.length > 0 && (
-          <div className="absolute left-0 top-10 z-50 divide-y-[1px] divide-primary p-1 bg-white font-light text-black shadow">
-            {searchResults.map((phoneCatalog, index) => {
-              const phoneUrl = slugify(phoneCatalog.name);
-              return (
-                <div
-                  key={index}
-                  onClick={() => {
-                    navigate(`/iphone/${phoneUrl}`);
-                    setSearchQuery('');
-                    setSearchResults([]);
-                  }}
-                  className="flex cursor-pointer items-center justify-start gap-2 p-3 hover:bg-primary hover:bg-opacity-10 h-[52px]"
-                >
-                  <img
-                    loading="lazy"
-                    src={phoneCatalog.img}
-                    className="h-10 w-10 object-cover"
-                  />
-                  <p>{phoneCatalog.name}</p>
-                </div>
-              );
-            })}
-          </div>
-        )}
-        {/* Menu 1 */}
-        <div
-          className={`flex h-[40px] w-full transform flex-row items-center justify-between border-b bg-primary px-10 text-xs text-white transition-transform delay-100 duration-300 ease-in-out ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}
-        >
-          <div className="flex w-full flex-row items-center justify-center gap-1 rounded-md bg-white pl-2">
-            <IoSearch className="animate-bounce text-xl text-primary" />
-            <Input
-              size="sm"
-              value={searchQuery}
-              onChange={e => handleSearch(e.target.value)}
-              className="w-full border-none bg-transparent pl-1 text-sm text-black placeholder-primary shadow-none focus:placeholder-black focus:outline-none"
-              placeholder="Bạn muốn tìm gì..."
-            ></Input>
-          </div>
-
-          <div className="flex w-full flex-row items-center justify-end gap-5">
-            <div className="flex items-center">
-              <HiLocationMarker />
-              <Link
-                to="https://maps.app.goo.gl/pmk3d7i2tmjc3pP8A"
-                target="_blank"
-                className="flex items-start gap-[1px]"
-              >
-                <p>136/11 Trần Quang Diệu, P.14, Q.3, TP.HCM</p>
-                <RiExternalLinkFill className="text-xs" />
-              </Link>
+    <div className="fixed z-[99999] hidden w-full flex-col xl:block">
+      {/* Menu 1 */}
+      <div
+        className={`flex h-[40px] w-full transform flex-row items-center justify-between border-b bg-primary px-10 text-xs text-white transition-transform delay-100 duration-300 ease-in-out ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}
+      >
+        <div className="w-full"></div>
+        {/* Input Search */}
+        <div className="relative flex w-full flex-row items-center justify-center gap-1 rounded-md bg-white pl-2">
+          <IoSearch className="text-xl text-primary" />
+          <Input
+            size="sm"
+            value={searchQuery}
+            onChange={e => handleSearch(e.target.value)}
+            className="w-full border-none bg-transparent pl-1 text-sm text-black placeholder-primary shadow-none focus:placeholder-black focus:outline-none"
+            placeholder="Bạn muốn tìm gì..."
+          ></Input>
+          {/* Search Result */}
+          {searchResults.length > 0 && (
+            <div className="absolute left-0 top-[95px] z-[99999] max-h-[210px] w-full divide-y-[1px] divide-primary overflow-y-auto bg-white p-1 font-light text-black shadow scrollbar-hide">
+              {searchResults.map((phoneCatalog, index) => {
+                const phoneUrl = slugify(phoneCatalog.name);
+                return (
+                  <div
+                    key={index}
+                    onClick={() => {
+                      navigate(`/iphone/${phoneUrl}`);
+                      setSearchQuery('');
+                      setSearchResults([]);
+                    }}
+                    className="flex h-[60px] cursor-pointer items-center justify-start gap-2 p-3 hover:bg-primary hover:bg-opacity-10"
+                  >
+                    <img
+                      loading="lazy"
+                      src={phoneCatalog.img}
+                      className="h-10 w-10 object-cover"
+                    />
+                    <p>{phoneCatalog.name}</p>
+                  </div>
+                );
+              })}
             </div>
-            <div className="flex items-center">
-              <IoLogoFacebook />
-              Fanpage: &nbsp;
-              <Link
-                to="https://www.facebook.com/7teck.vn"
-                target="_blank"
-                className="flex items-start gap-[1px]"
-              >
-                <p>7Teck</p>
-                <RiExternalLinkFill className="text-xs" />
-              </Link>
-            </div>
+          )}
+        </div>
+        <div className="flex w-full flex-row items-center justify-end gap-5">
+          <div className="flex items-center">
+            <HiLocationMarker />
+            <Link
+              to="https://maps.app.goo.gl/pmk3d7i2tmjc3pP8A"
+              target="_blank"
+              className="flex items-start gap-[1px]"
+            >
+              <p>136/11 Trần Quang Diệu, P.14, Q.3, TP.HCM</p>
+              <RiExternalLinkFill className="text-xs" />
+            </Link>
+          </div>
+          <div className="flex items-center">
+            <IoLogoFacebook />
+            Fanpage: &nbsp;
+            <Link
+              to="https://www.facebook.com/7teck.vn"
+              target="_blank"
+              className="flex items-start gap-[1px]"
+            >
+              <p>7Teck</p>
+              <RiExternalLinkFill className="text-xs" />
+            </Link>
           </div>
         </div>
-        {/*  */}
-        <div
-          className={`h-[60px] w-full transform flex-row items-center justify-evenly bg-white py-2 shadow-md transition-transform delay-100 duration-300 ease-in-out xl:flex ${showMenu ? 'translate-y-0' : '-translate-y-[40px]'}`}
-        >
+      </div>
+      {/*  */}
+      <div
+        className={`h-[60px] w-full transform flex-row items-center justify-evenly bg-white py-2 shadow-md transition-transform delay-100 duration-300 ease-in-out xl:flex ${showMenu ? 'translate-y-0' : '-translate-y-[40px]'}`}
+      >
+        <div>
+          {' '}
           <Link to="/" onClick={() => setActiveItem('Trang Chủ')}>
             <img
               className="rounded-full object-cover"
@@ -235,75 +234,73 @@ const Header: React.FC = () => {
               alt="LOGO"
             />
           </Link>
-          <Menu className="flex flex-row items-center justify-center">
-            {menuItems.map(item => {
-              const Icon = item.icon;
-              return (
-                <Menu.Item
-                  key={item.name}
-                  className="group relative"
-                  onMouseEnter={() =>
-                    item.submenu && handleMouseEnter(item.name)
-                  }
-                  onMouseLeave={handleMouseLeave}
+        </div>
+        <Menu className="flex flex-row items-center justify-center">
+          {menuItems.map(item => {
+            const Icon = item.icon;
+            return (
+              <Menu.Item
+                key={item.name}
+                className="group relative"
+                onMouseEnter={() => item.submenu && handleMouseEnter(item.name)}
+                onMouseLeave={handleMouseLeave}
+              >
+                <NavLink
+                  to={item.link}
+                  className={`btn relative flex w-full items-center justify-center rounded-none border-none pl-4 ${
+                    item.name === activeItem
+                      ? 'bg-primary bg-opacity-20 text-sm font-bold text-primary'
+                      : 'border-none bg-transparent text-sm font-light text-black shadow-none hover:border hover:border-primary hover:bg-gray-50 hover:bg-opacity-30 hover:text-primary'
+                  }`}
                 >
-                  <NavLink
-                    to={item.link}
-                    className={`btn relative flex w-full items-center justify-center rounded-none border-none pl-4 ${
-                      item.name === activeItem
-                        ? 'bg-primary bg-opacity-20 text-sm font-bold text-primary'
-                        : 'border-none bg-transparent text-sm font-light text-black shadow-none hover:border hover:border-primary hover:bg-gray-50 hover:bg-opacity-30 hover:text-primary'
-                    }`}
-                  >
-                    <>
-                      {item.name === activeItem && (
-                        <div className="absolute bottom-0 left-0 h-[2px] w-full bg-primary" />
-                      )}
-                      {Icon && (
-                        <Icon
-                          className={
-                            item.name === activeItem
-                              ? 'h-5 w-5 text-primary'
-                              : 'h-5 w-5'
-                          }
-                        />
-                      )}
-                      <span className={Icon ? '' : ''}>{item.name}</span>
-                      {item.submenu && (
-                        <FaChevronDown
-                          className={`m-0 h-4 w-4 p-0 ${openSubmenu === item.name ? 'rotate-180' : ''}`}
-                        />
-                      )}
-                    </>
-                  </NavLink>
-                  {/* SubMenu */}
-                  {item.submenu && (
-                    <Menu className="absolute top-full m-0 hidden w-[260px] transform flex-col gap-2 rounded-sm bg-white bg-opacity-90 p-1 shadow-mainMenu transition-transform duration-300 ease-in-out group-hover:flex">
-                      {item.submenu.map((subItem, index) => (
-                        <Link
-                          key={index}
-                          to={subItem.link}
-                          className="flex flex-row gap-0"
+                  <>
+                    {item.name === activeItem && (
+                      <div className="absolute bottom-0 left-0 h-[2px] w-full bg-primary" />
+                    )}
+                    {Icon && (
+                      <Icon
+                        className={
+                          item.name === activeItem
+                            ? 'h-5 w-5 text-primary'
+                            : 'h-5 w-5'
+                        }
+                      />
+                    )}
+                    <span className={Icon ? '' : ''}>{item.name}</span>
+                    {item.submenu && (
+                      <FaChevronDown
+                        className={`m-0 h-4 w-4 p-0 ${openSubmenu === item.name ? 'rotate-180' : ''}`}
+                      />
+                    )}
+                  </>
+                </NavLink>
+                {/* SubMenu */}
+                {item.submenu && (
+                  <Menu className="absolute top-full m-0 hidden w-[260px] transform flex-col gap-2 rounded-sm bg-white bg-opacity-90 p-1 shadow-mainMenu transition-transform duration-300 ease-in-out group-hover:flex">
+                    {item.submenu.map((subItem, index) => (
+                      <Link
+                        key={index}
+                        to={subItem.link}
+                        className="flex flex-row gap-0"
+                      >
+                        <Button
+                          size="sm"
+                          className="flex w-full flex-row items-center justify-start rounded-sm border-none bg-primary text-sm text-white shadow-headerMenu hover:h-[50px] hover:bg-primary hover:bg-opacity-50"
                         >
-                          <Button
-                            size="sm"
-                            className="flex w-full flex-row items-center justify-start rounded-sm border-none bg-primary text-sm text-white shadow-headerMenu hover:h-[50px] hover:bg-primary hover:bg-opacity-50"
-                          >
-                            {subItem.icon && <subItem.icon />}
-                            {subItem.name}
-                          </Button>
-                        </Link>
-                      ))}
-                    </Menu>
-                  )}
-                </Menu.Item>
-              );
-            })}
-          </Menu>
-          <div className="flex items-center justify-center gap-5">
-            {/* DarkMode Button */}
-            {/* <DarkMode /> */}
-          </div>
+                          {subItem.icon && <subItem.icon />}
+                          {subItem.name}
+                        </Button>
+                      </Link>
+                    ))}
+                  </Menu>
+                )}
+              </Menu.Item>
+            );
+          })}
+        </Menu>
+        <div className="flex items-center justify-center gap-5">
+          {/* DarkMode Button */}
+          {/* <DarkMode /> */}
         </div>
       </div>
     </div>

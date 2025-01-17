@@ -7,7 +7,7 @@ const navLink = [
   {
     icon: FaMobileAlt,
     name: 'iPhone',
-    link: '/iPhone'
+    link: '/iphone'
   },
   {
     icon: FaTabletAlt,
