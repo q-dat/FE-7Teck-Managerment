@@ -1,14 +1,21 @@
-import React, { ReactNode, useCallback, useEffect, useState } from 'react';
-import { Button, Drawer, Menu } from 'react-daisyui';
+import React, {
+  ReactNode,
+  useCallback,
+  useContext,
+  useEffect,
+  useState
+} from 'react';
+import { Button, Drawer, Input, Menu } from 'react-daisyui';
 import { RxHamburgerMenu } from 'react-icons/rx';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { FaHome, FaChevronDown, FaMagic, FaWindows } from 'react-icons/fa';
 import { IconType } from 'react-icons/lib';
 import { Logo } from '../../assets/images';
 import { RiMacbookFill, RiPagesLine } from 'react-icons/ri';
 import { SlClose } from 'react-icons/sl';
-// import { IoSearch } from 'react-icons/io5';
-// import { IoSettingsSharp } from 'react-icons/io5';
+import { IoSearch } from 'react-icons/io5';
+import { IPhoneCatalog } from '../../types/type/phone-catalog/phone-catalog';
+import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
 
 interface HeaderResponsiveProps {
   Title_NavbarMobile: ReactNode;
@@ -23,9 +30,25 @@ interface MenuItem {
 const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
   Title_NavbarMobile
 }) => {
+  const { phoneCatalogs } = useContext(PhoneCatalogContext);
+  const navigate = useNavigate();
+  const slugify = (text: string) => {
+    return text
+      .toString()
+      .normalize('NFD')
+      .replace(/\p{Diacritic}/gu, '')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+  };
   // const [leftVisible, setLeftVisible] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
   const [rightVisible, setRightVisible] = useState(false);
+  // SearchToggle Input
+  const [openSearch, setOpenSearch] = useState(false);
+  // Search
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState<IPhoneCatalog[]>([]);
 
   // Naviga Active
   const [activeItem, setActiveItem] = useState('Trang Chủ');
@@ -131,7 +154,22 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
   const toggleRightVisible = useCallback(() => {
     setRightVisible(visible => !visible);
   }, []);
-
+  // Search Input
+  const handleSearchToggle = () => {
+    setOpenSearch(!openSearch);
+  };
+  //
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+    if (query.trim() === '') {
+      setSearchResults([]);
+      return;
+    }
+    const phoneCatalogResults = phoneCatalogs.filter(phoneCatalog =>
+      phoneCatalog.name.toLowerCase().includes(query.toLowerCase())
+    );
+    setSearchResults(phoneCatalogResults);
+  };
   return (
     <div className="fixed z-[99999] block w-full bg-gradient-to-b from-white to-primary xl:hidden">
       {/* Menu 1 */}
@@ -197,6 +235,54 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
             <FaHome className="text-2xl text-white" />
           </Link>
           <p className="font-bold uppercase text-white">{Title_NavbarMobile}</p>
+          {/* Search Toggle*/}
+          <div className="absolute right-[50px]">
+            <div className="relative" onClick={handleSearchToggle}>
+              <IoSearch className="animate-bounce text-xl text-white" />
+              <div>
+                {openSearch && (
+                  <div className="absolute -right-[50px] top-10 h-screen w-screen bg-black bg-opacity-50">
+                    <Input
+                      value={searchQuery}
+                      onChange={e => handleSearch(e.target.value)}
+                      type="text"
+                      className="animate-exfadeIn w-screen rounded-none border-none text-black placeholder-primary focus:outline-none"
+                      autoFocus
+                      placeholder="Bạn muốn tìm gì..."
+                    />
+                  </div>
+                )}
+              </div>
+              {/* Search Result */}
+              <div>
+                {openSearch && searchResults.length > 0 && (
+                  <div className="absolute -right-[50px] top-[85px] z-[99999] max-h-[330px] w-screen divide-y-[1px] divide-gray-50 overflow-y-auto px-2 font-light text-black scrollbar-hide">
+                    {searchResults.map((phoneCatalog, index) => {
+                      const phoneUrl = slugify(phoneCatalog.name);
+                      return (
+                        <div
+                          key={index}
+                          onClick={() => {
+                            navigate(`/iphone/${phoneUrl}`);
+                            setSearchQuery('');
+                            setSearchResults([]);
+                          }}
+                          className="flex h-[60px] cursor-pointer items-center justify-start gap-2 bg-white p-3 hover:bg-primary hover:bg-opacity-10"
+                        >
+                          <img
+                            loading="lazy"
+                            src={phoneCatalog.img}
+                            className="h-10 w-10 object-cover"
+                          />
+                          <p>{phoneCatalog.name}</p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
           {/* RightVisible */}
           <div className="z-50">
             <Drawer
@@ -282,7 +368,6 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
               }
             >
               {/*  */}
-              {/*  */}
               <div
                 onClick={toggleRightVisible}
                 className="flex flex-row items-center justify-center gap-2 py-4 text-2xl xl:hidden"
@@ -292,23 +377,13 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                     rightVisible ? 'rotate-180 animate-ping' : 'rotate-0'
                   }`}
                 >
-                  {rightVisible ? <SlClose /> : <RxHamburgerMenu />}
+                  <p>{rightVisible ? <SlClose /> : <RxHamburgerMenu />}</p>
                 </div>
               </div>
             </Drawer>
           </div>
         </div>
       </div>
-      {/* Input Search */}
-      {/* <div className="relative flex items-center">
-        <Input
-          className="w-full text-black focus:outline-none"
-          type="text"
-        />
-        <div className="absolute right-2 h-5 w-5 cursor-pointer text-gray-50">
-          <IoSearchOutline />
-        </div>
-      </div> */}
     </div>
   );
 };

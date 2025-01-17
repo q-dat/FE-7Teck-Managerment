@@ -43,7 +43,8 @@ export default {
         modal: "16px",
       },
       animation: {
-        fadeIn: "fadeIn 1.5s ease-in-out forwards",
+        fadeIn: "fadeIn 1.8s ease-in-out forwards",
+        exfadeIn: "exfadeIn 0.3s ease-in-out forwards",
         zoomBorder: "zoomBorder 2s infinite ease-in-out",
         zoomBorderBtn: "zoomBorderBtn 2s infinite ease-in-out",
       },

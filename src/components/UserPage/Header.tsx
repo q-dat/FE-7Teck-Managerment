@@ -32,6 +32,7 @@ const Header: React.FC = () => {
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/^-+|-+$/g, '');
   };
+  // Search
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<IPhoneCatalog[]>([]);
   // Translation
@@ -165,33 +166,35 @@ const Header: React.FC = () => {
             onChange={e => handleSearch(e.target.value)}
             className="w-full border-none bg-transparent pl-1 text-sm text-black placeholder-primary shadow-none focus:placeholder-black focus:outline-none"
             placeholder="Bạn muốn tìm gì..."
-          ></Input>
+          />
           {/* Search Result */}
-          {searchResults.length > 0 && (
-            <div className="absolute left-0 top-[95px] z-[99999] max-h-[210px] w-full divide-y-[1px] divide-primary overflow-y-auto bg-white p-1 font-light text-black shadow scrollbar-hide">
-              {searchResults.map((phoneCatalog, index) => {
-                const phoneUrl = slugify(phoneCatalog.name);
-                return (
-                  <div
-                    key={index}
-                    onClick={() => {
-                      navigate(`/iphone/${phoneUrl}`);
-                      setSearchQuery('');
-                      setSearchResults([]);
-                    }}
-                    className="flex h-[60px] cursor-pointer items-center justify-start gap-2 p-3 hover:bg-primary hover:bg-opacity-10"
-                  >
-                    <img
-                      loading="lazy"
-                      src={phoneCatalog.img}
-                      className="h-10 w-10 object-cover"
-                    />
-                    <p>{phoneCatalog.name}</p>
-                  </div>
-                );
-              })}
-            </div>
-          )}
+          <div>
+            {searchResults.length > 0 && (
+              <div className="absolute left-0 top-[95px] z-[99999] max-h-[210px] w-full divide-y-[1px] divide-primary overflow-y-auto bg-white p-1 font-light text-black shadow scrollbar-hide">
+                {searchResults.map((phoneCatalog, index) => {
+                  const phoneUrl = slugify(phoneCatalog.name);
+                  return (
+                    <div
+                      key={index}
+                      onClick={() => {
+                        navigate(`/iphone/${phoneUrl}`);
+                        setSearchQuery('');
+                        setSearchResults([]);
+                      }}
+                      className="flex h-[60px] cursor-pointer items-center justify-start gap-2 p-3 hover:bg-primary hover:bg-opacity-10"
+                    >
+                      <img
+                        loading="lazy"
+                        src={phoneCatalog.img}
+                        className="h-10 w-10 object-cover"
+                      />
+                      <p>{phoneCatalog.name}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
         </div>
         <div className="flex w-full flex-row items-center justify-end gap-5">
           <div className="flex items-center">
@@ -224,7 +227,6 @@ const Header: React.FC = () => {
         className={`h-[60px] w-full transform flex-row items-center justify-evenly bg-white py-2 shadow-md transition-transform delay-100 duration-300 ease-in-out xl:flex ${showMenu ? 'translate-y-0' : '-translate-y-[40px]'}`}
       >
         <div>
-          {' '}
           <Link to="/" onClick={() => setActiveItem('Trang Chủ')}>
             <img
               className="rounded-full object-cover"

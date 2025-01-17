@@ -27,9 +27,20 @@
     opacity: 1;
   }
 }
+@keyframes exfadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 .animation-fadeIn {
-  animation: fadeIn 1.5s ease-in-out forwards;
+  animation: fadeIn 1.8s ease-in-out forwards;
+}
+.animation-exfadeIn {
+  animation: exfadeIn 0.3s ease-in-out forwards;
 }
 
 /* Contact-Form */
