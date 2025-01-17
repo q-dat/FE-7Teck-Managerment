@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Button, Input, Menu } from 'react-daisyui';
 import { FaChevronDown, FaMagic } from 'react-icons/fa';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { IconType } from 'react-icons/lib';
 import { Logo } from '../../assets/images';
 import { RiPagesLine } from 'react-icons/ri';
@@ -10,6 +10,8 @@ import { RiExternalLinkFill } from 'react-icons/ri';
 import { HiLocationMarker } from 'react-icons/hi';
 import { FaWindows } from 'react-icons/fa';
 import { RiMacbookFill } from 'react-icons/ri';
+import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
+import { IPhoneCatalog } from '../../types/type/phone-catalog/phone-catalog';
 
 interface MenuItem {
   name: string;
@@ -19,8 +21,22 @@ interface MenuItem {
 }
 
 const Header: React.FC = () => {
+  const { phoneCatalogs } = useContext(PhoneCatalogContext);
+  const navigate = useNavigate();
+  const slugify = (text: string) => {
+    return text
+      .toString()
+      .normalize('NFD')
+      .replace(/\p{Diacritic}/gu, '')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+  };
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState<IPhoneCatalog[]>([]);
   // Translation
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
+  // SubMenu
   const handleMouseEnter = (name: string) => {
     setOpenSubmenu(name);
   };
@@ -28,8 +44,8 @@ const Header: React.FC = () => {
   const handleMouseLeave = () => {
     setOpenSubmenu(null);
   };
-
   // Naviga Active
+
   const [activeItem, setActiveItem] = useState('Trang Chủ');
   const location = useLocation();
   //
@@ -122,25 +138,60 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
+  //
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+    if (query.trim() === '') {
+      setSearchResults([]);
+      return;
+    }
+    const phoneCatalogResults = phoneCatalogs.filter(phoneCatalog =>
+      phoneCatalog.name.toLowerCase().includes(query.toLowerCase())
+    );
+    setSearchResults(phoneCatalogResults);
+  };
   return (
     <div>
       {/* Desktop */}
       <div className="fixed z-[99999] hidden w-full flex-col xl:block">
         {/* Search Result */}
-        <div className="absolute left-0 top-9 z-50 hidden bg-primary font-light text-white shadow">
-          <div className="flex items-center justify-start gap-2 p-2">
-            <img loading="lazy" src={Logo} className="h-10 w-10 object-cover" />
-            <p>IPhone 16 ProMax</p>
+
+        {searchResults.length > 0 && (
+          <div className="absolute left-0 top-10 z-50 divide-y-[1px] divide-primary p-1 bg-white font-light text-black shadow">
+            {searchResults.map((phoneCatalog, index) => {
+              const phoneUrl = slugify(phoneCatalog.name);
+              return (
+                <div
+                  key={index}
+                  onClick={() => {
+                    navigate(`/iphone/${phoneUrl}`);
+                    setSearchQuery('');
+                    setSearchResults([]);
+                  }}
+                  className="flex cursor-pointer items-center justify-start gap-2 p-3 hover:bg-primary hover:bg-opacity-10 h-[52px]"
+                >
+                  <img
+                    loading="lazy"
+                    src={phoneCatalog.img}
+                    className="h-10 w-10 object-cover"
+                  />
+                  <p>{phoneCatalog.name}</p>
+                </div>
+              );
+            })}
           </div>
-        </div>
+        )}
         {/* Menu 1 */}
         <div
           className={`flex h-[40px] w-full transform flex-row items-center justify-between border-b bg-primary px-10 text-xs text-white transition-transform delay-100 duration-300 ease-in-out ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}
         >
-          <div className="flex w-full flex-row items-center justify-center gap-1">
-            <IoSearch className="animate-bounce text-xl" />
+          <div className="flex w-full flex-row items-center justify-center gap-1 rounded-md bg-white pl-2">
+            <IoSearch className="animate-bounce text-xl text-primary" />
             <Input
-              className="w-full border-none bg-transparent pl-1 text-sm placeholder-white shadow-none focus:placeholder-black focus:outline-none"
+              size="sm"
+              value={searchQuery}
+              onChange={e => handleSearch(e.target.value)}
+              className="w-full border-none bg-transparent pl-1 text-sm text-black placeholder-primary shadow-none focus:placeholder-black focus:outline-none"
               placeholder="Bạn muốn tìm gì..."
             ></Input>
           </div>

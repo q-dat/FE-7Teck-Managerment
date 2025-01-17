@@ -12,6 +12,7 @@ import { PhoneCatalogContext } from '../../../context/phone-catalog/PhoneCatalog
 import { IoIosArrowForward } from 'react-icons/io';
 
 const PhoneFC: React.FC = () => {
+  const { phoneCatalogs } = useContext(PhoneCatalogContext);
   const navigate = useNavigate();
   const slugify = (text: string) => {
     return text
@@ -22,7 +23,6 @@ const PhoneFC: React.FC = () => {
       .replace(/[^a-z0-9]+/g, '-') // Thay thế khoảng trắng và ký tự không phải chữ cái bằng dấu gạch ngang
       .replace(/^-+|-+$/g, ''); // Loại bỏ dấu gạch ngang ở đầu và cuối chuỗi
   };
-  const { phoneCatalogs } = useContext(PhoneCatalogContext);
   const [isLeftVisible, setIsLeftVisible] = useState(true);
   const [isRightVisible, setIsRightVisible] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
