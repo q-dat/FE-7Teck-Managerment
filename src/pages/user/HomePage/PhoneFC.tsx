@@ -9,7 +9,6 @@ import { Button } from 'react-daisyui';
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
 import { Link, useNavigate } from 'react-router-dom';
 import { PhoneCatalogContext } from '../../../context/phone-catalog/PhoneCatalogContext';
-import { TbZoomExclamationFilled } from 'react-icons/tb';
 import { IoIosArrowForward } from 'react-icons/io';
 
 const PhoneFC: React.FC = () => {
@@ -85,19 +84,16 @@ const PhoneFC: React.FC = () => {
               className="group relative flex h-full w-[185px] flex-col justify-between rounded-md border border-[#f2f4f7] text-black"
             >
               <div
-                className="relative min-h-[245px] w-full cursor-pointer"
+                className="min-h-[245px] w-full cursor-pointer"
                 // GetByID
                 // onClick={() => navigate(`/phone/${phone._id}`)}
                 onClick={() => navigate(`/iphone/${phoneUrl}`)}
               >
                 <img
                   loading="lazy"
-                  className="h-full w-full rounded-[5px] rounded-b-none object-cover"
+                  className="h-full w-full rounded-[5px] rounded-b-none object-contain"
                   src={phone.img}
                 />
-                <p className="absolute bottom-0 right-0">
-                  <TbZoomExclamationFilled className="text-lg text-white" />
-                </p>
               </div>
               {/*  */}
               <div className="flex h-full w-full flex-col items-start justify-between gap-1">
@@ -121,7 +117,7 @@ const PhoneFC: React.FC = () => {
                       {(phone.price * 1000).toLocaleString('vi-VN')}₫
                     </span>
                   </p>
-                  <Link to="/checkout" className="z-50 w-full">
+                  <Link to="/thanh-toan" className="z-50 w-full">
                     <Button
                       size="xs"
                       className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary hover:bg-primary hover:bg-opacity-20"

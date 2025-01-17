@@ -6,7 +6,6 @@ import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogCon
 import { Button } from 'react-daisyui';
 import LoadingLocal from '../../components/orther/loading/LoadingLocal';
 import ErrorLoading from '../../components/orther/error/ErrorLoading';
-import { TbZoomExclamationFilled } from 'react-icons/tb';
 
 const PhonePage: React.FC = () => {
   const { loading, error, phoneCatalogs } = useContext(PhoneCatalogContext);
@@ -81,16 +80,13 @@ const PhonePage: React.FC = () => {
                   >
                     <div
                       onClick={() => navigate(`/iphone/${phoneUrl}`)}
-                      className="relative min-h-[270px] w-full cursor-pointer rounded-md rounded-b-none bg-white"
+                      className="min-h-[270px] w-full cursor-pointer rounded-md rounded-b-none bg-white"
                     >
                       <img
                         loading="lazy"
-                        className="h-full w-full rounded-[5px] rounded-b-none object-cover"
+                        className="h-full w-full rounded-[5px] rounded-b-none object-contain"
                         src={phone?.img}
                       />
-                      <p className="absolute bottom-0 right-0">
-                        <TbZoomExclamationFilled className="text-lg text-white" />
-                      </p>
                     </div>
                     {/*  */}
                     <div className="flex h-full w-full flex-col items-start justify-between gap-1">
@@ -114,7 +110,7 @@ const PhonePage: React.FC = () => {
                             {(phone.price * 1000).toLocaleString('vi-VN')}₫
                           </span>
                         </p>
-                        <Link to="/checkout" className="z-50 w-full">
+                        <Link to="/thanh-toan" className="z-50 w-full">
                           <Button
                             size="xs"
                             className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary hover:bg-primary hover:bg-opacity-20"

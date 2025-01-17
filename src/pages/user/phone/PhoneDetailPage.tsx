@@ -224,7 +224,7 @@ const ProductDetailPage: React.FC = () => {
                   )}
                 </div>
                 <div className="flex w-full flex-col items-center justify-center gap-1">
-                  <Link to="/checkout">
+                  <Link to="/thanh-toan">
                     <Button
                       size="sm"
                       className="w-[300px] rounded-md border-none bg-primary text-white hover:bg-primary hover:bg-opacity-60 xl:w-[400px]"

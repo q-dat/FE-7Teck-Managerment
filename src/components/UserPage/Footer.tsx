@@ -23,24 +23,27 @@ const FooterFC: React.FC = () => {
         {/* 1 */}
         <div className="w-full">
           <Footer.Title className="border-b-[1px]">Thông Tin</Footer.Title>
-          <Link className="font-light hover:font-semibold" to="/phone-list">
+          <Link className="font-light hover:font-semibold" to="/iphone">
             Điện Thoại IPhone
           </Link>
-          <Link className="font-light hover:font-semibold" to="/ipad-list">
+          <Link className="font-light hover:font-semibold" to="/ipad">
             iPad/ Máy Tính Bảng
           </Link>
-          <Link className="font-light hover:font-semibold" to="/window-list">
+          <Link className="font-light hover:font-semibold" to="/window">
             Laptop Window
           </Link>
-          <Link className="font-light hover:font-semibold" to="/macbook-list">
+          <Link className="font-light hover:font-semibold" to="/macbook">
             Laptop Macbook
           </Link>
-          <Link className="font-light hover:font-semibold" to="/price-list">
+          <Link className="font-light hover:font-semibold" to="/bang-gia-thu-mua">
             Bảng Giá Thu Mua
           </Link>
-          <Link className="font-light hover:font-semibold" to="/about-us">
-            Về Chúng Tôi
-          </Link>
+        </div>
+        {/* 2 */}
+        <div className="w-full">
+          <Footer.Title className="border-b-[1px]">
+            Chính Sách Bán Hàng
+          </Footer.Title>
           <Link
             className="font-light hover:font-semibold"
             to="/warranty-policy"
@@ -48,23 +51,10 @@ const FooterFC: React.FC = () => {
             Chính Sách Bảo Hành
           </Link>
         </div>
-        {/* 2 */}
-        <div className="w-full">
-          <Footer.Title className="border-b-[1px]">Chính Sách</Footer.Title>
-          <Link
-            className="font-light hover:font-semibold"
-            to="/terms-of-service"
-          >
-            Điều Khoản Dịch Vụ
-          </Link>
-          <Link className="font-light hover:font-semibold" to="/privacy-policy">
-            Chính Sách Bảo Mật
-          </Link>
-        </div>
         {/* 3 */}
         <div className="w-full">
           <Footer.Title className="border-b-[1px]">
-            Liên Hệ Với Chúng Tôi
+            Liên Hệ & Mua Hàng
           </Footer.Title>
           <div className="mb-2 flex flex-row items-center justify-center gap-5 text-3xl">
             <Link
