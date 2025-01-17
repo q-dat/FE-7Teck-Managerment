@@ -8,18 +8,19 @@ interface InputModalProps {
   name?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   multiple?: boolean;
+  className?: React.ReactNode;
 }
 
 const InputModal = forwardRef<HTMLInputElement, InputModalProps>(
-  ({ placeholder, type, value, name, onChange, multiple }, ref) => {
+  ({ placeholder, type, value, name, onChange, multiple, className }, ref) => {
     return (
-      <div className="mb-4 border-b w-full">
+      <div className="mb-4 w-full border-b">
         <Input
           ref={ref}
           value={value}
           type={type}
           name={name}
-          className="w-full rounded-md border-none bg-white p-0 text-sm font-light text-black placeholder-black focus:outline-none dark:bg-transparent dark:text-white dark:placeholder-white"
+          className={`w-full rounded-md border-none bg-white p-0 text-sm font-light text-black placeholder-black focus:outline-none dark:bg-transparent dark:text-white dark:placeholder-white ${className} `}
           placeholder={placeholder}
           onChange={onChange}
           style={{

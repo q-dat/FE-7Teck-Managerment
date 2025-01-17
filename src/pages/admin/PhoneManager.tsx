@@ -91,10 +91,11 @@ const PhoneManager: React.FC = () => {
             <span>Ảnh Thu Nhỏ</span>
             <span>Tên Sản Phẩm</span>
             <span>Giá</span>
-            <span>Giá giảm</span>
-            <span>Tình trạng</span>
+            <span>Giá Giảm</span>
+            <span>Tình Trạng</span>
             <span>Mô Tả</span>
-            <span>Ngày tạo</span>
+            <span>Ghi Chú</span>
+            <span>Ngày Tạo</span>
             <span>Hành Động</span>
           </Table.Head>
         }
@@ -132,19 +133,22 @@ const PhoneManager: React.FC = () => {
                       <span>Không có ảnh thu nhỏ</span>
                     )}
                   </span>
-                  <span>{phone?.name}</span>
+                  <span className="line-clamp-3">{phone?.name}</span>
                   <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
                     {(phone.price * 1000).toLocaleString('vi-VN')}đ
                   </span>
                   <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
                     {(phone?.sale * 1000).toLocaleString('vi-VN')}₫
                   </span>
-                  <span className="line-clamp-1">
-                    {phone?.status || 'Không có trạng thái!'}
+                  <span className="line-clamp-3">
+                    {phone?.status || 'Không có tình trạng!'}
                   </span>
-                  <span className="line-clamp-1">
+                  <span className="line-clamp-3">
                     {phone?.des || 'Không có mô tả!'}
                   </span>
+                  <mark className="line-clamp-3">
+                    {phone?.note || 'Không có ghi chú!'}
+                  </mark>
                   <span>
                     {new Date(phone?.createdAt).toLocaleString('vi-VN')}
                   </span>

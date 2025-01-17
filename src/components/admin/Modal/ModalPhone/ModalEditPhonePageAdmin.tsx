@@ -66,6 +66,7 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
       setValue('sale', phoneData.sale);
       setValue('status', phoneData.status);
       setValue('des', phoneData.des);
+      setValue('note', phoneData.note);
       setValue('img', phoneData.img);
       setValue('thumbnail', phoneData.thumbnail);
       setValue('createdAt', phoneData.createdAt);
@@ -86,6 +87,7 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
     data.append('sale', formData.sale?.toString() || '');
     data.append('status', formData.status || '');
     data.append('des', formData.des || '');
+    data.append('note', formData.note || '');
 
     // Thêm ảnh chính
     const imgFile = watch('img');
@@ -142,6 +144,13 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
           <p className="font-bold text-black dark:text-white">
             Cập nhật sản phẩm
           </p>
+          <LabelForm title={'Ghi chú (Chỉ mỗi admin)'} />
+          <InputModal
+            className="bg-yellow-400 px-2"
+            type="text"
+            {...register('note')}
+            placeholder="Điền ghi chú..."
+          />
           <div className="flex w-full flex-row items-start justify-between gap-10">
             <div className="flex w-full flex-col items-start justify-center">
               <LabelForm title={'Tên danh mục'} />

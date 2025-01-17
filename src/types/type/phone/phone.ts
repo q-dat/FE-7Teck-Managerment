@@ -11,6 +11,7 @@ export interface IPhone {
   sale: number;
   status: string;
   des?: string;
+  note?: string;
   createdAt: string;
   updatedAt: string;
 }
