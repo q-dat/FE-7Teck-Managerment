@@ -133,14 +133,14 @@ const ProductDetailPage: React.FC = () => {
         <div className="mt-2 px-2 xl:px-[150px]">
           <div className="flex flex-col items-start justify-start gap-5 xl:flex-row">
             {/* IMG */}
-            <div className="flex w-full flex-col gap-5">
+            <div className="flex w-full flex-col items-start justify-start gap-5">
               <Zoom>
                 <div className="relative">
                   <img
                     loading="lazy"
                     src={selectedImage || phone?.img}
                     alt={phone?.name}
-                    className="h-[500px] w-full rounded-md object-cover xl:object-contain xl:h-[490px]"
+                    className="h-[500px] w-full rounded-md object-cover xl:h-[490px] xl:object-contain"
                   />
                   <div className="pointer-events-none absolute bottom-1 right-1">
                     <MdZoomOutMap className="rounded-sm bg-black bg-opacity-10 p-[1px] text-2xl text-white" />
