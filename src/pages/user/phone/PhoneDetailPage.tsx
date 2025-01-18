@@ -140,7 +140,7 @@ const ProductDetailPage: React.FC = () => {
                     loading="lazy"
                     src={selectedImage || phone?.img}
                     alt={phone?.name}
-                    className="h-[500px] w-full rounded-md object-contain xl:h-[490px]"
+                    className="h-[500px] w-full rounded-md object-cover xl:object-contain xl:h-[490px]"
                   />
                   <div className="pointer-events-none absolute bottom-1 right-1">
                     <MdZoomOutMap className="rounded-sm bg-black bg-opacity-10 p-[1px] text-2xl text-white" />

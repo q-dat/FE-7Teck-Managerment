@@ -132,7 +132,7 @@ const PhoneFC: React.FC = () => {
           );
         })}
       </div>
-      <Link to="/phone-list">
+      <Link to="/iphone">
         <p className="flex cursor-pointer items-center justify-center bg-gradient-to-r from-white via-secondary to-white py-1 text-sm text-white xl:rounded-b-lg">
           Xem Thêm Điện Thoại
           {/* ({phoneCatalogs.length}) */}
