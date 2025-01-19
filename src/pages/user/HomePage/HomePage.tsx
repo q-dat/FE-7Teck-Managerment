@@ -75,6 +75,10 @@ const items = [
 ];
 
 const HomePage: React.FC = () => {
+  // Title Tag
+  useEffect(() => {
+    document.title = '7Teck.vn - Trang Chủ';
+  }, []);
   const { posts, getAllPosts } = useContext(PostContext);
   const [selectedPost, setSelectedPost] = useState<(typeof posts)[0] | null>(
     null
@@ -95,7 +99,7 @@ const HomePage: React.FC = () => {
     const titleSlug = encodeURIComponent(
       post.title.toLowerCase().replace(/\s+/g, '-')
     );
-    navigate(`/post-detail/${titleSlug}`);
+    navigate(`/tin-tuc/${titleSlug}`);
   };
   return (
     <div>
@@ -287,7 +291,7 @@ const HomePage: React.FC = () => {
               ))}
             </div>
           </div>
-          <Link to="/news">
+          <Link to="/tin-tuc-moi-nhat">
             <p className="mt-2 flex w-full items-center justify-center gap-1 bg-gradient-to-r from-white via-secondary to-white py-1 text-sm text-white">
               Xem Thêm Bản Tin
               <span>

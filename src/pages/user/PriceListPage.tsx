@@ -15,6 +15,10 @@ export interface IPhoneCatalog {
 }
 
 const PriceListPage: React.FC = () => {
+  // Title Tag
+  useEffect(() => {
+    document.title = `Bảng Giá Thu Mua - 7Teck`;
+  });
   const [activePhoneItem, setActivePhoneItem] = useState<string>('Iphone 15');
   const [activeIpadItem, setActiveIpadItem] = useState<string>('Ipad Pro');
   const [activeLaptopItem, setActiveLaptopItem] =

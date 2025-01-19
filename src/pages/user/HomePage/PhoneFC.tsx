@@ -107,7 +107,7 @@ const PhoneFC: React.FC = () => {
                   </p>
 
                   <p className="xl:group-hover:text-secondary">
-                    Điện thoại {phone.name}
+                    Điện Thoại {phone.name}
                   </p>
                 </div>
                 <div className="w-full p-1">

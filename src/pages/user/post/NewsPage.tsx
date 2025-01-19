@@ -4,6 +4,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { PostContext } from '../../../context/post/PostContext';
 
 const NewsPage: React.FC = () => {
+  // Title Tag
+  useEffect(() => {
+    document.title = 'Tin Tức Mới Nhất - 7Teck';
+  }, []);
   const { posts, getAllPosts } = useContext(PostContext);
   const [selectedPost, setSelectedPost] = useState<(typeof posts)[0] | null>(
     null
@@ -47,14 +51,11 @@ const NewsPage: React.FC = () => {
             </li>
           </ul>
         </div>
-        <div className="px-2 xl:px-[100px]">
+        <div className="px-2 xl:px-20">
           <div className="py-3 text-center text-[30px] font-bold text-primary">
             Tin mới nhất
           </div>
-          <div
-            className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4"
-            data-aos="fade-up"
-          >
+          <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
             {posts.map(post => (
               <div
                 key={post._id}
@@ -65,17 +66,18 @@ const NewsPage: React.FC = () => {
                   {post.catalog}
                 </p>
                 <img
+                  loading="lazy"
                   src={post.imageUrl}
                   alt="Ảnh đại diện"
                   className="h-[200px] w-full rounded-sm border object-cover xl:h-[300px]"
                 />
-                <p className="line-clamp-2 text-[18px] font-bold text-primary">
+                <p className="line-clamp-3 py-1 text-sm font-bold text-primary">
                   {post.title}
                 </p>
                 <hr />
                 <div
                   dangerouslySetInnerHTML={{ __html: post.content }}
-                  className="line-clamp-5 text-[14px] text-black xl:line-clamp-6"
+                  className="line-clamp-4 text-xs text-black"
                 ></div>
                 <p className="pt-2 text-[12px] text-primary">
                   {new Date(post.updatedAt).toLocaleDateString('vi-VN')}

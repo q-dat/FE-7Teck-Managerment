@@ -32,6 +32,12 @@ const ProductDetailPage: React.FC = () => {
   const [isRightVisible, setIsRightVisible] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = useState<string>('specs');
+    // Title Tag
+    useEffect(() => {
+      if (phone) {
+        document.title = `${phone?.name}`;
+      }
+    }, [phone]);
   //
   useLayoutEffect(() => {
     updateScrollButtons();

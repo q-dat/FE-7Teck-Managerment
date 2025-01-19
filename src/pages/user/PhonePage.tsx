@@ -8,6 +8,10 @@ import LoadingLocal from '../../components/orther/loading/LoadingLocal';
 import ErrorLoading from '../../components/orther/error/ErrorLoading';
 
 const PhonePage: React.FC = () => {
+  // Title Tag
+  useEffect(() => {
+    document.title = `Điện Thoại iPhone - 7Teck`;
+  });
   const { loading, error, phoneCatalogs } = useContext(PhoneCatalogContext);
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
@@ -100,7 +104,7 @@ const PhonePage: React.FC = () => {
                         </p>
 
                         <p className="xl:group-hover:text-secondary">
-                          Điện thoại {phone.name}
+                          Điện Thoại {phone.name}
                         </p>
                       </div>
                       <div className="w-full p-1">

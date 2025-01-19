@@ -26,6 +26,13 @@ const ProductByCatalog = () => {
   const filteredPhones = phones.filter(
     phone => slugify(phone?.name) === catalog
   );
+  // Title Tag
+  useEffect(() => {
+    if (filteredPhones.length > 0) {
+      document.title = `${filteredPhones[0]?.name}`;
+    }
+  }, [filteredPhones]);
+  // Scroll To Top
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -62,20 +69,20 @@ const ProductByCatalog = () => {
                   key={phone?._id}
                   className="group relative flex h-full flex-col justify-between rounded-md border border-white text-black"
                 >
-                    <Link
-                      className="flex h-full w-full items-center justify-center rounded-md rounded-b-none bg-white"
-                      to={`/chi-tiet-iphone/${phone?._id}`}
-                    >
-                      <img
-                        loading="lazy"
-                        className="h-full w-full rounded-[5px] rounded-b-none object-contain"
-                        src={phone?.img}
-                      />
-                    </Link>
+                  <Link
+                    className="flex h-full w-full items-center justify-center rounded-md rounded-b-none bg-white"
+                    to={`/chi-tiet-iphone/${phone?._id}`}
+                  >
+                    <img
+                      loading="lazy"
+                      className="h-full w-full rounded-[5px] rounded-b-none object-contain"
+                      src={phone?.img}
+                    />
+                  </Link>
                   {/*  */}
                   <div className="flex flex-col items-start justify-center gap-1 p-1">
                     <p className="xl:group-hover:text-secondary">
-                      Điện thoại {phone?.name}
+                      Điện Thoại {phone?.name}
                     </p>
                     <p className="text-gray-500">
                       <span className="text-red-500">
