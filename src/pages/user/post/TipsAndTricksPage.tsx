@@ -3,13 +3,15 @@ import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
 import { Link, useNavigate } from 'react-router-dom';
 import { PostContext } from '../../../context/post/PostContext';
 import TimeAgo from '../../../components/orther/timeAgo/TimeAgo';
+import ErrorLoading from '../../../components/orther/error/ErrorLoading';
+import { LoadingLocal } from '../../../components/orther/loading';
 
 const TipsAndTricksPage: React.FC = () => {
   // Title Tag
   useEffect(() => {
     document.title = 'Thủ Thuật Công Nghệ Và Mẹo Hay';
   }, []);
-  const { posts, getAllPosts } = useContext(PostContext);
+  const { posts, loading, error } = useContext(PostContext);
   const [selectedPost, setSelectedPost] = useState<(typeof posts)[0] | null>(
     null
   );
@@ -21,9 +23,6 @@ const TipsAndTricksPage: React.FC = () => {
   }, []);
 
   const navigate = useNavigate();
-  useEffect(() => {
-    getAllPosts();
-  }, [getAllPosts]);
 
   useEffect(() => {
     if (posts.length > 0 && !selectedPost) {
@@ -38,6 +37,8 @@ const TipsAndTricksPage: React.FC = () => {
     navigate(`/tin-tuc/${titleSlug}`);
   };
 
+  if (loading.getAll) return <LoadingLocal />;
+  if (error) return <ErrorLoading />;
   return (
     <div>
       <HeaderResponsive Title_NavbarMobile="Tin Tức" />
@@ -54,7 +55,7 @@ const TipsAndTricksPage: React.FC = () => {
         </div>
         <div className="px-2 xl:px-20">
           <div className="py-3 text-center text-[30px] font-bold text-primary">
-          Thủ Thuật Công Nghệ Và Mẹo Hay
+            Thủ Thuật Công Nghệ Và Mẹo Hay
           </div>
           <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
             {posts.map(post => (

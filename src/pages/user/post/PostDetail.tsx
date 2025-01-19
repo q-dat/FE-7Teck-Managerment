@@ -4,10 +4,12 @@ import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
 import { PostContext } from '../../../context/post/PostContext';
 import { FaArrowLeftLong } from 'react-icons/fa6';
 import TimeAgo from '../../../components/orther/timeAgo/TimeAgo';
+import ErrorLoading from '../../../components/orther/error/ErrorLoading';
+import { LoadingLocal } from '../../../components/orther/loading';
 
 const PostDetail: React.FC = () => {
   const navigate = useNavigate();
-  const { posts } = useContext(PostContext);
+  const { posts, loading, error } = useContext(PostContext);
   const { title } = useParams<{ title: string }>();
   const [selectedPost, setSelectedPost] = useState<(typeof posts)[0] | null>(
     null
@@ -47,6 +49,9 @@ const PostDetail: React.FC = () => {
 
   const otherPosts = posts.filter(post => post?._id !== selectedPost?._id);
   8;
+
+  if (loading.getAll) return <LoadingLocal />;
+  if (error) return <ErrorLoading />;
   return (
     <div>
       <HeaderResponsive Title_NavbarMobile="Bài viết" />
