@@ -3,12 +3,12 @@ import { IPhone } from '../../types/type/phone/phone';
 
 // Get All Phones
 export const getAllPhonesApi = () => {
-  return axios.get<{ Phones: IPhone[] }>('/api/phones');
+  return axios.get<{ phones: IPhone[] }>('/api/phones');
 };
 
 // Get Phone By ID
 export const getPhoneByIdApi = (_id: string) => {
-  return axios.get<{ Phone: IPhone }>(`/api/phone/${_id}`);
+  return axios.get<{ phone: IPhone }>(`/api/phone/${_id}`);
 };
 
 // Create Phone
@@ -21,8 +21,8 @@ export const createPhoneApi = (formData: FormData) => {
 };
 
 // Update Phone
-export const updatePhoneApi = async (_id: string, PhoneData: FormData) => {
-  const response = await axios.put(`/api/phone/${_id}`, PhoneData, {
+export const updatePhoneApi = async (_id: string, phoneData: FormData) => {
+  const response = await axios.put(`/api/phone/${_id}`, phoneData, {
     headers: {
       'Content-Type': 'multipart/form-data'
     }

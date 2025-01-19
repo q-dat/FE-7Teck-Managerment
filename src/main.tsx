@@ -10,22 +10,25 @@ import { PhoneProvider } from './context/phone/PhoneContext.tsx';
 import { PostProvider } from './context/post/PostContext.tsx';
 import { ToastContainer } from 'react-toastify';
 import { ParallaxProvider } from 'react-scroll-parallax';
+import { GalleryProvider } from './context/gallery/GalleryContext.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>
       <Suspense fallback={<LoadingPage loading={true} />}>
         <ErrorBoundary>
-          <PostProvider>
-            <PhoneCatalogProvider>
-              <PhoneProvider>
-                <ParallaxProvider>
-                  <App />
-                  <ToastContainer />
-                </ParallaxProvider>
-              </PhoneProvider>
-            </PhoneCatalogProvider>
-          </PostProvider>
+          <GalleryProvider>
+            <PostProvider>
+              <PhoneCatalogProvider>
+                <PhoneProvider>
+                  <ParallaxProvider>
+                    <App />
+                    <ToastContainer />
+                  </ParallaxProvider>
+                </PhoneProvider>
+              </PhoneCatalogProvider>
+            </PostProvider>
+          </GalleryProvider>
         </ErrorBoundary>
       </Suspense>
     </BrowserRouter>
