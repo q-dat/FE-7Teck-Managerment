@@ -1,13 +1,26 @@
 import React, { useContext, useEffect, useState } from 'react';
 import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
+import { Link, useNavigate } from 'react-router-dom';
 import { PostContext } from '../../../context/post/PostContext';
+import TimeAgo from '../../../components/orther/timeAgo/TimeAgo';
 
 const TipsAndTricksPage: React.FC = () => {
+  // Title Tag
+  useEffect(() => {
+    document.title = 'Thủ Thuật Công Nghệ Và Mẹo Hay';
+  }, []);
   const { posts, getAllPosts } = useContext(PostContext);
   const [selectedPost, setSelectedPost] = useState<(typeof posts)[0] | null>(
     null
   );
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }, []);
 
+  const navigate = useNavigate();
   useEffect(() => {
     getAllPosts();
   }, [getAllPosts]);
@@ -17,66 +30,63 @@ const TipsAndTricksPage: React.FC = () => {
       setSelectedPost(posts[0]);
     }
   }, [posts, selectedPost]);
-  //
-  const handlePostSelect = (post: (typeof posts)[0]) => {
-    setSelectedPost(post);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 
-  const otherPosts = posts.filter(post => post._id !== selectedPost?._id);
+  const handlePostClick = (post: (typeof posts)[0]) => {
+    const titleSlug = encodeURIComponent(
+      post?.title.toLowerCase().replace(/\s+/g, '-')
+    );
+    navigate(`/tin-tuc/${titleSlug}`);
+  };
 
   return (
     <div>
-      <HeaderResponsive Title_NavbarMobile="Thủ thuật - Mẹo" />
+      <HeaderResponsive Title_NavbarMobile="Tin Tức" />
       <div className="py-[60px] xl:pt-0">
-        <div className="px-2 xl:px-[100px]">
-          {selectedPost && (
-            <div className="mb-10">
-              <p className="text-[35px] font-bold">{selectedPost.title}</p>
-              <p className="text-[14px] font-light">
-                Danh mục:&nbsp;{selectedPost.catalog}
-              </p>
-              <p className="text-[14px]">
-                Xuất bản:&nbsp;
-                {new Date(selectedPost.updatedAt).toLocaleDateString('vi-VN')}
-              </p>
-              <hr className="my-4" />
+        <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow lg:px-20">
+          <ul className="font-light">
+            <li>
+              <Link to="/">Trang Chủ</Link>
+            </li>
+            <li>
+              <Link to="">Thủ Thuật - Mẹo</Link>
+            </li>
+          </ul>
+        </div>
+        <div className="px-2 xl:px-20">
+          <div className="py-3 text-center text-[30px] font-bold text-primary">
+          Thủ Thuật Công Nghệ Và Mẹo Hay
+          </div>
+          <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
+            {posts.map(post => (
               <div
-                dangerouslySetInnerHTML={{ __html: selectedPost.content }}
-                className="text-[18px]"
-              ></div>
-            </div>
-          )}
-
-          <div>
-            <h2 className="mb-6 text-[24px] font-semibold">Bài viết khác</h2>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {otherPosts.map(post => (
+                key={post?._id}
+                className="relative cursor-pointer rounded border border-gray-50 bg-white p-2 shadow-inner hover:shadow-lg"
+                onClick={() => handlePostClick(post)}
+              >
+                <p className="absolute left-1 top-1 rounded-sm bg-primary px-2 text-[12px] text-white">
+                  {post?.catalog}
+                </p>
+                <img
+                  loading="lazy"
+                  src={post?.imageUrl}
+                  alt="Ảnh đại diện"
+                  className="h-[200px] w-full rounded-sm border object-cover xl:h-[300px]"
+                />
+                <p className="line-clamp-3 py-1 text-sm font-bold text-primary">
+                  {post?.title}
+                </p>
+                <hr />
                 <div
-                  key={post._id}
-                  className="cursor-pointer rounded border p-4 shadow transition hover:shadow-lg"
-                  onClick={() => handlePostSelect(post)}
-                >
-                  <img
-                    src={post.imageUrl}
-                    alt="Ảnh đại diện"
-                    className="h-[250px] w-full object-cover"
-                  />
-                  <p className="text-[30px] font-bold">{post.title}</p>
-                  <p className="text-[14px] font-light">
-                    Danh mục:&nbsp;{post.catalog}
-                  </p>
-                  <p className="text-[14px]">
-                    Xuất bản:&nbsp;
-                    {new Date(post.updatedAt).toLocaleDateString('vi-VN')}
-                  </p>
-                  <div
-                    dangerouslySetInnerHTML={{ __html: post.content }}
-                    className="line-clamp-6 text-[18px]"
-                  ></div>{' '}
-                </div>
-              ))}
-            </div>
+                  dangerouslySetInnerHTML={{ __html: post?.content }}
+                  className="line-clamp-4 text-xs text-black"
+                ></div>
+                <p className="pt-2 text-[12px] text-primary">
+                  {new Date(post?.updatedAt).toLocaleDateString('vi-VN')}
+                  &nbsp;(
+                  <TimeAgo date={post?.updatedAt} />)
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

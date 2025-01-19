@@ -15,6 +15,7 @@ import ModalEditPostPageAdmin from '../../components/admin/Modal/ModalPost/Modal
 import { IPost } from '../../types/type/post/post';
 import { PostContext } from '../../context/post/PostContext';
 import { isIErrorResponse } from '../../types/error/error';
+import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
 
 const PostManagerPage: React.FC = () => {
   const { loading, posts, deletePost, getAllPosts, error } =
@@ -108,7 +109,8 @@ const PostManagerPage: React.FC = () => {
                 <span className="line-clamp-1">{post?.catalog}</span>
                 {/* <span>{new Date(post?.createdAt).toLocaleString('vi-VN')}</span> */}
                 <span>
-                  {new Date(post?.updatedAt).toLocaleDateString('vi-VN')}
+                  {/* {new Date(post?.updatedAt).toLocaleDateString('vi-VN')} */}
+                  <TimeAgo date={post?.updatedAt} />
                 </span>
                 <span
                   className="line-clamp-2"

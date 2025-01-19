@@ -42,7 +42,7 @@ export default function AppRoutes() {
             <Route path="chi-tiet-iphone/:id" element={<PhoneDetailPage />} />
             <Route path="tin-tuc-moi-nhat" element={<NewsPage />} />
             <Route path="tin-tuc/:title" element={<PostDetail />} />
-            <Route path="thu-thuat-meo" element={<TipsAndTricksPage />} />
+            <Route path="thu-thuat-va-meo-hay" element={<TipsAndTricksPage />} />
             <Route path="bang-gia-thu-mua" element={<PriceListPage />} />
             <Route path="chinh-sach-bao-hanh" element={<ContactPage />} />
           </Route>

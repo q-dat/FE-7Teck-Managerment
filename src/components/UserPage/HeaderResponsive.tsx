@@ -100,9 +100,9 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
           link: '/tin-tuc-moi-nhat'
         },
         {
-          name: 'Thủ thuật - Mẹo',
+          name: 'Thủ thuật - Mẹo hay',
           icon: FaMagic,
-          link: '/thu-thuat-meo'
+          link: '/thu-thuat-va-meo-hay'
         }
       ]
     },
@@ -246,7 +246,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                       value={searchQuery}
                       onChange={e => handleSearch(e.target.value)}
                       type="text"
-                      className="animate-exfadeIn w-screen rounded-none border-none text-black placeholder-primary focus:outline-none"
+                      className="w-screen animate-exfadeIn rounded-none border-none text-black placeholder-primary focus:outline-none"
                       autoFocus
                       placeholder="Bạn muốn tìm gì..."
                     />
@@ -352,7 +352,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                               >
                                 <Button
                                   size="sm"
-                                  className="flex w-full flex-row items-center justify-start rounded-sm border-none bg-primary text-sm uppercase text-white shadow-headerMenu"
+                                  className="flex w-full flex-row items-center justify-start font-light rounded-sm border-none bg-primary text-sm text-white shadow-headerMenu"
                                 >
                                   {subItem.icon && <subItem.icon />}
                                   {subItem.name}

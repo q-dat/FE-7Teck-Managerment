@@ -15,6 +15,7 @@ import ModalDeletePhoneCatalogPageAdmin from '../../components/admin/Modal/Modal
 import ModalEditPhoneCatalogPageAdmin from '../../components/admin/Modal/ModalPhoneCatalog/ModalEditPhoneCatalogPageAdmin';
 import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
 import { IPhoneCatalog } from '../../types/type/phone-catalog/phone-catalog';
+import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
 
 const PhoneCatalogManager: React.FC = () => {
   const {
@@ -117,9 +118,10 @@ const PhoneCatalogManager: React.FC = () => {
                       {(phoneCatalog?.price * 1000).toLocaleString('vi-VN')}₫
                     </span>
                     <span>
-                      {new Date(phoneCatalog?.createdAt).toLocaleString(
+                      {/* {new Date(phoneCatalog?.createdAt).toLocaleString(
                         'vi-VN'
-                      )}
+                      )} */}
+                      <TimeAgo date={phoneCatalog?.createdAt} />
                     </span>
                     {/* Hành động */}
                     <span>

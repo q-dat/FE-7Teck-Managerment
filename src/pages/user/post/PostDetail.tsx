@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
 import { PostContext } from '../../../context/post/PostContext';
 import { FaArrowLeftLong } from 'react-icons/fa6';
+import TimeAgo from '../../../components/orther/timeAgo/TimeAgo';
 
 const PostDetail: React.FC = () => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const PostDetail: React.FC = () => {
   // Title Tag
   useEffect(() => {
     if (selectedPost) {
-      document.title = `${selectedPost.title} - 7Teck`;
+      document.title = `${selectedPost?.title} - 7Teck`;
     }
   }, [selectedPost]);
 
@@ -29,7 +30,7 @@ const PostDetail: React.FC = () => {
     if (posts.length > 0 && title) {
       const post = posts.find(
         post =>
-          post.title.toLowerCase().replace(/\s+/g, '-') === title.toLowerCase()
+          post?.title.toLowerCase().replace(/\s+/g, '-') === title.toLowerCase()
       );
       setSelectedPost(post || null);
     }
@@ -38,13 +39,13 @@ const PostDetail: React.FC = () => {
   const handlePostSelect = (post: (typeof posts)[0]) => {
     setSelectedPost(post);
     const titleSlug = encodeURIComponent(
-      post.title.toLowerCase().replace(/\s+/g, '-')
+      post?.title.toLowerCase().replace(/\s+/g, '-')
     );
     navigate(`/tin-tuc/${titleSlug}`);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const otherPosts = posts.filter(post => post._id !== selectedPost?._id);
+  const otherPosts = posts.filter(post => post?._id !== selectedPost?._id);
   8;
   return (
     <div>
@@ -57,7 +58,7 @@ const PostDetail: React.FC = () => {
             </li>
             <li>
               {selectedPost ? (
-                <Link to="">{selectedPost.title}</Link>
+                <Link to="">{selectedPost?.title}</Link>
               ) : (
                 <Link to="">Chi Tiết</Link>
               )}
@@ -76,18 +77,18 @@ const PostDetail: React.FC = () => {
             <>
               {selectedPost ? (
                 <div className="mb-10">
-                  <p className="text-[35px] font-bold">{selectedPost.title}</p>
+                  <p className="text-[35px] font-bold">{selectedPost?.title}</p>
                   <p className="text-[14px] text-blue-500">
-                    {new Date(selectedPost.updatedAt).toLocaleDateString(
+                    {new Date(selectedPost?.updatedAt).toLocaleDateString(
                       'vi-VN'
                     )}
                   </p>
                   <p className="text-[14px] font-light">
-                    Danh mục:&nbsp;{selectedPost.catalog}
+                    Danh mục:&nbsp;{selectedPost?.catalog}
                   </p>
                   <hr className="my-4" />
                   <div
-                    dangerouslySetInnerHTML={{ __html: selectedPost.content }}
+                    dangerouslySetInnerHTML={{ __html: selectedPost?.content }}
                     className="text-[18px] text-black"
                   ></div>
                 </div>
@@ -110,29 +111,31 @@ const PostDetail: React.FC = () => {
             <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
               {otherPosts.slice(0, 8).map(post => (
                 <div
-                  key={post._id}
+                  key={post?._id}
                   className="relative cursor-pointer rounded border border-gray-50 bg-white p-2 shadow-inner hover:shadow-lg"
                   onClick={() => handlePostSelect(post)}
                 >
                   <p className="absolute left-1 top-1 rounded-sm bg-primary px-2 text-[12px] text-white">
-                    {post.catalog}
+                    {post?.catalog}
                   </p>
                   <img
                     loading="lazy"
-                    src={post.imageUrl}
+                    src={post?.imageUrl}
                     alt="Ảnh đại diện"
                     className="h-[200px] w-full rounded-sm border object-cover xl:h-[300px]"
                   />
                   <p className="line-clamp-3 py-1 text-sm font-bold text-primary">
-                    {post.title}
+                    {post?.title}
                   </p>
                   <hr />
                   <div
-                    dangerouslySetInnerHTML={{ __html: post.content }}
+                    dangerouslySetInnerHTML={{ __html: post?.content }}
                     className="line-clamp-4 text-xs text-black"
                   ></div>
                   <p className="pt-2 text-[12px] text-primary">
-                    {new Date(post.updatedAt).toLocaleDateString('vi-VN')}
+                    {new Date(post?.updatedAt).toLocaleDateString('vi-VN')}
+                    &nbsp;(
+                    <TimeAgo date={post?.updatedAt} />)
                   </p>
                 </div>
               ))}

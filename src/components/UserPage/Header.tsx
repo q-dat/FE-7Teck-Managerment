@@ -96,9 +96,9 @@ const Header: React.FC = () => {
           link: '/tin-tuc-moi-nhat'
         },
         {
-          name: 'Thủ thuật - Mẹo',
+          name: 'Thủ thuật - Mẹo hay',
           icon: FaMagic,
-          link: '/thu-thuat-meo'
+          link: '/thu-thuat-va-meo-hay'
         }
       ]
     },
@@ -287,7 +287,7 @@ const Header: React.FC = () => {
                       >
                         <Button
                           size="sm"
-                          className="flex w-full flex-row items-center justify-start rounded-sm border-none bg-primary text-sm text-white shadow-headerMenu hover:h-[50px] hover:bg-primary hover:bg-opacity-50"
+                          className="flex w-full flex-row items-center justify-start rounded-sm border-none bg-primary text-sm font-light text-white shadow-headerMenu hover:h-[50px] hover:bg-primary hover:bg-opacity-50"
                         >
                           {subItem.icon && <subItem.icon />}
                           {subItem.name}

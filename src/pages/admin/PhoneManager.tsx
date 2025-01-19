@@ -15,6 +15,7 @@ import ModalDeletePhonePageAdmin from '../../components/admin/Modal/ModalPhone/M
 import ModalEditPhonePageAdmin from '../../components/admin/Modal/ModalPhone/ModalEditPhonePageAdmin';
 import { PhoneContext } from '../../context/phone/PhoneContext';
 import { IPhone } from '../../types/type/phone/phone';
+import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
 
 const PhoneManager: React.FC = () => {
   const { phones, loading, error, getAllPhones, deletePhone } =
@@ -145,7 +146,8 @@ const PhoneManager: React.FC = () => {
                     {phone?.note || 'Không có ghi chú!'}
                   </mark>
                   <span>
-                    {new Date(phone?.createdAt).toLocaleString('vi-VN')}
+                    {/* {new Date(phone?.createdAt).toLocaleString('vi-VN')} */}
+                    <TimeAgo date={phone?.createdAt} />
                   </span>
                   <span>
                     <details>

@@ -24,6 +24,7 @@ import { PostContext } from '../../../context/post/PostContext';
 import { IoIosArrowForward } from 'react-icons/io';
 import ParallaxBannerFC from './ParallaxBannerFC';
 import { bgBlog, bgFixed } from '../../../assets/images';
+import TimeAgo from '../../../components/orther/timeAgo/TimeAgo';
 
 // Items Data
 const items = [
@@ -97,7 +98,7 @@ const HomePage: React.FC = () => {
   //
   const handlePostClick = (post: (typeof posts)[0]) => {
     const titleSlug = encodeURIComponent(
-      post.title.toLowerCase().replace(/\s+/g, '-')
+      post?.title.toLowerCase().replace(/\s+/g, '-')
     );
     navigate(`/tin-tuc/${titleSlug}`);
   };
@@ -263,29 +264,31 @@ const HomePage: React.FC = () => {
             <div className="grid grid-cols-2 gap-2 px-2 md:grid-cols-3 lg:grid-cols-4 xl:px-[100px]">
               {posts.slice(0, 4).map(post => (
                 <div
-                  key={post._id}
+                  key={post?._id}
                   className="relative cursor-pointer rounded border border-gray-50 bg-white p-2 shadow-inner hover:shadow-lg"
                   onClick={() => handlePostClick(post)}
                 >
                   <p className="absolute left-1 top-1 rounded-sm bg-primary px-2 text-[12px] text-white">
-                    {post.catalog}
+                    {post?.catalog}
                   </p>
                   <img
                     loading="lazy"
-                    src={post.imageUrl}
+                    src={post?.imageUrl}
                     alt="Ảnh đại diện"
                     className="h-[200px] w-full rounded-sm border object-cover xl:h-[300px]"
                   />
                   <p className="line-clamp-3 py-1 text-sm font-bold text-primary">
-                    {post.title}
+                    {post?.title}
                   </p>
                   <hr />
                   <div
-                    dangerouslySetInnerHTML={{ __html: post.content }}
+                    dangerouslySetInnerHTML={{ __html: post?.content }}
                     className="line-clamp-4 text-xs text-black"
                   ></div>
                   <p className="pt-2 text-[12px] text-primary">
-                    {new Date(post.updatedAt).toLocaleDateString('vi-VN')}
+                    {new Date(post?.updatedAt).toLocaleDateString('vi-VN')}
+                    &nbsp;(
+                    <TimeAgo date={post?.updatedAt} />)
                   </p>
                 </div>
               ))}
