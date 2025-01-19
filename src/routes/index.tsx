@@ -7,17 +7,17 @@ const HomePage = lazy(() => import('../pages/user/HomePage/HomePage'));
 const ContactPage = lazy(() => import('../pages/user/ContactPage'));
 const PhonePage = lazy(() => import('../pages/user/PhonePage'));
 const PhoneByCatalogPage = lazy(
-  () => import('../pages/user/Phone/PhoneByCatalogPage')
+  () => import('../pages/user/phone/PhoneByCatalogPage')
 );
 const PhoneDetailPage = lazy(
-  () => import('../pages/user/Phone/PhoneDetailPage')
+  () => import('../pages/user/phone/PhoneDetailPage')
 );
 const PriceListPage = lazy(() => import('../pages/user/PriceListPage'));
-const NewsPage = lazy(() => import('../pages/user/Post/NewsPage'));
+const NewsPage = lazy(() => import('../pages/user/post/NewsPage'));
 const TipsAndTricksPage = lazy(
-  () => import('../pages/user/Post/TipsAndTricksPage')
+  () => import('../pages/user/post/TipsAndTricksPage')
 );
-const PostDetail = lazy(() => import('../pages/user/Post/PostDetail'));
+const PostDetail = lazy(() => import('../pages/user/post/PostDetail'));
 
 // admin
 const Admin = lazy(() => import('../pages/admin/Admin'));
