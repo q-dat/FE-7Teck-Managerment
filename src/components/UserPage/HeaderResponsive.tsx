@@ -234,7 +234,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
           <Link to="/">
             <FaHome className="text-2xl text-white" />
           </Link>
-          <p className="font-bold uppercase text-white">{Title_NavbarMobile}</p>
+          <p className="font-semibold text-white">{Title_NavbarMobile}</p>
           {/* Search Toggle*/}
           <div className="absolute right-[50px]">
             <div className="relative" onClick={handleSearchToggle}>

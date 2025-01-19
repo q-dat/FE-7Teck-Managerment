@@ -32,12 +32,12 @@ const PhoneDetailPage: React.FC = () => {
   const [isRightVisible, setIsRightVisible] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = useState<string>('specs');
-    // Title Tag
-    useEffect(() => {
-      if (phone) {
-        document.title = `${phone?.name}`;
-      }
-    }, [phone]);
+  // Title Tag
+  useEffect(() => {
+    if (phone) {
+      document.title = `${phone?.name}`;
+    }
+  }, [phone]);
   //
   useLayoutEffect(() => {
     updateScrollButtons();
@@ -124,7 +124,7 @@ const PhoneDetailPage: React.FC = () => {
 
   return (
     <div>
-      <HeaderResponsive Title_NavbarMobile={phone?.name} />
+      <HeaderResponsive Title_NavbarMobile='iPhone' />
       <div className="py-[60px] xl:pt-0">
         <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow xl:px-20">
           <ul className="font-light">
@@ -146,7 +146,7 @@ const PhoneDetailPage: React.FC = () => {
                     loading="lazy"
                     src={selectedImage || phone?.img}
                     alt={phone?.name}
-                    className="h-[500px] w-full rounded-md object-cover xl:h-[490px] xl:object-contain"
+                    className="h-[500px] w-screen rounded-md object-cover xl:h-[490px] xl:w-full xl:object-contain"
                   />
                   <div className="pointer-events-none absolute bottom-1 right-1">
                     <MdZoomOutMap className="rounded-sm bg-black bg-opacity-10 p-[1px] text-2xl text-white" />
