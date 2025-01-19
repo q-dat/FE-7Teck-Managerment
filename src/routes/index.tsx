@@ -6,7 +6,7 @@ const User = lazy(() => import('../pages/user/User'));
 const HomePage = lazy(() => import('../pages/user/HomePage/HomePage'));
 const ContactPage = lazy(() => import('../pages/user/ContactPage'));
 const PhonePage = lazy(() => import('../pages/user/PhonePage'));
-const PhoneByCatalog = lazy(
+const PhoneByCatalogPage = lazy(
   () => import('../pages/user/Phone/PhoneByCatalogPage')
 );
 const PhoneDetailPage = lazy(
@@ -37,14 +37,14 @@ export default function AppRoutes() {
         <Route element={<DefaultLayout />}>
           <Route path="/" element={<User />}>
             <Route index path="" element={<HomePage />} />
-            <Route path="iphone/:catalog" element={<PhoneByCatalog />} />
             <Route path="iphone" element={<PhonePage />} />
-            <Route path="bang-gia-thu-mua" element={<PriceListPage />} />
+            <Route path="iphone/:catalog" element={<PhoneByCatalogPage />} />
             <Route path="chi-tiet-iphone/:id" element={<PhoneDetailPage />} />
-            <Route path="chinh-sach-bao-hanh" element={<ContactPage />} />
             <Route path="tin-tuc-moi-nhat" element={<NewsPage />} />
             <Route path="tin-tuc/:title" element={<PostDetail />} />
             <Route path="thu-thuat-meo" element={<TipsAndTricksPage />} />
+            <Route path="bang-gia-thu-mua" element={<PriceListPage />} />
+            <Route path="chinh-sach-bao-hanh" element={<ContactPage />} />
           </Route>
         </Route>
 

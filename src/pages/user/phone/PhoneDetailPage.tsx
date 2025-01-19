@@ -21,7 +21,7 @@ import {
 import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
 
-const ProductDetailPage: React.FC = () => {
+const PhoneDetailPage: React.FC = () => {
   const { id } = useParams();
   const { getPhoneById, loading, error, phones } = useContext(PhoneContext);
   const [phone, setPhone] = useState<any>(null);
@@ -407,4 +407,4 @@ const ProductDetailPage: React.FC = () => {
   );
 };
 
-export default ProductDetailPage;
+export default PhoneDetailPage;
