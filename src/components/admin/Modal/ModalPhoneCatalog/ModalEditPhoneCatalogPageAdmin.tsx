@@ -276,7 +276,6 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
       Toastify('Danh mục đã được cập nhật!', 200);
       onClose();
     } catch (err) {
-      getAllPhoneCatalogs();
       Toastify(`Lỗi: ${err}`, 500);
       console.error(err);
     }

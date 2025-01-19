@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { Toastify } from '../../helper/Toastify';
 import LoadingLocal from '../../components/orther/loading/LoadingLocal';
 import NavtitleAdmin from '../../components/admin/NavtitleAdmin';
@@ -43,10 +43,6 @@ const PhoneCatalogManager: React.FC = () => {
     setIsModalEditOpen(true);
   };
   const closeModalEditAdmin = () => setIsModalEditOpen(false);
-
-  useEffect(() => {
-    getAllPhoneCatalogs();
-  }, [getAllPhoneCatalogs]);
 
   const handleDeletePhoneCatalog = async () => {
     if (selectedPhoneCatalogId) {

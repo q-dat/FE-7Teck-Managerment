@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Toastify } from '../../../../helper/Toastify';
 import InputModal from '../../InputModal';
@@ -27,12 +27,8 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreateAdminProps> = ({
   const { control, register, handleSubmit, reset } = useForm<IPhone>();
 
   // PhoneCatalog
-  const { phoneCatalogs, getAllPhoneCatalogs } =
+  const { phoneCatalogs } =
     useContext(PhoneCatalogContext);
-
-  useEffect(() => {
-    getAllPhoneCatalogs();
-  }, []);
 
   // react-select
   const phoneCatalog: Option[] = phoneCatalogs.map(phoneCatalog => ({

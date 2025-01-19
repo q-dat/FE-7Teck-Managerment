@@ -27,12 +27,9 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
 }) => {
   const { phones, getPhoneById, getAllPhones, updatePhone } =
     useContext(PhoneContext);
-  const { phoneCatalogs, getAllPhoneCatalogs } =
+  const { phoneCatalogs } =
     useContext(PhoneCatalogContext);
 
-  useEffect(() => {
-    getAllPhoneCatalogs();
-  }, []);
   //react-select
   const phoneCatalog: Option[] = phoneCatalogs.map(phoneCatalog => ({
     value: phoneCatalog._id,
@@ -45,10 +42,6 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
   const [existingThumbnail, setExistingThumbnail] = useState<
     string[] | undefined
   >([]);
-
-  useEffect(() => {
-    getAllPhoneCatalogs();
-  }, []);
 
   useEffect(() => {
     if (PhoneId) {

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import ErrorLoading from '../../components/orther/error/ErrorLoading';
 import { LoadingLocal } from '../../components/orther/loading';
 import { Toastify } from '../../helper/Toastify';
@@ -37,17 +37,12 @@ const PhoneManager: React.FC = () => {
   };
   const closeModalEditAdmin = () => setIsModalEditOpen(false);
 
-  useEffect(() => {
-    getAllPhones();
-  }, [getAllPhones]);
-
   const handleDeletePhone = async () => {
     if (selectedPhoneId) {
       try {
         await deletePhone(selectedPhoneId);
         closeModalDeleteAdmin();
         Toastify('Bạn đã xoá sản phẩm thành công', 201);
-
         getAllPhones();
       } catch (error) {
         const errorMessage = isIErrorResponse(error)

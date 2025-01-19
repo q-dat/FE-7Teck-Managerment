@@ -123,7 +123,6 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
       Toastify('Tạo danh mục thành công!', 201);
       onClose();
     } catch (err) {
-      getAllPhoneCatalogs();
       Toastify(`Lỗi: ${err}`, 500);
       console.error(err);
     }
