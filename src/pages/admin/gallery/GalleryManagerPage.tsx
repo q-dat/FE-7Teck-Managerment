@@ -12,8 +12,11 @@ import { IGallery } from '../../../types/type/gallery/gallery';
 import { Button } from 'react-daisyui';
 import { RiAddBoxLine } from 'react-icons/ri';
 import NavtitleAdmin from '../../../components/admin/NavtitleAdmin';
-import { FaCircleInfo, FaPenToSquare } from 'react-icons/fa6';
+import { FaPenToSquare } from 'react-icons/fa6';
 import { MdDelete } from 'react-icons/md';
+import Zoom from 'react-medium-image-zoom';
+import 'react-medium-image-zoom/dist/styles.css';
+import TimeAgo from '../../../components/orther/timeAgo/TimeAgo';
 
 const GalleryManagerPage: React.FC = () => {
   const { gallerys, loading, error, getAllGallerys, deleteGallery } =
@@ -21,7 +24,9 @@ const GalleryManagerPage: React.FC = () => {
   const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
-  const [selectedGalleryId, setSelectedGalleryId] = useState<string | null>(null);
+  const [selectedGalleryId, setSelectedGalleryId] = useState<string | null>(
+    null
+  );
 
   const openModalCreateAdmin = () => setIsModalCreateOpen(true);
   const closeModalCreateAdmin = () => setIsModalCreateOpen(false);
@@ -55,11 +60,11 @@ const GalleryManagerPage: React.FC = () => {
   if (loading.getAll) return <LoadingLocal />;
   if (error) return <ErrorLoading />;
   return (
-    <div className="w-full">
+    <div className="w-full pb-10 xl:pb-0">
       <NavbarGallery Title_NavbarGallery="Gallery" />
-      <div className="px-2 xl:px-0">
+      <div className="">
         <NavtitleAdmin
-          Title_NavtitleAdmin="Quản Lý Danh Sách Hình Ảnh"
+          Title_NavtitleAdmin={`Quản Lý Danh Sách Hình Ảnh (${gallerys?.length})`}
           Btn_Create={
             <div className="flex flex-col items-start justify-center gap-2 md:flex-row md:items-end">
               <Button
@@ -74,40 +79,49 @@ const GalleryManagerPage: React.FC = () => {
           }
         />
       </div>
-      <div>
+      <div className="grid grid-flow-row grid-cols-2 items-start gap-[10px] px-2 md:grid-cols-4 xl:grid-cols-6 xl:px-0">
         {gallerys.map((gallery: IGallery, index: number) => (
-          <div key={index} className="flex gap-2">
-            <div>{gallery?.name}</div>
-            <div>{gallery?.des}</div>
-            <img
-              className="h-full w-[100px]"
-              src={`${gallery?.gallery}`}
-              alt={`${gallery?.gallery}`}
-            />
-            <details>
-                    <summary className="inline cursor-pointer text-base text-warning">
-                      <div className="flex items-center justify-center px-[55px] py-2">
-                        <FaCircleInfo />
-                      </div>
-                    </summary>
-                    <div className="flex flex-col items-center justify-center space-y-2">
-                      <Button
-                        color="success"
-                        onClick={() => openModalEditAdmin(gallery?._id ?? '')}
-                        className="w-full max-w-[140px] text-sm font-light text-white"
-                      >
-                        <FaPenToSquare />
-                        Cập Nhật
-                      </Button>
-                      <Button
-                        onClick={() => openModalDeleteAdmin(gallery?._id ?? '')}
-                        className="w-full max-w-[140px] bg-red-600 text-sm font-light text-white"
-                      >
-                        <MdDelete />
-                        Xoá
-                      </Button>
-                    </div>
-                  </details>
+          <div
+            key={index}
+            className="relative rounded-sm bg-white p-2 shadow-headerMenu"
+          >
+            {/*  */}
+            <div className="h-[280px]">
+              <Zoom>
+                <img
+                  className="h-[200px] w-full rounded-sm object-cover py-1"
+                  src={`${gallery?.gallery}`}
+                  alt={`${gallery?.gallery}`}
+                />
+              </Zoom>
+              <p className="line-clamp-2 text-sm font-semibold">
+                {gallery?.name}
+              </p>
+              <p className="line-clamp-1 text-xs font-light">{gallery?.des}</p>
+              <p className="absolute bottom-1 left-2 text-xs text-primary">
+                <hr />
+                <span className="font-light">
+                  {new Date(gallery?.updatedAt).toLocaleDateString('vi-VN')}
+                </span>
+                &nbsp;
+                <b>
+                  <TimeAgo date={gallery?.updatedAt} />
+                </b>
+              </p>
+            </div>
+            {/*  */}
+            <div
+              onClick={() => openModalEditAdmin(gallery?._id ?? '')}
+              className="absolute left-1 top-1 flex cursor-pointer flex-row items-center justify-center gap-1 rounded-sm bg-white p-1 text-black"
+            >
+              <FaPenToSquare />
+            </div>
+            <div
+              onClick={() => openModalDeleteAdmin(gallery?._id ?? '')}
+              className="absolute right-1 top-1 flex cursor-pointer flex-row items-center justify-center gap-1 rounded-sm bg-white p-1 text-red-500"
+            >
+              <MdDelete />
+            </div>
           </div>
         ))}
       </div>

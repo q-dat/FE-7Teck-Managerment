@@ -58,9 +58,9 @@ const PhoneManager: React.FC = () => {
   if (error) return <ErrorLoading />;
 
   return (
-    <div className="w-full">
+    <div className="w-full pb-10 xl:pb-0">
       <NavbarAdmin Title_NavbarAdmin="Điện Thoại" />
-      <div className="px-2 xl:px-0">
+      <div className="">
         <NavtitleAdmin
           Title_NavtitleAdmin="Quản Lý Danh Sách Điện Thoại"
           Btn_Create={

@@ -43,12 +43,12 @@ const DashboardCard: React.FC<DashboardCardProps> = ({
 
 const DashboardPage: React.FC<{}> = () => {
   return (
-    <div className="w-full">
+    <div className="w-full pb-10 xl:pb-0">
       <NavbarAdmin Title_NavbarAdmin="Dashboard" />
-      <div className="px-2 xl:px-0">
+      <div className="">
         <NavtitleAdmin Title_NavtitleAdmin={'Dashboard'} Btn_Create={``} />
 
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-4 px-2 md:grid-cols-4 xl:px-0">
           <DashboardCard
             Icons="https://cdn-icons-png.flaticon.com/128/4394/4394574.png"
             Label="Danh sách"
@@ -80,7 +80,7 @@ const DashboardPage: React.FC<{}> = () => {
         </div>
 
         {/* Title */}
-        <div className="flex flex-col py-6">
+        <div className="flex flex-col px-2 py-6 xl:px-0">
           <h1 className="text-[25px] font-bold text-black dark:text-white">
             Danh sách tạo gần đây
           </h1>

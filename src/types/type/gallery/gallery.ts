@@ -1,6 +1,6 @@
 export interface IGallery {
     _id: string;
-    name: string;
+    name?: string;
     gallery: string[];
     des?: string;
     createdAt: string;
