@@ -62,7 +62,7 @@ const ModalEditPostPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({
     data.append('catalog', formData.catalog);
     data.append('content', formData.content || '');
     if (formData.imageUrl?.[0]) {
-      data.append('image', formData.imageUrl[0]);
+      data.append('imageUrl', formData.imageUrl[0]);
     }
 
     try {
