@@ -8,7 +8,6 @@ import { FaCircleInfo, FaPenToSquare } from 'react-icons/fa6';
 import { MdDelete } from 'react-icons/md';
 import { RiAddBoxLine } from 'react-icons/ri';
 import NavtitleAdmin from '../../components/admin/NavtitleAdmin';
-import NavbarMobile from '../../components/admin/Reponsive/Mobile/NavbarMobile';
 import TableListAdmin from '../../components/admin/TablelistAdmin';
 import ModalCreatePhonePageAdmin from '../../components/admin/Modal/ModalPhone/ModalCreatePhonePageAdmin';
 import ModalDeletePhonePageAdmin from '../../components/admin/Modal/ModalPhone/ModalDeletePhonePageAdmin';
@@ -16,6 +15,7 @@ import ModalEditPhonePageAdmin from '../../components/admin/Modal/ModalPhone/Mod
 import { PhoneContext } from '../../context/phone/PhoneContext';
 import { IPhone } from '../../types/type/phone/phone';
 import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
+import NavbarAdmin from '../../components/admin/Reponsive/Mobile/NavbarAdmin';
 
 const PhoneManager: React.FC = () => {
   const { phones, loading, error, getAllPhones, deletePhone } =
@@ -59,7 +59,7 @@ const PhoneManager: React.FC = () => {
 
   return (
     <div className="w-full">
-      <NavbarMobile Title_NavbarMobile="Điện Thoại" />
+      <NavbarAdmin Title_NavbarAdmin="Điện Thoại" />
       <div className="px-2 xl:px-0">
         <NavtitleAdmin
           Title_NavtitleAdmin="Quản Lý Danh Sách Điện Thoại"

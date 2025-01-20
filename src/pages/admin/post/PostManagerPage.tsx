@@ -1,21 +1,21 @@
 import React, { useState, useContext } from 'react';
-import { Toastify } from '../../helper/Toastify';
-import LoadingLocal from '../../components/orther/loading/LoadingLocal';
-import NavtitleAdmin from '../../components/admin/NavtitleAdmin';
+import { Toastify } from '../../../helper/Toastify';
+import LoadingLocal from '../../../components/orther/loading/LoadingLocal';
+import NavtitleAdmin from '../../../components/admin/NavtitleAdmin';
 import { RiAddBoxLine } from 'react-icons/ri';
 import { Button, Table } from 'react-daisyui';
 import { MdDelete } from 'react-icons/md';
-import ErrorLoading from '../../components/orther/error/ErrorLoading';
+import ErrorLoading from '../../../components/orther/error/ErrorLoading';
 import { FaCircleInfo, FaPenToSquare } from 'react-icons/fa6';
-import TableListAdmin from '../../components/admin/TablelistAdmin';
-import NavbarMobile from '../../components/admin/Reponsive/Mobile/NavbarMobile';
-import ModalCreatePostPageAdmin from '../../components/admin/Modal/ModalPost/ModalCreatePostPageAdmin';
-import ModalDeletePostPageAdmin from '../../components/admin/Modal/ModalPost/ModalDeletePostPageAdmin';
-import ModalEditPostPageAdmin from '../../components/admin/Modal/ModalPost/ModalEditPostPageAdmin';
-import { IPost } from '../../types/type/post/post';
-import { PostContext } from '../../context/post/PostContext';
-import { isIErrorResponse } from '../../types/error/error';
-import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
+import TableListAdmin from '../../../components/admin/TablelistAdmin';
+import ModalCreatePostPageAdmin from '../../../components/admin/Modal/ModalPost/ModalCreatePostPageAdmin';
+import ModalDeletePostPageAdmin from '../../../components/admin/Modal/ModalPost/ModalDeletePostPageAdmin';
+import ModalEditPostPageAdmin from '../../../components/admin/Modal/ModalPost/ModalEditPostPageAdmin';
+import { IPost } from '../../../types/type/post/post';
+import { PostContext } from '../../../context/post/PostContext';
+import { isIErrorResponse } from '../../../types/error/error';
+import TimeAgo from '../../../components/orther/timeAgo/TimeAgo';
+import NavbarPost from '../../../components/admin/Reponsive/Mobile/NavbarPost';
 
 const PostManagerPage: React.FC = () => {
   const { loading, posts, deletePost, getAllPosts, error } =
@@ -59,7 +59,7 @@ const PostManagerPage: React.FC = () => {
 
   return (
     <div className="w-full">
-      <NavbarMobile Title_NavbarMobile="Bài Viết" />
+      <NavbarPost Title_NavbarPost="Bài Viết" />
       <div className="px-2 xl:px-0">
         <NavtitleAdmin
           Title_NavtitleAdmin="Quản Lý Danh Sách Bài Viết"

@@ -141,7 +141,7 @@ const SidebarPost: React.FC<{}> = () => {
         </Link>
         <div className="py-4 text-xs text-black dark:text-white">
           <p className="font-bold">Quản trị 7Teck </p>
-          <p className="font-light">© 2024 đã đăng ký bản quyền</p>
+          <p className="font-light">© 2025 Điểu Quốc Đạt</p>
         </div>
       </div>
     </div>

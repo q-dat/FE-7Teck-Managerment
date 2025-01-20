@@ -1,6 +1,6 @@
 import React from 'react';
 import NavtitleAdmin from '../../components/admin/NavtitleAdmin';
-import NavbarMobile from '../../components/admin/Reponsive/Mobile/NavbarMobile';
+import NavbarAdmin from '../../components/admin/Reponsive/Mobile/NavbarAdmin';
 
 interface DashboardCardProps {
   Icons: React.ReactNode;
@@ -44,7 +44,7 @@ const DashboardCard: React.FC<DashboardCardProps> = ({
 const DashboardPage: React.FC<{}> = () => {
   return (
     <div className="w-full">
-      <NavbarMobile Title_NavbarMobile="Dashboard" />
+      <NavbarAdmin Title_NavbarAdmin="Dashboard" />
       <div className="px-2 xl:px-0">
         <NavtitleAdmin Title_NavtitleAdmin={'Dashboard'} Btn_Create={``} />
 

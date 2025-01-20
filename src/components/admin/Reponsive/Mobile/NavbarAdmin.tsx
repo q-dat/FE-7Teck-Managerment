@@ -5,8 +5,8 @@ import { RxHamburgerMenu } from 'react-icons/rx';
 import { IoSearchOutline } from 'react-icons/io5';
 import SidebarAdmin from '../../SidebarAdmin';
 
-const NavbarMobile: React.FC<{ Title_NavbarMobile: string }> = ({
-  Title_NavbarMobile
+const NavbarAdmin: React.FC<{ Title_NavbarAdmin: string }> = ({
+  Title_NavbarAdmin
 }) => {
   const [leftVisible, setLeftVisible] = useState(false);
   const [rightVisible, setRightVisible] = useState(false);
@@ -47,7 +47,7 @@ const NavbarMobile: React.FC<{ Title_NavbarMobile: string }> = ({
         {/* Title_NavbarMobile */}
         <div>
           <p className="font-semibold text-black dark:text-white">
-            {Title_NavbarMobile}
+            {Title_NavbarAdmin}
           </p>
         </div>
         {/* Sidebar Right */}
@@ -139,4 +139,4 @@ const NavbarMobile: React.FC<{ Title_NavbarMobile: string }> = ({
   );
 };
 
-export default NavbarMobile;
+export default NavbarAdmin;

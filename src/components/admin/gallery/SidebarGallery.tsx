@@ -1,21 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Button, Menu } from 'react-daisyui';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Logo } from '../../../assets/images';
 import DarkModeToggle from '../../orther/darkmode/DarkMode';
-import { Fa1 } from 'react-icons/fa6';
+import { AiOutlineMenuFold } from 'react-icons/ai';
+import { GalleryContext } from '../../../context/gallery/GalleryContext';
+import { GrGallery } from 'react-icons/gr';
 
 const SidebarGallery: React.FC<{}> = () => {
+  const { gallerys } = useContext(GalleryContext);
   const [activeItem, setActiveItem] = useState('Dashboard');
 
   const location = useLocation();
 
   const menuItems = [
     {
-      link: '',
-      name: '',
-      toastify: 0,
-      icon:Fa1 
+      name: 'Danh mục Gallery',
+      icon: AiOutlineMenuFold,
+      link: '/admin-gallery/gallery-catalog',
+      toastify: gallerys.length
+    },
+    {
+      name: 'Quản lý Gallery',
+      icon: GrGallery,
+      link: '/admin-gallery/gallery-manager',
+      toastify: gallerys.length
     }
   ];
 
@@ -132,7 +141,7 @@ const SidebarGallery: React.FC<{}> = () => {
         </Link>
         <div className="py-4 text-xs text-black dark:text-white">
           <p className="font-bold">Quản trị 7Teck </p>
-          <p className="font-light">© 2024 đã đăng ký bản quyền</p>
+          <p className="font-light">© 2025 Điểu Quốc Đạt</p>
         </div>
       </div>
     </div>

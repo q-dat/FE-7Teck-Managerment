@@ -9,13 +9,13 @@ import ErrorLoading from '../../components/orther/error/ErrorLoading';
 import { FaCircleInfo, FaPenToSquare } from 'react-icons/fa6';
 import { isIErrorResponse } from '../../types/error/error';
 import TableListAdmin from '../../components/admin/TablelistAdmin';
-import NavbarMobile from '../../components/admin/Reponsive/Mobile/NavbarMobile';
 import ModalCreatePhoneCatalogPageAdmin from '../../components/admin/Modal/ModalPhoneCatalog/ModalCreatePhoneCatalogPageAdmin';
 import ModalDeletePhoneCatalogPageAdmin from '../../components/admin/Modal/ModalPhoneCatalog/ModalDeletePhoneCatalogPageAdmin';
 import ModalEditPhoneCatalogPageAdmin from '../../components/admin/Modal/ModalPhoneCatalog/ModalEditPhoneCatalogPageAdmin';
 import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
 import { IPhoneCatalog } from '../../types/type/phone-catalog/phone-catalog';
 import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
+import NavbarAdmin from '../../components/admin/Reponsive/Mobile/NavbarAdmin';
 
 const PhoneCatalogManager: React.FC = () => {
   const {
@@ -66,7 +66,7 @@ const PhoneCatalogManager: React.FC = () => {
 
   return (
     <div className="w-full">
-      <NavbarMobile Title_NavbarMobile="Danh Mục Điện Thoại" />
+      <NavbarAdmin Title_NavbarAdmin="Danh Mục Điện Thoại" />
 
       <div className="px-2 xl:px-0">
         <NavtitleAdmin
