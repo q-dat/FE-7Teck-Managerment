@@ -197,7 +197,7 @@ const PhoneManager: React.FC = () => {
       <ModalEditPhonePageAdmin
         isOpen={isModalEditOpen}
         onClose={closeModalEditAdmin}
-        PhoneId={selectedPhoneId ?? ''}
+        phoneId={selectedPhoneId ?? ''}
       />
     </div>
   );

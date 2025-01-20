@@ -177,7 +177,7 @@ const PhoneCatalogManager: React.FC = () => {
       <ModalEditPhoneCatalogPageAdmin
         isOpen={isModalEditOpen}
         onClose={closeModalEditAdmin}
-        PhoneCatalogId={selectedPhoneCatalogId ?? ''}
+        phoneCatalogId={selectedPhoneCatalogId ?? ''}
       />
     </div>
   );

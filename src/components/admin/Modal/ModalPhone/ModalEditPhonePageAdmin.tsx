@@ -12,7 +12,7 @@ import ReactSelect from '../../../orther/react-select/ ReactSelect';
 interface ModalEditPageAdminProps {
   isOpen: boolean;
   onClose: () => void;
-  PhoneId: string;
+  phoneId: string;
 }
 
 interface Option {
@@ -23,7 +23,7 @@ interface Option {
 const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
   isOpen,
   onClose,
-  PhoneId
+  phoneId
 }) => {
   const { phones, getPhoneById, getAllPhones, updatePhone } =
     useContext(PhoneContext);
@@ -44,13 +44,13 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
   >([]);
 
   useEffect(() => {
-    if (PhoneId) {
-      getPhoneById(PhoneId);
+    if (phoneId) {
+      getPhoneById(phoneId);
     }
-  }, [PhoneId, getPhoneById]);
+  }, [phoneId, getPhoneById]);
 
   useEffect(() => {
-    const phoneData = phones.find(phone => phone._id === PhoneId);
+    const phoneData = phones.find(phone => phone._id === phoneId);
     if (phoneData) {
       setValue('name', phoneData.name);
       setValue('phone_catalog_id', phoneData.phone_catalog_id);
@@ -68,7 +68,7 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
       setExistingImg(phoneData.img);
       setExistingThumbnail(phoneData.thumbnail);
     }
-  }, [phones, PhoneId, setValue]);
+  }, [phones, phoneId, setValue]);
 
   const onSubmit: SubmitHandler<IPhone> = async formData => {
     const data = new FormData();
@@ -103,7 +103,7 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
     }
 
     try {
-      await updatePhone(PhoneId, data);
+      await updatePhone(phoneId, data);
       reset();
       getAllPhones();
       Toastify('Sản phẩm đã được cập nhật!', 200);

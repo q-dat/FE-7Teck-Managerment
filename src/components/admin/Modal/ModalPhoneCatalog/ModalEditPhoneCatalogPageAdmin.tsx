@@ -28,13 +28,13 @@ const modules = {
 interface ModalEditAdminProps {
   isOpen: boolean;
   onClose: () => void;
-  PhoneCatalogId: string;
+  phoneCatalogId: string;
 }
 
 const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
   isOpen,
   onClose,
-  PhoneCatalogId
+  phoneCatalogId
 }) => {
   const {
     getAllPhoneCatalogs,
@@ -48,14 +48,14 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
   const [editorValue, setEditorValue] = useState<string>('');
 
   useEffect(() => {
-    if (PhoneCatalogId) {
-      getPhoneCatalogById(PhoneCatalogId);
+    if (phoneCatalogId) {
+      getPhoneCatalogById(phoneCatalogId);
     }
-  }, [PhoneCatalogId, getPhoneCatalogById]);
+  }, [phoneCatalogId, getPhoneCatalogById]);
 
   useEffect(() => {
     const phoneData = phoneCatalogs.find(
-      phoneCatalog => phoneCatalog._id === PhoneCatalogId
+      phoneCatalog => phoneCatalog._id === phoneCatalogId
     );
     if (phoneData) {
       setValue('name', phoneData.name);
@@ -232,7 +232,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
         phoneData.design_and_material?.brand
       );
     }
-  }, [phoneCatalogs, PhoneCatalogId, setValue]);
+  }, [phoneCatalogs, phoneCatalogId, setValue]);
   const onSubmit: SubmitHandler<IPhoneCatalog> = async formData => {
     const data = new FormData();
 
@@ -270,7 +270,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
     );
 
     try {
-      await updatePhoneCatalog(PhoneCatalogId, data);
+      await updatePhoneCatalog(phoneCatalogId, data);
       reset();
       getAllPhoneCatalogs();
       Toastify('Danh mục đã được cập nhật!', 200);

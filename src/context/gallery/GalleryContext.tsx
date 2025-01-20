@@ -104,13 +104,13 @@ export const GalleryProvider = ({ children }: { children: ReactNode }) => {
       const response = await fetchData(
         () => getGalleryByIdApi(id),
         data => {
-          if (data?.Gallery) {
-            setGallerys(prevGallerys => [...prevGallerys, data.prevGallery]);
+          if (data?.gallery) {
+            setGallerys(prevGallerys => [...prevGallerys, data.gallery]);
           }
         },
         'getAll'
       );
-      return response.data?.Gallery;
+      return response.data?.gallery;
     },
     [gallerys]
   );
