@@ -7,15 +7,11 @@ import { Logo } from '../../assets/images';
 import { PhoneContext } from '../../context/phone/PhoneContext';
 import { FaList, FaWindows } from 'react-icons/fa6';
 import { BsApple } from 'react-icons/bs';
-import { PostContext } from '../../context/post/PostContext';
-import { BsFilePost } from 'react-icons/bs';
-import { AiOutlineMenuFold } from 'react-icons/ai';
 import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
 
 const SidebarAdmin: React.FC<{}> = () => {
   const { phoneCatalogs } = useContext(PhoneCatalogContext);
   const { phones } = useContext(PhoneContext);
-  const { posts } = useContext(PostContext);
   const [activeItem, setActiveItem] = useState('Dashboard');
 
   const location = useLocation();
@@ -55,18 +51,6 @@ const SidebarAdmin: React.FC<{}> = () => {
       icon: BsApple,
       link: '/admin/macbook-manager',
       toastify: phones.length
-    },
-    {
-      name: 'Danh mục bài viết',
-      icon: AiOutlineMenuFold,
-      link: '/admin/post-catalog',
-      toastify: posts.length
-    },
-    {
-      name: 'Quản lý bài viết',
-      icon: BsFilePost,
-      link: '/admin/post-manager',
-      toastify: posts.length
     }
   ];
 
@@ -171,7 +155,7 @@ const SidebarAdmin: React.FC<{}> = () => {
       </div>
       {/*  */}
       <div className="flex flex-col items-center">
-        <Link to="/admin/product-catalog">
+        <Link to="">
           <div className="rounded-lg bg-primary p-4 text-center text-white">
             <p className="w-40 text-center text-xs">
               Chọn nút bên dưới để thêm sản phẩm!

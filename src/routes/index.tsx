@@ -1,6 +1,7 @@
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import DefaultLayout from '../layout/DefaultLayout';
+
 // UserPage
 const User = lazy(() => import('../pages/user/User'));
 const HomePage = lazy(() => import('../pages/user/HomePage/HomePage'));
@@ -26,7 +27,14 @@ const PhoneCatalogManager = lazy(
   () => import('../pages/admin/PhoneCatalogManager')
 );
 const PhoneManager = lazy(() => import('../pages/admin/PhoneManager'));
+
+// post
 const PostManagerPage = lazy(() => import('../pages/admin/PostManagerPage'));
+const Post = lazy(() => import('../pages/post/Post'));
+
+// gallery
+const Gallery = lazy(() => import('../pages/gallery/Gallery'));
+
 // not found page
 const NotFound = lazy(() => import('../pages/404/NotFound'));
 export default function AppRoutes() {
@@ -42,7 +50,10 @@ export default function AppRoutes() {
             <Route path="chi-tiet-iphone/:id" element={<PhoneDetailPage />} />
             <Route path="tin-tuc-moi-nhat" element={<NewsPage />} />
             <Route path="tin-tuc/:title" element={<PostDetail />} />
-            <Route path="thu-thuat-va-meo-hay" element={<TipsAndTricksPage />} />
+            <Route
+              path="thu-thuat-va-meo-hay"
+              element={<TipsAndTricksPage />}
+            />
             <Route path="bang-gia-thu-mua" element={<PriceListPage />} />
             <Route path="chinh-sach-bao-hanh" element={<ContactPage />} />
           </Route>
@@ -57,7 +68,21 @@ export default function AppRoutes() {
               element={<PhoneCatalogManager />}
             />
             <Route path="phone-manager" element={<PhoneManager />} />
+          </Route>
+        </Route>
+
+        {/* Post */}
+        <Route element={<DefaultLayout />}>
+          <Route path="/admin-post" element={<Post />}>
+            {/* <Route index path="" element={<DashboardPage />} /> */}
             <Route path="post-manager" element={<PostManagerPage />} />
+          </Route>
+        </Route>
+
+        {/* Gallery */}
+        <Route element={<DefaultLayout />}>
+          <Route path="/admin-gallery" element={<Gallery />}>
+            {/* <Route index path="" element={<DashboardPage />} /> */}
           </Route>
         </Route>
 
