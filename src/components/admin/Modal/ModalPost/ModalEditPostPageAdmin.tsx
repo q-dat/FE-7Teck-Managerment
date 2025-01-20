@@ -34,16 +34,10 @@ const ModalEditPostPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({
   onClose,
   postId
 }) => {
-  const { posts, updatePost, getAllPosts, getPostById } =
+  const { posts, updatePost, getAllPosts} =
     useContext(PostContext);
   const { control, register, handleSubmit, setValue, reset } = useForm<IPost>();
   const [editorValue, setEditorValue] = useState<string>('');
-
-  useEffect(() => {
-    if (postId) {
-      getPostById(postId);
-    }
-  }, [postId, getPostById]);
 
   useEffect(() => {
     const postData = posts.find(post => post._id === postId);

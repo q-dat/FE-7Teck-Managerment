@@ -36,22 +36,12 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
   onClose,
   phoneCatalogId
 }) => {
-  const {
-    getAllPhoneCatalogs,
-    phoneCatalogs,
-    getPhoneCatalogById,
-    updatePhoneCatalog
-  } = useContext(PhoneCatalogContext);
+  const { getAllPhoneCatalogs, phoneCatalogs, updatePhoneCatalog } =
+    useContext(PhoneCatalogContext);
   const { control, register, handleSubmit, reset, setValue, watch } =
     useForm<IPhoneCatalog>();
   const [existingImg, setExistingImg] = useState<string | undefined>('');
   const [editorValue, setEditorValue] = useState<string>('');
-
-  useEffect(() => {
-    if (phoneCatalogId) {
-      getPhoneCatalogById(phoneCatalogId);
-    }
-  }, [phoneCatalogId, getPhoneCatalogById]);
 
   useEffect(() => {
     const phoneData = phoneCatalogs.find(

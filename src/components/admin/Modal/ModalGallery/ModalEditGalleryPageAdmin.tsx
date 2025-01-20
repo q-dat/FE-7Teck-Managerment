@@ -18,7 +18,7 @@ const ModalEditGalleryPageAdmin: React.FC<ModalEditPageAdminProps> = ({
   onClose,
   galleryId
 }) => {
-  const { gallerys, getAllGallerys, getGalleryById, updateGallery } =
+  const { gallerys, getAllGallerys, updateGallery } =
     useContext(GalleryContext);
   const { register, handleSubmit, watch, setValue, reset } =
     useForm<IGallery>();
@@ -26,12 +26,6 @@ const ModalEditGalleryPageAdmin: React.FC<ModalEditPageAdminProps> = ({
   const [existingGallery, setExistingGallery] = useState<string[] | undefined>(
     []
   );
-
-  useEffect(() => {
-    if (galleryId) {
-      getGalleryById(galleryId);
-    }
-  }, [galleryId, getGalleryById]);
 
   useEffect(() => {
     const galleryData = gallerys.find(gallery => gallery._id === galleryId);

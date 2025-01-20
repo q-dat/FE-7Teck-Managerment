@@ -12,6 +12,8 @@ import { IGallery } from '../../../types/type/gallery/gallery';
 import { Button } from 'react-daisyui';
 import { RiAddBoxLine } from 'react-icons/ri';
 import NavtitleAdmin from '../../../components/admin/NavtitleAdmin';
+import { FaCircleInfo, FaPenToSquare } from 'react-icons/fa6';
+import { MdDelete } from 'react-icons/md';
 
 const GalleryManagerPage: React.FC = () => {
   const { gallerys, loading, error, getAllGallerys, deleteGallery } =
@@ -82,13 +84,30 @@ const GalleryManagerPage: React.FC = () => {
               src={`${gallery?.gallery}`}
               alt={`${gallery?.gallery}`}
             />
-            <div onClick={() => openModalDeleteAdmin(gallery?._id ?? '')}>
-              Xoá
-            </div>
-            
-            <div onClick={() => openModalEditAdmin(gallery?._id ?? '')}>
-              Sửa
-            </div>
+            <details>
+                    <summary className="inline cursor-pointer text-base text-warning">
+                      <div className="flex items-center justify-center px-[55px] py-2">
+                        <FaCircleInfo />
+                      </div>
+                    </summary>
+                    <div className="flex flex-col items-center justify-center space-y-2">
+                      <Button
+                        color="success"
+                        onClick={() => openModalEditAdmin(gallery?._id ?? '')}
+                        className="w-full max-w-[140px] text-sm font-light text-white"
+                      >
+                        <FaPenToSquare />
+                        Cập Nhật
+                      </Button>
+                      <Button
+                        onClick={() => openModalDeleteAdmin(gallery?._id ?? '')}
+                        className="w-full max-w-[140px] bg-red-600 text-sm font-light text-white"
+                      >
+                        <MdDelete />
+                        Xoá
+                      </Button>
+                    </div>
+                  </details>
           </div>
         ))}
       </div>
