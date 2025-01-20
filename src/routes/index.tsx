@@ -87,7 +87,7 @@ export default function AppRoutes() {
         {/* Gallery */}
         <Route element={<DefaultLayout />}>
           <Route path="/admin-gallery" element={<Gallery />}>
-            {/* <Route index path="" element={<DashboardPage />} /> */}
+            <Route index path="" element={<GalleryManagerPage />} />
             <Route path="gallery-manager" element={<GalleryManagerPage />} />
           </Route>
         </Route>

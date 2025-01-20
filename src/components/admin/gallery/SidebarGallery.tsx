@@ -3,7 +3,6 @@ import { Button, Menu } from 'react-daisyui';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Logo } from '../../../assets/images';
 import DarkModeToggle from '../../orther/darkmode/DarkMode';
-import { AiOutlineMenuFold } from 'react-icons/ai';
 import { GalleryContext } from '../../../context/gallery/GalleryContext';
 import { GrGallery } from 'react-icons/gr';
 
@@ -14,12 +13,6 @@ const SidebarGallery: React.FC<{}> = () => {
   const location = useLocation();
 
   const menuItems = [
-    {
-      name: 'Danh mục Gallery',
-      icon: AiOutlineMenuFold,
-      link: '/admin-gallery/gallery-catalog',
-      toastify: gallerys.length
-    },
     {
       name: 'Quản lý Gallery',
       icon: GrGallery,
