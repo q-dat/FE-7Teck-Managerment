@@ -3,15 +3,13 @@ import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
 import { Link, useNavigate } from 'react-router-dom';
 import { PostContext } from '../../../context/post/PostContext';
 import TimeAgo from '../../../components/orther/timeAgo/TimeAgo';
-import ErrorLoading from '../../../components/orther/error/ErrorLoading';
-import { LoadingLocal } from '../../../components/orther/loading';
 
 const NewsPage: React.FC = () => {
   // Title Tag
   useEffect(() => {
     document.title = 'Tin Tức Mới Nhất - 7Teck';
   }, []);
-  const { posts, loading, error } = useContext(PostContext);
+  const { posts} = useContext(PostContext);
   const [selectedPost, setSelectedPost] = useState<(typeof posts)[0] | null>(
     null
   );
@@ -36,9 +34,6 @@ const NewsPage: React.FC = () => {
     );
     navigate(`/tin-tuc/${titleSlug}`);
   };
-
-  if (loading.getAll) return <LoadingLocal />;
-  if (error) return <ErrorLoading />;
 
   return (
     <div>

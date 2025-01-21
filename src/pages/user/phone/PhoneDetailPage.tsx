@@ -8,8 +8,6 @@ import React, {
 import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
 import { Link, useParams } from 'react-router-dom';
 import { PhoneContext } from '../../../context/phone/PhoneContext';
-import ErrorLoading from '../../../components/orther/error/ErrorLoading';
-import { LoadingLocal } from '../../../components/orther/loading';
 import { phoneFieldMap } from '../../../components/orther/data/phoneFieldMap';
 import { IoIosArrowDropdownCircle } from 'react-icons/io';
 import { Button } from 'react-daisyui';
@@ -23,7 +21,7 @@ import 'react-medium-image-zoom/dist/styles.css';
 
 const PhoneDetailPage: React.FC = () => {
   const { id } = useParams();
-  const { getPhoneById, loading, error, phones } = useContext(PhoneContext);
+  const { getPhoneById, phones } = useContext(PhoneContext);
   const [phone, setPhone] = useState<any>(null);
   const [selectedImage, setSelectedImage] = useState<string | null | undefined>(
     null
@@ -119,12 +117,9 @@ const PhoneDetailPage: React.FC = () => {
     }
   };
 
-  if (loading.getAll) return <LoadingLocal />;
-  if (error) return <ErrorLoading />;
-
   return (
     <div>
-      <HeaderResponsive Title_NavbarMobile='iPhone' />
+      <HeaderResponsive Title_NavbarMobile="iPhone" />
       <div className="py-[60px] xl:pt-0">
         <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow xl:px-20">
           <ul className="font-light">

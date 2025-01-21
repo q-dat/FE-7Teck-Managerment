@@ -3,12 +3,10 @@ import { Link, useParams } from 'react-router-dom';
 import { PhoneContext } from '../../../context/phone/PhoneContext';
 import { Button } from 'react-daisyui';
 import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
-import ErrorLoading from '../../../components/orther/error/ErrorLoading';
-import { LoadingLocal } from '../../../components/orther/loading';
 import { Sale } from '../../../assets/image-represent';
 
 const ProductByCatalog = () => {
-  const { phones, loading, error } = useContext(PhoneContext);
+  const { phones } = useContext(PhoneContext);
   const { catalog } = useParams();
   const slugify = (text: string) => {
     return text
@@ -39,9 +37,6 @@ const ProductByCatalog = () => {
       behavior: 'smooth'
     });
   }, []);
-
-  if (loading.getAll) return <LoadingLocal />;
-  if (error) return <ErrorLoading />;
 
   return (
     <div>

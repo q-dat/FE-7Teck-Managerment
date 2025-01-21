@@ -146,7 +146,6 @@ const PriceListPage: React.FC = () => {
                 </Button>
               ))}
             </div>
-
             {/* Bảng sản phẩm */}
             <table className="mt-5 min-w-full border-collapse border border-gray-200">
               <thead>
@@ -240,7 +239,6 @@ const PriceListPage: React.FC = () => {
               </tbody>
             </table>
           </div>
-
           {/* Laptop Catalog */}
           <div className="px-2 xl:px-[100px]">
             {/* Tittle */}
@@ -262,7 +260,6 @@ const PriceListPage: React.FC = () => {
                 </Button>
               ))}
             </div>
-
             {/* Bảng sản phẩm */}
             <table className="mt-5 min-w-full border-collapse border border-gray-200">
               <thead>
