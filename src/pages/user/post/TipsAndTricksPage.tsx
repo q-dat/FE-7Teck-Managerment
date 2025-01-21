@@ -41,7 +41,7 @@ const TipsAndTricksPage: React.FC = () => {
   if (error) return <ErrorLoading />;
   return (
     <div>
-      <HeaderResponsive Title_NavbarMobile="Tin Tức" />
+      <HeaderResponsive Title_NavbarMobile="Thủ Thuật - Mẹo" />
       <div className="py-[60px] xl:pt-0">
         <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow lg:px-20">
           <ul className="font-light">

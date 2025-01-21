@@ -47,7 +47,7 @@ const ContactPage: React.FC = () => {
   };
   return (
     <div>
-      <HeaderResponsive Title_NavbarMobile="Trang Chủ" />
+      <HeaderResponsive Title_NavbarMobile="Chính Sách Bảo Hành" />
       <div className="py-[60px] xl:pt-0">
         <div className="breadcrumbs mb-10 px-[10px] py-2 text-sm text-black shadow dark:text-white lg:px-20">
           <ul className="font-light">

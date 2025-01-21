@@ -15,11 +15,11 @@ const PhoneDetailPage = lazy(
 );
 const PriceListPage = lazy(() => import('../pages/user/PriceListPage'));
 const NewsPage = lazy(() => import('../pages/user/post/NewsPage'));
+const PostDetail = lazy(() => import('../pages/user/post/PostDetail'));
 const TipsAndTricksPage = lazy(
   () => import('../pages/user/post/TipsAndTricksPage')
 );
-const PostDetail = lazy(() => import('../pages/user/post/PostDetail'));
-
+const GalleryPage = lazy(() => import('../pages/user/GalleryPage'));
 // admin
 const Admin = lazy(() => import('../pages/admin/Admin'));
 const DashboardPage = lazy(() => import('../pages/admin/DashboardPage'));
@@ -59,6 +59,7 @@ export default function AppRoutes() {
               path="thu-thuat-va-meo-hay"
               element={<TipsAndTricksPage />}
             />
+            <Route path="hanh-trinh" element={<GalleryPage />} />
             <Route path="bang-gia-thu-mua" element={<PriceListPage />} />
             <Route path="chinh-sach-bao-hanh" element={<ContactPage />} />
           </Route>
