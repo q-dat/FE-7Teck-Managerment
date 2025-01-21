@@ -7,6 +7,9 @@ import 'react-medium-image-zoom/dist/styles.css';
 import Pagination from '../../components/UserPage/Pagination';
 
 const GalleryPage: React.FC = () => {
+  useEffect(() => {
+    document.title = 'Hành Trình Khách Hàng';
+  });
   const { gallerys } = useContext(GalleryContext);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -39,7 +42,7 @@ const GalleryPage: React.FC = () => {
   };
   return (
     <div>
-      <HeaderResponsive Title_NavbarMobile="Hành Trình" />
+      <HeaderResponsive Title_NavbarMobile="Hành Trình Khách Hàng" />
       <div className="py-[60px] xl:pt-0">
         <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow dark:text-white xl:px-20">
           <ul className="font-light">
@@ -47,13 +50,13 @@ const GalleryPage: React.FC = () => {
               <Link to="/">Trang Chủ</Link>
             </li>
             <li>
-              <Link to="">Dấu Ấn Khách Hàng</Link>
+              <Link to="">Hành Trình Khách Hàng</Link>
             </li>
           </ul>
         </div>
         {/*  */}
         <div className="py-5 text-center text-[30px] font-bold text-primary">
-          Hành Trình Dấu Ấn Của Khách Hàng
+          Hành Trình Khách Hàng
         </div>
         <div className="grid grid-flow-row grid-cols-2 gap-2 px-2 md:grid-cols-3 xl:grid-cols-6 xl:px-20">
           {currentGallerys.map(gallery => (

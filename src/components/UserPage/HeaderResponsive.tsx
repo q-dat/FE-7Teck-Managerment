@@ -108,7 +108,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
     },
     {
       name: 'Hành trình',
-      link: '/hanh-trinh'
+      link: '/hanh-trinh-khach-hang'
     },
     {
       name: 'Chính sách bảo hành',

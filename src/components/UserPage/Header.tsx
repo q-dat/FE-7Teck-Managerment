@@ -11,8 +11,8 @@ import { HiLocationMarker } from 'react-icons/hi';
 import { FaWindows } from 'react-icons/fa';
 import { RiMacbookFill } from 'react-icons/ri';
 import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
+import { HiPhoneArrowUpRight } from 'react-icons/hi2';
 import { IPhoneCatalog } from '../../types/type/phone-catalog/phone-catalog';
-
 interface MenuItem {
   name: string;
   icon?: IconType;
@@ -104,7 +104,7 @@ const Header: React.FC = () => {
     },
     {
       name: 'Hành trình',
-      link: '/hanh-trinh'
+      link: '/hanh-trinh-khach-hang'
     },
     {
       name: 'Chính sách bảo hành',
@@ -154,9 +154,23 @@ const Header: React.FC = () => {
     <div className="fixed z-[99999] hidden w-full flex-col xl:block">
       {/* Menu 1 */}
       <div
-        className={`flex h-[40px] w-full transform flex-row items-center justify-between border-b bg-primary px-10 text-xs text-white transition-transform delay-100 duration-300 ease-in-out ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}
+        className={`flex h-[40px] w-full transform flex-row items-center justify-between border-b bg-primary px-10 text-xs text-white transition-transform delay-100 duration-300 ease-in-out selection:bg-white selection:text-primary ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}
       >
-        <div className="w-full"></div>
+        <div className="w-full">
+          <div className="flex items-center">
+            <Link
+              to="https://maps.app.goo.gl/pmk3d7i2tmjc3pP8A"
+              target="_blank"
+              className="flex items-center gap-[1px]"
+            >
+              <HiLocationMarker />
+              <p>136/11 Trần Quang Diệu, P.14, Q.3, TP.HCM</p>
+              <sup>
+                <RiExternalLinkFill className="text-xs" />
+              </sup>
+            </Link>
+          </div>
+        </div>
         {/* Input Search */}
         <div className="relative flex w-full flex-row items-center justify-center gap-1 rounded-md bg-white pl-2">
           <IoSearch className="text-xl text-primary" />
@@ -197,27 +211,27 @@ const Header: React.FC = () => {
           </div>
         </div>
         <div className="flex w-full flex-row items-center justify-end gap-5">
+          {/*  */}
           <div className="flex items-center">
-            <HiLocationMarker />
-            <Link
-              to="https://maps.app.goo.gl/pmk3d7i2tmjc3pP8A"
-              target="_blank"
-              className="flex items-start gap-[1px]"
-            >
-              <p>136/11 Trần Quang Diệu, P.14, Q.3, TP.HCM</p>
-              <RiExternalLinkFill className="text-xs" />
-            </Link>
-          </div>
-          <div className="flex items-center">
-            <IoLogoFacebook />
-            Fanpage: &nbsp;
             <Link
               to="https://www.facebook.com/7teck.vn"
               target="_blank"
-              className="flex items-start gap-[1px]"
+              className="flex items-center gap-[1px]"
             >
+              <IoLogoFacebook />
+              Fanpage: &nbsp;
               <p>7Teck</p>
-              <RiExternalLinkFill className="text-xs" />
+              <sup>
+                <RiExternalLinkFill className="text-xs" />
+              </sup>
+            </Link>
+          </div>
+          <div className="flex items-center">
+            <Link
+              className="flex items-center gap-[1px] font-light"
+              to="tel:0983699993"
+            >
+              <HiPhoneArrowUpRight className="text-xs" /> (+84) 983.699.993
             </Link>
           </div>
         </div>

@@ -59,7 +59,7 @@ export default function AppRoutes() {
               path="thu-thuat-va-meo-hay"
               element={<TipsAndTricksPage />}
             />
-            <Route path="hanh-trinh" element={<GalleryPage />} />
+            <Route path="hanh-trinh-khach-hang" element={<GalleryPage />} />
             <Route path="bang-gia-thu-mua" element={<PriceListPage />} />
             <Route path="chinh-sach-bao-hanh" element={<ContactPage />} />
           </Route>
