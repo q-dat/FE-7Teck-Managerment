@@ -68,10 +68,10 @@ const ModalCreateGalleryPageAdmin: React.FC<ModalCreateAdminProps> = ({
             </p>
             <InputModal
               type="text"
-              {...register('name', { required: true })}
-              placeholder="Tên hình ảnh"
+              {...register('name')}
+              placeholder="Tên hình ảnh (Không bắt buộc)"
             />{' '}
-            <InputModal type="text" {...register('des')} placeholder="Mô tả" />
+            <InputModal type="text" {...register('des')} placeholder="Mô tả (Không bắt buộc)" />
             <LabelForm title={'Hình ảnh'} />
             <InputModal
               type="file"
