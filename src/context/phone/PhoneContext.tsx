@@ -26,8 +26,8 @@ interface PhoneContextType {
   error: string | null;
   getAllPhones: () => void;
   getPhoneById: (_id: string) => Promise<IPhone | undefined>;
-  createPhone: (phone: FormData) => Promise<AxiosResponse<any>>;
-  updatePhone: (_id: string, phone: FormData) => Promise<AxiosResponse<any>>;
+  createPhone: (phoneData: FormData) => Promise<AxiosResponse<any>>;
+  updatePhone: (_id: string, phoneData: FormData) => Promise<AxiosResponse<any>>;
   deletePhone: (_id: string) => Promise<AxiosResponse<any>>;
 }
 
@@ -125,9 +125,9 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
 
   // Update Phone
   const updatePhone = useCallback(
-    async (_id: string, phone: FormData): Promise<AxiosResponse<any>> => {
+    async (_id: string, phoneData: FormData): Promise<AxiosResponse<any>> => {
       return await fetchData(
-        () => updatePhoneApi(_id, phone),
+        () => updatePhoneApi(_id, phoneData),
         data => {
           if (data?.phone) {
             setPhones(prevPhones =>

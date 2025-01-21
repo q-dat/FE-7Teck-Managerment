@@ -11,6 +11,7 @@ import { PostProvider } from './context/post/PostContext.tsx';
 import { ToastContainer } from 'react-toastify';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import { GalleryProvider } from './context/gallery/GalleryContext.tsx';
+import { PostCatalogProvider } from './context/post-catalog/PostCatalogContext.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -18,16 +19,18 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <Suspense fallback={<LoadingPage loading={true} />}>
         <ErrorBoundary>
           <GalleryProvider>
-            <PostProvider>
-              <PhoneCatalogProvider>
-                <PhoneProvider>
-                  <ParallaxProvider>
-                    <App />
-                    <ToastContainer />
-                  </ParallaxProvider>
-                </PhoneProvider>
-              </PhoneCatalogProvider>
-            </PostProvider>
+            <PostCatalogProvider>
+              <PostProvider>
+                <PhoneCatalogProvider>
+                  <PhoneProvider>
+                    <ParallaxProvider>
+                      <App />
+                      <ToastContainer />
+                    </ParallaxProvider>
+                  </PhoneProvider>
+                </PhoneCatalogProvider>
+              </PostProvider>
+            </PostCatalogProvider>
           </GalleryProvider>
         </ErrorBoundary>
       </Suspense>

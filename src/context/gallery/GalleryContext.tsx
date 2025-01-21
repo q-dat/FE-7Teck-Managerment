@@ -27,10 +27,10 @@ interface GalleryContextType {
   error: string | null;
   getAllGallerys: () => void;
   getGalleryById: (_id: string) => Promise<IGallery | undefined>;
-  createGallery: (gallery: FormData) => Promise<AxiosResponse<any>>;
+  createGallery: (galleryData: FormData) => Promise<AxiosResponse<any>>;
   updateGallery: (
     _id: string,
-    gallery: FormData
+    galleryData: FormData
   ) => Promise<AxiosResponse<any>>;
   deleteGallery: (_id: string) => Promise<AxiosResponse<any>>;
 }
@@ -133,9 +133,9 @@ export const GalleryProvider = ({ children }: { children: ReactNode }) => {
 
   // Update Gallery
   const updateGallery = useCallback(
-    async (_id: string, gallery: FormData): Promise<AxiosResponse<any>> => {
+    async (_id: string, galleryData: FormData): Promise<AxiosResponse<any>> => {
       return await fetchData(
-        () => updateGalleryApi(_id, gallery),
+        () => updateGalleryApi(_id, galleryData),
         data => {
           if (data?.gallery) {
             setGallerys(prevGallerys =>

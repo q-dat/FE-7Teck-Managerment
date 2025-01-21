@@ -2,17 +2,17 @@ import axios from '../../config/axiosConfig';
 import { IPhoneCatalog } from '../../types/type/phone-catalog/phone-catalog';
 
 export const getAllPhoneCatalogsApi = () => {
-  return axios.get('/api/phone-catalogs');
+  return axios.get<{ phoneCatalog: IPhoneCatalog[] }>('/api/phone-catalogs');
 };
 
-// Get Phone By ID
+// Get PhoneCatalog By ID
 export const getPhoneCatalogByIdApi = (_id: string) => {
   return axios.get<{ phoneCatalog: IPhoneCatalog }>(
     `/api/phone-catalog/${_id}`
   );
 };
 
-// Create Phone
+// Create PhoneCatalog
 export const createPhoneCatalogApi = (formData: FormData) => {
   return axios.post('/api/phone-catalog', formData, {
     headers: {
@@ -21,20 +21,24 @@ export const createPhoneCatalogApi = (formData: FormData) => {
   });
 };
 
-// Update Phone
+// Update PhoneCatalog
 export const updatePhoneCatalogApi = async (
   _id: string,
   phoneCatalogData: FormData
 ) => {
-  const response = await axios.put(`/api/phone-catalog/${_id}`, phoneCatalogData, {
-    headers: {
-      'Content-Type': 'multipart/form-data'
+  const response = await axios.put(
+    `/api/phone-catalog/${_id}`,
+    phoneCatalogData,
+    {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
     }
-  });
+  );
   return response.data;
 };
 
-// Delete Phone
+// Delete PhoneCatalog
 export const deletePhoneCatalogApi = (id: string) => {
   return axios.delete(`/api/phone-catalog/${id}`);
 };

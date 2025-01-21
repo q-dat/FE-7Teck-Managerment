@@ -25,8 +25,8 @@ interface PostContextType {
   error: string | null;
   getAllPosts: () => void;
   getPostById: (_id: string) => IPost | undefined;
-  createPost: (post: FormData) => Promise<AxiosResponse<any>>;
-  updatePost: (id: string, post: FormData) => Promise<AxiosResponse<any>>;
+  createPost: (postData: FormData) => Promise<AxiosResponse<any>>;
+  updatePost: (id: string, postData: FormData) => Promise<AxiosResponse<any>>;
   deletePost: (id: string) => Promise<AxiosResponse<any>>;
 }
 
@@ -101,9 +101,9 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
 
   // Create
   const createPost = useCallback(
-    async (post: FormData): Promise<AxiosResponse<any>> => {
+    async (postData: FormData): Promise<AxiosResponse<any>> => {
       return await fetchData(
-        () => createPostApi(post),
+        () => createPostApi(postData),
         data => {
           if (data?.post) {
             setPosts(prevPosts => [...prevPosts, data?.post]);
@@ -117,9 +117,9 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
 
   // Update
   const updatePost = useCallback(
-    async (id: string, post: FormData): Promise<AxiosResponse<any>> => {
+    async (id: string, postData: FormData): Promise<AxiosResponse<any>> => {
       return await fetchData(
-        () => updatePostApi(id, post),
+        () => updatePostApi(id, postData),
         data => {
           if (data?.post) {
             setPosts(prevPosts =>
