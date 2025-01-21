@@ -13,7 +13,7 @@ const User: React.FC = () => {
     AOS.init({ duration: 900 });
   }, []);
   return (
-    <div className="flex min-h-screen flex-col bg-[#f2f4f7] selection:bg-primary selection:text-white">
+    <div className="flex min-h-screen flex-col bg-[#f2f4f7]">
       <Header />
       <ScrollToTopButton />
       <div className="flex-1 xl:pt-[100px]">

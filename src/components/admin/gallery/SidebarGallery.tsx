@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Button, Menu } from 'react-daisyui';
+import { Menu } from 'react-daisyui';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Logo } from '../../../assets/images';
 import DarkModeToggle from '../../orther/darkmode/DarkMode';
@@ -56,7 +56,7 @@ const SidebarGallery: React.FC<{}> = () => {
                 <p className="text-base font-bold text-primary dark:text-white">
                   7Teck
                 </p>
-                <p className="text-[.8rem] font-light dark:text-white">
+                <p className="text-xs font-light dark:text-white">
                   Product Management
                 </p>
               </div>
@@ -103,7 +103,7 @@ const SidebarGallery: React.FC<{}> = () => {
                         <div className="">
                           {item.toastify ? (
                             <div className="flex w-[22px] justify-center rounded-md bg-secondary py-1">
-                              <p className="text-[.8rem] font-light text-white">
+                              <p className="text-xs font-light text-white">
                                 {item.toastify > 99 ? '99+' : item.toastify}
                               </p>
                             </div>
@@ -122,16 +122,6 @@ const SidebarGallery: React.FC<{}> = () => {
       </div>
       {/*  */}
       <div className="flex flex-col items-center">
-        <Link to="">
-          <div className="rounded-lg bg-primary p-4 text-center text-white">
-            <p className="w-40 text-center text-xs">
-              Chọn nút bên dưới để thêm sản phẩm!
-            </p>
-            <Button className="my-4 rounded-lg bg-white text-primary hover:bg-white">
-              +Thêm Danh Mục
-            </Button>
-          </div>
-        </Link>
         <div className="py-4 text-xs text-black dark:text-white">
           <p className="font-bold">Quản trị 7Teck </p>
           <p className="font-light">© 2025 Điểu Quốc Đạt</p>

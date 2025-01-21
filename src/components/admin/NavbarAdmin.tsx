@@ -1,17 +1,11 @@
 import React, { useState } from 'react';
-
-//Icon
-import { FaBell, FaGift } from 'react-icons/fa6';
-import { FaGear } from 'react-icons/fa6';
 import {
-  IoChatboxEllipses,
-  IoSearchOutline,
   IoSettings
 } from 'react-icons/io5';
-import NavigationBtnAdmin from './NavigationBtnAdmin';
 import Avatar from 'boring-avatars';
-import { Button, Input } from 'react-daisyui';
+import { Button } from 'react-daisyui';
 import { BiSolidUserRectangle } from 'react-icons/bi';
+// import NavigationBtnAdmin from './NavigationBtnAdmin';
 
 const NavbarAdmin: React.FC<{}> = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -23,21 +17,21 @@ const NavbarAdmin: React.FC<{}> = () => {
   return (
     <div className="flex items-center justify-between">
       <div className="hidden w-full items-center justify-between xl:flex">
-        {/* Input Search */}
+        {/* Search Input */}
         <div className="relative mr-4 flex items-center">
-          <Input
+          {/* <Input
             className="min-w-[400px] bg-white text-black placeholder-black focus:outline-none"
             type="text"
             placeholder="Tìm Kiếm..."
           />
           <div className="absolute right-2 h-5 w-5 cursor-pointer text-black">
             <IoSearchOutline />
-          </div>
+          </div> */}
         </div>
 
         <div className="flex h-full items-center">
           <nav>
-            <div className="mx-5 space-x-4">
+            {/* <div className="mx-5 space-x-4">
               <NavigationBtnAdmin
                 badgeNumber={1}
                 Icons={<FaBell />}
@@ -74,7 +68,7 @@ const NavbarAdmin: React.FC<{}> = () => {
                   throw new Error('Function not implemented.');
                 }}
               />
-            </div>
+            </div> */}
           </nav>
           <div className="text-black dark:text-white">
             Hello,&nbsp;

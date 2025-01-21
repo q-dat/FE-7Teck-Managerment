@@ -63,7 +63,7 @@ const SidebarPost: React.FC<{}> = () => {
                 <p className="text-base font-bold text-primary dark:text-white">
                   7Teck
                 </p>
-                <p className="text-[.8rem] font-light dark:text-white">
+                <p className="text-xs font-light dark:text-white">
                   Product Management
                 </p>
               </div>
@@ -110,7 +110,7 @@ const SidebarPost: React.FC<{}> = () => {
                         <div className="">
                           {item.toastify ? (
                             <div className="flex w-[22px] justify-center rounded-md bg-secondary py-1">
-                              <p className="text-[.8rem] font-light text-white">
+                              <p className="text-xs font-light text-white">
                                 {item.toastify > 99 ? '99+' : item.toastify}
                               </p>
                             </div>

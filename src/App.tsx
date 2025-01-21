@@ -3,7 +3,7 @@ import AppRoutes from './routes';
 
 const App: React.FC = () => {
   return (
-    <div>
+    <div className='selection:bg-primary selection:text-white'>
       <AppRoutes />
     </div>
   );

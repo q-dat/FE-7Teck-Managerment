@@ -1,98 +1,61 @@
-// import React from 'react';
-// import { Button } from 'react-daisyui';
+import React from 'react';
+import { Button } from 'react-daisyui';
+import { IoIosArrowDropleft, IoIosArrowDropright } from 'react-icons/io';
 
-// const PaginationAdmin: React.FC = () => {
-//   const [currentPage, setCurrentPage] = React.useState(1);
-//   const totalPages = 40;
-//   const maxPageButtons = 3;
+interface PaginationProps {
+  currentPage: number;
+  totalPages: number;
+  onNextPage: () => void;
+  onPrevPage: () => void;
+}
 
-//   const handlePageChange = (page: number) => {
-//     if (page >= 1 && page <= totalPages) setCurrentPage(page);
-//   };
+const PaginationAdmin: React.FC<PaginationProps> = ({
+  currentPage,
+  totalPages,
+  onNextPage,
+  onPrevPage
+}) => {
+  if (totalPages <= 1) return null;
 
-//   const renderPageButtons = () => {
-//     const buttons = [];
-//     const startPage = Math.max(
-//       1,
-//       Math.min(currentPage - 2, totalPages - maxPageButtons + 1)
-//     );
-//     const endPage = Math.min(totalPages, startPage + maxPageButtons - 1);
+  return (
+    <div className="mt-10 flex flex-row items-center justify-center gap-x-10 px-2 text-primary">
+      <div className="text-primary">
+        {currentPage > 1 ? (
+          <Button
+            className="rounded-md shadow-headerMenu shadow-gray-50"
+            color="primary"
+            size="sm"
+            // disabled={currentPage === 1}
+            onClick={onPrevPage}
+          >
+            <IoIosArrowDropleft className="text-xl" /> Trang Trước
+          </Button>
+        ) : (
+          <div className="h-[36px] w-[120px]"></div>
+        )}
+      </div>
 
-//     for (let i = startPage; i <= endPage; i++) {
-//       buttons.push(
-//         <Button
-//           key={i}
-//           className={`btn btn-sm ${currentPage === i ? 'btn-primary text-white' : 'btn-ghost bg-[#EEEEEE]'}`}
-//           onClick={() => handlePageChange(i)}
-//         >
-//           {i}
-//         </Button>
-//       );
-//     }
+      <div className="mx-2 flex flex-row items-center justify-center text-primary">
+        <p>{currentPage}</p> / <p>{totalPages}</p>
+      </div>
 
-//     if (startPage > 1) {
-//       buttons.unshift(
-//         <div key="dots1" className="bg-none p-4">
-//           ...
-//         </div>
-//       );
-//       buttons.unshift(
-//         <Button
-//           key={1}
-//           className="btn btn-ghost btn-sm"
-//           onClick={() => handlePageChange(1)}
-//         >
-//           1
-//         </Button>
-//       );
-//     }
+      <div className="text-primary">
+        {currentPage < totalPages ? (
+          <Button
+            className="rounded-md shadow-headerMenu shadow-gray-50"
+            color="primary"
+            size="sm"
+            // disabled={currentPage === totalPages}
+            onClick={onNextPage}
+          >
+            Trang Tiếp <IoIosArrowDropright className="text-xl" />
+          </Button>
+        ) : (
+          <div className="h-[36px] w-[120px]"></div>
+        )}
+      </div>
+    </div>
+  );
+};
 
-//     if (endPage < totalPages) {
-//       buttons.push(
-//         <div key="dots2" className="bg-none p-4">
-//           ...
-//         </div>
-//       );
-//       buttons.push(
-//         <Button
-//           key={totalPages}
-//           className="btn btn-ghost btn-sm"
-//           onClick={() => handlePageChange(totalPages)}
-//         >
-//           {totalPages}
-//         </Button>
-//       );
-//     }
-
-//     return buttons;
-//   };
-
-//   return (
-//     <div className="flex flex-col items-center justify-between px-3 py-4 xl:flex-row">
-//       <div className="text-sm text-primary">
-//         <p>
-//           Dữ liệu trang {currentPage} trong {totalPages} trang
-//         </p>
-//       </div>
-//       <div className="flex items-center space-x-2 text-primary">
-//         <Button
-//           className="btn btn-sm text-primary"
-//           onClick={() => handlePageChange(currentPage - 1)}
-//           disabled={currentPage === 1}
-//         >
-//           &lt;
-//         </Button>
-//         {renderPageButtons()}
-//         <Button
-//           className="btn btn-sm text-primary"
-//           onClick={() => handlePageChange(currentPage + 1)}
-//           disabled={currentPage === totalPages}
-//         >
-//           &gt;
-//         </Button>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default PaginationAdmin;
+export default PaginationAdmin;

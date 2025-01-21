@@ -1,12 +1,11 @@
 import React from 'react';
-import { Input, Select } from 'react-daisyui';
-//Icon
-import { IoSearchOutline } from 'react-icons/io5';
+// import { Input, Select } from 'react-daisyui';
+// import { IoSearchOutline } from 'react-icons/io5';
 
 const NavtableAdmin: React.FC<{ Title_NavtableAdmin: string }> = ({
   Title_NavtableAdmin
 }) => {
-  const [value, setValue] = React.useState('default');
+  // const [value, setValue] = React.useState('default');
   return (
     <div className="hidden items-center justify-between rounded-t-md bg-white px-4 py-5 dark:bg-primary dark:bg-opacity-50 md:flex">
       <div>
@@ -17,8 +16,7 @@ const NavtableAdmin: React.FC<{ Title_NavtableAdmin: string }> = ({
           Đang sử dụng
         </p>
       </div>
-      <div className="flex items-center">
-        {/* Thanh Search */}
+      {/* <div className="flex items-center">
         <div className="relative mr-4 flex items-center">
           <Input
             className="min-w-[300px] bg-white text-black placeholder-black focus:outline-none"
@@ -42,7 +40,7 @@ const NavtableAdmin: React.FC<{ Title_NavtableAdmin: string }> = ({
             <option value="1">Mới nhất</option>
           </Select>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
