@@ -84,14 +84,14 @@ const PhoneFC: React.FC = () => {
               className="group relative flex h-full w-[185px] flex-col justify-between rounded-md border border-[#f2f4f7] text-black"
             >
               <div
-                className="min-h-[245px] w-full cursor-pointer"
+                className="h-[200px] w-full cursor-pointer"
                 // GetByID
                 // onClick={() => navigate(`/phone/${phone._id}`)}
                 onClick={() => navigate(`/iphone/${phoneUrl}`)}
               >
                 <img
                   loading="lazy"
-                  className="h-full w-full rounded-[5px] rounded-b-none object-contain"
+                  className="h-full w-full rounded-[5px] rounded-b-none object-cover"
                   src={phone.img}
                 />
               </div>
@@ -105,7 +105,6 @@ const PhoneFC: React.FC = () => {
                     {phone?.phoneCount > 99 ? '99+' : phone?.phoneCount} Sản
                     phẩm
                   </p>
-
                   <p className="xl:group-hover:text-secondary">
                     Điện Thoại {phone.name}
                   </p>

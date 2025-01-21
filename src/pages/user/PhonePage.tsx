@@ -80,7 +80,7 @@ const PhonePage: React.FC = () => {
                   >
                     <div
                       onClick={() => navigate(`/iphone/${phoneUrl}`)}
-                      className="min-h-[270px] w-full cursor-pointer rounded-md rounded-b-none bg-white"
+                      className="h-[200px] w-full cursor-pointer rounded-md rounded-b-none bg-white"
                     >
                       <img
                         loading="lazy"
@@ -89,7 +89,7 @@ const PhonePage: React.FC = () => {
                       />
                     </div>
                     {/*  */}
-                    <div className="flex h-full w-full flex-col items-start justify-between gap-1">
+                    <div className="flex  w-full flex-col items-start justify-between gap-1">
                       <div
                         className="w-full cursor-pointer p-1"
                         onClick={() => navigate(`/iphone/${phoneUrl}`)}
