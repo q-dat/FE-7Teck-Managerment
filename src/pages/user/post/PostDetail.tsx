@@ -56,7 +56,7 @@ const PostDetail: React.FC = () => {
     <div>
       <HeaderResponsive Title_NavbarMobile="Bài viết" />
       <div className="py-[60px] xl:pt-0">
-        <div className="breadcrumbs mb-10 px-[10px] py-2 text-sm text-black shadow lg:px-20">
+        <div className="breadcrumbs mb-10 px-[10px] py-2 text-sm text-black shadow xl:px-20">
           <ul className="font-light">
             <li>
               <Link to="/">Trang Chủ</Link>

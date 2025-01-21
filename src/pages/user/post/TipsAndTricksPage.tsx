@@ -43,7 +43,7 @@ const TipsAndTricksPage: React.FC = () => {
     <div>
       <HeaderResponsive Title_NavbarMobile="Thủ Thuật - Mẹo" />
       <div className="py-[60px] xl:pt-0">
-        <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow lg:px-20">
+        <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow xl:px-20">
           <ul className="font-light">
             <li>
               <Link to="/">Trang Chủ</Link>
@@ -54,7 +54,7 @@ const TipsAndTricksPage: React.FC = () => {
           </ul>
         </div>
         <div className="px-2 xl:px-20">
-          <div className="py-3 text-center text-[30px] font-bold text-primary">
+          <div className="py-5 text-center text-[30px] font-bold text-primary">
             Thủ Thuật Công Nghệ Và Mẹo Hay
           </div>
           <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
