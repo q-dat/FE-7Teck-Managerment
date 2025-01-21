@@ -76,7 +76,7 @@ const SidebarPost: React.FC<{}> = () => {
         {/*  */}
         <div className="relative flex w-full flex-col justify-between bg-white dark:bg-gray-800 dark:text-white">
           <div className="mb-2 mt-5 h-[280px] overflow-y-scroll scrollbar-hide md:h-[400px]">
-            <Menu className="flex-grow">
+            <Menu className="m-0 w-full flex-grow p-0">
               {menuItems.map(item => {
                 const Icon = item.icon;
                 return (
