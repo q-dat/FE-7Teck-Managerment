@@ -29,13 +29,16 @@ const PhoneCatalogManager = lazy(
 const PhoneManager = lazy(() => import('../pages/admin/PhoneManager'));
 
 // post
-const Post = lazy(() => import('../pages/post/Post'));
+const Post = lazy(() => import('../pages/admin/post/Post'));
 const PostManagerPage = lazy(
   () => import('../pages/admin/post/PostManagerPage')
 );
+const PostCatalogManagerPage = lazy(
+  () => import('../pages/admin/post/PostCatalogManagerPage')
+);
 
 // gallery
-const Gallery = lazy(() => import('../pages/gallery/Gallery'));
+const Gallery = lazy(() => import('../pages/admin/gallery/Gallery'));
 const GalleryManagerPage = lazy(
   () => import('../pages/admin/gallery/GalleryManagerPage')
 );
@@ -82,6 +85,7 @@ export default function AppRoutes() {
           <Route path="/admin-post" element={<Post />}>
             {/* <Route index path="" element={<DashboardPage />} /> */}
             <Route path="post-manager" element={<PostManagerPage />} />
+            <Route path="post-catalog-manager" element={<PostCatalogManagerPage />} />
           </Route>
         </Route>
 

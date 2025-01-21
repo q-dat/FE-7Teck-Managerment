@@ -17,7 +17,7 @@ const SidebarPost: React.FC<{}> = () => {
     {
       name: 'Danh mục bài viết',
       icon: AiOutlineMenuFold,
-      link: '/admin-post/post-catalog',
+      link: '/admin-post/post-catalog-manager',
       toastify: posts.length
     },
     {

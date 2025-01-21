@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-import NavbarAdmin from '../../components/admin/NavbarAdmin';
-import SidebarPost from '../../components/admin/post/SidebarPost';
+import NavbarAdmin from '../../../components/admin/NavbarAdmin';
+import SidebarPost from '../../../components/admin/post/SidebarPost';
+
 const Post: React.FC<{}> = () => {
   // Title Tag
   useEffect(() => {

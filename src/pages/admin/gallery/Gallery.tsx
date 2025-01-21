@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-import NavbarAdmin from '../../components/admin/NavbarAdmin';
-import SidebarGallery from '../../components/admin/gallery/SidebarGallery';
+import SidebarGallery from '../../../components/admin/gallery/SidebarGallery';
+import NavbarAdmin from '../../../components/admin/NavbarAdmin';
+
 const Gallery: React.FC<{}> = () => {
     // Title Tag
     useEffect(() => {
