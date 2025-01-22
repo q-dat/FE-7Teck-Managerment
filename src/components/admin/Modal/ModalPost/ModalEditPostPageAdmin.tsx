@@ -2,11 +2,13 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { IPost } from '../../../../types/type/post/post';
 import InputModal from '../../InputModal';
-import { Button } from 'react-daisyui';
+import { Button, Select, Textarea } from 'react-daisyui';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { Toastify } from '../../../../helper/Toastify';
 import { PostContext } from '../../../../context/post/PostContext';
+import { PostCatalogContext } from '../../../../context/post-catalog/PostCatalogContext';
+import LabelForm from '../../LabelForm';
 
 const modules = {
   toolbar: [
@@ -34,8 +36,8 @@ const ModalEditPostPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({
   onClose,
   postId
 }) => {
-  const { posts, updatePost, getAllPosts} =
-    useContext(PostContext);
+  const { posts, updatePost, getAllPosts } = useContext(PostContext);
+  const { postCatalogs } = useContext(PostCatalogContext);
   const { control, register, handleSubmit, setValue, reset } = useForm<IPost>();
   const [editorValue, setEditorValue] = useState<string>('');
 
@@ -89,42 +91,59 @@ const ModalEditPostPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({
       >
         <div
           onClick={e => e.stopPropagation()}
-          className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:w-1/2"
+          className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:mx-[200px] xl:w-screen"
         >
-          <div>
-            <p className="font-bold text-black dark:text-white">
-              Chỉnh sửa bài viết
-            </p>
-            <InputModal
-              type="text"
-              {...register('title')}
-              placeholder="Tiêu đề bài viết"
-            />
-            <InputModal
-              type="text"
-              {...register('catalog')}
-              placeholder="Danh mục"
-            />
-            <Controller
-              name="content"
-              control={control}
-              defaultValue={editorValue}
-              render={({ field }) => (
-                <ReactQuill
-                  value={field.value || ''}
-                  onChange={value => field.onChange(value)}
-                  theme="snow"
-                  modules={modules}
-                  className="mb-4 h-[400px] overflow-auto rounded-md border text-black scrollbar-hide dark:text-white"
-                  placeholder="Nội dung bài viết..."
-                />
-              )}
-            />
-            <InputModal
-              type="file"
-              {...register('imageUrl')}
-              placeholder="Ảnh đại diện"
-            />
+          <p className="font-bold text-black dark:text-white">
+            Chỉnh sửa bài viết
+          </p>
+          <div className="mt-5 flex flex-col items-start justify-center gap-5 xl:flex-row">
+            <div className="w-full xl:w-1/2">
+              <LabelForm title={'Tiêu đề bài viết'} />
+              <Textarea
+                className="h-[100px] w-full border border-gray-50 bg-white text-black placeholder:text-black focus:border focus:border-gray-50 focus:outline-none dark:bg-gray-700 dark:text-white xl:h-[350px]"
+                {...register('title')}
+                placeholder="Tiêu đề bài viết"
+              />
+              <LabelForm title={'Danh mục'} />
+              <Select
+                defaultValue=""
+                className="mb-5 w-full border border-gray-50 bg-white text-black focus:border focus:border-gray-50 focus:outline-none dark:bg-gray-700 dark:text-white"
+                {...register('catalog', { required: true })}
+              >
+                <option value="" disabled>
+                  Chọn Danh Mục
+                </option>
+                {postCatalogs.map(postCatalog => (
+                  <option key={postCatalog._id} value={postCatalog.name}>
+                    {postCatalog.name}
+                  </option>
+                ))}
+              </Select>
+              <LabelForm title={'Ảnh đại diện'} />
+              <InputModal
+                type="file"
+                {...register('imageUrl')}
+                placeholder="Ảnh đại diện"
+              />
+            </div>
+            <div className="w-full">
+              <LabelForm title={'Nội dung'} />
+              <Controller
+                name="content"
+                control={control}
+                defaultValue={editorValue}
+                render={({ field }) => (
+                  <ReactQuill
+                    value={field.value || ''}
+                    onChange={value => field.onChange(value)}
+                    theme="snow"
+                    modules={modules}
+                    className="mb-4 h-[400px] overflow-auto rounded-md border text-black scrollbar-hide dark:text-white xl:h-[600px]"
+                    placeholder="Nội dung bài viết..."
+                  />
+                )}
+              />
+            </div>
           </div>
           <div className="flex flex-row items-center justify-center space-x-5 text-center">
             <Button

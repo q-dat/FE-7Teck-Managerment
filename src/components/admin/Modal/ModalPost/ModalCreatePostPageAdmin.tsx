@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Button } from 'react-daisyui';
+import { Button, Select, Textarea } from 'react-daisyui';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -7,6 +7,8 @@ import { IPost } from '../../../../types/type/post/post';
 import { Toastify } from '../../../../helper/Toastify';
 import InputModal from '../../InputModal';
 import { PostContext } from '../../../../context/post/PostContext';
+import { PostCatalogContext } from '../../../../context/post-catalog/PostCatalogContext';
+import LabelForm from '../../LabelForm';
 
 const modules = {
   toolbar: [
@@ -22,20 +24,18 @@ const modules = {
     [{ script: 'sub' }, { script: 'super' }]
   ]
 };
-
 interface ModalCreatePostProps {
   isOpen: boolean;
   onClose: () => void;
 }
-
 const ModalCreatePostPageAdmin: React.FC<ModalCreatePostProps> = ({
   isOpen,
   onClose
 }) => {
   const { createPost, getAllPosts } = useContext(PostContext);
+  const { postCatalogs } = useContext(PostCatalogContext);
   const { register, handleSubmit, reset } = useForm<IPost>();
   const [editorValue, setEditorValue] = React.useState<string>('');
-
   //
   const onSubmit: SubmitHandler<IPost> = async formData => {
     const data = new FormData();
@@ -45,7 +45,6 @@ const ModalCreatePostPageAdmin: React.FC<ModalCreatePostProps> = ({
     if (formData.imageUrl) {
       data.append('imageUrl', formData.imageUrl[0]);
     }
-
     try {
       await createPost(data);
       reset();
@@ -67,7 +66,7 @@ const ModalCreatePostPageAdmin: React.FC<ModalCreatePostProps> = ({
   };
 
   if (!isOpen) return null;
-
+  
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div
@@ -76,38 +75,53 @@ const ModalCreatePostPageAdmin: React.FC<ModalCreatePostProps> = ({
       >
         <div
           onClick={e => e.stopPropagation()}
-          className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:w-1/2"
+          className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:mx-[200px] xl:w-screen"
         >
-          <div>
-            <p className="font-bold text-black dark:text-white">
-              Tạo bài viết mới
-            </p>
-            <InputModal
-              type="text"
-              {...register('title', { required: true })}
-              placeholder="Tiêu đề bài viết"
-            />
-            <InputModal
-              type="text"
-              {...register('catalog', { required: true })}
-              placeholder="Danh mục"
-            />
-            <ReactQuill
-              value={editorValue}
-              onChange={setEditorValue}
-              theme="snow"
-              modules={modules}
-              className="mb-4 h-[400px] overflow-auto rounded-md border scrollbar-hide"
-              placeholder="Nội dung bài viết..."
-            />
-
-            <InputModal
-              type="file"
-              {...register('imageUrl')}
-              placeholder="Ảnh đại diện"
-            />
+          <p className="font-bold text-black dark:text-white">
+            Tạo bài viết mới
+          </p>
+          <div className="mt-5 flex flex-col items-start justify-center gap-5 xl:flex-row">
+            <div className="w-full xl:w-1/2">
+              <LabelForm title={'Tiêu đề bài viết'} />
+              <Textarea
+                className="h-[100px] w-full border border-gray-50 bg-white text-black placeholder:text-black focus:border focus:border-gray-50 focus:outline-none dark:bg-gray-700 dark:text-white xl:h-[429px]"
+                {...register('title', { required: true })}
+                placeholder="Tiêu đề bài viết"
+              />
+              <LabelForm title={'Danh mục'} />
+              <Select
+                defaultValue=""
+                className="mb-5 w-full border border-gray-50 bg-white text-black focus:border focus:border-gray-50 focus:outline-none dark:bg-gray-700 dark:text-white"
+                {...register('catalog', { required: true })}
+              >
+                <option value="" disabled>
+                  Chọn Danh Mục
+                </option>
+                {postCatalogs.map(postCatalog => (
+                  <option key={postCatalog._id} value={postCatalog.name}>
+                    {postCatalog.name}
+                  </option>
+                ))}
+              </Select>
+              <LabelForm title={'Ảnh đại diện'} />
+              <InputModal
+                type="file"
+                {...register('imageUrl', { required: true })}
+                placeholder="Ảnh đại diện"
+              />
+            </div>
+            <div className="w-full">
+              <LabelForm title={'Nội dung'} />
+              <ReactQuill
+                value={editorValue}
+                onChange={setEditorValue}
+                theme="snow"
+                modules={modules}
+                className="mb-4 h-[400px] overflow-auto rounded-md border text-black scrollbar-hide dark:text-white xl:h-[600px]"
+                placeholder="Nội dung bài viết..."
+              />
+            </div>
           </div>
-
           <div className="flex flex-row items-center justify-center space-x-5 text-center">
             <Button
               onClick={onClose}
