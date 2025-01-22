@@ -168,7 +168,7 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
               <InputModal
                 type="number"
                 {...register('status', { required: true })}
-                placeholder="0(New) / 1(Old)"
+                placeholder="Chọn: 0(Mới) / 1(Cũ)"
               />
               <LabelForm title={'Hình ảnh*'} />
               <InputModal

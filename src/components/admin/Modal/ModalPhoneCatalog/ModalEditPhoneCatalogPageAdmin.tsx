@@ -313,7 +313,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
               <InputModal
                 type="number"
                 {...register('status')}
-                placeholder="0(New) / 1(Old)"
+                placeholder="Chọn: 0(Mới) / 1(Cũ)"
               />
               <LabelForm title={'Hình ảnh'} />
               {existingImg && (

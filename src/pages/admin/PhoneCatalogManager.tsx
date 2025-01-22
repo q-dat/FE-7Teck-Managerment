@@ -94,6 +94,7 @@ const PhoneCatalogManager: React.FC = () => {
             <span>Tên</span>
             <span>Giá</span>
             <span>Ngày Tạo</span>
+            <span>Trạng Thái</span>
             <span>Hành Động</span>
           </Table.Head>
         }
@@ -121,6 +122,13 @@ const PhoneCatalogManager: React.FC = () => {
                         'vi-VN'
                       )} */}
                       <TimeAgo date={phoneCatalog?.createdAt} />
+                    </span>
+                    <span>
+                      {phoneCatalog?.status === 0
+                        ? '0 (Mới)'
+                        : phoneCatalog?.status === 1
+                          ? '1 (Cũ)'
+                          : phoneCatalog?.status}
                     </span>
                     {/* Hành động */}
                     <span>
