@@ -45,6 +45,7 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
     const data = new FormData();
     data.append('name', formData.name);
     data.append('price', formData.price.toString());
+    data.append('status', formData.status.toString());
     data.append('content', editorValue);
 
     // Append ảnh
@@ -154,19 +155,25 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
               <LabelForm title={'Tên danh mục sản phẩm*'} />
               <InputModal
                 type="text"
-                {...register('name')}
+                {...register('name', { required: true })}
                 placeholder="Nhập tên danh mục sản phẩm"
               />
               <LabelForm title={'Giá*'} />
               <InputModal
                 type="number"
-                {...register('price')}
+                {...register('price', { required: true })}
                 placeholder="Nhập giá (Hệ số x1000: 1triệu = 1000)"
+              />
+              <LabelForm title={'Trạng thái*'} />
+              <InputModal
+                type="number"
+                {...register('status', { required: true })}
+                placeholder="0(New) / 1(Old)"
               />
               <LabelForm title={'Hình ảnh*'} />
               <InputModal
                 type="file"
-                {...register('img')}
+                {...register('img', { required: true })}
                 placeholder="Chèn ảnh thu nhỏ"
               />
             </div>

@@ -52,6 +52,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
       setValue('name', phoneData.name);
       setValue('img', phoneData.img);
       setValue('price', phoneData.price);
+      setValue('status', phoneData.status);
       setValue('content', phoneData.content || '');
       setEditorValue(phoneData.content || '');
       setValue('createdAt', phoneData.createdAt);
@@ -229,6 +230,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
 
     data.append('name', formData.name);
     data.append('price', formData.price.toString());
+    data.append('status', formData.status.toString());
     data.append('content', formData.content || '');
 
     const imgFile = watch('img');
@@ -306,6 +308,12 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                 type="number"
                 {...register('price')}
                 placeholder="Nhập giá"
+              />
+              <LabelForm title={'Trạng thái*'} />
+              <InputModal
+                type="number"
+                {...register('status')}
+                placeholder="0(New) / 1(Old)"
               />
               <LabelForm title={'Hình ảnh'} />
               {existingImg && (
@@ -713,7 +721,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
               type="submit"
               className="text-white"
             >
-            {isLoading ? 'Đang cập nhật...' : 'Xác nhận'}
+              {isLoading ? 'Đang cập nhật...' : 'Xác nhận'}
             </Button>
           </div>
         </div>
