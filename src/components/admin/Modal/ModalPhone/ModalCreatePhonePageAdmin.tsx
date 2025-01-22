@@ -23,12 +23,12 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreateAdminProps> = ({
   isOpen,
   onClose
 }) => {
-  const { createPhone, getAllPhones } = useContext(PhoneContext);
+  const { loading, createPhone, getAllPhones } = useContext(PhoneContext);
+  const isLoading = loading.create;
   const { control, register, handleSubmit, reset } = useForm<IPhone>();
 
   // PhoneCatalog
-  const { phoneCatalogs } =
-    useContext(PhoneCatalogContext);
+  const { phoneCatalogs } = useContext(PhoneCatalogContext);
 
   // react-select
   const phoneCatalog: Option[] = phoneCatalogs.map(phoneCatalog => ({
@@ -156,8 +156,13 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreateAdminProps> = ({
             >
               Hủy
             </Button>
-            <Button color="primary" type="submit" className="group text-white">
-              Xác Nhận
+            <Button
+              disabled={isLoading}
+              color="primary"
+              type="submit"
+              className="group text-white"
+            >
+              {isLoading ? 'Đang tạo...' : 'Xác nhận'}
             </Button>
           </div>
         </div>

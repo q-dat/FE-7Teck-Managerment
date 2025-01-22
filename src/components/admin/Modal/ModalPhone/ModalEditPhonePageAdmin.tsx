@@ -25,7 +25,9 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
   onClose,
   phoneId
 }) => {
-  const { phones, getAllPhones, updatePhone } = useContext(PhoneContext);
+  const { loading, phones, getAllPhones, updatePhone } =
+    useContext(PhoneContext);
+  const isLoading = loading.update;
   const { phoneCatalogs } = useContext(PhoneCatalogContext);
 
   //react-select
@@ -228,8 +230,13 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
             >
               Hủy
             </Button>
-            <Button color="primary" type="submit" className="group text-white">
-              Xác Nhận
+            <Button
+              disabled={isLoading}
+              color="primary"
+              type="submit"
+              className="group text-white"
+            >
+              {isLoading ? 'Đang chỉnh sửa...' : 'Xác nhận'}
             </Button>
           </div>
         </div>

@@ -18,8 +18,9 @@ const ModalEditGalleryPageAdmin: React.FC<ModalEditPageAdminProps> = ({
   onClose,
   galleryId
 }) => {
-  const { gallerys, getAllGallerys, updateGallery } =
+  const { loading, gallerys, getAllGallerys, updateGallery } =
     useContext(GalleryContext);
+  const isLoading = loading.update;
   const { register, handleSubmit, watch, setValue, reset } =
     useForm<IGallery>();
 
@@ -135,8 +136,13 @@ const ModalEditGalleryPageAdmin: React.FC<ModalEditPageAdminProps> = ({
             >
               Hủy
             </Button>
-            <Button color="primary" type="submit" className="group text-white">
-              Xác Nhận
+            <Button
+              disabled={isLoading}
+              color="primary"
+              type="submit"
+              className="group text-white"
+            >
+              {isLoading ? 'Đang tạo...' : 'Xác nhận'}
             </Button>
           </div>
         </div>

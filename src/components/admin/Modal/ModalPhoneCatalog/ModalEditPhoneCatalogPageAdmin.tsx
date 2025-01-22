@@ -36,8 +36,9 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
   onClose,
   phoneCatalogId
 }) => {
-  const { getAllPhoneCatalogs, phoneCatalogs, updatePhoneCatalog } =
+  const { loading, getAllPhoneCatalogs, phoneCatalogs, updatePhoneCatalog } =
     useContext(PhoneCatalogContext);
+  const isLoading = loading.update;
   const { control, register, handleSubmit, reset, setValue, watch } =
     useForm<IPhoneCatalog>();
   const [existingImg, setExistingImg] = useState<string | undefined>('');
@@ -706,8 +707,13 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
             >
               Hủy
             </Button>
-            <Button color="primary" type="submit" className="text-white">
-              Xác nhận
+            <Button
+              disabled={isLoading}
+              color="primary"
+              type="submit"
+              className="text-white"
+            >
+              {isLoading ? 'Đang chỉnh sửa...' : 'Xác nhận'}
             </Button>
           </div>
         </div>

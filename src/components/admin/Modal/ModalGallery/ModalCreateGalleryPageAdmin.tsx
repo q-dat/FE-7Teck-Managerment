@@ -16,7 +16,8 @@ const ModalCreateGalleryPageAdmin: React.FC<ModalCreateAdminProps> = ({
   isOpen,
   onClose
 }) => {
-  const { createGallery, getAllGallerys } = useContext(GalleryContext);
+  const {loading, createGallery, getAllGallerys } = useContext(GalleryContext);
+  const isLoading = loading.create;
   const { register, handleSubmit, reset } = useForm<IGallery>();
 
   const onSubmit: SubmitHandler<IGallery> = async formData => {
@@ -88,8 +89,8 @@ const ModalCreateGalleryPageAdmin: React.FC<ModalCreateAdminProps> = ({
             >
               Hủy
             </Button>
-            <Button color="primary" type="submit" className="group text-white">
-              Xác Nhận
+            <Button disabled={isLoading} color="primary" type="submit" className="group text-white">
+            {isLoading ? 'Đang tạo...' : 'Xác nhận'}
             </Button>
           </div>
         </div>
