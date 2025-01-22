@@ -6,9 +6,11 @@ import DarkModeToggle from '../../orther/darkmode/DarkMode';
 import { AiOutlineMenuFold } from 'react-icons/ai';
 import { BsFilePost } from 'react-icons/bs';
 import { PostContext } from '../../../context/post/PostContext';
+import { PostCatalogContext } from '../../../context/post-catalog/PostCatalogContext';
 
 const SidebarPost: React.FC<{}> = () => {
   const { posts } = useContext(PostContext);
+  const { postCatalogs } = useContext(PostCatalogContext);
   const [activeItem, setActiveItem] = useState('Dashboard');
 
   const location = useLocation();
@@ -18,7 +20,7 @@ const SidebarPost: React.FC<{}> = () => {
       name: 'Danh mục bài viết',
       icon: AiOutlineMenuFold,
       link: '/admin-post/post-catalog-manager',
-      toastify: posts.length
+      toastify: postCatalogs.length
     },
     {
       name: 'Quản lý bài viết',
