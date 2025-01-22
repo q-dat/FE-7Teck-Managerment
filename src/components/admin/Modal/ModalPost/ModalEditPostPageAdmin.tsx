@@ -36,7 +36,7 @@ const ModalEditPostPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({
   onClose,
   postId
 }) => {
-  const { loading,posts, updatePost, getAllPosts } = useContext(PostContext);
+  const { loading, posts, updatePost, getAllPosts } = useContext(PostContext);
   const isLoading = loading.update;
   const { postCatalogs } = useContext(PostCatalogContext);
   const { control, register, handleSubmit, setValue, reset } = useForm<IPost>();
@@ -153,8 +153,13 @@ const ModalEditPostPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({
             >
               Hủy
             </Button>
-            <Button disabled={isLoading} color="primary" type="submit" className="group text-white">
-            {isLoading ? 'Đang tạo...' : 'Xác nhận'}
+            <Button
+              disabled={isLoading}
+              color="primary"
+              type="submit"
+              className="group text-white"
+            >
+              {isLoading ? 'Đang cập nhật...' : 'Xác nhận'}
             </Button>
           </div>
         </div>

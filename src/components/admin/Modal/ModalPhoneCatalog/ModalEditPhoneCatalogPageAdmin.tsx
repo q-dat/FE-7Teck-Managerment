@@ -713,7 +713,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
               type="submit"
               className="text-white"
             >
-              {isLoading ? 'Đang chỉnh sửa...' : 'Xác nhận'}
+            {isLoading ? 'Đang cập nhật...' : 'Xác nhận'}
             </Button>
           </div>
         </div>

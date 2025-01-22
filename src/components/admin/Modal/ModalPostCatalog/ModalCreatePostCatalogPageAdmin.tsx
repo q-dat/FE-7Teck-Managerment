@@ -16,9 +16,9 @@ const ModalCreatePostCatalogPageAdmin: React.FC<ModalCreatePostProps> = ({
   isOpen,
   onClose
 }) => {
-  const {loading, createPostCatalog, getAllPostCatalogs } =
+  const { loading, createPostCatalog, getAllPostCatalogs } =
     useContext(PostCatalogContext);
-    const isLoading = loading.create
+  const isLoading = loading.create;
   const { register, handleSubmit, reset } = useForm<IPostCatalog>();
   //
   const onSubmit: SubmitHandler<IPostCatalog> = async formData => {
@@ -72,8 +72,13 @@ const ModalCreatePostCatalogPageAdmin: React.FC<ModalCreatePostProps> = ({
             >
               Hủy
             </Button>
-            <Button disabled={isLoading} color="primary" type="submit" className="group text-white">
-            {isLoading ? 'Đang tạo...' : 'Xác nhận'}
+            <Button
+              disabled={isLoading}
+              color="primary"
+              type="submit"
+              className="group text-white"
+            >
+              {isLoading ? 'Đang tạo...' : 'Xác nhận'}
             </Button>
           </div>
         </div>

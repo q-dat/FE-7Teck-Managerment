@@ -32,8 +32,8 @@ const ModalCreatePostPageAdmin: React.FC<ModalCreatePostProps> = ({
   isOpen,
   onClose
 }) => {
-  const { loading,createPost, getAllPosts } = useContext(PostContext);
-  const isLoading= loading.create
+  const { loading, createPost, getAllPosts } = useContext(PostContext);
+  const isLoading = loading.create;
   const { postCatalogs } = useContext(PostCatalogContext);
   const { register, handleSubmit, reset } = useForm<IPost>();
   const [editorValue, setEditorValue] = React.useState<string>('');
@@ -67,7 +67,7 @@ const ModalCreatePostPageAdmin: React.FC<ModalCreatePostProps> = ({
   };
 
   if (!isOpen) return null;
-  
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div
@@ -130,8 +130,13 @@ const ModalCreatePostPageAdmin: React.FC<ModalCreatePostProps> = ({
             >
               Hủy
             </Button>
-            <Button disabled={isLoading} color="primary" type="submit" className="group text-white">
-            {isLoading ? 'Đang tạo...' : 'Xác nhận'}
+            <Button
+              disabled={isLoading}
+              color="primary"
+              type="submit"
+              className="group text-white"
+            >
+              {isLoading ? 'Đang tạo...' : 'Xác nhận'}
             </Button>
           </div>
         </div>

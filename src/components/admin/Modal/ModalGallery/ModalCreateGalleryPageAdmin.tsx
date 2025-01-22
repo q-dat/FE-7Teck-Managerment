@@ -16,7 +16,7 @@ const ModalCreateGalleryPageAdmin: React.FC<ModalCreateAdminProps> = ({
   isOpen,
   onClose
 }) => {
-  const {loading, createGallery, getAllGallerys } = useContext(GalleryContext);
+  const { loading, createGallery, getAllGallerys } = useContext(GalleryContext);
   const isLoading = loading.create;
   const { register, handleSubmit, reset } = useForm<IGallery>();
 
@@ -72,7 +72,11 @@ const ModalCreateGalleryPageAdmin: React.FC<ModalCreateAdminProps> = ({
               {...register('name')}
               placeholder="Tên hình ảnh (Không bắt buộc)"
             />{' '}
-            <InputModal type="text" {...register('des')} placeholder="Mô tả (Không bắt buộc)" />
+            <InputModal
+              type="text"
+              {...register('des')}
+              placeholder="Mô tả (Không bắt buộc)"
+            />
             <LabelForm title={'Hình ảnh'} />
             <InputModal
               type="file"
@@ -89,8 +93,13 @@ const ModalCreateGalleryPageAdmin: React.FC<ModalCreateAdminProps> = ({
             >
               Hủy
             </Button>
-            <Button disabled={isLoading} color="primary" type="submit" className="group text-white">
-            {isLoading ? 'Đang tạo...' : 'Xác nhận'}
+            <Button
+              disabled={isLoading}
+              color="primary"
+              type="submit"
+              className="group text-white"
+            >
+              {isLoading ? 'Đang tạo...' : 'Xác nhận'}
             </Button>
           </div>
         </div>
