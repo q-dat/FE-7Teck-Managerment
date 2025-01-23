@@ -24,11 +24,16 @@ const PhonePage: React.FC = () => {
   };
   // Panigation
   const itemsPerPage = 12;
-
-  const totalPages = Math.ceil(phoneCatalogs.length / itemsPerPage);
+  const NewiPhoneCatalogs = phoneCatalogs.filter(
+    phoneCatalog => phoneCatalog?.status === 0 //0 (Mới)
+  );
+  const totalPages = Math.ceil(NewiPhoneCatalogs.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentPhones = phoneCatalogs.slice(indexOfFirstItem, indexOfLastItem);
+  const currentPhones = NewiPhoneCatalogs.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
 
   // Cuộn lên top khi currentPage thay đổi
   useEffect(() => {
@@ -89,7 +94,7 @@ const PhonePage: React.FC = () => {
                       />
                     </div>
                     {/*  */}
-                    <div className="flex  w-full flex-col items-start justify-between gap-1">
+                    <div className="flex w-full flex-col items-start justify-between gap-1">
                       <div
                         className="w-full cursor-pointer p-1"
                         onClick={() => navigate(`/iphone/${phoneUrl}`)}
