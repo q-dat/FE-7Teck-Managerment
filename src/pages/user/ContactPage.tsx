@@ -6,7 +6,6 @@ import InputForm from '../../components/UserPage/InputForm';
 import { Logo } from '../../assets/images';
 
 const ContactPage: React.FC = () => {
-  // Title Tag
   useEffect(() => {
     document.title = `Chính Sách Bảo Hành - 7Teck`;
   }, []);

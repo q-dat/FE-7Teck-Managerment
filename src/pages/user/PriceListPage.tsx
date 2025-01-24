@@ -3,7 +3,6 @@ import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
 import { Button } from 'react-daisyui';
 import { Link, useLocation } from 'react-router-dom';
 
-// Định nghĩa kiểu sản phẩm
 interface Product {
   name: string;
   price: string;
@@ -15,15 +14,28 @@ export interface IPhoneCatalog {
 }
 
 const PriceListPage: React.FC = () => {
-  // Title Tag
-  useEffect(() => {
-    document.title = `Bảng Giá Thu Mua - 7Teck`;
-  });
   const [activePhoneItem, setActivePhoneItem] = useState<string>('Iphone 15');
   const [activeIpadItem, setActiveIpadItem] = useState<string>('Ipad Pro');
   const [activeLaptopItem, setActiveLaptopItem] =
     useState<string>('MacBook Air');
   const location = useLocation();
+  useEffect(() => {
+    // Title Tag
+    document.title = `Bảng Giá Thu Mua - 7Teck`;
+    // Scroll To Top
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    //
+    const storedPhoneItem = sessionStorage.getItem('activePhoneItem');
+    const storedIpadItem = sessionStorage.getItem('activeIpadItem');
+    const storedLaptopItem = sessionStorage.getItem('activeLaptopItem');
+
+    if (storedPhoneItem) setActivePhoneItem(storedPhoneItem);
+    if (storedIpadItem) setActiveIpadItem(storedIpadItem);
+    if (storedLaptopItem) setActiveLaptopItem(storedLaptopItem);
+  }, [location.pathname]);
 
   const FecthPhoneCatalog: IPhoneCatalog[] = [
     { name: 'Iphone 15', _id: '1' },
@@ -78,22 +90,6 @@ const PriceListPage: React.FC = () => {
       { name: 'MacBook Pro 512GB', price: '50,000,000 VND', storage: '512GB' }
     ]
   };
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  }, []);
-
-  useEffect(() => {
-    const storedPhoneItem = sessionStorage.getItem('activePhoneItem');
-    const storedIpadItem = sessionStorage.getItem('activeIpadItem');
-    const storedLaptopItem = sessionStorage.getItem('activeLaptopItem');
-
-    if (storedPhoneItem) setActivePhoneItem(storedPhoneItem);
-    if (storedIpadItem) setActiveIpadItem(storedIpadItem);
-    if (storedLaptopItem) setActiveLaptopItem(storedLaptopItem);
-  }, [location.pathname]);
 
   const handlePhoneItemClick = (itemName: string) => {
     setActivePhoneItem(itemName);

@@ -76,26 +76,22 @@ const items = [
 ];
 
 const HomePage: React.FC = () => {
-  // Title Tag
-  useEffect(() => {
-    document.title = '7Teck.vn - Trang Chủ';
-  }, []);
-  const { posts, getAllPosts } = useContext(PostContext);
+  const { posts } = useContext(PostContext);
   const [selectedPost, setSelectedPost] = useState<(typeof posts)[0] | null>(
     null
   );
   const navigate = useNavigate();
-  //
+
   useEffect(() => {
-    getAllPosts();
-  }, [getAllPosts]);
-  //
-  useEffect(() => {
+    // Title Tag
+    document.title =
+      '7Teck.vn - Điện thoại, Máy tính bảng, Laptop, PC, Apple chính hãng, Thu cũ đổi mới - Hỗ trợ giá lên đời';
+    //
     if (posts.length > 0 && !selectedPost) {
       setSelectedPost(posts[0]);
     }
   }, [posts, selectedPost]);
-  //
+  // Handle Click Post To Post Detail
   const handlePostClick = (post: (typeof posts)[0]) => {
     const titleSlug = encodeURIComponent(
       post?.title.toLowerCase().replace(/\s+/g, '-')

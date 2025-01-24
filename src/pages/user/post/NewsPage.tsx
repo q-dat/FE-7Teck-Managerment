@@ -1,33 +1,22 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
 import { Link, useNavigate } from 'react-router-dom';
 import { PostContext } from '../../../context/post/PostContext';
 import TimeAgo from '../../../components/orther/timeAgo/TimeAgo';
 
 const NewsPage: React.FC = () => {
-  // Title Tag
+  const { posts } = useContext(PostContext);
   useEffect(() => {
+    // Title Tag
     document.title = 'Tin Tức Mới Nhất - 7Teck';
-  }, []);
-  const { posts} = useContext(PostContext);
-  const [selectedPost, setSelectedPost] = useState<(typeof posts)[0] | null>(
-    null
-  );
-  useEffect(() => {
+    // Scroll To Top
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
-  }, []);
-
+  }, [posts]);
+  // Handle Click Post To Post Detail
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (posts.length > 0 && !selectedPost) {
-      setSelectedPost(posts[0]);
-    }
-  }, [posts, selectedPost]);
-
   const handlePostClick = (post: (typeof posts)[0]) => {
     const titleSlug = encodeURIComponent(
       post?.title.toLowerCase().replace(/\s+/g, '-')

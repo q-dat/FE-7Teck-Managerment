@@ -7,11 +7,18 @@ import 'react-medium-image-zoom/dist/styles.css';
 import Pagination from '../../components/UserPage/Pagination';
 
 const GalleryPage: React.FC = () => {
-  useEffect(() => {
-    document.title = 'Hành Trình Khách Hàng';
-  });
   const { gallerys } = useContext(GalleryContext);
   const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    // Title Tag
+    document.title = 'Hành Trình Khách Hàng';
+    // Scroll To Top
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }, [currentPage]);
 
   // Panigation
   const itemsPerPage = 12;
@@ -20,14 +27,6 @@ const GalleryPage: React.FC = () => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentGallerys = gallerys.slice(indexOfFirstItem, indexOfLastItem);
-
-  // Cuộn lên top khi currentPage thay đổi
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  }, [currentPage]);
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {

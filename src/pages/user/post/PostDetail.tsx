@@ -11,21 +11,20 @@ const PostDetail: React.FC = () => {
   const [selectedPost, setSelectedPost] = useState<(typeof posts)[0] | null>(
     null
   );
-  // Title Tag
+  const otherPosts = posts.filter(post => post?._id !== selectedPost?._id);
+  8;
+
   useEffect(() => {
+    // Title Tag
     if (selectedPost) {
       document.title = `${selectedPost?.title} - 7Teck`;
     }
-  }, [selectedPost]);
-
-  useEffect(() => {
+    // Scroll To Top
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
-  }, []);
-
-  useEffect(() => {
+    // Fetch Data By Title
     if (posts.length > 0 && title) {
       const post = posts.find(
         post =>
@@ -33,8 +32,8 @@ const PostDetail: React.FC = () => {
       );
       setSelectedPost(post || null);
     }
-  }, [posts, title]);
-
+  }, [selectedPost, posts, title]);
+  // Handle Click Post To Post Detail
   const handlePostSelect = (post: (typeof posts)[0]) => {
     setSelectedPost(post);
     const titleSlug = encodeURIComponent(
@@ -43,9 +42,6 @@ const PostDetail: React.FC = () => {
     navigate(`/tin-tuc/${titleSlug}`);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-
-  const otherPosts = posts.filter(post => post?._id !== selectedPost?._id);
-  8;
 
   return (
     <div>

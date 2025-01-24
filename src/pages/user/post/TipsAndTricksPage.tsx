@@ -1,33 +1,24 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
 import { Link, useNavigate } from 'react-router-dom';
 import { PostContext } from '../../../context/post/PostContext';
 import TimeAgo from '../../../components/orther/timeAgo/TimeAgo';
 
 const TipsAndTricksPage: React.FC = () => {
-  // Title Tag
-  useEffect(() => {
-    document.title = 'Thủ Thuật Công Nghệ Và Mẹo Hay';
-  }, []);
   const { posts } = useContext(PostContext);
-  const [selectedPost, setSelectedPost] = useState<(typeof posts)[0] | null>(
-    null
-  );
+
   useEffect(() => {
+    // Title Tag
+    document.title = 'Thủ Thuật Công Nghệ Và Mẹo Hay';
+    // Scroll To Top
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
-  }, []);
-
+  }, [posts]);
+  //
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (posts.length > 0 && !selectedPost) {
-      setSelectedPost(posts[0]);
-    }
-  }, [posts, selectedPost]);
-
+  // Handle Click Post To Post Detail
   const handlePostClick = (post: (typeof posts)[0]) => {
     const titleSlug = encodeURIComponent(
       post?.title.toLowerCase().replace(/\s+/g, '-')

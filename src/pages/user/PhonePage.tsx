@@ -6,12 +6,19 @@ import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogCon
 import { Button } from 'react-daisyui';
 
 const PhonePage: React.FC = () => {
-  // Title Tag
-  useEffect(() => {
-    document.title = `Điện Thoại iPhone - 7Teck`;
-  });
   const { phoneCatalogs } = useContext(PhoneCatalogContext);
   const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    // Title Tag
+    document.title = `Điện Thoại iPhone - 7Teck`;
+    // Scroll To Top
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }, [currentPage]);
+  // Handle Click Phone To Phone Detail
   const navigate = useNavigate();
   const slugify = (text: string) => {
     return text
@@ -34,14 +41,6 @@ const PhonePage: React.FC = () => {
     indexOfFirstItem,
     indexOfLastItem
   );
-
-  // Cuộn lên top khi currentPage thay đổi
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  }, [currentPage]);
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {

@@ -30,42 +30,12 @@ const PhoneDetailPage: React.FC = () => {
   const [isRightVisible, setIsRightVisible] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = useState<string>('specs');
-  // Title Tag
-  useEffect(() => {
-    if (phone) {
-      document.title = `${phone?.name}`;
-    }
-  }, [phone]);
+
   //
   useLayoutEffect(() => {
     updateScrollButtons();
   }, [phone, phone?.thumbnail]);
   //
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  }, []);
-  //
-  useEffect(() => {
-    if (id) {
-      const fetchPhone = async () => {
-        try {
-          const fetchedPhone = await getPhoneById(id);
-          if (fetchedPhone) {
-            setPhone(fetchedPhone);
-            setSelectedImage(fetchedPhone.img);
-          }
-        } catch (error) {
-          console.log(error);
-        }
-      };
-
-      fetchPhone();
-    }
-  }, [id, getPhoneById]);
-
   const updateScrollButtons = () => {
     const scrollContainer = scrollRef.current;
     if (scrollContainer) {
@@ -82,6 +52,31 @@ const PhoneDetailPage: React.FC = () => {
   };
 
   useEffect(() => {
+    // Title Tag
+    if (phone) {
+      document.title = `${phone?.name}`;
+    }
+    // Scroll To Top
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    // Fetch Data By Id
+    if (id) {
+      const fetchPhone = async () => {
+        try {
+          const fetchedPhone = await getPhoneById(id);
+          if (fetchedPhone) {
+            setPhone(fetchedPhone);
+            setSelectedImage(fetchedPhone.img);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      fetchPhone();
+    }
     if (phones.length > 0) updateScrollButtons();
 
     const handleResize = () => updateScrollButtons();
@@ -94,7 +89,7 @@ const PhoneDetailPage: React.FC = () => {
       window.removeEventListener('resize', handleResize);
       scrollContainer?.removeEventListener('scroll', updateScrollButtons);
     };
-  }, [phones]);
+  }, [phones, phone, id, getPhoneById]);
   //
   const handleThumbnailClick = (thumb: string, index: number) => {
     setSelectedImage(thumb);

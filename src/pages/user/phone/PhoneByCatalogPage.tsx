@@ -24,19 +24,17 @@ const ProductByCatalog = () => {
   const filteredPhones = phones.filter(
     phone => slugify(phone?.name) === catalog
   );
-  // Title Tag
   useEffect(() => {
+    // Title Tag
     if (filteredPhones.length > 0) {
       document.title = `${filteredPhones[0]?.name}`;
     }
-  }, [filteredPhones]);
-  // Scroll To Top
-  useEffect(() => {
+    // Scroll To Top
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
-  }, []);
+  }, [filteredPhones]);
 
   return (
     <div>
