@@ -11,8 +11,6 @@ const GalleryPage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    // Title Tag
-    document.title = 'Hành Trình Khách Hàng';
     // Scroll To Top
     window.scrollTo({
       top: 0,

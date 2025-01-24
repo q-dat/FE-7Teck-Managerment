@@ -1,6 +1,9 @@
-import { lazy } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { lazy, useContext, useEffect, useState } from 'react';
+import { Route, Routes, useParams } from 'react-router-dom';
 import DefaultLayout from '../layout/DefaultLayout';
+import useSeo from '../hooks/useSeo';
+import { PhoneContext } from '../context/phone/PhoneContext';
+import { PostContext } from '../context/post/PostContext';
 
 // UserPage
 const User = lazy(() => import('../pages/user/User'));
@@ -45,26 +48,238 @@ const GalleryManagerPage = lazy(
 
 // not found page
 const NotFound = lazy(() => import('../pages/404/NotFound'));
+// --------------------------------------------------------------------------------------------------------------------
+// OnPage SEO
+const HomePageSEO = () => {
+  useSeo({
+    title: '',
+    canonical: `${window.location.href}`,
+    meta: [
+      {
+        name: 'description',
+        content: 'Khám phá các sản phẩm công nghệ mới nhất tại 7Teck.'
+      },
+      { name: 'keywords', content: '7Teck, công nghệ, điện thoại, laptop' }
+    ]
+  });
+  return <HomePage />;
+};
+// NewsPageSEO
+const NewsPageSEO = () => {
+  useSeo({
+    title: 'Tin tức mới nhất tại 7Teck',
+    canonical: `${window.location.href}`,
+    meta: [
+      {
+        name: 'description',
+        content: ''
+      },
+      { name: 'keywords', content: '7Teck, tin tức, điện thoại, laptop' }
+    ]
+  });
+  return <NewsPage />;
+};
+// PostDetailSEO
+const PostDetailSEO = () => {
+  const { posts } = useContext(PostContext);
+  const { title } = useParams<{ title: string }>();
+  const [selectedPost, setSelectedPost] = useState<(typeof posts)[0] | null>(
+    null
+  );
+  useEffect(() => {
+    // Fetch Data By Title
+    if (posts.length > 0 && title) {
+      const post = posts.find(
+        post =>
+          post?.title.toLowerCase().replace(/\s+/g, '-') === title.toLowerCase()
+      );
+      setSelectedPost(post || null);
+    }
+  }, [selectedPost, posts, title]);
+
+  useSeo({
+    title: `${selectedPost?.title} - 7Teck`,
+    canonical: selectedPost
+      ? `${window.location.origin}/tin-tuc/${selectedPost.title.toLowerCase().replace(/\s+/g, '-')}`
+      : window.location.href,
+    meta: [
+      {
+        name: 'description',
+        content: ''
+      },
+      { name: 'keywords', content: '7Teck, tin tức, điện thoại, laptop' }
+    ]
+  });
+  return <PostDetail />;
+};
+// TipsAndTricksPageSEO
+const TipsAndTricksPageSEO = () => {
+  useSeo({
+    title: 'Thủ Thuật Công Nghệ Và Mẹo Hay',
+    canonical: `${window.location.href}`,
+    meta: [
+      {
+        name: 'description',
+        content: ''
+      },
+      { name: 'keywords', content: '7Teck, tin tức, điện thoại, laptop' }
+    ]
+  });
+  return <TipsAndTricksPage />;
+};
+// ContactPageSEO
+const ContactPageSEO = () => {
+  useSeo({
+    title: 'Chính Sách Bảo Hành - 7Teck',
+    canonical: `${window.location.href}`,
+    meta: [
+      {
+        name: 'description',
+        content: ''
+      },
+      { name: 'keywords', content: '7Teck, tin tức, điện thoại, laptop' }
+    ]
+  });
+  return <ContactPage />;
+};
+// GalleryPageSEO
+const GalleryPageSEO = () => {
+  useSeo({
+    title: 'Hành Trình Khách Hàng',
+    canonical: `${window.location.href}`,
+    meta: [
+      {
+        name: 'description',
+        content: ''
+      },
+      { name: 'keywords', content: '7Teck, tin tức, điện thoại, laptop' }
+    ]
+  });
+  return <GalleryPage />;
+};
+// PriceListPageSEO
+const PriceListPageSEO = () => {
+  useSeo({
+    title: 'Bảng Giá Thu Mua - 7Teck',
+    canonical: `${window.location.href}`,
+    meta: [
+      {
+        name: 'description',
+        content: ''
+      },
+      { name: 'keywords', content: '7Teck, tin tức, điện thoại, laptop' }
+    ]
+  });
+  return <PriceListPage />;
+};
+// PhonePageSEO
+const PhonePageSEO = () => {
+  useSeo({
+    title: 'Điện Thoại iPhone - 7Teck',
+    canonical: `${window.location.href}`,
+    meta: [
+      {
+        name: 'description',
+        content: ''
+      },
+      { name: 'keywords', content: '7Teck, tin tức, điện thoại, laptop' }
+    ]
+  });
+  return <PhonePage />;
+};
+// PhoneByCatalogPageSEO
+const PhoneByCatalogPageSEO = () => {
+  const { phones } = useContext(PhoneContext);
+  const { catalog } = useParams();
+  const slugify = (text: string) => {
+    return text
+      .toString()
+      .normalize('NFD')
+      .replace(/\p{Diacritic}/gu, '')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+  };
+  const filteredPhones = phones.filter(
+    phone => slugify(phone?.name) === catalog
+  );
+  useSeo({
+    title:
+      filteredPhones.length > 0
+        ? `${filteredPhones[0]?.name}`
+        : 'Không tìm thấy sản phẩm!',
+    canonical: `${window.location.href}`,
+    meta: [
+      {
+        name: 'description',
+        content: ''
+      },
+      { name: 'keywords', content: '7Teck, điện thoại, laptop, máy tính bảng' }
+    ]
+  });
+  return <PhoneByCatalogPage />;
+};
+// PhoneDetailPageSEO
+const PhoneDetailPageSEO = () => {
+  const { id } = useParams();
+  const { getPhoneById } = useContext(PhoneContext);
+  const [phone, setPhone] = useState<any>(null);
+
+  useEffect(() => {
+    if (id) {
+      const fetchPhone = async () => {
+        try {
+          const fetchedPhone = await getPhoneById(id);
+          if (fetchedPhone) {
+            setPhone(fetchedPhone);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      fetchPhone();
+    }
+  }, [id, getPhoneById]);
+  useSeo({
+    title: `${phone?.name} - 7Teck`,
+    canonical: `${window.location.origin}/chi-tiet-iphone/${phone?._id}`,
+    meta: [
+      {
+        name: 'description',
+        content: ''
+      },
+      { name: 'keywords', content: '7Teck, tin tức, điện thoại, laptop' }
+    ]
+  });
+  return <PhoneDetailPage />;
+};
 export default function AppRoutes() {
   return (
     <>
       <Routes>
-        {/* User page  */}
+        {/* UserPage  */}
         <Route element={<DefaultLayout />}>
           <Route path="/" element={<User />}>
-            <Route index path="" element={<HomePage />} />
-            <Route path="iphone" element={<PhonePage />} />
-            <Route path="iphone/:catalog" element={<PhoneByCatalogPage />} />
-            <Route path="chi-tiet-iphone/:id" element={<PhoneDetailPage />} />
-            <Route path="tin-tuc-moi-nhat" element={<NewsPage />} />
-            <Route path="tin-tuc/:title" element={<PostDetail />} />
+            <Route index path="" element={<HomePageSEO />} />
+            {/*  */}
+            <Route path="iphone" element={<PhonePageSEO />} />
+            <Route path="iphone/:catalog" element={<PhoneByCatalogPageSEO />} />
+            <Route
+              path="chi-tiet-iphone/:id"
+              element={<PhoneDetailPageSEO />}
+            />
+            {/*  */}
+            <Route path="tin-tuc-moi-nhat" element={<NewsPageSEO />} />
+            <Route path="tin-tuc/:title" element={<PostDetailSEO />} />
+            {/*  */}
             <Route
               path="thu-thuat-va-meo-hay"
-              element={<TipsAndTricksPage />}
+              element={<TipsAndTricksPageSEO />}
             />
-            <Route path="hanh-trinh-khach-hang" element={<GalleryPage />} />
-            <Route path="bang-gia-thu-mua" element={<PriceListPage />} />
-            <Route path="chinh-sach-bao-hanh" element={<ContactPage />} />
+            <Route path="hanh-trinh-khach-hang" element={<GalleryPageSEO />} />
+            <Route path="bang-gia-thu-mua" element={<PriceListPageSEO />} />
+            <Route path="chinh-sach-bao-hanh" element={<ContactPageSEO />} />
           </Route>
         </Route>
 
@@ -85,7 +300,10 @@ export default function AppRoutes() {
           <Route path="/admin-post" element={<Post />}>
             {/* <Route index path="" element={<DashboardPage />} /> */}
             <Route path="post-manager" element={<PostManagerPage />} />
-            <Route path="post-catalog-manager" element={<PostCatalogManagerPage />} />
+            <Route
+              path="post-catalog-manager"
+              element={<PostCatalogManagerPage />}
+            />
           </Route>
         </Route>
 

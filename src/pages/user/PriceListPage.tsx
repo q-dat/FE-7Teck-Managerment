@@ -20,8 +20,6 @@ const PriceListPage: React.FC = () => {
     useState<string>('MacBook Air');
   const location = useLocation();
   useEffect(() => {
-    // Title Tag
-    document.title = `Bảng Giá Thu Mua - 7Teck`;
     // Scroll To Top
     window.scrollTo({
       top: 0,

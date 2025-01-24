@@ -8,8 +8,6 @@ const TipsAndTricksPage: React.FC = () => {
   const { posts } = useContext(PostContext);
 
   useEffect(() => {
-    // Title Tag
-    document.title = 'Thủ Thuật Công Nghệ Và Mẹo Hay';
     // Scroll To Top
     window.scrollTo({
       top: 0,

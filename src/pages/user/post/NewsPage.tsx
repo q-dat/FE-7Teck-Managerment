@@ -7,8 +7,6 @@ import TimeAgo from '../../../components/orther/timeAgo/TimeAgo';
 const NewsPage: React.FC = () => {
   const { posts } = useContext(PostContext);
   useEffect(() => {
-    // Title Tag
-    document.title = 'Tin Tức Mới Nhất - 7Teck';
     // Scroll To Top
     window.scrollTo({
       top: 0,

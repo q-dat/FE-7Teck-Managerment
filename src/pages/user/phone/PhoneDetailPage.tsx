@@ -52,10 +52,6 @@ const PhoneDetailPage: React.FC = () => {
   };
 
   useEffect(() => {
-    // Title Tag
-    if (phone) {
-      document.title = `${phone?.name}`;
-    }
     // Scroll To Top
     window.scrollTo({
       top: 0,

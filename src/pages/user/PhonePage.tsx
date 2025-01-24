@@ -10,8 +10,6 @@ const PhonePage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    // Title Tag
-    document.title = `Điện Thoại iPhone - 7Teck`;
     // Scroll To Top
     window.scrollTo({
       top: 0,

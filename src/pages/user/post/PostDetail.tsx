@@ -15,10 +15,6 @@ const PostDetail: React.FC = () => {
   8;
 
   useEffect(() => {
-    // Title Tag
-    if (selectedPost) {
-      document.title = `${selectedPost?.title} - 7Teck`;
-    }
     // Scroll To Top
     window.scrollTo({
       top: 0,

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
 import { Link } from 'react-router-dom';
 import { Textarea, Button } from 'react-daisyui';
@@ -6,9 +6,6 @@ import InputForm from '../../components/UserPage/InputForm';
 import { Logo } from '../../assets/images';
 
 const ContactPage: React.FC = () => {
-  useEffect(() => {
-    document.title = `Chính Sách Bảo Hành - 7Teck`;
-  }, []);
   const [result, setResult] = React.useState<string>('');
   const formRef = useRef<HTMLFormElement>(null);
 
