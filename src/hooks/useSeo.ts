@@ -18,7 +18,9 @@ const useSeo = ({ title, canonical, meta }: SeoConfig) => {
 
     // Đặt thẻ canonical
     if (canonical) {
-      let link: HTMLLinkElement | null = document.querySelector('link[rel="canonical"]');
+      let link: HTMLLinkElement | null = document.querySelector(
+        'link[rel="canonical"]'
+      );
       if (!link) {
         link = document.createElement('link');
         link.rel = 'canonical';
@@ -30,7 +32,9 @@ const useSeo = ({ title, canonical, meta }: SeoConfig) => {
     // Đặt các thẻ meta
     if (meta && meta.length > 0) {
       meta.forEach(({ name, content }) => {
-        let metaTag: HTMLMetaElement | null = document.querySelector(`meta[name="${name}"]`);
+        let metaTag: HTMLMetaElement | null = document.querySelector(
+          `meta[name="${name}"]`
+        );
         if (!metaTag) {
           metaTag = document.createElement('meta');
           metaTag.name = name;

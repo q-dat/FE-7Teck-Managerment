@@ -52,4 +52,3 @@ const ParallaxBannerFC: React.FC = () => {
 };
 
 export default ParallaxBannerFC;
-

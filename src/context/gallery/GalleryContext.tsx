@@ -187,4 +187,3 @@ export const GalleryProvider = ({ children }: { children: ReactNode }) => {
     </GalleryContext.Provider>
   );
 };
-

@@ -140,4 +140,3 @@ const NavbarPost: React.FC<{ Title_NavbarPost: string }> = ({
 };
 
 export default NavbarPost;
-

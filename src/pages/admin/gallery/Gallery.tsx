@@ -4,10 +4,10 @@ import SidebarGallery from '../../../components/admin/gallery/SidebarGallery';
 import NavbarAdmin from '../../../components/admin/NavbarAdmin';
 
 const Gallery: React.FC<{}> = () => {
-    // Title Tag
-    useEffect(() => {
-      document.title = `Trang Quản Trị Gallery`;
-    });
+  // Title Tag
+  useEffect(() => {
+    document.title = `Trang Quản Trị Gallery`;
+  });
   return (
     <div className="flex min-h-screen w-full flex-col bg-[#F3F2F7] dark:bg-gray-900">
       <div className="flex flex-1">

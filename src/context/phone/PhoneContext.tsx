@@ -27,7 +27,10 @@ interface PhoneContextType {
   getAllPhones: () => void;
   getPhoneById: (_id: string) => Promise<IPhone | undefined>;
   createPhone: (phoneData: FormData) => Promise<AxiosResponse<any>>;
-  updatePhone: (_id: string, phoneData: FormData) => Promise<AxiosResponse<any>>;
+  updatePhone: (
+    _id: string,
+    phoneData: FormData
+  ) => Promise<AxiosResponse<any>>;
   deletePhone: (_id: string) => Promise<AxiosResponse<any>>;
 }
 

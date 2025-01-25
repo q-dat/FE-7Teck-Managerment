@@ -187,4 +187,3 @@ export const PostCatalogProvider = ({ children }: { children: ReactNode }) => {
     </PostCatalogContext.Provider>
   );
 };
-

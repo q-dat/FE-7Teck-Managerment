@@ -35,7 +35,10 @@ const FooterFC: React.FC = () => {
           <Link className="font-light hover:font-semibold" to="/macbook">
             Laptop Macbook
           </Link>
-          <Link className="font-light hover:font-semibold" to="/bang-gia-thu-mua">
+          <Link
+            className="font-light hover:font-semibold"
+            to="/bang-gia-thu-mua"
+          >
             Bảng Giá Thu Mua
           </Link>
         </div>

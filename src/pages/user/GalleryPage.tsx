@@ -80,4 +80,3 @@ const GalleryPage: React.FC = () => {
 };
 
 export default GalleryPage;
-

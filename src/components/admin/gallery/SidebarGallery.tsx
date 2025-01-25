@@ -132,4 +132,3 @@ const SidebarGallery: React.FC<{}> = () => {
 };
 
 export default SidebarGallery;
-

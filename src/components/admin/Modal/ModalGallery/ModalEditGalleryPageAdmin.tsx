@@ -142,7 +142,7 @@ const ModalEditGalleryPageAdmin: React.FC<ModalEditPageAdminProps> = ({
               type="submit"
               className="group text-white"
             >
-            {isLoading ? 'Đang cập nhật...' : 'Xác nhận'}
+              {isLoading ? 'Đang cập nhật...' : 'Xác nhận'}
             </Button>
           </div>
         </div>

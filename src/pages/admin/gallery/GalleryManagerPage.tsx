@@ -145,4 +145,3 @@ const GalleryManagerPage: React.FC = () => {
 };
 
 export default GalleryManagerPage;
-

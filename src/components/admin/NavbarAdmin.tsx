@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import {
-  IoSettings
-} from 'react-icons/io5';
+import { IoSettings } from 'react-icons/io5';
 import Avatar from 'boring-avatars';
 import { Button } from 'react-daisyui';
 import { BiSolidUserRectangle } from 'react-icons/bi';

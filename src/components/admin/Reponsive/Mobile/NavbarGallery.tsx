@@ -140,4 +140,3 @@ const NavbarGallery: React.FC<{ Title_NavbarGallery: string }> = ({
 };
 
 export default NavbarGallery;
-

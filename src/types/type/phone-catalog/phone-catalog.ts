@@ -71,4 +71,3 @@ export interface IPhoneCatalog {
     brand: string; // Hãng
   };
 }
-

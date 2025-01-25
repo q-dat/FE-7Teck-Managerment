@@ -26,7 +26,9 @@ interface PhoneContextType {
   error: string | null;
   getAllPhoneCatalogs: () => void;
   getPhoneCatalogById: (_id: string) => Promise<IPhoneCatalog | undefined>;
-  createPhoneCatalog: (phoneCatalogData: FormData) => Promise<AxiosResponse<any>>;
+  createPhoneCatalog: (
+    phoneCatalogData: FormData
+  ) => Promise<AxiosResponse<any>>;
   updatePhoneCatalog: (
     _id: string,
     phoneCatalogData: FormData

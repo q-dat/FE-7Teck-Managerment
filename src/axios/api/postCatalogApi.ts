@@ -31,4 +31,3 @@ export const updatePostCatalogApi = (id: string, postCatalog: IPostCatalog) => {
 export const deletePostCatalogApi = (id: string) => {
   return axios.delete(`/api/post-catalog/${id}`);
 };
-
