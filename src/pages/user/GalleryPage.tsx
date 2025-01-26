@@ -60,6 +60,7 @@ const GalleryPage: React.FC = () => {
             <Zoom>
               <div className="w-full">
                 <img
+                  alt=""
                   src={`${gallery.gallery}`}
                   className="h-full w-full rounded-md object-cover shadow"
                 />

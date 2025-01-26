@@ -90,6 +90,7 @@ const PhoneFC: React.FC = () => {
                 onClick={() => navigate(`/iphone/${phoneUrl}`)}
               >
                 <img
+                  alt=""
                   loading="lazy"
                   className="h-full w-full rounded-[5px] rounded-b-none object-cover"
                   src={phone.img}

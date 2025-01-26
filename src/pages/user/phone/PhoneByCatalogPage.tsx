@@ -64,6 +64,7 @@ const ProductByCatalog = () => {
                       to={`/chi-tiet-iphone/${phone?._id}`}
                     >
                       <img
+                        alt=""
                         loading="lazy"
                         className="h-full w-full rounded-[5px] rounded-b-none object-contain"
                         src={phone?.img}
@@ -97,7 +98,7 @@ const ProductByCatalog = () => {
                     {/*  */}
                     {phone?.status && (
                       <div className="absolute -left-[3px] top-0">
-                        <img loading="lazy" width={60} src={Sale} />
+                        <img alt="" loading="lazy" width={60} src={Sale} />
                         <p className="absolute top-[1px] w-full pl-1 text-xs text-white">
                           {phone?.status}
                         </p>

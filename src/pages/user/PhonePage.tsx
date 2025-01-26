@@ -85,6 +85,7 @@ const PhonePage: React.FC = () => {
                       className="h-[200px] w-full cursor-pointer rounded-md rounded-b-none bg-white"
                     >
                       <img
+                        alt=""
                         loading="lazy"
                         className="h-full w-full rounded-[5px] rounded-b-none object-contain"
                         src={phone?.img}
