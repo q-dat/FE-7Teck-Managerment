@@ -52,7 +52,7 @@ const NotFound = lazy(() => import('../pages/404/NotFound'));
 // OnPage SEO
 const HomePageSEO = () => {
   useSeo({
-    title: '',
+    title: '7Teck.vn - Điện thoại, Máy tính bảng, Laptop, PC, Apple chính hãng, Thu cũ đổi mới - Hỗ trợ giá lên đời',
     canonical: `${window.location.href}`,
     meta: [
       {
