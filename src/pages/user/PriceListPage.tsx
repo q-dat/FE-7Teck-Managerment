@@ -122,9 +122,9 @@ const PriceListPage: React.FC = () => {
           {/* Phone Catalog */}
           <div className="px-2 xl:px-[100px]">
             {/* Tittle */}
-            <div className="my-5 font-bold text-primary">
+            <h2 className="my-5 font-bold text-primary">
               Danh Mục Thu Mua Điện Thoại
-            </div>
+            </h2>
             <div className="grid grid-cols-2 gap-2 xl:grid-flow-col xl:grid-cols-none xl:grid-rows-1">
               {FecthPhoneCatalog.map(item => (
                 <Button

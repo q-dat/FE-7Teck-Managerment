@@ -67,9 +67,9 @@ const PhoneFC: React.FC = () => {
     >
       {/* Title */}
       <div className="flex w-full flex-col items-center justify-center py-5 xl:rounded-t-lg">
-        <p className="bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold text-transparent xl:text-[30px]">
+        <h1 className="bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold text-transparent xl:text-[30px]">
           Nổi Bật
-        </p>
+        </h1>
         <span className="h-[1px] w-[150px] animate-ping bg-primary"></span>
       </div>
       <div

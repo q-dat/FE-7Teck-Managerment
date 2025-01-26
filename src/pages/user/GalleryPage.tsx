@@ -52,9 +52,9 @@ const GalleryPage: React.FC = () => {
           </ul>
         </div>
         {/*  */}
-        <div className="py-5 text-center text-[30px] font-bold text-primary">
+        <h1 className="py-5 text-center text-[30px] font-bold text-primary">
           Hành Trình Khách Hàng
-        </div>
+        </h1>
         <div className="grid grid-flow-row grid-cols-2 gap-2 px-2 md:grid-cols-3 xl:grid-cols-6 xl:px-20">
           {currentGallerys.map(gallery => (
             <Zoom>

@@ -242,9 +242,9 @@ const HomePage: React.FC = () => {
           className={`mt-10 bg-cover bg-fixed bg-center bg-no-repeat py-5 ${posts.length === 0 ? 'hidden' : ''}`}
         >
           <div data-aos="fade-down">
-            <p className="mb-2 bg-black bg-opacity-20 text-center text-xl font-semibold uppercase text-white">
+            <h3 className="mb-2 bg-black bg-opacity-20 text-center text-xl font-semibold uppercase text-white">
               Bản tin mới nhất
-            </p>
+            </h3>
             <div className="grid grid-cols-2 gap-2 px-2 md:grid-cols-3 lg:grid-cols-4 xl:px-[100px]">
               {posts.slice(0, 4).map(post => (
                 <div

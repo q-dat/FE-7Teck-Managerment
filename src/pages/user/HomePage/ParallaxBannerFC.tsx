@@ -17,12 +17,12 @@ const ParallaxBannerFC: React.FC = () => {
     expanded: true,
     children: (
       <div className="absolute inset-0 flex -translate-y-5 animate-fadeIn flex-col items-start justify-center gap-1 px-2 xl:translate-y-10 xl:px-5">
-        <p className="text-[34px] font-semibold text-white md:text-6xl xl:text-[75px]">
+        <h1 className="text-[34px] font-semibold text-white md:text-6xl xl:text-[75px]">
           Thu cũ đổi mới, hỗ trợ giá lên đời.
-        </p>
-        <p className="bg-gradient-to-r from-white to-white bg-clip-text text-[15px] font-extralight text-transparent md:text-2xl xl:text-4xl xl:font-thin">
+        </h1>
+        <h3 className="bg-gradient-to-r from-white to-white bg-clip-text text-[15px] font-extralight text-transparent md:text-2xl xl:text-4xl xl:font-thin">
           up to 90%
-        </p>
+        </h3>
       </div>
     )
   };
