@@ -58,14 +58,10 @@ const TipsAndTricksPage: React.FC = () => {
                   alt="Ảnh đại diện"
                   className="h-[200px] w-full rounded-sm border object-cover xl:h-[300px]"
                 />
-                <p className="line-clamp-3 py-1 text-sm font-bold text-primary">
+                <p className="line-clamp-3 py-1 text-base text-black">
                   {post?.title}
                 </p>
                 <hr />
-                <div
-                  dangerouslySetInnerHTML={{ __html: post?.content }}
-                  className="line-clamp-4 text-xs text-black"
-                ></div>
                 <p className="pt-2 text-[12px] text-primary">
                   {new Date(post?.updatedAt).toLocaleDateString('vi-VN')}
                   &nbsp;(

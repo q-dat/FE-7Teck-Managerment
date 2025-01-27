@@ -22,9 +22,14 @@ import { Autoplay, EffectCoverflow, Pagination } from 'swiper/modules';
 import { Link, useNavigate } from 'react-router-dom';
 import { PostContext } from '../../../context/post/PostContext';
 import { IoIosArrowForward } from 'react-icons/io';
-import ParallaxBannerFC from './ParallaxBannerFC';
-import { bgBlog, bgFixed } from '../../../assets/images';
-import TimeAgo from '../../../components/orther/timeAgo/TimeAgo';
+import {
+  BannerDesktop,
+  BannerMobile,
+  BannerTablet,
+  bgBlog,
+  bgFixed
+} from '../../../assets/images';
+import ParallaxSectionFC from './ParallaxSectionFC';
 
 // Items Data
 const items = [
@@ -91,16 +96,16 @@ const HomePage: React.FC = () => {
       <HeaderResponsive Title_NavbarMobile="Trang Chủ" />
       <div className="pt-[60px] xl:pt-0">
         {/* Banner */}
-        {/* <div className="relative">
-          <div className="absolute bottom-0 left-2 top-[60%] md:bottom-4 md:left-[10%] md:top-[30%] lg:top-[30%]">
-            <p className="bg-gradient-to-r from-primary to-white bg-clip-text text-[25px] font-black italic text-transparent xl:text-[40px]">
+        <div className="relative">
+          <div className="absolute bottom-0 left-2 top-[60%] animate-fadeIn md:bottom-4 md:left-[10%] md:top-[30%] lg:top-[30%]">
+            <p className="bg-gradient-to-r from-white to-white bg-clip-text text-[25px] font-extrabold italic text-transparent xl:text-[40px]">
               Đổi Điện Thoại Cũ, <br /> Nhận Ngay Giá Tốt Nhất!
             </p>
-            <p className="bg-gradient-to-r from-white to-white bg-clip-text text-[15px] font-thin text-transparent">
+            <p className="bg-gradient-to-r from-white to-white bg-clip-text text-[20px] font-thin text-transparent">
               up to 90%
             </p>
           </div>
-         <div>
+          <div>
             <img
               loading="lazy"
               src={BannerDesktop}
@@ -120,8 +125,7 @@ const HomePage: React.FC = () => {
               alt="BannerMobile"
             />
           </div>
-        </div> */}
-        <ParallaxBannerFC />
+        </div>
         {/* Benefits Section */}
         <div className="w-full">
           {/*   Mobile */}
@@ -225,6 +229,7 @@ const HomePage: React.FC = () => {
             </i>
           </div>
         </div>
+        {/* Sale */}
         <div data-aos="fade-up" className="mt-10 p-0 xl:px-[100px]">
           <IPadFC />
         </div>
@@ -234,6 +239,13 @@ const HomePage: React.FC = () => {
         <div data-aos="fade-up" className="mt-10 p-0 xl:px-[100px]">
           <MacbookFC />
         </div>
+        {/* ParallaxSection */}
+        <div className="my-10 flex flex-col items-center justify-between p-0 xl:flex-row xl:px-[100px]">
+          <div className="w-full">
+            <ParallaxSectionFC />
+          </div>
+          <div className="w-full"></div>
+        </div>
         {/* Post */}
         <div
           style={{
@@ -241,8 +253,12 @@ const HomePage: React.FC = () => {
           }}
           className={`mt-10 bg-cover bg-fixed bg-center bg-no-repeat py-5 ${posts.length === 0 ? 'hidden' : ''}`}
         >
-          <div data-aos="fade-down">
-            <h3 className="mb-2 bg-black bg-opacity-20 text-center text-xl font-semibold uppercase text-white">
+          <div>
+            <h3
+              role="region"
+              aria-label=" Bản tin mới nhất"
+              className="mb-2 bg-black bg-opacity-20 text-center text-xl font-semibold uppercase text-white"
+            >
               Bản tin mới nhất
             </h3>
             <div className="grid grid-cols-2 gap-2 px-2 md:grid-cols-3 lg:grid-cols-4 xl:px-[100px]">
@@ -261,18 +277,8 @@ const HomePage: React.FC = () => {
                     alt="Ảnh đại diện"
                     className="h-[200px] w-full rounded-sm border object-cover xl:h-[300px]"
                   />
-                  <p className="line-clamp-3 py-1 text-sm font-bold text-primary">
+                  <p className="line-clamp-3 py-1 text-sm text-black">
                     {post?.title}
-                  </p>
-                  <hr />
-                  <div
-                    dangerouslySetInnerHTML={{ __html: post?.content }}
-                    className="line-clamp-4 text-xs text-black"
-                  ></div>
-                  <p className="pt-2 text-[12px] text-primary">
-                    {new Date(post?.updatedAt).toLocaleDateString('vi-VN')}
-                    &nbsp;(
-                    <TimeAgo date={post?.updatedAt} />)
                   </p>
                 </div>
               ))}
