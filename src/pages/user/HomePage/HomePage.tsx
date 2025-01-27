@@ -98,33 +98,31 @@ const HomePage: React.FC = () => {
         {/* Banner */}
         <div className="relative">
           <div className="absolute bottom-0 left-2 top-[60%] animate-fadeIn md:bottom-4 md:left-[10%] md:top-[30%] lg:top-[30%]">
-            <p className="bg-gradient-to-r from-white to-white bg-clip-text text-[25px] font-extrabold italic text-transparent xl:text-[40px]">
+            <h1 className="bg-gradient-to-r from-white to-white bg-clip-text text-[25px] font-extrabold italic text-transparent xl:text-[40px]">
               Đổi Điện Thoại Cũ, <br /> Nhận Ngay Giá Tốt Nhất!
-            </p>
-            <p className="bg-gradient-to-r from-white to-white bg-clip-text text-[20px] font-thin text-transparent">
+            </h1>
+            <h2 className="bg-gradient-to-r from-white to-white bg-clip-text text-[20px] font-thin text-transparent">
               up to 90%
-            </p>
+            </h2>
           </div>
-          <div>
-            <img
-              loading="lazy"
-              src={BannerDesktop}
-              className="hidden w-full xl:block"
-              alt="BannerDesktop"
-            />
-            <img
-              loading="lazy"
-              src={BannerTablet}
-              className="hidden w-full md:block xl:hidden"
-              alt="BannerTablet"
-            />
-            <img
-              loading="lazy"
-              src={BannerMobile}
-              className="w-full md:hidden"
-              alt="BannerMobile"
-            />
-          </div>
+          <img
+            loading="lazy"
+            src={BannerDesktop}
+            className="hidden h-full w-screen object-cover xl:block"
+            alt="BannerDesktop"
+          />
+          <img
+            loading="lazy"
+            src={BannerTablet}
+            className="hidden h-full w-screen object-cover md:block xl:hidden"
+            alt="BannerTablet"
+          />
+          <img
+            loading="lazy"
+            src={BannerMobile}
+            className="h-full w-screen object-cover md:hidden"
+            alt="BannerMobile"
+          />
         </div>
         {/* Benefits Section */}
         <div className="w-full">

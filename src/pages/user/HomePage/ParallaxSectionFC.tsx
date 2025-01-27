@@ -11,7 +11,11 @@ const ParallaxSectionFC: React.FC = () => {
           speed: -15,
           children: (
             <div className="absolute inset-0 flex items-center justify-center">
-              <h1 className="text-3xl font-extralight text-white xl:text-4xl">
+              <h1
+                role="region"
+                aria-label=" Các ưu đãi đặc biệt tại 7Teck"
+                className="text-[10px] font-extralight text-white xl:text-4xl"
+              >
                 Các ưu đãi đặc biệt tại 7Teck
               </h1>
             </div>
