@@ -111,10 +111,14 @@ const PriceListPage: React.FC = () => {
         <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow xl:px-20">
           <ul className="font-light">
             <li>
-              <Link to="/">Trang Chủ</Link>
+              <Link role="navigation" aria-label="Trang chủ" to="/">
+                Trang Chủ
+              </Link>
             </li>
             <li>
-              <Link to="">Bảng Giá Thu Mua</Link>
+              <Link role="navigation" aria-label="Bảng giá thu mua" to="">
+                Bảng Giá Thu Mua
+              </Link>
             </li>
           </ul>
         </div>
@@ -122,12 +126,18 @@ const PriceListPage: React.FC = () => {
           {/* Phone Catalog */}
           <div className="px-2 xl:px-[100px]">
             {/* Tittle */}
-            <h2 className="my-5 font-bold text-primary">
+            <h2
+              role="region"
+              aria-label="Danh mục thu mua điện thoại"
+              className="my-5 font-bold text-primary"
+            >
               Danh Mục Thu Mua Điện Thoại
             </h2>
             <div className="grid grid-cols-2 gap-2 xl:grid-flow-col xl:grid-cols-none xl:grid-rows-1">
               {FecthPhoneCatalog.map(item => (
                 <Button
+                  role="button"
+                  aria-label="Ảnh thu nhỏ"
                   key={item._id}
                   className={`flex w-full items-center justify-center transition-all duration-500 ease-in-out hover:rounded-badge hover:bg-secondary hover:text-white ${
                     item.name === activePhoneItem

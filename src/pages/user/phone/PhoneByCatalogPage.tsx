@@ -1,7 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { PhoneContext } from '../../../context/phone/PhoneContext';
-import { Button } from 'react-daisyui';
 import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
 import { Sale } from '../../../assets/image-represent';
 
@@ -39,10 +38,14 @@ const ProductByCatalog = () => {
         <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow xl:px-20">
           <ul className="font-light">
             <li>
-              <Link to="/">Trang Chủ</Link>
+              <Link role="navigation" aria-label="Trang chủ" to="/">
+                Trang Chủ
+              </Link>
             </li>
             <li>
-              <Link to="">Điện Thoại</Link>
+              <Link role="navigation" aria-label="Điện thoại" to="">
+                Điện Thoại
+              </Link>
             </li>
           </ul>
         </div>
@@ -60,6 +63,8 @@ const ProductByCatalog = () => {
                     className="group relative flex h-full flex-col justify-between rounded-md border border-white text-black"
                   >
                     <Link
+                      role="navigation"
+                      aria-label="Chi tiết sản phẩm"
                       className="flex h-full w-full items-center justify-center rounded-md rounded-b-none bg-white"
                       to={`/chi-tiet-iphone/${phone?._id}`}
                     >
@@ -86,14 +91,6 @@ const ProductByCatalog = () => {
                           ₫
                         </del>
                       </p>
-                      <Link to="/thanh-toan" className="z-50 w-full">
-                        <Button
-                          size="xs"
-                          className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary hover:bg-primary hover:bg-opacity-20"
-                        >
-                          Mua Ngay
-                        </Button>
-                      </Link>
                     </div>
                     {/*  */}
                     {phone?.status && (

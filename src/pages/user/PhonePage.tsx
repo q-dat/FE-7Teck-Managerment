@@ -59,10 +59,14 @@ const PhonePage: React.FC = () => {
         <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow xl:px-20">
           <ul className="font-light">
             <li>
-              <Link to="/">Trang Chủ</Link>
+              <Link role="navigation" aria-label="Trang chủ" to="/">
+                Trang Chủ
+              </Link>
             </li>
             <li>
-              <Link to="">Điện Thoại</Link>
+              <Link role="navigation" aria-label="Điện thoại" to="">
+                Điện Thoại
+              </Link>
             </li>
           </ul>
         </div>
@@ -113,8 +117,15 @@ const PhonePage: React.FC = () => {
                             {(phone.price * 1000).toLocaleString('vi-VN')}₫
                           </span>
                         </p>
-                        <Link to="/thanh-toan" className="z-50 w-full">
+                        <Link
+                          role="navigation"
+                          aria-label="Thanh toán"
+                          to="/thanh-toan"
+                          className="z-50 w-full"
+                        >
                           <Button
+                            role="button"
+                            aria-label="Thanh toán"
                             size="xs"
                             className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary hover:bg-primary hover:bg-opacity-20"
                           >

@@ -44,15 +44,15 @@ const GalleryPage: React.FC = () => {
         <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow dark:text-white xl:px-20">
           <ul className="font-light">
             <li>
-              <Link to="/">Trang Chủ</Link>
+              <Link role="navigation" aria-label="Trang chủ" to="/">Trang Chủ</Link>
             </li>
             <li>
-              <Link to="">Hành Trình Khách Hàng</Link>
+              <Link role="navigation" aria-label="Hành trình khách hàng" to="">Hành Trình Khách Hàng</Link>
             </li>
           </ul>
         </div>
         {/*  */}
-        <h1 className="py-5 text-center text-[30px] font-bold text-primary">
+        <h1 role="region" aria-label="Hành trình khác hàng" className="py-5 text-center text-[30px] font-bold text-primary">
           Hành Trình Khách Hàng
         </h1>
         <div className="grid grid-flow-row grid-cols-2 gap-2 px-2 md:grid-cols-3 xl:grid-cols-6 xl:px-20">

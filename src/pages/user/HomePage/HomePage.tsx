@@ -278,13 +278,17 @@ const HomePage: React.FC = () => {
               ))}
             </div>
           </div>
-          <Link to="/tin-tuc-moi-nhat">
-            <p className="mt-2 flex w-full items-center justify-center gap-1 bg-gradient-to-r from-white via-secondary to-white py-1 text-sm text-white">
+          <Link
+            role="region"
+            aria-label="Xem thêm bản tin"
+            to="/tin-tuc-moi-nhat"
+          >
+            <button className="mt-2 flex w-full items-center justify-center gap-1 bg-gradient-to-r from-white via-secondary to-white py-1 text-sm text-white">
               Xem Thêm Bản Tin
               <span>
                 <IoIosArrowForward />
               </span>
-            </p>
+            </button>
           </Link>
         </div>
       </div>

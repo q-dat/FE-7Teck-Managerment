@@ -115,10 +115,14 @@ const PhoneDetailPage: React.FC = () => {
         <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow xl:px-20">
           <ul className="font-light">
             <li>
-              <Link to="/">Trang Chủ</Link>
+              <Link role="navigation" aria-label="Trang chủ" to="/">
+                Trang Chủ
+              </Link>
             </li>
             <li>
-              <Link to="">Thông Tin Sản Phẩm</Link>
+              <Link role="navigation" aria-label="Thông tin sản phẩm" to="">
+                Thông Tin Sản Phẩm
+              </Link>
             </li>
           </ul>
         </div>
@@ -161,7 +165,10 @@ const PhoneDetailPage: React.FC = () => {
                   )}
                 </div>
                 {/* Navigation Button  */}
-                <div className="absolute left-0 top-4 flex w-full items-center justify-between">
+                <div
+                  role="button"
+                  className="absolute left-0 top-4 flex w-full items-center justify-between"
+                >
                   <div className="relative w-full">
                     <button
                       onClick={() => scrollBy(-70)}
@@ -233,7 +240,11 @@ const PhoneDetailPage: React.FC = () => {
               <div className="h-[80px] w-full rounded-md border border-gray-50 bg-white p-2">
                 <p className="text-center text-2xl font-light xl:text-3xl">
                   Hỗ trợ khách hàng:
-                  <Link to="tel:0983699993">
+                  <Link
+                    role="navigation"
+                    aria-label="Hotline"
+                    to="tel:0983699993"
+                  >
                     <span className="font-bold text-secondary">
                       &nbsp; 0983.699.993
                     </span>

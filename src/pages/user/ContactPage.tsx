@@ -48,10 +48,14 @@ const ContactPage: React.FC = () => {
         <div className="breadcrumbs mb-10 px-[10px] py-2 text-sm text-black shadow dark:text-white xl:px-20">
           <ul className="font-light">
             <li>
-              <Link to="/">Trang Chủ</Link>
+              <Link role="navigation" aria-label="Trang chủ" to="/">
+                Trang Chủ
+              </Link>
             </li>
             <li>
-              <Link to="">Chính Sách Bảo Hành</Link>
+              <Link role="navigation" aria-label="Chính sách bảo hành" to="">
+                Chính Sách Bảo Hành
+              </Link>
             </li>
           </ul>
         </div>

@@ -5,7 +5,6 @@ import React, {
   useRef,
   useState
 } from 'react';
-import { Button } from 'react-daisyui';
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
 import { Link, useNavigate } from 'react-router-dom';
 import { PhoneCatalogContext } from '../../../context/phone-catalog/PhoneCatalogContext';
@@ -117,14 +116,6 @@ const PhoneFC: React.FC = () => {
                       {(phone.price * 1000).toLocaleString('vi-VN')}₫
                     </span>
                   </p>
-                  <Link to="/thanh-toan" className="z-50 w-full">
-                    <Button
-                      size="xs"
-                      className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary hover:bg-primary hover:bg-opacity-20"
-                    >
-                      Mua Ngay
-                    </Button>
-                  </Link>
                 </div>
               </div>
               {/*  */}
@@ -132,12 +123,12 @@ const PhoneFC: React.FC = () => {
           );
         })}
       </div>
-      <Link to="/iphone">
-        <p className="flex cursor-pointer items-center justify-center bg-gradient-to-r from-white via-secondary to-white py-1 text-sm text-white xl:rounded-b-lg">
+      <Link to="/iphone" role="button" aria-label="Xem thêm điện thoại">
+        <button className="flex w-full cursor-pointer items-center justify-center bg-gradient-to-r from-white via-secondary to-white py-1 text-sm text-white xl:rounded-b-lg">
           Xem Thêm Điện Thoại
           {/* ({phoneCatalogs.length}) */}
           <IoIosArrowForward className="text-xl" />
-        </p>
+        </button>
       </Link>
       {/* Navigation Button  */}
       <div className="absolute top-1/2 flex w-full items-center justify-between">
