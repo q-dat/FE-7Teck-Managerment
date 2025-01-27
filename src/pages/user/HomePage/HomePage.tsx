@@ -210,12 +210,12 @@ const HomePage: React.FC = () => {
           }}
         >
           <div className="absolute left-1/2 top-1/2 flex h-full w-full -translate-x-1/2 -translate-y-1/2 transform flex-col items-center justify-center bg-black bg-opacity-30 px-2 text-lg font-light text-white xl:px-[100px] xl:text-3xl">
-            <p
+            <h2
               className="font-semibold"
               uk-parallax="opacity: 0,9; y: -50,0; scale: 2,1; end: 50vh + 50%;"
             >
               iPhone 16 Pro Max
-            </p>
+            </h2>
             <i
               className="text-center"
               uk-parallax="opacity: 0,9; y: 50,0; scale: 0.5,1; end: 50vh + 50%;"

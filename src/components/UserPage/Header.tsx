@@ -153,7 +153,7 @@ const Header: React.FC = () => {
   return (
     <div className="fixed z-[99999] hidden w-full flex-col xl:block">
       {/* Menu 1 */}
-      <div
+      <header
         className={`flex h-[40px] w-full transform flex-row items-center justify-between border-b bg-primary px-10 text-xs text-white transition-transform delay-100 duration-300 ease-in-out ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}
       >
         <div className="w-full">
@@ -235,13 +235,17 @@ const Header: React.FC = () => {
             </Link>
           </div>
         </div>
-      </div>
+      </header>
       {/*  */}
-      <div
+      <header
         className={`h-[60px] w-full transform flex-row items-center justify-evenly bg-white py-2 shadow-md transition-transform delay-100 duration-300 ease-in-out xl:flex ${showMenu ? 'translate-y-0' : '-translate-y-[40px]'}`}
       >
-        <div>
-          <Link to="/" onClick={() => setActiveItem('Trang Chủ')}>
+        <nav>
+          <Link
+            aria-label="Home"
+            to="/"
+            onClick={() => setActiveItem('Trang Chủ')}
+          >
             <img
               className="rounded-full object-cover"
               loading="lazy"
@@ -250,7 +254,7 @@ const Header: React.FC = () => {
               alt="LOGO"
             />
           </Link>
-        </div>
+        </nav>
         <Menu className="flex flex-row items-center justify-center">
           {menuItems.map(item => {
             const Icon = item.icon;
@@ -318,7 +322,7 @@ const Header: React.FC = () => {
           {/* DarkMode Button */}
           {/* <DarkMode /> */}
         </div>
-      </div>
+      </header>
     </div>
   );
 };

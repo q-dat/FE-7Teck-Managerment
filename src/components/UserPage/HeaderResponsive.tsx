@@ -173,7 +173,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
   return (
     <div className="fixed z-[99999] block w-full bg-gradient-to-b from-white to-primary xl:hidden">
       {/* Menu 1 */}
-      {/* <div
+      {/* <header
         className={`flex h-[40px] w-full transform flex-row items-center justify-between border-b bg-primary px-2 text-white transition-transform duration-300 ease-in-out ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}
       >
         <div className="flex w-full flex-row items-center justify-center gap-1">
@@ -183,9 +183,9 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
             placeholder="Bạn muốn tìm gì..."
           ></Input>
         </div>
-      </div> */}
+      </header> */}
       {/* Menu 2 */}
-      <div
+      <header
         // className={`fixed h-[60px] w-full bg-gradient-to-r from-primary via-primary to-primary px-2 transition-all delay-200 duration-300 ease-in-out ${showMenu ? 'top-[40px]' : 'top-0'}`}
         className={`fixed h-[60px] w-full bg-gradient-to-r from-primary via-primary to-primary px-2 transition-all delay-200 duration-300 ease-in-out ${showMenu ? 'top-0' : 'top-0'}`}
       >
@@ -197,7 +197,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
               side={
                 <Menu className="fixed h-full w-[280px] bg-white ">
                   {/* LOGO */}
-          {/* <div className="flex items-center justify-center">
+          {/* <div aria-label="Home" className="flex items-center justify-center">
                     <img
                       className="mb-5 rounded-full object-cover"
                       loading="lazy"
@@ -231,7 +231,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
           {/* Title */}
           {/*  */}
           {/*  */}
-          <Link to="/">
+          <Link to="/" aria-label="Home">
             <FaHome className="text-2xl text-white" />
           </Link>
           <p className="font-semibold text-white">{Title_NavbarMobile}</p>
@@ -291,7 +291,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
               side={
                 <Menu className="fixed h-full w-[280px] bg-white">
                   {/* LOGO */}
-                  <Link to="/" onClick={() => setActiveItem('Trang Chủ')}>
+                  <Link to="/" aria-label="Home" onClick={() => setActiveItem('Trang Chủ')}>
                     <img width={120} loading="lazy" src={Logo} alt="LOGO" />
                   </Link>
                   {/* Menu */}
@@ -383,7 +383,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
             </Drawer>
           </div>
         </div>
-      </div>
+      </header>
     </div>
   );
 };
