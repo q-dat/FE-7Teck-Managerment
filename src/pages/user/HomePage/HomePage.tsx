@@ -249,13 +249,14 @@ const HomePage: React.FC = () => {
           style={{
             backgroundImage: `url(${bgBlog})`
           }}
-          className={`mt-10 bg-cover bg-fixed bg-center bg-no-repeat py-5 ${posts.length === 0 ? 'hidden' : ''}`}
+          className={`relative mt-10 bg-cover bg-fixed bg-center bg-no-repeat py-5 ${posts.length === 0 ? 'hidden' : ''}`}
         >
-          <div>
+          <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+          <div className="relative z-10">
             <h3
               role="region"
               aria-label=" Bản tin mới nhất"
-              className="mb-2 bg-black bg-opacity-20 text-center text-xl font-semibold uppercase text-white"
+              className="mb-2 bg-white bg-opacity-20 text-center text-xl font-semibold uppercase text-white"
             >
               Bản tin mới nhất
             </h3>
@@ -273,9 +274,9 @@ const HomePage: React.FC = () => {
                     loading="lazy"
                     src={post?.imageUrl}
                     alt="Ảnh đại diện"
-                    className="h-[200px] w-full rounded-sm border object-cover xl:h-[300px]"
+                    className="h-[200px] w-full rounded-sm object-contain"
                   />
-                  <p className="line-clamp-3 py-1 text-sm text-black">
+                  <p className="line-clamp-3 py-1 text-sm font-light text-black">
                     {post?.title}
                   </p>
                 </div>
@@ -287,7 +288,10 @@ const HomePage: React.FC = () => {
             aria-label="Xem thêm bản tin"
             to="/tin-tuc-moi-nhat"
           >
-            <button className="mt-2 flex w-full items-center justify-center gap-1 bg-gradient-to-r from-white via-secondary to-white py-1 text-sm text-white">
+            <button
+              role="button"
+              className="relative z-10 mt-2 flex w-full items-center justify-center gap-1 bg-gradient-to-r from-white via-secondary to-white py-1 text-sm text-white"
+            >
               Xem Thêm Bản Tin
               <span>
                 <IoIosArrowForward />

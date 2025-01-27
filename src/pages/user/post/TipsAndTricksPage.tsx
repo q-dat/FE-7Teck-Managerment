@@ -31,17 +31,25 @@ const TipsAndTricksPage: React.FC = () => {
         <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow xl:px-20">
           <ul className="font-light">
             <li>
-              <Link to="/">Trang Chủ</Link>
+              <Link aria-label="Trang chủ" to="/">
+                Trang Chủ
+              </Link>
             </li>
             <li>
-              <Link to="">Thủ Thuật - Mẹo</Link>
+              <Link aria-label="Thủ thuật và mẹo" to="">
+                Thủ Thuật - Mẹo
+              </Link>
             </li>
           </ul>
         </div>
         <div className="px-2 xl:px-20">
-          <div className="py-5 text-center text-[30px] font-bold text-primary">
+          <h1
+            role="region"
+            aria-label="Thủ thuật công nghệ và mẹo hay"
+            className="py-5 text-center text-[30px] font-bold text-primary"
+          >
             Thủ Thuật Công Nghệ Và Mẹo Hay
-          </div>
+          </h1>
           <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
             {posts.map(post => (
               <div

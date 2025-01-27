@@ -46,13 +46,19 @@ const PostDetail: React.FC = () => {
         <div className="breadcrumbs mb-10 px-[10px] py-2 text-sm text-black shadow xl:px-20">
           <ul className="font-light">
             <li>
-              <Link to="/">Trang Chủ</Link>
+              <Link aria-label="Trang chủ" to="/">
+                Trang Chủ
+              </Link>
             </li>
             <li>
               {selectedPost ? (
-                <Link to="">{selectedPost?.title}</Link>
+                <Link aria-label="Chi tiết" to="">
+                  {selectedPost?.title}
+                </Link>
               ) : (
-                <Link to="">Chi Tiết</Link>
+                <Link aria-label="Chi tiết" to="">
+                  Chi Tiết
+                </Link>
               )}
             </li>
           </ul>
@@ -60,6 +66,7 @@ const PostDetail: React.FC = () => {
         <div className="px-2">
           <div className="xl:px-20">
             <Link
+              aria-label="Trở về trang tin tức"
               to="/tin-tuc-moi-nhat"
               className="flex items-center justify-start text-secondary"
             >
@@ -85,10 +92,19 @@ const PostDetail: React.FC = () => {
                   ></div>
                 </div>
               ) : (
-                <p className="my-3 rounded-md bg-white p-2 text-center text-2xl font-light text-primary">
+                <p
+                  role="region"
+                  aria-label="Bài viết này không tồn tại"
+                  className="my-3 rounded-md bg-white p-2 text-center text-2xl font-light text-primary"
+                >
                   Bài viết này không tồn tại!
                   <br />
-                  <span className="text-xl">
+                  <span
+                    role="region"
+                    aria-label=" Xin lỗi vì sự bất tiện này. Quý độc giả vui lòng theo dõi
+                    các bài viết khác trên trang."
+                    className="text-xl"
+                  >
                     Xin lỗi vì sự bất tiện này. Quý độc giả vui lòng theo dõi
                     các bài viết khác trên trang.
                   </span>
@@ -97,7 +113,11 @@ const PostDetail: React.FC = () => {
             </>
           </div>
           <div className="px-0 xl:px-20">
-            <h1 className="p-1 font-semibold uppercase">
+            <h1
+              role="region"
+              aria-label="Bài viết nổi bật khác"
+              className="p-1 font-semibold uppercase"
+            >
               Bài viết nổi bật khác
             </h1>
             <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">

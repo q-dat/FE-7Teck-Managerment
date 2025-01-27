@@ -48,12 +48,12 @@ const ContactPage: React.FC = () => {
         <div className="breadcrumbs mb-10 px-[10px] py-2 text-sm text-black shadow dark:text-white xl:px-20">
           <ul className="font-light">
             <li>
-              <Link role="navigation" aria-label="Trang chủ" to="/">
+              <Link aria-label="Trang chủ" to="/">
                 Trang Chủ
               </Link>
             </li>
             <li>
-              <Link role="navigation" aria-label="Chính sách bảo hành" to="">
+              <Link aria-label="Chính sách bảo hành" to="">
                 Chính Sách Bảo Hành
               </Link>
             </li>
@@ -75,7 +75,13 @@ const ContactPage: React.FC = () => {
               />
             </div>
             <div className="flex w-full flex-col gap-5">
-              <h1 className="text-2xl font-bold">Thông tin liên hệ:</h1>
+              <h1
+                role="region"
+                aria-label="Thông tin liên hệ"
+                className="text-2xl font-bold"
+              >
+                Thông tin liên hệ:
+              </h1>
               <div className="flex w-full flex-col gap-5 xl:flex-row">
                 <div className="w-full">
                   <InputForm
@@ -103,6 +109,7 @@ const ContactPage: React.FC = () => {
               />
               <div className="w-full">
                 <Button
+                  aria-label="Nút: Gửi"
                   className="w-full bg-primary text-sm text-white hover:border-primary hover:bg-secondary hover:text-white dark:hover:bg-opacity-50"
                   type="submit"
                 >

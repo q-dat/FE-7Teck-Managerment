@@ -66,7 +66,11 @@ const PhoneFC: React.FC = () => {
     >
       {/* Title */}
       <div className="flex w-full flex-col items-center justify-center py-5 xl:rounded-t-lg">
-        <h1 className="bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold text-transparent xl:text-[30px]">
+        <h1
+          role="region"
+          aria-label="Danh sách điện thoại nổi bật có lượt xem nhiều nhất"
+          className="bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold text-transparent xl:text-[30px]"
+        >
           Nổi Bật
         </h1>
         <span className="h-[1px] w-[150px] animate-ping bg-primary"></span>
@@ -123,7 +127,7 @@ const PhoneFC: React.FC = () => {
           );
         })}
       </div>
-      <Link to="/iphone" role="button" aria-label="Xem thêm điện thoại">
+      <Link to="/iphone" aria-label="Xem thêm điện thoại">
         <button className="flex w-full cursor-pointer items-center justify-center bg-gradient-to-r from-white via-secondary to-white py-1 text-sm text-white xl:rounded-b-lg">
           Xem Thêm Điện Thoại
           {/* ({phoneCatalogs.length}) */}

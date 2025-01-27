@@ -59,12 +59,12 @@ const PhonePage: React.FC = () => {
         <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow xl:px-20">
           <ul className="font-light">
             <li>
-              <Link role="navigation" aria-label="Trang chủ" to="/">
+              <Link aria-label="Trang chủ" to="/">
                 Trang Chủ
               </Link>
             </li>
             <li>
-              <Link role="navigation" aria-label="Điện thoại" to="">
+              <Link aria-label="Điện thoại" to="">
                 Điện Thoại
               </Link>
             </li>
@@ -73,9 +73,6 @@ const PhonePage: React.FC = () => {
         {/*  */}
         <div className="space-y-10 px-2 xl:px-20">
           <div>
-            <h1 className="font-title my-5 text-start text-2xl font-bold text-primary xl:text-2xl">
-              {/* Danh Sách Điện Thoại */}
-            </h1>
             <div className="grid grid-flow-row grid-cols-2 items-start gap-[10px] md:grid-cols-4 xl:grid-cols-6">
               {currentPhones.map(phone => {
                 const phoneUrl = slugify(phone.name);
@@ -118,14 +115,11 @@ const PhonePage: React.FC = () => {
                           </span>
                         </p>
                         <Link
-                          role="navigation"
-                          aria-label="Thanh toán"
+                          aria-label="Mua ngay"
                           to="/thanh-toan"
                           className="z-50 w-full"
                         >
                           <Button
-                            role="button"
-                            aria-label="Thanh toán"
                             size="xs"
                             className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary hover:bg-primary hover:bg-opacity-20"
                           >
