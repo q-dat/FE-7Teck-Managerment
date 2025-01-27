@@ -46,13 +46,17 @@ const GalleryManagerPage = lazy(
   () => import('../pages/admin/gallery/GalleryManagerPage')
 );
 
+// sitemap.xml
+const SiteMapPage = lazy(() => import('../pages/user/SiteMapPage'));
+
 // not found page
 const NotFound = lazy(() => import('../pages/404/NotFound'));
 // --------------------------------------------------------------------------------------------------------------------
 // OnPage SEO
 const HomePageSEO = () => {
   useSeo({
-    title: '7Teck.vn - Điện thoại, Máy tính bảng, Laptop, PC, Apple chính hãng, Thu cũ đổi mới - Hỗ trợ giá lên đời',
+    title:
+      '7Teck.vn - Điện thoại, Máy tính bảng, Laptop, PC, Apple chính hãng, Thu cũ đổi mới - Hỗ trợ giá lên đời',
     canonical: `${window.location.href}`,
     meta: [
       {
@@ -314,7 +318,10 @@ export default function AppRoutes() {
             <Route path="gallery-manager" element={<GalleryManagerPage />} />
           </Route>
         </Route>
-
+        {/* SiteMap */}
+        <Route element={<DefaultLayout />}>
+          <Route path="/sitemap.xml" element={<SiteMapPage />} />
+        </Route>
         {/* 404 not found */}
         <Route element={<DefaultLayout />}>
           <Route errorElement={<NotFound />} />
