@@ -14,7 +14,7 @@ const ParallaxSectionFC: React.FC = () => {
               <h1
                 role="region"
                 aria-label=" Các ưu đãi đặc biệt tại 7Teck"
-                className="text-[10px] font-extralight text-white xl:text-4xl"
+                className="text-3xl font-extralight text-white xl:text-5xl"
               >
                 Các ưu đãi đặc biệt tại 7Teck
               </h1>

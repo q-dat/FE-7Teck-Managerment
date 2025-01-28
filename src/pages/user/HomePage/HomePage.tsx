@@ -274,7 +274,7 @@ const HomePage: React.FC = () => {
                     loading="lazy"
                     src={post?.imageUrl}
                     alt="Ảnh đại diện"
-                    className="h-[200px] w-full rounded-sm object-contain"
+                    className="h-[200px] w-full rounded-sm object-cover"
                   />
                   <p className="line-clamp-3 py-1 text-sm font-light text-black">
                     {post?.title}
