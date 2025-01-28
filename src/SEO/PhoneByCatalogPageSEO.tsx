@@ -1,8 +1,10 @@
-import React, { useContext } from 'react';
+import React, { lazy, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { PhoneContext } from '../context/phone/PhoneContext';
 import useSeo from '../hooks/useSeo';
-import PhoneByCatalogPage from '../pages/user/phone/PhoneByCatalogPage';
+const PhoneByCatalogPage = lazy(
+  () => import('../pages/user/phone/PhoneByCatalogPage')
+);
 
 const PhoneByCatalogPageSEO: React.FC = () => {
   const { phones } = useContext(PhoneContext);

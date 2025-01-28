@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import useSeo from '../hooks/useSeo';
-import GalleryPage from '../pages/user/GalleryPage';
+const GalleryPage = lazy(() => import('../pages/user/GalleryPage'));
 
 const GalleryPageSEO: React.FC = () => {
   useSeo({

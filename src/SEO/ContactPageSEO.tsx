@@ -1,5 +1,5 @@
-import React from 'react';
-import ContactPage from '../pages/user/ContactPage';
+import React, { lazy } from 'react';
+const ContactPage = lazy(() => import('../pages/user/ContactPage'));
 import useSeo from '../hooks/useSeo';
 
 const ContactPageSEO: React.FC = () => {
