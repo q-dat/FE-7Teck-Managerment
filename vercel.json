@@ -4,5 +4,11 @@
       "src": "/[^.]+",
       "dest": "/"
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/:path*",
+      "destination": "https://service.prerender.io/:path*"
+    }
   ]
 }
