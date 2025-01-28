@@ -20,36 +20,36 @@ const SidebarAdmin: React.FC<{}> = () => {
     {
       name: 'Dashboard',
       icon: FaHome,
-      link: '/admin'
+      link: '/cms/admin'
     },
     {
       name: 'Danh Mục Điện Thoại',
       icon: FaList,
-      link: '/admin/phone-catalog-manager',
+      link: '/cms/admin/phone-catalog-manager',
       toastify: phoneCatalogs.length
     },
     {
       name: 'Điện Thoại',
       icon: FaMobileAlt,
-      link: '/admin/phone-manager',
+      link: '/cms/admin/phone-manager',
       toastify: phones.length
     },
     {
       name: 'Ipad',
       icon: FaTabletAlt,
-      link: '/admin/ipad-manager',
+      link: '/cms/admin/ipad-manager',
       toastify: phones.length
     },
     {
       name: 'Window',
       icon: FaWindows,
-      link: '/admin/window-manager',
+      link: '/cms/admin/window-manager',
       toastify: phones.length
     },
     {
       name: 'Macbook',
       icon: BsApple,
-      link: '/admin/macbook-manager',
+      link: '/cms/admin/macbook-manager',
       toastify: phones.length
     }
   ];

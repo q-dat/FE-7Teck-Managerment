@@ -19,13 +19,13 @@ const SidebarPost: React.FC<{}> = () => {
     {
       name: 'Danh mục bài viết',
       icon: AiOutlineMenuFold,
-      link: '/admin-post/post-catalog-manager',
+      link: '/cms/admin-post/post-catalog-manager',
       toastify: postCatalogs.length
     },
     {
       name: 'Quản lý bài viết',
       icon: BsFilePost,
-      link: '/admin-post/post-manager',
+      link: '/cms/admin-post/post-manager',
       toastify: posts.length
     }
   ];

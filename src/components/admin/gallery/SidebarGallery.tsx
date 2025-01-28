@@ -16,7 +16,7 @@ const SidebarGallery: React.FC<{}> = () => {
     {
       name: 'Quản lý Gallery',
       icon: GrGallery,
-      link: '/admin-gallery/gallery-manager',
+      link: '/cms/admin-gallery/gallery-manager',
       toastify: gallerys.length
     }
   ];

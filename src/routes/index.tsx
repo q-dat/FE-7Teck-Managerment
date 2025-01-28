@@ -24,30 +24,25 @@ const TipsAndTricksPage = lazy(
 );
 const GalleryPage = lazy(() => import('../pages/user/GalleryPage'));
 // admin
-const Admin = lazy(() => import('../pages/admin/Admin'));
-const DashboardPage = lazy(() => import('../pages/admin/DashboardPage'));
+const Admin = lazy(() => import('../cms/admin/Admin'));
+const DashboardPage = lazy(() => import('../cms/admin/DashboardPage'));
 const PhoneCatalogManager = lazy(
-  () => import('../pages/admin/PhoneCatalogManager')
+  () => import('../cms/admin/PhoneCatalogManager')
 );
-const PhoneManager = lazy(() => import('../pages/admin/PhoneManager'));
+const PhoneManager = lazy(() => import('../cms/admin/PhoneManager'));
 
 // post
-const Post = lazy(() => import('../pages/admin/post/Post'));
-const PostManagerPage = lazy(
-  () => import('../pages/admin/post/PostManagerPage')
-);
+const Post = lazy(() => import('../cms/admin/post/Post'));
+const PostManagerPage = lazy(() => import('../cms/admin/post/PostManagerPage'));
 const PostCatalogManagerPage = lazy(
-  () => import('../pages/admin/post/PostCatalogManagerPage')
+  () => import('../cms/admin/post/PostCatalogManagerPage')
 );
 
 // gallery
-const Gallery = lazy(() => import('../pages/admin/gallery/Gallery'));
+const Gallery = lazy(() => import('../cms/admin/gallery/Gallery'));
 const GalleryManagerPage = lazy(
-  () => import('../pages/admin/gallery/GalleryManagerPage')
+  () => import('../cms/admin/gallery/GalleryManagerPage')
 );
-
-// sitemap.xml
-const SiteMapPage = lazy(() => import('../pages/user/SiteMapPage'));
 
 // not found page
 const NotFound = lazy(() => import('../pages/404/NotFound'));
@@ -289,7 +284,7 @@ export default function AppRoutes() {
 
         {/* Admin */}
         <Route element={<DefaultLayout />}>
-          <Route path="/admin" element={<Admin />}>
+          <Route path="/cms/admin" element={<Admin />}>
             <Route index path="" element={<DashboardPage />} />
             <Route
               path="phone-catalog-manager"
@@ -301,8 +296,8 @@ export default function AppRoutes() {
 
         {/* Post */}
         <Route element={<DefaultLayout />}>
-          <Route path="/admin-post" element={<Post />}>
-            {/* <Route index path="" element={<DashboardPage />} /> */}
+          <Route path="/cms/admin-post" element={<Post />}>
+            <Route index path="" element={<PostManagerPage />} />
             <Route path="post-manager" element={<PostManagerPage />} />
             <Route
               path="post-catalog-manager"
@@ -313,15 +308,12 @@ export default function AppRoutes() {
 
         {/* Gallery */}
         <Route element={<DefaultLayout />}>
-          <Route path="/admin-gallery" element={<Gallery />}>
+          <Route path="/cms/admin-gallery" element={<Gallery />}>
             <Route index path="" element={<GalleryManagerPage />} />
             <Route path="gallery-manager" element={<GalleryManagerPage />} />
           </Route>
         </Route>
-        {/* SiteMap */}
-        <Route element={<DefaultLayout />}>
-          <Route path="/sitemap.xml" element={<SiteMapPage />} />
-        </Route>
+
         {/* 404 not found */}
         <Route element={<DefaultLayout />}>
           <Route errorElement={<NotFound />} />
