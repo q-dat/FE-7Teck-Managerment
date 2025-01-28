@@ -10,5 +10,16 @@
       "source": "/:path*",
       "destination": "https://service.prerender.io/:path*"
     }
+  ],
+  "headers": [
+    {
+      "source": "/:path*",
+      "headers": [
+        {
+          "key": "X-Prerender-Token",
+          "value": "DZ2j2iJMVrEpqVKuis9e"
+        }
+      ]
+    }
   ]
 }
