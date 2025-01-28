@@ -1,5 +1,8 @@
 User-agent: *
 Crawl-delay: 5
 Disallow: /cms/
+Disallow: /cms/*
 Disallow: /*jpg$
-Sitemap: https://your-domain.com/sitemap.xml
+Disallow: /*png$
+Disallow: /*svg$
+Sitemap: https://be-7teck-ecommerce.onrender.com/sitemap.xml

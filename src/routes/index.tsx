@@ -1,28 +1,22 @@
-import { lazy, useContext, useEffect, useState } from 'react';
-import { Route, Routes, useParams } from 'react-router-dom';
+import { lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import DefaultLayout from '../layout/DefaultLayout';
-import useSeo from '../hooks/useSeo';
-import { PhoneContext } from '../context/phone/PhoneContext';
-import { PostContext } from '../context/post/PostContext';
 
 // UserPage
 const User = lazy(() => import('../pages/user/User'));
-const HomePage = lazy(() => import('../pages/user/HomePage/HomePage'));
-const ContactPage = lazy(() => import('../pages/user/ContactPage'));
-const PhonePage = lazy(() => import('../pages/user/PhonePage'));
-const PhoneByCatalogPage = lazy(
-  () => import('../pages/user/phone/PhoneByCatalogPage')
+const HomePageSEO = lazy(() => import('../SEO/HomePageSEO'));
+const ContactPageSEO = lazy(() => import('../SEO/ContactPageSEO'));
+const PhonePageSEO = lazy(() => import('../SEO/PhonePageSEO'));
+const PhoneByCatalogPageSEO = lazy(
+  () => import('../SEO/PhoneByCatalogPageSEO')
 );
-const PhoneDetailPage = lazy(
-  () => import('../pages/user/phone/PhoneDetailPage')
-);
-const PriceListPage = lazy(() => import('../pages/user/PriceListPage'));
-const NewsPage = lazy(() => import('../pages/user/post/NewsPage'));
-const PostDetail = lazy(() => import('../pages/user/post/PostDetail'));
-const TipsAndTricksPage = lazy(
-  () => import('../pages/user/post/TipsAndTricksPage')
-);
-const GalleryPage = lazy(() => import('../pages/user/GalleryPage'));
+const PhoneDetailPageSEO = lazy(() => import('../SEO/PhoneDetailPageSEO'));
+const PriceListPageSEO = lazy(() => import('../SEO/PriceListPageSEO'));
+const NewsPageSEO = lazy(() => import('../SEO/NewsPageSEO'));
+const PostDetailSEO = lazy(() => import('../SEO/PostDetailSEO'));
+const TipsAndTricksPageSEO = lazy(() => import('../SEO/TipsAndTricksPageSEO'));
+const GalleryPageSEO = lazy(() => import('../SEO/GalleryPageSEO'));
+
 // admin
 const Admin = lazy(() => import('../cms/admin/Admin'));
 const DashboardPage = lazy(() => import('../cms/admin/DashboardPage'));
@@ -46,213 +40,7 @@ const GalleryManagerPage = lazy(
 
 // not found page
 const NotFound = lazy(() => import('../pages/404/NotFound'));
-// --------------------------------------------------------------------------------------------------------------------
-// OnPage SEO
-const HomePageSEO = () => {
-  useSeo({
-    title:
-      '7Teck.vn - Điện thoại, Máy tính bảng, Laptop, PC, Apple chính hãng, Thu cũ đổi mới - Hỗ trợ giá lên đời',
-    canonical: `${window.location.href}`,
-    meta: [
-      {
-        name: 'description',
-        content: 'Khám phá các sản phẩm công nghệ mới nhất tại 7Teck.'
-      },
-      { name: 'keywords', content: '7Teck, công nghệ, điện thoại, laptop' }
-    ]
-  });
-  return <HomePage />;
-};
-// NewsPageSEO
-const NewsPageSEO = () => {
-  useSeo({
-    title: 'Tin tức mới nhất tại 7Teck',
-    canonical: `${window.location.href}`,
-    meta: [
-      {
-        name: 'description',
-        content: ''
-      },
-      { name: 'keywords', content: '7Teck, tin tức, điện thoại, laptop' }
-    ]
-  });
-  return <NewsPage />;
-};
-// PostDetailSEO
-const PostDetailSEO = () => {
-  const { posts } = useContext(PostContext);
-  const { title } = useParams<{ title: string }>();
-  const [selectedPost, setSelectedPost] = useState<(typeof posts)[0] | null>(
-    null
-  );
-  useEffect(() => {
-    // Fetch Data By Title
-    if (posts.length > 0 && title) {
-      const post = posts.find(
-        post =>
-          post?.title.toLowerCase().replace(/\s+/g, '-') === title.toLowerCase()
-      );
-      setSelectedPost(post || null);
-    }
-  }, [selectedPost, posts, title]);
 
-  useSeo({
-    title: `${selectedPost?.title} - 7Teck`,
-    canonical: selectedPost
-      ? `${window.location.origin}/tin-tuc/${selectedPost.title.toLowerCase().replace(/\s+/g, '-')}`
-      : window.location.href,
-    meta: [
-      {
-        name: 'description',
-        content: ''
-      },
-      { name: 'keywords', content: '7Teck, tin tức, điện thoại, laptop' }
-    ]
-  });
-  return <PostDetail />;
-};
-// TipsAndTricksPageSEO
-const TipsAndTricksPageSEO = () => {
-  useSeo({
-    title: 'Thủ Thuật Công Nghệ Và Mẹo Hay',
-    canonical: `${window.location.href}`,
-    meta: [
-      {
-        name: 'description',
-        content: ''
-      },
-      { name: 'keywords', content: '7Teck, tin tức, điện thoại, laptop' }
-    ]
-  });
-  return <TipsAndTricksPage />;
-};
-// ContactPageSEO
-const ContactPageSEO = () => {
-  useSeo({
-    title: 'Chính Sách Bảo Hành - 7Teck',
-    canonical: `${window.location.href}`,
-    meta: [
-      {
-        name: 'description',
-        content: ''
-      },
-      { name: 'keywords', content: '7Teck, tin tức, điện thoại, laptop' }
-    ]
-  });
-  return <ContactPage />;
-};
-// GalleryPageSEO
-const GalleryPageSEO = () => {
-  useSeo({
-    title: 'Hành Trình Khách Hàng',
-    canonical: `${window.location.href}`,
-    meta: [
-      {
-        name: 'description',
-        content: ''
-      },
-      { name: 'keywords', content: '7Teck, tin tức, điện thoại, laptop' }
-    ]
-  });
-  return <GalleryPage />;
-};
-// PriceListPageSEO
-const PriceListPageSEO = () => {
-  useSeo({
-    title: 'Bảng Giá Thu Mua - 7Teck',
-    canonical: `${window.location.href}`,
-    meta: [
-      {
-        name: 'description',
-        content: ''
-      },
-      { name: 'keywords', content: '7Teck, tin tức, điện thoại, laptop' }
-    ]
-  });
-  return <PriceListPage />;
-};
-// PhonePageSEO
-const PhonePageSEO = () => {
-  useSeo({
-    title: 'Điện Thoại iPhone - 7Teck',
-    canonical: `${window.location.href}`,
-    meta: [
-      {
-        name: 'description',
-        content: ''
-      },
-      { name: 'keywords', content: '7Teck, tin tức, điện thoại, laptop' }
-    ]
-  });
-  return <PhonePage />;
-};
-// PhoneByCatalogPageSEO
-const PhoneByCatalogPageSEO = () => {
-  const { phones } = useContext(PhoneContext);
-  const { catalog } = useParams();
-  const slugify = (text: string) => {
-    return text
-      .toString()
-      .normalize('NFD')
-      .replace(/\p{Diacritic}/gu, '')
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-+|-+$/g, '');
-  };
-  const filteredPhones = phones.filter(
-    phone => slugify(phone?.name) === catalog
-  );
-  useSeo({
-    title:
-      filteredPhones.length > 0
-        ? `${filteredPhones[0]?.name}`
-        : 'Không tìm thấy sản phẩm!',
-    canonical: `${window.location.href}`,
-    meta: [
-      {
-        name: 'description',
-        content: ''
-      },
-      { name: 'keywords', content: '7Teck, điện thoại, laptop, máy tính bảng' }
-    ]
-  });
-  return <PhoneByCatalogPage />;
-};
-// PhoneDetailPageSEO
-const PhoneDetailPageSEO = () => {
-  const { id } = useParams();
-  const { getPhoneById } = useContext(PhoneContext);
-  const [phone, setPhone] = useState<any>(null);
-
-  useEffect(() => {
-    if (id) {
-      const fetchPhone = async () => {
-        try {
-          const fetchedPhone = await getPhoneById(id);
-          if (fetchedPhone) {
-            setPhone(fetchedPhone);
-          }
-        } catch (error) {
-          console.log(error);
-        }
-      };
-
-      fetchPhone();
-    }
-  }, [id, getPhoneById]);
-  useSeo({
-    title: `${phone?.name} - 7Teck`,
-    canonical: `${window.location.origin}/chi-tiet-iphone/${phone?._id}`,
-    meta: [
-      {
-        name: 'description',
-        content: ''
-      },
-      { name: 'keywords', content: '7Teck, tin tức, điện thoại, laptop' }
-    ]
-  });
-  return <PhoneDetailPage />;
-};
 export default function AppRoutes() {
   return (
     <>
