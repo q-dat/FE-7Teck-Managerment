@@ -93,14 +93,12 @@ const PostDetail: React.FC = () => {
                 </div>
               ) : (
                 <p
-                  role="region"
                   aria-label="Bài viết này không tồn tại"
                   className="my-3 rounded-md bg-white p-2 text-center text-2xl font-light text-primary"
                 >
                   Bài viết này không tồn tại!
                   <br />
                   <span
-                    role="region"
                     aria-label=" Xin lỗi vì sự bất tiện này. Quý độc giả vui lòng theo dõi
                     các bài viết khác trên trang."
                     className="text-xl"
@@ -113,13 +111,11 @@ const PostDetail: React.FC = () => {
             </>
           </div>
           <div className="px-0 xl:px-20">
-            <h1
-              role="region"
-              aria-label="Bài viết nổi bật khác"
-              className="p-1 font-semibold uppercase"
-            >
-              Bài viết nổi bật khác
-            </h1>
+            <section role="region" aria-label="Bài viết nổi bật khác">
+              <h1 className="p-1 font-semibold uppercase">
+                Bài viết nổi bật khác
+              </h1>
+            </section>
             <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
               {otherPosts.slice(0, 8).map(post => (
                 <div

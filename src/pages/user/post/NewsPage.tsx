@@ -41,13 +41,11 @@ const NewsPage: React.FC = () => {
           </ul>
         </div>
         <div className="px-2 xl:px-20">
-          <h1
-            role="region"
-            aria-label="Tin mới nhất"
-            className="py-5 text-center text-[30px] font-bold text-primary"
-          >
-            Tin Mới Nhất
-          </h1>
+          <section role="region" aria-label="Tin mới nhất">
+            <h1 className="py-5 text-center text-[30px] font-bold text-primary">
+              Tin Mới Nhất
+            </h1>
+          </section>
           <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
             {posts.map(post => (
               <div

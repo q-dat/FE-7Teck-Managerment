@@ -249,12 +249,12 @@ const HomePage: React.FC = () => {
           className={`relative mt-10 bg-cover bg-fixed bg-center bg-no-repeat py-5 ${posts.length === 0 ? 'hidden' : ''}`}
         >
           <div className="absolute inset-0 bg-black bg-opacity-20"></div>
-          <div className="relative z-10">
-            <h3
-              role="region"
-              aria-label=" Bản tin mới nhất"
-              className="mb-2 bg-white bg-opacity-20 text-center text-xl font-semibold uppercase text-white"
-            >
+          <section
+            className="relative z-10"
+            role="region"
+            aria-label=" Bản tin mới nhất"
+          >
+            <h3 className="mb-2 bg-white bg-opacity-20 text-center text-xl font-semibold uppercase text-white">
               Bản tin mới nhất
             </h3>
             <div className="grid grid-cols-2 gap-2 px-2 md:grid-cols-3 lg:grid-cols-4 xl:px-[100px]">
@@ -279,22 +279,20 @@ const HomePage: React.FC = () => {
                 </div>
               ))}
             </div>
+          </section>
+          <div role="region" aria-label="Xem thêm bản tin">
+            <Link to="/tin-tuc-moi-nhat">
+              <button
+                role="button"
+                className="relative z-10 mt-2 flex w-full items-center justify-center gap-1 bg-gradient-to-r from-white via-secondary to-white py-1 text-sm text-white"
+              >
+                Xem Thêm Bản Tin
+                <span>
+                  <IoIosArrowForward />
+                </span>
+              </button>
+            </Link>
           </div>
-          <Link
-            role="region"
-            aria-label="Xem thêm bản tin"
-            to="/tin-tuc-moi-nhat"
-          >
-            <button
-              role="button"
-              className="relative z-10 mt-2 flex w-full items-center justify-center gap-1 bg-gradient-to-r from-white via-secondary to-white py-1 text-sm text-white"
-            >
-              Xem Thêm Bản Tin
-              <span>
-                <IoIosArrowForward />
-              </span>
-            </button>
-          </Link>
         </div>
       </div>
     </div>

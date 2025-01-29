@@ -74,14 +74,12 @@ const ContactPage: React.FC = () => {
                 className="w-[150px] rounded-full border border-primary xl:w-[300px]"
               />
             </div>
-            <div className="flex w-full flex-col gap-5">
-              <h1
-                role="region"
-                aria-label="Thông tin liên hệ"
-                className="text-2xl font-bold"
-              >
-                Thông tin liên hệ:
-              </h1>
+            <div
+              className="flex w-full flex-col gap-5"
+              role="region"
+              aria-label="Thông tin liên hệ"
+            >
+              <h1 className="text-2xl font-bold">Thông tin liên hệ:</h1>
               <div className="flex w-full flex-col gap-5 xl:flex-row">
                 <div className="w-full">
                   <InputForm

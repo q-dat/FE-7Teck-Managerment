@@ -69,16 +69,16 @@ const PhoneFC: React.FC = () => {
   return (
     <div className={`relative rounded-none bg-white xl:rounded-lg`}>
       {/* Title */}
-      <div className="flex w-full flex-col items-center justify-center py-5 xl:rounded-t-lg">
-        <h1
-          role="region"
-          aria-label="Danh sách điện thoại nổi bật có lượt xem nhiều nhất"
-          className="bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold text-transparent xl:text-[30px]"
-        >
+      <section
+        role="region"
+        aria-label="Danh sách điện thoại nổi bật có lượt xem nhiều nhất"
+        className="flex w-full flex-col items-center justify-center py-5 xl:rounded-t-lg"
+      >
+        <h1 className="bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold text-transparent xl:text-[30px]">
           Nổi Bật
         </h1>
         <span className="h-[1px] w-[150px] animate-ping bg-primary"></span>
-      </div>
+      </section>
       <div
         ref={scrollRef}
         className="grid w-full grid-flow-col grid-rows-2 items-center justify-start gap-[10px] overflow-x-auto scroll-smooth border-[10px] border-transparent pt-0 scrollbar-hide xl:pt-0"
