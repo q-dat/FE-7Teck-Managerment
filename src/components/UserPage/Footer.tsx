@@ -14,10 +14,9 @@ const FooterFC: React.FC = () => {
         <div className="w-full">
           <img
             loading="lazy"
-            width={140}
             src={Logo}
             alt="LOGO"
-            className="rounded-full border border-white"
+            className="h-full w-[140px] rounded-full border border-white"
           />
         </div>
         {/* 1 */}

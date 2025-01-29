@@ -154,7 +154,7 @@ const Header: React.FC = () => {
     <div className="fixed z-[99999] hidden w-full flex-col xl:block">
       {/* Menu 1 */}
       <header
-        className={`flex h-[40px] w-full transform flex-row items-center justify-between border-b bg-primary px-10 text-xs text-white hover:text-white transition-transform delay-100 duration-300 ease-in-out ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}
+        className={`flex h-[40px] w-full transform flex-row items-center justify-between border-b bg-primary px-10 text-xs text-white transition-transform delay-100 duration-300 ease-in-out hover:text-white ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}
       >
         <div className="w-full">
           <div className="flex items-center">
@@ -247,9 +247,8 @@ const Header: React.FC = () => {
             onClick={() => setActiveItem('Trang Chủ')}
           >
             <img
-              className="rounded-full object-cover"
+              className="h-full w-[60px] rounded-full object-cover"
               loading="lazy"
-              width={60}
               src={Logo}
               alt="LOGO"
             />

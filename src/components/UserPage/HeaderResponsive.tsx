@@ -199,9 +199,8 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                   {/* LOGO */}
           {/* <div aria-label="Home" className="flex items-center justify-center">
                     <img
-                      className="mb-5 rounded-full object-cover"
+                      className="mb-5 rounded-full object-cover w-[120px] h-full"
                       loading="lazy"
-                      width={120}
                       src={Logo}
                       alt="LOGO"
                     />
@@ -291,8 +290,17 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
               side={
                 <Menu className="fixed h-full w-[280px] bg-white">
                   {/* LOGO */}
-                  <Link to="/" aria-label="Home" onClick={() => setActiveItem('Trang Chủ')}>
-                    <img width={120} loading="lazy" src={Logo} alt="LOGO" />
+                  <Link
+                    to="/"
+                    aria-label="Home"
+                    onClick={() => setActiveItem('Trang Chủ')}
+                  >
+                    <img
+                      className="h-full w-[120px]"
+                      loading="lazy"
+                      src={Logo}
+                      alt="LOGO"
+                    />
                   </Link>
                   {/* Menu */}
                   {menuItems.map(item => {

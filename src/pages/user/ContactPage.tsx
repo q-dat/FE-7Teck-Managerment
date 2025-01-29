@@ -71,7 +71,7 @@ const ContactPage: React.FC = () => {
                 loading="lazy"
                 src={Logo}
                 alt="Logo"
-                className="w-[150px] rounded-full border border-primary xl:w-[300px]"
+                className="h-full w-[150px] rounded-full border border-primary xl:w-[300px]"
               />
             </div>
             <div
