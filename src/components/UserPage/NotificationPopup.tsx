@@ -27,18 +27,18 @@ const NotificationPopup: React.FC = () => {
             className="fixed left-0 top-0 z-50 h-full w-full cursor-pointer bg-black bg-opacity-60"
             onClick={closePopup}
           ></section>
-          <div className="fixed left-1/2 top-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2 rounded-lg">
+          <div className="fixed left-1/2 top-1/2 z-50 w-[350px] -translate-x-1/2 -translate-y-1/2 rounded-lg xl:w-[500px]">
             <Hero>
-              <Hero.Content>
+              <Hero.Content className="m-0 p-0">
                 <div className="relative w-full">
                   <div
                     className="absolute right-1 top-1 flex flex-col items-end justify-center"
                     onClick={closePopup}
                   >
-                    <MdCancel className="cursor-pointer rounded-full bg-black text-xl text-white xl:text-3xl" />
+                    <MdCancel className="cursor-pointer rounded-full bg-white text-2xl text-black xl:text-3xl" />
                   </div>
                   <img
-                    className="h-full w-[300px] rounded-sm object-cover xl:w-[500px]"
+                    className="h-full w-full rounded-lg object-cover"
                     src={Popup}
                     alt="Greeting"
                   />
