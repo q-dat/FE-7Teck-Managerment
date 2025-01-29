@@ -97,7 +97,7 @@ const HomePage: React.FC = () => {
       <div className="pt-[60px] xl:pt-0">
         {/* Banner */}
         <div className="relative">
-          <div className="absolute bottom-0 left-2 top-[60%] animate-fadeIn md:bottom-4 md:left-[10%] md:top-[30%] lg:top-[30%]">
+          <div className="absolute bottom-0 left-2 top-[60%] md:bottom-4 md:left-[10%] md:top-[30%] lg:top-[30%]">
             <h1 className="bg-gradient-to-r from-white to-white bg-clip-text text-[25px] font-extrabold italic text-transparent xl:text-[40px]">
               Đổi Điện Thoại Cũ, <br /> Nhận Ngay Giá Tốt Nhất!
             </h1>
