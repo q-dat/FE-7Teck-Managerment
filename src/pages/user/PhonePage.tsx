@@ -54,7 +54,7 @@ const PhonePage: React.FC = () => {
 
   return (
     <div>
-      <HeaderResponsive Title_NavbarMobile="Điện Thoại" />
+      <HeaderResponsive Title_NavbarMobile="iPhone" />
       <div className="py-[60px] xl:pt-0">
         <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow xl:px-20">
           <ul className="font-light">
@@ -65,7 +65,7 @@ const PhonePage: React.FC = () => {
             </li>
             <li>
               <Link aria-label="Điện thoại" to="">
-                Điện Thoại
+                iPhone
               </Link>
             </li>
           </ul>

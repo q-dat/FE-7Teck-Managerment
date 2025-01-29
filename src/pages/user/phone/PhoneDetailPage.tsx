@@ -136,7 +136,7 @@ const PhoneDetailPage: React.FC = () => {
                     loading="lazy"
                     src={selectedImage || phone?.img}
                     alt={phone?.name}
-                    className="h-[500px] w-screen rounded-md object-cover xl:h-[490px] xl:w-full xl:object-contain"
+                    className="h-[500px] w-screen rounded-md object-cover xl:h-[490px] xl:object-contain"
                   />
                   <div className="pointer-events-none absolute bottom-1 right-1">
                     <MdZoomOutMap className="rounded-sm bg-black bg-opacity-10 p-[1px] text-2xl text-white" />
@@ -172,13 +172,13 @@ const PhoneDetailPage: React.FC = () => {
                   <div className="relative w-full">
                     <button
                       onClick={() => scrollBy(-70)}
-                      className={`absolute -left-2 z-[100] rounded-xl bg-black bg-opacity-20 py-2 text-white xl:-left-4 ${isLeftVisible ? '' : 'hidden'}`}
+                      className={`absolute -left-1 z-[100] rounded-xl bg-black bg-opacity-20 py-2 text-white xl:-left-2 ${isLeftVisible ? '' : 'hidden'}`}
                     >
                       <MdArrowBackIosNew className="text-2xl" />
                     </button>
                     <button
                       onClick={() => scrollBy(70)}
-                      className={`absolute -right-2 z-[100] rounded-xl bg-black bg-opacity-20 py-2 text-white xl:-right-4 ${isRightVisible ? '' : 'hidden'}`}
+                      className={`absolute -right-1 z-[100] rounded-xl bg-black bg-opacity-20 py-2 text-white xl:-right-2 ${isRightVisible ? '' : 'hidden'}`}
                     >
                       <MdArrowForwardIos className="text-2xl" />
                     </button>
@@ -197,7 +197,7 @@ const PhoneDetailPage: React.FC = () => {
                   <p className="text-3xl font-semibold text-red-500">
                     <span>
                       {(phone?.price * 1000).toLocaleString('vi-VN')}₫
-                    </span>{' '}
+                    </span>
                     <del className="text-sm font-light text-gray-100">
                       {phone?.sale &&
                         (phone?.sale * 1000).toLocaleString('vi-VN')}
@@ -254,71 +254,8 @@ const PhoneDetailPage: React.FC = () => {
                   *Nhấn vào hotline để gọi ngay!
                 </i>
               </div>
-              {/* Details */}
-              {/* <div className="mt-5 divide-y-[1px] divide-primary divide-opacity-20 rounded-md border border-primary bg-white leading-10 text-black">
-                <h1 className="rounded-md rounded-b-none bg-primary p-2 text-2xl font-semibold uppercase text-white">
-                  Thông số kĩ thuật:
-                </h1>
-                {phoneFieldMap.map(group => (
-                  <div key={group?.group}>
-                    <details className="group transform divide-y-[1px] bg-primary bg-opacity-5">
-                      <summary className="flex cursor-pointer items-center justify-between p-2">
-                        <span className="font-semibold text-primary">
-                          {group?.name}
-                        </span>
-                        <span className="transform text-primary transition-transform duration-300 ease-in-out group-open:rotate-180">
-                          <IoIosArrowDropdownCircle className="text-2xl" />
-                        </span>
-                      </summary>
-                      {group?.fields
-                        .filter(
-                          field =>
-                            phone?.phone_catalog_id?.[group?.group]?.[
-                              field?.field
-                            ]
-                        )
-                        .map(field => {
-                          const fieldValue =
-                            phone?.phone_catalog_id?.[group?.group]?.[
-                              field?.field
-                            ];
-                          return (
-                            <div
-                              className="flex w-full flex-row items-start justify-between rounded-md bg-white p-2"
-                              key={field?.field}
-                            >
-                              <p>{field?.name}</p>
-                              <p className="font-light italic text-gray-700">
-                                {Array.isArray(fieldValue) ? (
-                                  <span>{fieldValue.join(',')}</span>
-                                ) : (
-                                  fieldValue
-                                )}
-                              </p>
-                            </div>
-                          );
-                        })}
-                    </details>
-                  </div>
-                ))}
-              </div> */}
             </div>
           </div>
-          {/* Detailed description */}
-          {/* <details className="group my-5 flex w-full flex-col items-center justify-center">
-            <summary className="flex w-full cursor-pointer items-center justify-center gap-1 rounded-sm bg-gradient-to-r from-white via-primary to-primary">
-              <span className="font-semibold text-white">Xem Thêm</span>
-              <span className="transform text-white transition-transform duration-300 ease-in-out group-open:rotate-180">
-                <IoIosArrowDropdownCircle className="text-xl" />
-              </span>
-            </summary>
-            <p
-              className="mt-5"
-              dangerouslySetInnerHTML={{
-                __html: phone?.phone_catalog_id?.content
-              }}
-            ></p>
-          </details> */}
           {/* Tab */}
           <div className="w-full">
             <div className="mt-5 flex flex-row items-center justify-center rounded-md border-b-2 border-primary uppercase">

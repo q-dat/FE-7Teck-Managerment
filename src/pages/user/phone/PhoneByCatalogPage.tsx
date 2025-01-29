@@ -66,7 +66,7 @@ const ProductByCatalog = () => {
                       role="navigation"
                       aria-label="Chi tiết sản phẩm"
                       className="flex h-full w-full items-center justify-center rounded-md rounded-b-none bg-white"
-                      to={`/chi-tiet-iphone/${phone?._id}`}
+                      to={`/iphone-da-qua-su-dung/${phone?._id}`}
                     >
                       <img
                         alt=""

@@ -6,7 +6,7 @@ const TipsAndTricksPage = lazy(
 
 const TipsAndTricksPageSEO: React.FC = () => {
   useSeo({
-    title: 'Thủ Thuật Công Nghệ Và Mẹo Hay',
+    title: 'Thủ thuật công nghệ và mẹo hay',
     canonical: `${window.location.href}`,
     meta: [
       {

@@ -4,7 +4,7 @@ const PriceListPage = lazy(() => import('../pages/user/PriceListPage'));
 
 const PriceListPageSEO: React.FC = () => {
   useSeo({
-    title: 'Bảng Giá Thu Mua - 7Teck',
+    title: 'Bảng giá thu mua - 7Teck',
     canonical: `${window.location.href}`,
     meta: [
       {

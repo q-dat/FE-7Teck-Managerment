@@ -1,10 +1,10 @@
-import React, { lazy } from 'react';
+import React from 'react';
+import UsedProductsPage from '../pages/user/UsedProductsPage';
 import useSeo from '../hooks/useSeo';
-const PhonePage = lazy(() => import('../pages/user/PhonePage'));
 
-const PhonePageSEO: React.FC = () => {
+const UsedProductsPageSEO: React.FC = () => {
   useSeo({
-    title: 'Điện thoại iPhone - 7Teck',
+    title: 'Điện thoại iPhone cũ - 7Teck',
     canonical: `${window.location.href}`,
     meta: [
       {
@@ -14,8 +14,8 @@ const PhonePageSEO: React.FC = () => {
       { name: 'keywords', content: '7Teck, tin tức, điện thoại, laptop' }
     ]
   });
-  return <PhonePage />;
+  return <UsedProductsPage />;
 };
 
-export default PhonePageSEO;
+export default UsedProductsPageSEO;
 

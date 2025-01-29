@@ -4,7 +4,7 @@ const GalleryPage = lazy(() => import('../pages/user/GalleryPage'));
 
 const GalleryPageSEO: React.FC = () => {
   useSeo({
-    title: 'Hành Trình Khách Hàng',
+    title: 'Hành trình khách hàng',
     canonical: `${window.location.href}`,
     meta: [
       {

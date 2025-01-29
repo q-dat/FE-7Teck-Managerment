@@ -16,6 +16,7 @@ const NewsPageSEO = lazy(() => import('../SEO/NewsPageSEO'));
 const PostDetailSEO = lazy(() => import('../SEO/PostDetailSEO'));
 const TipsAndTricksPageSEO = lazy(() => import('../SEO/TipsAndTricksPageSEO'));
 const GalleryPageSEO = lazy(() => import('../SEO/GalleryPageSEO'));
+const UsedProductsPage = lazy(() => import('../pages/user/UsedProductsPage'));
 
 // admin
 const Admin = lazy(() => import('../cms/admin/Admin'));
@@ -53,8 +54,12 @@ export default function AppRoutes() {
             <Route path="iphone" element={<PhonePageSEO />} />
             <Route path="iphone/:catalog" element={<PhoneByCatalogPageSEO />} />
             <Route
-              path="chi-tiet-iphone/:id"
+              path="iphone-da-qua-su-dung/:id"
               element={<PhoneDetailPageSEO />}
+            />
+            <Route
+              path="thiet-bi-da-qua-su-dung"
+              element={<UsedProductsPage />}
             />
             {/*  */}
             <Route path="tin-tuc-moi-nhat" element={<NewsPageSEO />} />

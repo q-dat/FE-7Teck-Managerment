@@ -4,7 +4,7 @@ import useSeo from '../hooks/useSeo';
 
 const ContactPageSEO: React.FC = () => {
   useSeo({
-    title: 'Chính Sách Bảo Hành - 7Teck',
+    title: 'Chính sách bảo hành - 7Teck',
     canonical: `${window.location.href}`,
     meta: [
       {
