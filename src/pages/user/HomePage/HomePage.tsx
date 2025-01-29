@@ -106,19 +106,16 @@ const HomePage: React.FC = () => {
             </h2>
           </div>
           <img
-            loading="lazy"
             src={BannerDesktop}
             className="hidden h-full w-screen object-cover xl:block"
             alt="BannerDesktop"
           />
           <img
-            loading="lazy"
             src={BannerTablet}
             className="hidden h-full w-screen object-cover md:block xl:hidden"
             alt="BannerTablet"
           />
           <img
-            loading="lazy"
             src={BannerMobile}
             className="h-full w-screen object-cover md:hidden"
             alt="BannerMobile"
