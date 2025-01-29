@@ -153,12 +153,14 @@ const PhoneFC: React.FC = () => {
       <div className="absolute top-1/2 flex w-full items-center justify-between">
         <div className="relative w-full">
           <button
+            aria-label="Cuộn sang trái"
             onClick={() => scrollBy(-380)}
             className={`absolute left-0 z-[100] mt-7 rounded-full border-none bg-black bg-opacity-20 text-white ${isLeftVisible ? '' : 'hidden'}`}
           >
             <MdArrowBackIosNew className="text-4xl" />
           </button>
           <button
+            aria-label="Cuộn sang phải"
             onClick={() => scrollBy(380)}
             className={`absolute right-0 z-[100] mt-7 rounded-full border-none bg-black bg-opacity-20 text-white ${isRightVisible ? '' : 'hidden'}`}
           >

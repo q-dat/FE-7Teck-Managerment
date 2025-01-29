@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { PhoneContext } from '../../../context/phone/PhoneContext';
 import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
 import { Sale } from '../../../assets/image-represent';
+import { Button } from 'react-daisyui';
 
 const ProductByCatalog = () => {
   const { phones } = useContext(PhoneContext);
@@ -91,6 +92,18 @@ const ProductByCatalog = () => {
                           ₫
                         </del>
                       </p>
+                      <Link
+                        aria-label="Mua ngay"
+                        to="/thanh-toan"
+                        className="z-50 w-full"
+                      >
+                        <Button
+                          size="xs"
+                          className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary hover:bg-primary hover:bg-opacity-20"
+                        >
+                          Mua Ngay
+                        </Button>
+                      </Link>
                     </div>
                     {/*  */}
                     {phone?.status && (

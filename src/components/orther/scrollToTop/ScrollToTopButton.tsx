@@ -29,6 +29,7 @@ const ScrollToTopButton: React.FC = () => {
 
   return (
     <button
+      aria-label="Cuộn lên trên cùng"
       onClick={scrollToTop}
       className={`rounded-xs fixed bottom-[58px] left-1 z-[99999] transform rounded-md border border-white bg-primary p-2 shadow-md transition-transform xl:bottom-5 xl:left-2 xl:hover:bg-primary xl:hover:bg-opacity-50 ${
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'

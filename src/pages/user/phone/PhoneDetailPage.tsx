@@ -171,12 +171,14 @@ const PhoneDetailPage: React.FC = () => {
                 >
                   <div className="relative w-full">
                     <button
+                      aria-label="Cuộn sang trái"
                       onClick={() => scrollBy(-70)}
                       className={`absolute -left-1 z-[100] rounded-xl bg-black bg-opacity-20 py-2 text-white xl:-left-2 ${isLeftVisible ? '' : 'hidden'}`}
                     >
                       <MdArrowBackIosNew className="text-2xl" />
                     </button>
                     <button
+                      aria-label="Cuộn sang phải"
                       onClick={() => scrollBy(70)}
                       className={`absolute -right-1 z-[100] rounded-xl bg-black bg-opacity-20 py-2 text-white xl:-right-2 ${isRightVisible ? '' : 'hidden'}`}
                     >
