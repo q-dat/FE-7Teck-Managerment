@@ -264,7 +264,7 @@ const HomePage: React.FC = () => {
               {posts.slice(0, 4).map(post => (
                 <div
                   key={post?._id}
-                  className="relative cursor-pointer rounded border border-gray-50 bg-white p-2 shadow-inner hover:shadow-lg"
+                  className="relative flex cursor-pointer flex-col items-start justify-start gap-2 rounded border border-gray-50 bg-white p-2 shadow-inner hover:shadow-lg xl:flex-row"
                   onClick={() => handlePostClick(post)}
                 >
                   <p className="absolute left-1 top-1 rounded-sm bg-primary px-2 text-[12px] text-white">
@@ -274,9 +274,9 @@ const HomePage: React.FC = () => {
                     loading="lazy"
                     src={post?.imageUrl}
                     alt="Ảnh đại diện"
-                    className="h-[200px] w-full rounded-sm object-cover"
+                    className="h-[100px] w-full rounded-sm object-cover"
                   />
-                  <p className="line-clamp-3 py-1 text-sm font-light text-black">
+                  <p className="line-clamp-6 w-full py-1 text-sm text-black">
                     {post?.title}
                   </p>
                 </div>

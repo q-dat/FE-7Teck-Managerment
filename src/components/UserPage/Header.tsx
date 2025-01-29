@@ -154,7 +154,7 @@ const Header: React.FC = () => {
     <div className="fixed z-[99999] hidden w-full flex-col xl:block">
       {/* Menu 1 */}
       <header
-        className={`flex h-[40px] w-full transform flex-row items-center justify-between border-b bg-primary px-10 text-xs text-white transition-transform delay-100 duration-300 ease-in-out ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}
+        className={`flex h-[40px] w-full transform flex-row items-center justify-between border-b bg-primary px-10 text-xs text-white hover:text-white transition-transform delay-100 duration-300 ease-in-out ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}
       >
         <div className="w-full">
           <div className="flex items-center">
