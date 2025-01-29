@@ -111,11 +111,11 @@ const PostDetail: React.FC = () => {
             </>
           </div>
           <div className="px-0 xl:px-20">
-            <section role="region" aria-label="Bài viết nổi bật khác">
+            <div role="region" aria-label="Bài viết nổi bật khác">
               <h1 className="p-1 font-semibold uppercase">
                 Bài viết nổi bật khác
               </h1>
-            </section>
+            </div>
             <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
               {otherPosts.slice(0, 8).map(post => (
                 <div

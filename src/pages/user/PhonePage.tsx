@@ -77,7 +77,7 @@ const PhonePage: React.FC = () => {
               {currentPhones.map(phone => {
                 const phoneUrl = slugify(phone.name);
                 return (
-                  <div
+                  <section
                     key={phone?._id}
                     className="group flex h-full w-full flex-col justify-between rounded-md border border-white text-black"
                   >
@@ -128,7 +128,7 @@ const PhonePage: React.FC = () => {
                         </Link>
                       </div>
                     </div>
-                  </div>
+                  </section>
                 );
               })}
             </div>

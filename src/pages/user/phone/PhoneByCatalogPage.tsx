@@ -59,7 +59,7 @@ const ProductByCatalog = () => {
             <div className="grid grid-flow-row grid-cols-2 items-start gap-[10px] md:grid-cols-4 xl:grid-cols-6">
               {filteredPhones.length > 0 ? (
                 filteredPhones.map(phone => (
-                  <div
+                  <section
                     key={phone?._id}
                     className="group relative flex h-full flex-col justify-between rounded-md border border-white text-black"
                   >
@@ -114,7 +114,7 @@ const ProductByCatalog = () => {
                         </p>
                       </div>
                     )}
-                  </div>
+                  </section>
                 ))
               ) : (
                 <div className="col-span-full text-center text-2xl">

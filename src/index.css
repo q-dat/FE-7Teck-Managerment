@@ -49,18 +49,18 @@
   100% {
     border: 1px solid transparent;
     box-shadow: 0 0 0 transparent;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(0, 0) scale(1);
   }
   50% {
     border: 1px solid #5e90cc;
     box-shadow: 0 0 10px #5e90cc;
-    transform: translate(-50%, -50%) scale(1.3);
+    transform: translate(0, 0) scale(1.3);
   }
   25%,
   75% {
     border: 1px solid white;
     box-shadow: 0 0 0 #5e90cc;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(0, 0) scale(1);
   }
 }
 
@@ -83,18 +83,18 @@
   100% {
     border: 1px solid transparent;
     box-shadow: 0 0 0 transparent;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(0, 0) scale(1);
   }
   50% {
-    border: 1px solid #e53e3e;
-    box-shadow: 0 0 10px #e53e3e;
-    transform: translate(-50%, -50%) scale(1.3);
+    border: 1px solid #5e90cc;
+    box-shadow: 0 0 10px #5e90cc;
+    transform: translate(0, 0) scale(1.3);
   }
   25%,
   75% {
     border: 1px solid white;
-    box-shadow: 0 0 0 #e53e3e;
-    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 0 #5e90cc;
+    transform: translate(0, 0) scale(1);
   }
 }
 .animation-zoomBorder-Btn {

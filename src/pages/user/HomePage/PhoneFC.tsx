@@ -69,7 +69,7 @@ const PhoneFC: React.FC = () => {
   return (
     <div className={`relative rounded-none bg-white xl:rounded-lg`}>
       {/* Title */}
-      <section
+      <div
         role="region"
         aria-label="Danh sách điện thoại nổi bật có lượt xem nhiều nhất"
         className="flex w-full flex-col items-center justify-center py-5 xl:rounded-t-lg"
@@ -78,8 +78,8 @@ const PhoneFC: React.FC = () => {
           Nổi Bật
         </h1>
         <span className="h-[1px] w-[150px] animate-ping bg-primary"></span>
-      </section>
-      <div
+      </div>
+      <section
         ref={scrollRef}
         className="grid w-full grid-flow-col grid-rows-2 items-center justify-start gap-[10px] overflow-x-auto scroll-smooth border-[10px] border-transparent pt-0 scrollbar-hide xl:pt-0"
       >
@@ -141,7 +141,7 @@ const PhoneFC: React.FC = () => {
                 </div>
               );
             })}
-      </div>
+      </section>
       <Link to="/iphone" aria-label="Xem thêm điện thoại">
         <button className="flex w-full cursor-pointer items-center justify-center bg-gradient-to-r from-white via-secondary to-white py-1 text-sm text-white xl:rounded-b-lg">
           Xem Thêm Điện Thoại

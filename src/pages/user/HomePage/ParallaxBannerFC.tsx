@@ -16,7 +16,11 @@ const ParallaxBannerFC: React.FC = () => {
     shouldAlwaysCompleteAnimation: true,
     expanded: true,
     children: (
-      <div className="absolute inset-0 flex -translate-y-5 animate-fadeIn flex-col items-start justify-center gap-1 px-2 xl:translate-y-10 xl:px-5">
+      <div
+        role="region"
+        aria-label="Thu cũ đổi mới, hỗ trợ giá lên đời.  Up to 90%"
+        className="absolute inset-0 flex -translate-y-5 animate-fadeIn flex-col items-start justify-center gap-1 px-2 xl:translate-y-10 xl:px-5"
+      >
         <h1 className="text-[34px] font-semibold text-white md:text-6xl xl:text-[75px]">
           Thu cũ đổi mới, hỗ trợ giá lên đời.
         </h1>
