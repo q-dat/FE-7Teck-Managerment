@@ -3,6 +3,10 @@
     {
       "source": "/:path*/",
       "destination": "/index.html"
+    },
+    {
+      "source": "/:path+",
+      "destination": "/:path*/"
     }
   ],
   "headers": [
