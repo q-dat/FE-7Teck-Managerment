@@ -60,7 +60,7 @@ const FooterFC: React.FC = () => {
           </Footer.Title>
           <div className="mb-2 flex flex-row items-center justify-center gap-5 text-3xl">
             <Link
-              title="Fanpage"
+              title="Liên hệ qua Fanpage"
               target="_blank"
               to={'https://www.facebook.com/7teck.vn'}
               className="rounded-full"
@@ -68,7 +68,7 @@ const FooterFC: React.FC = () => {
               <FaFacebook />
             </Link>
             <Link
-              title="Messenger"
+              title="Liên hệ qua Messenger"
               target="_blank"
               to={'https://www.messenger.com/t/dangkhoa.pham.93'}
               className="rounded-full"
@@ -76,7 +76,7 @@ const FooterFC: React.FC = () => {
               <FaFacebookMessenger />
             </Link>
             <Link
-              title="Zalo"
+              title="Liên hệ qua Zalo"
               target="_blank"
               className="black rounded-full bg-white px-[2px] py-[6px] text-sm font-semibold text-black"
               to={'https://zalo.me/0983699993'}
@@ -85,6 +85,7 @@ const FooterFC: React.FC = () => {
             </Link>
           </div>
           <Link
+            title="Liên hệ qua Hotline"
             className="flex items-center gap-2 font-light hover:font-semibold"
             to="tel:0983699993"
           >

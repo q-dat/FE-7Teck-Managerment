@@ -107,17 +107,17 @@ const HomePage: React.FC = () => {
           </div>
           <img
             src={BannerDesktop}
-            className="hidden h-full w-screen object-cover xl:block"
+            className="hidden h-full w-full object-cover xl:block"
             alt="BannerDesktop"
           />
           <img
             src={BannerTablet}
-            className="hidden h-full w-screen object-cover md:block xl:hidden"
+            className="hidden h-full w-full object-cover md:block xl:hidden"
             alt="BannerTablet"
           />
           <img
             src={BannerMobile}
-            className="h-full w-screen object-cover md:hidden"
+            className="h-full w-full object-cover md:hidden"
             alt="BannerMobile"
           />
         </div>
