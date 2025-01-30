@@ -3,7 +3,14 @@
     {
       "source": "/:path*/",
       "destination": "/:path",
-      "permanent": true
+      "permanent": true,
+      "has": [
+        {
+          "type": "query",
+          "key": "trailingSlash",
+          "value": "true"
+        }
+      ]
     }
   ],
   "headers": [
