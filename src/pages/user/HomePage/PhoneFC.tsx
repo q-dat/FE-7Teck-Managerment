@@ -84,7 +84,7 @@ const PhoneFC: React.FC = () => {
         className="grid w-full grid-flow-col grid-rows-2 items-center justify-start gap-[10px] overflow-x-auto scroll-smooth border-[10px] border-transparent pt-0 scrollbar-hide xl:pt-0"
       >
         {loading
-          ? Array.from({ length: 6 }).map((_, index) => (
+          ? Array.from({ length: 12 }).map((_, index) => (
               <div key={index} className="w-[185px] p-2">
                 <Placeholder>
                   <Placeholder.Image rectangular />

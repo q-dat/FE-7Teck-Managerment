@@ -147,7 +147,7 @@ const HomePage: React.FC = () => {
             >
               {items.map((item, index) => (
                 <SwiperSlide key={index}>
-                  <div className="text-md my-4 flex flex-col items-center gap-2 text-center font-semibold">
+                  <div className="text-md my-4 flex flex-col items-center gap-2 text-center">
                     <div className="rounded-full bg-gradient-to-tr from-primary via-primary to-black p-4">
                       <div>
                         {React.cloneElement(item.icon, {
@@ -164,7 +164,7 @@ const HomePage: React.FC = () => {
             </Swiper>
           </div>
           {/*  Desktop */}
-          <div className="mx-0 my-5 hidden flex-row items-start justify-between gap-2 rounded-2xl py-5 font-sub md:flex xl:mx-[100px]">
+          <div className="mx-0 my-5 hidden flex-row items-start justify-between gap-2 rounded-2xl py-5 md:flex xl:mx-[100px]">
             <Swiper
               slidesPerView={4}
               pagination={{ dynamicBullets: true, clickable: true }}
