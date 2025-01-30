@@ -1,12 +1,15 @@
 {
   "rewrites": [
     {
-      "source": "/:path*/",
+      "source": "/:path*",
       "destination": "/index.html"
-    },
+    }
+  ],
+  "redirects": [
     {
       "source": "/:path+",
-      "destination": "/:path*/"
+      "destination": "/:path*/",
+      "permanent": true
     }
   ],
   "headers": [
