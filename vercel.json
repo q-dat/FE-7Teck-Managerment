@@ -1,16 +1,8 @@
 {
-  "redirects": [
+  "rewrites": [
     {
-      "source": "/:path*/",
-      "destination": "/:path",
-      "permanent": true,
-      "has": [
-        {
-          "type": "query",
-          "key": "trailingSlash",
-          "value": "true"
-        }
-      ]
+      "source": "/:path*",
+      "destination": "/index.html"
     }
   ],
   "headers": [
