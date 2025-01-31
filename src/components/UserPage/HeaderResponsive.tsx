@@ -1,6 +1,5 @@
 import React, {
   ReactNode,
-  useCallback,
   useContext,
   useEffect,
   useState
@@ -151,9 +150,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
   //   setLeftVisible(visible => !visible);
   // }, []);
 
-  const toggleRightVisible = useCallback(() => {
-    setRightVisible(visible => !visible);
-  }, []);
+  const toggleRightVisible = () => setRightVisible(prev => !prev);
   // Search Input
   const handleSearchToggle = () => {
     setOpenSearch(!openSearch);
@@ -287,7 +284,6 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
             <Drawer
               open={rightVisible}
               onClickOverlay={toggleRightVisible}
-              role="dialog"
               aria-hidden={!rightVisible}
               side={
                 <Menu role="menu" className="fixed h-full w-[280px] bg-white">
