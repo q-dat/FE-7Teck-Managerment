@@ -195,9 +195,9 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
               open={leftVisible}
               onClickOverlay={toggleLeftVisible}
               side={
-                <Menu className="fixed h-full w-[280px] bg-white ">
+                <Menu role="menu" className="fixed h-full w-[280px] bg-white ">
                   {/* LOGO */}
-          {/* <div aria-label="Home" className="flex items-center justify-center">
+          {/* <div className="flex items-center justify-center">
                     <img
                       className="mb-5 rounded-full object-cover w-[120px] h-full"
                       loading="lazy"
@@ -230,7 +230,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
           {/* Title */}
           {/*  */}
           {/*  */}
-          <Link to="/" aria-label="Home">
+          <Link aria-label="Trang chủ" to="/">
             <FaHome className="text-2xl text-white" />
           </Link>
           <p className="font-semibold text-white">{Title_NavbarMobile}</p>
@@ -287,12 +287,14 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
             <Drawer
               open={rightVisible}
               onClickOverlay={toggleRightVisible}
+              role="dialog"
+              aria-hidden={!rightVisible}
               side={
-                <Menu className="fixed h-full w-[280px] bg-white">
+                <Menu role="menu" className="fixed h-full w-[280px] bg-white">
                   {/* LOGO */}
                   <Link
+                    aria-label="Trang chủ"
                     to="/"
-                    aria-label="Home"
                     onClick={() => setActiveItem('Trang Chủ')}
                   >
                     <img
@@ -308,6 +310,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                     return (
                       <div key={item.name} className="relative">
                         <Menu.Item
+                          role="menuitem"
                           className="group relative"
                           onClick={() =>
                             item.submenu && handleMenuClick(item.name)
@@ -376,7 +379,9 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
               }
             >
               {/*  */}
-              <div
+              <button
+                aria-expanded={rightVisible}
+                aria-controls="drawer-menu"
                 onClick={toggleRightVisible}
                 className="flex flex-row items-center justify-center gap-2 py-4 text-2xl xl:hidden"
               >
@@ -387,7 +392,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                 >
                   <p>{rightVisible ? <SlClose /> : <RxHamburgerMenu />}</p>
                 </div>
-              </div>
+              </button>
             </Drawer>
           </div>
         </div>

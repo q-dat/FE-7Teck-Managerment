@@ -101,7 +101,6 @@ const PhoneFC: React.FC = () => {
                   className="group relative flex h-full w-[185px] flex-col justify-between rounded-md border border-[#f2f4f7] text-black"
                 >
                   <div
-                    tabIndex={0}
                     className="h-[200px] w-full cursor-pointer"
                     // GetByID
                     // onClick={() => navigate(`/phone/${phone._id}`)}
