@@ -6,9 +6,9 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api': 'http://localhost:6001', // Proxy cho API
+      '/api': process.env.VITE_API_PORT ?? '', // Proxy cho API
       '/socket.io': {
-        target: 'http://localhost:6001', // Đảm bảo WebSocket được xử lý
+        target: process.env.VITE_API_PORT ?? '', // Đảm bảo WebSocket được xử lý
         ws: true, // Bật hỗ trợ WebSocket
         changeOrigin: true // Thay đổi Origin của request để phù hợp với backend
       }
