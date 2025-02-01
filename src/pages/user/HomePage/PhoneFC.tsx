@@ -153,9 +153,7 @@ const PhoneFC: React.FC = () => {
         <button className="flex w-full cursor-pointer items-center justify-center bg-gradient-to-r from-white via-secondary to-white py-1 text-sm text-white xl:rounded-b-lg">
           {/* ({phoneCatalogs.length}) */}
           {loading ? (
-            <Placeholder>
-              <Placeholder.Line />
-            </Placeholder>
+            <>Đang tải...</>
           ) : (
             <>
               Xem Thêm Điện Thoại
