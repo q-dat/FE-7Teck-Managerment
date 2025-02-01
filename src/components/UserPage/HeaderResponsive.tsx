@@ -1,9 +1,4 @@
-import React, {
-  ReactNode,
-  useContext,
-  useEffect,
-  useState
-} from 'react';
+import React, { ReactNode, useContext, useEffect, useState } from 'react';
 import { Button, Drawer, Input, Menu } from 'react-daisyui';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
@@ -377,6 +372,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
               {/*  */}
               <button
                 aria-expanded={rightVisible}
+                aria-hidden={!rightVisible}
                 aria-controls="drawer-menu"
                 onClick={toggleRightVisible}
                 className="flex flex-row items-center justify-center gap-2 py-4 text-2xl xl:hidden"
