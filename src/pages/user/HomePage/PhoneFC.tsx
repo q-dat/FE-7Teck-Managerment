@@ -75,7 +75,15 @@ const PhoneFC: React.FC = () => {
         className="flex w-full flex-col items-center justify-center py-5 xl:rounded-t-lg"
       >
         <h1 className="bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold text-transparent xl:text-[30px]">
-          Nổi Bật
+          {loading ? (
+            <div className="w-[100px]">
+              <Placeholder>
+                <Placeholder.Line />
+              </Placeholder>
+            </div>
+          ) : (
+            <>Nổi bật</>
+          )}
         </h1>
         <span className="h-[1px] w-[150px] animate-ping bg-primary"></span>
       </div>
@@ -143,9 +151,17 @@ const PhoneFC: React.FC = () => {
       </section>
       <Link to="/iphone" aria-label="Xem thêm điện thoại">
         <button className="flex w-full cursor-pointer items-center justify-center bg-gradient-to-r from-white via-secondary to-white py-1 text-sm text-white xl:rounded-b-lg">
-          Xem Thêm Điện Thoại
           {/* ({phoneCatalogs.length}) */}
-          <IoIosArrowForward className="text-xl" />
+          {loading ? (
+            <Placeholder>
+              <Placeholder.Line />
+            </Placeholder>
+          ) : (
+            <>
+              Xem Thêm Điện Thoại
+              <IoIosArrowForward className="text-xl" />
+            </>
+          )}
         </button>
       </Link>
       {/* Navigation Button  */}
