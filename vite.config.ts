@@ -6,9 +6,9 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api': process.env.VITE_API_PORT ?? '', // Proxy cho API
+      '/api': 'https://be-7teck-ecommerce.onrender.com', // Proxy cho API
       '/socket.io': {
-        target: process.env.VITE_API_PORT ?? '', // Đảm bảo WebSocket được xử lý
+        target: 'https://be-7teck-ecommerce.onrender.com', // Đảm bảo WebSocket được xử lý
         ws: true, // Bật hỗ trợ WebSocket
         changeOrigin: true // Thay đổi Origin của request để phù hợp với backend
       }
