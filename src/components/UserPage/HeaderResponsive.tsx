@@ -1,9 +1,4 @@
-import React, {
-  ReactNode,
-  useContext,
-  useEffect,
-  useState
-} from 'react';
+import React, { ReactNode, useContext, useEffect, useState } from 'react';
 import { Button, Drawer, Input, Menu } from 'react-daisyui';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
@@ -381,13 +376,13 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                 onClick={toggleRightVisible}
                 className="flex flex-row items-center justify-center gap-2 py-4 text-2xl xl:hidden"
               >
-                <div
+                <p
                   className={`transform rounded-md text-[25px] text-white transition-transform duration-300 ease-in-out ${
                     rightVisible ? 'rotate-180 animate-ping' : 'rotate-0'
                   }`}
                 >
-                  <p>{rightVisible ? <SlClose /> : <RxHamburgerMenu />}</p>
-                </div>
+                  <>{rightVisible ? <SlClose /> : <RxHamburgerMenu />}</>
+                </p>
               </button>
             </Drawer>
           </div>
