@@ -201,7 +201,6 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
             <Drawer
               open={rightVisible}
               onClickOverlay={toggleRightVisible}
-              aria-hidden="false"
               side={
                 <Menu role="menu" className="fixed h-full w-[280px] bg-white">
                   {/* LOGO */}
@@ -223,6 +222,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                     return (
                       <div key={item.name} className="relative">
                         <Menu.Item
+                          role="menu-item"
                           className="group relative"
                           onClick={() =>
                             item.submenu && handleMenuClick(item.name)
