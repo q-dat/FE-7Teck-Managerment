@@ -222,7 +222,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                     return (
                       <div key={item.name} className="relative">
                         <Menu.Item
-                          role="menu-item"
+                          role="menuitem"
                           className="group relative"
                           onClick={() =>
                             item.submenu && handleMenuClick(item.name)
