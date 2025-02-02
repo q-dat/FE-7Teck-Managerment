@@ -201,6 +201,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
             <Drawer
               open={rightVisible}
               onClickOverlay={toggleRightVisible}
+              aria-hidden="false"
               side={
                 <Menu role="menu" className="fixed h-full w-[280px] bg-white">
                   {/* LOGO */}
