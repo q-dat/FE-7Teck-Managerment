@@ -292,6 +292,8 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
             >
               {/*  */}
               <button
+                 aria-expanded={rightVisible}
+                 aria-controls="drawer-menu"
                 onClick={toggleRightVisible}
                 className="flex flex-row items-center justify-center gap-2 py-4 text-2xl xl:hidden"
               >
