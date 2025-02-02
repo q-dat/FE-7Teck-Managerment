@@ -1,4 +1,9 @@
-import React, { ReactNode, useContext, useEffect, useState } from 'react';
+import React, {
+  ReactNode,
+  useContext,
+  useEffect,
+  useState
+} from 'react';
 import { Button, Drawer, Input, Menu } from 'react-daisyui';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
@@ -35,6 +40,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/^-+|-+$/g, '');
   };
+  // const [leftVisible, setLeftVisible] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
   const [rightVisible, setRightVisible] = useState(false);
   // SearchToggle Input
@@ -47,6 +53,9 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
   const [activeItem, setActiveItem] = useState('Trang Chủ');
   const location = useLocation();
   //
+  const [showMenu, setShowMenu] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
   const menuItems: MenuItem[] = [
     {
       name: 'Thiết bị đã qua sử dụng',
@@ -117,10 +126,29 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
       setActiveItem(foundItem.name);
     }
   }, [location.pathname, menuItems]);
+  //
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        setShowMenu(false);
+      } else {
+        setShowMenu(true);
+      }
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
   const handleMenuClick = (name: string) => {
     setOpenSubmenu(prev => (prev === name ? null : name));
   };
+
+  // const toggleLeftVisible = useCallback(() => {
+  //   setLeftVisible(visible => !visible);
+  // }, []);
 
   const toggleRightVisible = () => setRightVisible(prev => !prev);
   // Search Input
@@ -141,9 +169,64 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
   };
   return (
     <div className="fixed z-[99999] block w-full bg-gradient-to-b from-white to-primary xl:hidden">
+      {/* Menu 1 */}
+      {/* <header
+        className={`flex h-[40px] w-full transform flex-row items-center justify-between border-b bg-primary px-2 text-white transition-transform duration-300 ease-in-out ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}
+      >
+        <div className="flex w-full flex-row items-center justify-center gap-1">
+          <IoSearch className="animate-bounce text-xl" />
+          <Input
+            className="text-md w-full border-none bg-transparent pl-1 placeholder-white shadow-none focus:placeholder-black focus:outline-none"
+            placeholder="Bạn muốn tìm gì..."
+          ></Input>
+        </div>
+      </header> */}
       {/* Menu 2 */}
-      <header className="fixed h-[60px] w-full bg-gradient-to-r from-primary via-primary to-primary px-2 transition-all delay-200 duration-300 ease-in-out">
+      <header
+        // className={`fixed h-[60px] w-full bg-gradient-to-r from-primary via-primary to-primary px-2 transition-all delay-200 duration-300 ease-in-out ${showMenu ? 'top-[40px]' : 'top-0'}`}
+        className={`fixed h-[60px] w-full bg-gradient-to-r from-primary via-primary to-primary px-2 transition-all delay-200 duration-300 ease-in-out ${showMenu ? 'top-0' : 'top-0'}`}
+      >
         <div className="flex flex-row items-center justify-between">
+          {/* <div className="z-50">
+            <Drawer
+              open={leftVisible}
+              onClickOverlay={toggleLeftVisible}
+              side={
+                <Menu role="menu" className="fixed h-full w-[280px] bg-white ">
+                  {/* LOGO */}
+          {/* <div className="flex items-center justify-center">
+                    <img
+                      className="mb-5 rounded-full object-cover w-[120px] h-full"
+                      loading="lazy"
+                      src={Logo}
+                      alt="LOGO"
+                    />
+                  </div>
+                  <div className="w-full space-y-5">
+                    <div className="flex flex-row items-center justify-between rounded-md bg-gray-700 bg-opacity-20 p-2">
+                      <p className="text-lg font-light text-black ">
+                        Giao Diện
+                      </p>
+                    </div>
+                  </div>
+                </Menu>
+              }
+            > */}
+          {/*  */}
+          {/*  */}
+          {/* <div
+                onClick={toggleLeftVisible}
+                className="flex flex-row items-center justify-center gap-2 py-4 text-2xl text-black  xl:hidden"
+              >
+                <div className="rounded-md p-1 text-[20px] text-white">
+                  <IoSettingsSharp />
+                </div>
+              </div>
+            </Drawer>
+          </div> */}
+          {/* Title */}
+          {/*  */}
+          {/*  */}
           <Link aria-label="Trang chủ" to="/">
             <FaHome className="text-2xl text-white" />
           </Link>
@@ -201,6 +284,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
             <Drawer
               open={rightVisible}
               onClickOverlay={toggleRightVisible}
+              aria-hidden={!rightVisible}
               side={
                 <Menu role="menu" className="fixed h-full w-[280px] bg-white">
                   {/* LOGO */}
@@ -292,18 +376,18 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
             >
               {/*  */}
               <button
-                 aria-expanded={rightVisible}
-                 aria-controls="drawer-menu"
+                aria-expanded={rightVisible}
+                aria-controls="drawer-menu"
                 onClick={toggleRightVisible}
                 className="flex flex-row items-center justify-center gap-2 py-4 text-2xl xl:hidden"
               >
-                <p
+                <div
                   className={`transform rounded-md text-[25px] text-white transition-transform duration-300 ease-in-out ${
                     rightVisible ? 'rotate-180 animate-ping' : 'rotate-0'
                   }`}
                 >
-                  <>{rightVisible ? <SlClose /> : <RxHamburgerMenu />}</>
-                </p>
+                  <p>{rightVisible ? <SlClose /> : <RxHamburgerMenu />}</p>
+                </div>
               </button>
             </Drawer>
           </div>
