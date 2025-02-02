@@ -76,7 +76,7 @@ const PhoneFC: React.FC = () => {
       >
         <h1 className="bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold text-transparent xl:text-[30px]">
           {loading ? (
-            <div className="w-[100px]">
+            <div className="w-[150px]">
               <Placeholder>
                 <Placeholder.Line />
               </Placeholder>
@@ -93,11 +93,12 @@ const PhoneFC: React.FC = () => {
       >
         {loading
           ? Array.from({ length: 12 }).map((_, index) => (
-              <div key={index} className="w-[185px] p-2">
+              <div key={index} className="w-[195px] p-2">
                 <Placeholder>
-                  <Placeholder.Image rectangular />
+                  <Placeholder.Image square />
                   <Placeholder.Line />
-                  <Placeholder.Line />
+                  <Placeholder.Line length="full" />
+                  <Placeholder.Line length="full" />
                 </Placeholder>
               </div>
             ))
@@ -106,7 +107,7 @@ const PhoneFC: React.FC = () => {
               return (
                 <div
                   key={phone._id}
-                  className="group relative flex h-full w-[185px] flex-col justify-between rounded-md border border-[#f2f4f7] text-black"
+                  className="group relative flex h-full w-[195px] flex-col justify-between rounded-md border border-[#f2f4f7] text-black"
                 >
                   <div
                     className="h-[200px] w-full cursor-pointer"
@@ -117,7 +118,7 @@ const PhoneFC: React.FC = () => {
                     <img
                       alt=""
                       loading="lazy"
-                      className="h-full w-full rounded-[5px] rounded-b-none object-cover"
+                      className="h-full w-full rounded-[5px] rounded-b-none object-contain"
                       src={phone.img}
                     />
                   </div>
@@ -168,14 +169,14 @@ const PhoneFC: React.FC = () => {
           <button
             aria-label="Cuộn sang trái"
             onClick={() => scrollBy(-380)}
-            className={`absolute left-0 z-[100] mt-7 rounded-full border-none bg-black bg-opacity-20 text-white ${isLeftVisible ? '' : 'hidden'}`}
+            className={`absolute left-0 z-[100] mt-[14px] rounded-full border-none bg-black bg-opacity-20 text-white ${isLeftVisible ? '' : 'hidden'}`}
           >
             <MdArrowBackIosNew className="text-4xl" />
           </button>
           <button
             aria-label="Cuộn sang phải"
             onClick={() => scrollBy(380)}
-            className={`absolute right-0 z-[100] mt-7 rounded-full border-none bg-black bg-opacity-20 text-white ${isRightVisible ? '' : 'hidden'}`}
+            className={`absolute right-0 z-[100] mt-[14px] rounded-full border-none bg-black bg-opacity-20 text-white ${isRightVisible ? '' : 'hidden'}`}
           >
             <MdArrowForwardIos className="text-4xl" />
           </button>
