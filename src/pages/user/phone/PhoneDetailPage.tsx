@@ -129,26 +129,34 @@ const PhoneDetailPage: React.FC = () => {
         <div className="mt-2 px-2 xl:px-[150px]">
           <div className="flex flex-col items-start justify-start gap-5 xl:flex-row">
             {/* IMG */}
-            <div className="flex w-full flex-col items-start justify-start gap-5">
-              <Zoom>
-                <div className="relative">
+            <div className="flex w-full flex-col gap-5">
+              <div className="relative w-full">
+                <div className="h-[500px] w-full overflow-hidden object-cover">
                   <img
                     loading="lazy"
                     src={selectedImage || phone?.img}
                     alt={phone?.name || 'Hình ảnh'}
-                    className="h-[500px] w-screen rounded-md object-cover  xl:w-full xl:h-[490px] xl:object-contain"
+                    className="absolute left-0 top-0 z-0 h-full w-full rounded-md object-cover blur-sm filter"
                   />
-                  <div className="pointer-events-none absolute bottom-1 right-1">
-                    <MdZoomOutMap className="rounded-sm bg-black bg-opacity-10 p-[1px] text-2xl text-white" />
-                  </div>
+                  <Zoom>
+                    <img
+                      loading="lazy"
+                      src={selectedImage || phone?.img}
+                      alt={phone?.name || 'Hình ảnh'}
+                      className="absolute left-0 top-0 z-10 h-full w-full rounded-md object-contain"
+                    />
+                  </Zoom>
                 </div>
-              </Zoom>
+                <div className="pointer-events-none absolute bottom-1 right-1 z-20">
+                  <MdZoomOutMap className="rounded-sm bg-black bg-opacity-10 p-[1px] text-2xl text-white" />
+                </div>
+              </div>
               {/* Thumbnails */}
               <div className="relative rounded-md p-1">
                 <div
                   ref={scrollRef}
                   className="flex w-full flex-row items-start justify-start gap-2 overflow-x-auto scroll-smooth scrollbar-hide xl:w-[550px]"
-                >
+                >git
                   {phone?.thumbnail && Array.isArray(phone.thumbnail) ? (
                     phone.thumbnail.map((thumb: string, index: number) => (
                       <img
