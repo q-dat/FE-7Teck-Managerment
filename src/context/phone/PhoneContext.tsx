@@ -31,6 +31,7 @@ interface PhoneContextType {
     _id: string,
     phoneData: FormData
   ) => Promise<AxiosResponse<any>>;
+  updatePhoneView: (_id: string) => Promise<void>;
   deletePhone: (_id: string) => Promise<AxiosResponse<any>>;
 }
 
@@ -47,6 +48,7 @@ const defaultContextValue: PhoneContextType = {
   getPhoneById: async () => undefined,
   createPhone: async () => ({ data: { phone: null } }) as AxiosResponse,
   updatePhone: async () => ({ data: { phone: null } }) as AxiosResponse,
+  updatePhoneView: async () => Promise.resolve(),
   deletePhone: async () => ({ data: { deleted: true } }) as AxiosResponse
 };
 
@@ -143,6 +145,33 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
     },
     []
   );
+  // updatePhoneView
+  const updatePhoneView = useCallback(
+    async (_id: string) => {
+      try {
+        const phone = phones.find(p => p._id === _id);
+        if (!phone) return;
+
+        const updatedData = new FormData();
+        updatedData.append('view', String((phone.view ?? 0) + 1));
+
+        await fetchData(
+          () => updatePhoneApi(_id, updatedData),
+          data => {
+            if (data?.phone) {
+              setPhones(prevPhones =>
+                prevPhones.map(p => (p._id === _id ? data.phone : p))
+              );
+            }
+          },
+          'update'
+        );
+      } catch (error) {
+        console.error('Lỗi khi cập nhật view:', error);
+      }
+    },
+    [phones]
+  );
 
   // Delete Phone
   const deletePhone = useCallback(
@@ -171,6 +200,7 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
         getPhoneById,
         createPhone,
         updatePhone,
+        updatePhoneView,
         deletePhone
       }}
     >

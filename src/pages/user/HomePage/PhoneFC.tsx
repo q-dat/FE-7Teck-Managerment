@@ -6,31 +6,32 @@ import React, {
   useState
 } from 'react';
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
-import { Link, useNavigate } from 'react-router-dom';
-import { PhoneCatalogContext } from '../../../context/phone-catalog/PhoneCatalogContext';
+import { Link } from 'react-router-dom';
+import { PhoneContext } from '../../../context/phone/PhoneContext';
 import { IoIosArrowForward } from 'react-icons/io';
 import { Placeholder } from 'semantic-ui-react';
+import { Button } from 'react-daisyui';
+import { FaRegEye } from 'react-icons/fa';
 
 const PhoneFC: React.FC = () => {
-  const { phoneCatalogs } = useContext(PhoneCatalogContext);
-  const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
+  const { phones, updatePhoneView } = useContext(PhoneContext);
   const slugify = (text: string) => {
     return text
       .toString()
-      .normalize('NFD') // Chuyển sang Unicode
-      .replace(/\p{Diacritic}/gu, '') // Loại bỏ dấu
-      .toLowerCase() // Chuyển tất cả thành chữ thường
-      .replace(/[^a-z0-9]+/g, '-') // Thay thế khoảng trắng và ký tự không phải chữ cái bằng dấu gạch ngang
-      .replace(/^-+|-+$/g, ''); // Loại bỏ dấu gạch ngang ở đầu và cuối chuỗi
+      .normalize('NFD')
+      .replace(/\p{Diacritic}/gu, '')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
   };
+  const [loading, setLoading] = useState(true);
   const [isLeftVisible, setIsLeftVisible] = useState(true);
   const [isRightVisible, setIsRightVisible] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     updateScrollButtons();
-  }, [phoneCatalogs]);
+  }, [phones]);
   //
   const updateScrollButtons = () => {
     const scrollContainer = scrollRef.current;
@@ -48,11 +49,11 @@ const PhoneFC: React.FC = () => {
   };
 
   useEffect(() => {
-    if (phoneCatalogs.length > 0) {
+    if (phones.length > 0) {
       setLoading(false);
     }
     //
-    if (phoneCatalogs.length > 0) updateScrollButtons();
+    if (phones.length > 0) updateScrollButtons();
 
     const handleResize = () => updateScrollButtons();
     const scrollContainer = scrollRef.current;
@@ -64,7 +65,11 @@ const PhoneFC: React.FC = () => {
       window.removeEventListener('resize', handleResize);
       scrollContainer?.removeEventListener('scroll', updateScrollButtons);
     };
-  }, [phoneCatalogs]);
+  }, [phones]);
+  //
+  const sortedPhones = phones
+    .filter(phone => phone.view !== undefined)
+    .sort((a, b) => (b.view ?? 0) - (a.view ?? 0));
 
   return (
     <div className={`relative rounded-none bg-white xl:rounded-lg`}>
@@ -102,40 +107,43 @@ const PhoneFC: React.FC = () => {
                 </Placeholder>
               </div>
             ))
-          : phoneCatalogs.map(phone => {
+          : sortedPhones.map(phone => {
               const phoneUrl = slugify(phone.name);
               return (
                 <div
+                  onClick={() => updatePhoneView(phone._id)}
                   key={phone._id}
                   className="group relative flex h-full w-[195px] flex-col justify-between rounded-md border border-[#f2f4f7] text-black"
                 >
-                  <div
-                    className="h-[200px] w-full cursor-pointer"
-                    // GetByID
-                    // onClick={() => navigate(`/phone/${phone._id}`)}
-                    onClick={() => navigate(`/iphone/${phoneUrl}`)}
+                  <Link
+                    role="navigation"
+                    to={`/iphone-da-qua-su-dung/${phoneUrl}/${phone?._id}`}
                   >
-                    <img
-                      alt=""
-                      loading="lazy"
-                      className="h-full w-full rounded-[5px] rounded-b-none object-contain"
-                      src={phone.img}
-                    />
-                  </div>
+                    <div className="h-[200px] w-full cursor-pointer">
+                      <img
+                        alt=""
+                        loading="lazy"
+                        className="h-full w-full rounded-[5px] rounded-b-none object-cover"
+                        src={phone.img}
+                      />
+                    </div>
+                  </Link>
+
                   {/*  */}
                   <div className="flex h-full w-full flex-col items-start justify-between gap-1">
-                    <div
+                    <Link
+                      role="navigation"
                       className="w-full cursor-pointer p-1"
-                      onClick={() => navigate(`/iphone/${phoneUrl}`)}
+                      to={`/iphone-da-qua-su-dung/${phoneUrl}/${phone?._id}`}
                     >
-                      <p className="w-[75px] rounded-sm bg-gray-100 p-[2px] text-center text-[10px] text-white">
-                        {phone?.phoneCount > 99 ? '99+' : phone?.phoneCount} Sản
-                        phẩm
-                      </p>
+                      <div className="flex w-[50px] items-center justify-center gap-1 rounded-sm bg-gray-100 p-[2px] text-center text-[10px] text-white">
+                        <FaRegEye />
+                        <p>{phone.view}</p>
+                      </div>
                       <p className="xl:group-hover:text-secondary">
                         Điện Thoại {phone.name}
                       </p>
-                    </div>
+                    </Link>
                     <div className="w-full p-1">
                       <p className="text-gray-500">
                         Từ:&nbsp;
@@ -143,6 +151,19 @@ const PhoneFC: React.FC = () => {
                           {(phone.price * 1000).toLocaleString('vi-VN')}₫
                         </span>
                       </p>
+                      <Link
+                        role="navigation"
+                        aria-label="Mua ngay"
+                        to="/thanh-toan"
+                        className="z-50 w-full"
+                      >
+                        <Button
+                          size="xs"
+                          className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary hover:bg-primary hover:bg-opacity-20"
+                        >
+                          Mua Ngay
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                   {/*  */}
@@ -152,7 +173,7 @@ const PhoneFC: React.FC = () => {
       </section>
       <Link to="/iphone" aria-label="Xem thêm điện thoại">
         <button className="flex w-full cursor-pointer items-center justify-center bg-gradient-to-r from-white via-secondary to-white py-1 text-sm text-white xl:rounded-b-lg">
-          {/* ({phoneCatalogs.length}) */}
+          {/* ({phones.length}) */}
           {loading ? (
             <>Đang tải...</>
           ) : (

@@ -72,7 +72,7 @@ const PhonePage: React.FC = () => {
         </div>
         {/*  */}
         <div className="space-y-10 px-2 xl:px-20">
-          <div>
+          <div className="mt-5 w-full">
             <div className="grid grid-flow-row grid-cols-2 items-start gap-[10px] md:grid-cols-4 xl:grid-cols-6">
               {currentPhones.map(phone => {
                 const phoneUrl = slugify(phone.name);

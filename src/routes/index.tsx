@@ -52,9 +52,12 @@ export default function AppRoutes() {
             <Route index path="" element={<HomePageSEO />} />
             {/*  */}
             <Route path="iphone" element={<PhonePageSEO />} />
-            <Route path="iphone/:catalog" element={<PhoneByCatalogPageSEO />} />
             <Route
-              path="iphone-da-qua-su-dung/:id"
+              path="iphone-da-qua-su-dung/:catalog"
+              element={<PhoneByCatalogPageSEO />}
+            />
+            <Route
+              path="iphone-da-qua-su-dung/:catalog/:id"
               element={<PhoneDetailPageSEO />}
             />
             <Route

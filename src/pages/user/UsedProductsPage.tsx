@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import Pagination from '../../components/UserPage/Pagination';
 import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
 import { Button } from 'react-daisyui';
 
@@ -16,6 +16,17 @@ const UsedProductsPage: React.FC = () => {
       behavior: 'smooth'
     });
   }, [currentPage]);
+  // Handle Click Phone To Phone Detail
+  const navigate = useNavigate();
+  const slugify = (text: string) => {
+    return text
+      .toString()
+      .normalize('NFD') // Chuyển sang Unicode
+      .replace(/\p{Diacritic}/gu, '') // Loại bỏ dấu
+      .toLowerCase() // Chuyển tất cả thành chữ thường
+      .replace(/[^a-z0-9]+/g, '-') // Thay thế khoảng trắng và ký tự không phải chữ cái bằng dấu gạch ngang
+      .replace(/^-+|-+$/g, ''); // Loại bỏ dấu gạch ngang ở đầu và cuối chuỗi
+  };
   // Panigation
   const itemsPerPage = 12;
   const NewiPhoneCatalogs = phoneCatalogs.filter(
@@ -61,30 +72,29 @@ const UsedProductsPage: React.FC = () => {
         </div>
         {/*  */}
         <div className="space-y-10 px-2 xl:px-20">
-          <div>
+          <div className="mt-5 w-full">
             <div className="grid grid-flow-row grid-cols-2 items-start gap-[10px] md:grid-cols-4 xl:grid-cols-6">
               {currentPhones.map(phone => {
+                const phoneUrl = slugify(phone.name);
                 return (
                   <div
                     key={phone?._id}
+                    onClick={() =>
+                      navigate(`/iphone-da-qua-su-dung/${phoneUrl}`)
+                    }
                     className="group flex h-full w-full flex-col justify-between rounded-md border border-white text-black"
                   >
-                    <Link
-                      to={`/iphone-moi/${phone?._id}`}
-                      className="h-[200px] w-full cursor-pointer rounded-md rounded-b-none bg-white"
-                    >
+                    <div className="h-[200px] w-full cursor-pointer rounded-md rounded-b-none bg-white">
                       <img
                         alt=""
                         loading="lazy"
-                        className="h-full w-full rounded-[5px] rounded-b-none object-cover"
+                        className="h-full w-full rounded-[5px] rounded-b-none object-contain"
                         src={phone?.img}
                       />
-                    </Link>
+                    </div>
                     {/*  */}
                     <div className="flex w-full flex-col items-start justify-between gap-1">
-                      <div
-                        className="w-full cursor-pointer p-1"
-                      >
+                      <div className="w-full cursor-pointer p-1">
                         <p className="w-[75px] rounded-sm bg-gray-100 p-[2px] text-center text-[10px] text-white">
                           {phone?.phoneCount > 99 ? '99+' : phone?.phoneCount}{' '}
                           Sản phẩm

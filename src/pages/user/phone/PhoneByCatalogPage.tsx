@@ -4,9 +4,10 @@ import { PhoneContext } from '../../../context/phone/PhoneContext';
 import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
 import { Sale } from '../../../assets/image-represent';
 import { Button } from 'react-daisyui';
+import { FaRegEye } from 'react-icons/fa';
 
 const ProductByCatalog = () => {
-  const { phones } = useContext(PhoneContext);
+  const { phones, updatePhoneView } = useContext(PhoneContext);
   const { catalog } = useParams();
   const slugify = (text: string) => {
     return text
@@ -17,10 +18,6 @@ const ProductByCatalog = () => {
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/^-+|-+$/g, '');
   };
-  // GetByID
-  // const filteredPhones = phones.filter(
-  //   phone => phone?.phone_catalog_id._id === catalog
-  // );
   const filteredPhones = phones.filter(
     phone => slugify(phone?.name) === catalog
   );
@@ -45,77 +42,87 @@ const ProductByCatalog = () => {
             </li>
             <li>
               <Link role="navigation" aria-label="Điện thoại" to="">
-                Điện Thoại
+                Danh mục iPhone
               </Link>
             </li>
           </ul>
         </div>
         {/*  */}
         <div className="space-y-10 px-2 xl:px-20">
-          <div className="w-full">
-            <h1 className="font-title my-5 text-start text-2xl font-bold text-primary xl:text-2xl">
-              {/* Danh Sách Điện Thoại */}
-            </h1>
+          <div className="mt-5 w-full">
             <div className="grid grid-flow-row grid-cols-2 items-start gap-[10px] md:grid-cols-4 xl:grid-cols-6">
               {filteredPhones.length > 0 ? (
-                filteredPhones.map(phone => (
-                  <section
-                    key={phone?._id}
-                    className="group relative flex h-full flex-col justify-between rounded-md border border-white text-black"
-                  >
-                    <Link
-                      role="navigation"
-                      aria-label="Chi tiết sản phẩm"
-                      className="flex h-full w-full items-center justify-center rounded-md rounded-b-none bg-white"
-                      to={`/iphone-da-qua-su-dung/${phone?._id}`}
+                filteredPhones.map(phone => {
+                  const phoneUrl = slugify(phone.name);
+                  return (
+                    <section
+                      onClick={() => updatePhoneView(phone._id)}
+                      key={phone?._id}
+                      className="group relative flex h-full flex-col justify-between rounded-md border border-white text-black"
                     >
-                      <img
-                        alt=""
-                        loading="lazy"
-                        className="h-full w-full rounded-[5px] rounded-b-none object-contain"
-                        src={phone?.img}
-                      />
-                    </Link>
-                    {/*  */}
-                    <div className="flex flex-col items-start justify-center gap-1 p-1">
-                      <p className="xl:group-hover:text-secondary">
-                        Điện Thoại {phone?.name}
-                      </p>
-                      <p className="text-gray-500">
-                        <span className="text-red-500">
-                          {(phone?.price * 1000).toLocaleString('vi-VN')}₫
-                        </span>
-                        &nbsp;
-                        <del className="text-xs font-light text-gray-100">
-                          {phone?.sale &&
-                            (phone?.sale * 1000).toLocaleString('vi-VN')}
-                          ₫
-                        </del>
-                      </p>
                       <Link
-                        aria-label="Mua ngay"
-                        to="/thanh-toan"
-                        className="z-50 w-full"
+                        role="navigation"
+                        aria-label="Chi tiết sản phẩm"
+                        className="flex h-full w-full items-center justify-center rounded-md rounded-b-none bg-white"
+                        to={`/iphone-da-qua-su-dung/${phoneUrl}/${phone?._id}`}
                       >
-                        <Button
-                          size="xs"
-                          className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary hover:bg-primary hover:bg-opacity-20"
-                        >
-                          Mua Ngay
-                        </Button>
+                        <img
+                          alt=""
+                          loading="lazy"
+                          className="h-full w-full rounded-[5px] rounded-b-none object-contain"
+                          src={phone?.img}
+                        />
                       </Link>
-                    </div>
-                    {/*  */}
-                    {phone?.status && (
-                      <div className="absolute -left-[3px] top-0">
-                        <img alt="" loading="lazy" width={60} src={Sale} />
-                        <p className="absolute top-[1px] w-full pl-1 text-xs text-white">
-                          {phone?.status}
-                        </p>
+                      {/*  */}
+                      <div className="flex flex-col items-start justify-center gap-1 p-1">
+                        <Link
+                          to={`/iphone-da-qua-su-dung/${phoneUrl}/${phone?._id}`}
+                        >
+                          <div className="flex w-[50px] items-center justify-center gap-1 rounded-sm bg-gray-100 p-[2px] text-center text-[10px] text-white">
+                            <FaRegEye />
+                            <p>{phone.view}</p>
+                          </div>
+                          <p className="xl:group-hover:text-secondary">
+                            Điện Thoại {phone?.name}
+                          </p>
+                          <p className="text-gray-500">
+                            <span className="text-red-500">
+                              {(phone?.price * 1000).toLocaleString('vi-VN')}₫
+                            </span>
+                            &nbsp;
+                            <del className="text-xs font-light text-gray-100">
+                              {phone?.sale &&
+                                (phone?.sale * 1000).toLocaleString('vi-VN')}
+                              ₫
+                            </del>
+                          </p>
+                        </Link>
+                        <Link
+                          role="navigation"
+                          aria-label="Mua ngay"
+                          to="/thanh-toan"
+                          className="z-50 w-full"
+                        >
+                          <Button
+                            size="xs"
+                            className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary hover:bg-primary hover:bg-opacity-20"
+                          >
+                            Mua Ngay
+                          </Button>
+                        </Link>
                       </div>
-                    )}
-                  </section>
-                ))
+                      {/*  */}
+                      {phone?.status && (
+                        <div className="absolute -left-[3px] top-0">
+                          <img alt="" loading="lazy" width={60} src={Sale} />
+                          <p className="absolute top-[1px] w-full pl-1 text-xs text-white">
+                            {phone?.status}
+                          </p>
+                        </div>
+                      )}
+                    </section>
+                  );
+                })
               ) : (
                 <div className="col-span-full text-center text-2xl">
                   Rất tiếc. Không tìm thấy sản phẩm nào!
