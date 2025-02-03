@@ -84,11 +84,17 @@ const UsedProductsPage: React.FC = () => {
                     }
                     className="group flex h-full w-full flex-col justify-between rounded-md border border-white text-black"
                   >
-                    <div className="h-[200px] w-full cursor-pointer rounded-md rounded-b-none bg-white">
+                    <div className="relative h-[200px] w-full cursor-pointer overflow-hidden rounded-md rounded-b-none">
                       <img
-                        alt=""
+                        alt="Hình ảnh"
                         loading="lazy"
-                        className="h-full w-full rounded-[5px] rounded-b-none object-contain"
+                        className="absolute left-0 top-0 z-0 h-full w-full rounded-[5px] rounded-b-none object-cover blur-sm filter"
+                        src={phone?.img}
+                      />
+                      <img
+                        alt="Hình ảnh"
+                        loading="lazy"
+                        className="absolute left-0 top-0 z-10 h-full w-full rounded-[5px] rounded-b-none object-contain"
                         src={phone?.img}
                       />
                     </div>

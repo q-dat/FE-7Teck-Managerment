@@ -83,12 +83,18 @@ const PhonePage: React.FC = () => {
                   >
                     <div
                       onClick={() => navigate(`/iphone/${phoneUrl}`)}
-                      className="h-[200px] w-full cursor-pointer rounded-md rounded-b-none bg-white"
+                      className="relative h-[200px] w-full cursor-pointer overflow-hidden rounded-md rounded-b-none"
                     >
                       <img
-                        alt=""
+                        alt="Hình ảnh"
                         loading="lazy"
-                        className="h-full w-full rounded-[5px] rounded-b-none object-contain"
+                        className="absolute left-0 top-0 z-0 h-full w-full rounded-[5px] rounded-b-none object-cover blur-sm filter"
+                        src={phone?.img}
+                      />
+                      <img
+                        alt="Hình ảnh"
+                        loading="lazy"
+                        className="absolute left-0 top-0 z-10 h-full w-full rounded-[5px] rounded-b-none object-contain"
                         src={phone?.img}
                       />
                     </div>

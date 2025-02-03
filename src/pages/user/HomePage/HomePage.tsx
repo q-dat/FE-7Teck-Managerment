@@ -264,15 +264,23 @@ const HomePage: React.FC = () => {
                   className="relative flex cursor-pointer flex-col items-start justify-start gap-2 rounded border border-gray-50 bg-white p-2 shadow-inner hover:shadow-lg xl:flex-row"
                   onClick={() => handlePostClick(post)}
                 >
-                  <p className="absolute left-1 top-1 rounded-sm bg-primary px-2 text-[12px] text-white">
+                  <p className="absolute left-1 top-1 z-20 rounded-sm bg-primary px-2 text-[12px] text-white">
                     {post?.catalog}
                   </p>
-                  <img
-                    loading="lazy"
-                    src={post?.imageUrl}
-                    alt="Ảnh đại diện"
-                    className="h-[100px] w-full rounded-sm object-cover"
-                  />
+                  <div className="relative h-[100px] w-full overflow-hidden">
+                    <img
+                      loading="lazy"
+                      src={post?.imageUrl}
+                      alt="Ảnh đại diện"
+                      className="absolute left-0 top-0 z-0 h-full w-full rounded-sm object-cover blur-sm filter"
+                    />
+                    <img
+                      loading="lazy"
+                      src={post?.imageUrl}
+                      alt="Ảnh đại diện"
+                      className="absolute left-0 top-0 z-10 h-full w-full rounded-sm object-contain"
+                    />
+                  </div>
                   <p className="line-clamp-6 w-full py-1 text-sm text-black">
                     {post?.title}
                   </p>

@@ -12,6 +12,7 @@ import { IoIosArrowForward } from 'react-icons/io';
 import { Placeholder } from 'semantic-ui-react';
 import { Button } from 'react-daisyui';
 import { FaRegEye } from 'react-icons/fa';
+import { Sale } from '../../../assets/image-represent';
 
 const PhoneFC: React.FC = () => {
   const { phones, updatePhoneView } = useContext(PhoneContext);
@@ -119,11 +120,17 @@ const PhoneFC: React.FC = () => {
                     role="navigation"
                     to={`/iphone-da-qua-su-dung/${phoneUrl}/${phone?._id}`}
                   >
-                    <div className="h-[200px] w-full cursor-pointer">
+                    <div className="relative h-[200px] w-full cursor-pointer overflow-hidden">
                       <img
-                        alt=""
+                        alt="Hình ảnh"
                         loading="lazy"
-                        className="h-full w-full rounded-[5px] rounded-b-none object-cover"
+                        className="absolute left-0 top-0 z-0 h-full w-full rounded-[5px] rounded-b-none object-cover blur-sm filter"
+                        src={phone.img}
+                      />
+                      <img
+                        alt="Hình ảnh"
+                        loading="lazy"
+                        className="absolute left-0 top-0 z-10 h-full w-full rounded-[5px] rounded-b-none object-contain"
                         src={phone.img}
                       />
                     </div>
@@ -167,6 +174,14 @@ const PhoneFC: React.FC = () => {
                     </div>
                   </div>
                   {/*  */}
+                  {phone?.status && (
+                    <div className="absolute -left-[3px] top-0 z-20">
+                      <img alt="" loading="lazy" width={60} src={Sale} />
+                      <p className="absolute top-[1px] w-full pl-1 text-xs text-white">
+                        {phone?.status}
+                      </p>
+                    </div>
+                  )}
                 </div>
               );
             })}
