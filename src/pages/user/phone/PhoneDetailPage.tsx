@@ -135,8 +135,8 @@ const PhoneDetailPage: React.FC = () => {
                   <img
                     loading="lazy"
                     src={selectedImage || phone?.img}
-                    alt={phone?.name}
-                    className="h-[500px] w-screen rounded-md object-cover xl:h-[490px] xl:object-contain"
+                    alt={phone?.name || 'Hình ảnh'}
+                    className="h-[500px] w-screen rounded-md object-cover  xl:w-full xl:h-[490px] xl:object-contain"
                   />
                   <div className="pointer-events-none absolute bottom-1 right-1">
                     <MdZoomOutMap className="rounded-sm bg-black bg-opacity-10 p-[1px] text-2xl text-white" />
