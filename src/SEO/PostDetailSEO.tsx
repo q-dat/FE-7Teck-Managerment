@@ -15,7 +15,13 @@ const PostDetailSEO: React.FC = () => {
     if (posts.length > 0 && title) {
       const post = posts.find(
         post =>
-          post?.title.toLowerCase().replace(/\s+/g, '-') === title.toLowerCase()
+          post?.title
+            .toString()
+            .normalize('NFD')
+            .replace(/\p{Diacritic}/gu, '')
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, '') === title.toLowerCase()
       );
       setSelectedPost(post || null);
     }

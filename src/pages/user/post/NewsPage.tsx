@@ -17,7 +17,13 @@ const NewsPage: React.FC = () => {
   const navigate = useNavigate();
   const handlePostClick = (post: (typeof posts)[0]) => {
     const titleSlug = encodeURIComponent(
-      post?.title.toLowerCase().replace(/\s+/g, '-')
+      post?.title
+        .toString()
+        .normalize('NFD')
+        .replace(/\p{Diacritic}/gu, '')
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '')
     );
     navigate(`/tin-tuc/${titleSlug}`);
   };

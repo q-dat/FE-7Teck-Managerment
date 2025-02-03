@@ -24,7 +24,13 @@ const PostDetail: React.FC = () => {
     if (posts.length > 0 && title) {
       const post = posts.find(
         post =>
-          post?.title.toLowerCase().replace(/\s+/g, '-') === title.toLowerCase()
+          post?.title
+            .toString()
+            .normalize('NFD')
+            .replace(/\p{Diacritic}/gu, '')
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, '') === title.toLowerCase()
       );
       setSelectedPost(post || null);
     }
@@ -33,7 +39,13 @@ const PostDetail: React.FC = () => {
   const handlePostSelect = (post: (typeof posts)[0]) => {
     setSelectedPost(post);
     const titleSlug = encodeURIComponent(
-      post?.title.toLowerCase().replace(/\s+/g, '-')
+      post?.title
+        .toString()
+        .normalize('NFD')
+        .replace(/\p{Diacritic}/gu, '')
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '')
     );
     navigate(`/tin-tuc/${titleSlug}`);
     window.scrollTo({ top: 0, behavior: 'smooth' });
