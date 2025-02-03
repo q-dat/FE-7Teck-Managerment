@@ -1,13 +1,15 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { PhoneContext } from '../../../context/phone/PhoneContext';
 import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
 import { Sale } from '../../../assets/image-represent';
 import { Button } from 'react-daisyui';
 import { FaRegEye } from 'react-icons/fa';
+import { Placeholder } from 'semantic-ui-react';
 
 const ProductByCatalog = () => {
   const { phones, updatePhoneView } = useContext(PhoneContext);
+  const [loading, setLoading] = useState(true);
   const { catalog } = useParams();
   const slugify = (text: string) => {
     return text
@@ -22,12 +24,15 @@ const ProductByCatalog = () => {
     phone => slugify(phone?.name) === catalog
   );
   useEffect(() => {
+    if (phones.length > 0) {
+      setLoading(false);
+    }
     // Scroll To Top
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
-  }, [filteredPhones]);
+  }, [phones,filteredPhones]);
 
   return (
     <div>
@@ -51,7 +56,18 @@ const ProductByCatalog = () => {
         <div className="space-y-10 px-2 xl:px-20">
           <div className="mt-5 w-full">
             <div className="grid grid-flow-row grid-cols-2 items-start gap-[10px] md:grid-cols-4 xl:grid-cols-6">
-              {filteredPhones.length > 0 ? (
+              {loading ? (
+                Array.from({ length: 12 }).map((_, index) => (
+                  <div key={index} className="w-[195px] p-2">
+                    <Placeholder>
+                      <Placeholder.Image square />
+                      <Placeholder.Line />
+                      <Placeholder.Line length="full" />
+                      <Placeholder.Line length="full" />
+                    </Placeholder>
+                  </div>
+                ))
+              ) : filteredPhones.length > 0 ? (
                 filteredPhones.map(phone => {
                   const phoneUrl = slugify(phone.name);
                   return (

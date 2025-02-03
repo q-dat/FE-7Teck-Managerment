@@ -4,18 +4,23 @@ import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
 import { Link, useNavigate } from 'react-router-dom';
 import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
 import { Button } from 'react-daisyui';
+import { Placeholder } from 'semantic-ui-react';
 
 const UsedProductsPage: React.FC = () => {
+  const [loading, setLoading] = useState(true);
   const { phoneCatalogs } = useContext(PhoneCatalogContext);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
+    if (phoneCatalogs.length > 0) {
+      setLoading(false);
+    }
     // Scroll To Top
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
-  }, [currentPage]);
+  }, [phoneCatalogs,currentPage]);
   // Handle Click Phone To Phone Detail
   const navigate = useNavigate();
   const slugify = (text: string) => {
@@ -74,7 +79,19 @@ const UsedProductsPage: React.FC = () => {
         <div className="space-y-10 px-2 xl:px-20">
           <div className="mt-5 w-full">
             <div className="grid grid-flow-row grid-cols-2 items-start gap-[10px] md:grid-cols-4 xl:grid-cols-6">
-              {currentPhones.map(phone => {
+            {loading ? (
+                Array.from({ length: 12 }).map((_, index) => (
+                  <div key={index} className="w-[195px] p-2">
+                    <Placeholder>
+                      <Placeholder.Image square />
+                      <Placeholder.Line />
+                      <Placeholder.Line length="full" />
+                      <Placeholder.Line length="full" />
+                    </Placeholder>
+                  </div>
+                ))
+              ) :
+              currentPhones.map(phone => {
                 const phoneUrl = slugify(phone.name);
                 return (
                   <div
