@@ -82,7 +82,7 @@ const PostDetail: React.FC = () => {
             <Link
               aria-label="Trở về trang tin tức"
               to="/tin-tuc-moi-nhat"
-              className="flex items-center justify-start text-secondary"
+              className="flex items-center justify-start text-primary"
             >
               <FaArrowLeftLong />
               Trở về trang tin tức
