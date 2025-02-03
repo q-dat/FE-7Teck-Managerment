@@ -156,7 +156,7 @@ const PhoneDetailPage: React.FC = () => {
                 <div
                   ref={scrollRef}
                   className="flex w-full flex-row items-start justify-start gap-2 overflow-x-auto scroll-smooth scrollbar-hide xl:w-[550px]"
-                >git
+                >
                   {phone?.thumbnail && Array.isArray(phone.thumbnail) ? (
                     phone.thumbnail.map((thumb: string, index: number) => (
                       <img
