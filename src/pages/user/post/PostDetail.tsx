@@ -26,6 +26,7 @@ const PostDetail: React.FC = () => {
         post =>
           post?.title
             .toString()
+            .replace(/đ/g, 'd')
             .normalize('NFD')
             .replace(/\p{Diacritic}/gu, '')
             .toLowerCase()
@@ -41,6 +42,7 @@ const PostDetail: React.FC = () => {
     const titleSlug = encodeURIComponent(
       post?.title
         .toString()
+        .replace(/đ/g, 'd')
         .normalize('NFD')
         .replace(/\p{Diacritic}/gu, '')
         .toLowerCase()

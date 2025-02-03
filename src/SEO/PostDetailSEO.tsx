@@ -17,6 +17,7 @@ const PostDetailSEO: React.FC = () => {
         post =>
           post?.title
             .toString()
+            .replace(/đ/g, 'd')
             .normalize('NFD')
             .replace(/\p{Diacritic}/gu, '')
             .toLowerCase()

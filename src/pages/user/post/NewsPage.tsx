@@ -19,6 +19,7 @@ const NewsPage: React.FC = () => {
     const titleSlug = encodeURIComponent(
       post?.title
         .toString()
+        .replace(/đ/g, 'd')
         .normalize('NFD')
         .replace(/\p{Diacritic}/gu, '')
         .toLowerCase()

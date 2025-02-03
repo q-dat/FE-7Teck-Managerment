@@ -20,12 +20,13 @@ const TipsAndTricksPage: React.FC = () => {
   const handlePostClick = (post: (typeof posts)[0]) => {
     const titleSlug = encodeURIComponent(
       post?.title
-      .toString()
-      .normalize('NFD')
-      .replace(/\p{Diacritic}/gu, '')
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-+|-+$/g, '')
+        .toString()
+        .replace(/đ/g, 'd')
+        .normalize('NFD')
+        .replace(/\p{Diacritic}/gu, '')
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '')
     );
     navigate(`/tin-tuc/${titleSlug}`);
   };
