@@ -97,10 +97,11 @@ const HomePage: React.FC = () => {
         {/* Banner */}
         <div className="relative">
           <div className="absolute bottom-0 left-2 top-[60%] md:bottom-4 md:left-[10%] md:top-[30%] lg:top-[30%]">
-            <h1 className="bg-gradient-to-r from-white to-white bg-clip-text text-[25px] font-extrabold italic text-transparent xl:text-[40px]">
-              Đổi Điện Thoại Cũ, <br /> Nhận Ngay Giá Tốt Nhất!
+            <h1 className="text-[25px] font-extrabold text-white xl:text-[40px]">
+              Đổi Điện Thoại Cũ , <br />
+              Nhận Ngay Giá Tốt Nhất!
             </h1>
-            <h2 className="bg-gradient-to-r from-white to-white bg-clip-text text-[20px] font-thin text-transparent">
+            <h2 className="w-[120px] bg-gradient-to-r from-primary via-primary to-transparent text-start text-[20px] font-thin italic text-white">
               up to 90%
             </h2>
           </div>
