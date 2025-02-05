@@ -11,6 +11,7 @@ import { ToastContainer } from 'react-toastify';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import { GalleryProvider } from './context/gallery/GalleryContext.tsx';
 import { PostCatalogProvider } from './context/post-catalog/PostCatalogContext.tsx';
+import { Analytics } from "@vercel/analytics/react"
 const App = lazy(() => import('./App.tsx'));
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -25,6 +26,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                   <PhoneProvider>
                     <ParallaxProvider>
                       <App />
+                      <Analytics/>
                       <ToastContainer />
                     </ParallaxProvider>
                   </PhoneProvider>
