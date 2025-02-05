@@ -7,7 +7,7 @@ import { IPhone } from '../../../../types/type/phone/phone';
 import { PhoneContext } from '../../../../context/phone/PhoneContext';
 import { PhoneCatalogContext } from '../../../../context/phone-catalog/PhoneCatalogContext';
 import LabelForm from '../../LabelForm';
-import ReactSelect from '../../../orther/react-select/ ReactSelect';
+import ReactSelect from '../../../orther/react-select/ReactSelect';
 
 interface ModalCreateAdminProps {
   isOpen: boolean;
@@ -33,7 +33,14 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreateAdminProps> = ({
   // react-select
   const phoneCatalog: Option[] = phoneCatalogs.map(phoneCatalog => ({
     value: phoneCatalog._id,
-    label: phoneCatalog.name
+    label: `${phoneCatalog.name}  \u00A0
+    ${
+      phoneCatalog?.status === 0
+        ? '(Máy mới)'
+        : phoneCatalog?.status === 1
+          ? '(Đã sử dụng)'
+          : phoneCatalog?.status
+    }`
   }));
 
   const onSubmit: SubmitHandler<IPhone> = async formData => {

@@ -129,7 +129,17 @@ const PhoneManager: React.FC = () => {
                       <span>Không có ảnh thu nhỏ</span>
                     )}
                   </span>
-                  <span className="line-clamp-3">{phone?.name}</span>
+                  <span className="">
+                    {phone?.name}
+                    <hr />
+                    <mark>
+                      {phone?.phone_catalog_id?.status === 0
+                        ? 'Máy mới'
+                        : phone?.phone_catalog_id?.status === 1
+                          ? 'Đã sử dụng'
+                          : phone?.phone_catalog_id?.status}
+                    </mark>
+                  </span>
                   <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
                     {(phone.price * 1000).toLocaleString('vi-VN')}đ
                   </span>

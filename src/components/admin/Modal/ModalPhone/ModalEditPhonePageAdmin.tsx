@@ -7,7 +7,7 @@ import { IPhone } from '../../../../types/type/phone/phone';
 import { PhoneContext } from '../../../../context/phone/PhoneContext';
 import { PhoneCatalogContext } from '../../../../context/phone-catalog/PhoneCatalogContext';
 import LabelForm from '../../LabelForm';
-import ReactSelect from '../../../orther/react-select/ ReactSelect';
+import ReactSelect from '../../../orther/react-select/ReactSelect';
 
 interface ModalEditPageAdminProps {
   isOpen: boolean;
