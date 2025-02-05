@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Sale } from '../../../assets/image-represent';
 import { PhoneContext } from '../../../context/phone/PhoneContext';
 
-const WindowFC: React.FC = () => {
+const WindowsFC: React.FC = () => {
   const { phones } = useContext(PhoneContext);
 
   const [isLeftButtonVisibleWindow, setIsLeftButtonVisibleWindow] =
@@ -154,4 +154,4 @@ const WindowFC: React.FC = () => {
   );
 };
 
-export default WindowFC;
+export default WindowsFC;

@@ -9,7 +9,7 @@ import {
 import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
 import PhoneFC from './PhoneFC';
 import IPadFC from './IPadFC';
-import WindowFC from './WindowFC';
+import WindowsFC from './WindowsFC';
 import MacbookFC from './MacbookFC';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -29,7 +29,6 @@ import {
   bgBlog,
   bgFixed
 } from '../../../assets/images';
-import ParallaxSectionFC from './ParallaxSectionFC';
 
 // Items Data
 const items = [
@@ -229,18 +228,18 @@ const HomePage: React.FC = () => {
           <IPadFC />
         </div>
         <div data-aos="fade-up" className="mt-10 p-0 xl:px-[100px]">
-          <WindowFC />
+          <WindowsFC />
         </div>
         <div data-aos="fade-up" className="mt-10 p-0 xl:px-[100px]">
           <MacbookFC />
         </div>
         {/* ParallaxSection */}
-        <div className="my-10 flex flex-col items-center justify-between p-0 xl:flex-row xl:px-[100px]">
+        {/* <div className="my-10 flex flex-col items-center justify-between p-0 xl:flex-row xl:px-[100px]">
           <div className="w-full">
             <ParallaxSectionFC />
           </div>
           <div className="w-full"></div>
-        </div>
+        </div> */}
         {/* Post */}
         <div
           style={{

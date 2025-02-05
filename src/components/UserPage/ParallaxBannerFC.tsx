@@ -1,6 +1,6 @@
 import React from 'react';
 import { BannerLayer, ParallaxBanner } from 'react-scroll-parallax';
-import { bannerBackground, bannerForeground } from '../../../assets/images';
+import { bannerBackground, bannerForeground } from '../../assets/images';
 
 const ParallaxBannerFC: React.FC = () => {
   const background: BannerLayer = {
