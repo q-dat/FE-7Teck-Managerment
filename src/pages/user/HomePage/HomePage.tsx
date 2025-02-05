@@ -96,7 +96,7 @@ const HomePage: React.FC = () => {
       <div className="pt-[60px] xl:pt-0">
         {/* Banner */}
         <div className="relative">
-          <div className="absolute bottom-0 left-2 top-[60%] md:bottom-4 md:left-[10%] md:top-[30%] lg:top-[30%]">
+          <div className="absolute bottom-0 left-0 top-0 h-full w-full bg-black bg-opacity-10 pl-2 pt-[20%] md:pl-20 md:pt-5 xl:pl-[100px] xl:pt-[4%]">
             <h1 className="text-[25px] font-extrabold text-white xl:text-[40px]">
               Đổi Điện Thoại Cũ , <br />
               Nhận Ngay Giá Tốt Nhất!
@@ -107,17 +107,17 @@ const HomePage: React.FC = () => {
           </div>
           <img
             src={BannerDesktop}
-            className="hidden h-full w-full object-cover xl:block"
+            className="hidden h-full w-full bg-black object-cover xl:block"
             alt="BannerDesktop"
           />
           <img
             src={BannerTablet}
-            className="hidden h-full w-full object-cover md:block xl:hidden"
+            className="hidden h-full w-full bg-black object-cover md:block xl:hidden"
             alt="BannerTablet"
           />
           <img
             src={BannerMobile}
-            className="h-full w-full object-cover md:hidden"
+            className="h-full w-full bg-black object-cover md:hidden"
             alt="BannerMobile"
           />
         </div>
