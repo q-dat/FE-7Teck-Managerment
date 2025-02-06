@@ -109,7 +109,7 @@ export const PhoneCatalogProvider = ({ children }: { children: ReactNode }) => {
       const response = await fetchData(
         () => getPhoneCatalogByIdApi(id),
         data => {
-          if (data?.phone) {
+          if (data?.phoneCatalog) {
             setPhoneCatalogs(prevPhoneCatalogs => [
               ...prevPhoneCatalogs,
               data.prevPhoneCatalog
@@ -118,7 +118,7 @@ export const PhoneCatalogProvider = ({ children }: { children: ReactNode }) => {
         },
         'getAll'
       );
-      return response.data?.phone;
+      return response.data?.phoneCatalog;
     },
     [phoneCatalogs]
   );
