@@ -72,8 +72,8 @@ const Header: React.FC = () => {
       submenu: [
         {
           icon: FaWindows,
-          name: 'Window',
-          link: '/window'
+          name: 'Windows',
+          link: '/windows'
         },
         {
           icon: RiMacbookFill,
@@ -191,7 +191,7 @@ const Header: React.FC = () => {
                     <div
                       key={index}
                       onClick={() => {
-                        navigate(`/iphone/${phoneUrl}`);
+                        navigate(`/iphone-da-qua-su-dung/${phoneUrl}`);
                         setSearchQuery('');
                         setSearchResults([]);
                       }}

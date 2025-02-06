@@ -3,7 +3,6 @@ import Pagination from '../../components/UserPage/Pagination';
 import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
 import { Link, useNavigate } from 'react-router-dom';
 import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
-import { Button } from 'react-daisyui';
 import { Placeholder } from 'semantic-ui-react';
 
 const UsedProductsPage: React.FC = () => {
@@ -20,7 +19,7 @@ const UsedProductsPage: React.FC = () => {
       top: 0,
       behavior: 'smooth'
     });
-  }, [phoneCatalogs,currentPage]);
+  }, [phoneCatalogs, currentPage]);
   // Handle Click Phone To Phone Detail
   const navigate = useNavigate();
   const slugify = (text: string) => {
@@ -79,78 +78,67 @@ const UsedProductsPage: React.FC = () => {
         <div className="space-y-10 px-2 xl:px-20">
           <div className="mt-5 w-full">
             <div className="grid grid-flow-row grid-cols-2 items-start gap-[10px] md:grid-cols-4 xl:grid-cols-6">
-            {loading ? (
-                Array.from({ length: 12 }).map((_, index) => (
-                  <div key={index} className="w-[195px] p-2">
-                    <Placeholder>
-                      <Placeholder.Image square />
-                      <Placeholder.Line />
-                      <Placeholder.Line length="full" />
-                      <Placeholder.Line length="full" />
-                    </Placeholder>
-                  </div>
-                ))
-              ) :
-              currentPhones.map(phone => {
-                const phoneUrl = slugify(phone.name);
-                return (
-                  <div
-                    key={phone?._id}
-                    onClick={() =>
-                      navigate(`/iphone-da-qua-su-dung/${phoneUrl}`)
-                    }
-                    className="group flex h-full w-full flex-col justify-between rounded-md border border-white text-black"
-                  >
-                    <div className="relative h-[200px] w-full cursor-pointer overflow-hidden rounded-md rounded-b-none">
-                      <img
-                        alt="Hình ảnh"
-                        loading="lazy"
-                        className="absolute left-0 top-0 z-0 h-full w-full rounded-[5px] rounded-b-none object-cover blur-sm filter"
-                        src={phone?.img}
-                      />
-                      <img
-                        alt="Hình ảnh"
-                        loading="lazy"
-                        className="absolute left-0 top-0 z-10 h-full w-full rounded-[5px] rounded-b-none object-contain"
-                        src={phone?.img}
-                      />
+              {loading
+                ? Array.from({ length: 12 }).map((_, index) => (
+                    <div key={index} className="w-[195px] p-2">
+                      <Placeholder>
+                        <Placeholder.Image square />
+                        <Placeholder.Line />
+                        <Placeholder.Line length="full" />
+                        <Placeholder.Line length="full" />
+                      </Placeholder>
                     </div>
-                    {/*  */}
-                    <div className="flex w-full flex-col items-start justify-between gap-1">
-                      <div className="w-full cursor-pointer p-1">
-                        <p className="w-[75px] rounded-sm bg-gray-100 p-[2px] text-center text-[10px] text-white">
-                          {phone?.phoneCount > 99 ? '99+' : phone?.phoneCount}{' '}
-                          Sản phẩm
-                        </p>
+                  ))
+                : currentPhones.map(phone => {
+                    const phoneUrl = slugify(phone.name);
+                    return (
+                      <div
+                        key={phone?._id}
+                        onClick={() =>
+                          navigate(`/iphone-da-qua-su-dung/${phoneUrl}`)
+                        }
+                        className="group flex h-full w-full flex-col justify-between rounded-md border border-white bg-white text-black"
+                      >
+                        <div className="relative h-[200px] w-full cursor-pointer overflow-hidden rounded-md rounded-b-none">
+                          <img
+                            alt="Hình ảnh"
+                            loading="lazy"
+                            className="absolute left-0 top-0 z-0 h-full w-full rounded-[5px] rounded-b-none object-cover blur-sm filter"
+                            src={phone?.img}
+                          />
+                          <img
+                            alt="Hình ảnh"
+                            loading="lazy"
+                            className="absolute left-0 top-0 z-10 h-full w-full rounded-[5px] rounded-b-none object-contain"
+                            src={phone?.img}
+                          />
+                        </div>
+                        {/*  */}
+                        <div className="flex w-full flex-col items-start justify-between gap-1">
+                          <div className="w-full cursor-pointer p-1">
+                            <p className="w-[75px] rounded-sm bg-gray-100 p-[2px] text-center text-[10px] text-white">
+                              {phone?.phoneCount > 99
+                                ? '99+'
+                                : phone?.phoneCount}{' '}
+                              Sản phẩm
+                            </p>
 
-                        <p className="xl:group-hover:text-secondary">
-                          Điện Thoại {phone.name}
-                        </p>
+                            <p className="xl:group-hover:text-secondary">
+                              Điện Thoại {phone.name}
+                            </p>
+                          </div>
+                          <div className="w-full p-1">
+                            <p className="text-gray-500">
+                              Từ:&nbsp;
+                              <span className="text-red-500">
+                                {(phone.price * 1000).toLocaleString('vi-VN')}₫
+                              </span>
+                            </p>
+                          </div>
+                        </div>
                       </div>
-                      <div className="w-full p-1">
-                        <p className="text-gray-500">
-                          Từ:&nbsp;
-                          <span className="text-red-500">
-                            {(phone.price * 1000).toLocaleString('vi-VN')}₫
-                          </span>
-                        </p>
-                        <Link
-                          aria-label="Mua ngay"
-                          to="/thanh-toan"
-                          className="z-50 w-full"
-                        >
-                          <Button
-                            size="xs"
-                            className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary hover:bg-primary hover:bg-opacity-20"
-                          >
-                            Mua Ngay
-                          </Button>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
+                    );
+                  })}
             </div>
           </div>
           {/* Pagination Controls */}
