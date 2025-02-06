@@ -1,4 +1,4 @@
-export interface IWindowCatalog {
+export interface IWindowsCatalog {
   _id: string;
   w_cat_name: string;
   w_cat_img: string;
