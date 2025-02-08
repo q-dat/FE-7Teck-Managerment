@@ -1,8 +1,8 @@
-import { IPhoneCatalog } from '../phone-catalog/phone-catalog';
+import { ITabletCatalog } from '../tablet-catalog/tablet-catalog';
 
 export interface ITablet {
   _id: string;
-  tablet_catalog_id: IPhoneCatalog;
+  tablet_catalog_id: ITabletCatalog;
   tablet_view?: number;
   tablet_name: string;
   tablet_color: string;
@@ -16,3 +16,4 @@ export interface ITablet {
   createdAt: string;
   updatedAt: string;
 }
+
