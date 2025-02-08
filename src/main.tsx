@@ -11,7 +11,13 @@ import { ToastContainer } from 'react-toastify';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import { GalleryProvider } from './context/gallery/GalleryContext.tsx';
 import { PostCatalogProvider } from './context/post-catalog/PostCatalogContext.tsx';
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from '@vercel/analytics/react';
+import { TabletCatalogProvider } from './context/tablet-catalog/TabletCatalogContext.tsx';
+import { TabletProvider } from './context/tablet/TabletContext.tsx';
+import { WindowsCatalogProvider } from './context/windows-catalog/WindowsCatalogContext.tsx';
+import { WindowsProvider } from './context/windows/WindowsContext.tsx';
+import { MacbookCatalogProvider } from './context/macbook-catalog/MacbookCatalogContext.tsx';
+import { MacbookProvider } from './context/macbook/MacbookContext.tsx';
 const App = lazy(() => import('./App.tsx'));
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -24,11 +30,23 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               <PostProvider>
                 <PhoneCatalogProvider>
                   <PhoneProvider>
-                    <ParallaxProvider>
-                      <App />
-                      <Analytics/>
-                      <ToastContainer />
-                    </ParallaxProvider>
+                    <TabletCatalogProvider>
+                      <TabletProvider>
+                        <WindowsCatalogProvider>
+                          <WindowsProvider>
+                            <MacbookCatalogProvider>
+                              <MacbookProvider>
+                                <ParallaxProvider>
+                                  <App />
+                                  <Analytics />
+                                  <ToastContainer />
+                                </ParallaxProvider>
+                              </MacbookProvider>
+                            </MacbookCatalogProvider>
+                          </WindowsProvider>
+                        </WindowsCatalogProvider>
+                      </TabletProvider>
+                    </TabletCatalogProvider>
                   </PhoneProvider>
                 </PhoneCatalogProvider>
               </PostProvider>
