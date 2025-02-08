@@ -26,6 +26,19 @@ const PhoneCatalogManager = lazy(
 );
 const PhoneManager = lazy(() => import('../cms/admin/PhoneManager'));
 
+const TabletCatalogManager = lazy(
+  () => import('../cms/admin/TabletCatalogManager')
+);
+const TabletManager = lazy(() => import('../cms/admin/TabletManager'));
+const MacbookCatalogManager = lazy(
+  () => import('../cms/admin/MacbookCatalogManager')
+);
+const MacbookManager = lazy(() => import('../cms/admin/MacbookManager'));
+const WindowsCatalogManager = lazy(
+  () => import('../cms/admin/WindowsCatalogManager')
+);
+const WindowsManager = lazy(() => import('../cms/admin/WindowsManager'));
+
 // post
 const Post = lazy(() => import('../cms/admin/post/Post'));
 const PostManagerPage = lazy(() => import('../cms/admin/post/PostManagerPage'));
@@ -87,6 +100,21 @@ export default function AppRoutes() {
               element={<PhoneCatalogManager />}
             />
             <Route path="phone-manager" element={<PhoneManager />} />
+            <Route
+              path="tablet-catalog-manager"
+              element={<TabletCatalogManager />}
+            />
+            <Route path="tablet-manager" element={<TabletManager />} />
+            <Route
+              path="macbook-catalog-manager"
+              element={<MacbookCatalogManager />}
+            />
+            <Route path="macbook-manager" element={<MacbookManager />} />
+            <Route
+              path="windows-catalog-manager"
+              element={<WindowsCatalogManager />}
+            />
+            <Route path="windows-manager" element={<WindowsManager />} />
           </Route>
         </Route>
 

@@ -8,10 +8,22 @@ import { PhoneContext } from '../../context/phone/PhoneContext';
 import { FaList, FaWindows } from 'react-icons/fa6';
 import { BsApple } from 'react-icons/bs';
 import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
+import { TabletContext } from '../../context/tablet/TabletContext';
+import { TabletCatalogContext } from '../../context/tablet-catalog/TabletCatalogContext';
+import { WindowsCatalogContext } from '../../context/windows-catalog/WindowsCatalogContext';
+import { WindowsContext } from '../../context/windows/WindowsContext';
+import { MacbookContext } from '../../context/macbook/MacbookContext';
+import { MacbookCatalogContext } from '../../context/macbook-catalog/MacbookCatalogContext';
 
 const SidebarAdmin: React.FC<{}> = () => {
   const { phoneCatalogs } = useContext(PhoneCatalogContext);
   const { phones } = useContext(PhoneContext);
+  const { tabletCatalogs } = useContext(TabletCatalogContext);
+  const { tablets } = useContext(TabletContext);
+  const { windowsCatalogs } = useContext(WindowsCatalogContext);
+  const { windows } = useContext(WindowsContext);
+  const { macbookCatalogs } = useContext(MacbookCatalogContext);
+  const { macbook } = useContext(MacbookContext);
   const [activeItem, setActiveItem] = useState('Dashboard');
 
   const location = useLocation();
@@ -35,22 +47,40 @@ const SidebarAdmin: React.FC<{}> = () => {
       toastify: phones.length
     },
     {
-      name: 'Ipad',
-      icon: FaTabletAlt,
-      link: '/cms/admin/ipad-manager',
-      toastify: phones.length
+      name: 'Danh Mục Ipad',
+      icon: FaList,
+      link: '/cms/admin/tablet-catalog-manager',
+      toastify: tabletCatalogs.length
     },
     {
-      name: 'Window',
+      name: 'Ipad',
+      icon: FaTabletAlt,
+      link: '/cms/admin/tablet-manager',
+      toastify: tablets.length
+    },
+    {
+      name: 'Danh Mục Windows',
+      icon: FaList,
+      link: '/cms/admin/windows-catalog-manager',
+      toastify: windowsCatalogs.length
+    },
+    {
+      name: 'Windows',
       icon: FaWindows,
-      link: '/cms/admin/window-manager',
-      toastify: phones.length
+      link: '/cms/admin/windows-manager',
+      toastify: windows.length
+    },
+    {
+      name: 'Danh Mục Macbook',
+      icon: FaList,
+      link: '/cms/admin/macbook-catalog-manager',
+      toastify: macbookCatalogs.length
     },
     {
       name: 'Macbook',
       icon: BsApple,
       link: '/cms/admin/macbook-manager',
-      toastify: phones.length
+      toastify: macbook.length
     }
   ];
 
@@ -101,7 +131,7 @@ const SidebarAdmin: React.FC<{}> = () => {
         </div>
         {/*  */}
         <div className="relative flex w-full flex-col justify-between bg-white dark:bg-gray-800 dark:text-white">
-          <div className="mb-2 mt-5 h-[280px] overflow-y-scroll scrollbar-hide md:h-[400px]">
+          <div className="mb-2 mt-5 h-[280px] overflow-y-scroll scrollbar-hide md:h-[500px]">
             <Menu className="m-0 w-full flex-grow p-0 xl:px-2">
               {menuItems.map(item => {
                 const Icon = item.icon;
