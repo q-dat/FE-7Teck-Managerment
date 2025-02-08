@@ -155,9 +155,9 @@ export const TabletCatalogProvider = ({
       return await fetchData(
         () => updateTabletCatalogApi(_id, tabletCatalogData),
         data => {
-          if (data?.tc) {
+          if (data?.tabletCatalogData) {
             setTabletCatalogs(prevTabletCatalogs =>
-              prevTabletCatalogs.map(tc => (tc._id === _id ? data?.tc : tc))
+              prevTabletCatalogs.map(tc => (tc._id === _id ? data?.tabletCatalogData : tc))
             );
           }
         },
