@@ -24,7 +24,7 @@ interface WindowsContextType {
     delete: boolean;
   };
   error: string | null;
-  getAllWindowss: () => void;
+  getAllWindows: () => void;
   getWindowsById: (_id: string) => Promise<IWindows | undefined>;
   createWindows: (windowsData: FormData) => Promise<AxiosResponse<any>>;
   updateWindows: (
@@ -44,7 +44,7 @@ const defaultContextValue: WindowsContextType = {
     delete: false
   },
   error: null,
-  getAllWindowss: () => {},
+  getAllWindows: () => {},
   getWindowsById: async () => undefined,
   createWindows: async () => ({ data: { windows: null } }) as AxiosResponse,
   updateWindows: async () => ({ data: { windows: null } }) as AxiosResponse,
@@ -89,7 +89,7 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // Get All Windowss
-  const getAllWindowss = useCallback(() => {
+  const getAllWindows = useCallback(() => {
     fetchData(
       getAllWindowsApi,
       data => setWindowss(data?.windows || []),
@@ -111,7 +111,7 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
         },
         'getAll'
       );
-      return response.data?.t;
+      return response.data?.w;
     },
     [windows]
   );
@@ -129,7 +129,7 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
             ]);
           }
         },
-        'create'      
+        'create'
       );
     },
     []
@@ -203,8 +203,8 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
   );
 
   useEffect(() => {
-    getAllWindowss();
-  }, [getAllWindowss]);
+    getAllWindows();
+  }, [getAllWindows]);
 
   return (
     <WindowsContext.Provider
@@ -212,7 +212,7 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
         windows,
         loading,
         error,
-        getAllWindowss,
+        getAllWindows,
         getWindowsById,
         createWindows,
         updateWindows,

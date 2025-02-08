@@ -15,7 +15,7 @@ import {
   deleteWindowsCatalogApi
 } from '../../axios/api/windowsCatalogApi';
 
-interface WindowsCatalogsContextType {
+interface WindowsCatalogContextType {
   windowsCatalogs: IWindowsCatalog[];
   loading: {
     getAll: boolean;
@@ -25,18 +25,18 @@ interface WindowsCatalogsContextType {
   };
   error: string | null;
   getAllWindowsCatalogs: () => void;
-  getWindowsCatalogsById: (_id: string) => Promise<IWindowsCatalog | undefined>;
-  createWindowsCatalogs: (
+  getWindowsCatalogById: (_id: string) => Promise<IWindowsCatalog | undefined>;
+  createWindowsCatalog: (
     windowsCatalogData: FormData
   ) => Promise<AxiosResponse<any>>;
-  updateWindowsCatalogs: (
+  updateWindowsCatalog: (
     _id: string,
     windowsCatalogData: FormData
   ) => Promise<AxiosResponse<any>>;
-  deleteWindowsCatalogs: (_id: string) => Promise<AxiosResponse<any>>;
+  deleteWindowsCatalog: (_id: string) => Promise<AxiosResponse<any>>;
 }
 
-const defaultContextValue: WindowsCatalogsContextType = {
+const defaultContextValue: WindowsCatalogContextType = {
   windowsCatalogs: [],
   loading: {
     getAll: false,
@@ -46,24 +46,24 @@ const defaultContextValue: WindowsCatalogsContextType = {
   },
   error: null,
   getAllWindowsCatalogs: () => {},
-  getWindowsCatalogsById: async () => undefined,
-  createWindowsCatalogs: async () =>
-    ({ data: { windowsCatalogs: null } }) as AxiosResponse,
-  updateWindowsCatalogs: async () =>
-    ({ data: { windowsCatalogs: null } }) as AxiosResponse,
-  deleteWindowsCatalogs: async () =>
+  getWindowsCatalogById: async () => undefined,
+  createWindowsCatalog: async () =>
+    ({ data: { windowsCatalog: null } }) as AxiosResponse,
+  updateWindowsCatalog: async () =>
+    ({ data: { windowsCatalog: null } }) as AxiosResponse,
+  deleteWindowsCatalog: async () =>
     ({ data: { deleted: true } }) as AxiosResponse
 };
 
-export const WindowsCatalogsContext =
-  createContext<WindowsCatalogsContextType>(defaultContextValue);
+export const WindowsCatalogContext =
+  createContext<WindowsCatalogContextType>(defaultContextValue);
 
-export const WindowsCatalogsProvider = ({
+export const WindowsCatalogProvider = ({
   children
 }: {
   children: ReactNode;
 }) => {
-  const [windowsCatalogs, setWindowsCatalogs] = useState<IWindowsCatalog[]>([]);
+  const [windowsCatalogs, setWindowsCatalog] = useState<IWindowsCatalog[]>([]);
   const [loading, setLoading] = useState({
     getAll: false,
     create: false,
@@ -95,26 +95,26 @@ export const WindowsCatalogsProvider = ({
     }
   };
 
-  // Get All WindowsCatalogs
+  // Get All WindowsCatalog
   const getAllWindowsCatalogs = useCallback(() => {
     fetchData(
       getAllWindowsCatalogsApi,
-      data => setWindowsCatalogs(data?.windowsCatalogs || []),
+      data => setWindowsCatalog(data?.windowsCatalog || []),
       'getAll'
     );
   }, []);
 
-  // Get WindowsCatalogs By Id
-  const getWindowsCatalogsById = useCallback(
+  // Get WindowsCatalog By Id
+  const getWindowsCatalogById = useCallback(
     async (id: string): Promise<IWindowsCatalog | undefined> => {
-      const cachedWindowsCatalogs = windowsCatalogs.find(wc => wc._id === id);
-      if (cachedWindowsCatalogs) return cachedWindowsCatalogs;
+      const cachedWindowsCatalog = windowsCatalogs.find(wc => wc._id === id);
+      if (cachedWindowsCatalog) return cachedWindowsCatalog;
       const response = await fetchData(
         () => getWindowsCatalogByIdApi(id),
         data => {
           if (data?.wc) {
-            setWindowsCatalogs(prevWindowsCatalogs => [
-              ...prevWindowsCatalogs,
+            setWindowsCatalog(prevWindowsCatalog => [
+              ...prevWindowsCatalog,
               data.wc
             ]);
           }
@@ -126,15 +126,15 @@ export const WindowsCatalogsProvider = ({
     [windowsCatalogs]
   );
 
-  // Create WindowsCatalogs
-  const createWindowsCatalogs = useCallback(
+  // Create WindowsCatalog
+  const createWindowsCatalog = useCallback(
     async (windowsCatalogData: FormData): Promise<AxiosResponse<any>> => {
       return await fetchData(
         () => createWindowsCatalogApi(windowsCatalogData),
         data => {
           if (data?.wc) {
-            setWindowsCatalogs(prevWindowsCatalogs => [
-              ...prevWindowsCatalogs,
+            setWindowsCatalog(prevWindowsCatalog => [
+              ...prevWindowsCatalog,
               data?.wc
             ]);
           }
@@ -145,8 +145,8 @@ export const WindowsCatalogsProvider = ({
     []
   );
 
-  // Update WindowsCatalogs
-  const updateWindowsCatalogs = useCallback(
+  // Update WindowsCatalog
+  const updateWindowsCatalog = useCallback(
     async (
       _id: string,
       windowsCatalogData: FormData
@@ -155,8 +155,8 @@ export const WindowsCatalogsProvider = ({
         () => updateWindowsCatalogApi(_id, windowsCatalogData),
         data => {
           if (data?.windowsCatalogData) {
-            setWindowsCatalogs(prevWindowsCatalogs =>
-              prevWindowsCatalogs.map(wc => (wc._id === _id ? data?.windowsCatalogData : wc))
+            setWindowsCatalog(prevWindowsCatalog =>
+              prevWindowsCatalog.map(wc => (wc._id === _id ? data?.windowsCatalogData : wc))
             );
           }
         },
@@ -166,14 +166,14 @@ export const WindowsCatalogsProvider = ({
     []
   );
 
-  // Delete WindowsCatalogs
-  const deleteWindowsCatalogs = useCallback(
+  // Delete WindowsCatalog
+  const deleteWindowsCatalog = useCallback(
     async (id: string): Promise<AxiosResponse<any>> => {
       return await fetchData(
         () => deleteWindowsCatalogApi(id),
         () =>
-          setWindowsCatalogs(prevWindowsCatalogs =>
-            prevWindowsCatalogs.filter(wc => wc._id !== id)
+          setWindowsCatalog(prevWindowsCatalog =>
+            prevWindowsCatalog.filter(wc => wc._id !== id)
           ),
         'delete'
       );
@@ -186,19 +186,19 @@ export const WindowsCatalogsProvider = ({
   }, [getAllWindowsCatalogs]);
 
   return (
-    <WindowsCatalogsContext.Provider
+    <WindowsCatalogContext.Provider
       value={{
         windowsCatalogs,
         loading,
         error,
         getAllWindowsCatalogs,
-        getWindowsCatalogsById,
-        createWindowsCatalogs,
-        updateWindowsCatalogs,
-        deleteWindowsCatalogs
+        getWindowsCatalogById,
+        createWindowsCatalog,
+        updateWindowsCatalog,
+        deleteWindowsCatalog
       }}
     >
       {children}
-    </WindowsCatalogsContext.Provider>
+    </WindowsCatalogContext.Provider>
   );
 };
