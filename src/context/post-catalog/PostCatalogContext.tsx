@@ -104,16 +104,16 @@ export const PostCatalogProvider = ({ children }: { children: ReactNode }) => {
   // Get PostCatalog By Id
   const getPostCatalogById = useCallback(
     (id: string) => {
-      return postCatalogs.find(postCatalog => postCatalog._id === id);
+      return postCatalogs.find(pc => pc._id === id);
     },
     [postCatalogs]
   );
 
   // Create PostCatalog
   const createPostCatalog = useCallback(
-    async (postCatalog: IPostCatalog): Promise<AxiosResponse<any>> => {
+    async (postCatalogData: IPostCatalog): Promise<AxiosResponse<any>> => {
       return await fetchData(
-        () => createPostCatalogApi(postCatalog),
+        () => createPostCatalogApi(postCatalogData),
         data => {
           if (data.savedPostCatalog) {
             setPostCatalogs(prevPostCatalogs => [
@@ -132,15 +132,15 @@ export const PostCatalogProvider = ({ children }: { children: ReactNode }) => {
   const updatePostCatalog = useCallback(
     async (
       id: string,
-      postCatalog: IPostCatalog
+      postCatalogData: IPostCatalog
     ): Promise<AxiosResponse<any>> => {
       return await fetchData(
-        () => updatePostCatalogApi(id, postCatalog),
+        () => updatePostCatalogApi(id, postCatalogData),
         data => {
-          if (data.postCatalog) {
+          if (data.postCatalogData) {
             setPostCatalogs(prevPostCatalogs =>
-              prevPostCatalogs.map(loc =>
-                loc._id === id ? data.postCatalog : loc
+              prevPostCatalogs.map(pc =>
+                pc._id === id ? data.postCatalogData : pc
               )
             );
           }
@@ -158,7 +158,7 @@ export const PostCatalogProvider = ({ children }: { children: ReactNode }) => {
         () => deletePostCatalogApi(id),
         () =>
           setPostCatalogs(prevPostCatalogs =>
-            prevPostCatalogs.filter(postCatalog => postCatalog._id !== id)
+            prevPostCatalogs.filter(pc => pc._id !== id)
           ),
         'delete'
       );

@@ -15,7 +15,7 @@ import {
 } from '../../axios/api/phoneCatalogApi';
 import { IPhoneCatalog } from '../../types/type/phone-catalog/phone-catalog';
 
-interface PhoneContextType {
+interface PhoneCatalogContextType {
   phoneCatalogs: IPhoneCatalog[];
   loading: {
     getAll: boolean;
@@ -36,7 +36,7 @@ interface PhoneContextType {
   deletePhoneCatalog: (_id: string) => Promise<AxiosResponse<any>>;
 }
 
-const defaultContextValue: PhoneContextType = {
+const defaultContextValue: PhoneCatalogContextType = {
   phoneCatalogs: [],
   loading: {
     getAll: false,
@@ -55,7 +55,7 @@ const defaultContextValue: PhoneContextType = {
 };
 
 export const PhoneCatalogContext =
-  createContext<PhoneContextType>(defaultContextValue);
+  createContext<PhoneCatalogContextType>(defaultContextValue);
 
 export const PhoneCatalogProvider = ({ children }: { children: ReactNode }) => {
   const [phoneCatalogs, setPhoneCatalogs] = useState<IPhoneCatalog[]>([]);
@@ -90,7 +90,7 @@ export const PhoneCatalogProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  // Get All Phones
+  // Get All PhoneCatalogs
   const getAllPhoneCatalogs = useCallback(() => {
     fetchData(
       getAllPhoneCatalogsApi,
@@ -99,37 +99,37 @@ export const PhoneCatalogProvider = ({ children }: { children: ReactNode }) => {
     );
   }, []);
 
-  // Get Phone By Id
+  // Get PhoneCatalog By Id
   const getPhoneCatalogById = useCallback(
     async (id: string): Promise<IPhoneCatalog | undefined> => {
       const cachedPhone = phoneCatalogs.find(
-        phoneCatalog => phoneCatalog._id === id
+        pc => pc._id === id
       );
       if (cachedPhone) return cachedPhone;
       const response = await fetchData(
         () => getPhoneCatalogByIdApi(id),
         data => {
-          if (data?.phoneCatalog) {
+          if (data?.pc) {
             setPhoneCatalogs(prevPhoneCatalogs => [
               ...prevPhoneCatalogs,
-              data.prevPhoneCatalog
+              data.pc
             ]);
           }
         },
         'getAll'
       );
-      return response.data?.phoneCatalog;
+      return response.data?.pc;
     },
     [phoneCatalogs]
   );
 
-  // Create Phone
+  // Create PhoneCatalog
   const createPhoneCatalog = useCallback(
     async (phoneCatalogData: FormData): Promise<AxiosResponse<any>> => {
       return await fetchData(
         () => createPhoneCatalogApi(phoneCatalogData),
         data => {
-          if (data?.phoneCatalog) {
+          if (data?.pc) {
             setPhoneCatalogs(prevPhoneCatalogs => [
               ...prevPhoneCatalogs,
               data?.phoneCatalog
@@ -142,7 +142,7 @@ export const PhoneCatalogProvider = ({ children }: { children: ReactNode }) => {
     []
   );
 
-  // Update Phone
+  // Update PhoneCatalog
   const updatePhoneCatalog = useCallback(
     async (
       _id: string,
@@ -151,10 +151,10 @@ export const PhoneCatalogProvider = ({ children }: { children: ReactNode }) => {
       return await fetchData(
         () => updatePhoneCatalogApi(_id, phoneCatalogData),
         data => {
-          if (data?.phoneCatalog) {
+          if (data?.phoneCatalogData) {
             setPhoneCatalogs(prevPhoneCatalogs =>
-              prevPhoneCatalogs.map(prod =>
-                prod._id === _id ? data?.phoneCatalog : prod
+              prevPhoneCatalogs.map(pc =>
+                pc._id === _id ? data?.phoneCatalogData : pc
               )
             );
           }
@@ -165,14 +165,14 @@ export const PhoneCatalogProvider = ({ children }: { children: ReactNode }) => {
     []
   );
 
-  // Delete Phone
+  // Delete PhoneCatalog
   const deletePhoneCatalog = useCallback(
     async (id: string): Promise<AxiosResponse<any>> => {
       return await fetchData(
         () => deletePhoneCatalogApi(id),
         () =>
           setPhoneCatalogs(prevPhoneCatalogs =>
-            prevPhoneCatalogs.filter(phoneCatalog => phoneCatalog._id !== id)
+            prevPhoneCatalogs.filter(pc => pc._id !== id)
           ),
         'delete'
       );

@@ -96,18 +96,18 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
   // Get Phone By Id
   const getPhoneById = useCallback(
     async (id: string): Promise<IPhone | undefined> => {
-      const cachedPhone = phones.find(phone => phone._id === id);
+      const cachedPhone = phones.find(p => p._id === id);
       if (cachedPhone) return cachedPhone;
       const response = await fetchData(
         () => getPhoneByIdApi(id),
         data => {
-          if (data?.phone) {
-            setPhones(prevPhones => [...prevPhones, data.phone]);
+          if (data?.p) {
+            setPhones(prevPhones => [...prevPhones, data.p]);
           }
         },
         'getAll'
       );
-      return response.data?.phone;
+      return response.data?.p;
     },
     [phones]
   );
@@ -119,7 +119,7 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
         () => createPhoneApi(phoneData),
         data => {
           if (data?.phone) {
-            setPhones(prevPhones => [...prevPhones, data?.phone]);
+            setPhones(prevPhones => [...prevPhones, data?.p]);
           }
         },
         'create'
@@ -134,9 +134,9 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
       return await fetchData(
         () => updatePhoneApi(_id, phoneData),
         data => {
-          if (data?.phone) {
+          if (data?.phoneData) {
             setPhones(prevPhones =>
-              prevPhones.map(prod => (prod._id === _id ? data?.phone : prod))
+              prevPhones.map(p => (p._id === _id ? data?.phoneData : p))
             );
           }
         },
@@ -158,9 +158,9 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
         await fetchData(
           () => updatePhoneApi(_id, updatedData),
           data => {
-            if (data?.phone) {
+            if (data?.updatedData) {
               setPhones(prevPhones =>
-                prevPhones.map(p => (p._id === _id ? data.phone : p))
+                prevPhones.map(p => (p._id === _id ? data.updatedData : p))
               );
             }
           },
@@ -179,7 +179,7 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
       return await fetchData(
         () => deletePhoneApi(id),
         () =>
-          setPhones(prevPhones => prevPhones.filter(phone => phone._id !== id)),
+          setPhones(prevPhones => prevPhones.filter(p => p._id !== id)),
         'delete'
       );
     },

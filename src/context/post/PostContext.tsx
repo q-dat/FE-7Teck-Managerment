@@ -94,7 +94,7 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
   // Get By Id
   const getPostById = useCallback(
     (id: string) => {
-      return posts.find(post => post._id === id);
+      return posts.find(p => p._id === id);
     },
     [posts]
   );
@@ -105,8 +105,8 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
       return await fetchData(
         () => createPostApi(postData),
         data => {
-          if (data?.post) {
-            setPosts(prevPosts => [...prevPosts, data?.post]);
+          if (data?.p) {
+            setPosts(prevPosts => [...prevPosts, data?.p]);
           }
         },
         'create'
@@ -121,10 +121,10 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
       return await fetchData(
         () => updatePostApi(id, postData),
         data => {
-          if (data?.post) {
+          if (data?.postData) {
             setPosts(prevPosts =>
-              prevPosts.map(existingPost =>
-                existingPost._id === id ? data?.post : existingPost
+              prevPosts.map(p =>
+                p._id === id ? data?.postData : p
               )
             );
           }
@@ -140,7 +140,7 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
     async (id: string): Promise<AxiosResponse<any>> => {
       return await fetchData(
         () => deletePostApi(id),
-        () => setPosts(prevPosts => prevPosts.filter(post => post._id !== id)),
+        () => setPosts(prevPosts => prevPosts.filter(p => p._id !== id)),
         'delete'
       );
     },
