@@ -48,7 +48,7 @@ const PhoneManager: React.FC = () => {
       } catch (error) {
         const errorMessage = isIErrorResponse(error)
           ? error.data?.message
-          : 'Xoá danh mục điện thoại thất bại!';
+          : 'Xoá sản phẩm thất bại!';
         Toastify(`Lỗi: ${errorMessage}`, 500);
       }
     }
