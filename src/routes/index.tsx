@@ -7,6 +7,7 @@ const User = lazy(() => import('../pages/user/User'));
 const HomePageSEO = lazy(() => import('../SEO/HomePageSEO'));
 const ContactPageSEO = lazy(() => import('../SEO/ContactPageSEO'));
 const PhonePageSEO = lazy(() => import('../SEO/PhonePageSEO'));
+const TabletPageSEO = lazy(() => import('../SEO/TabletPageSEO'));
 const PhoneByCatalogPageSEO = lazy(
   () => import('../SEO/PhoneByCatalogPageSEO')
 );
@@ -65,6 +66,8 @@ export default function AppRoutes() {
             <Route index path="" element={<HomePageSEO />} />
             {/*  */}
             <Route path="iphone" element={<PhonePageSEO />} />
+            <Route path="ipad" element={<TabletPageSEO />} />
+
             <Route
               path="iphone-da-qua-su-dung/:catalog"
               element={<PhoneByCatalogPageSEO />}

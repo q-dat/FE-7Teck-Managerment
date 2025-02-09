@@ -35,7 +35,7 @@ const SidebarAdmin: React.FC<{}> = () => {
       link: '/cms/admin'
     },
     {
-      name: 'Danh Mục Điện Thoại',
+      name: 'DM Điện Thoại',
       icon: FaList,
       link: '/cms/admin/phone-catalog-manager',
       toastify: phoneCatalogs.length
@@ -47,19 +47,19 @@ const SidebarAdmin: React.FC<{}> = () => {
       toastify: phones.length
     },
     {
-      name: 'Danh Mục Ipad',
+      name: 'DM Máy Tính Bảng',
       icon: FaList,
       link: '/cms/admin/tablet-catalog-manager',
       toastify: tabletCatalogs.length
     },
     {
-      name: 'Ipad',
+      name: ' Máy Tính Bảng',
       icon: FaTabletAlt,
       link: '/cms/admin/tablet-manager',
       toastify: tablets.length
     },
     {
-      name: 'Danh Mục Windows',
+      name: 'DM Windows',
       icon: FaList,
       link: '/cms/admin/windows-catalog-manager',
       toastify: windowsCatalogs.length
@@ -71,7 +71,7 @@ const SidebarAdmin: React.FC<{}> = () => {
       toastify: windows.length
     },
     {
-      name: 'Danh Mục Macbook',
+      name: 'DM Macbook',
       icon: FaList,
       link: '/cms/admin/macbook-catalog-manager',
       toastify: macbookCatalogs.length

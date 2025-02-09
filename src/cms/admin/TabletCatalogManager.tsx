@@ -66,10 +66,10 @@ const TabletCatalogManager: React.FC = () => {
 
   return (
     <div className="w-full pb-10 xl:pb-0">
-      <NavbarAdmin Title_NavbarAdmin="Danh Mục Điện Thoại" />
+      <NavbarAdmin Title_NavbarAdmin="Danh Mục Máy Tính Bảng" />
       <div className="">
         <NavtitleAdmin
-          Title_NavtitleAdmin="Quản Lý Danh Sách Danh Mục Điện Thoại"
+          Title_NavtitleAdmin="Quản Lý Danh Sách Danh Mục Máy Tính Bảng"
           Btn_Create={
             <div className="flex flex-col items-start justify-center gap-2 md:flex-row md:items-end">
               <Button
@@ -86,7 +86,7 @@ const TabletCatalogManager: React.FC = () => {
       </div>
 
       <TableListAdmin
-        Title_TableListAdmin={`Danh Sách Danh Mục Điện Thoại(${tabletCatalogs.length})`}
+        Title_TableListAdmin={`Danh Sách Danh Mục Máy Tính Bảng(${tabletCatalogs.length})`}
         table_head={
           <Table.Head className="bg-primary text-center text-white">
             <span>STT</span>
@@ -169,7 +169,7 @@ const TabletCatalogManager: React.FC = () => {
               )
             ) : (
               <tr>
-                <td colSpan={6}>Không có danh mục điện thoại nào!</td>
+                <td colSpan={6}>Không có danh mục Máy Tính Bảng nào!</td>
               </tr>
             )}
           </Table.Body>
