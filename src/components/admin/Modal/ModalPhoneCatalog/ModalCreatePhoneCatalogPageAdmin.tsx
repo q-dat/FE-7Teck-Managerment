@@ -109,14 +109,18 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
         }
       });
     }
-
     // Append các trường trong design_and_material
     if (formData.design_and_material) {
       Object.entries(formData.design_and_material).forEach(([key, value]) => {
-        data.append(`design_and_material[${key}]`, value);
+        if (Array.isArray(value)) {
+          value.forEach(item =>
+            data.append(`design_and_material[${key}][]`, item)
+          );
+        } else {
+          data.append(`design_and_material[${key}]`, value);
+        }
       });
     }
-
     try {
       await createPhoneCatalog(data);
       reset();
@@ -174,7 +178,7 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
               <InputModal
                 type="file"
                 {...register('img', { required: true })}
-                placeholder="Chèn ảnh thu nhỏ"
+                placeholder="Chèn hình ảnh"
               />
             </div>
             {/* Cấu hình và bộ nhớ */}

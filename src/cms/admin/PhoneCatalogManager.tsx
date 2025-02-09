@@ -50,12 +50,12 @@ const PhoneCatalogManager: React.FC = () => {
       try {
         await deletePhoneCatalog(selectedPhoneCatalogId);
         closeModalDeleteAdmin();
-        Toastify('Bạn đã xoá danh mục điện thoại thành công', 201);
+        Toastify('Bạn đã xoá danh mục thành công', 201);
         getAllPhoneCatalogs();
       } catch {
         const errorMessPhoneCatalog = isIErrorResponse(error)
           ? error.data?.message
-          : 'Xoá sản phẩm thất bại!';
+          : 'Xoá danh mục thất bại!';
         Toastify(`Lỗi: ${errorMessPhoneCatalog}`, 500);
       }
     }

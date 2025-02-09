@@ -20,7 +20,7 @@ export interface ITabletCatalog {
     t_cat_operating_system: string; // Hệ điều hành
     t_cat_cpu_chip: string; // Chip xử lý (CPU)
     t_cat_cpu_speed: string; // Tốc độ CPU
-    t_cat_gpu: string; // Chip đồ hoạ (GPU) - Apple GPU 4 nhân
+    t_cat_gpu: string; // Chip đồ hoạ (GPU)
   };
   t_cat_memory_and_storage: {
     // Bộ nhớ & Lưu trữ
