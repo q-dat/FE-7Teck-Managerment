@@ -45,13 +45,13 @@ const ModalCreateTabletPageAdmin: React.FC<ModalCreateAdminProps> = ({
 
   const onSubmit: SubmitHandler<ITablet> = async formData => {
     const data = new FormData();
-    data.append('name', formData.tablet_name || '');
+    data.append('tablet_name', formData.tablet_name || '');
     data.append('tablet_catalog_id', formData.tablet_catalog_id._id);
-    data.append('color', formData.tablet_color);
-    data.append('price', formData.tablet_price?.toString() || '');
-    data.append('sale', formData.tablet_sale?.toString() || '');
-    data.append('status', formData.tablet_status || '');
-    data.append('des', formData.tablet_des || '');
+    data.append('tablet_color', formData.tablet_color);
+    data.append('tablet_price', formData.tablet_price?.toString() || '');
+    data.append('tablet_sale', formData.tablet_sale?.toString() || '');
+    data.append('tablet_status', formData.tablet_status || '');
+    data.append('tablet_des', formData.tablet_des || '');
 
     // Thêm ảnh chính
     if (formData.tablet_img && formData.tablet_img[0]) {
@@ -110,20 +110,18 @@ const ModalCreateTabletPageAdmin: React.FC<ModalCreateAdminProps> = ({
             <div className="flex items-center">
               <ReactSelect
                 placeholder="Chọn danh mục*"
-                name="tablet__catalog_id._id"
+                name="tablet_catalog_id._id"
                 control={control}
                 options={tabletCatalog}
                 isMulti={false}
                 className=""
               />
             </div>
-
             <InputModal
               type="text"
-              {...(register('tablet_color'), { required: true })}
+              {...register('tablet_color', { required: true })}
               placeholder="Nhập màu*"
             />
-
             <InputModal
               type="number"
               {...register('tablet_price', { required: true })}
@@ -137,7 +135,7 @@ const ModalCreateTabletPageAdmin: React.FC<ModalCreateAdminProps> = ({
 
             <InputModal
               type="text"
-              {...(register('tablet_status'), { required: true })}
+              {...register('tablet_status', { required: true })}
               placeholder="Tình trạng*"
             />
             <InputModal
@@ -148,7 +146,7 @@ const ModalCreateTabletPageAdmin: React.FC<ModalCreateAdminProps> = ({
             <LabelForm title={'Hình ảnh*'} />
             <InputModal
               type="file"
-              {...(register('tablet_img'), { required: true })}
+              {...register('tablet_img', { required: true })}
               placeholder="Hình ảnh*"
             />
             <LabelForm title={'Ảnh thu nhỏ'} />
