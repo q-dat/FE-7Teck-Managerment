@@ -109,7 +109,7 @@ const ModalEditPostPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({
               <Select
                 defaultValue=""
                 className="mb-5 w-full border border-gray-50 bg-white text-black focus:border focus:border-gray-50 focus:outline-none dark:bg-gray-700 dark:text-white"
-                {...register('catalog', { required: true })}
+                {...register('catalog')}
               >
                 <option value="" disabled>
                   Chọn Danh Mục

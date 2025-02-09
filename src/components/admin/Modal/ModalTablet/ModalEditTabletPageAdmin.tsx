@@ -143,7 +143,7 @@ const ModalEditTabletPageAdmin: React.FC<ModalEditPageAdminProps> = ({
               <LabelForm title={'Tên danh mục'} />
               <InputModal
                 type="text"
-                {...register('tablet_name', { required: true })}
+                {...register('tablet_name')}
                 placeholder="Tên danh mục"
               />
               <LabelForm title={'Danh mục'} />
@@ -160,7 +160,7 @@ const ModalEditTabletPageAdmin: React.FC<ModalEditPageAdminProps> = ({
               <LabelForm title={'Giá'} />
               <InputModal
                 type="number"
-                {...register('tablet_price', { required: true })}
+                {...register('tablet_price')}
                 placeholder="Giá"
               />
               <LabelForm title={'Giá giảm'} />

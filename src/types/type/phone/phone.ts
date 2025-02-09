@@ -9,7 +9,7 @@ export interface IPhone {
   img: string;
   thumbnail?: string[];
   price: number;
-  sale: number;
+  sale?: number;
   status: string;
   des?: string;
   note?: string;

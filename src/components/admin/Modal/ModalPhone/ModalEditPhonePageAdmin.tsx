@@ -143,7 +143,7 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
               <LabelForm title={'Tên danh mục'} />
               <InputModal
                 type="text"
-                {...register('name', { required: true })}
+                {...register('name')}
                 placeholder="Tên danh mục"
               />
               <LabelForm title={'Danh mục'} />
@@ -160,7 +160,7 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
               <LabelForm title={'Giá'} />
               <InputModal
                 type="number"
-                {...register('price', { required: true })}
+                {...register('price')}
                 placeholder="Giá"
               />
               <LabelForm title={'Giá giảm'} />

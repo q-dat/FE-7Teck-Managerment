@@ -9,7 +9,7 @@ export interface IMacbook {
   macbook_img: string;
   macbook_thumbnail?: string[];
   macbook_price: number;
-  macbook_sale: number;
+  macbook_sale?: number;
   macbook_status: string;
   macbook_des?: string;
   macbook_note?: string;

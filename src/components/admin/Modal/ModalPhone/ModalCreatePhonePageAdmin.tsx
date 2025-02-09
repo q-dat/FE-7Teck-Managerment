@@ -120,7 +120,7 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreateAdminProps> = ({
 
             <InputModal
               type="text"
-              {...register('color')}
+              {...register('color'), { required: true }}
               placeholder="Nhập màu*"
             />
 
@@ -137,14 +137,14 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreateAdminProps> = ({
 
             <InputModal
               type="text"
-              {...register('status')}
+              {...register('status'), { required: true }}
               placeholder="Tình trạng*"
             />
             <InputModal type="text" {...register('des')} placeholder="Mô tả" />
             <LabelForm title={'Hình ảnh*'} />
             <InputModal
               type="file"
-              {...register('img')}
+              {...register('img'), { required: true }}
               placeholder="Hình ảnh*"
             />
             <LabelForm title={'Ảnh thu nhỏ'} />

@@ -120,7 +120,7 @@ const ModalCreateTabletPageAdmin: React.FC<ModalCreateAdminProps> = ({
 
             <InputModal
               type="text"
-              {...register('tablet_color')}
+              {...(register('tablet_color'), { required: true })}
               placeholder="Nhập màu*"
             />
 
@@ -137,7 +137,7 @@ const ModalCreateTabletPageAdmin: React.FC<ModalCreateAdminProps> = ({
 
             <InputModal
               type="text"
-              {...register('tablet_status')}
+              {...(register('tablet_status'), { required: true })}
               placeholder="Tình trạng*"
             />
             <InputModal
@@ -148,7 +148,7 @@ const ModalCreateTabletPageAdmin: React.FC<ModalCreateAdminProps> = ({
             <LabelForm title={'Hình ảnh*'} />
             <InputModal
               type="file"
-              {...register('tablet_img')}
+              {...(register('tablet_img'), { required: true })}
               placeholder="Hình ảnh*"
             />
             <LabelForm title={'Ảnh thu nhỏ'} />

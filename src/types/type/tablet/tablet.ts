@@ -9,7 +9,7 @@ export interface ITablet {
   tablet_img: string;
   tablet_thumbnail?: string[];
   tablet_price: number;
-  tablet_sale: number;
+  tablet_sale?: number;
   tablet_status: string;
   tablet_des?: string;
   tablet_note?: string;
