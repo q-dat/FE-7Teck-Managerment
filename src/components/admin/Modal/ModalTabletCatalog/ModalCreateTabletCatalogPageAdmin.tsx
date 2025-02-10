@@ -496,6 +496,7 @@ const ModalCreateTabletCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
                 placeholder="Nhập hãng"
               />
             </div>
+            {/*  */}
             <div className="w-full">
               <ReactQuill
                 value={editorValue}

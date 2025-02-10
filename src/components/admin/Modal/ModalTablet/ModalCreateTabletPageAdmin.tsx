@@ -19,7 +19,7 @@ interface Option {
   label: string;
 }
 
-const ModalCreateWindowsPageAdmin: React.FC<ModalCreateAdminProps> = ({
+const ModalCreateTabletPageAdmin: React.FC<ModalCreateAdminProps> = ({
   isOpen,
   onClose
 }) => {
@@ -180,4 +180,4 @@ const ModalCreateWindowsPageAdmin: React.FC<ModalCreateAdminProps> = ({
   );
 };
 
-export default ModalCreateWindowsPageAdmin;
+export default ModalCreateTabletPageAdmin;

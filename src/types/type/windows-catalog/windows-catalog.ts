@@ -12,8 +12,8 @@ export interface IWindowsCatalog {
   w_cat_processor: {
     // Bộ xử lý
     w_cat_cpu_technology: string; // Công nghệ CPU
-    w_cat_core_count: number; // Số nhân
-    w_cat_thread_count: number; // Số luồng
+    w_cat_core_count: string; // Số nhân
+    w_cat_thread_count: string; // Số luồng
     w_cat_cpu_speed: string; // Tốc độ CPU
     w_cat_max_speed: string; // Tốc độ tối đa
   };
@@ -39,7 +39,7 @@ export interface IWindowsCatalog {
     w_cat_audio_technology: string; // Công nghệ âm thanh
   };
   w_cat_connectivity_and_ports: {
-    // Cổng kết nối & tính năng mở rộng
+    // Cổng kết nối & Tính năng mở rộng
     w_cat_ports: string[]; // Cổng giao tiếp
     w_cat_wireless_connectivity: string[]; // Kết nối không dây
     w_cat_card_reader: string; // Khe đọc thẻ nhớ

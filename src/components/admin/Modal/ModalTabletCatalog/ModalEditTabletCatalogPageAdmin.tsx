@@ -60,24 +60,57 @@ const ModalEditTabletCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
       // Lưu lại đường dẫn ảnh hiện tại
       setExistingImg(tabletData.t_cat_img);
 
-      // Các trường con trong `t_cat_display`
-      setValue(
-        't_cat_display.t_cat_screen_technology',
-        tabletData.t_cat_display?.t_cat_screen_technology
-      );
-      setValue(
-        't_cat_display.t_cat_resolution',
-        tabletData.t_cat_display?.t_cat_resolution
-      );
-      setValue(
-        't_cat_display.t_cat_screen_size',
-        tabletData.t_cat_display?.t_cat_screen_size
-      );
+     // Các trường con trong `t_cat_display`
+      setValue('t_cat_display.t_cat_screen_technology', tabletData.t_cat_display.t_cat_screen_technology);
+      setValue('t_cat_display.t_cat_resolution', tabletData.t_cat_display.t_cat_resolution);
+      setValue('t_cat_display.t_cat_screen_size', tabletData.t_cat_display.t_cat_screen_size);
+
       // Các trường con trong `t_cat_operating_system_and_cpu`
-      setValue(
-        't_cat_operating_system_and_cpu.t_cat_operating_system',
-        tabletData.t_cat_operating_system_and_cpu?.t_cat_operating_system
-      );
+      setValue('t_cat_operating_system_and_cpu.t_cat_operating_system', tabletData.t_cat_operating_system_and_cpu.t_cat_operating_system);
+      setValue('t_cat_operating_system_and_cpu.t_cat_cpu_chip', tabletData.t_cat_operating_system_and_cpu.t_cat_cpu_chip);
+      setValue('t_cat_operating_system_and_cpu.t_cat_cpu_speed', tabletData.t_cat_operating_system_and_cpu.t_cat_cpu_speed);
+      setValue('t_cat_operating_system_and_cpu.t_cat_gpu', tabletData.t_cat_operating_system_and_cpu.t_cat_gpu);
+
+      // Các trường con trong `t_cat_memory_and_storage`
+      setValue('t_cat_memory_and_storage.t_cat_ram', tabletData.t_cat_memory_and_storage.t_cat_ram);
+      setValue('t_cat_memory_and_storage.t_cat_storage_capacity', tabletData.t_cat_memory_and_storage.t_cat_storage_capacity);
+      setValue('t_cat_memory_and_storage.t_cat_available_storage', tabletData.t_cat_memory_and_storage.t_cat_available_storage);
+
+      // Các trường con trong `t_cat_rear_camera`
+      setValue('t_cat_rear_camera.t_cat_resolution', tabletData.t_cat_rear_camera.t_cat_resolution);
+      setValue('t_cat_rear_camera.t_cat_video_recording', tabletData.t_cat_rear_camera.t_cat_video_recording);
+      setValue('t_cat_rear_camera.t_cat_features', tabletData.t_cat_rear_camera.t_cat_features);
+
+      // Các trường con trong `t_cat_front_camera`
+      setValue('t_cat_front_camera.t_cat_resolution', tabletData.t_cat_front_camera.t_cat_resolution);
+      setValue('t_cat_front_camera.t_cat_features', tabletData.t_cat_front_camera.t_cat_features);
+
+      // Các trường con trong `t_cat_connectivity`
+      setValue('t_cat_connectivity.t_cat_mobile_network', tabletData.t_cat_connectivity.t_cat_mobile_network);
+      setValue('t_cat_connectivity.t_cat_sim', tabletData.t_cat_connectivity.t_cat_sim);
+      setValue('t_cat_connectivity.t_cat_calls', tabletData.t_cat_connectivity.t_cat_calls);
+      setValue('t_cat_connectivity.t_cat_wifi', tabletData.t_cat_connectivity.t_cat_wifi);
+      setValue('t_cat_connectivity.t_cat_gps', tabletData.t_cat_connectivity.t_cat_gps);
+      setValue('t_cat_connectivity.t_cat_bluetooth', tabletData.t_cat_connectivity.t_cat_bluetooth);
+      setValue('t_cat_connectivity.t_cat_charging_port', tabletData.t_cat_connectivity.t_cat_charging_port);
+      setValue('t_cat_connectivity.t_cat_headphone_jack', tabletData.t_cat_connectivity.t_cat_headphone_jack);
+
+      // Các trường con trong `t_cat_features`
+      setValue('t_cat_features.t_cat_special_features', tabletData.t_cat_features.t_cat_special_features);
+
+      // Các trường con trong `t_cat_battery_and_charging`
+      setValue('t_cat_battery_and_charging.t_cat_battery_capacity', tabletData.t_cat_battery_and_charging.t_cat_battery_capacity);
+      setValue('t_cat_battery_and_charging.t_cat_battery_type', tabletData.t_cat_battery_and_charging.t_cat_battery_type);
+      setValue('t_cat_battery_and_charging.t_cat_battery_technology', tabletData.t_cat_battery_and_charging.t_cat_battery_technology);
+      setValue('t_cat_battery_and_charging.t_cat_max_charging_support', tabletData.t_cat_battery_and_charging.t_cat_max_charging_support);
+      setValue('t_cat_battery_and_charging.t_cat_included_charger', tabletData.t_cat_battery_and_charging.t_cat_included_charger);
+
+      // Các trường con trong `t_cat_general_information`
+      setValue('t_cat_general_information.t_cat_material', tabletData.t_cat_general_information.t_cat_material);
+      setValue('t_cat_general_information.t_cat_dimensions_and_weight', tabletData.t_cat_general_information.t_cat_dimensions_and_weight);
+      setValue('t_cat_general_information.t_cat_launch_date', tabletData.t_cat_general_information.t_cat_launch_date);
+      setValue('t_cat_general_information.t_cat_brand', tabletData.t_cat_general_information.t_cat_brand);
+
     }
   }, [tabletCatalogs, tabletCatalogId, setValue]);
   const onSubmit: SubmitHandler<ITabletCatalog> = async formData => {
@@ -460,32 +493,23 @@ const ModalEditTabletCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                 placeholder="Nhập hãng"
               />
             </div>
-            <div className="w-full">
-              <ReactQuill
-                value={editorValue}
-                onChange={setEditorValue}
-                theme="snow"
-                modules={modules}
-                placeholder="Nội dung mô tả..."
+            <div className="flex w-full flex-col items-start justify-center">
+              <LabelForm title={'Nội dung'} />
+              <Controller
+                name="t_cat_content"
+                control={control}
+                defaultValue={editorValue}
+                render={({ field }) => (
+                  <ReactQuill
+                    value={field.value || ''}
+                    onChange={value => field.onChange(value)}
+                    theme="snow"
+                    modules={modules}
+                    placeholder="Nội dung mô tả..."
+                  />
+                )}
               />
             </div>
-          </div>
-          <div className="flex w-full flex-col items-start justify-center">
-            <LabelForm title={'Nội dung'} />
-            <Controller
-              name="t_cat_content"
-              control={control}
-              defaultValue={editorValue}
-              render={({ field }) => (
-                <ReactQuill
-                  value={field.value || ''}
-                  onChange={value => field.onChange(value)}
-                  theme="snow"
-                  modules={modules}
-                  placeholder="Nội dung mô tả..."
-                />
-              )}
-            />
           </div>
           <div className="mt-5 space-x-5 text-center">
             <Button

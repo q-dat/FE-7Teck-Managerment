@@ -13,7 +13,7 @@ import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
 import NavbarAdmin from '../../components/admin/Reponsive/Mobile/NavbarAdmin';
 import { WindowsContext } from '../../context/windows/WindowsContext';
 import { IWindows } from '../../types/type/windows/windows';
-import ModalCreateWindowsPageAdmin from '../../components/admin/Modal/ModalTablet/ModalCreateTabletPageAdmin';
+import ModalCreateWindowsPageAdmin from '../../components/admin/Modal/ModalWindows/ModalCreateWindowsPageAdmin';
 import ModalDeleteWindowsPageAdmin from '../../components/admin/Modal/ModalWindows/ModalDeleteWindowsPageAdmin';
 import ModalEditWindowsPageAdmin from '../../components/admin/Modal/ModalWindows/ModalEditWindowsPageAdmin';
 

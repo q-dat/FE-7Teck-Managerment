@@ -12,8 +12,8 @@ export interface IMacbookCatalog {
   m_cat_processor: {
     // Bộ xử lý
     m_cat_cpu_technology: string; // Công nghệ CPU
-    m_cat_core_count: number; // Số nhân
-    m_cat_thread_count: number; // Số luồng
+    m_cat_core_count: string; // Số nhân
+    m_cat_thread_count: string; // Số luồng
     m_cat_cpu_speed: string; // Tốc độ CPU
     m_cat_max_speed: string; // Tốc độ tối đa
   };
