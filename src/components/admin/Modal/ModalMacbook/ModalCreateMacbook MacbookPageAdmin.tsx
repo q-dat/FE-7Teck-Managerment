@@ -5,9 +5,9 @@ import InputModal from '../../InputModal';
 import { Button } from 'react-daisyui';
 import LabelForm from '../../LabelForm';
 import ReactSelect from '../../../orther/react-select/ReactSelect';
-import { ITablet } from '../../../../types/type/tablet/tablet';
-import { TabletContext } from '../../../../context/tablet/TabletContext';
-import { TabletCatalogContext } from '../../../../context/tablet-catalog/TabletCatalogContext';
+import { MacbookContext } from '../../../../context/macbook/MacbookContext';
+import { IMacbook } from '../../../../types/type/macbook/macbook';
+import { MacbookCatalogContext } from '../../../../context/macbook-catalog/MacbookCatalogContext';
 
 interface ModalCreateAdminProps {
   isOpen: boolean;
@@ -19,60 +19,60 @@ interface Option {
   label: string;
 }
 
-const ModalCreateWindowsPageAdmin: React.FC<ModalCreateAdminProps> = ({
+const ModalCreateMacbookPageAdmin: React.FC<ModalCreateAdminProps> = ({
   isOpen,
   onClose
 }) => {
-  const { loading, createTablet, getAllTablets } = useContext(TabletContext);
+  const { loading, createMacbook, getAllMacbook } = useContext(MacbookContext);
   const isLoading = loading.create;
-  const { control, register, handleSubmit, reset } = useForm<ITablet>();
+  const { control, register, handleSubmit, reset } = useForm<IMacbook>();
 
-  // TabletCatalog
-  const { tabletCatalogs } = useContext(TabletCatalogContext);
+  // macbookCatalog
+  const { macbookCatalogs } = useContext(MacbookCatalogContext);
 
   // react-select
-  const tabletCatalog: Option[] = tabletCatalogs.map(tabletCatalog => ({
-    value: tabletCatalog._id,
-    label: `${tabletCatalog.t_cat_name}  \u00A0
+  const macbookCatalog: Option[] = macbookCatalogs.map(macCatalog => ({
+    value: macCatalog._id,
+    label: `${macCatalog.m_cat_name}  \u00A0
     ${
-      tabletCatalog?.t_cat_status === 0
+      macCatalog?.m_cat_status === 0
         ? '(Máy mới)'
-        : tabletCatalog?.t_cat_status === 1
+        : macCatalog?.m_cat_status === 1
           ? '(Đã sử dụng)'
-          : tabletCatalog?.t_cat_status
+          : macCatalog?.m_cat_status
     }`
   }));
 
-  const onSubmit: SubmitHandler<ITablet> = async formData => {
+  const onSubmit: SubmitHandler<IMacbook> = async formData => {
     const data = new FormData();
-    data.append('tablet_name', formData.tablet_name || '');
-    data.append('tablet_catalog_id', formData.tablet_catalog_id._id);
-    data.append('tablet_color', formData.tablet_color);
-    data.append('tablet_price', formData.tablet_price?.toString() || '');
-    data.append('tablet_sale', formData.tablet_sale?.toString() || '');
-    data.append('tablet_status', formData.tablet_status || '');
-    data.append('tablet_des', formData.tablet_des || '');
+    data.append('macbook_name', formData.macbook_name || '');
+    data.append('macbook_catalog_id', formData.macbook_catalog_id._id);
+    data.append('macbook_color', formData.macbook_color);
+    data.append('macbook_price', formData.macbook_price?.toString() || '');
+    data.append('macbook_sale', formData.macbook_sale?.toString() || '');
+    data.append('macbook_status', formData.macbook_status || '');
+    data.append('macbook_des', formData.macbook_des || '');
 
     // Thêm ảnh chính
-    if (formData.tablet_img && formData.tablet_img[0]) {
-      data.append('tablet_img', formData.tablet_img[0]);
+    if (formData.macbook_img && formData.macbook_img[0]) {
+      data.append('macbook_img', formData.macbook_img[0]);
     }
 
     // Thêm nhiều ảnh thu nhỏ
-    if (formData.tablet_thumbnail && formData.tablet_thumbnail.length > 0) {
-      Array.from(formData.tablet_thumbnail).forEach(file => {
-        data.append('tablet_thumbnail', file); // Thêm từng file vào FormData
+    if (formData.macbook_thumbnail && formData.macbook_thumbnail.length > 0) {
+      Array.from(formData.macbook_thumbnail).forEach(file => {
+        data.append('macbook_thumbnail', file); // Thêm từng file vào FormData
       });
     }
 
     try {
-      await createTablet(data);
+      await createMacbook(data);
       reset();
-      getAllTablets();
+      getAllMacbook();
       Toastify('Tạo sản phẩm thành công!', 201);
       onClose();
     } catch (err) {
-      getAllTablets();
+      getAllMacbook();
       Toastify(`Lỗi: ${err}`, 500);
     }
   };
@@ -104,55 +104,55 @@ const ModalCreateWindowsPageAdmin: React.FC<ModalCreateAdminProps> = ({
 
             <InputModal
               type="text"
-              {...register('tablet_name', { required: true })}
+              {...register('macbook_name', { required: true })}
               placeholder="Tên sản phẩm*"
             />
             <div className="flex items-center">
               <ReactSelect
                 placeholder="Chọn danh mục*"
-                name="tablet_catalog_id._id"
+                name="macbook_catalog_id._id"
                 control={control}
-                options={tabletCatalog}
+                options={macbookCatalog}
                 isMulti={false}
                 className=""
               />
             </div>
             <InputModal
               type="text"
-              {...register('tablet_color', { required: true })}
+              {...register('macbook_color', { required: true })}
               placeholder="Nhập màu*"
             />
             <InputModal
               type="number"
-              {...register('tablet_price', { required: true })}
+              {...register('macbook_price', { required: true })}
               placeholder="Giá* (Hệ số x1000: 1triệu = 1000)"
             />
             <InputModal
               type="number"
-              {...register('tablet_sale')}
+              {...register('macbook_sale')}
               placeholder="Nhập giá giảm (Hệ số x1000: 1triệu = 1000)"
             />
 
             <InputModal
               type="text"
-              {...register('tablet_status', { required: true })}
+              {...register('macbook_status', { required: true })}
               placeholder="Tình trạng*"
             />
             <InputModal
               type="text"
-              {...register('tablet_des')}
+              {...register('macbook_des')}
               placeholder="Mô tả"
             />
             <LabelForm title={'Hình ảnh*'} />
             <InputModal
               type="file"
-              {...register('tablet_img', { required: true })}
+              {...register('macbook_img', { required: true })}
               placeholder="Hình ảnh*"
             />
             <LabelForm title={'Ảnh thu nhỏ'} />
             <InputModal
               type="file"
-              {...register('tablet_thumbnail')}
+              {...register('macbook_thumbnail')}
               placeholder="Chèn ảnh thu nhỏ"
               multiple
             />
@@ -180,4 +180,4 @@ const ModalCreateWindowsPageAdmin: React.FC<ModalCreateAdminProps> = ({
   );
 };
 
-export default ModalCreateWindowsPageAdmin;
+export default ModalCreateMacbookPageAdmin;

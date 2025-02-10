@@ -5,9 +5,9 @@ import InputModal from '../../InputModal';
 import { Button } from 'react-daisyui';
 import LabelForm from '../../LabelForm';
 import ReactSelect from '../../../orther/react-select/ReactSelect';
-import { ITablet } from '../../../../types/type/tablet/tablet';
-import { TabletContext } from '../../../../context/tablet/TabletContext';
-import { TabletCatalogContext } from '../../../../context/tablet-catalog/TabletCatalogContext';
+import { WindowsContext } from '../../../../context/windows/WindowsContext';
+import { WindowsCatalogContext } from '../../../../context/windows-catalog/WindowsCatalogContext';
+import { IWindows } from '../../../../types/type/windows/windows';
 
 interface ModalCreateAdminProps {
   isOpen: boolean;
@@ -23,56 +23,56 @@ const ModalCreateWindowsPageAdmin: React.FC<ModalCreateAdminProps> = ({
   isOpen,
   onClose
 }) => {
-  const { loading, createTablet, getAllTablets } = useContext(TabletContext);
+  const { loading, createWindows, getAllWindows } = useContext(WindowsContext);
   const isLoading = loading.create;
-  const { control, register, handleSubmit, reset } = useForm<ITablet>();
+  const { control, register, handleSubmit, reset } = useForm<IWindows>();
 
-  // TabletCatalog
-  const { tabletCatalogs } = useContext(TabletCatalogContext);
+  // windowsCatalog
+  const { windowsCatalogs } = useContext(WindowsCatalogContext);
 
   // react-select
-  const tabletCatalog: Option[] = tabletCatalogs.map(tabletCatalog => ({
-    value: tabletCatalog._id,
-    label: `${tabletCatalog.t_cat_name}  \u00A0
+  const windowsCatalog: Option[] = windowsCatalogs.map(winCatalog => ({
+    value: winCatalog._id,
+    label: `${winCatalog.w_cat_name}  \u00A0
     ${
-      tabletCatalog?.t_cat_status === 0
+      winCatalog?.w_cat_status === 0
         ? '(Máy mới)'
-        : tabletCatalog?.t_cat_status === 1
+        : winCatalog?.w_cat_status === 1
           ? '(Đã sử dụng)'
-          : tabletCatalog?.t_cat_status
+          : winCatalog?.w_cat_status
     }`
   }));
 
-  const onSubmit: SubmitHandler<ITablet> = async formData => {
+  const onSubmit: SubmitHandler<IWindows> = async formData => {
     const data = new FormData();
-    data.append('tablet_name', formData.tablet_name || '');
-    data.append('tablet_catalog_id', formData.tablet_catalog_id._id);
-    data.append('tablet_color', formData.tablet_color);
-    data.append('tablet_price', formData.tablet_price?.toString() || '');
-    data.append('tablet_sale', formData.tablet_sale?.toString() || '');
-    data.append('tablet_status', formData.tablet_status || '');
-    data.append('tablet_des', formData.tablet_des || '');
+    data.append('windows_name', formData.windows_name || '');
+    data.append('windows_catalog_id', formData.windows_catalog_id._id);
+    data.append('windows_color', formData.windows_color);
+    data.append('windows_price', formData.windows_price?.toString() || '');
+    data.append('windows_sale', formData.windows_sale?.toString() || '');
+    data.append('windows_status', formData.windows_status || '');
+    data.append('windows_des', formData.windows_des || '');
 
     // Thêm ảnh chính
-    if (formData.tablet_img && formData.tablet_img[0]) {
-      data.append('tablet_img', formData.tablet_img[0]);
+    if (formData.windows_img && formData.windows_img[0]) {
+      data.append('windows_img', formData.windows_img[0]);
     }
 
     // Thêm nhiều ảnh thu nhỏ
-    if (formData.tablet_thumbnail && formData.tablet_thumbnail.length > 0) {
-      Array.from(formData.tablet_thumbnail).forEach(file => {
-        data.append('tablet_thumbnail', file); // Thêm từng file vào FormData
+    if (formData.windows_thumbnail && formData.windows_thumbnail.length > 0) {
+      Array.from(formData.windows_thumbnail).forEach(file => {
+        data.append('windows_thumbnail', file); // Thêm từng file vào FormData
       });
     }
 
     try {
-      await createTablet(data);
+      await createWindows(data);
       reset();
-      getAllTablets();
+      getAllWindows();
       Toastify('Tạo sản phẩm thành công!', 201);
       onClose();
     } catch (err) {
-      getAllTablets();
+      getAllWindows();
       Toastify(`Lỗi: ${err}`, 500);
     }
   };
@@ -104,55 +104,55 @@ const ModalCreateWindowsPageAdmin: React.FC<ModalCreateAdminProps> = ({
 
             <InputModal
               type="text"
-              {...register('tablet_name', { required: true })}
+              {...register('windows_name', { required: true })}
               placeholder="Tên sản phẩm*"
             />
             <div className="flex items-center">
               <ReactSelect
                 placeholder="Chọn danh mục*"
-                name="tablet_catalog_id._id"
+                name="windows_catalog_id._id"
                 control={control}
-                options={tabletCatalog}
+                options={windowsCatalog}
                 isMulti={false}
                 className=""
               />
             </div>
             <InputModal
               type="text"
-              {...register('tablet_color', { required: true })}
+              {...register('windows_color', { required: true })}
               placeholder="Nhập màu*"
             />
             <InputModal
               type="number"
-              {...register('tablet_price', { required: true })}
+              {...register('windows_price', { required: true })}
               placeholder="Giá* (Hệ số x1000: 1triệu = 1000)"
             />
             <InputModal
               type="number"
-              {...register('tablet_sale')}
+              {...register('windows_sale')}
               placeholder="Nhập giá giảm (Hệ số x1000: 1triệu = 1000)"
             />
 
             <InputModal
               type="text"
-              {...register('tablet_status', { required: true })}
+              {...register('windows_status', { required: true })}
               placeholder="Tình trạng*"
             />
             <InputModal
               type="text"
-              {...register('tablet_des')}
+              {...register('windows_des')}
               placeholder="Mô tả"
             />
             <LabelForm title={'Hình ảnh*'} />
             <InputModal
               type="file"
-              {...register('tablet_img', { required: true })}
+              {...register('windows_img', { required: true })}
               placeholder="Hình ảnh*"
             />
             <LabelForm title={'Ảnh thu nhỏ'} />
             <InputModal
               type="file"
-              {...register('tablet_thumbnail')}
+              {...register('windows_thumbnail')}
               placeholder="Chèn ảnh thu nhỏ"
               multiple
             />

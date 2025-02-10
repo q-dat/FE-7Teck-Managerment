@@ -1,4 +1,4 @@
-import { IWindowsCatalog } from "../windows-catalog/windows-catalog";
+import { IWindowsCatalog } from '../windows-catalog/windows-catalog';
 
 export interface IWindows {
   _id: string;
@@ -9,7 +9,7 @@ export interface IWindows {
   windows_img: string;
   windows_thumbnail?: string[];
   windows_price: number;
-  windows_sale?: number;
+  windows_sale: number; // ?
   windows_status: string;
   windows_des?: string;
   windows_note?: string;
