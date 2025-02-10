@@ -99,7 +99,7 @@ export const WindowsCatalogProvider = ({
   const getAllWindowsCatalogs = useCallback(() => {
     fetchData(
       getAllWindowsCatalogsApi,
-      data => setWindowsCatalog(data?.windowsCatalog || []),
+      data => setWindowsCatalog(data?.windowsCatalogs || []),
       'getAll'
     );
   }, []);
