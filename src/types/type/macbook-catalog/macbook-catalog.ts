@@ -39,7 +39,7 @@ export interface IMacbookCatalog {
     m_cat_audio_technology: string; // Công nghệ âm thanh
   };
   m_cat_connectivity_and_ports: {
-    // Cổng kết nối & tính năng mở rộng
+    // Cổng kết nối & Tính năng mở rộng
     m_cat_ports: string[]; // Cổng giao tiếp
     m_cat_wireless_connectivity: string[]; // Kết nối không dây
     m_cat_card_reader: string; // Khe đọc thẻ nhớ

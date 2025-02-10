@@ -24,7 +24,7 @@ interface MacbookCatalogContextType {
     delete: boolean;
   };
   error: string | null;
-  getAllMacbookCatalog: () => void;
+  getAllMacbookCatalogs: () => void;
   getMacbookCatalogById: (_id: string) => Promise<IMacbookCatalog | undefined>;
   createMacbookCatalog: (
     macbookCatalogData: FormData
@@ -45,7 +45,7 @@ const defaultContextValue: MacbookCatalogContextType = {
     delete: false
   },
   error: null,
-  getAllMacbookCatalog: () => {},
+  getAllMacbookCatalogs: () => {},
   getMacbookCatalogById: async () => undefined,
   createMacbookCatalog: async () =>
     ({ data: { macbookCatalog: null } }) as AxiosResponse,
@@ -96,10 +96,10 @@ export const MacbookCatalogProvider = ({
   };
 
   // Get All MacbookCatalog
-  const getAllMacbookCatalog = useCallback(() => {
+  const getAllMacbookCatalogs = useCallback(() => {
     fetchData(
       getAllMacbookCatalogsApi,
-      data => setMacbookCatalog(data?.macbookCatalog || []),
+      data => setMacbookCatalog(data?.macbookCatalogs || []),
       'getAll'
     );
   }, []);
@@ -184,8 +184,8 @@ export const MacbookCatalogProvider = ({
   );
 
   useEffect(() => {
-    getAllMacbookCatalog();
-  }, [getAllMacbookCatalog]);
+    getAllMacbookCatalogs();
+  }, [getAllMacbookCatalogs]);
 
   return (
     <MacbookCatalogContext.Provider
@@ -193,7 +193,7 @@ export const MacbookCatalogProvider = ({
         macbookCatalogs,
         loading,
         error,
-        getAllMacbookCatalog,
+        getAllMacbookCatalogs,
         getMacbookCatalogById,
         createMacbookCatalog,
         updateMacbookCatalog,
