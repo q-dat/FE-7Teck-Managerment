@@ -69,7 +69,7 @@ const TipsAndTricksPage: React.FC = () => {
                   loading="lazy"
                   src={post?.imageUrl}
                   alt="Ảnh đại diện"
-                  className="h-[200px] w-full rounded-sm border object-cover xl:h-[300px]"
+                  className="h-[200px] w-full rounded-sm border object-contain xl:h-[300px]"
                 />
                 <p className="line-clamp-3 py-1 text-base text-black">
                   {post?.title}
