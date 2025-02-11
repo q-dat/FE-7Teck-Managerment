@@ -62,15 +62,17 @@ const TipsAndTricksPage: React.FC = () => {
                 className="relative cursor-pointer rounded border border-gray-50 bg-white p-2 shadow-inner hover:shadow-lg"
                 onClick={() => handlePostClick(post)}
               >
-                <p className="absolute left-1 top-1 rounded-sm bg-primary px-2 text-[12px] text-white">
+                <p className="absolute left-1 top-1 rounded-sm bg-primary px-2 text-[12px] text-white z-10">
                   {post?.catalog}
                 </p>
-                <img
-                  loading="lazy"
-                  src={post?.imageUrl}
-                  alt="Ảnh đại diện"
-                  className="h-auto w-full rounded-sm border"
-                />
+                <div className="overflow-hidden">
+                  <img
+                    loading="lazy"
+                    src={post?.imageUrl}
+                    alt="Ảnh đại diện"
+                    className="h-auto w-full rounded-sm border transition-transform duration-1000 ease-in-out hover:scale-110"
+                  />
+                </div>
                 <p className="line-clamp-3 py-1 text-base text-black">
                   {post?.title}
                 </p>

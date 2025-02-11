@@ -130,7 +130,7 @@ const PhoneFC: React.FC = () => {
                       <img
                         alt="Hình ảnh"
                         loading="lazy"
-                        className="absolute left-0 top-0 z-10 h-full w-full rounded-[5px] rounded-b-none object-contain"
+                        className="absolute left-0 top-0 z-10 h-full w-full rounded-[5px] rounded-b-none object-contain transition-transform duration-1000 ease-in-out hover:scale-110"
                         src={phone.img}
                       />
                     </div>
