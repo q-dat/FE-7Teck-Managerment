@@ -53,7 +53,7 @@ const NewsPage: React.FC = () => {
               Tin Mới Nhất
             </h1>
           </div>
-          <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-5">
             {posts.map(post => (
               <div
                 key={post?._id}
@@ -67,7 +67,7 @@ const NewsPage: React.FC = () => {
                   loading="lazy"
                   src={post?.imageUrl}
                   alt="Ảnh đại diện"
-                  className="h-[200px] w-full rounded-sm border object-contain xl:h-[300px]"
+                  className="h-auto w-full rounded-sm border"
                 />
                 <p className="line-clamp-3 py-1 text-base text-black">
                   {post?.title}

@@ -130,7 +130,7 @@ const PostDetail: React.FC = () => {
                 Bài viết nổi bật khác
               </h1>
             </div>
-            <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
+            <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-5">
               {otherPosts.slice(0, 8).map(post => (
                 <div
                   key={post?._id}
@@ -144,8 +144,8 @@ const PostDetail: React.FC = () => {
                     loading="lazy"
                     src={post?.imageUrl}
                     alt="Ảnh đại diện"
-                    className="h-[200px] w-full rounded-sm border object-contain xl:h-[300px]"
-                  />
+                    className="h-auto w-full rounded-sm border"
+                    />
                   <p className="line-clamp-3 py-1 text-sm font-bold text-primary">
                     {post?.title}
                   </p>
