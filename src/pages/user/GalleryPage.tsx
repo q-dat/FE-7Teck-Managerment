@@ -64,11 +64,11 @@ const GalleryPage: React.FC = () => {
         <div className="grid grid-flow-row grid-cols-2 gap-2 px-2 md:grid-cols-3 xl:grid-cols-6 xl:px-20">
           {currentGallerys.map(gallery => (
             <Zoom>
-              <div className="w-full">
+              <div className="w-full overflow-hidden">
                 <img
                   alt=""
                   src={`${gallery.gallery}`}
-                  className="h-full w-full rounded-md object-cover shadow"
+                  className="h-auto w-full rounded-md object-cover border shadow transition-transform duration-1000 ease-in-out hover:scale-110"
                 />
               </div>
             </Zoom>
