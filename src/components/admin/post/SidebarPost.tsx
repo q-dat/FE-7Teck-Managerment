@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Button, Menu } from 'react-daisyui';
+import { Menu } from 'react-daisyui';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Logo } from '../../../assets/images';
 import DarkModeToggle from '../../orther/darkmode/DarkMode';
@@ -77,7 +77,7 @@ const SidebarPost: React.FC<{}> = () => {
         </div>
         {/*  */}
         <div className="relative flex w-full flex-col justify-between bg-white dark:bg-gray-800 dark:text-white">
-          <div className="mb-2 mt-5 h-[280px] overflow-y-scroll scrollbar-hide md:h-[400px]">
+          <div className="mt-2 h-[280px] overflow-y-scroll scrollbar-hide md:h-[500px]">
             <Menu className="m-0 w-full flex-grow p-0 xl:px-2">
               {menuItems.map(item => {
                 const Icon = item.icon;
@@ -131,16 +131,6 @@ const SidebarPost: React.FC<{}> = () => {
       </div>
       {/*  */}
       <div className="flex flex-col items-center">
-        <Link to="">
-          <div className="rounded-lg bg-primary p-4 text-center text-white">
-            <p className="w-40 text-center text-xs">
-              Chọn nút bên dưới để thêm sản phẩm!
-            </p>
-            <Button className="my-4 rounded-lg bg-white text-primary hover:bg-white">
-              +Thêm Danh Mục
-            </Button>
-          </div>
-        </Link>
         <div className="py-4 text-xs text-black dark:text-white">
           <p className="font-bold">Quản trị 7Teck </p>
           <p className="font-light">© 2025 Điểu Quốc Đạt</p>

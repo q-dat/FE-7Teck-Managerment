@@ -68,7 +68,7 @@ const SidebarGallery: React.FC<{}> = () => {
         </div>
         {/*  */}
         <div className="relative flex w-full flex-col justify-between bg-white dark:bg-gray-800 dark:text-white">
-          <div className="mb-2 mt-5 h-[280px] overflow-y-scroll scrollbar-hide md:h-[400px]">
+          <div className="mt-2 h-[280px] overflow-y-scroll scrollbar-hide md:h-[500px]">
             <Menu className="m-0 w-full flex-grow p-0 xl:px-2">
               {menuItems.map(item => {
                 const Icon = item.icon;
