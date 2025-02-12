@@ -8,7 +8,7 @@ import React, {
 import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
 import { Link, useParams } from 'react-router-dom';
 import { PhoneContext } from '../../../context/phone/PhoneContext';
-import { phoneFieldMap } from '../../../components/orther/data/phoneFieldMap';
+import { phoneFieldMap } from '../../../types/type/data/phoneFieldMap';
 import { IoIosArrowDropdownCircle } from 'react-icons/io';
 import { Button } from 'react-daisyui';
 import {

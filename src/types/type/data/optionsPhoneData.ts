@@ -1,4 +1,4 @@
-export const optionsData = {
+export const optionsPhoneData = {
   rear_camera_video: [
     { value: '4K@30fps', label: '4K@30fps' },
     { value: '1080p@60fps', label: '1080p@60fps' }
@@ -44,3 +44,20 @@ export const optionsData = {
     { value: 'AAC', label: 'AAC' }
   ]
 };
+interface IOption {
+  value: string;
+  label: string;
+}
+export interface IOptionPhoneData {
+  rear_camera_video: IOption[];
+  rear_camera_features: IOption[];
+  front_camera_features: IOption[];
+  battery_technology: IOption[];
+  advanced_security: IOption[];
+  special_features: IOption[];
+  wifiOptions: IOption[];
+  gpsOptions: IOption[];
+  voice_recording: IOption[];
+  radio: IOption[];
+  music_playback: IOption[];
+}

@@ -9,7 +9,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { WindowsCatalogContext } from '../../../../context/windows-catalog/WindowsCatalogContext';
 import { IWindowsCatalog } from '../../../../types/type/windows-catalog/windows-catalog';
-import { optionsWindowsData } from '../../../orther/data/optionsWindowsData';
+import { optionsWindowsData } from '../../../../types/type/data/optionsWindowsData';
 
 const modules = {
   toolbar: [

@@ -6,10 +6,10 @@ import { Button } from 'react-daisyui';
 import Select from 'react-select';
 import LabelForm from '../../LabelForm';
 import { PhoneCatalogContext } from '../../../../context/phone-catalog/PhoneCatalogContext';
-import { optionsData } from '../../../orther/data/optionsData';
 import { IPhoneCatalog } from '../../../../types/type/phone-catalog/phone-catalog';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import { optionsPhoneData } from '../../../../types/type/data/optionsPhoneData';
 
 const modules = {
   toolbar: [
@@ -399,7 +399,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                   <LabelForm title={'Quay phim camera sau'} />
                   <Select
                     isMulti
-                    options={optionsData.rear_camera_video}
+                    options={optionsPhoneData.rear_camera_video}
                     onChange={selected =>
                       setValue(
                         'camera_and_screen.rear_camera_video',
@@ -418,7 +418,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                   <LabelForm title={'Tính năng camera sau'} />
                   <Select
                     isMulti
-                    options={optionsData.rear_camera_features}
+                    options={optionsPhoneData.rear_camera_features}
                     onChange={selected =>
                       setValue(
                         'camera_and_screen.rear_camera_features',
@@ -438,7 +438,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                 <LabelForm title={'Tính năng camera trước'} />
                 <Select
                   isMulti
-                  options={optionsData.front_camera_features}
+                  options={optionsPhoneData.front_camera_features}
                   onChange={selected =>
                     setValue(
                       'camera_and_screen.front_camera_features',
@@ -502,7 +502,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                 <LabelForm title={'Công nghệ pin'} />
                 <Select
                   isMulti
-                  options={optionsData.battery_technology}
+                  options={optionsPhoneData.battery_technology}
                   onChange={selected =>
                     setValue(
                       'battery_and_charging.battery_technology',
@@ -518,7 +518,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                 <LabelForm title={'Bảo mật nâng cao'} />
                 <Select
                   isMulti
-                  options={optionsData.advanced_security}
+                  options={optionsPhoneData.advanced_security}
                   onChange={selected =>
                     setValue(
                       'features.advanced_security',
@@ -531,7 +531,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                 <LabelForm title={'Tính năng đặc biệt'} />
                 <Select
                   isMulti
-                  options={optionsData.special_features}
+                  options={optionsPhoneData.special_features}
                   onChange={selected =>
                     setValue(
                       'features.special_features',
@@ -550,7 +550,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                 <LabelForm title={'Ghi âm'} />
                 <Select
                   isMulti
-                  options={optionsData.voice_recording}
+                  options={optionsPhoneData.voice_recording}
                   onChange={selected =>
                     setValue(
                       'features.voice_recording',
@@ -563,7 +563,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                 <LabelForm title={'Radio'} />
                 <Select
                   isMulti
-                  options={optionsData.radio}
+                  options={optionsPhoneData.radio}
                   onChange={selected =>
                     setValue(
                       'features.radio',
@@ -582,7 +582,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                 <LabelForm title={'Nghe nhạc'} />
                 <Select
                   isMulti
-                  options={optionsData.music_playback}
+                  options={optionsPhoneData.music_playback}
                   onChange={selected =>
                     setValue(
                       'features.music_playback',
@@ -610,7 +610,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                 <LabelForm title={'Wi-Fi'} />
                 <Select
                   isMulti
-                  options={optionsData.wifiOptions}
+                  options={optionsPhoneData.wifiOptions}
                   onChange={selected =>
                     setValue(
                       'connectivity.wifi',
@@ -623,7 +623,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                 <LabelForm title={'GPS'} />
                 <Select
                   isMulti
-                  options={optionsData.gpsOptions}
+                  options={optionsPhoneData.gpsOptions}
                   onChange={selected =>
                     setValue(
                       'connectivity.gps',

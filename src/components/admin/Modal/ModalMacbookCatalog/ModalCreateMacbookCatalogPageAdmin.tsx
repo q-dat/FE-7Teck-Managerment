@@ -5,7 +5,7 @@ import InputModal from '../../InputModal';
 import { Toastify } from '../../../../helper/Toastify';
 import Select from 'react-select';
 import LabelForm from '../../LabelForm';
-import { optionsMacbookData } from '../../../orther/data/optionsMacbookData';
+import { optionsMacbookData } from '../../../../types/type/data/optionsMacbookData';
 
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -391,11 +391,10 @@ const ModalCreateMacbookCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
                 )}
                 placeholder="Nhập đèn bàn phím"
               />
+              
               {/* Kích thước - Khối lượng - Pin */}
-
               <div className="my-2">
                 <LabelForm title={'Kích thước'} />
-
                 <Select
                   isMulti
                   options={optionsMacbookData.m_cat_dimensions}

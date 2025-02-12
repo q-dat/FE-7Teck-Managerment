@@ -7,7 +7,7 @@ import Select from 'react-select';
 import LabelForm from '../../LabelForm';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { optionsTabletData } from '../../../orther/data/optionsTabletData';
+import { optionsTabletData } from '../../../../types/type/data/optionsTabletData';
 import { TabletCatalogContext } from '../../../../context/tablet-catalog/TabletCatalogContext';
 import { ITabletCatalog } from '../../../../types/type/tablet-catalog/tablet-catalog';
 

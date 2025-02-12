@@ -9,7 +9,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { IMacbookCatalog } from '../../../../types/type/macbook-catalog/macbook-catalog';
 import { MacbookCatalogContext } from '../../../../context/macbook-catalog/MacbookCatalogContext';
-import { optionsMacbookData } from '../../../orther/data/optionsMacbookData';
+import { optionsMacbookData } from '../../../../types/type/data/optionsMacbookData';
 
 const modules = {
   toolbar: [
