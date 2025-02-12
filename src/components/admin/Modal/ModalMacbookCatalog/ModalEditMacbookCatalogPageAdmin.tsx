@@ -261,7 +261,7 @@ const ModalEditMacbookCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
             Cập nhật danh mục
           </p>
 
-          <div className="h-[500px] w-full overflow-y-auto scrollbar-hide">
+          <div className="h-[500px] w-full overflow-y-auto scrollbar-hide 2xl:h-[700px]">
             {/* Các trường cơ bản */}
             <div className="mt-5">
               <LabelForm title={'Tên danh mục sản phẩm*'} />
@@ -545,6 +545,7 @@ const ModalEditMacbookCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                   defaultValue={editorValue}
                   render={({ field }) => (
                     <ReactQuill
+                      className="w-full bg-white text-black"
                       value={field.value || ''}
                       onChange={value => field.onChange(value)}
                       theme="snow"

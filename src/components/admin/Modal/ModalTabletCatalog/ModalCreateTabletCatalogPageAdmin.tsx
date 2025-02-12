@@ -199,7 +199,7 @@ const ModalCreateTabletCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
           <p className="font-bold text-black dark:text-white">
             Tạo danh mục mới
           </p>
-          <div className="h-[500px] w-full overflow-y-auto scrollbar-hide">
+          <div className="h-[500px] w-full overflow-y-auto scrollbar-hide 2xl:h-[700px]">
             {/* Các trường cơ bản */}
             <div className="mt-5">
               <LabelForm title={'Tên danh mục sản phẩm*'} />
