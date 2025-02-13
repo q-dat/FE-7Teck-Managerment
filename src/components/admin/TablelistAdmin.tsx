@@ -15,7 +15,6 @@ const TableListAdmin: React.FC<TableListAdminProps> = ({
   Title_TableListAdmin
 }) => {
   return (
-    <div>
       <div className="dark:bg-opacity-8 w-full bg-white dark:bg-gray-800 md:rounded-md">
         {/* Navbar Admin */}
         <NavtableAdmin Title_NavtableAdmin={Title_TableListAdmin} />
@@ -29,7 +28,6 @@ const TableListAdmin: React.FC<TableListAdminProps> = ({
           </Table>
         </div>
       </div>
-    </div>
   );
 };
 

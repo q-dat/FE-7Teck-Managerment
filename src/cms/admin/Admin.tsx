@@ -10,7 +10,7 @@ const Admin: React.FC<{}> = () => {
   return (
     <div className="flex min-h-screen w-full flex-col bg-[#F3F2F7] dark:bg-gray-900">
       <div className="flex flex-1">
-        <div className="hidden xl:block">
+        <div className="z-10 hidden xl:block">
           <SidebarAdmin />
         </div>
         <div className="flex-1 xl:p-6">

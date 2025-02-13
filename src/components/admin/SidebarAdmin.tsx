@@ -14,6 +14,7 @@ import { WindowsCatalogContext } from '../../context/windows-catalog/WindowsCata
 import { WindowsContext } from '../../context/windows/WindowsContext';
 import { MacbookContext } from '../../context/macbook/MacbookContext';
 import { MacbookCatalogContext } from '../../context/macbook-catalog/MacbookCatalogContext';
+import OptionsData from './Modal/OptionsData/OptionsData';
 
 const SidebarAdmin: React.FC<{}> = () => {
   const { phoneCatalogs } = useContext(PhoneCatalogContext);
@@ -25,7 +26,9 @@ const SidebarAdmin: React.FC<{}> = () => {
   const { macbookCatalogs } = useContext(MacbookCatalogContext);
   const { macbook } = useContext(MacbookContext);
   const [activeItem, setActiveItem] = useState('Dashboard');
-
+  const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
+  const openModalCreateAdmin = () => setIsModalCreateOpen(true);
+  const closeModalCreateAdmin = () => setIsModalCreateOpen(false);
   const location = useLocation();
 
   const menuItems = [
@@ -185,20 +188,27 @@ const SidebarAdmin: React.FC<{}> = () => {
       </div>
       {/*  */}
       <div className="flex flex-col items-center">
-        <Link to="">
-          <div className="rounded-lg bg-primary p-4 text-center text-white">
-            <p className="w-40 text-center text-xs">
-              Chọn nút bên dưới để thêm sản phẩm!
-            </p>
-            <Button className="my-4 rounded-lg bg-white text-primary hover:bg-white">
-              +Thêm Danh Mục
-            </Button>
-          </div>
-        </Link>
+        <div className="rounded-lg bg-primary p-4 text-center text-white">
+          <p className="w-40 text-center text-xs">
+            Chọn nút bên dưới để thêm options thông tin sản phẩm!
+          </p>
+          <Button
+            onClick={openModalCreateAdmin}
+            className="my-4 rounded-lg bg-white text-primary hover:bg-white"
+          >
+            +Thêm Options
+          </Button>
+        </div>
         <div className="py-4 text-xs text-black dark:text-white">
           <p className="font-bold">Quản trị 7Teck </p>
           <p className="font-light">© 2025 Điểu Quốc Đạt</p>
         </div>
+      </div>
+      <div>
+        <OptionsData
+          isOpen={isModalCreateOpen}
+          onClose={closeModalCreateAdmin}
+        />
       </div>
     </div>
   );
