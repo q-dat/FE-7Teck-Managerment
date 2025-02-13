@@ -29,6 +29,7 @@ interface IOption {
   label: string;
 }
 export interface IOptionMacbookData {
+  _id: string;
   m_cat_hard_drive: IOption[];
   m_cat_screen_technology: IOption[];
   m_cat_ports: IOption[];
@@ -36,4 +37,3 @@ export interface IOptionMacbookData {
   m_cat_other_features: IOption[];
   m_cat_dimensions: IOption[];
 }
-

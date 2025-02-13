@@ -5,7 +5,7 @@ import InputModal from '../../InputModal';
 import { Toastify } from '../../../../helper/Toastify';
 import Select from 'react-select';
 import LabelForm from '../../LabelForm';
-import { optionsTabletData } from '../../../../types/type/data/optionsTabletData';
+import { optionsTabletData } from '../../../../types/type/optionsData/optionsTabletData';
 
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';

@@ -25,6 +25,7 @@ export const optionsTabletData = {
     label: string;
   }
   export interface IOptionTabletData {
+    _id: string;
     t_cat_video_recording: IOption[];
     t_cat_features: IOption[];
     t_cat_wifi: IOption[];

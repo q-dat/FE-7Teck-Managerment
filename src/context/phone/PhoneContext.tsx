@@ -118,8 +118,8 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
       return await fetchData(
         () => createPhoneApi(phoneData),
         data => {
-          if (data?.phone) {
-            setPhones(prevPhones => [...prevPhones, data?.p]);
+          if (data?.phoneData) {
+            setPhones(prevPhones => [...prevPhones, data?.phoneData]);
           }
         },
         'create'

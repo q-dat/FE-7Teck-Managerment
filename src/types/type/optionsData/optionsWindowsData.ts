@@ -29,6 +29,7 @@ interface IOption {
   label: string;
 }
 export interface IOptionWindowsData {
+  _id: string;
   w_cat_hard_drive: IOption[];
   w_cat_screen_technology: IOption[];
   w_cat_ports: IOption[];

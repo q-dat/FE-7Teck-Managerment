@@ -5,7 +5,7 @@ import InputModal from '../../InputModal';
 import { Toastify } from '../../../../helper/Toastify';
 import Select from 'react-select';
 import LabelForm from '../../LabelForm';
-import { optionsWindowsData } from '../../../../types/type/data/optionsWindowsData';
+import { optionsWindowsData } from '../../../../types/type/optionsData/optionsWindowsData';
 
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';

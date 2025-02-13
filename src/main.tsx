@@ -18,6 +18,7 @@ import { WindowsCatalogProvider } from './context/windows-catalog/WindowsCatalog
 import { WindowsProvider } from './context/windows/WindowsContext.tsx';
 import { MacbookCatalogProvider } from './context/macbook-catalog/MacbookCatalogContext.tsx';
 import { MacbookProvider } from './context/macbook/MacbookContext.tsx';
+import { OptionPhoneProvider } from './context/optionsData/OptionsPhoneContext.tsx';
 const App = lazy(() => import('./App.tsx'));
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -36,11 +37,13 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                           <WindowsProvider>
                             <MacbookCatalogProvider>
                               <MacbookProvider>
+                                <OptionPhoneProvider>
                                 <ParallaxProvider>
                                   <App />
                                   <Analytics />
                                   <ToastContainer />
                                 </ParallaxProvider>
+                                </OptionPhoneProvider>
                               </MacbookProvider>
                             </MacbookCatalogProvider>
                           </WindowsProvider>

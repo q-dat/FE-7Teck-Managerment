@@ -86,10 +86,15 @@ const GalleryManagerPage: React.FC = () => {
             className="relative rounded-sm bg-white p-2 shadow-headerMenu"
           >
             {/*  */}
-            <div className="h-[280px]">
+            <div className="relative h-[280px] overflow-hidden">
+              <img
+                className="object-covercover absolute z-0 h-[200px] w-full rounded-sm py-1 blur-sm filter"
+                src={`${gallery?.gallery}`}
+                alt={`${gallery?.gallery}`}
+              />
               <Zoom>
                 <img
-                  className="h-[200px] w-full rounded-sm object-cover py-1"
+                  className="absolute z-10 h-[200px] w-full rounded-sm object-contain py-1"
                   src={`${gallery?.gallery}`}
                   alt={`${gallery?.gallery}`}
                 />
@@ -112,13 +117,13 @@ const GalleryManagerPage: React.FC = () => {
             {/*  */}
             <div
               onClick={() => openModalEditAdmin(gallery?._id ?? '')}
-              className="absolute left-1 top-1 flex cursor-pointer flex-row items-center justify-center gap-1 rounded-sm bg-white p-1 text-black"
+              className="absolute left-1 top-1 z-20 flex cursor-pointer flex-row items-center justify-center gap-1 rounded-sm bg-white p-1 text-black"
             >
               <FaPenToSquare />
             </div>
             <div
               onClick={() => openModalDeleteAdmin(gallery?._id ?? '')}
-              className="absolute right-1 top-1 flex cursor-pointer flex-row items-center justify-center gap-1 rounded-sm bg-white p-1 text-red-500"
+              className="absolute right-1 top-1 z-20 flex cursor-pointer flex-row items-center justify-center gap-1 rounded-sm bg-white p-1 text-red-500"
             >
               <MdDelete />
             </div>
