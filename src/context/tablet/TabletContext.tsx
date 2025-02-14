@@ -18,6 +18,7 @@ import { ITablet } from '../../types/type/tablet/tablet';
 
 interface TabletContextType {
   tablets: ITablet[];
+  countTablet: number;
   loading: {
     getAll: boolean;
     create: boolean;
@@ -38,6 +39,7 @@ interface TabletContextType {
 
 const defaultContextValue: TabletContextType = {
   tablets: [],
+  countTablet: 0,
   loading: {
     getAll: false,
     create: false,
@@ -58,6 +60,7 @@ export const TabletContext =
 
 export const TabletProvider = ({ children }: { children: ReactNode }) => {
   const [tablets, setTablets] = useState<ITablet[]>([]);
+  const [countTablet, setCountTablet] = useState<number>(0);
   const [loading, setLoading] = useState({
     getAll: false,
     create: false,
@@ -93,7 +96,10 @@ export const TabletProvider = ({ children }: { children: ReactNode }) => {
   const getAllTablets = useCallback(() => {
     fetchData(
       getAllTabletsApi,
-      data => setTablets(data?.tablets || []),
+      data => {
+        setTablets(data?.tablets || []);
+        setCountTablet(data?.count || 0);
+      },
       'getAll'
     );
   }, []);
@@ -183,10 +189,7 @@ export const TabletProvider = ({ children }: { children: ReactNode }) => {
     async (id: string): Promise<AxiosResponse<any>> => {
       return await fetchData(
         () => deleteTabletApi(id),
-        () =>
-          setTablets(prevTablets =>
-            prevTablets.filter(t => t._id !== id)
-          ),
+        () => setTablets(prevTablets => prevTablets.filter(t => t._id !== id)),
         'delete'
       );
     },
@@ -201,6 +204,7 @@ export const TabletProvider = ({ children }: { children: ReactNode }) => {
     <TabletContext.Provider
       value={{
         tablets,
+        countTablet,
         loading,
         error,
         getAllTablets,

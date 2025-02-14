@@ -16,6 +16,7 @@ import {
 } from '../../axios/api/postCatalogApi';
 interface PostCatalogContextType {
   postCatalogs: IPostCatalog[];
+  countPostCatalog: number;
   loading: {
     getAll: boolean;
     create: boolean;
@@ -35,6 +36,7 @@ interface PostCatalogContextType {
 
 const defaultContextValue: PostCatalogContextType = {
   postCatalogs: [],
+  countPostCatalog: 0,
   loading: {
     getAll: false,
     create: false,
@@ -56,6 +58,7 @@ export const PostCatalogContext =
 
 export const PostCatalogProvider = ({ children }: { children: ReactNode }) => {
   const [postCatalogs, setPostCatalogs] = useState<IPostCatalog[]>([]);
+  const [countPostCatalog, setCountPostCatalog] = useState<number>(0);
   const [loading, setLoading] = useState<{
     getAll: boolean;
     create: boolean;
@@ -96,7 +99,9 @@ export const PostCatalogProvider = ({ children }: { children: ReactNode }) => {
   const getAllPostCatalogs = useCallback(() => {
     fetchData(
       getAllPostCatalogsApi,
-      data => setPostCatalogs(data.postCatalogs || []),
+      data => {setPostCatalogs(data.postCatalogs || [])
+        setCountPostCatalog(data.count || 0)
+      },
       'getAll'
     );
   }, []);
@@ -174,6 +179,7 @@ export const PostCatalogProvider = ({ children }: { children: ReactNode }) => {
     <PostCatalogContext.Provider
       value={{
         postCatalogs,
+        countPostCatalog,
         loading,
         error,
         getAllPostCatalogs,

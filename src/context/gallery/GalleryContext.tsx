@@ -18,6 +18,7 @@ import { IGallery } from '../../types/type/gallery/gallery';
 
 interface GalleryContextType {
   gallerys: IGallery[];
+  countGallery: number;
   loading: {
     getAll: boolean;
     create: boolean;
@@ -37,6 +38,7 @@ interface GalleryContextType {
 
 const defaultContextValue: GalleryContextType = {
   gallerys: [],
+  countGallery: 0,
   loading: {
     getAll: false,
     create: false,
@@ -56,6 +58,7 @@ export const GalleryContext =
 
 export const GalleryProvider = ({ children }: { children: ReactNode }) => {
   const [gallerys, setGallerys] = useState<IGallery[]>([]);
+  const [countGallery, setCountGallery] = useState(0);
   const [loading, setLoading] = useState({
     getAll: false,
     create: false,
@@ -91,7 +94,10 @@ export const GalleryProvider = ({ children }: { children: ReactNode }) => {
   const getAllGallerys = useCallback(() => {
     fetchData(
       getAllGallerysApi,
-      data => setGallerys(data?.gallerys || []),
+      data => {
+        setGallerys(data?.gallerys || []),
+          setCountGallery(data?.count || 0);
+      },
       'getAll'
     );
   }, []);
@@ -174,6 +180,7 @@ export const GalleryProvider = ({ children }: { children: ReactNode }) => {
     <GalleryContext.Provider
       value={{
         gallerys,
+        countGallery,
         loading,
         error,
         getAllGallerys,

@@ -17,14 +17,14 @@ import { MacbookCatalogContext } from '../../context/macbook-catalog/MacbookCata
 import OptionsData from './Modal/OptionsData/OptionsData';
 
 const SidebarAdmin: React.FC<{}> = () => {
-  const { phoneCatalogs } = useContext(PhoneCatalogContext);
-  const { phones } = useContext(PhoneContext);
-  const { tabletCatalogs } = useContext(TabletCatalogContext);
-  const { tablets } = useContext(TabletContext);
-  const { windowsCatalogs } = useContext(WindowsCatalogContext);
-  const { windows } = useContext(WindowsContext);
-  const { macbookCatalogs } = useContext(MacbookCatalogContext);
-  const { macbook } = useContext(MacbookContext);
+  const { countPhoneCatalog } = useContext(PhoneCatalogContext);
+  const { countPhone } = useContext(PhoneContext);
+  const { countTabletCatalog } = useContext(TabletCatalogContext);
+  const { countTablet } = useContext(TabletContext);
+  const { countWindowsCatalog } = useContext(WindowsCatalogContext);
+  const { countWindows } = useContext(WindowsContext);
+  const { countMacbookCatalog } = useContext(MacbookCatalogContext);
+  const { countMacbook } = useContext(MacbookContext);
   const [activeItem, setActiveItem] = useState('Dashboard');
   const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
   const openModalCreateAdmin = () => setIsModalCreateOpen(true);
@@ -41,49 +41,49 @@ const SidebarAdmin: React.FC<{}> = () => {
       name: 'DM Điện Thoại',
       icon: FaList,
       link: '/cms/admin/phone-catalog-manager',
-      toastify: phoneCatalogs.length
+      toastify: countPhoneCatalog
     },
     {
       name: 'Điện Thoại',
       icon: FaMobileAlt,
       link: '/cms/admin/phone-manager',
-      toastify: phones.length
+      toastify: countPhone
     },
     {
       name: 'DM Máy Tính Bảng',
       icon: FaList,
       link: '/cms/admin/tablet-catalog-manager',
-      toastify: tabletCatalogs.length
+      toastify: countTabletCatalog
     },
     {
       name: ' Máy Tính Bảng',
       icon: FaTabletAlt,
       link: '/cms/admin/tablet-manager',
-      toastify: tablets.length
+      toastify: countTablet
     },
     {
       name: 'DM Windows',
       icon: FaList,
       link: '/cms/admin/windows-catalog-manager',
-      toastify: windowsCatalogs.length
+      toastify: countWindowsCatalog
     },
     {
       name: 'Windows',
       icon: FaWindows,
       link: '/cms/admin/windows-manager',
-      toastify: windows.length
+      toastify: countWindows
     },
     {
       name: 'DM Macbook',
       icon: FaList,
       link: '/cms/admin/macbook-catalog-manager',
-      toastify: macbookCatalogs.length
+      toastify: countMacbookCatalog
     },
     {
       name: 'Macbook',
       icon: BsApple,
       link: '/cms/admin/macbook-manager',
-      toastify: macbook.length
+      toastify: countMacbook
     }
   ];
 

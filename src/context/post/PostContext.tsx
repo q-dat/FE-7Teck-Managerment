@@ -16,6 +16,7 @@ import { AxiosResponse } from 'axios';
 
 interface PostContextType {
   posts: IPost[];
+  countPost: number;
   loading: {
     getAll: boolean;
     create: boolean;
@@ -32,6 +33,7 @@ interface PostContextType {
 
 const defaultContextValue: PostContextType = {
   posts: [],
+  countPost: 0,
   loading: {
     getAll: false,
     create: false,
@@ -50,6 +52,7 @@ export const PostContext = createContext<PostContextType>(defaultContextValue);
 
 export const PostProvider = ({ children }: { children: ReactNode }) => {
   const [posts, setPosts] = useState<IPost[]>([]);
+  const [countPost, setCountPost] = useState<number>(0);
   const [loading, setLoading] = useState<{
     getAll: boolean;
     create: boolean;
@@ -86,12 +89,19 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  // Get All
+  // Get All Post
   const getAllPosts = useCallback(() => {
-    fetchData(getAllPostsApi, data => setPosts(data?.posts || []), 'getAll');
+    fetchData(
+      getAllPostsApi,
+      data => {
+        setPosts(data?.posts || []);
+        setCountPost(data?.posts || 0);
+      },
+      'getAll'
+    );
   }, []);
 
-  // Get By Id
+  // Get Post By Id
   const getPostById = useCallback(
     (id: string) => {
       return posts.find(p => p._id === id);
@@ -99,7 +109,7 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
     [posts]
   );
 
-  // Create
+  // Create Post
   const createPost = useCallback(
     async (postData: FormData): Promise<AxiosResponse<any>> => {
       return await fetchData(
@@ -115,7 +125,7 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
     []
   );
 
-  // Update
+  // Update Post
   const updatePost = useCallback(
     async (id: string, postData: FormData): Promise<AxiosResponse<any>> => {
       return await fetchData(
@@ -123,9 +133,7 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
         data => {
           if (data?.postData) {
             setPosts(prevPosts =>
-              prevPosts.map(p =>
-                p._id === id ? data?.postData : p
-              )
+              prevPosts.map(p => (p._id === id ? data?.postData : p))
             );
           }
         },
@@ -135,7 +143,7 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
     []
   );
 
-  // Delete
+  // Delete Post
   const deletePost = useCallback(
     async (id: string): Promise<AxiosResponse<any>> => {
       return await fetchData(
@@ -155,6 +163,7 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
     <PostContext.Provider
       value={{
         posts,
+        countPost,
         loading,
         error,
         getAllPosts,

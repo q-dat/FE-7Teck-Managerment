@@ -17,6 +17,7 @@ import {
 
 interface MacbookCatalogContextType {
   macbookCatalogs: IMacbookCatalog[];
+  countMacbookCatalog:number;
   loading: {
     getAll: boolean;
     create: boolean;
@@ -38,6 +39,7 @@ interface MacbookCatalogContextType {
 
 const defaultContextValue: MacbookCatalogContextType = {
   macbookCatalogs: [],
+  countMacbookCatalog:0,
   loading: {
     getAll: false,
     create: false,
@@ -64,6 +66,7 @@ export const MacbookCatalogProvider = ({
   children: ReactNode;
 }) => {
   const [macbookCatalogs, setMacbookCatalog] = useState<IMacbookCatalog[]>([]);
+  const [countMacbookCatalog, setCountMacbookCatalog] = useState<number>(0);
   const [loading, setLoading] = useState({
     getAll: false,
     create: false,
@@ -99,7 +102,8 @@ export const MacbookCatalogProvider = ({
   const getAllMacbookCatalogs = useCallback(() => {
     fetchData(
       getAllMacbookCatalogsApi,
-      data => setMacbookCatalog(data?.macbookCatalogs || []),
+      data =>{ setMacbookCatalog(data?.macbookCatalogs || [])
+        setCountMacbookCatalog(data?.macbookCatalogs?.length || 0)},
       'getAll'
     );
   }, []);
@@ -191,6 +195,7 @@ export const MacbookCatalogProvider = ({
     <MacbookCatalogContext.Provider
       value={{
         macbookCatalogs,
+        countMacbookCatalog,
         loading,
         error,
         getAllMacbookCatalogs,

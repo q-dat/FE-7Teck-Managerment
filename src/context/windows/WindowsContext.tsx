@@ -17,6 +17,7 @@ import {
 
 interface WindowsContextType {
   windows: IWindows[];
+  countWindows: number;
   loading: {
     getAll: boolean;
     create: boolean;
@@ -37,6 +38,7 @@ interface WindowsContextType {
 
 const defaultContextValue: WindowsContextType = {
   windows: [],
+  countWindows: 0,
   loading: {
     getAll: false,
     create: false,
@@ -56,7 +58,8 @@ export const WindowsContext =
   createContext<WindowsContextType>(defaultContextValue);
 
 export const WindowsProvider = ({ children }: { children: ReactNode }) => {
-  const [windows, setWindowss] = useState<IWindows[]>([]);
+  const [windows, setWindows] = useState<IWindows[]>([]);
+  const [countWindows, setCountWindows] = useState(0);
   const [loading, setLoading] = useState({
     getAll: false,
     create: false,
@@ -92,7 +95,10 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
   const getAllWindows = useCallback(() => {
     fetchData(
       getAllWindowsApi,
-      data => setWindowss(data?.windows || []),
+      data => {
+        setWindows(data?.windows || []);
+        setCountWindows(data?.count || 0);
+      },
       'getAll'
     );
   }, []);
@@ -106,7 +112,7 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
         () => getWindowsByIdApi(id),
         data => {
           if (data?.w) {
-            setWindowss(prevLaptopWindows => [...prevLaptopWindows, data.w]);
+            setWindows(prevLaptopWindows => [...prevLaptopWindows, data.w]);
           }
         },
         'getAll'
@@ -123,7 +129,7 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
         () => createWindowsApi(windowsData),
         data => {
           if (data?.windowsData) {
-            setWindowss(prevLaptopWindows => [
+            setWindows(prevLaptopWindows => [
               ...prevLaptopWindows,
               data?.windowsData
             ]);
@@ -142,7 +148,7 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
         () => updateWindowsApi(_id, windowsData),
         data => {
           if (data?.windowsData) {
-            setWindowss(prevLaptopWindows =>
+            setWindows(prevLaptopWindows =>
               prevLaptopWindows.map(w =>
                 w._id === _id ? data?.windowsData : w
               )
@@ -171,7 +177,7 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
           () => updateWindowsApi(_id, updatedData),
           data => {
             if (data?.updatedData) {
-              setWindowss(prevLaptopWindows =>
+              setWindows(prevLaptopWindows =>
                 prevLaptopWindows.map(w =>
                   w._id === _id ? data.updatedData : w
                 )
@@ -193,7 +199,7 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
       return await fetchData(
         () => deleteWindowsApi(id),
         () =>
-          setWindowss(prevLaptopWindows =>
+          setWindows(prevLaptopWindows =>
             prevLaptopWindows.filter(w => w._id !== id)
           ),
         'delete'
@@ -210,6 +216,7 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
     <WindowsContext.Provider
       value={{
         windows,
+        countWindows,
         loading,
         error,
         getAllWindows,
@@ -224,4 +231,3 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
     </WindowsContext.Provider>
   );
 };
-

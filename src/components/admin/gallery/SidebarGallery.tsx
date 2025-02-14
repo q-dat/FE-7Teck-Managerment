@@ -7,7 +7,7 @@ import { GalleryContext } from '../../../context/gallery/GalleryContext';
 import { GrGallery } from 'react-icons/gr';
 
 const SidebarGallery: React.FC<{}> = () => {
-  const { gallerys } = useContext(GalleryContext);
+  const { countGallery } = useContext(GalleryContext);
   const [activeItem, setActiveItem] = useState('Dashboard');
 
   const location = useLocation();
@@ -17,7 +17,7 @@ const SidebarGallery: React.FC<{}> = () => {
       name: 'Quản lý Gallery',
       icon: GrGallery,
       link: '/cms/admin-gallery/gallery-manager',
-      toastify: gallerys.length
+      toastify: countGallery
     }
   ];
 

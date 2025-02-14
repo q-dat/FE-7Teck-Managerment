@@ -18,6 +18,7 @@ import {
 
 interface TabletCatalogContextType {
   tabletCatalogs: ITabletCatalog[];
+  countTabletCatalog:number;
   loading: {
     getAll: boolean;
     create: boolean;
@@ -39,6 +40,7 @@ interface TabletCatalogContextType {
 
 const defaultContextValue: TabletCatalogContextType = {
   tabletCatalogs: [],
+  countTabletCatalog: 0,
   loading: {
     getAll: false,
     create: false,
@@ -65,6 +67,7 @@ export const TabletCatalogProvider = ({
   children: ReactNode;
 }) => {
   const [tabletCatalogs, setTabletCatalogs] = useState<ITabletCatalog[]>([]);
+  const [countTabletCatalog, setCountTabletCatalog] = useState<number>(0);
   const [loading, setLoading] = useState({
     getAll: false,
     create: false,
@@ -100,7 +103,9 @@ export const TabletCatalogProvider = ({
   const getAllTabletCatalogs = useCallback(() => {
     fetchData(
       getAllTabletCatalogsApi,
-      data => setTabletCatalogs(data?.tabletCatalogs || []),
+      data =>{ setTabletCatalogs(data?.tabletCatalogs || [])
+        setCountTabletCatalog(data?.count || 0)
+      },
       'getAll'
     );
   }, []);
@@ -190,6 +195,7 @@ export const TabletCatalogProvider = ({
     <TabletCatalogContext.Provider
       value={{
         tabletCatalogs,
+        countTabletCatalog,
         loading,
         error,
         getAllTabletCatalogs,

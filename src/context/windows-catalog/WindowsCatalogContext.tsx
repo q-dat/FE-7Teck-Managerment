@@ -17,6 +17,7 @@ import {
 
 interface WindowsCatalogContextType {
   windowsCatalogs: IWindowsCatalog[];
+  countWindowsCatalog: number;
   loading: {
     getAll: boolean;
     create: boolean;
@@ -38,6 +39,7 @@ interface WindowsCatalogContextType {
 
 const defaultContextValue: WindowsCatalogContextType = {
   windowsCatalogs: [],
+  countWindowsCatalog: 0,
   loading: {
     getAll: false,
     create: false,
@@ -64,6 +66,7 @@ export const WindowsCatalogProvider = ({
   children: ReactNode;
 }) => {
   const [windowsCatalogs, setWindowsCatalog] = useState<IWindowsCatalog[]>([]);
+  const [countWindowsCatalog, setCountWindowsCatalog] = useState<number>(0);
   const [loading, setLoading] = useState({
     getAll: false,
     create: false,
@@ -99,7 +102,9 @@ export const WindowsCatalogProvider = ({
   const getAllWindowsCatalogs = useCallback(() => {
     fetchData(
       getAllWindowsCatalogsApi,
-      data => setWindowsCatalog(data?.windowsCatalogs || []),
+      data => {setWindowsCatalog(data?.windowsCatalogs || [])
+        setCountWindowsCatalog(data?.count || 0)
+      },
       'getAll'
     );
   }, []);
@@ -189,6 +194,7 @@ export const WindowsCatalogProvider = ({
     <WindowsCatalogContext.Provider
       value={{
         windowsCatalogs,
+        countWindowsCatalog,
         loading,
         error,
         getAllWindowsCatalogs,

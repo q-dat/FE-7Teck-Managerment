@@ -17,6 +17,7 @@ import { IPhoneCatalog } from '../../types/type/phone-catalog/phone-catalog';
 
 interface PhoneCatalogContextType {
   phoneCatalogs: IPhoneCatalog[];
+  countPhoneCatalog: number;
   loading: {
     getAll: boolean;
     create: boolean;
@@ -38,6 +39,7 @@ interface PhoneCatalogContextType {
 
 const defaultContextValue: PhoneCatalogContextType = {
   phoneCatalogs: [],
+  countPhoneCatalog: 0,
   loading: {
     getAll: false,
     create: false,
@@ -59,6 +61,7 @@ export const PhoneCatalogContext =
 
 export const PhoneCatalogProvider = ({ children }: { children: ReactNode }) => {
   const [phoneCatalogs, setPhoneCatalogs] = useState<IPhoneCatalog[]>([]);
+  const [countPhoneCatalog, setCountPhoneCatalog] = useState<number>(0);
   const [loading, setLoading] = useState({
     getAll: false,
     create: false,
@@ -94,7 +97,10 @@ export const PhoneCatalogProvider = ({ children }: { children: ReactNode }) => {
   const getAllPhoneCatalogs = useCallback(() => {
     fetchData(
       getAllPhoneCatalogsApi,
-      data => setPhoneCatalogs(data?.phoneCatalogs || []),
+      data => {
+        setPhoneCatalogs(data?.phoneCatalogs || []);
+        setCountPhoneCatalog(data?.count || 0);
+      },
       'getAll'
     );
   }, []);
@@ -102,9 +108,7 @@ export const PhoneCatalogProvider = ({ children }: { children: ReactNode }) => {
   // Get PhoneCatalog By Id
   const getPhoneCatalogById = useCallback(
     async (id: string): Promise<IPhoneCatalog | undefined> => {
-      const cachedPhone = phoneCatalogs.find(
-        pc => pc._id === id
-      );
+      const cachedPhone = phoneCatalogs.find(pc => pc._id === id);
       if (cachedPhone) return cachedPhone;
       const response = await fetchData(
         () => getPhoneCatalogByIdApi(id),
@@ -188,6 +192,7 @@ export const PhoneCatalogProvider = ({ children }: { children: ReactNode }) => {
     <PhoneCatalogContext.Provider
       value={{
         phoneCatalogs,
+        countPhoneCatalog,
         loading,
         error,
         getAllPhoneCatalogs,

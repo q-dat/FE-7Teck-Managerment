@@ -9,8 +9,8 @@ import { PostContext } from '../../../context/post/PostContext';
 import { PostCatalogContext } from '../../../context/post-catalog/PostCatalogContext';
 
 const SidebarPost: React.FC<{}> = () => {
-  const { posts } = useContext(PostContext);
-  const { postCatalogs } = useContext(PostCatalogContext);
+  const { countPost } = useContext(PostContext);
+  const { countPostCatalog } = useContext(PostCatalogContext);
   const [activeItem, setActiveItem] = useState('Dashboard');
 
   const location = useLocation();
@@ -20,13 +20,13 @@ const SidebarPost: React.FC<{}> = () => {
       name: 'Danh mục bài viết',
       icon: AiOutlineMenuFold,
       link: '/cms/admin-post/post-catalog-manager',
-      toastify: postCatalogs.length
+      toastify: countPostCatalog
     },
     {
       name: 'Quản lý bài viết',
       icon: BsFilePost,
       link: '/cms/admin-post/post-manager',
-      toastify: posts.length
+      toastify: countPost
     }
   ];
 

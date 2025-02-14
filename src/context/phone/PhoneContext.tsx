@@ -17,6 +17,7 @@ import { IPhone } from '../../types/type/phone/phone';
 
 interface PhoneContextType {
   phones: IPhone[];
+  countPhone: number;
   loading: {
     getAll: boolean;
     create: boolean;
@@ -37,6 +38,7 @@ interface PhoneContextType {
 
 const defaultContextValue: PhoneContextType = {
   phones: [],
+  countPhone: 0,
   loading: {
     getAll: false,
     create: false,
@@ -57,6 +59,7 @@ export const PhoneContext =
 
 export const PhoneProvider = ({ children }: { children: ReactNode }) => {
   const [phones, setPhones] = useState<IPhone[]>([]);
+  const [countPhone, setCountPhone] = useState<number>(0);
   const [loading, setLoading] = useState({
     getAll: false,
     create: false,
@@ -90,7 +93,14 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
 
   // Get All Phones
   const getAllPhones = useCallback(() => {
-    fetchData(getAllPhonesApi, data => setPhones(data?.phones || []), 'getAll');
+    fetchData(
+      getAllPhonesApi,
+      data => {
+        setPhones(data?.phones || []);
+        setCountPhone(data?.count || 0);
+      },
+      'getAll'
+    );
   }, []);
 
   // Get Phone By Id
@@ -178,8 +188,7 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
     async (id: string): Promise<AxiosResponse<any>> => {
       return await fetchData(
         () => deletePhoneApi(id),
-        () =>
-          setPhones(prevPhones => prevPhones.filter(p => p._id !== id)),
+        () => setPhones(prevPhones => prevPhones.filter(p => p._id !== id)),
         'delete'
       );
     },
@@ -194,6 +203,7 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
     <PhoneContext.Provider
       value={{
         phones,
+        countPhone,
         loading,
         error,
         getAllPhones,

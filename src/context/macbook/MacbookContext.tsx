@@ -17,6 +17,7 @@ import {
 
 interface MacbookContextType {
   macbook: IMacbook[];
+  countMacbook: number;
   loading: {
     getAll: boolean;
     create: boolean;
@@ -37,6 +38,7 @@ interface MacbookContextType {
 
 const defaultContextValue: MacbookContextType = {
   macbook: [],
+  countMacbook: 0,
   loading: {
     getAll: false,
     create: false,
@@ -57,6 +59,7 @@ export const MacbookContext =
 
 export const MacbookProvider = ({ children }: { children: ReactNode }) => {
   const [macbook, setMacbook] = useState<IMacbook[]>([]);
+  const [countMacbook, setCountMacbook] = useState<number>(0);
   const [loading, setLoading] = useState({
     getAll: false,
     create: false,
@@ -92,7 +95,10 @@ export const MacbookProvider = ({ children }: { children: ReactNode }) => {
   const getAllMacbook = useCallback(() => {
     fetchData(
       getAllMacbookApi,
-      data => setMacbook(data?.macbook || []),
+      data => {
+        setMacbook(data?.macbook || []);
+        setCountMacbook(data?.count || 0);
+      },
       'getAll'
     );
   }, []);
@@ -210,6 +216,7 @@ export const MacbookProvider = ({ children }: { children: ReactNode }) => {
     <MacbookContext.Provider
       value={{
         macbook,
+        countMacbook,
         loading,
         error,
         getAllMacbook,
@@ -224,4 +231,3 @@ export const MacbookProvider = ({ children }: { children: ReactNode }) => {
     </MacbookContext.Provider>
   );
 };
-

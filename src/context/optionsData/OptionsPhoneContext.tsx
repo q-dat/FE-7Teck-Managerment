@@ -17,6 +17,7 @@ import {
 
 interface OptionPhoneContextType {
   optionPhones: IOptionPhoneData[];
+  countOptionPhoneData: number;
   loading: {
     getAll: boolean;
     create: boolean;
@@ -36,6 +37,7 @@ interface OptionPhoneContextType {
 
 const defaultContextValue: OptionPhoneContextType = {
   optionPhones: [],
+  countOptionPhoneData: 0,
   loading: {
     getAll: false,
     create: false,
@@ -57,6 +59,7 @@ export const OptionPhoneContext =
 
 export const OptionPhoneProvider = ({ children }: { children: ReactNode }) => {
   const [optionPhones, setOptionPhones] = useState<IOptionPhoneData[]>([]);
+  const [countOptionPhoneData, setCountOptionPhoneData] = useState<number>(0);
   const [loading, setLoading] = useState({
     getAll: false,
     create: false,
@@ -92,7 +95,10 @@ export const OptionPhoneProvider = ({ children }: { children: ReactNode }) => {
   const getAllOptionPhones = useCallback(() => {
     fetchData(
       getAllOptionPhonesApi,
-      data => setOptionPhones(data?.optionPhones || []),
+      data => {
+        setOptionPhones(data?.optionPhones || []);
+        setCountOptionPhoneData(data?.count || 0);
+      },
       'getAll'
     );
   }, []);
@@ -123,7 +129,10 @@ export const OptionPhoneProvider = ({ children }: { children: ReactNode }) => {
         () => createOptionPhoneApi(optionPhoneData),
         data => {
           if (data?.op) {
-            setOptionPhones(prevOptionPhones => [...prevOptionPhones, data?.op]);
+            setOptionPhones(prevOptionPhones => [
+              ...prevOptionPhones,
+              data?.op
+            ]);
           }
         },
         'create'
@@ -178,6 +187,7 @@ export const OptionPhoneProvider = ({ children }: { children: ReactNode }) => {
     <OptionPhoneContext.Provider
       value={{
         optionPhones,
+        countOptionPhoneData,
         loading,
         error,
         getAllOptionPhones,
