@@ -64,46 +64,128 @@ const ModalEditWindowsCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
       // Lưu lại đường dẫn ảnh hiện tại
       setExistingImg(tabletData.w_cat_img);
       // Các trường con trong `w_cat_processor`
-      setValue('w_cat_processor.w_cat_cpu_technology', tabletData.w_cat_processor.w_cat_cpu_technology);
-      setValue('w_cat_processor.w_cat_core_count', tabletData.w_cat_processor.w_cat_core_count);
-      setValue('w_cat_processor.w_cat_thread_count', tabletData.w_cat_processor.w_cat_thread_count);
-      setValue('w_cat_processor.w_cat_cpu_speed', tabletData.w_cat_processor.w_cat_cpu_speed);
-      setValue('w_cat_processor.w_cat_max_speed', tabletData.w_cat_processor.w_cat_max_speed);
+      setValue(
+        'w_cat_processor.w_cat_cpu_technology',
+        tabletData.w_cat_processor.w_cat_cpu_technology
+      );
+      setValue(
+        'w_cat_processor.w_cat_core_count',
+        tabletData.w_cat_processor.w_cat_core_count
+      );
+      setValue(
+        'w_cat_processor.w_cat_thread_count',
+        tabletData.w_cat_processor.w_cat_thread_count
+      );
+      setValue(
+        'w_cat_processor.w_cat_cpu_speed',
+        tabletData.w_cat_processor.w_cat_cpu_speed
+      );
+      setValue(
+        'w_cat_processor.w_cat_max_speed',
+        tabletData.w_cat_processor.w_cat_max_speed
+      );
 
       // Các trường con trong `w_cat_memory_and_storage`
-      setValue('w_cat_memory_and_storage.w_cat_ram', tabletData.w_cat_memory_and_storage.w_cat_ram);
-      setValue('w_cat_memory_and_storage.w_cat_ram_type', tabletData.w_cat_memory_and_storage.w_cat_ram_type);
-      setValue('w_cat_memory_and_storage.w_cat_ram_bus_speed', tabletData.w_cat_memory_and_storage.w_cat_ram_bus_speed);
-      setValue('w_cat_memory_and_storage.w_cat_max_ram_support', tabletData.w_cat_memory_and_storage.w_cat_max_ram_support);
-      setValue('w_cat_memory_and_storage.w_cat_hard_drive', tabletData.w_cat_memory_and_storage.w_cat_hard_drive);
+      setValue(
+        'w_cat_memory_and_storage.w_cat_ram',
+        tabletData.w_cat_memory_and_storage.w_cat_ram
+      );
+      setValue(
+        'w_cat_memory_and_storage.w_cat_ram_type',
+        tabletData.w_cat_memory_and_storage.w_cat_ram_type
+      );
+      setValue(
+        'w_cat_memory_and_storage.w_cat_ram_bus_speed',
+        tabletData.w_cat_memory_and_storage.w_cat_ram_bus_speed
+      );
+      setValue(
+        'w_cat_memory_and_storage.w_cat_max_ram_support',
+        tabletData.w_cat_memory_and_storage.w_cat_max_ram_support
+      );
+      setValue(
+        'w_cat_memory_and_storage.w_cat_hard_drive',
+        tabletData.w_cat_memory_and_storage.w_cat_hard_drive
+      );
 
       // Các trường con trong `w_cat_display`
-      setValue('w_cat_display.w_cat_screen_size', tabletData.w_cat_display.w_cat_screen_size);
-      setValue('w_cat_display.w_cat_resolution', tabletData.w_cat_display.w_cat_resolution);
-      setValue('w_cat_display.w_cat_refresh_rate', tabletData.w_cat_display.w_cat_refresh_rate);
-      setValue('w_cat_display.w_cat_color_coverage', tabletData.w_cat_display.w_cat_color_coverage);
-      setValue('w_cat_display.w_cat_screen_technology', tabletData.w_cat_display.w_cat_screen_technology);
+      setValue(
+        'w_cat_display.w_cat_screen_size',
+        tabletData.w_cat_display.w_cat_screen_size
+      );
+      setValue(
+        'w_cat_display.w_cat_resolution',
+        tabletData.w_cat_display.w_cat_resolution
+      );
+      setValue(
+        'w_cat_display.w_cat_refresh_rate',
+        tabletData.w_cat_display.w_cat_refresh_rate
+      );
+      setValue(
+        'w_cat_display.w_cat_color_coverage',
+        tabletData.w_cat_display.w_cat_color_coverage
+      );
+      setValue(
+        'w_cat_display.w_cat_screen_technology',
+        tabletData.w_cat_display.w_cat_screen_technology
+      );
 
       // Các trường con trong `w_cat_graphics_and_audio`
-      setValue('w_cat_graphics_and_audio.w_cat_gpu', tabletData.w_cat_graphics_and_audio.w_cat_gpu);
-      setValue('w_cat_graphics_and_audio.w_cat_audio_technology', tabletData.w_cat_graphics_and_audio.w_cat_audio_technology);
+      setValue(
+        'w_cat_graphics_and_audio.w_cat_gpu',
+        tabletData.w_cat_graphics_and_audio.w_cat_gpu
+      );
+      setValue(
+        'w_cat_graphics_and_audio.w_cat_audio_technology',
+        tabletData.w_cat_graphics_and_audio.w_cat_audio_technology
+      );
 
       // Các trường con trong `w_cat_connectivity_and_ports`
-      setValue('w_cat_connectivity_and_ports.w_cat_ports', tabletData.w_cat_connectivity_and_ports.w_cat_ports);
-      setValue('w_cat_connectivity_and_ports.w_cat_wireless_connectivity', tabletData.w_cat_connectivity_and_ports.w_cat_wireless_connectivity);
-      setValue('w_cat_connectivity_and_ports.w_cat_card_reader', tabletData.w_cat_connectivity_and_ports.w_cat_card_reader);
-      setValue('w_cat_connectivity_and_ports.w_cat_webcam', tabletData.w_cat_connectivity_and_ports.w_cat_webcam);
-      setValue('w_cat_connectivity_and_ports.w_cat_other_features', tabletData.w_cat_connectivity_and_ports.w_cat_other_features);
-      setValue('w_cat_connectivity_and_ports.w_cat_keyboard_backlight', tabletData.w_cat_connectivity_and_ports.w_cat_keyboard_backlight);
+      setValue(
+        'w_cat_connectivity_and_ports.w_cat_ports',
+        tabletData.w_cat_connectivity_and_ports.w_cat_ports
+      );
+      setValue(
+        'w_cat_connectivity_and_ports.w_cat_wireless_connectivity',
+        tabletData.w_cat_connectivity_and_ports.w_cat_wireless_connectivity
+      );
+      setValue(
+        'w_cat_connectivity_and_ports.w_cat_card_reader',
+        tabletData.w_cat_connectivity_and_ports.w_cat_card_reader
+      );
+      setValue(
+        'w_cat_connectivity_and_ports.w_cat_webcam',
+        tabletData.w_cat_connectivity_and_ports.w_cat_webcam
+      );
+      setValue(
+        'w_cat_connectivity_and_ports.w_cat_other_features',
+        tabletData.w_cat_connectivity_and_ports.w_cat_other_features
+      );
+      setValue(
+        'w_cat_connectivity_and_ports.w_cat_keyboard_backlight',
+        tabletData.w_cat_connectivity_and_ports.w_cat_keyboard_backlight
+      );
 
       // Các trường con trong `w_cat_dimensions_weight_battery`
-      setValue('w_cat_dimensions_weight_battery.w_cat_dimensions', tabletData.w_cat_dimensions_weight_battery.w_cat_dimensions);
-      setValue('w_cat_dimensions_weight_battery.w_cat_material', tabletData.w_cat_dimensions_weight_battery.w_cat_material);
-      setValue('w_cat_dimensions_weight_battery.w_cat_battery_info', tabletData.w_cat_dimensions_weight_battery.w_cat_battery_info);
-      setValue('w_cat_dimensions_weight_battery.w_cat_operating_system', tabletData.w_cat_dimensions_weight_battery.w_cat_operating_system);
-      setValue('w_cat_dimensions_weight_battery.w_cat_release_date', tabletData.w_cat_dimensions_weight_battery.w_cat_release_date);
-
-      
+      setValue(
+        'w_cat_dimensions_weight_battery.w_cat_dimensions',
+        tabletData.w_cat_dimensions_weight_battery.w_cat_dimensions
+      );
+      setValue(
+        'w_cat_dimensions_weight_battery.w_cat_material',
+        tabletData.w_cat_dimensions_weight_battery.w_cat_material
+      );
+      setValue(
+        'w_cat_dimensions_weight_battery.w_cat_battery_info',
+        tabletData.w_cat_dimensions_weight_battery.w_cat_battery_info
+      );
+      setValue(
+        'w_cat_dimensions_weight_battery.w_cat_operating_system',
+        tabletData.w_cat_dimensions_weight_battery.w_cat_operating_system
+      );
+      setValue(
+        'w_cat_dimensions_weight_battery.w_cat_release_date',
+        tabletData.w_cat_dimensions_weight_battery.w_cat_release_date
+      );
     }
   }, [windowsCatalogs, windowsCatalogId, setValue]);
   const onSubmit: SubmitHandler<IWindowsCatalog> = async formData => {
@@ -123,14 +205,29 @@ const ModalEditWindowsCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
       }
     }
 
-     // Convert nested fields to JSON string
-    data.append('w_cat_processor', JSON.stringify(formData.w_cat_processor || {}));
-    data.append('w_cat_memory_and_storage', JSON.stringify(formData.w_cat_memory_and_storage || {}));
+    // Convert nested fields to JSON string
+    data.append(
+      'w_cat_processor',
+      JSON.stringify(formData.w_cat_processor || {})
+    );
+    data.append(
+      'w_cat_memory_and_storage',
+      JSON.stringify(formData.w_cat_memory_and_storage || {})
+    );
     data.append('w_cat_display', JSON.stringify(formData.w_cat_display || {}));
-    data.append('w_cat_graphics_and_audio', JSON.stringify(formData.w_cat_graphics_and_audio || {}));
-    data.append('w_cat_connectivity_and_ports', JSON.stringify(formData.w_cat_connectivity_and_ports || {}));
-    data.append('w_cat_dimensions_weight_battery', JSON.stringify(formData.w_cat_dimensions_weight_battery || {}));
-    
+    data.append(
+      'w_cat_graphics_and_audio',
+      JSON.stringify(formData.w_cat_graphics_and_audio || {})
+    );
+    data.append(
+      'w_cat_connectivity_and_ports',
+      JSON.stringify(formData.w_cat_connectivity_and_ports || {})
+    );
+    data.append(
+      'w_cat_dimensions_weight_battery',
+      JSON.stringify(formData.w_cat_dimensions_weight_battery || {})
+    );
+
     try {
       await updateWindowsCatalog(windowsCatalogId, data);
       reset();
@@ -170,25 +267,33 @@ const ModalEditWindowsCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
               <LabelForm title={'Tên danh mục sản phẩm*'} />
               <InputModal
                 type="text"
-                {...register('w_cat_name', { required: true })}
+                {...register('w_cat_name')}
                 placeholder="Nhập tên danh mục sản phẩm"
               />
               <LabelForm title={'Giá*'} />
               <InputModal
                 type="number"
-                {...register('w_cat_price', { required: true })}
+                {...register('w_cat_price')}
                 placeholder="Nhập giá (Hệ số x1000: 1triệu = 1000)"
               />
               <LabelForm title={'Trạng thái*'} />
               <InputModal
                 type="number"
-                {...register('w_cat_status', { required: true })}
+                {...register('w_cat_status')}
                 placeholder="Chọn: 0(Mới) / 1(Cũ)"
               />
               <LabelForm title={'Hình ảnh*'} />
+              {existingImg && (
+                <div className="my-2">
+                  <img
+                    src={existingImg}
+                    className="h-10 w-10 rounded-md object-cover"
+                  />
+                </div>
+              )}
               <InputModal
                 type="file"
-                {...register('w_cat_img', { required: true })}
+                {...register('w_cat_img')}
                 placeholder="Chèn hình ảnh"
               />
             </div>
@@ -202,14 +307,14 @@ const ModalEditWindowsCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
               />
               <LabelForm title={'Số nhân'} />
               <InputModal
-                type="text"
+                type="number"
                 {...register('w_cat_processor.w_cat_core_count')}
                 placeholder="Nhập số nhân"
               />
 
               <LabelForm title={'Số luồng'} />
               <InputModal
-                type="text"
+                type="number"
                 {...register('w_cat_processor.w_cat_thread_count')}
                 placeholder="Nhập số luồng"
               />

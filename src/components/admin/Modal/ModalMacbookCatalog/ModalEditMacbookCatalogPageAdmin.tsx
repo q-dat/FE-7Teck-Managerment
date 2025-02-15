@@ -31,6 +31,48 @@ interface ModalEditAdminProps {
   macbookCatalogId: string;
 }
 
+const fields = [
+  // Bộ xử lý
+  'm_cat_processor.m_cat_cpu_technology',
+  'm_cat_processor.m_cat_core_count',
+  'm_cat_processor.m_cat_thread_count',
+  'm_cat_processor.m_cat_cpu_speed',
+  'm_cat_processor.m_cat_max_speed',
+
+  // Bộ nhớ RAM, Ổ cứng
+  'm_cat_memory_and_storage.m_cat_ram',
+  'm_cat_memory_and_storage.m_cat_ram_type',
+  'm_cat_memory_and_storage.m_cat_ram_bus_speed',
+  'm_cat_memory_and_storage.m_cat_max_ram_support',
+  'm_cat_memory_and_storage.m_cat_hard_drive',
+
+  // Màn hình
+  'm_cat_display.m_cat_screen_size',
+  'm_cat_display.m_cat_resolution',
+  'm_cat_display.m_cat_refresh_rate',
+  'm_cat_display.m_cat_color_coverage',
+  'm_cat_display.m_cat_screen_technology',
+
+  // Đồ hoạ và Âm thanh
+  'm_cat_graphics_and_audio.m_cat_gpu',
+  'm_cat_graphics_and_audio.m_cat_audio_technology',
+
+  // Cổng kết nối & Tính năng mở rộng
+  'm_cat_connectivity_and_ports.m_cat_ports',
+  'm_cat_connectivity_and_ports.m_cat_wireless_connectivity',
+  'm_cat_connectivity_and_ports.m_cat_card_reader',
+  'm_cat_connectivity_and_ports.m_cat_webcam',
+  'm_cat_connectivity_and_ports.m_cat_other_features',
+  'm_cat_connectivity_and_ports.m_cat_keyboard_backlight',
+
+  // Kích thước - Khối lượng - Pin
+  'm_cat_dimensions_weight_battery.m_cat_dimensions',
+  'm_cat_dimensions_weight_battery.m_cat_material',
+  'm_cat_dimensions_weight_battery.m_cat_battery_info',
+  'm_cat_dimensions_weight_battery.m_cat_operating_system',
+  'm_cat_dimensions_weight_battery.m_cat_release_date'
+];
+
 const ModalEditMacbookCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
   isOpen,
   onClose,
@@ -49,145 +91,37 @@ const ModalEditMacbookCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
   const [editorValue, setEditorValue] = useState<string>('');
 
   useEffect(() => {
-    const tabletData = macbookCatalogs.find(
+    const macbookData = macbookCatalogs.find(
       macCatalog => macCatalog._id === macbookCatalogId
     );
-    if (tabletData) {
-      setValue('m_cat_name', tabletData.m_cat_name);
-      setValue('m_cat_img', tabletData.m_cat_img);
-      setValue('m_cat_price', tabletData.m_cat_price);
-      setValue('m_cat_status', tabletData.m_cat_status);
-      setValue('m_cat_content', tabletData.m_cat_content || '');
-      setEditorValue(tabletData.m_cat_content || '');
-      setValue('createdAt', tabletData.createdAt);
+    if (macbookData) {
+      setValue('m_cat_name', macbookData.m_cat_name);
+      setValue('m_cat_img', macbookData.m_cat_img);
+      setValue('m_cat_price', macbookData.m_cat_price);
+      setValue('m_cat_status', macbookData.m_cat_status);
+      setValue('m_cat_content', macbookData.m_cat_content || '');
+      setEditorValue(macbookData.m_cat_content || '');
+      setValue('createdAt', macbookData.createdAt);
+      // Save image path
+      setExistingImg(macbookData.m_cat_img);
 
-      // Lưu lại đường dẫn ảnh hiện tại
-      setExistingImg(tabletData.m_cat_img);
-      // Các trường con trong `m_cat_processor`
-      setValue(
-        'm_cat_processor.m_cat_cpu_technology',
-        tabletData.m_cat_processor.m_cat_cpu_technology
-      );
-      setValue(
-        'm_cat_processor.m_cat_core_count',
-        tabletData.m_cat_processor.m_cat_core_count
-      );
-      setValue(
-        'm_cat_processor.m_cat_thread_count',
-        tabletData.m_cat_processor.m_cat_thread_count
-      );
-      setValue(
-        'm_cat_processor.m_cat_cpu_speed',
-        tabletData.m_cat_processor.m_cat_cpu_speed
-      );
-      setValue(
-        'm_cat_processor.m_cat_max_speed',
-        tabletData.m_cat_processor.m_cat_max_speed
-      );
-
-      // Các trường con trong `m_cat_memory_and_storage`
-      setValue(
-        'm_cat_memory_and_storage.m_cat_ram',
-        tabletData.m_cat_memory_and_storage.m_cat_ram
-      );
-      setValue(
-        'm_cat_memory_and_storage.m_cat_ram_type',
-        tabletData.m_cat_memory_and_storage.m_cat_ram_type
-      );
-      setValue(
-        'm_cat_memory_and_storage.m_cat_ram_bus_speed',
-        tabletData.m_cat_memory_and_storage.m_cat_ram_bus_speed
-      );
-      setValue(
-        'm_cat_memory_and_storage.m_cat_max_ram_support',
-        tabletData.m_cat_memory_and_storage.m_cat_max_ram_support
-      );
-      setValue(
-        'm_cat_memory_and_storage.m_cat_hard_drive',
-        tabletData.m_cat_memory_and_storage.m_cat_hard_drive
-      );
-
-      // Các trường con trong `m_cat_display`
-      setValue(
-        'm_cat_display.m_cat_screen_size',
-        tabletData.m_cat_display.m_cat_screen_size
-      );
-      setValue(
-        'm_cat_display.m_cat_resolution',
-        tabletData.m_cat_display.m_cat_resolution
-      );
-      setValue(
-        'm_cat_display.m_cat_refresh_rate',
-        tabletData.m_cat_display.m_cat_refresh_rate
-      );
-      setValue(
-        'm_cat_display.m_cat_color_coverage',
-        tabletData.m_cat_display.m_cat_color_coverage
-      );
-      setValue(
-        'm_cat_display.m_cat_screen_technology',
-        tabletData.m_cat_display.m_cat_screen_technology
-      );
-
-      // Các trường con trong `m_cat_graphics_and_audio`
-      setValue(
-        'm_cat_graphics_and_audio.m_cat_gpu',
-        tabletData.m_cat_graphics_and_audio.m_cat_gpu
-      );
-      setValue(
-        'm_cat_graphics_and_audio.m_cat_audio_technology',
-        tabletData.m_cat_graphics_and_audio.m_cat_audio_technology
-      );
-
-      // Các trường con trong `m_cat_connectivity_and_ports`
-      setValue(
-        'm_cat_connectivity_and_ports.m_cat_ports',
-        tabletData.m_cat_connectivity_and_ports.m_cat_ports
-      );
-      setValue(
-        'm_cat_connectivity_and_ports.m_cat_wireless_connectivity',
-        tabletData.m_cat_connectivity_and_ports.m_cat_wireless_connectivity
-      );
-      setValue(
-        'm_cat_connectivity_and_ports.m_cat_card_reader',
-        tabletData.m_cat_connectivity_and_ports.m_cat_card_reader
-      );
-      setValue(
-        'm_cat_connectivity_and_ports.m_cat_webcam',
-        tabletData.m_cat_connectivity_and_ports.m_cat_webcam
-      );
-      setValue(
-        'm_cat_connectivity_and_ports.m_cat_other_features',
-        tabletData.m_cat_connectivity_and_ports.m_cat_other_features
-      );
-      setValue(
-        'm_cat_connectivity_and_ports.m_cat_keyboard_backlight',
-        tabletData.m_cat_connectivity_and_ports.m_cat_keyboard_backlight
-      );
-
-      // Các trường con trong `m_cat_dimensions_weight_battery`
-      setValue(
-        'm_cat_dimensions_weight_battery.m_cat_dimensions',
-        tabletData.m_cat_dimensions_weight_battery.m_cat_dimensions
-      );
-      setValue(
-        'm_cat_dimensions_weight_battery.m_cat_material',
-        tabletData.m_cat_dimensions_weight_battery.m_cat_material
-      );
-      setValue(
-        'm_cat_dimensions_weight_battery.m_cat_battery_info',
-        tabletData.m_cat_dimensions_weight_battery.m_cat_battery_info
-      );
-      setValue(
-        'm_cat_dimensions_weight_battery.m_cat_operating_system',
-        tabletData.m_cat_dimensions_weight_battery.m_cat_operating_system
-      );
-      setValue(
-        'm_cat_dimensions_weight_battery.m_cat_release_date',
-        tabletData.m_cat_dimensions_weight_battery.m_cat_release_date
-      );
+      fields.forEach(field => {
+        const keys = field.split('.'); // ex: ['m_cat_processor','m_cat_cpu_technology']
+        let value: any = macbookData;
+        // ex: m_cat_processor: { m_cat_cpu_technology: 'value123'}, Lấy value cuối cùng: value123
+        for (const key of keys) {
+          if (value && typeof value === 'object') {
+            value = value[key];
+          } else {
+            value = undefined;
+            break;
+          }
+        }
+        setValue(field as keyof IMacbookCatalog, value);
+      });
     }
   }, [macbookCatalogs, macbookCatalogId, setValue]);
+
   const onSubmit: SubmitHandler<IMacbookCatalog> = async formData => {
     const data = new FormData();
 
@@ -201,32 +135,26 @@ const ModalEditMacbookCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
       data.append('m_cat_img', imgFile[0]);
     } else {
       if (existingImg) {
-        data.append('t_cat_img', existingImg);
+        data.append('m_cat_img', existingImg);
       }
     }
 
     // Convert nested fields to JSON string
-    data.append(
+    const nestedFields = [
       'm_cat_processor',
-      JSON.stringify(formData.m_cat_processor || {})
-    );
-    data.append(
       'm_cat_memory_and_storage',
-      JSON.stringify(formData.m_cat_memory_and_storage || {})
-    );
-    data.append('m_cat_display', JSON.stringify(formData.m_cat_display || {}));
-    data.append(
+      'm_cat_display',
       'm_cat_graphics_and_audio',
-      JSON.stringify(formData.m_cat_graphics_and_audio || {})
-    );
-    data.append(
       'm_cat_connectivity_and_ports',
-      JSON.stringify(formData.m_cat_connectivity_and_ports || {})
-    );
-    data.append(
-      'm_cat_dimensions_weight_battery',
-      JSON.stringify(formData.m_cat_dimensions_weight_battery || {})
-    );
+      'm_cat_dimensions_weight_battery'
+    ];
+
+    nestedFields.forEach(field => {
+      data.append(
+        field,
+        JSON.stringify(formData[field as keyof IMacbookCatalog] || {})
+      );
+    });
 
     try {
       await updateMacbookCatalog(macbookCatalogId, data);
@@ -267,25 +195,33 @@ const ModalEditMacbookCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
               <LabelForm title={'Tên danh mục sản phẩm*'} />
               <InputModal
                 type="text"
-                {...register('m_cat_name', { required: true })}
+                {...register('m_cat_name')}
                 placeholder="Nhập tên danh mục sản phẩm"
               />
               <LabelForm title={'Giá*'} />
               <InputModal
                 type="number"
-                {...register('m_cat_price', { required: true })}
+                {...register('m_cat_price')}
                 placeholder="Nhập giá (Hệ số x1000: 1triệu = 1000)"
               />
               <LabelForm title={'Trạng thái*'} />
               <InputModal
                 type="number"
-                {...register('m_cat_status', { required: true })}
+                {...register('m_cat_status')}
                 placeholder="Chọn: 0(Mới) / 1(Cũ)"
               />
               <LabelForm title={'Hình ảnh*'} />
+              {existingImg && (
+                <div className="my-2">
+                  <img
+                    src={existingImg}
+                    className="h-10 w-10 rounded-md object-cover"
+                  />
+                </div>
+              )}
               <InputModal
                 type="file"
-                {...register('m_cat_img', { required: true })}
+                {...register('m_cat_img')}
                 placeholder="Chèn hình ảnh"
               />
             </div>
@@ -299,14 +235,14 @@ const ModalEditMacbookCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
               />
               <LabelForm title={'Số nhân'} />
               <InputModal
-                type="text"
+                type="number"
                 {...register('m_cat_processor.m_cat_core_count')}
                 placeholder="Nhập số nhân"
               />
 
               <LabelForm title={'Số luồng'} />
               <InputModal
-                type="text"
+                type="number"
                 {...register('m_cat_processor.m_cat_thread_count')}
                 placeholder="Nhập số luồng"
               />

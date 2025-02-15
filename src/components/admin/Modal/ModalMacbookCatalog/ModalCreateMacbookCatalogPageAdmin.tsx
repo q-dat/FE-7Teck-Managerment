@@ -203,14 +203,14 @@ const ModalCreateMacbookCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
               />
               <LabelForm title={'Số nhân'} />
               <InputModal
-                type="text"
+                type="number"
                 {...register('m_cat_processor.m_cat_core_count')}
                 placeholder="Nhập số nhân"
               />
 
               <LabelForm title={'Số luồng'} />
               <InputModal
-                type="text"
+                type="number"
                 {...register('m_cat_processor.m_cat_thread_count')}
                 placeholder="Nhập số luồng"
               />

@@ -202,14 +202,14 @@ const ModalCreateWindowsCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
               />
               <LabelForm title={'Số nhân'} />
               <InputModal
-                type="text"
+                type="number"
                 {...register('w_cat_processor.w_cat_core_count')}
                 placeholder="Nhập số nhân"
               />
 
               <LabelForm title={'Số luồng'} />
               <InputModal
-                type="text"
+                type="number"
                 {...register('w_cat_processor.w_cat_thread_count')}
                 placeholder="Nhập số luồng"
               />
