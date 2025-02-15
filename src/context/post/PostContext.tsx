@@ -95,7 +95,7 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
       getAllPostsApi,
       data => {
         setPosts(data?.posts || []);
-        setCountPost(data?.posts || 0);
+        setCountPost(data?.count || 0);
       },
       'getAll'
     );
