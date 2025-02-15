@@ -12,7 +12,6 @@ import 'react-quill/dist/quill.snow.css';
 import { MacbookCatalogContext } from '../../../../context/macbook-catalog/MacbookCatalogContext';
 import { IMacbookCatalog } from '../../../../types/type/macbook-catalog/macbook-catalog';
 
-
 const modules = {
   toolbar: [
     [{ header: '1' }, { header: '2' }, { font: [] }],
@@ -56,83 +55,29 @@ const ModalCreateMacbookCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
       data.append('m_cat_img', formData.m_cat_img[0]);
     }
 
-    // Append các trường trong m_cat_processor
-    if (formData.m_cat_processor) {
-      Object.entries(formData.m_cat_processor).forEach(([key, value]) => {
-        if (Array.isArray(value)) {
-          value.forEach(item => data.append(`m_cat_processor[${key}][]`, item));
-        } else {
-          data.append(`m_cat_processor[${key}]`, value);
-        }
-      });
-    }
-    // Append các trường trong m_cat_memory_and_storage
-    if (formData.m_cat_memory_and_storage) {
-      Object.entries(formData.m_cat_memory_and_storage).forEach(
-        ([key, value]) => {
-          if (Array.isArray(value)) {
-            value.forEach(item =>
-              data.append(`m_cat_memory_and_storage[${key}][]`, item)
-            );
-          } else {
-            data.append(`m_cat_memory_and_storage[${key}]`, value);
-          }
-        }
-      );
-    }
-    // Append các trường trong m_cat_display
-    if (formData.m_cat_display) {
-      Object.entries(formData.m_cat_display).forEach(([key, value]) => {
-        if (Array.isArray(value)) {
-          value.forEach(item => data.append(`m_cat_display[${key}][]`, item));
-        } else {
-          data.append(`m_cat_display[${key}]`, value);
-        }
-      });
-    }
-    // Append các trường trong m_cat_graphics_and_audio
-    if (formData.m_cat_graphics_and_audio) {
-      Object.entries(formData.m_cat_graphics_and_audio).forEach(
-        ([key, value]) => {
-          if (Array.isArray(value)) {
-            value.forEach(item =>
-              data.append(`m_cat_graphics_and_audio[${key}][]`, item)
-            );
-          } else {
-            data.append(`m_cat_graphics_and_audio[${key}]`, value);
-          }
-        }
-      );
-    }
-    // Append các trường trong m_cat_connectivity_and_ports
-    if (formData.m_cat_connectivity_and_ports) {
-      Object.entries(formData.m_cat_connectivity_and_ports).forEach(
-        ([key, value]) => {
-          if (Array.isArray(value)) {
-            value.forEach(item =>
-              data.append(`m_cat_connectivity_and_ports[${key}][]`, item)
-            );
-          } else {
-            data.append(`m_cat_connectivity_and_ports[${key}]`, value);
-          }
-        }
-      );
-    }
-    // Append các trường trong m_cat_dimensions_weight_battery
-    if (formData.m_cat_dimensions_weight_battery) {
-      Object.entries(formData.m_cat_dimensions_weight_battery).forEach(
-        ([key, value]) => {
-          if (Array.isArray(value)) {
-            value.forEach(item =>
-              data.append(`m_cat_dimensions_weight_battery[${key}][]`, item)
-            );
-          } else {
-            data.append(`m_cat_dimensions_weight_battery[${key}]`, value);
-          }
-        }
-      );
-    }
+    // Convert nested fields to JSON string
+    const nestedFields = [
+      'm_cat_processor',
+      'm_cat_memory_and_storage',
+      'm_cat_display',
+      'm_cat_graphics_and_audio',
+      'm_cat_connectivity_and_ports',
+      'm_cat_dimensions_weight_battery'
+    ] as const; // Giúp TypeScript hiểu đây là danh sách các key hợp lệ
 
+    nestedFields.forEach(field => {
+      const fieldData = formData[field as keyof IMacbookCatalog]; // Ép kiểu an toàn
+      if (fieldData) {
+        Object.entries(fieldData).forEach(([key, value]) => {
+          if (Array.isArray(value)) {
+            value.forEach(item => data.append(`${field}[${key}][]`, item));
+          } else {
+            data.append(`${field}[${key}]`, value);
+          }
+        });
+      }
+    });
+    
     try {
       await createMacbookCatalog(data);
       reset();
@@ -391,7 +336,7 @@ const ModalCreateMacbookCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
                 )}
                 placeholder="Nhập đèn bàn phím"
               />
-              
+
               {/* Kích thước - Khối lượng - Pin */}
               <div className="my-2">
                 <LabelForm title={'Kích thước'} />
@@ -439,7 +384,7 @@ const ModalCreateMacbookCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
                 )}
                 placeholder="Nhập thời điểm ra mắt"
               />
-              
+
               {/*  */}
               <div className="w-full">
                 <ReactQuill
