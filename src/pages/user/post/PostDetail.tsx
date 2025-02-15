@@ -129,7 +129,7 @@ const PostDetail: React.FC = () => {
               <h1 className="p-1 font-semibold uppercase">Bài viết khác</h1>
               <p className="mx-1 mb-3 h-[2px] w-[110px] bg-primary"></p>
             </div>
-            <div className="grid grid-cols-1 gap-2 md:grid-cols-6">
+            <div className="grid grid-cols-1 gap-2 md:grid-cols-3">
               {otherPosts.slice(0, 6).map(post => (
                 <div
                   key={post?._id}
