@@ -6,7 +6,9 @@ import TimeAgo from '../../../components/orther/timeAgo/TimeAgo';
 
 const TipsAndTricksPage: React.FC = () => {
   const { posts } = useContext(PostContext);
-
+  const tricks = posts?.filter(post =>
+    post?.catalog.toLowerCase().includes('mẹo')
+  );
   useEffect(() => {
     // Scroll To Top
     window.scrollTo({
@@ -56,7 +58,7 @@ const TipsAndTricksPage: React.FC = () => {
             </h1>
           </div>
           <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-5">
-            {posts.map(post => (
+            {tricks.map(post => (
               <div
                 key={post?._id}
                 className="relative cursor-pointer rounded border border-gray-50 bg-white p-2 shadow-inner hover:shadow-lg"

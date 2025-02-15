@@ -29,6 +29,7 @@ import {
   bgBlog,
   bgFixed
 } from '../../../assets/images';
+import TimeAgo from '../../../components/orther/timeAgo/TimeAgo';
 
 // Items Data
 const items = [
@@ -81,12 +82,27 @@ const items = [
 
 const HomePage: React.FC = () => {
   const { posts } = useContext(PostContext);
+  const news = posts?.filter(post =>
+    post?.catalog.toLowerCase().includes('tin')
+  );
+
+  const tricks = posts?.filter(post =>
+    post?.catalog.toLowerCase().includes('mẹo')
+  );
+
   const navigate = useNavigate();
 
   // Handle Click Post To Post Detail
-  const handlePostClick = (post: (typeof posts)[0]) => {
+  const handlePostClick = (post: (typeof news)[0]) => {
     const titleSlug = encodeURIComponent(
-      post?.title.toLowerCase().replace(/\s+/g, '-')
+      post?.title
+        .toString()
+        .replace(/đ/g, 'd')
+        .normalize('NFD')
+        .replace(/\p{Diacritic}/gu, '')
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '')
     );
     navigate(`/tin-tuc/${titleSlug}`);
   };
@@ -234,13 +250,6 @@ const HomePage: React.FC = () => {
         <div data-aos="fade-up" className="mt-10 p-0 xl:px-[100px]">
           <MacbookFC />
         </div>
-        {/* ParallaxSection */}
-        {/* <div className="my-10 flex flex-col items-center justify-between p-0 xl:flex-row xl:px-[100px]">
-          <div className="w-full">
-            <ParallaxSectionFC />
-          </div>
-          <div className="w-full"></div>
-        </div> */}
         {/* Post */}
         <div
           style={{
@@ -252,27 +261,27 @@ const HomePage: React.FC = () => {
           <section
             className="relative z-10"
             role="region"
-            aria-label=" Bản tin mới nhất"
+            aria-label="Bản tin mới nhất"
           >
-            <h3 className="mb-2 bg-white bg-opacity-20 text-center text-xl font-semibold uppercase text-white">
-              Bản tin mới nhất
+            <h3 className="mb-2 bg-white bg-opacity-20 px-2 text-start text-xl font-semibold uppercase text-black xl:px-[100px]">
+              Tin công nghệ
             </h3>
             <div className="grid grid-cols-2 gap-2 px-2 md:grid-cols-3 lg:grid-cols-4 xl:px-[100px]">
-              {posts.slice(0, 4).map(post => (
+              {news.slice(0, 4).map(post => (
                 <div
                   key={post?._id}
-                  className="relative flex cursor-pointer flex-col items-start justify-start gap-2 rounded border border-gray-50 bg-white p-2 shadow-inner hover:shadow-lg xl:flex-row"
+                  className="relative flex cursor-pointer flex-col items-start justify-start gap-2 rounded border border-white bg-black bg-opacity-30 p-1 shadow-inner hover:shadow-lg"
                   onClick={() => handlePostClick(post)}
                 >
-                  <p className="absolute left-1 top-1 z-20 rounded-sm bg-primary px-2 text-[12px] text-white">
+                  <p className="absolute left-[2px] top-[2px] z-20 rounded-sm bg-primary px-2 text-[12px] text-white">
                     {post?.catalog}
                   </p>
-                  <div className="relative h-[100px] w-full overflow-hidden">
+                  <div className="relative h-[200px] w-full overflow-hidden">
                     <img
                       loading="lazy"
                       src={post?.imageUrl}
                       alt="Ảnh đại diện"
-                      className="absolute left-0 top-0 z-0 h-full w-full rounded-sm object-cover blur-sm filter"
+                      className="absolute left-0 top-0 z-0 h-full w-full rounded-sm object-cover blur-2xl filter"
                     />
                     <img
                       loading="lazy"
@@ -281,9 +290,59 @@ const HomePage: React.FC = () => {
                       className="absolute left-0 top-0 z-10 h-full w-full rounded-sm object-contain"
                     />
                   </div>
-                  <p className="line-clamp-6 w-full py-1 text-sm text-black">
+                  <p className="line-clamp-6 w-full py-1 text-sm font-semibold text-white">
                     {post?.title}
                   </p>
+                  <p className="pt-2 text-[12px] text-white">
+                  {new Date(post?.updatedAt).toLocaleDateString('vi-VN')}
+                  &nbsp;(
+                  <TimeAgo date={post?.updatedAt} />)
+                </p>
+                </div>
+              ))}
+            </div>
+          </section>
+          {/*  */}
+          <section
+            className="relative z-10"
+            role="region"
+            aria-label="Thủ thuật và mẹo hay"
+          >
+            <h3 className="my-2 bg-white bg-opacity-20 px-2 text-start text-xl font-semibold uppercase text-black xl:px-[100px]">
+              Thủ thuật - Mẹo hay
+            </h3>
+            <div className="grid grid-cols-2 gap-2 px-2 md:grid-cols-3 lg:grid-cols-4 xl:px-[100px]">
+              {tricks.slice(0, 4).map(post => (
+                <div
+                  key={post?._id}
+                  className="relative flex cursor-pointer flex-col items-start justify-start gap-2 rounded border border-white bg-black bg-opacity-30 p-1 shadow-inner hover:shadow-lg"
+                  onClick={() => handlePostClick(post)}
+                >
+                  <p className="absolute left-[2px] top-[2px] z-20 rounded-sm bg-primary px-2 text-[12px] text-white">
+                    {post?.catalog}
+                  </p>
+                  <div className="relative h-[200px] w-full overflow-hidden">
+                    <img
+                      loading="lazy"
+                      src={post?.imageUrl}
+                      alt="Ảnh đại diện"
+                      className="absolute left-0 top-0 z-0 h-full w-full rounded-sm object-cover blur-2xl filter"
+                    />
+                    <img
+                      loading="lazy"
+                      src={post?.imageUrl}
+                      alt="Ảnh đại diện"
+                      className="absolute left-0 top-0 z-10 h-full w-full rounded-sm object-contain"
+                    />
+                  </div>
+                  <p className="line-clamp-6 w-full py-1 text-sm font-semibold text-white">
+                    {post?.title}
+                  </p>
+                  <p className="pt-2 text-[12px] text-white">
+                  {new Date(post?.updatedAt).toLocaleDateString('vi-VN')}
+                  &nbsp;(
+                  <TimeAgo date={post?.updatedAt} />)
+                </p>
                 </div>
               ))}
             </div>

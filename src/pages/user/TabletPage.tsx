@@ -99,7 +99,7 @@ const TabletPage: React.FC = () => {
                           <img
                             alt="Hình ảnh"
                             loading="lazy"
-                            className="absolute left-0 top-0 z-0 h-full w-full rounded-[5px] rounded-b-none object-cover blur-sm filter"
+                            className="absolute left-0 top-0 z-0 h-full w-full rounded-[5px] rounded-b-none object-cover blur-xl filter"
                             src={tablet?.tablet_img}
                           />
                           <img

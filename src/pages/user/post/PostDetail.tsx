@@ -126,41 +126,34 @@ const PostDetail: React.FC = () => {
           </div>
           <div className="px-0 xl:px-20">
             <div role="region" aria-label="Bài viết nổi bật khác">
-              <h1 className="p-1 font-semibold uppercase">
-                Bài viết nổi bật khác
-              </h1>
+              <h1 className="p-1 font-semibold uppercase">Bài viết khác</h1>
+              <p className="mx-1 mb-3 h-[2px] w-[110px] bg-primary"></p>
             </div>
-            <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-5">
-              {otherPosts.slice(0, 8).map(post => (
+            <div className="grid grid-cols-1 gap-2 md:grid-cols-6">
+              {otherPosts.slice(0, 6).map(post => (
                 <div
                   key={post?._id}
-                  className="relative cursor-pointer rounded border border-gray-50 bg-white p-2 shadow-inner hover:shadow-lg"
+                  className="flex cursor-pointer flex-row items-start justify-start gap-2 rounded bg-white p-1"
                   onClick={() => handlePostSelect(post)}
                 >
-                  <p className="absolute left-1 top-1 z-10 rounded-sm bg-primary px-2 text-[12px] text-white">
-                    {post?.catalog}
-                  </p>
-                  <div className="overflow-hidden">
+                  <div className="min-h-[100px] w-2/3 overflow-hidden">
                     <img
                       loading="lazy"
                       src={post?.imageUrl}
                       alt="Ảnh đại diện"
-                      className="h-auto w-full rounded-sm border transition-transform duration-1000 ease-in-out hover:scale-110"
+                      className="left-0 top-0 z-10 h-auto w-full rounded-sm object-contain"
                     />
                   </div>
-                  <p className="line-clamp-3 py-1 text-sm font-bold text-primary">
-                    {post?.title}
-                  </p>
-                  <hr />
-                  <div
-                    dangerouslySetInnerHTML={{ __html: post?.content }}
-                    className="line-clamp-4 text-xs text-black"
-                  ></div>
-                  <p className="pt-2 text-[12px] text-primary">
-                    {new Date(post?.updatedAt).toLocaleDateString('vi-VN')}
-                    &nbsp;(
-                    <TimeAgo date={post?.updatedAt} />)
-                  </p>
+                  <div className="flex w-full flex-col items-start justify-start">
+                    <p className="line-clamp-5 w-full py-1 text-sm text-black">
+                      {post?.title}
+                    </p>
+                    <p className="pt-2 text-[12px] text-primary">
+                  {new Date(post?.updatedAt).toLocaleDateString('vi-VN')}
+                  &nbsp;(
+                  <TimeAgo date={post?.updatedAt} />)
+                </p>
+                  </div>
                 </div>
               ))}
             </div>
