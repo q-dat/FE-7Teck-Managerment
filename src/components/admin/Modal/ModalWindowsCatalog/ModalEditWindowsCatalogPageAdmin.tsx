@@ -31,6 +31,48 @@ interface ModalEditAdminProps {
   windowsCatalogId: string;
 }
 
+const fields = [
+  // Bộ xử lý
+  'w_cat_processor.w_cat_cpu_technology',
+  'w_cat_processor.w_cat_core_count',
+  'w_cat_processor.w_cat_thread_count',
+  'w_cat_processor.w_cat_cpu_speed',
+  'w_cat_processor.w_cat_max_speed',
+
+  // Bộ nhớ RAM, Ổ cứng
+  'w_cat_memory_and_storage.w_cat_ram',
+  'w_cat_memory_and_storage.w_cat_ram_type',
+  'w_cat_memory_and_storage.w_cat_ram_bus_speed',
+  'w_cat_memory_and_storage.w_cat_max_ram_support',
+  'w_cat_memory_and_storage.w_cat_hard_drive',
+
+  // Màn hình
+  'w_cat_display.w_cat_screen_size',
+  'w_cat_display.w_cat_resolution',
+  'w_cat_display.w_cat_refresh_rate',
+  'w_cat_display.w_cat_color_coverage',
+  'w_cat_display.w_cat_screen_technology',
+
+  // Đồ hoạ và Âm thanh
+  'w_cat_graphics_and_audio.w_cat_gpu',
+  'w_cat_graphics_and_audio.w_cat_audio_technology',
+
+  // Cổng kết nối & Tính năng mở rộng
+  'w_cat_connectivity_and_ports.w_cat_ports',
+  'w_cat_connectivity_and_ports.w_cat_wireless_connectivity',
+  'w_cat_connectivity_and_ports.w_cat_card_reader',
+  'w_cat_connectivity_and_ports.w_cat_webcam',
+  'w_cat_connectivity_and_ports.w_cat_other_features',
+  'w_cat_connectivity_and_ports.w_cat_keyboard_backlight',
+
+  // Kích thước - Khối lượng - Pin
+  'w_cat_dimensions_weight_battery.w_cat_dimensions',
+  'w_cat_dimensions_weight_battery.w_cat_material',
+  'w_cat_dimensions_weight_battery.w_cat_battery_info',
+  'w_cat_dimensions_weight_battery.w_cat_operating_system',
+  'w_cat_dimensions_weight_battery.w_cat_release_date'
+];
+
 const ModalEditWindowsCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
   isOpen,
   onClose,
@@ -49,143 +91,35 @@ const ModalEditWindowsCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
   const [editorValue, setEditorValue] = useState<string>('');
 
   useEffect(() => {
-    const tabletData = windowsCatalogs.find(
+    const windowsData = windowsCatalogs.find(
       winCatalog => winCatalog._id === windowsCatalogId
     );
-    if (tabletData) {
-      setValue('w_cat_name', tabletData.w_cat_name);
-      setValue('w_cat_img', tabletData.w_cat_img);
-      setValue('w_cat_price', tabletData.w_cat_price);
-      setValue('w_cat_status', tabletData.w_cat_status);
-      setValue('w_cat_content', tabletData.w_cat_content || '');
-      setEditorValue(tabletData.w_cat_content || '');
-      setValue('createdAt', tabletData.createdAt);
+    if (windowsData) {
+      setValue('w_cat_name', windowsData.w_cat_name);
+      setValue('w_cat_img', windowsData.w_cat_img);
+      setValue('w_cat_price', windowsData.w_cat_price);
+      setValue('w_cat_status', windowsData.w_cat_status);
+      setValue('w_cat_content', windowsData.w_cat_content || '');
+      setEditorValue(windowsData.w_cat_content || '');
+      setValue('createdAt', windowsData.createdAt);
 
-      // Lưu lại đường dẫn ảnh hiện tại
-      setExistingImg(tabletData.w_cat_img);
-      // Các trường con trong `w_cat_processor`
-      setValue(
-        'w_cat_processor.w_cat_cpu_technology',
-        tabletData.w_cat_processor.w_cat_cpu_technology
-      );
-      setValue(
-        'w_cat_processor.w_cat_core_count',
-        tabletData.w_cat_processor.w_cat_core_count
-      );
-      setValue(
-        'w_cat_processor.w_cat_thread_count',
-        tabletData.w_cat_processor.w_cat_thread_count
-      );
-      setValue(
-        'w_cat_processor.w_cat_cpu_speed',
-        tabletData.w_cat_processor.w_cat_cpu_speed
-      );
-      setValue(
-        'w_cat_processor.w_cat_max_speed',
-        tabletData.w_cat_processor.w_cat_max_speed
-      );
+      // Save image path
+      setExistingImg(windowsData.w_cat_img);
 
-      // Các trường con trong `w_cat_memory_and_storage`
-      setValue(
-        'w_cat_memory_and_storage.w_cat_ram',
-        tabletData.w_cat_memory_and_storage.w_cat_ram
-      );
-      setValue(
-        'w_cat_memory_and_storage.w_cat_ram_type',
-        tabletData.w_cat_memory_and_storage.w_cat_ram_type
-      );
-      setValue(
-        'w_cat_memory_and_storage.w_cat_ram_bus_speed',
-        tabletData.w_cat_memory_and_storage.w_cat_ram_bus_speed
-      );
-      setValue(
-        'w_cat_memory_and_storage.w_cat_max_ram_support',
-        tabletData.w_cat_memory_and_storage.w_cat_max_ram_support
-      );
-      setValue(
-        'w_cat_memory_and_storage.w_cat_hard_drive',
-        tabletData.w_cat_memory_and_storage.w_cat_hard_drive
-      );
-
-      // Các trường con trong `w_cat_display`
-      setValue(
-        'w_cat_display.w_cat_screen_size',
-        tabletData.w_cat_display.w_cat_screen_size
-      );
-      setValue(
-        'w_cat_display.w_cat_resolution',
-        tabletData.w_cat_display.w_cat_resolution
-      );
-      setValue(
-        'w_cat_display.w_cat_refresh_rate',
-        tabletData.w_cat_display.w_cat_refresh_rate
-      );
-      setValue(
-        'w_cat_display.w_cat_color_coverage',
-        tabletData.w_cat_display.w_cat_color_coverage
-      );
-      setValue(
-        'w_cat_display.w_cat_screen_technology',
-        tabletData.w_cat_display.w_cat_screen_technology
-      );
-
-      // Các trường con trong `w_cat_graphics_and_audio`
-      setValue(
-        'w_cat_graphics_and_audio.w_cat_gpu',
-        tabletData.w_cat_graphics_and_audio.w_cat_gpu
-      );
-      setValue(
-        'w_cat_graphics_and_audio.w_cat_audio_technology',
-        tabletData.w_cat_graphics_and_audio.w_cat_audio_technology
-      );
-
-      // Các trường con trong `w_cat_connectivity_and_ports`
-      setValue(
-        'w_cat_connectivity_and_ports.w_cat_ports',
-        tabletData.w_cat_connectivity_and_ports.w_cat_ports
-      );
-      setValue(
-        'w_cat_connectivity_and_ports.w_cat_wireless_connectivity',
-        tabletData.w_cat_connectivity_and_ports.w_cat_wireless_connectivity
-      );
-      setValue(
-        'w_cat_connectivity_and_ports.w_cat_card_reader',
-        tabletData.w_cat_connectivity_and_ports.w_cat_card_reader
-      );
-      setValue(
-        'w_cat_connectivity_and_ports.w_cat_webcam',
-        tabletData.w_cat_connectivity_and_ports.w_cat_webcam
-      );
-      setValue(
-        'w_cat_connectivity_and_ports.w_cat_other_features',
-        tabletData.w_cat_connectivity_and_ports.w_cat_other_features
-      );
-      setValue(
-        'w_cat_connectivity_and_ports.w_cat_keyboard_backlight',
-        tabletData.w_cat_connectivity_and_ports.w_cat_keyboard_backlight
-      );
-
-      // Các trường con trong `w_cat_dimensions_weight_battery`
-      setValue(
-        'w_cat_dimensions_weight_battery.w_cat_dimensions',
-        tabletData.w_cat_dimensions_weight_battery.w_cat_dimensions
-      );
-      setValue(
-        'w_cat_dimensions_weight_battery.w_cat_material',
-        tabletData.w_cat_dimensions_weight_battery.w_cat_material
-      );
-      setValue(
-        'w_cat_dimensions_weight_battery.w_cat_battery_info',
-        tabletData.w_cat_dimensions_weight_battery.w_cat_battery_info
-      );
-      setValue(
-        'w_cat_dimensions_weight_battery.w_cat_operating_system',
-        tabletData.w_cat_dimensions_weight_battery.w_cat_operating_system
-      );
-      setValue(
-        'w_cat_dimensions_weight_battery.w_cat_release_date',
-        tabletData.w_cat_dimensions_weight_battery.w_cat_release_date
-      );
+      fields.forEach(field => {
+        const keys = field.split('.'); // ex: ['w_cat_processor','w_cat_cpu_technology']
+        let value: any = windowsData;
+        // ex: w_cat_processor: { w_cat_cpu_technology: 'value123'}, Lấy value cuối cùng: value123
+        for (const key of keys) {
+          if (value && typeof value === 'object') {
+            value = value[key];
+          } else {
+            value = undefined;
+            break;
+          }
+        }
+        setValue(field as keyof IWindowsCatalog, value);
+      });
     }
   }, [windowsCatalogs, windowsCatalogId, setValue]);
   const onSubmit: SubmitHandler<IWindowsCatalog> = async formData => {
@@ -201,32 +135,26 @@ const ModalEditWindowsCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
       data.append('w_cat_img', imgFile[0]);
     } else {
       if (existingImg) {
-        data.append('t_cat_img', existingImg);
+        data.append('w_cat_img', existingImg);
       }
     }
 
     // Convert nested fields to JSON string
-    data.append(
+    const nestedFields = [
       'w_cat_processor',
-      JSON.stringify(formData.w_cat_processor || {})
-    );
-    data.append(
       'w_cat_memory_and_storage',
-      JSON.stringify(formData.w_cat_memory_and_storage || {})
-    );
-    data.append('w_cat_display', JSON.stringify(formData.w_cat_display || {}));
-    data.append(
+      'w_cat_display',
       'w_cat_graphics_and_audio',
-      JSON.stringify(formData.w_cat_graphics_and_audio || {})
-    );
-    data.append(
       'w_cat_connectivity_and_ports',
-      JSON.stringify(formData.w_cat_connectivity_and_ports || {})
-    );
-    data.append(
-      'w_cat_dimensions_weight_battery',
-      JSON.stringify(formData.w_cat_dimensions_weight_battery || {})
-    );
+      'w_cat_dimensions_weight_battery'
+    ];
+
+    nestedFields.forEach(field => {
+      data.append(
+        field,
+        JSON.stringify(formData[field as keyof IWindowsCatalog] || {})
+      );
+    });
 
     try {
       await updateWindowsCatalog(windowsCatalogId, data);

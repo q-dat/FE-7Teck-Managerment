@@ -53,119 +53,31 @@ const ModalCreateTabletCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
       data.append('t_cat_img', formData.t_cat_img[0]);
     }
 
-    // Append các trường trong t_cat_display
-    if (formData.t_cat_display) {
-      Object.entries(formData.t_cat_display).forEach(([key, value]) => {
-        data.append(`t_cat_display[${key}]`, value);
-      });
-    }
+    // Convert nested fields to JSON string
+    const nestedFields = [
+      't_cat_display',
+      't_cat_operating_system_and_cpu',
+      't_cat_memory_and_storage',
+      't_cat_rear_camera',
+      't_cat_front_camera',
+      't_cat_connectivity',
+      't_cat_features',
+      't_cat_battery_and_charging',
+      't_cat_general_information'
+    ] as const; // Giúp TypeScript hiểu đây là danh sách các key hợp lệ
 
-    // Append các trường trong t_cat_operating_system_and_cpu
-    if (formData.t_cat_operating_system_and_cpu) {
-      Object.entries(formData.t_cat_operating_system_and_cpu).forEach(
-        ([key, value]) => {
+    nestedFields.forEach(field => {
+      const fieldData = formData[field as keyof ITabletCatalog]; // Ép kiểu an toàn
+      if (fieldData) {
+        Object.entries(fieldData).forEach(([key, value]) => {
           if (Array.isArray(value)) {
-            value.forEach(item =>
-              data.append(`t_cat_operating_system_and_cpu[${key}][]`, item)
-            );
+            value.forEach(item => data.append(`${field}[${key}][]`, item));
           } else {
-            data.append(`t_cat_operating_system_and_cpu[${key}]`, value);
+            data.append(`${field}[${key}]`, value);
           }
-        }
-      );
-    }
-
-    // Append các trường trong t_cat_memory_and_storage
-    if (formData.t_cat_memory_and_storage) {
-      Object.entries(formData.t_cat_memory_and_storage).forEach(
-        ([key, value]) => {
-          if (Array.isArray(value)) {
-            value.forEach(item =>
-              data.append(`t_cat_memory_and_storage[${key}][]`, item)
-            );
-          } else {
-            data.append(`t_cat_memory_and_storage[${key}]`, value);
-          }
-        }
-      );
-    }
-
-    // Append các trường trong t_cat_rear_camera
-    if (formData.t_cat_rear_camera) {
-      Object.entries(formData.t_cat_rear_camera).forEach(([key, value]) => {
-        if (Array.isArray(value)) {
-          value.forEach(item =>
-            data.append(`t_cat_rear_camera[${key}][]`, item)
-          );
-        } else {
-          data.append(`t_cat_rear_camera[${key}]`, value);
-        }
-      });
-    }
-
-    // Append các trường trong t_cat_front_camera
-    if (formData.t_cat_front_camera) {
-      Object.entries(formData.t_cat_front_camera).forEach(([key, value]) => {
-        if (Array.isArray(value)) {
-          value.forEach(item =>
-            data.append(`t_cat_front_camera[${key}][]`, item)
-          );
-        } else {
-          data.append(`t_cat_front_camera[${key}]`, value);
-        }
-      });
-    }
-
-    // Append các trường trong t_cat_connectivity
-    if (formData.t_cat_connectivity) {
-      Object.entries(formData.t_cat_connectivity).forEach(([key, value]) => {
-        if (Array.isArray(value)) {
-          value.forEach(item =>
-            data.append(`t_cat_connectivity[${key}][]`, item)
-          );
-        } else {
-          data.append(`t_cat_connectivity[${key}]`, value);
-        }
-      });
-    }
-    // Append các trường trong t_cat_features
-    if (formData.t_cat_features) {
-      Object.entries(formData.t_cat_features).forEach(([key, value]) => {
-        if (Array.isArray(value)) {
-          value.forEach(item => data.append(`t_cat_features[${key}][]`, item));
-        } else {
-          data.append(`t_cat_features[${key}]`, value);
-        }
-      });
-    }
-    // Append các trường trong t_cat_battery_and_charging
-    if (formData.t_cat_battery_and_charging) {
-      Object.entries(formData.t_cat_battery_and_charging).forEach(
-        ([key, value]) => {
-          if (Array.isArray(value)) {
-            value.forEach(item =>
-              data.append(`t_cat_battery_and_charging[${key}][]`, item)
-            );
-          } else {
-            data.append(`t_cat_battery_and_charging[${key}]`, value);
-          }
-        }
-      );
-    }
-    // Append các trường trong t_cat_general_information
-    if (formData.t_cat_general_information) {
-      Object.entries(formData.t_cat_general_information).forEach(
-        ([key, value]) => {
-          if (Array.isArray(value)) {
-            value.forEach(item =>
-              data.append(`t_cat_general_information[${key}][]`, item)
-            );
-          } else {
-            data.append(`t_cat_general_information[${key}]`, value);
-          }
-        }
-      );
-    }
+        });
+      }
+    });
 
     try {
       await createTabletCatalog(data);

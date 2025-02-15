@@ -55,83 +55,29 @@ const ModalCreateWindowsCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
       data.append('w_cat_img', formData.w_cat_img[0]);
     }
 
-    // Append các trường trong w_cat_processor
-    if (formData.w_cat_processor) {
-      Object.entries(formData.w_cat_processor).forEach(([key, value]) => {
-        if (Array.isArray(value)) {
-          value.forEach(item => data.append(`w_cat_processor[${key}][]`, item));
-        } else {
-          data.append(`w_cat_processor[${key}]`, value);
-        }
-      });
-    }
-    // Append các trường trong w_cat_memory_and_storage
-    if (formData.w_cat_memory_and_storage) {
-      Object.entries(formData.w_cat_memory_and_storage).forEach(
-        ([key, value]) => {
-          if (Array.isArray(value)) {
-            value.forEach(item =>
-              data.append(`w_cat_memory_and_storage[${key}][]`, item)
-            );
-          } else {
-            data.append(`w_cat_memory_and_storage[${key}]`, value);
-          }
-        }
-      );
-    }
-    // Append các trường trong w_cat_display
-    if (formData.w_cat_display) {
-      Object.entries(formData.w_cat_display).forEach(([key, value]) => {
-        if (Array.isArray(value)) {
-          value.forEach(item => data.append(`w_cat_display[${key}][]`, item));
-        } else {
-          data.append(`w_cat_display[${key}]`, value);
-        }
-      });
-    }
-    // Append các trường trong w_cat_graphics_and_audio
-    if (formData.w_cat_graphics_and_audio) {
-      Object.entries(formData.w_cat_graphics_and_audio).forEach(
-        ([key, value]) => {
-          if (Array.isArray(value)) {
-            value.forEach(item =>
-              data.append(`w_cat_graphics_and_audio[${key}][]`, item)
-            );
-          } else {
-            data.append(`w_cat_graphics_and_audio[${key}]`, value);
-          }
-        }
-      );
-    }
-    // Append các trường trong w_cat_connectivity_and_ports
-    if (formData.w_cat_connectivity_and_ports) {
-      Object.entries(formData.w_cat_connectivity_and_ports).forEach(
-        ([key, value]) => {
-          if (Array.isArray(value)) {
-            value.forEach(item =>
-              data.append(`w_cat_connectivity_and_ports[${key}][]`, item)
-            );
-          } else {
-            data.append(`w_cat_connectivity_and_ports[${key}]`, value);
-          }
-        }
-      );
-    }
-    // Append các trường trong w_cat_dimensions_weight_battery
-    if (formData.w_cat_dimensions_weight_battery) {
-      Object.entries(formData.w_cat_dimensions_weight_battery).forEach(
-        ([key, value]) => {
-          if (Array.isArray(value)) {
-            value.forEach(item =>
-              data.append(`w_cat_dimensions_weight_battery[${key}][]`, item)
-            );
-          } else {
-            data.append(`w_cat_dimensions_weight_battery[${key}]`, value);
-          }
-        }
-      );
-    }
+    // Convert nested fields to JSON string
+    const nestedFields = [
+      'w_cat_processor',
+      'w_cat_memory_and_storage',
+      'w_cat_display',
+      'w_cat_graphics_and_audio',
+      'w_cat_connectivity_and_ports',
+      'w_cat_dimensions_weight_battery'
+    ] as const; // Giúp TypeScript hiểu đây là danh sách các key hợp lệ
 
+    nestedFields.forEach(field => {
+      const fieldData = formData[field as keyof IWindowsCatalog]; // Ép kiểu an toàn
+      if (fieldData) {
+        Object.entries(fieldData).forEach(([key, value]) => {
+          if (Array.isArray(value)) {
+            value.forEach(item => data.append(`${field}[${key}][]`, item));
+          } else {
+            data.append(`${field}[${key}]`, value);
+          }
+        });
+      }
+    });
+    
     try {
       await createWindowsCatalog(data);
       reset();

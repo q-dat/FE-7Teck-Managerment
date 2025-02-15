@@ -77,7 +77,7 @@ const ModalCreateMacbookCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
         });
       }
     });
-    
+
     try {
       await createMacbookCatalog(data);
       reset();

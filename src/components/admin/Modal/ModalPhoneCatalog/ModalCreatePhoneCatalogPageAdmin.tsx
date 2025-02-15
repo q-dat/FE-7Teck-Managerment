@@ -52,75 +52,29 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
     if (formData.img && formData.img[0]) {
       data.append('img', formData.img[0]);
     }
+    // Convert nested fields to JSON string
+    const nestedFields = [
+      'configuration_and_memory',
+      'camera_and_screen',
+      'battery_and_charging',
+      'features',
+      'connectivity',
+      'design_and_material'
+    ] as const; // Giúp TypeScript hiểu đây là danh sách các key hợp lệ
 
-    // Append các trường trong configuration_and_memory
-    if (formData.configuration_and_memory) {
-      Object.entries(formData.configuration_and_memory).forEach(
-        ([key, value]) => {
-          data.append(`configuration_and_memory[${key}]`, value);
-        }
-      );
-    }
+    nestedFields.forEach(field => {
+      const fieldData = formData[field as keyof IPhoneCatalog]; // Ép kiểu an toàn
+      if (fieldData) {
+        Object.entries(fieldData).forEach(([key, value]) => {
+          if (Array.isArray(value)) {
+            value.forEach(item => data.append(`${field}[${key}][]`, item));
+          } else {
+            data.append(`${field}[${key}]`, value);
+          }
+        });
+      }
+    });
 
-    // Append các trường trong camera_and_screen
-    if (formData.camera_and_screen) {
-      Object.entries(formData.camera_and_screen).forEach(([key, value]) => {
-        if (Array.isArray(value)) {
-          value.forEach(item =>
-            data.append(`camera_and_screen[${key}][]`, item)
-          );
-        } else {
-          data.append(`camera_and_screen[${key}]`, value);
-        }
-      });
-    }
-
-    // Append các trường trong battery_and_charging
-    if (formData.battery_and_charging) {
-      Object.entries(formData.battery_and_charging).forEach(([key, value]) => {
-        if (Array.isArray(value)) {
-          value.forEach(item =>
-            data.append(`battery_and_charging[${key}][]`, item)
-          );
-        } else {
-          data.append(`battery_and_charging[${key}]`, value);
-        }
-      });
-    }
-
-    // Append các trường trong features
-    if (formData.features) {
-      Object.entries(formData.features).forEach(([key, value]) => {
-        if (Array.isArray(value)) {
-          value.forEach(item => data.append(`features[${key}][]`, item));
-        } else {
-          data.append(`features[${key}]`, value);
-        }
-      });
-    }
-
-    // Append các trường trong connectivity
-    if (formData.connectivity) {
-      Object.entries(formData.connectivity).forEach(([key, value]) => {
-        if (Array.isArray(value)) {
-          value.forEach(item => data.append(`connectivity[${key}][]`, item));
-        } else {
-          data.append(`connectivity[${key}]`, value);
-        }
-      });
-    }
-    // Append các trường trong design_and_material
-    if (formData.design_and_material) {
-      Object.entries(formData.design_and_material).forEach(([key, value]) => {
-        if (Array.isArray(value)) {
-          value.forEach(item =>
-            data.append(`design_and_material[${key}][]`, item)
-          );
-        } else {
-          data.append(`design_and_material[${key}]`, value);
-        }
-      });
-    }
     try {
       await createPhoneCatalog(data);
       reset();

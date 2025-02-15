@@ -102,6 +102,7 @@ const ModalEditMacbookCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
       setValue('m_cat_content', macbookData.m_cat_content || '');
       setEditorValue(macbookData.m_cat_content || '');
       setValue('createdAt', macbookData.createdAt);
+    
       // Save image path
       setExistingImg(macbookData.m_cat_img);
 
