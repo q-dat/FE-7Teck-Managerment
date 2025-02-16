@@ -6,13 +6,18 @@ const axiosInstance = axios.create({
   timeout: 10000
 });
 
+let csrfTokenCache: string | null = null;
+
 // Hàm lấy CSRF token
-async function getCsrfToken() {
+async function getCsrfToken(): Promise<string | null> {
+  if (csrfTokenCache) return csrfTokenCache;
   try {
     const response = await axios.get(`${import.meta.env.VITE_API_PORT}/csrf-token`, {
       withCredentials: true
     });
-    return response.data.csrfToken;
+    csrfTokenCache = response.data.csrfToken;
+    return csrfTokenCache;
+    
   } catch (error) {
     console.error('Lỗi lấy CSRF token:', error);
     return null;
@@ -21,9 +26,13 @@ async function getCsrfToken() {
 
 // Interceptor để tự động thêm CSRF token vào mỗi request
 axiosInstance.interceptors.request.use(async (config) => {
-  const csrfToken = await getCsrfToken();
-  if (csrfToken) {
-    config.headers['X-CSRF-Token'] = csrfToken;
+  const method = config.method?.toLowerCase(); // Fix lỗi có thể là undefined
+  if (method && ['post', 'put', 'patch', 'delete'].includes(method)) {
+    const csrfToken = await getCsrfToken();
+    if (csrfToken) {
+      config.headers = config.headers || {}; // Đảm bảo headers không bị undefined
+      config.headers['X-CSRF-Token'] = csrfToken;
+    }
   }
   return config;
 }, (error) => {
