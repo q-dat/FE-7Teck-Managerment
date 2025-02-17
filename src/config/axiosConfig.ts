@@ -1,4 +1,5 @@
 import axios from 'axios';
+import FingerprintJS from '@fingerprintjs/fingerprintjs';
 
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_API_PORT, // URL backend từ .env
@@ -84,5 +85,26 @@ const axiosInstance = axios.create({
 //   sessionTokenCache = '';
 //   csrfTokenCache = null; // Xóa CSRF token luôn
 // }
+
+// Hàm lấy clientId từ FingerprintJS
+const getFingerprint = async (): Promise<string> => {
+  const fp = await FingerprintJS.load(); // Tải FingerprintJS
+  const result = await fp.get(); // Lấy thông tin về client
+  return result.visitorId; // Trả về clientId duy nhất
+};
+
+// Cấu hình Interceptor để thêm clientId vào tất cả request
+axiosInstance.interceptors.request.use(
+  async config => {
+    const clientId = await getFingerprint(); // Lấy clientId từ FingerprintJS
+    if (clientId) {
+      config.headers['X-Client-ID'] = clientId; // Gửi clientId trong header của request
+    }
+    return config;
+  },
+  error => {
+    return Promise.reject(error);
+  }
+);
 
 export default axiosInstance;
