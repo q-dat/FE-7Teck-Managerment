@@ -2,8 +2,8 @@ import React, { lazy, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { PhoneContext } from '../context/phone/PhoneContext';
 import useSeo from '../hooks/useSeo';
-const PhoneByCatalogPage = lazy(
-  () => import('../pages/user/phone/PhoneByCatalogPage')
+const UsedPhoneByCatalogPage = lazy(
+  () => import('../pages/user/usedPhone/UsedPhoneByCatalogPage')
 );
 
 const PhoneByCatalogPageSEO: React.FC = () => {
@@ -35,7 +35,7 @@ const PhoneByCatalogPageSEO: React.FC = () => {
       { name: 'keywords', content: '7Teck, điện thoại, laptop, máy tính bảng' }
     ]
   });
-  return <PhoneByCatalogPage />;
+  return <UsedPhoneByCatalogPage />;
 };
 
 export default PhoneByCatalogPageSEO;

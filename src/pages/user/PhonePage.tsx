@@ -115,23 +115,16 @@ const PhonePage: React.FC = () => {
                           />
                         </div>
                         {/*  */}
-                        <div className="flex w-full flex-col items-start justify-between">
+                        <div className="flex w-full flex-col items-start justify-between p-1">
                           <div
-                            className="w-full cursor-pointer p-1"
+                            className="w-full cursor-pointer"
                             onClick={() => navigate(`/iphone/${phoneUrl}`)}
                           >
-                            <p className="w-[75px] rounded-sm bg-gray-100 p-[2px] text-center text-[10px] text-white">
-                              {phone?.phoneCount > 99
-                                ? '99+'
-                                : phone?.phoneCount}{' '}
-                              Sản phẩm
-                            </p>
-
                             <p className="xl:group-hover:text-secondary">
                               Điện Thoại {phone.name}
                             </p>
                           </div>
-                          <div className="w-full p-1">
+                          <div className="w-full">
                             <p className="text-gray-500">
                               Từ:&nbsp;
                               <span className="text-red-500">

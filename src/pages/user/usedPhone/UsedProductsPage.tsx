@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react';
-import Pagination from '../../components/UserPage/Pagination';
-import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
+import Pagination from '../../../components/UserPage/Pagination';
+import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
 import { Link, useNavigate } from 'react-router-dom';
-import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
+import { PhoneCatalogContext } from '../../../context/phone-catalog/PhoneCatalogContext';
 import { Placeholder } from 'semantic-ui-react';
 
 const UsedProductsPage: React.FC = () => {

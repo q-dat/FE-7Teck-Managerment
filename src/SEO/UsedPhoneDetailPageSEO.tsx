@@ -2,8 +2,8 @@ import React, { lazy, useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { PhoneContext } from '../context/phone/PhoneContext';
 import useSeo from '../hooks/useSeo';
-const PhoneDetailPage = lazy(
-  () => import('../pages/user/phone/PhoneDetailPage')
+const UsedPhoneDetailPage = lazy(
+  () => import('../pages/user/usedPhone/UsedPhoneDetailPage')
 );
 
 const PhoneDetailPageSEO: React.FC = () => {
@@ -38,7 +38,7 @@ const PhoneDetailPageSEO: React.FC = () => {
       { name: 'keywords', content: '7Teck, tin tức, điện thoại, laptop' }
     ]
   });
-  return <PhoneDetailPage />;
+  return <UsedPhoneDetailPage />;
 };
 
 export default PhoneDetailPageSEO;
