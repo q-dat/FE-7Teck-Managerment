@@ -1,7 +1,7 @@
 import axios from 'axios';
 const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_PORT, // URL backend từ .env
-  withCredentials: true, // Gửi cookies (quan trọng cho CSRF)
+  baseURL: import.meta.env.VITE_API_PORT, 
+  withCredentials: true,
   timeout: 10000
 });
 
@@ -84,29 +84,30 @@ const axiosInstance = axios.create({
 //   csrfTokenCache = null; // Xóa CSRF token luôn
 // }
 
+// ----------------------------------------------------------------
 
-// Tạo session ID mới nếu chưa có
-const sessionId = sessionStorage.getItem('sessionID') || generateSessionId();
-sessionStorage.setItem('sessionID', sessionId);
+// // Tạo session ID mới nếu chưa có
+// const sessionId = sessionStorage.getItem('sessionID') || generateSessionId();
+// sessionStorage.setItem('sessionID', sessionId);
 
-// Hàm tạo session ID (có thể dùng UUID hoặc bất kỳ cách nào khác)
-function generateSessionId() {
-  return 'sess-' + Math.random().toString(36).substr(2, 9); // Example simple session ID
-}
+// // Hàm tạo session ID (có thể dùng UUID hoặc bất kỳ cách nào khác)
+// function generateSessionId() {
+//   return 'sess-' + Math.random().toString(36).substr(2, 9); // Example simple session ID
+// }
 
-// Tạo interceptor để tự động thêm sessionID vào tất cả các request
-axiosInstance.interceptors.request.use(
-  config => {
-    const sessionId = sessionStorage.getItem('sessionID');
-    if (sessionId) {
-      config.headers['Session-ID'] = sessionId; // Gửi session ID qua header
-    }
-    return config;
-  },
-  error => {
-    return Promise.reject(error);
-  }
-);
+// // Tạo interceptor để tự động thêm sessionID vào tất cả các request
+// axiosInstance.interceptors.request.use(
+//   config => {
+//     const sessionId = sessionStorage.getItem('sessionID');
+//     if (sessionId) {
+//       config.headers['Session-ID'] = sessionId; // Gửi session ID qua header
+//     }
+//     return config;
+//   },
+//   error => {
+//     return Promise.reject(error);
+//   }
+// );
 
 
 export default axiosInstance;
