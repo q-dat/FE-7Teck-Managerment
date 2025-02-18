@@ -73,29 +73,30 @@ const PhoneFC: React.FC = () => {
     .sort((a, b) => (b.view ?? 0) - (a.view ?? 0));
 
   return (
-    <div className={`relative rounded-none bg-white xl:rounded-lg`}>
+    <div className={`mt-10 p-0 xl:px-[100px]`}>
       {/* Title */}
       <div
         role="region"
-        aria-label="Danh sách điện thoại nổi bật có lượt xem nhiều nhất"
-        className="flex w-full flex-col items-center justify-center py-5 xl:rounded-t-lg"
+        aria-label="Danh sách sản phẩm nổi bật"
+        className="flex w-full flex-col items-start justify-center px-2 xl:rounded-t-lg"
       >
-        <h1 className="bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold text-transparent xl:text-[30px]">
-          {loading ? (
-            <div className="w-[150px]">
-              <Placeholder>
-                <Placeholder.Line />
-              </Placeholder>
-            </div>
-          ) : (
-            <>Nổi bật</>
-          )}
-        </h1>
-        <span className="h-[1px] w-[150px] animate-ping bg-primary"></span>
+        <div>
+          <h1 className="py-2 text-2xl font-semibold">
+            {loading ? (
+              <div className="w-[240px]">
+                <Placeholder>
+                  <Placeholder.Line />
+                </Placeholder>
+              </div>
+            ) : (
+              <>Sản phẩm nổi bật</>
+            )}
+          </h1>
+        </div>
       </div>
       <section
         ref={scrollRef}
-        className="grid w-full grid-flow-col grid-rows-2 items-center justify-start gap-[10px] overflow-x-auto scroll-smooth border-[10px] border-transparent pt-0 scrollbar-hide xl:pt-0"
+        className="relative grid w-full grid-flow-col grid-rows-2 items-center justify-start gap-[10px] overflow-x-auto scroll-smooth rounded-none border-[10px] border-transparent bg-white pt-0 scrollbar-hide xl:rounded-t-lg xl:pt-0"
       >
         {loading
           ? Array.from({ length: 12 }).map((_, index) => (
@@ -137,13 +138,13 @@ const PhoneFC: React.FC = () => {
                   </Link>
 
                   {/*  */}
-                  <div className="flex h-full w-full flex-col items-start justify-between gap-1">
+                  <div className="flex h-full w-full flex-col items-start justify-between">
                     <Link
                       role="navigation"
                       className="w-full cursor-pointer p-1"
                       to={`/iphone-da-qua-su-dung/${phoneUrl}/${phone?._id}`}
                     >
-                      <div className="flex w-[50px] items-center justify-center gap-1 rounded-sm bg-gray-100 p-[2px] text-center text-[10px] text-white">
+                      <div className="flex w-[50px] items-center justify-start gap-1 rounded-sm p-[2px] text-center text-[12px] text-black">
                         <FaRegEye />
                         <p>{phone.view}</p>
                       </div>
@@ -154,7 +155,7 @@ const PhoneFC: React.FC = () => {
                     <div className="w-full p-1">
                       <p className="text-gray-500">
                         Từ:&nbsp;
-                        <span className="text-red-500">
+                        <span className="text-red-600">
                           {(phone.price * 1000).toLocaleString('vi-VN')}₫
                         </span>
                       </p>

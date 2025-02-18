@@ -113,6 +113,7 @@ const IPadFC: React.FC = () => {
                 <img
                   className="h-[200px] w-[175px] rounded-md rounded-b-none object-cover xl:h-[250px] xl:w-[200px]"
                   src={phone.img}
+                  alt={phone.img}
                 />
                 <p>{phone.name}</p>
                 <p>Giá:{(phone.price * 1000).toLocaleString('vi-VN')}đ</p>

@@ -11,11 +11,7 @@ import { PhoneContext } from '../../../context/phone/PhoneContext';
 import { phoneFieldMap } from '../../../types/type/optionsData/phoneFieldMap';
 import { IoIosArrowDropdownCircle } from 'react-icons/io';
 import { Button } from 'react-daisyui';
-import {
-  MdArrowBackIosNew,
-  MdArrowForwardIos,
-  MdZoomOutMap
-} from 'react-icons/md';
+import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
 import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
 
@@ -136,7 +132,7 @@ const PhoneDetailPage: React.FC = () => {
                     loading="lazy"
                     src={selectedImage || phone?.img}
                     alt={phone?.name || 'Hình ảnh'}
-                    className="absolute left-0 top-0 z-0 h-full w-full rounded-md object-cover blur-sm filter"
+                    className="absolute left-0 top-0 z-0 h-full w-full rounded-md object-cover blur-xl filter"
                   />
                   <Zoom>
                     <img
@@ -146,9 +142,6 @@ const PhoneDetailPage: React.FC = () => {
                       className="absolute left-0 top-0 z-10 h-full w-full rounded-md object-contain"
                     />
                   </Zoom>
-                </div>
-                <div className="pointer-events-none absolute bottom-1 right-1 z-20">
-                  <MdZoomOutMap className="rounded-sm bg-black bg-opacity-10 p-[1px] text-2xl text-white" />
                 </div>
               </div>
               {/* Thumbnails */}

@@ -214,7 +214,7 @@ const HomePage: React.FC = () => {
           </div>
         </div>
         {/* Section Product */}
-        <div data-aos="fade-down" className="mt-10 p-0 xl:px-[100px]">
+        <div data-aos="fade-down">
           <PhoneFC />
         </div>
         {/* Bg Fixed */}
