@@ -1,14 +1,14 @@
 import React from 'react';
 import { Footer } from 'react-daisyui';
 import { Link } from 'react-router-dom';
-import { Logo } from '../../assets/images';
+import { Logo, Popup } from '../../assets/images';
 import { FaMapLocationDot } from 'react-icons/fa6';
 import { FaFacebook, FaFacebookMessenger, FaPhone } from 'react-icons/fa';
 import { IoMail } from 'react-icons/io5';
 
 const FooterFC: React.FC = () => {
   return (
-    <div className="mb-[40px] xl:mb-0">
+    <div className="mb-[50px] xl:mb-0">
       <Footer className="item-center flex flex-col justify-between bg-black px-2 pb-0 pt-10 text-white xl:flex-row xl:px-[100px] xl:pb-10">
         {/* Logo */}
         <div className="w-full">
@@ -107,11 +107,16 @@ const FooterFC: React.FC = () => {
               <FaMapLocationDot className="text-xl" />
               136/11 Trần Quang Diệu, Phường 12, Quận 3, HCM
             </p>
+            <img
+              className="h-full w-full rounded-md object-cover"
+              src={Popup}
+              alt="Greeting"
+            />
           </div>
         </div>
       </Footer>
       <div className="border-t-[1px] border-gray-600 bg-black py-2 text-center text-white">
-        © 2024 Copyright 7Teck
+        Copyright © 2024 7Teck. Designed & developed by Điểu Quốc Đạt.
       </div>
     </div>
   );
