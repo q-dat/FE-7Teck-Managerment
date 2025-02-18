@@ -114,13 +114,13 @@ const UsedProductsPage: React.FC = () => {
                           />
                         </div>
                         {/*  */}
-                        <div className="flex w-full flex-col items-start justify-between gap-1">
+                        <div className="flex w-full flex-col items-start justify-between">
                           <div className="w-full cursor-pointer p-1">
-                            <p className="w-[75px] rounded-sm bg-gray-100 p-[2px] text-center text-[10px] text-white">
+                            <p className="w-[75px] rounded-sm bg-gray-100 text-center text-[10px] text-white">
                               {phone?.phoneCount > 99
                                 ? '99+'
                                 : phone?.phoneCount}{' '}
-                              Sản phẩm
+                              {' Sản phẩm'}
                             </p>
 
                             <p className="xl:group-hover:text-secondary">

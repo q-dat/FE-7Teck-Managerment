@@ -115,7 +115,7 @@ const PhonePage: React.FC = () => {
                           />
                         </div>
                         {/*  */}
-                        <div className="flex w-full flex-col items-start justify-between gap-1">
+                        <div className="flex w-full flex-col items-start justify-between">
                           <div
                             className="w-full cursor-pointer p-1"
                             onClick={() => navigate(`/iphone/${phoneUrl}`)}

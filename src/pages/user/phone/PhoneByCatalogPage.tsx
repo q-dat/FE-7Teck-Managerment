@@ -32,7 +32,7 @@ const ProductByCatalog = () => {
       top: 0,
       behavior: 'smooth'
     });
-  }, [phones,filteredPhones]);
+  }, [phones, filteredPhones]);
 
   return (
     <div>
@@ -102,7 +102,7 @@ const ProductByCatalog = () => {
                         <Link
                           to={`/iphone-da-qua-su-dung/${phoneUrl}/${phone?._id}`}
                         >
-                          <div className="flex w-[50px] items-center justify-center gap-1 rounded-sm bg-gray-100 p-[2px] text-center text-[10px] text-white">
+                          <div className="flex w-[50px] items-center justify-start gap-1 rounded-sm p-[2px] text-center text-[12px] text-black">
                             <FaRegEye />
                             <p>{phone.view}</p>
                           </div>

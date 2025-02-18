@@ -138,10 +138,10 @@ const PhoneFC: React.FC = () => {
                   </Link>
 
                   {/*  */}
-                  <div className="flex h-full w-full flex-col items-start justify-between">
+                  <div className="flex h-full w-full flex-col items-start justify-between p-1">
                     <Link
                       aria-label="Xem chi tiết sản phẩm khi nhấn vào tên sản phẩm"
-                      className="w-full cursor-pointer p-1"
+                      className="w-full cursor-pointer"
                       to={`/iphone-da-qua-su-dung/${phoneUrl}/${phone?._id}`}
                     >
                       <div className="flex w-[50px] items-center justify-start gap-1 rounded-sm p-[2px] text-center text-[12px] text-black">
@@ -152,12 +152,17 @@ const PhoneFC: React.FC = () => {
                         Điện Thoại {phone.name}
                       </p>
                     </Link>
-                    <div className="w-full p-1">
+                    <div className="w-full">
                       <p className="text-gray-500">
-                        Từ:&nbsp;
-                        <span className="text-red-600">
-                          {(phone.price * 1000).toLocaleString('vi-VN')}₫
+                        <span className="text-red-500">
+                          {(phone?.price * 1000).toLocaleString('vi-VN')}₫
                         </span>
+                        &nbsp;
+                        <del className="text-xs font-light text-gray-100">
+                          {phone?.sale &&
+                            (phone?.sale * 1000).toLocaleString('vi-VN')}
+                          ₫
+                        </del>
                       </p>
                       <Link
                         aria-label="Mua ngay"
