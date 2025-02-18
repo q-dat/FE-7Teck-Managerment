@@ -118,7 +118,7 @@ const PhoneFC: React.FC = () => {
                   className="group relative flex h-full w-[195px] flex-col justify-between rounded-md border border-[#f2f4f7] text-black"
                 >
                   <Link
-                    role="navigation"
+                    aria-label="Xem chi tiết sản phẩm khi ấn vào hình ảnh"
                     to={`/iphone-da-qua-su-dung/${phoneUrl}/${phone?._id}`}
                   >
                     <div className="relative h-[200px] w-full cursor-pointer overflow-hidden">
@@ -140,7 +140,7 @@ const PhoneFC: React.FC = () => {
                   {/*  */}
                   <div className="flex h-full w-full flex-col items-start justify-between">
                     <Link
-                      role="navigation"
+                      aria-label="Xem chi tiết sản phẩm khi nhấn vào tên sản phẩm"
                       className="w-full cursor-pointer p-1"
                       to={`/iphone-da-qua-su-dung/${phoneUrl}/${phone?._id}`}
                     >
@@ -160,7 +160,6 @@ const PhoneFC: React.FC = () => {
                         </span>
                       </p>
                       <Link
-                        role="navigation"
                         aria-label="Mua ngay"
                         to="/thanh-toan"
                         className="z-50 w-full"
