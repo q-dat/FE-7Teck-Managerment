@@ -41,21 +41,21 @@ const ReactSelect: React.FC<ReactSelectProps> = ({
       border: 'none',
       backgroundColor: 'transparent',
       minHeight: '46px',
-      fontSize: '12px',
+      fontSize: '14px',
       boxShadow: 'none',
       borderRadius: '0'
     }),
     option: (provided: any) => ({
       ...provided,
       backgroundColor: 'white',
-      color: '#122969',
+      color: '#000',
       fontSize: '14px',
       cursor: 'pointer'
     }),
     singleValue: (provided: any) => ({
       ...provided,
       whiteSpace: 'nowrap',
-      color: 'black',
+      color: '#a92d30',
       fontWeight: 'bold',
       cursor: 'pointer'
     }),
@@ -99,7 +99,7 @@ const ReactSelect: React.FC<ReactSelectProps> = ({
       options={options}
       isMulti={isMulti}
       placeholder={placeholder}
-      className={`my-2 min-w-full rounded-md border border-gray-50 bg-white text-black hover:border-gray-900 hover:border-opacity-50 focus:border-primary focus:outline-none ${className}`}
+      className={`my-2 w-full rounded-md border border-gray-50 bg-white text-black hover:border-gray-900 hover:border-opacity-50 focus:border-primary focus:outline-none ${className}`}
       styles={customStyles}
       components={{ DropdownIndicator }}
     />

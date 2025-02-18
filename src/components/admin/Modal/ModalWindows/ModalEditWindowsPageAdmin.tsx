@@ -30,11 +30,19 @@ const ModalEditWindowsPageAdmin: React.FC<ModalEditPageAdminProps> = ({
   const isLoading = loading.update;
   const { windowsCatalogs } = useContext(WindowsCatalogContext);
 
-  //react-select
+  // react-select
   const windowsCatalog: Option[] = windowsCatalogs.map(winCatalog => ({
     value: winCatalog._id,
-    label: winCatalog.w_cat_name
+    label: `${winCatalog.w_cat_name}  \u00A0
+    ${
+      winCatalog?.w_cat_status === 0
+        ? '(Mới)'
+        : winCatalog?.w_cat_status === 1
+          ? '(Cũ)'
+          : winCatalog?.w_cat_status
+    }`
   }));
+
   const { control, register, handleSubmit, watch, setValue, reset } =
     useForm<IWindows>();
 

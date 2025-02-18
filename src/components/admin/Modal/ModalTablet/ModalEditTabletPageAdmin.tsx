@@ -30,11 +30,19 @@ const ModalEditTabletPageAdmin: React.FC<ModalEditPageAdminProps> = ({
   const isLoading = loading.update;
   const { tabletCatalogs } = useContext(TabletCatalogContext);
 
-  //react-select
-  const tabletCatalog: Option[] = tabletCatalogs.map(tabletCatalog => ({
+   // react-select
+   const tabletCatalog: Option[] = tabletCatalogs.map(tabletCatalog => ({
     value: tabletCatalog._id,
-    label: tabletCatalog.t_cat_name
+    label: `${tabletCatalog.t_cat_name}  \u00A0
+    ${
+      tabletCatalog?.t_cat_status === 0
+        ? '(Mới)'
+        : tabletCatalog?.t_cat_status === 1
+          ? '(Cũ)'
+          : tabletCatalog?.t_cat_status
+    }`
   }));
+
   const { control, register, handleSubmit, watch, setValue, reset } =
     useForm<ITablet>();
 

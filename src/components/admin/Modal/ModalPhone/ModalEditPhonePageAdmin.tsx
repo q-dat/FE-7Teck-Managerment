@@ -28,13 +28,23 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
   const { loading, phones, getAllPhones, updatePhone } =
     useContext(PhoneContext);
   const isLoading = loading.update;
+
+  // PhoneCatalog
   const { phoneCatalogs } = useContext(PhoneCatalogContext);
 
-  //react-select
+  // react-select
   const phoneCatalog: Option[] = phoneCatalogs.map(phoneCatalog => ({
     value: phoneCatalog._id,
-    label: phoneCatalog.name
+    label: `${phoneCatalog.name}  \u00A0
+    ${
+      phoneCatalog?.status === 0
+        ? '(Mới)'
+        : phoneCatalog?.status === 1
+          ? '(Cũ)'
+          : phoneCatalog?.status
+    }`
   }));
+
   const { control, register, handleSubmit, watch, setValue, reset } =
     useForm<IPhone>();
 
@@ -149,12 +159,12 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
               <LabelForm title={'Danh mục'} />
               <div className="flex w-full items-center">
                 <ReactSelect
-                  placeholder="Chọn danh mục"
+                  placeholder="Chọn danh mục*"
                   name="phone_catalog_id._id"
                   control={control}
                   options={phoneCatalog}
                   isMulti={false}
-                  className="w-full"
+                  className=""
                 />
               </div>
               <LabelForm title={'Giá'} />

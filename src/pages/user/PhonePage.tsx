@@ -2,17 +2,18 @@ import React, { useContext, useState, useEffect } from 'react';
 import Pagination from '../../components/UserPage/Pagination';
 import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
 import { Link, useNavigate } from 'react-router-dom';
-import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
 import { Button } from 'react-daisyui';
 import { Placeholder } from 'semantic-ui-react';
+import { PhoneContext } from '../../context/phone/PhoneContext';
 
 const PhonePage: React.FC = () => {
-  const { phoneCatalogs } = useContext(PhoneCatalogContext);
+  const { phones } = useContext(PhoneContext);
+
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    if (phoneCatalogs.length > 0) {
+    if (phones.length > 0) {
       setLoading(false);
     }
     // Scroll To Top
@@ -20,7 +21,7 @@ const PhonePage: React.FC = () => {
       top: 0,
       behavior: 'smooth'
     });
-  }, [phoneCatalogs,currentPage]);
+  }, [phones, currentPage]);
   // Handle Click Phone To Phone Detail
   const navigate = useNavigate();
   const slugify = (text: string) => {
@@ -34,16 +35,13 @@ const PhonePage: React.FC = () => {
   };
   // Panigation
   const itemsPerPage = 12;
-  const NewiPhoneCatalogs = phoneCatalogs.filter(
-    phoneCatalog => phoneCatalog?.status === 0 //0 (Mới)
+  const NewiPhones = phones.filter(
+    phone => phone?.phone_catalog_id?.status === 0
   );
-  const totalPages = Math.ceil(NewiPhoneCatalogs.length / itemsPerPage);
+  const totalPages = Math.ceil(NewiPhones.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentPhones = NewiPhoneCatalogs.slice(
-    indexOfFirstItem,
-    indexOfLastItem
-  );
+  const currentPhones = NewiPhones.slice(indexOfFirstItem, indexOfLastItem);
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
@@ -126,10 +124,15 @@ const PhonePage: React.FC = () => {
                           </div>
                           <div className="w-full">
                             <p className="text-gray-500">
-                              Từ:&nbsp;
                               <span className="text-red-500">
-                                {(phone.price * 1000).toLocaleString('vi-VN')}₫
+                                {(phone?.price * 1000).toLocaleString('vi-VN')}₫
                               </span>
+                              &nbsp;
+                              <del className="text-xs font-light text-gray-100">
+                                {phone?.sale &&
+                                  (phone?.sale * 1000).toLocaleString('vi-VN')}
+                                ₫
+                              </del>
                             </p>
                             <Link
                               aria-label="Mua ngay"

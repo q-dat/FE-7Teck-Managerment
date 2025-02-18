@@ -15,7 +15,7 @@ const TipsAndTricksPageSEO = lazy(() => import('../SEO/TipsAndTricksPageSEO'));
 const GalleryPageSEO = lazy(() => import('../SEO/GalleryPageSEO'));
 //----------------------------------------------------------------
 const UsedProductsPage = lazy(
-  () => import('../pages/user/usedPhone/UsedProductsPage')
+  () => import('../pages/user/UsedProductsPage')
 );
 const UsedPhoneByCatalogPageSEO = lazy(
   () => import('../SEO/UsedPhoneByCatalogPageSEO')

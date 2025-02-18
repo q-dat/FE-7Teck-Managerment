@@ -30,11 +30,19 @@ const ModalEditMacbookPageAdmin: React.FC<ModalEditPageAdminProps> = ({
   const isLoading = loading.update;
   const { macbookCatalogs } = useContext(MacbookCatalogContext);
 
-  //react-select
-  const macbookCatalog: Option[] = macbookCatalogs.map(macCatalog => ({
-    value: macCatalog._id,
-    label: macCatalog.m_cat_name
-  }));
+    // react-select
+    const macbookCatalog: Option[] = macbookCatalogs.map(macCatalog => ({
+      value: macCatalog._id,
+      label: `${macCatalog.m_cat_name}  \u00A0
+      ${
+        macCatalog?.m_cat_status === 0
+          ? '(Mới)'
+          : macCatalog?.m_cat_status === 1
+            ? '(Cũ)'
+            : macCatalog?.m_cat_status
+      }`
+    }));
+
   const { control, register, handleSubmit, watch, setValue, reset } =
     useForm<IMacbook>();
 
