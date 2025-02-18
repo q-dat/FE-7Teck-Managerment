@@ -34,7 +34,7 @@ const UsedProductsPage: React.FC = () => {
   // Panigation
   const itemsPerPage = 12;
   const NewiPhoneCatalogs = phoneCatalogs.filter(
-    phoneCatalog => phoneCatalog?.status === 1 //1 (Cũ)
+    phoneCatalog => phoneCatalog?.status === 1 && phoneCatalog?.phoneCount >= 1 // status = 1 (Cũ) phoneCount: số lượng sản phẩm theo danh mục
   );
   const totalPages = Math.ceil(NewiPhoneCatalogs.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -89,13 +89,13 @@ const UsedProductsPage: React.FC = () => {
                       </Placeholder>
                     </div>
                   ))
-                : currentPhones.map(phone => {
-                    const phoneUrl = slugify(phone.name);
+                : currentPhones.map(phoneCatalog => {
+                    const phoneCatalogUrl = slugify(phoneCatalog.name);
                     return (
                       <div
-                        key={phone?._id}
+                        key={phoneCatalog?._id}
                         onClick={() =>
-                          navigate(`/iphone-da-qua-su-dung/${phoneUrl}`)
+                          navigate(`/iphone-da-qua-su-dung/${phoneCatalogUrl}`)
                         }
                         className="group flex h-full w-full flex-col justify-between rounded-md border border-white bg-white text-black"
                       >
@@ -104,34 +104,37 @@ const UsedProductsPage: React.FC = () => {
                             alt="Hình ảnh"
                             loading="lazy"
                             className="absolute left-0 top-0 z-0 h-full w-full rounded-[5px] rounded-b-none object-cover blur-xl filter"
-                            src={phone?.img}
+                            src={phoneCatalog?.img}
                           />
                           <img
                             alt="Hình ảnh"
                             loading="lazy"
                             className="absolute left-0 top-0 z-10 h-full w-full rounded-[5px] rounded-b-none object-contain transition-transform duration-1000 ease-in-out hover:scale-110"
-                            src={phone?.img}
+                            src={phoneCatalog?.img}
                           />
                         </div>
                         {/*  */}
                         <div className="flex w-full flex-col items-start justify-between">
                           <div className="w-full cursor-pointer p-1">
                             <p className="w-[75px] rounded-sm bg-gray-100 text-center text-[10px] text-white">
-                              {phone?.phoneCount > 99
+                              {phoneCatalog?.phoneCount > 99
                                 ? '99+'
-                                : phone?.phoneCount}{' '}
+                                : phoneCatalog?.phoneCount}{' '}
                               {' Sản phẩm'}
                             </p>
 
                             <p className="xl:group-hover:text-secondary">
-                              Điện Thoại {phone.name}
+                              Điện Thoại {phoneCatalog.name}
                             </p>
                           </div>
                           <div className="w-full p-1">
                             <p className="text-gray-500">
                               Từ:&nbsp;
                               <span className="text-red-500">
-                                {(phone.price * 1000).toLocaleString('vi-VN')}₫
+                                {(phoneCatalog.price * 1000).toLocaleString(
+                                  'vi-VN'
+                                )}
+                                ₫
                               </span>
                             </p>
                           </div>

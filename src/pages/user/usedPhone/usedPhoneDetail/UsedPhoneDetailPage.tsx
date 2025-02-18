@@ -5,10 +5,10 @@ import React, {
   useRef,
   useState
 } from 'react';
-import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
+import HeaderResponsive from '../../../../components/UserPage/HeaderResponsive';
 import { Link, useParams } from 'react-router-dom';
-import { PhoneContext } from '../../../context/phone/PhoneContext';
-import { phoneFieldMap } from '../../../types/type/optionsData/phoneFieldMap';
+import { PhoneContext } from '../../../../context/phone/PhoneContext';
+import { phoneFieldMap } from '../../../../types/type/optionsData/phoneFieldMap';
 import { IoIosArrowDropdownCircle } from 'react-icons/io';
 import { Button } from 'react-daisyui';
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
