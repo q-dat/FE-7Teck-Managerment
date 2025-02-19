@@ -3,20 +3,12 @@ import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
 import { Button } from 'react-daisyui';
 import { Link, useLocation } from 'react-router-dom';
 
-interface Product {
+interface IListProducts {
   name: string;
   price: string;
   storage: string;
 }
-interface IPhoneTable {
-  _id: string;
-  name: string;
-}
-interface ITabletTable {
-  _id: string;
-  name: string;
-}
-interface ILaptopTable {
+interface IProductTable {
   _id: string;
   name: string;
 }
@@ -43,27 +35,27 @@ const PriceListPage: React.FC = () => {
     if (storedLaptopItem) setActiveLaptopItem(storedLaptopItem);
   }, [location.pathname]);
 
-  const FecthPhoneTable: IPhoneTable[] = [
+  const FecthPhoneCatalog: IProductTable[] = [
     { name: 'Iphone 15', _id: '1' },
     { name: 'Iphone 14', _id: '2' },
     { name: 'Iphone 13', _id: '3' },
     { name: 'Iphone 12', _id: '4' }
   ];
 
-  const FecthIpadTable: ITabletTable[] = [
+  const FecthIpadCatalog: IProductTable[] = [
     { name: 'Ipad Pro', _id: '1' },
     { name: 'Ipad Air', _id: '2' },
     { name: 'Ipad Mini', _id: '3' },
     { name: 'Ipad 10', _id: '4' }
   ];
 
-  const FecthLaptopTable: ILaptopTable[] = [
+  const FecthLaptopCatalog: IProductTable[] = [
     { name: 'MacBook Air', _id: '1' },
     { name: 'MacBook Pro', _id: '2' },
     { name: 'MacBook 12', _id: '3' }
   ];
 
-  const phoneProducts: Record<string, Product[]> = {
+  const phoneProducts: Record<string, IListProducts[]> = {
     'Iphone 15': [
       { name: 'Iphone 15 128GB', price: '30,000,000 VND', storage: '128GB' },
       { name: 'Iphone 15 256GB', price: '35,000,000 VND', storage: '256GB' },
@@ -75,7 +67,7 @@ const PriceListPage: React.FC = () => {
     ]
   };
 
-  const ipadProducts: Record<string, Product[]> = {
+  const ipadProducts: Record<string, IListProducts[]> = {
     'Ipad Pro': [
       { name: 'Ipad Pro 128GB', price: '20,000,000 VND', storage: '128GB' },
       { name: 'Ipad Pro 256GB', price: '25,000,000 VND', storage: '256GB' }
@@ -86,7 +78,7 @@ const PriceListPage: React.FC = () => {
     ]
   };
 
-  const laptopProducts: Record<string, Product[]> = {
+  const laptopProducts: Record<string, IListProducts[]> = {
     'MacBook Air': [
       { name: 'MacBook Air 256GB', price: '35,000,000 VND', storage: '256GB' },
       { name: 'MacBook Air 512GB', price: '40,000,000 VND', storage: '512GB' }
@@ -131,7 +123,7 @@ const PriceListPage: React.FC = () => {
           </ul>
         </div>
         <div>
-          {/* Phone Table */}
+          {/* Phone Catalog */}
           <div className="px-2 xl:px-[100px]">
             <div role="region" aria-label="Danh mục thu mua điện thoại">
               <h2 className="my-5 font-bold text-primary">
@@ -139,7 +131,7 @@ const PriceListPage: React.FC = () => {
               </h2>
             </div>
             <div className="grid grid-cols-2 gap-2 xl:grid-flow-col xl:grid-cols-none xl:grid-rows-1">
-              {FecthPhoneTable.map(item => (
+              {FecthPhoneCatalog.map(item => (
                 <Button
                   role="button"
                   aria-label="Ảnh thu nhỏ"
@@ -191,14 +183,14 @@ const PriceListPage: React.FC = () => {
             </table>
           </div>
 
-          {/* Ipad Table */}
+          {/* Ipad Catalog */}
           <div className="px-2 xl:px-[100px]">
             {/* Tittle */}
             <div className="my-5 font-bold text-primary">
               Danh Mục Thu Mua Ipad
             </div>
             <div className="grid grid-cols-2 gap-2 xl:grid-flow-col xl:grid-cols-none xl:grid-rows-1">
-              {FecthIpadTable.map(item => (
+              {FecthIpadCatalog.map(item => (
                 <Button
                   key={item._id}
                   className={`flex w-full items-center justify-center transition-all duration-500 ease-in-out hover:rounded-badge hover:bg-secondary hover:text-white ${
@@ -248,14 +240,14 @@ const PriceListPage: React.FC = () => {
               </tbody>
             </table>
           </div>
-          {/* Laptop Table */}
+          {/* Laptop Catalog */}
           <div className="px-2 xl:px-[100px]">
             {/* Tittle */}
             <div className="my-5 font-bold text-primary">
               Danh Mục Thu Mua Laptop
             </div>
             <div className="grid grid-cols-2 gap-2 xl:grid-flow-col xl:grid-cols-none xl:grid-rows-1">
-              {FecthLaptopTable.map(item => (
+              {FecthLaptopCatalog.map(item => (
                 <Button
                   key={item._id}
                   className={`flex w-full items-center justify-center transition-all duration-500 ease-in-out hover:rounded-badge hover:bg-secondary hover:text-white ${
