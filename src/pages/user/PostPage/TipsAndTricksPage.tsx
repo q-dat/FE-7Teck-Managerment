@@ -52,10 +52,14 @@ const TipsAndTricksPage: React.FC = () => {
           </ul>
         </div>
         <div className="px-2 xl:px-20">
-          <div role="region" aria-label="Thủ thuật công nghệ và mẹo hay">
-            <h1 className="py-5 text-center text-[30px] font-bold text-primary">
-              Thủ Thuật Công Nghệ Và Mẹo Hay
-            </h1>
+          <div
+            role="region"
+            aria-label="Thủ thuật công nghệ và mẹo hay"
+            className="my-2 flex w-full flex-col items-center justify-center"
+          >
+            <p className="font-title bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold text-transparent">
+            Thủ thuật công nghệ - Mẹo hay
+            </p>
           </div>
           <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-5">
             {tricks.map(post => (
@@ -64,7 +68,7 @@ const TipsAndTricksPage: React.FC = () => {
                 className="relative cursor-pointer rounded border border-gray-50 bg-white p-2 shadow-inner hover:shadow-lg"
                 onClick={() => handlePostClick(post)}
               >
-                <p className="absolute left-1 top-1 rounded-sm bg-primary px-2 text-[12px] text-white z-10">
+                <p className="absolute left-1 top-1 z-10 rounded-sm bg-primary px-2 text-[12px] text-white">
                   {post?.catalog}
                 </p>
                 <div className="overflow-hidden">

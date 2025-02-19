@@ -49,30 +49,27 @@ const GalleryPage: React.FC = () => {
               </Link>
             </li>
             <li>
-              <Link aria-label="Hành trình khách hàng" to="">
-                Hành Trình Khách Hàng
+              <Link aria-label="Hành trình cùng khách hàng" to="">
+                Hành Trình Cùng Khách Hàng
               </Link>
             </li>
           </ul>
         </div>
         {/*  */}
-        <div role="region" aria-label="Hành trình khác hàng">
-          <h1 className="py-5 text-center text-[30px] font-bold text-primary">
-            Hành Trình Khách Hàng
-          </h1>
-        </div>
-        <div className="grid grid-flow-row grid-cols-2 gap-2 px-2 md:grid-cols-3 xl:grid-cols-6 xl:px-20">
-          {currentGallerys.map(gallery => (
-            <Zoom>
-              <div className="w-full overflow-hidden">
-                <img
-                  alt=""
-                  src={`${gallery.gallery}`}
-                  className="h-auto w-full rounded-md object-cover border shadow transition-transform duration-1000 ease-in-out hover:scale-110"
-                />
-              </div>
-            </Zoom>
-          ))}
+        <div className="mt-5 xl:px-20">
+          <div className="grid grid-flow-row grid-cols-2 gap-2 bg-white p-2 md:grid-cols-3 xl:grid-cols-6 xl:rounded-md">
+            {currentGallerys.map(gallery => (
+              <Zoom>
+                <div className="w-full overflow-hidden rounded-md">
+                  <img
+                    alt=""
+                    src={`${gallery.gallery}`}
+                    className="h-auto w-full rounded-md border border-dashed border-black object-contain transition-transform duration-1000 ease-in-out hover:scale-110"
+                  />
+                </div>
+              </Zoom>
+            ))}
+          </div>
         </div>
         {/* Pagination Controls */}
         <Pagination
