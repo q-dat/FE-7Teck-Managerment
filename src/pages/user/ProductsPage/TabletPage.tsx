@@ -1,10 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
-import Pagination from '../../components/UserPage/Pagination';
-import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
+import Pagination from '../../../components/UserPage/Pagination';
+import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from 'react-daisyui';
 import { Placeholder } from 'semantic-ui-react';
-import { TabletContext } from '../../context/tablet/TabletContext';
+import { TabletContext } from '../../../context/tablet/TabletContext';
 
 const TabletPage: React.FC = () => {
   const { tablets } = useContext(TabletContext);
@@ -87,13 +87,16 @@ const TabletPage: React.FC = () => {
                   ))
                 : currentPhones.map(tablet => {
                     const phoneUrl = slugify(tablet?.tablet_name);
+                    const subUrl = tablet?._id;
                     return (
                       <section
                         key={tablet?._id}
                         className="group flex h-full w-full flex-col justify-between rounded-md border border-white text-black"
                       >
                         <div
-                          onClick={() => navigate(`/ipad/${phoneUrl}`)}
+                          onClick={() =>
+                            navigate(`/ipad/${phoneUrl}/${subUrl}`)
+                          }
                           className="relative h-[200px] w-full cursor-pointer overflow-hidden rounded-md rounded-b-none"
                         >
                           <img
