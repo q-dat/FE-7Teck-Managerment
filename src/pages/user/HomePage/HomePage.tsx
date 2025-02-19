@@ -270,13 +270,13 @@ const HomePage: React.FC = () => {
               {news.slice(0, 4).map(post => (
                 <div
                   key={post?._id}
-                  className="relative flex cursor-pointer flex-col items-start justify-start gap-2 rounded border border-white bg-black bg-opacity-30 p-1 shadow-inner hover:shadow-lg"
+                  className="relative flex cursor-pointer flex-row items-start justify-start gap-2 rounded border border-white bg-black bg-opacity-30 p-1 shadow-inner hover:shadow-lg"
                   onClick={() => handlePostClick(post)}
                 >
                   <p className="absolute left-[2px] top-[2px] z-20 rounded-sm bg-primary px-2 text-[12px] text-white">
                     {post?.catalog}
                   </p>
-                  <div className="relative h-[200px] w-full overflow-hidden">
+                  <div className="relative h-full w-full overflow-hidden">
                     <img
                       loading="lazy"
                       src={post?.imageUrl}
@@ -290,14 +290,16 @@ const HomePage: React.FC = () => {
                       className="absolute left-0 top-0 z-10 h-full w-full rounded-sm object-contain"
                     />
                   </div>
-                  <p className="line-clamp-6 w-full py-1 text-sm font-semibold text-white">
-                    {post?.title}
-                  </p>
-                  <p className="pt-2 text-[12px] text-white">
-                  {new Date(post?.updatedAt).toLocaleDateString('vi-VN')}
-                  &nbsp;(
-                  <TimeAgo date={post?.updatedAt} />)
-                </p>
+                  <div>
+                    <p className="line-clamp-6 w-full py-1 text-sm font-semibold text-white">
+                      {post?.title}
+                    </p>
+                    <p className="pt-2 text-[12px] text-white">
+                      {new Date(post?.updatedAt).toLocaleDateString('vi-VN')}
+                      &nbsp;(
+                      <TimeAgo date={post?.updatedAt} />)
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -315,13 +317,13 @@ const HomePage: React.FC = () => {
               {tricks.slice(0, 4).map(post => (
                 <div
                   key={post?._id}
-                  className="relative flex cursor-pointer flex-col items-start justify-start gap-2 rounded border border-white bg-black bg-opacity-30 p-1 shadow-inner hover:shadow-lg"
+                  className="relative flex cursor-pointer flex-row items-start justify-start gap-2 rounded border border-white bg-black bg-opacity-30 p-1 shadow-inner hover:shadow-lg"
                   onClick={() => handlePostClick(post)}
                 >
                   <p className="absolute left-[2px] top-[2px] z-20 rounded-sm bg-primary px-2 text-[12px] text-white">
                     {post?.catalog}
                   </p>
-                  <div className="relative h-[200px] w-full overflow-hidden">
+                  <div className="relative h-full w-full overflow-hidden">
                     <img
                       loading="lazy"
                       src={post?.imageUrl}
@@ -335,14 +337,17 @@ const HomePage: React.FC = () => {
                       className="absolute left-0 top-0 z-10 h-full w-full rounded-sm object-contain"
                     />
                   </div>
-                  <p className="line-clamp-6 w-full py-1 text-sm font-semibold text-white">
-                    {post?.title}
-                  </p>
-                  <p className="pt-2 text-[12px] text-white">
-                  {new Date(post?.updatedAt).toLocaleDateString('vi-VN')}
-                  &nbsp;(
-                  <TimeAgo date={post?.updatedAt} />)
-                </p>
+                  <div>
+                    {' '}
+                    <p className="line-clamp-6 w-full py-1 text-sm font-semibold text-white">
+                      {post?.title}
+                    </p>
+                    <p className="pt-2 text-[12px] text-white">
+                      {new Date(post?.updatedAt).toLocaleDateString('vi-VN')}
+                      &nbsp;(
+                      <TimeAgo date={post?.updatedAt} />)
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
