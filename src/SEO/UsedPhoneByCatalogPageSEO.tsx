@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { PhoneContext } from '../context/phone/PhoneContext';
 import useSeo from '../hooks/useSeo';
 const UsedPhoneByCatalogPage = lazy(
-  () => import('../pages/user/usedPhone/UsedPhoneByCatalogPage')
+  () => import('../pages/user/usedProductsByCatalog/UsedPhoneByCatalogPage')
 );
 
 const PhoneByCatalogPageSEO: React.FC = () => {

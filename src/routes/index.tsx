@@ -14,15 +14,11 @@ const PostDetailSEO = lazy(() => import('../SEO/PostDetailSEO'));
 const TipsAndTricksPageSEO = lazy(() => import('../SEO/TipsAndTricksPageSEO'));
 const GalleryPageSEO = lazy(() => import('../SEO/GalleryPageSEO'));
 //----------------------------------------------------------------
-const UsedProductsPage = lazy(
-  () => import('../pages/user/UsedProductsPage')
-);
+const UsedProductsPage = lazy(() => import('../pages/user/UsedProductsPage'));
 const UsedPhoneByCatalogPageSEO = lazy(
   () => import('../SEO/UsedPhoneByCatalogPageSEO')
 );
-const UsedPhoneDetailPageSEO = lazy(
-  () => import('../SEO/UsedPhoneDetailPageSEO')
-);
+const PhoneDetailPageSEO = lazy(() => import('../SEO/PhoneDetailPageSEO'));
 
 // admin
 const Admin = lazy(() => import('../cms/admin/Admin'));
@@ -72,19 +68,19 @@ export default function AppRoutes() {
             {/*  */}
             <Route path="iphone" element={<PhonePageSEO />} />
             <Route path="ipad" element={<TabletPageSEO />} />
-
+            <Route
+              path="thiet-bi-da-qua-su-dung"
+              element={<UsedProductsPage />}
+            />
             <Route
               path="iphone-da-qua-su-dung/:catalog"
               element={<UsedPhoneByCatalogPageSEO />}
             />
             <Route
               path="iphone-da-qua-su-dung/:catalog/:id"
-              element={<UsedPhoneDetailPageSEO />}
+              element={<PhoneDetailPageSEO />}
             />
-            <Route
-              path="thiet-bi-da-qua-su-dung"
-              element={<UsedProductsPage />}
-            />
+            <Route path="iphone/:name/:id" element={<PhoneDetailPageSEO />} />
             {/*  */}
             <Route path="tin-tuc-moi-nhat" element={<NewsPageSEO />} />
             <Route path="tin-tuc/:title" element={<PostDetailSEO />} />
