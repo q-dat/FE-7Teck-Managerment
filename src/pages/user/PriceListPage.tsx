@@ -8,7 +8,15 @@ interface Product {
   price: string;
   storage: string;
 }
-export interface IPhoneCatalog {
+interface IPhoneTable {
+  _id: string;
+  name: string;
+}
+interface ITabletTable {
+  _id: string;
+  name: string;
+}
+interface ILaptopTable {
   _id: string;
   name: string;
 }
@@ -35,21 +43,21 @@ const PriceListPage: React.FC = () => {
     if (storedLaptopItem) setActiveLaptopItem(storedLaptopItem);
   }, [location.pathname]);
 
-  const FecthPhoneCatalog: IPhoneCatalog[] = [
+  const FecthPhoneTable: IPhoneTable[] = [
     { name: 'Iphone 15', _id: '1' },
     { name: 'Iphone 14', _id: '2' },
     { name: 'Iphone 13', _id: '3' },
     { name: 'Iphone 12', _id: '4' }
   ];
 
-  const FecthIpadCatalog: IPhoneCatalog[] = [
+  const FecthIpadTable: ITabletTable[] = [
     { name: 'Ipad Pro', _id: '1' },
     { name: 'Ipad Air', _id: '2' },
     { name: 'Ipad Mini', _id: '3' },
     { name: 'Ipad 10', _id: '4' }
   ];
 
-  const FecthLaptopCatalog: IPhoneCatalog[] = [
+  const FecthLaptopTable: ILaptopTable[] = [
     { name: 'MacBook Air', _id: '1' },
     { name: 'MacBook Pro', _id: '2' },
     { name: 'MacBook 12', _id: '3' }
@@ -123,7 +131,7 @@ const PriceListPage: React.FC = () => {
           </ul>
         </div>
         <div>
-          {/* Phone Catalog */}
+          {/* Phone Table */}
           <div className="px-2 xl:px-[100px]">
             <div role="region" aria-label="Danh mục thu mua điện thoại">
               <h2 className="my-5 font-bold text-primary">
@@ -131,7 +139,7 @@ const PriceListPage: React.FC = () => {
               </h2>
             </div>
             <div className="grid grid-cols-2 gap-2 xl:grid-flow-col xl:grid-cols-none xl:grid-rows-1">
-              {FecthPhoneCatalog.map(item => (
+              {FecthPhoneTable.map(item => (
                 <Button
                   role="button"
                   aria-label="Ảnh thu nhỏ"
@@ -183,14 +191,14 @@ const PriceListPage: React.FC = () => {
             </table>
           </div>
 
-          {/* Ipad Catalog */}
+          {/* Ipad Table */}
           <div className="px-2 xl:px-[100px]">
             {/* Tittle */}
             <div className="my-5 font-bold text-primary">
               Danh Mục Thu Mua Ipad
             </div>
             <div className="grid grid-cols-2 gap-2 xl:grid-flow-col xl:grid-cols-none xl:grid-rows-1">
-              {FecthIpadCatalog.map(item => (
+              {FecthIpadTable.map(item => (
                 <Button
                   key={item._id}
                   className={`flex w-full items-center justify-center transition-all duration-500 ease-in-out hover:rounded-badge hover:bg-secondary hover:text-white ${
@@ -240,14 +248,14 @@ const PriceListPage: React.FC = () => {
               </tbody>
             </table>
           </div>
-          {/* Laptop Catalog */}
+          {/* Laptop Table */}
           <div className="px-2 xl:px-[100px]">
             {/* Tittle */}
             <div className="my-5 font-bold text-primary">
               Danh Mục Thu Mua Laptop
             </div>
             <div className="grid grid-cols-2 gap-2 xl:grid-flow-col xl:grid-cols-none xl:grid-rows-1">
-              {FecthLaptopCatalog.map(item => (
+              {FecthLaptopTable.map(item => (
                 <Button
                   key={item._id}
                   className={`flex w-full items-center justify-center transition-all duration-500 ease-in-out hover:rounded-badge hover:bg-secondary hover:text-white ${
