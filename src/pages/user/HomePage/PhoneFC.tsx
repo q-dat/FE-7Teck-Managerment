@@ -69,7 +69,7 @@ const PhoneFC: React.FC = () => {
   }, [phones]);
   //
   const sortedPhones = phones
-    .filter(phone => phone.view !== undefined)
+    .filter(phone => phone.view !== undefined && phone.view >= 0)
     .sort((a, b) => (b.view ?? 0) - (a.view ?? 0));
 
   return (

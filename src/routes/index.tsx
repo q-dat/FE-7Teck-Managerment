@@ -19,6 +19,9 @@ const UsedPhoneByCatalogPageSEO = lazy(
   () => import('../SEO/UsedPhoneByCatalogPageSEO')
 );
 const PhoneDetailPageSEO = lazy(() => import('../SEO/PhoneDetailPageSEO'));
+const TabletDetailPageSEO = lazy(() => import('../SEO/TabletDetailPageSEO'));
+const WindowsDetailPageSEO = lazy(() => import('../SEO/WindowsDetailPageSEO'));
+const MacbookDetailPageSEO = lazy(() => import('../SEO/MacbookDetailPageSEO'));
 
 // admin
 const Admin = lazy(() => import('../cms/admin/Admin'));
@@ -81,6 +84,15 @@ export default function AppRoutes() {
               element={<PhoneDetailPageSEO />}
             />
             <Route path="iphone/:name/:id" element={<PhoneDetailPageSEO />} />
+            <Route path="ipad/:name/:id" element={<TabletDetailPageSEO />} />
+            <Route
+              path="windows/:name/:id"
+              element={<WindowsDetailPageSEO />}
+            />
+            <Route
+              path="macbook/:name/:id"
+              element={<MacbookDetailPageSEO />}
+            />
             {/*  */}
             <Route path="tin-tuc-moi-nhat" element={<NewsPageSEO />} />
             <Route path="tin-tuc/:title" element={<PostDetailSEO />} />
