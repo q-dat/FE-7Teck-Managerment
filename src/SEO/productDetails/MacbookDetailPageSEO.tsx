@@ -28,7 +28,7 @@ const MacbookDetailPageSEO: React.FC = () => {
     }
   }, [id, getMacbookById]);
   useSeo({
-    title: `${macbook?.name} - 7Teck`,
+    title: `${macbook?.macbook_name} - 7Teck`,
     canonical: `${window.location.href}`,
     meta: [
       {

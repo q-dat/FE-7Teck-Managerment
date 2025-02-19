@@ -28,7 +28,7 @@ const WindowsDetailPageSEO: React.FC = () => {
     }
   }, [id, getWindowsById]);
   useSeo({
-    title: `${windows?.name} - 7Teck`,
+    title: `${windows?.windows_name} - 7Teck`,
     canonical: `${window.location.href}`,
     meta: [
       {

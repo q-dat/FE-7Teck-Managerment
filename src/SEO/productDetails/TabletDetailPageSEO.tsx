@@ -28,7 +28,7 @@ const TabletDetailPageSEO: React.FC = () => {
     }
   }, [id, getTabletById]);
   useSeo({
-    title: `${tablet?.name} - 7Teck`,
+    title: `${tablet?.tablet_name} - 7Teck`,
     canonical: `${window.location.href}`,
     meta: [
       {

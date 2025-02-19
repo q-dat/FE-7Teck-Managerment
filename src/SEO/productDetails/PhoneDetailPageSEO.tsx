@@ -29,7 +29,7 @@ const PhoneDetailPageSEO: React.FC = () => {
   }, [id, getPhoneById]);
   useSeo({
     title: `${phone?.name} - 7Teck`,
-    canonical: `${window.location.origin}/chi-tiet-iphone/${phone?._id}`,
+    canonical: `${window.location.href}`,
     meta: [
       {
         name: 'description',
@@ -42,3 +42,4 @@ const PhoneDetailPageSEO: React.FC = () => {
 };
 
 export default PhoneDetailPageSEO;
+

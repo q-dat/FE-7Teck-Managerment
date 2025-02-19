@@ -150,8 +150,8 @@ const TabletDetailPage: React.FC = () => {
                   className="flex w-full flex-row items-start justify-start gap-2 overflow-x-auto scroll-smooth scrollbar-hide xl:w-[550px]"
                 >
                   {tablet?.tablet_thumbnail &&
-                  Array.isArray(tablet.thumbnail) ? (
-                    tablet.thumbnail.map((thumb: string, index: number) => (
+                  Array.isArray(tablet?.thumbnail) ? (
+                    tablet?.thumbnail.map((thumb: string, index: number) => (
                       <img
                         loading="lazy"
                         key={index}

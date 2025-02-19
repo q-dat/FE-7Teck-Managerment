@@ -149,8 +149,8 @@ const PhoneDetailPage: React.FC = () => {
                   ref={scrollRef}
                   className="flex w-full flex-row items-start justify-start gap-2 overflow-x-auto scroll-smooth scrollbar-hide xl:w-[550px]"
                 >
-                  {phone?.thumbnail && Array.isArray(phone.thumbnail) ? (
-                    phone.thumbnail.map((thumb: string, index: number) => (
+                  {phone?.thumbnail && Array.isArray(phone?.thumbnail) ? (
+                    phone?.thumbnail.map((thumb: string, index: number) => (
                       <img
                         loading="lazy"
                         key={index}
