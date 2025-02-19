@@ -15,7 +15,7 @@ import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
 import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
 
-const PhoneDetailPage: React.FC = () => {
+const UsedPhoneDetailPage: React.FC = () => {
   const { id } = useParams();
   const { getPhoneById, phones } = useContext(PhoneContext);
   const [phone, setPhone] = useState<any>(null);
@@ -55,20 +55,18 @@ const PhoneDetailPage: React.FC = () => {
     });
     // Fetch Data By Id
     if (id) {
-      const fetchPhone = async () => {
-        try {
-          const fetchedPhone = await getPhoneById(id);
+      getPhoneById(id)
+        .then(fetchedPhone => {
           if (fetchedPhone) {
             setPhone(fetchedPhone);
             setSelectedImage(fetchedPhone.img);
           }
-        } catch (error) {
-          console.log(error);
-        }
-      };
-
-      fetchPhone();
+        })
+        .catch(error =>
+          console.error('Lỗi khi lấy dữ liệu điện thoại:', error)
+        );
     }
+
     if (phones.length > 0) updateScrollButtons();
 
     const handleResize = () => updateScrollButtons();
@@ -344,4 +342,4 @@ const PhoneDetailPage: React.FC = () => {
   );
 };
 
-export default PhoneDetailPage;
+export default UsedPhoneDetailPage;

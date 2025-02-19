@@ -7,7 +7,7 @@ import { Button } from 'react-daisyui';
 import { FaRegEye } from 'react-icons/fa';
 import { Placeholder } from 'semantic-ui-react';
 
-const ProductByCatalog = () => {
+const UsedPhoneByCatalogPage = () => {
   const { phones, updatePhoneView } = useContext(PhoneContext);
   const [loading, setLoading] = useState(true);
   const { catalog } = useParams();
@@ -160,4 +160,4 @@ const ProductByCatalog = () => {
   );
 };
 
-export default ProductByCatalog;
+export default UsedPhoneByCatalogPage;

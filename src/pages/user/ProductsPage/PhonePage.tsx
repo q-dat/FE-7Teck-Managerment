@@ -1,10 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
-import Pagination from '../../components/UserPage/Pagination';
-import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
+import Pagination from '../../../components/UserPage/Pagination';
+import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from 'react-daisyui';
 import { Placeholder } from 'semantic-ui-react';
-import { PhoneContext } from '../../context/phone/PhoneContext';
+import { PhoneContext } from '../../../context/phone/PhoneContext';
 
 const PhonePage: React.FC = () => {
   const { phones } = useContext(PhoneContext);
@@ -89,14 +89,18 @@ const PhonePage: React.FC = () => {
                     </div>
                   ))
                 : currentPhones.map(phone => {
+                  // Navigate
                     const phoneUrl = slugify(phone.name);
+                    const subUrl = phone._id;
                     return (
                       <section
                         key={phone?._id}
                         className="group flex h-full w-full flex-col justify-between rounded-md border border-white text-black"
                       >
                         <div
-                          onClick={() => navigate(`/iphone/${phoneUrl}`)}
+                          onClick={() =>
+                            navigate(`/iphone/${phoneUrl}/${subUrl}`)
+                          }
                           className="relative h-[200px] w-full cursor-pointer overflow-hidden rounded-md rounded-b-none"
                         >
                           <img

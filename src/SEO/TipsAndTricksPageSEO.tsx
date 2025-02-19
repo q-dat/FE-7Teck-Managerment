@@ -1,7 +1,7 @@
 import React, { lazy } from 'react';
 import useSeo from '../hooks/useSeo';
 const TipsAndTricksPage = lazy(
-  () => import('../pages/user/post/TipsAndTricksPage')
+  () => import('../pages/user/PostPage/TipsAndTricksPage')
 );
 
 const TipsAndTricksPageSEO: React.FC = () => {

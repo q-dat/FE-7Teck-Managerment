@@ -1,6 +1,6 @@
 import React, { lazy } from 'react';
 import useSeo from '../hooks/useSeo';
-const NewsPage = lazy(() => import('../pages/user/post/NewsPage'));
+const NewsPage = lazy(() => import('../pages/user/PostPage/NewsPage'));
 
 const NewsPageSEO: React.FC = () => {
   useSeo({
