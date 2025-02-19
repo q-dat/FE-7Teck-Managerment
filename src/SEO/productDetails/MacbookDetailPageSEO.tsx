@@ -1,9 +1,9 @@
 import React, { lazy, useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import useSeo from '../hooks/useSeo';
-import { MacbookContext } from '../context/macbook/MacbookContext';
+import useSeo from '../../hooks/useSeo';
+import { MacbookContext } from '../../context/macbook/MacbookContext';
 const MacbookDetailPage = lazy(
-  () => import('../pages/user/DetailsPage/MacbookDetailPage')
+  () => import('../../pages/user/DetailsPage/MacbookDetailPage')
 );
 
 const MacbookDetailPageSEO: React.FC = () => {

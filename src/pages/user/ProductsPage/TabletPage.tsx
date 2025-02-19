@@ -21,7 +21,7 @@ const TabletPage: React.FC = () => {
       behavior: 'smooth'
     });
   }, [tablets, currentPage]);
-  // Handle Click Phone To Phone Detail
+  // Handle Click Tablet To Tablet Detail
   const navigate = useNavigate();
   const slugify = (text: string) => {
     return text
@@ -38,7 +38,7 @@ const TabletPage: React.FC = () => {
   const totalPages = Math.ceil(tablets.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentPhones = tablets.slice(indexOfFirstItem, indexOfLastItem);
+  const currentTablets = tablets.slice(indexOfFirstItem, indexOfLastItem);
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
@@ -85,8 +85,8 @@ const TabletPage: React.FC = () => {
                       </Placeholder>
                     </div>
                   ))
-                : currentPhones.map(tablet => {
-                    const phoneUrl = slugify(tablet?.tablet_name);
+                : currentTablets.map(tablet => {
+                    const tabletUrl = slugify(tablet?.tablet_name);
                     const subUrl = tablet?._id;
                     return (
                       <section
@@ -95,7 +95,7 @@ const TabletPage: React.FC = () => {
                       >
                         <div
                           onClick={() =>
-                            navigate(`/ipad/${phoneUrl}/${subUrl}`)
+                            navigate(`/ipad/${tabletUrl}/${subUrl}`)
                           }
                           className="relative h-[200px] w-full cursor-pointer overflow-hidden rounded-md rounded-b-none"
                         >
@@ -116,7 +116,7 @@ const TabletPage: React.FC = () => {
                         <div className="flex w-full flex-col items-start justify-between">
                           <div
                             className="w-full cursor-pointer p-1"
-                            onClick={() => navigate(`/ipad/${phoneUrl}`)}
+                            onClick={() => navigate(`/ipad/${tabletUrl}/${subUrl}`)}
                           >
                             <p className="xl:group-hover:text-secondary">
                               Máy tính bảng {tablet?.tablet_name}

@@ -1,9 +1,9 @@
 import React, { lazy, useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { PhoneContext } from '../context/phone/PhoneContext';
-import useSeo from '../hooks/useSeo';
+import { PhoneContext } from '../../context/phone/PhoneContext';
+import useSeo from '../../hooks/useSeo';
 const PhoneDetailPage = lazy(
-  () => import('../pages/user/DetailsPage/PhoneDetailPage')
+  () => import('../../pages/user/DetailsPage/PhoneDetailPage')
 );
 
 const PhoneDetailPageSEO: React.FC = () => {

@@ -6,22 +6,24 @@ import DefaultLayout from '../layout/DefaultLayout';
 const User = lazy(() => import('../pages/user/User'));
 const HomePageSEO = lazy(() => import('../SEO/HomePageSEO'));
 const ContactPageSEO = lazy(() => import('../SEO/ContactPageSEO'));
-const PhonePageSEO = lazy(() => import('../SEO/PhonePageSEO'));
-const TabletPageSEO = lazy(() => import('../SEO/TabletPageSEO'));
+const PhonePageSEO = lazy(() => import('../SEO/products/PhonePageSEO'));
+const TabletPageSEO = lazy(() => import('../SEO/products/TabletPageSEO'));
+const MacbookPageSEO = lazy(() => import('../SEO/products/MacbookPageSEO'));
+const WindowsPageSEO = lazy(() => import('../SEO/products/WindowsPageSEO'));
 const PriceListPageSEO = lazy(() => import('../SEO/PriceListPageSEO'));
-const NewsPageSEO = lazy(() => import('../SEO/NewsPageSEO'));
-const PostDetailSEO = lazy(() => import('../SEO/PostDetailSEO'));
-const TipsAndTricksPageSEO = lazy(() => import('../SEO/TipsAndTricksPageSEO'));
+const NewsPageSEO = lazy(() => import('../SEO/post/NewsPageSEO'));
+const PostDetailSEO = lazy(() => import('../SEO/post/PostDetailSEO'));
+const TipsAndTricksPageSEO = lazy(() => import('../SEO/post/TipsAndTricksPageSEO'));
 const GalleryPageSEO = lazy(() => import('../SEO/GalleryPageSEO'));
 //----------------------------------------------------------------
 const UsedProductsPage = lazy(() => import('../pages/user/UsedProductsPage'));
 const UsedPhoneByCatalogPageSEO = lazy(
   () => import('../SEO/UsedPhoneByCatalogPageSEO')
 );
-const PhoneDetailPageSEO = lazy(() => import('../SEO/PhoneDetailPageSEO'));
-const TabletDetailPageSEO = lazy(() => import('../SEO/TabletDetailPageSEO'));
-const WindowsDetailPageSEO = lazy(() => import('../SEO/WindowsDetailPageSEO'));
-const MacbookDetailPageSEO = lazy(() => import('../SEO/MacbookDetailPageSEO'));
+const PhoneDetailPageSEO = lazy(() => import('../SEO/productDetails/PhoneDetailPageSEO'));
+const TabletDetailPageSEO = lazy(() => import('../SEO/productDetails/TabletDetailPageSEO'));
+const WindowsDetailPageSEO = lazy(() => import('../SEO/productDetails/WindowsDetailPageSEO'));
+const MacbookDetailPageSEO = lazy(() => import('../SEO/productDetails/MacbookDetailPageSEO'));
 
 // admin
 const Admin = lazy(() => import('../cms/admin/Admin'));
@@ -71,6 +73,8 @@ export default function AppRoutes() {
             {/*  */}
             <Route path="iphone" element={<PhonePageSEO />} />
             <Route path="ipad" element={<TabletPageSEO />} />
+            <Route path="macbook" element={<MacbookPageSEO />} />
+            <Route path="windows" element={<WindowsPageSEO />} />
             <Route
               path="thiet-bi-da-qua-su-dung"
               element={<UsedProductsPage />}

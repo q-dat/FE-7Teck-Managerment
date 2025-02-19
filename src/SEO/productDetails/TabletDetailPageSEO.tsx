@@ -1,9 +1,9 @@
 import React, { lazy, useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import useSeo from '../hooks/useSeo';
-import { TabletContext } from '../context/tablet/TabletContext';
+import useSeo from '../../hooks/useSeo';
+import { TabletContext } from '../../context/tablet/TabletContext';
 const TabletDetailPage = lazy(
-  () => import('../pages/user/DetailsPage/TabletDetailPage')
+  () => import('../../pages/user/DetailsPage/TabletDetailPage')
 );
 
 const TabletDetailPageSEO: React.FC = () => {

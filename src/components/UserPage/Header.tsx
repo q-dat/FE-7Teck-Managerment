@@ -68,7 +68,7 @@ const Header: React.FC = () => {
     },
     {
       name: 'Laptop',
-      link: '/window',
+      link: `${window.location.href}`,
       submenu: [
         {
           icon: FaWindows,
@@ -88,7 +88,7 @@ const Header: React.FC = () => {
     },
     {
       name: 'Tin tức',
-      link: '/tin-tuc-moi-nhat',
+      link: `${window.location.href}`,
       submenu: [
         {
           name: 'Tin tức nổi bật',

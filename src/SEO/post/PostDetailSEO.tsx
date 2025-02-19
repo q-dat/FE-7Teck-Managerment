@@ -1,8 +1,8 @@
 import React, { lazy, useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { PostContext } from '../context/post/PostContext';
-import useSeo from '../hooks/useSeo';
-const PostDetail = lazy(() => import('../pages/user/PostPage/PostDetail'));
+import { PostContext } from '../../context/post/PostContext';
+import useSeo from '../../hooks/useSeo';
+const PostDetail = lazy(() => import('../../pages/user/PostPage/PostDetail'));
 
 const PostDetailSEO: React.FC = () => {
   const { posts } = useContext(PostContext);

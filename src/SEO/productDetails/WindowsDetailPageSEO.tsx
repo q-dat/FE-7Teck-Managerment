@@ -1,9 +1,9 @@
 import React, { lazy, useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import useSeo from '../hooks/useSeo';
-import { WindowsContext } from '../context/windows/WindowsContext';
+import useSeo from '../../hooks/useSeo';
+import { WindowsContext } from '../../context/windows/WindowsContext';
 const WindowsDetailPage = lazy(
-  () => import('../pages/user/DetailsPage/WindowsDetailPage')
+  () => import('../../pages/user/DetailsPage/WindowsDetailPage')
 );
 
 const WindowsDetailPageSEO: React.FC = () => {

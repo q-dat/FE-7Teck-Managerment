@@ -1,9 +1,4 @@
-import React, {
-  ReactNode,
-  useContext,
-  useEffect,
-  useState
-} from 'react';
+import React, { ReactNode, useContext, useEffect, useState } from 'react';
 import { Button, Drawer, Input, Menu } from 'react-daisyui';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
@@ -71,7 +66,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
     },
     {
       name: 'Laptop',
-      link: '',
+      link: `${window.location.href}`,
       submenu: [
         {
           icon: FaWindows,
@@ -91,7 +86,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
     },
     {
       name: 'Tin tức',
-      link: ' ',
+      link: `${window.location.href}`,
       submenu: [
         {
           name: 'Tin tức nổi bật',

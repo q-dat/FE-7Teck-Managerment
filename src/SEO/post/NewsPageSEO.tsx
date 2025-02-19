@@ -1,10 +1,10 @@
 import React, { lazy } from 'react';
-import useSeo from '../hooks/useSeo';
-const TabletPage = lazy(() => import('../pages/user/ProductsPage/TabletPage'));
+import useSeo from '../../hooks/useSeo';
+const NewsPage = lazy(() => import('../../pages/user/PostPage/NewsPage'));
 
-const TabletPageSEO: React.FC = () => {
+const NewsPageSEO: React.FC = () => {
   useSeo({
-    title: 'Máy tính bảng iPab - 7Teck',
+    title: 'Tin tức mới nhất tại 7Teck',
     canonical: `${window.location.href}`,
     meta: [
       {
@@ -14,8 +14,8 @@ const TabletPageSEO: React.FC = () => {
       { name: 'keywords', content: '7Teck, tin tức, điện thoại, laptop' }
     ]
   });
-  return <TabletPage />;
+  return <NewsPage />;
 };
 
-export default TabletPageSEO;
+export default NewsPageSEO;
 
