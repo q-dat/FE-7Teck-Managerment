@@ -99,11 +99,13 @@ const GalleryManagerPage: React.FC = () => {
                   alt={`${gallery?.gallery}`}
                 />
               </Zoom>
-              <p className="line-clamp-2 text-sm font-semibold">
-                {gallery?.name}
-              </p>
-              <p className="line-clamp-1 text-xs font-light">{gallery?.des}</p>
               <p className="absolute bottom-1 left-2 text-xs text-primary">
+                <p className="line-clamp-1 text-xs font-light">
+                  {gallery?.des}
+                </p>
+                <p className="line-clamp-2 text-sm font-semibold">
+                  {gallery?.name}
+                </p>
                 <hr />
                 <span className="font-light">
                   {new Date(gallery?.updatedAt).toLocaleDateString('vi-VN')}
