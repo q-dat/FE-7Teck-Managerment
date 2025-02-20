@@ -128,9 +128,9 @@ const UsedProductsPage: React.FC = () => {
                             </p>
                           </div>
                           <div className="w-full p-1">
-                            <p className="text-gray-600">
+                            <p className="text-gray-700">
                               Từ:&nbsp;
-                              <span className="text-red-600">
+                              <span className="text-red-700">
                                 {(phoneCatalog.price * 1000).toLocaleString(
                                   'vi-VN'
                                 )}

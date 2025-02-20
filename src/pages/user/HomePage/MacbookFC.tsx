@@ -149,10 +149,10 @@ const MacbookFC: React.FC = () => {
                       </p>
                     </Link>
                     <div className="w-full">
-                      <p className="text-red-600">
+                      <p className="text-red-700">
                         {(mac?.macbook_price * 1000).toLocaleString('vi-VN')}₫
                         &nbsp;
-                        <del className="text-xs font-light text-gray-400">
+                        <del className="text-xs font-light text-gray-500">
                           {mac?.macbook_sale &&
                             (mac?.macbook_sale * 1000).toLocaleString('vi-VN')}
                           ₫

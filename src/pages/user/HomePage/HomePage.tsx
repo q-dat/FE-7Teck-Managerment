@@ -263,9 +263,9 @@ const HomePage: React.FC = () => {
             role="region"
             aria-label="Bản tin mới nhất"
           >
-            <h3 className="mb-2 bg-white bg-opacity-20 px-2 text-start text-xl font-semibold uppercase text-black xl:px-[100px]">
+            <h1 className="mb-2 bg-white bg-opacity-20 px-2 text-start text-xl font-semibold uppercase text-black xl:px-[100px]">
               Tin công nghệ
-            </h3>
+            </h1>
             <div className="grid grid-cols-2 gap-2 px-2 md:grid-cols-3 lg:grid-cols-4 xl:px-[100px]">
               {news.slice(0, 4).map(post => (
                 <div
@@ -310,9 +310,9 @@ const HomePage: React.FC = () => {
             role="region"
             aria-label="Thủ thuật và mẹo hay"
           >
-            <h3 className="my-2 bg-white bg-opacity-20 px-2 text-start text-xl font-semibold uppercase text-black xl:px-[100px]">
+            <h1 className="my-2 bg-white bg-opacity-20 px-2 text-start text-xl font-semibold uppercase text-black xl:px-[100px]">
               Thủ thuật - Mẹo hay
-            </h3>
+            </h1>
             <div className="grid grid-cols-2 gap-2 px-2 md:grid-cols-3 lg:grid-cols-4 xl:px-[100px]">
               {tricks.slice(0, 4).map(post => (
                 <div
