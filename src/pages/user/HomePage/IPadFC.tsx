@@ -1,154 +1,227 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
-import { Button } from 'react-daisyui';
+import React, {
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState
+} from 'react';
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import { IoIosArrowForward } from 'react-icons/io';
+import { Placeholder } from 'semantic-ui-react';
+import { Button } from 'react-daisyui';
+import { FaRegEye } from 'react-icons/fa';
 import { Sale } from '../../../assets/image-represent';
-import { PhoneContext } from '../../../context/phone/PhoneContext';
+import { TabletContext } from '../../../context/tablet/TabletContext';
 
 const IPadFC: React.FC = () => {
-  const { phones } = useContext(PhoneContext);
+  const { tablets, updateTabletView } = useContext(TabletContext);
+  const slugify = (text: string) => {
+    return text
+      .toString()
+      .normalize('NFD')
+      .replace(/\p{Diacritic}/gu, '')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+  };
+  const [loading, setLoading] = useState(true);
+  const [isLeftVisible, setIsLeftVisible] = useState(true);
+  const [isRightVisible, setIsRightVisible] = useState(true);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-  const [isLeftButtonVisibleIpad, setIsLeftButtonVisibleIpad] = useState(true);
-  const [isRightButtonVisibleIpad, setIsRightButtonVisibleIpad] =
-    useState(true);
+  useLayoutEffect(() => {
+    updateScrollButtons();
+  }, [tablets]);
+  //
+  const updateScrollButtons = () => {
+    const scrollContainer = scrollRef.current;
+    if (scrollContainer) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollContainer;
+      setIsLeftVisible(scrollLeft > 0);
+      setIsRightVisible(scrollLeft + clientWidth < scrollWidth - 1);
+    }
+  };
 
-  const scrollRefWindow = useRef<HTMLDivElement>(null);
-  const scrollRefIpad = useRef<HTMLDivElement>(null);
-  const scrollRefMacbook = useRef<HTMLDivElement>(null);
+  const scrollBy = (offset: number) => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollLeft += offset;
+    }
+  };
 
   useEffect(() => {
-    const handleScrollAndResize = () => {
-      checkScrollPosition(
-        scrollRefIpad.current,
-        setIsLeftButtonVisibleIpad,
-        setIsRightButtonVisibleIpad
-      );
-    };
+    if (tablets.length > 0) {
+      setLoading(false);
+    }
+    //
+    if (tablets.length > 0) updateScrollButtons();
 
-    handleScrollAndResize();
-    window.addEventListener('resize', handleScrollAndResize);
+    const handleResize = () => updateScrollButtons();
+    const scrollContainer = scrollRef.current;
 
-    if (scrollRefWindow.current) {
-      scrollRefWindow.current.addEventListener('scroll', handleScrollAndResize);
-    }
-    if (scrollRefIpad.current) {
-      scrollRefIpad.current.addEventListener('scroll', handleScrollAndResize);
-    }
-    if (scrollRefMacbook.current) {
-      scrollRefMacbook.current.addEventListener(
-        'scroll',
-        handleScrollAndResize
-      );
-    }
+    window.addEventListener('resize', handleResize);
+    scrollContainer?.addEventListener('scroll', updateScrollButtons);
 
     return () => {
-      window.removeEventListener('resize', handleScrollAndResize);
-
-      if (scrollRefWindow.current) {
-        scrollRefWindow.current.removeEventListener(
-          'scroll',
-          handleScrollAndResize
-        );
-      }
-      if (scrollRefIpad.current) {
-        scrollRefIpad.current.removeEventListener(
-          'scroll',
-          handleScrollAndResize
-        );
-      }
-      if (scrollRefMacbook.current) {
-        scrollRefMacbook.current.removeEventListener(
-          'scroll',
-          handleScrollAndResize
-        );
-      }
+      window.removeEventListener('resize', handleResize);
+      scrollContainer?.removeEventListener('scroll', updateScrollButtons);
     };
-  }, []);
-
-  const checkScrollPosition = (
-    scrollContainer: HTMLElement | null,
-    setLeftButtonVisible: React.Dispatch<React.SetStateAction<boolean>>,
-    setRightButtonVisible: React.Dispatch<React.SetStateAction<boolean>>
-  ) => {
-    if (scrollContainer) {
-      const isAtStart = scrollContainer.scrollLeft === 0;
-      const isAtEnd =
-        scrollContainer.scrollLeft + scrollContainer.clientWidth >=
-        scrollContainer.scrollWidth;
-
-      setLeftButtonVisible(!isAtStart);
-      setRightButtonVisible(!isAtEnd);
-    }
-  };
-
-  // scrollRefIpad
-  const scrollIpad = (scrollOffset: number) => {
-    if (scrollRefIpad.current) {
-      scrollRefIpad.current.scrollLeft += scrollOffset;
-    }
-  };
+  }, [tablets]);
+  //
+  const sortedTablets = tablets.filter(tablet => tablet.tablet_sale);
 
   return (
-    <div
-      className={`relative rounded-lg bg-white dark:bg-black ${phones.length === 0 ? 'hidden' : ''}`}
-    >
+    <div className={`mt-10 p-0 xl:px-[100px]`}>
       {/* Title */}
-      <div className="mt-5 flex w-full flex-col items-center justify-center p-5">
-        <p className="font-title bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold text-transparent dark:from-white dark:via-primary dark:to-white dark:bg-clip-text xl:text-[40px]">
-          IPad
-        </p>
-        <div className="h-[1px] w-[50px] animate-ping bg-primary"></div>
-      </div>
       <div
-        ref={scrollRefIpad}
-        className="grid grid-flow-col grid-rows-2 items-center justify-start gap-3 overflow-x-auto scroll-smooth p-2 pt-0 scrollbar-hide xl:gap-5 xl:p-[22px] xl:pt-0"
+        role="region"
+        aria-label="Danh sách giảm giá mạnh"
+        className="flex w-full flex-col items-start justify-center px-2 xl:rounded-t-lg"
       >
-        {phones.map(phone => (
-          <Link to="phone-detail">
-            <div
-              key={phone._id}
-              className="relative rounded-md border border-gray-50 text-black dark:text-white"
-            >
-              <div className="flex w-[175px] flex-col items-center justify-center xl:w-[200px]">
-                <img
-                  className="h-[200px] w-[175px] rounded-md rounded-b-none object-cover xl:h-[250px] xl:w-[200px]"
-                  src={phone.img}
-                  alt={phone.img}
-                />
-                <p>{phone.name}</p>
-                <p>Giá:{(phone.price * 1000).toLocaleString('vi-VN')}đ</p>
-              </div>
-              {phone.status === 'sale' && (
-                <>
-                  <img
-                    width={60}
-                    src={Sale}
-                    className="absolute -left-[3px] top-0"
-                    alt="Sale"
-                  />
-                  <p className="absolute top-0 w-full text-sm text-white">
-                    Giảm 20%
-                  </p>
-                </>
-              )}
+        <h1 className="py-2 text-2xl font-semibold">
+          {loading ? (
+            <div className="w-[240px]">
+              <Placeholder>
+                <Placeholder.Line />
+              </Placeholder>
             </div>
-          </Link>
-        ))}
+          ) : (
+            <>iPad - Giảm giá mạnh</>
+          )}
+        </h1>
       </div>
+      <section
+        ref={scrollRef}
+        className="relative grid w-full grid-flow-col grid-rows-1 items-center justify-start gap-[10px] overflow-x-auto scroll-smooth rounded-none border-[10px] border-transparent bg-white pt-0 scrollbar-hide xl:rounded-t-lg xl:pt-0"
+      >
+        {loading
+          ? Array.from({ length: 6 }).map((_, index) => (
+              <div key={index} className="w-[195px] p-2">
+                <Placeholder>
+                  <Placeholder.Image square />
+                  <Placeholder.Line />
+                  <Placeholder.Line length="full" />
+                  <Placeholder.Line length="full" />
+                </Placeholder>
+              </div>
+            ))
+          : sortedTablets.map(tablet => {
+              const tabletUrl = slugify(tablet.tablet_name);
+              return (
+                <div
+                  onClick={() => updateTabletView(tablet._id)}
+                  key={tablet._id}
+                  className="group relative flex h-full w-[195px] flex-col justify-between rounded-md border border-[#f2f4f7] text-black"
+                >
+                  <Link
+                    aria-label="Xem chi tiết sản phẩm khi ấn vào hình ảnh"
+                    to={`/ipad/${tabletUrl}/${tablet?._id}`}
+                  >
+                    <div className="relative h-[200px] w-full cursor-pointer overflow-hidden">
+                      <img
+                        alt="Hình ảnh"
+                        loading="lazy"
+                        className="absolute left-0 top-0 z-0 h-full w-full rounded-[5px] rounded-b-none object-cover blur-xl filter"
+                        src={tablet.tablet_img}
+                      />
+                      <img
+                        alt="Hình ảnh"
+                        loading="lazy"
+                        className="absolute left-0 top-0 z-10 h-full w-full rounded-[5px] rounded-b-none object-contain transition-transform duration-1000 ease-in-out hover:scale-110"
+                        src={tablet.tablet_img}
+                      />
+                    </div>
+                  </Link>
+
+                  {/*  */}
+                  <div className="flex h-full w-full flex-col items-start justify-between p-1">
+                    <Link
+                      aria-label="Xem chi tiết sản phẩm khi nhấn vào tên sản phẩm"
+                      className="w-full cursor-pointer"
+                      to={`/ipad/${tabletUrl}/${tablet?._id}`}
+                    >
+                      <div className="flex w-[50px] items-center justify-start gap-1 rounded-sm p-[2px] text-center text-[12px] text-black">
+                        <FaRegEye />
+                        <p>{tablet.tablet_view}</p>
+                      </div>
+                      <p className="xl:group-hover:text-secondary">
+                        Điện Thoại {tablet.tablet_name}
+                      </p>
+                    </Link>
+                    <div className="w-full">
+                      <p className="text-gray-500">
+                        <span className="text-red-500">
+                          {(tablet?.tablet_price * 1000).toLocaleString(
+                            'vi-VN'
+                          )}
+                          ₫
+                        </span>
+                        &nbsp;
+                        <del className="text-xs font-light text-gray-100">
+                          {tablet?.tablet_sale &&
+                            (tablet?.tablet_sale * 1000).toLocaleString(
+                              'vi-VN'
+                            )}
+                          ₫
+                        </del>
+                      </p>
+                      <Link
+                        aria-label="Mua ngay"
+                        to="/thanh-toan"
+                        className="z-50 w-full"
+                      >
+                        <Button
+                          size="xs"
+                          className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary hover:bg-primary hover:bg-opacity-20"
+                        >
+                          Mua Ngay
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                  {/*  */}
+                  {tablet?.tablet_status && (
+                    <div className="absolute -left-[3px] top-0 z-20">
+                      <img alt="" loading="lazy" width={60} src={Sale} />
+                      <p className="absolute top-[1px] w-full pl-2 text-xs text-white">
+                        {tablet?.tablet_status}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+      </section>
+      <Link to="/ipad" aria-label="Xem thêm điện thoại">
+        <button className="flex w-full cursor-pointer items-center justify-center bg-gradient-to-r from-white via-secondary to-white py-1 text-sm text-white xl:rounded-b-lg">
+          {loading ? (
+            <>Đang tải...</>
+          ) : (
+            <>
+              Xem Thêm Sản Phẩm iPad
+              <IoIosArrowForward className="text-xl" />
+            </>
+          )}
+        </button>
+      </Link>
       {/* Navigation Button  */}
       <div className="absolute top-1/2 flex w-full items-center justify-between">
-        <Button
-          onClick={() => scrollIpad(-200)}
-          className={`z-[100] rounded-full border-none bg-black bg-opacity-10 p-0 text-white shadow-none hover:bg-black hover:bg-opacity-10 hover:text-white dark:bg-white dark:bg-opacity-20 ${isLeftButtonVisibleIpad ? '' : 'bg-transparent text-transparent dark:bg-transparent'}`}
-        >
-          <MdArrowBackIosNew className="text-4xl" />
-        </Button>
-        <Button
-          onClick={() => scrollIpad(200)}
-          className={`z-[100] rounded-full border-none bg-black bg-opacity-10 p-0 text-white shadow-none hover:bg-black hover:bg-opacity-10 hover:text-white dark:bg-white dark:bg-opacity-20 ${isRightButtonVisibleIpad ? '' : 'bg-transparent text-transparent dark:bg-transparent'}`}
-        >
-          <MdArrowForwardIos className="text-4xl" />
-        </Button>
+        <div className="relative w-full">
+          <button
+            aria-label="Cuộn sang trái"
+            onClick={() => scrollBy(-380)}
+            className={`absolute -top-2 left-0 z-[100] rounded-full border-none bg-black bg-opacity-20 text-white ${isLeftVisible ? '' : 'hidden'}`}
+          >
+            <MdArrowBackIosNew className="text-4xl" />
+          </button>
+          <button
+            aria-label="Cuộn sang phải"
+            onClick={() => scrollBy(380)}
+            className={`absolute -top-2 right-0 z-[100] rounded-full border-none bg-black bg-opacity-20 text-white ${isRightVisible ? '' : 'hidden'}`}
+          >
+            <MdArrowForwardIos className="text-4xl" />
+          </button>
+        </div>
       </div>
     </div>
   );

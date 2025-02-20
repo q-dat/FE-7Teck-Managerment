@@ -80,19 +80,17 @@ const PhoneFC: React.FC = () => {
         aria-label="Danh sách sản phẩm nổi bật"
         className="flex w-full flex-col items-start justify-center px-2 xl:rounded-t-lg"
       >
-        <div>
-          <h1 className="py-2 text-2xl font-semibold">
-            {loading ? (
-              <div className="w-[240px]">
-                <Placeholder>
-                  <Placeholder.Line />
-                </Placeholder>
-              </div>
-            ) : (
-              <>Sản phẩm nổi bật</>
-            )}
-          </h1>
-        </div>
+        <h1 className="py-2 text-2xl font-semibold">
+          {loading ? (
+            <div className="w-[240px]">
+              <Placeholder>
+                <Placeholder.Line />
+              </Placeholder>
+            </div>
+          ) : (
+            <>Sản phẩm nổi bật</>
+          )}
+        </h1>
       </div>
       <section
         ref={scrollRef}
@@ -210,14 +208,14 @@ const PhoneFC: React.FC = () => {
           <button
             aria-label="Cuộn sang trái"
             onClick={() => scrollBy(-380)}
-            className={`absolute left-0 z-[100] mt-[14px] rounded-full border-none bg-black bg-opacity-20 text-white ${isLeftVisible ? '' : 'hidden'}`}
+            className={`absolute -top-2 left-0 z-[100] rounded-full border-none bg-black bg-opacity-20 text-white ${isLeftVisible ? '' : 'hidden'}`}
           >
             <MdArrowBackIosNew className="text-4xl" />
           </button>
           <button
             aria-label="Cuộn sang phải"
             onClick={() => scrollBy(380)}
-            className={`absolute right-0 z-[100] mt-[14px] rounded-full border-none bg-black bg-opacity-20 text-white ${isRightVisible ? '' : 'hidden'}`}
+            className={`absolute -top-2 right-0 z-[100] rounded-full border-none bg-black bg-opacity-20 text-white ${isRightVisible ? '' : 'hidden'}`}
           >
             <MdArrowForwardIos className="text-4xl" />
           </button>

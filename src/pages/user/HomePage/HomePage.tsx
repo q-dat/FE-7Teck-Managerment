@@ -241,13 +241,13 @@ const HomePage: React.FC = () => {
           </div>
         </div>
         {/* Sale */}
-        <div data-aos="fade-up" className="mt-10 p-0 xl:px-[100px]">
+        <div data-aos="fade-up">
           <IPadFC />
         </div>
-        <div data-aos="fade-up" className="mt-10 p-0 xl:px-[100px]">
+        <div data-aos="fade-up">
           <WindowsFC />
         </div>
-        <div data-aos="fade-up" className="mt-10 p-0 xl:px-[100px]">
+        <div data-aos="fade-up">
           <MacbookFC />
         </div>
         {/* Post */}
