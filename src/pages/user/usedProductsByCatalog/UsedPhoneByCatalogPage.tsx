@@ -109,12 +109,10 @@ const UsedPhoneByCatalogPage = () => {
                           <p className="xl:group-hover:text-secondary">
                             Điện Thoại {phone?.name}
                           </p>
-                          <p className="text-gray-500">
-                            <span className="text-red-500">
+                          <p className="text-red-700">
                               {(phone?.price * 1000).toLocaleString('vi-VN')}₫
-                            </span>
                             &nbsp;
-                            <del className="text-xs font-light text-gray-100">
+                            <del className="text-xs font-light text-gray-400">
                               {phone?.sale &&
                                 (phone?.sale * 1000).toLocaleString('vi-VN')}
                               ₫

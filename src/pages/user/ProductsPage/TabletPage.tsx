@@ -123,9 +123,9 @@ const TabletPage: React.FC = () => {
                             </p>
                           </div>
                           <div className="w-full p-1">
-                            <p className="text-gray-500">
+                            <p className="text-gray-600">
                               Từ:&nbsp;
-                              <span className="text-red-500">
+                              <span className="text-red-600">
                                 {(tablet?.tablet_price * 1000).toLocaleString(
                                   'vi-VN'
                                 )}

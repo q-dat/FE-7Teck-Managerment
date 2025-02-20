@@ -149,7 +149,7 @@ const IPadFC: React.FC = () => {
                       </p>
                     </Link>
                     <div className="w-full">
-                      <p className="text-red-700">
+                      <p className="text-red-600">
                         {(tablet?.tablet_price * 1000).toLocaleString('vi-VN')}₫
                         &nbsp;
                         <del className="text-xs font-light text-gray-400">

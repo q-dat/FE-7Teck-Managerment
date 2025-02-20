@@ -127,8 +127,8 @@ const PhonePage: React.FC = () => {
                             </p>
                           </div>
                           <div className="w-full">
-                            <p className="text-gray-500">
-                              <span className="text-red-500">
+                            <p className="text-gray-600">
+                              <span className="text-red-600">
                                 {(phone?.price * 1000).toLocaleString('vi-VN')}₫
                               </span>
                               &nbsp;
