@@ -58,8 +58,8 @@ const GalleryPage: React.FC = () => {
         {/*  */}
         <div className="mt-5 xl:px-20">
           <div className="grid grid-flow-row grid-cols-2 gap-2 bg-white p-2 md:grid-cols-3 xl:grid-cols-6 xl:rounded-md">
-            {currentGallerys.map(gallery => (
-              <Zoom>
+            {currentGallerys.map((gallery, index) => (
+              <Zoom key={index}>
                 <div className="w-full overflow-hidden rounded-md">
                   <img
                     alt=""

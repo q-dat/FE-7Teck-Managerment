@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
 import { Button } from 'react-daisyui';
 import { Link, useLocation } from 'react-router-dom';
-import { IListProducts } from '../../types/type/price-list/price-list';
+import { IProductPriceList } from '../../types/type/price-list/price-list';
+import { PriceListsContext } from '../../context/price-list/PriceListContext';
 
 const PriceListPage: React.FC = () => {
+  const { priceLists } = useContext(PriceListsContext);
+  console.log('1', priceLists);
+
   const [laptopCategories, setLaptopCategories] = useState<
-    Record<string, IListProducts[]>
+    Record<string, IProductPriceList[]>
   >({});
   const [activeLaptopItem, setActiveLaptopItem] = useState<string>('');
   const location = useLocation();
@@ -18,17 +22,12 @@ const PriceListPage: React.FC = () => {
 
   const fetchPriceList = async () => {
     try {
-      const response = await fetch('http://localhost:6001/api/price-lists');
-      const data = await response.json();
-
-      if (!data?.priceList?.length) return;
-
-      const aggregatedLaptops = data.priceList.reduce(
-        (acc: Record<string, IListProducts[]>, list: any) => {
-          Object.entries(list.laptopProducts || {}).forEach(
+      const aggregatedLaptops = priceLists.reduce(
+        (acc: Record<string, IProductPriceList[]>, list: any) => {
+          Object.entries(list.phoneProducts || {}).forEach(
             ([category, products]) => {
               if (Array.isArray(products)) {
-                (products as IListProducts[]).forEach(product => {
+                (products as IProductPriceList[]).forEach(product => {
                   // const key = `${category} ${product.name}`;
                   const key = `${category} `;
                   acc[key] = acc[key] || [];

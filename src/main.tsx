@@ -19,6 +19,7 @@ import { WindowsProvider } from './context/windows/WindowsContext.tsx';
 import { MacbookCatalogProvider } from './context/macbook-catalog/MacbookCatalogContext.tsx';
 import { MacbookProvider } from './context/macbook/MacbookContext.tsx';
 import { OptionPhoneProvider } from './context/optionsData/OptionsPhoneContext.tsx';
+import { PriceListsProvider } from './context/price-list/PriceListContext.tsx';
 const App = lazy(() => import('./App.tsx'));
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -26,35 +27,37 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <Suspense fallback={<LoadingPage loading={true} />}>
         <ErrorBoundary>
-          <GalleryProvider>
-            <PostCatalogProvider>
-              <PostProvider>
-                <PhoneCatalogProvider>
-                  <PhoneProvider>
-                    <TabletCatalogProvider>
-                      <TabletProvider>
-                        <WindowsCatalogProvider>
-                          <WindowsProvider>
-                            <MacbookCatalogProvider>
-                              <MacbookProvider>
-                                <OptionPhoneProvider>
-                                <ParallaxProvider>
-                                  <App />
-                                  <Analytics />
-                                  <ToastContainer />
-                                </ParallaxProvider>
-                                </OptionPhoneProvider>
-                              </MacbookProvider>
-                            </MacbookCatalogProvider>
-                          </WindowsProvider>
-                        </WindowsCatalogProvider>
-                      </TabletProvider>
-                    </TabletCatalogProvider>
-                  </PhoneProvider>
-                </PhoneCatalogProvider>
-              </PostProvider>
-            </PostCatalogProvider>
-          </GalleryProvider>
+          <PriceListsProvider>
+            <GalleryProvider>
+              <PostCatalogProvider>
+                <PostProvider>
+                  <PhoneCatalogProvider>
+                    <PhoneProvider>
+                      <TabletCatalogProvider>
+                        <TabletProvider>
+                          <WindowsCatalogProvider>
+                            <WindowsProvider>
+                              <MacbookCatalogProvider>
+                                <MacbookProvider>
+                                  <OptionPhoneProvider>
+                                    <ParallaxProvider>
+                                      <App />
+                                      <Analytics />
+                                      <ToastContainer />
+                                    </ParallaxProvider>
+                                  </OptionPhoneProvider>
+                                </MacbookProvider>
+                              </MacbookCatalogProvider>
+                            </WindowsProvider>
+                          </WindowsCatalogProvider>
+                        </TabletProvider>
+                      </TabletCatalogProvider>
+                    </PhoneProvider>
+                  </PhoneCatalogProvider>
+                </PostProvider>
+              </PostCatalogProvider>
+            </GalleryProvider>
+          </PriceListsProvider>
         </ErrorBoundary>
       </Suspense>
     </BrowserRouter>
