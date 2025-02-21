@@ -1,4 +1,4 @@
-import axios from '../../config/axiosConfig';
+import axios from '../config/axiosConfig';
 import { IPhone } from '../../types/type/phone/phone';
 
 // Get All Phones

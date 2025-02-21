@@ -1,4 +1,4 @@
-import axios from '../../config/axiosConfig';
+import axios from '../config/axiosConfig';
 import { IPhoneCatalog } from '../../types/type/phone-catalog/phone-catalog';
 
 export const getAllPhoneCatalogsApi = () => {

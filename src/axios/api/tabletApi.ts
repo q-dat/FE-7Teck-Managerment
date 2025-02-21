@@ -1,4 +1,4 @@
-import axios from '../../config/axiosConfig';
+import axios from '../config/axiosConfig';
 import { ITablet } from '../../types/type/tablet/tablet';
 
 // Get All Tablets

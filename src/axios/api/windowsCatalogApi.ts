@@ -1,4 +1,4 @@
-import axios from '../../config/axiosConfig';
+import axios from '../config/axiosConfig';
 import { IWindowsCatalog } from '../../types/type/windows-catalog/windows-catalog';
 
 export const getAllWindowsCatalogsApi = () => {

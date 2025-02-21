@@ -1,4 +1,4 @@
-import axios from '../../config/axiosConfig';
+import axios from '../config/axiosConfig';
 import { ITabletCatalog } from '../../types/type/tablet-catalog/tablet-catalog';
 
 export const getAllTabletCatalogsApi = () => {

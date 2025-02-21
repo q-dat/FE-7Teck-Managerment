@@ -1,4 +1,4 @@
-import axios from '../../config/axiosConfig';
+import axios from '../config/axiosConfig';
 import { IGallery } from '../../types/type/gallery/gallery';
 
 // Get All Gallerys

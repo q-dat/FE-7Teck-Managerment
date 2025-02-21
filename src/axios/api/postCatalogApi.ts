@@ -1,4 +1,4 @@
-import axios from '../../config/axiosConfig';
+import axios from '../config/axiosConfig';
 import { IPostCatalog } from '../../types/type/post-catalog/post-catalog';
 
 // Get All PostCatalog

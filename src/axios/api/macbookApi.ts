@@ -1,4 +1,4 @@
-import axios from '../../config/axiosConfig';
+import axios from '../config/axiosConfig';
 import { IMacbook } from '../../types/type/macbook/macbook';
 
 // Get All Macbook

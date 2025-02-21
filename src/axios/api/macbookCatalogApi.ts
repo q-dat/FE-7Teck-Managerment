@@ -1,4 +1,4 @@
-import axios from '../../config/axiosConfig';
+import axios from '../config/axiosConfig';
 import { IMacbookCatalog } from '../../types/type/macbook-catalog/macbook-catalog';
 
 export const getAllMacbookCatalogsApi = () => {

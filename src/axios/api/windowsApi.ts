@@ -1,4 +1,4 @@
-import axios from '../../config/axiosConfig';
+import axios from '../config/axiosConfig';
 import { IWindows } from '../../types/type/windows/windows';
 
 // Get All Windows

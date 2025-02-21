@@ -1,4 +1,4 @@
-import axios from "../../../config/axiosConfig";
+import axios from "../../config/axiosConfig";
 import { IOptionPhoneData } from "../../../types/type/optionsData/optionsPhoneData";
 
 // Get All OptionsPhones
