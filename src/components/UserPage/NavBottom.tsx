@@ -21,8 +21,8 @@ const navLink = [
   },
   {
     icon: FaWindows,
-    name: 'Window',
-    link: '/window'
+    name: 'Windows',
+    link: '/windows'
   },
   {
     icon: MdListAlt,
