@@ -7,7 +7,6 @@ import { PriceListsContext } from '../../context/price-list/PriceListContext';
 
 const PriceListPage: React.FC = () => {
   const { priceLists } = useContext(PriceListsContext);
-  console.log('1', priceLists);
 
   const [laptopCategories, setLaptopCategories] = useState<
     Record<string, IProductPriceList[]>
@@ -17,36 +16,28 @@ const PriceListPage: React.FC = () => {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    fetchPriceList();
-  }, [location.pathname]);
-
-  const fetchPriceList = async () => {
-    try {
-      const aggregatedLaptops = priceLists.reduce(
-        (acc: Record<string, IProductPriceList[]>, list: any) => {
-          Object.entries(list.phoneProducts || {}).forEach(
-            ([category, products]) => {
-              if (Array.isArray(products)) {
-                (products as IProductPriceList[]).forEach(product => {
-                  // const key = `${category} ${product.name}`;
-                  const key = `${category} `;
-                  acc[key] = acc[key] || [];
-                  acc[key].push(product);
-                });
-              }
+    //
+    const aggregatedLaptops = priceLists.reduce(
+      (acc: Record<string, IProductPriceList[]>, list) => {
+        Object.entries(list.phoneProducts || {}).forEach(
+          ([category, products]) => {
+            if (Array.isArray(products)) {
+              (products as IProductPriceList[]).forEach(product => {
+                const key = `${category}`;
+                acc[key] = acc[key] || [];
+                acc[key].push(product);
+              });
             }
-          );
-          return acc;
-        },
-        {}
-      );
+          }
+        );
+        return acc;
+      },
+      {}
+    );
 
-      setLaptopCategories(aggregatedLaptops);
-      setActiveLaptopItem(Object.keys(aggregatedLaptops)[0] || '');
-    } catch (error) {
-      console.error('Error fetching price list:', error);
-    }
-  };
+    setLaptopCategories(aggregatedLaptops);
+    setActiveLaptopItem(Object.keys(aggregatedLaptops)[0] || '');
+  }, [priceLists, location.pathname]);
 
   return (
     <div>
