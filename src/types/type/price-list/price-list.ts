@@ -10,10 +10,13 @@ export interface IProductPriceList {
 export interface IPriceList {
   _id: string;
   phoneCatalog?: IPriceListCatalog[];
-  ipadCatalog?: IPriceListCatalog[];
-  laptopCatalog?: IPriceListCatalog[];
+  tabletCatalog?: IPriceListCatalog[];
+  macbookCatalog?: IPriceListCatalog[];
+  windowsCatalog?: IPriceListCatalog[];
   //
   phoneProducts?: Record<string, IProductPriceList[]>;
-  ipadProducts?: Record<string, IProductPriceList[]>;
-  laptopProducts?: Record<string, IProductPriceList[]>;
+  tabletProducts?: Record<string, IProductPriceList[]>;
+  macbookProducts?: Record<string, IProductPriceList[]>;
+  windowsProducts?: Record<string, IProductPriceList[]>;
 }
+

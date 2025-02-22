@@ -7,36 +7,63 @@ import { PriceListsContext } from '../../context/price-list/PriceListContext';
 
 const PriceListPage: React.FC = () => {
   const { priceLists } = useContext(PriceListsContext);
-
-  const [laptopCategories, setLaptopCategories] = useState<
-    Record<string, IProductPriceList[]>
-  >({});
-  const [activeLaptopItem, setActiveLaptopItem] = useState<string>('');
   const location = useLocation();
+
+  const [categories, setCategories] = useState<{
+    phoneProducts: Record<string, IProductPriceList[]>;
+    laptopProducts: Record<string, IProductPriceList[]>;
+    tabletProducts: Record<string, IProductPriceList[]>;
+  }>({
+    phoneProducts: {},
+    laptopProducts: {},
+    tabletProducts: {}
+  });
+
+  const [activeTabs, setActiveTabs] = useState<{ [key: string]: string }>({
+    phoneProducts: '',
+    laptopProducts: '',
+    tabletProducts: ''
+  });
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    //
-    const aggregatedLaptops = priceLists.reduce(
-      (acc: Record<string, IProductPriceList[]>, list) => {
-        Object.entries(list.phoneProducts || {}).forEach(
-          ([category, products]) => {
+
+    const aggregatedData = {
+      phoneProducts: {} as Record<string, IProductPriceList[]>,
+      laptopProducts: {} as Record<string, IProductPriceList[]>,
+      tabletProducts: {} as Record<string, IProductPriceList[]>
+    };
+
+    ['phoneProducts', 'laptopProducts', 'tabletProducts'].forEach(
+      categoryType => {
+        priceLists.forEach(list => {
+          const productsByCategory =
+            list[categoryType as keyof typeof list] || {};
+
+          Object.entries(productsByCategory).forEach(([category, products]) => {
             if (Array.isArray(products)) {
-              (products as IProductPriceList[]).forEach(product => {
-                const key = `${category}`;
-                acc[key] = acc[key] || [];
-                acc[key].push(product);
-              });
+              aggregatedData[categoryType as keyof typeof aggregatedData][
+                category
+              ] =
+                aggregatedData[categoryType as keyof typeof aggregatedData][
+                  category
+                ] || [];
+              aggregatedData[categoryType as keyof typeof aggregatedData][
+                category
+              ].push(...(products as IProductPriceList[]));
             }
-          }
-        );
-        return acc;
-      },
-      {}
+          });
+        });
+      }
     );
 
-    setLaptopCategories(aggregatedLaptops);
-    setActiveLaptopItem(Object.keys(aggregatedLaptops)[0] || '');
+    setCategories(aggregatedData);
+
+    setActiveTabs({
+      phoneProducts: Object.keys(aggregatedData.phoneProducts)[0] || '',
+      laptopProducts: Object.keys(aggregatedData.laptopProducts)[0] || '',
+      tabletProducts: Object.keys(aggregatedData.tabletProducts)[0] || ''
+    });
   }, [priceLists, location.pathname]);
 
   return (
@@ -57,53 +84,80 @@ const PriceListPage: React.FC = () => {
             </li>
           </ul>
         </div>
-        {/* Phone Catalog */}
-        <div className="px-2 xl:px-[100px]">
-          <div role="region" aria-label="Danh mục thu mua điện thoại">
-            <h2 className="my-5 font-bold text-primary">
-              Danh Mục Thu Mua Điện Thoại
-            </h2>
-          </div>
-          <div className="grid grid-cols-2 gap-2 xl:grid-flow-col xl:grid-cols-none xl:grid-rows-1">
-            {Object.keys(laptopCategories).map(item => (
-              <Button
-                key={item}
-                onClick={() => setActiveLaptopItem(item)}
-                className={`flex w-full items-center justify-center transition-all duration-500 ease-in-out hover:rounded-badge hover:bg-secondary hover:text-white ${
-                  activeLaptopItem === item
-                    ? 'bg-primary text-white hover:bg-primary hover:text-white'
-                    : 'bg-white text-primary'
-                }`}
-              >
-                {item}
-              </Button>
-            ))}
-          </div>
-          <table className="mt-5 min-w-full border-collapse border border-gray-200">
-            <thead>
-              <tr className="bg-secondary text-white">
-                <th>Tên sản phẩm</th>
-                <th>Giá</th>
-                <th>Dung lượng</th>
-              </tr>
-            </thead>
-            <tbody>
-              {laptopCategories[activeLaptopItem]?.map((product, index) => (
-                <tr key={index} className="hover:bg-black hover:bg-opacity-10">
-                  <td className="border border-primary px-4 py-2 text-black">
-                    {product.name}
-                  </td>
-                  <td className="border border-primary px-4 py-2 text-black">
-                    {product.price}
-                  </td>
-                  <td className="border border-primary px-4 py-2 text-black">
-                    {product.storage}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+
+        {/* Danh mục sản phẩm */}
+        {['phoneProducts', 'laptopProducts', 'tabletProducts'].map(
+          categoryType =>
+            Object.keys(categories[categoryType as keyof typeof categories])
+              .length > 0 && (
+              <div key={categoryType} className="mt-10 px-2 xl:px-[100px]">
+                <div role="region" aria-label={`Danh mục ${categoryType}`}>
+                  <h2 className="my-5 font-bold text-primary">
+                    {categoryType === 'phoneProducts'
+                      ? 'Điện Thoại'
+                      : categoryType === 'laptopProducts'
+                        ? 'Laptop'
+                        : 'Tablet'}
+                  </h2>
+                </div>
+
+                {/* Nút chọn danh mục */}
+                <div className="grid grid-cols-2 gap-2 xl:grid-flow-col xl:grid-cols-none xl:grid-rows-1">
+                  {Object.keys(
+                    categories[categoryType as keyof typeof categories]
+                  ).map(category => (
+                    <Button
+                      key={category}
+                      onClick={() =>
+                        setActiveTabs({
+                          ...activeTabs,
+                          [categoryType]: category
+                        })
+                      }
+                      className={`flex w-full items-center justify-center transition-all duration-500 ease-in-out hover:rounded-badge hover:bg-secondary hover:text-white ${
+                        activeTabs[categoryType] === category
+                          ? 'bg-primary text-white hover:bg-primary hover:text-white'
+                          : 'bg-white text-primary'
+                      }`}
+                    >
+                      {category}
+                    </Button>
+                  ))}
+                </div>
+
+                {/* Bảng sản phẩm */}
+                <table className="mt-5 min-w-full border-collapse border border-gray-200">
+                  <thead>
+                    <tr className="bg-secondary text-white">
+                      <th>Tên sản phẩm</th>
+                      <th>Giá</th>
+                      <th>Dung lượng</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {categories[categoryType as keyof typeof categories][
+                      activeTabs[categoryType]
+                    ]?.map((product, index) => (
+                      <tr
+                        key={index}
+                        className="hover:bg-black hover:bg-opacity-10"
+                      >
+                        <td className="border border-primary px-4 py-2 text-black">
+                          {product.name}
+                        </td>
+                        <td className="border border-primary px-4 py-2 text-black">
+                          {product.price}
+                        </td>
+                        <td className="border border-primary px-4 py-2 text-black">
+                          {product.storage}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )
+        )}
       </div>
     </div>
   );
