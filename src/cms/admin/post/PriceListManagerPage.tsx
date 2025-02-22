@@ -1,155 +1,228 @@
-import React, { useState, useEffect } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import axios from 'axios';
 
-interface IProduct {
+interface IProductPriceList {
   name: string;
   price: string;
   storage: string;
-  _id?: string; // ID của sản phẩm trong database (nếu có)
+  _id?: string; // ID trong database (nếu có)
 }
 
 interface IPriceList {
-  phoneProducts: Record<string, IProduct[]>;
+  phoneProducts: Record<string, IProductPriceList[]>;
+  tabletProducts: Record<string, IProductPriceList[]>;
+  macbookProducts: Record<string, IProductPriceList[]>;
+  windowsProducts: Record<string, IProductPriceList[]>;
 }
 
 const PriceListManagerPage: React.FC = () => {
-  const { register, handleSubmit, reset, getValues, formState: { errors } } = useForm<IPriceList>();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors }
+  } = useForm<{ name: string; price: string; storage: string }>();
 
-  const [productName, setProductName] = useState("");
-  const [priceList, setPriceList] = useState<IPriceList>({ phoneProducts: {} });
+  const [productName, setProductName] = useState('');
+  const [category, setCategory] = useState<keyof IPriceList>('phoneProducts'); // 🟢 Fix lỗi TypeScript
+  const [priceList, setPriceList] = useState<IPriceList>({
+    phoneProducts: {},
+    tabletProducts: {},
+    macbookProducts: {},
+    windowsProducts: {}
+  });
 
-  // 🟢 Tải danh sách bảng giá từ server
+  // 🟢 Lấy danh sách từ server
   useEffect(() => {
-    axios.get("http://localhost:6001/api/price-list")
-      .then((response) => {
-        setPriceList(response.data);
-      })
-      .catch((error) => console.error("Error fetching price list:", error));
+    axios
+      .get('http://localhost:6001/api/price-list')
+      .then(response => setPriceList(response.data))
+      .catch(error => console.error('Error fetching price list:', error));
   }, []);
 
-  // 🔵 Xử lý khi submit form (thêm hoặc cập nhật sản phẩm)
-  const onSubmit: SubmitHandler<IPriceList> = async (data) => {
-    const normalizedProductName = productName.trim().charAt(0).toUpperCase() + productName.trim().slice(1).toLowerCase();
-
+  // 🔵 Xử lý thêm sản phẩm
+  const onSubmit: SubmitHandler<{
+    name: string;
+    price: string;
+    storage: string;
+  }> = async data => {
+    const normalizedProductName =
+      productName.trim().charAt(0).toUpperCase() +
+      productName.trim().slice(1).toLowerCase();
     if (!normalizedProductName) {
-      alert("Vui lòng nhập tên sản phẩm!");
+      alert('Vui lòng nhập tên sản phẩm!');
       return;
     }
 
-    const newProduct: IProduct = {
-      name: getValues(`phoneProducts.${normalizedProductName}.0.name`) || "",
-      price: getValues(`phoneProducts.${normalizedProductName}.0.price`) || "",
-      storage: getValues(`phoneProducts.${normalizedProductName}.0.storage`) || "",
+    const newProduct: IProductPriceList = {
+      name: data.name,
+      price: data.price,
+      storage: data.storage
     };
 
-    if (!newProduct.name || !newProduct.price || !newProduct.storage) {
-      alert("Vui lòng nhập đầy đủ thông tin sản phẩm!");
-      return;
-    }
-
     try {
-      const response = await axios.post("http://localhost:6001/api/price-list", {
-        phoneProducts: {
-          [normalizedProductName]: [newProduct],
-        },
+      await axios.post('http://localhost:6001/api/price-list', {
+        [category]: { [normalizedProductName]: [newProduct] }
       });
 
-      setPriceList((prev) => ({
-        phoneProducts: {
-          ...prev.phoneProducts,
-          [normalizedProductName]: [newProduct],
-        },
+      setPriceList(prev => ({
+        ...prev,
+        [category]: {
+          ...prev[category],
+          [normalizedProductName]: [newProduct]
+        }
       }));
 
       reset();
+      setProductName('');
     } catch (error) {
-      console.error("Lỗi khi thêm sản phẩm:", error);
+      console.error('Lỗi khi thêm sản phẩm:', error);
     }
   };
 
-  // 🟠 Xoá sản phẩm theo ID
-  const handleDelete = async (productKey: string, productId?: string) => {
+  // 🟠 Xoá sản phẩm
+  const handleDelete = async (
+    categoryKey: keyof IPriceList,
+    productKey: string,
+    productId?: string
+  ) => {
     if (!productId) return;
 
     try {
       await axios.delete(`http://localhost:6001/api/price-list/${productId}`);
-
-      setPriceList((prev) => {
-        const updatedProducts = { ...prev.phoneProducts };
+      setPriceList(prev => {
+        const updatedProducts = { ...prev[categoryKey] };
         delete updatedProducts[productKey];
-        return { phoneProducts: updatedProducts };
+        return { ...prev, [categoryKey]: updatedProducts };
       });
     } catch (error) {
-      console.error("Lỗi khi xoá sản phẩm:", error);
+      console.error('Lỗi khi xoá sản phẩm:', error);
     }
   };
 
   return (
     <div className="p-4">
-      <h2 className="text-xl font-bold mb-4">Manage Price List</h2>
+      <h2 className="mb-4 text-xl font-bold">Quản lý bảng giá</h2>
 
-      {/* Form nhập thông tin sản phẩm */}
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      {/* Chọn danh mục */}
+      <div>
+        <label className="block font-semibold">Chọn danh mục:</label>
+        <select
+          value={category}
+          onChange={e => setCategory(e.target.value as keyof IPriceList)}
+          className="w-full border p-2"
+        >
+          <option value="phoneProducts">📱 Điện thoại</option>
+          <option value="tabletProducts">📟 Máy tính bảng</option>
+          <option value="macbookProducts">💻 MacBook</option>
+          <option value="windowsProducts">💻 Laptop Windows</option>
+        </select>
+      </div>
+
+      {/* Form nhập sản phẩm */}
+      <form onSubmit={handleSubmit(onSubmit)} className="mt-4 space-y-4">
         <div>
-          <label className="block">Product Name:</label>
+          <label className="block">Tên sản phẩm:</label>
           <input
             type="text"
             value={productName}
-            onChange={(e) => setProductName(e.target.value)}
-            className="border p-2 w-full"
+            onChange={e => setProductName(e.target.value)}
+            className="w-full border p-2"
+          />
+        </div>
+        <div>
+          <label className="block">Giá:</label>
+          <input
+            {...register('name', { required: true })}
+            className="w-full border p-2"
+          />
+        </div>
+        <div>
+          <label className="block">Giá:</label>
+          <input
+            {...register('price', { required: true })}
+            className="w-full border p-2"
           />
         </div>
 
         <div>
-          <label className="block">{productName} Name:</label>
-          <input {...register(`phoneProducts.${productName}.0.name`, { required: true })} className="border p-2 w-full" />
-          {errors.phoneProducts?.[productName]?.[0]?.name && <span className="text-red-500">Required</span>}
+          <label className="block">Dung lượng:</label>
+          <input
+            {...register('storage', { required: true })}
+            className="w-full border p-2"
+          />
         </div>
 
-        <div>
-          <label className="block">Price:</label>
-          <input {...register(`phoneProducts.${productName}.0.price`, { required: true })} className="border p-2 w-full" />
-          {errors.phoneProducts?.[productName]?.[0]?.price && <span className="text-red-500">Required</span>}
-        </div>
-
-        <div>
-          <label className="block">Storage:</label>
-          <input {...register(`phoneProducts.${productName}.0.storage`, { required: true })} className="border p-2 w-full" />
-          {errors.phoneProducts?.[productName]?.[0]?.storage && <span className="text-red-500">Required</span>}
-        </div>
-
-        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
+        <button
+          type="submit"
+          className="rounded bg-blue-500 px-4 py-2 text-white"
+        >
+          Thêm sản phẩm
+        </button>
       </form>
 
-      {/* Danh sách sản phẩm đã nhập */}
-      <h3 className="text-lg font-semibold mt-6">Danh sách sản phẩm</h3>
-      <div className="mt-4">
-        {Object.entries(priceList.phoneProducts).map(([key, products]) => (
-          <div key={key} className="border p-4 mb-2">
-            <h4 className="font-bold">{key}</h4>
-            {products.map((product) => (
-              <div key={product._id} className="flex justify-between items-center">
-                <div>
-                  <p><strong>Name:</strong> {product.name}</p>
-                  <p><strong>Price:</strong> {product.price}</p>
-                  <p><strong>Storage:</strong> {product.storage}</p>
+      {/* Danh sách sản phẩm */}
+      <h3 className="mt-6 text-lg font-semibold">Danh sách sản phẩm</h3>
+      {Object.entries(priceList).map(([categoryKey, products]) => {
+        const typedProducts = products as Record<string, IProductPriceList[]>; // 🟢 Ép kiểu để tránh lỗi "unknown"
+
+        return (
+          <div key={categoryKey}>
+            <h3 className="text-md mt-4 font-bold">
+              {categoryKey === 'phoneProducts'
+                ? '📱 Điện thoại'
+                : categoryKey === 'tabletProducts'
+                  ? '📟 Máy tính bảng'
+                  : categoryKey === 'macbookProducts'
+                    ? '💻 MacBook'
+                    : '💻 Laptop Windows'}
+            </h3>
+            <div className="mt-2">
+              {Object.entries(typedProducts).map(([key, productArray]) => (
+                <div key={key} className="mb-2 border p-4">
+                  <h4 className="font-bold">{key}</h4>
+                  {productArray.map(product => (
+                    <div
+                      key={product._id}
+                      className="flex items-center justify-between"
+                    >
+                      <div>
+                        <p>
+                          <strong>Name:</strong> {product.name}
+                        </p>
+                        <p>
+                          <strong>Price:</strong> {product.price}
+                        </p>
+                        <p>
+                          <strong>Storage:</strong> {product.storage}
+                        </p>
+                      </div>
+                      <div>
+                        <button
+                          className="mr-2 rounded bg-red-500 px-2 py-1 text-white"
+                          onClick={() =>
+                            handleDelete(
+                              categoryKey as keyof IPriceList,
+                              key,
+                              product._id
+                            )
+                          }
+                        >
+                          Xóa
+                        </button>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                <div>
-                  <button
-                    className="bg-red-500 text-white px-2 py-1 rounded mr-2"
-                    onClick={() => handleDelete(key, product._id)}
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        ))}
-      </div>
+        );
+      })}
     </div>
   );
 };
 
 export default PriceListManagerPage;
+
