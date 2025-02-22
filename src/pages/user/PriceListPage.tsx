@@ -9,7 +9,7 @@ const PriceListPage: React.FC = () => {
   const { priceLists } = useContext(PriceListsContext);
   const location = useLocation();
 
-  const [categories, setCategories] = useState<{
+  const [catalogs, setCatalogs] = useState<{
     phoneProducts: Record<string, IProductPriceList[]>;
     tabletProducts: Record<string, IProductPriceList[]>;
     macbookProducts: Record<string, IProductPriceList[]>;
@@ -64,13 +64,13 @@ const PriceListPage: React.FC = () => {
       });
     });
 
-    setCategories(aggregatedData);
+    setCatalogs(aggregatedData);
 
     setActiveTabs({
       phoneProducts: Object.keys(aggregatedData.phoneProducts)[0] || '',
       tabletProducts: Object.keys(aggregatedData.tabletProducts)[0] || '',
       macbookProducts: Object.keys(aggregatedData.macbookProducts)[0] || '',
-      windowsProducts: Object.keys(aggregatedData.tabletProducts)[0] || ''
+      windowsProducts: Object.keys(aggregatedData.windowsProducts)[0] || ''
     });
   }, [priceLists, location.pathname]);
 
@@ -100,7 +100,7 @@ const PriceListPage: React.FC = () => {
           'windowsProducts'
         ].map(
           categoryType =>
-            Object.keys(categories[categoryType as keyof typeof categories])
+            Object.keys(catalogs[categoryType as keyof typeof catalogs])
               .length > 0 && (
               <div key={categoryType} className="px-2 xl:px-[100px]">
                 <div role="region" aria-label={`Danh mục ${categoryType}`}>
@@ -118,7 +118,7 @@ const PriceListPage: React.FC = () => {
                 {/* Nút chọn danh mục */}
                 <div className="grid grid-cols-2 gap-2 xl:grid-flow-col xl:grid-cols-none xl:grid-rows-1">
                   {Object.keys(
-                    categories[categoryType as keyof typeof categories]
+                    catalogs[categoryType as keyof typeof catalogs]
                   ).map(category => (
                     <Button
                       key={category}
@@ -149,7 +149,7 @@ const PriceListPage: React.FC = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {categories[categoryType as keyof typeof categories][
+                    {catalogs[categoryType as keyof typeof catalogs][
                       activeTabs[categoryType]
                     ]?.map((product, index) => (
                       <tr
