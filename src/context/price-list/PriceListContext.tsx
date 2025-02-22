@@ -24,7 +24,7 @@ interface PriceListsContextType {
     delete: boolean;
   };
   error: string | null;
-  getAllPriceListss: () => void;
+  getAllPriceLists: () => void;
   getPriceListsById: (_id: string) => Promise<IPriceList | undefined>;
   createPriceLists: (priceListData: FormData) => Promise<AxiosResponse<any>>;
   updatePriceLists: (
@@ -43,7 +43,7 @@ const defaultContextValue: PriceListsContextType = {
     delete: false
   },
   error: null,
-  getAllPriceListss: () => {},
+  getAllPriceLists: () => {},
   getPriceListsById: async () => undefined,
   createPriceLists: async () =>
     ({ data: { priceList: null } }) as AxiosResponse,
@@ -88,8 +88,8 @@ export const PriceListsProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  // Get All PriceListss
-  const getAllPriceListss = useCallback(() => {
+  // Get All PriceLists
+  const getAllPriceLists = useCallback(() => {
     fetchData(
       getAllPriceListsApi,
       data => {
@@ -108,7 +108,7 @@ export const PriceListsProvider = ({ children }: { children: ReactNode }) => {
         () => getPriceListByIdApi(id),
         data => {
           if (data?.p) {
-            setPriceLists(prevPriceListss => [...prevPriceListss, data.p]);
+            setPriceLists(prevPriceLists => [...prevPriceLists, data.p]);
           }
         },
         'getAll'
@@ -125,8 +125,8 @@ export const PriceListsProvider = ({ children }: { children: ReactNode }) => {
         () => createPriceListApi(priceListData),
         data => {
           if (data?.priceListData) {
-            setPriceLists(prevPriceListss => [
-              ...prevPriceListss,
+            setPriceLists(prevPriceLists => [
+              ...prevPriceLists,
               data?.priceListData
             ]);
           }
@@ -147,8 +147,8 @@ export const PriceListsProvider = ({ children }: { children: ReactNode }) => {
         () => updatePriceListApi(_id, priceListData),
         data => {
           if (data?.priceListData) {
-            setPriceLists(prevPriceListss =>
-              prevPriceListss.map(p =>
+            setPriceLists(prevPriceLists =>
+              prevPriceLists.map(p =>
                 p._id === _id ? data?.priceListData : p
               )
             );
@@ -166,8 +166,8 @@ export const PriceListsProvider = ({ children }: { children: ReactNode }) => {
       return await fetchData(
         () => deletePriceListApi(id),
         () =>
-          setPriceLists(prevPriceListss =>
-            prevPriceListss.filter(p => p._id !== id)
+          setPriceLists(prevPriceLists =>
+            prevPriceLists.filter(p => p._id !== id)
           ),
         'delete'
       );
@@ -176,8 +176,8 @@ export const PriceListsProvider = ({ children }: { children: ReactNode }) => {
   );
 
   useEffect(() => {
-    getAllPriceListss();
-  }, [getAllPriceListss]);
+    getAllPriceLists();
+  }, [getAllPriceLists]);
 
   return (
     <PriceListsContext.Provider
@@ -185,7 +185,7 @@ export const PriceListsProvider = ({ children }: { children: ReactNode }) => {
         priceLists,
         loading,
         error,
-        getAllPriceListss,
+        getAllPriceLists,
         getPriceListsById,
         createPriceLists,
         updatePriceLists,
