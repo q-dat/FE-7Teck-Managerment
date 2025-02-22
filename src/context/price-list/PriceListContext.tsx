@@ -93,7 +93,7 @@ export const PriceListsProvider = ({ children }: { children: ReactNode }) => {
     fetchData(
       getAllPriceListsApi,
       data => {
-        setPriceLists(data.priceList || []);
+        setPriceLists(data.priceLists || []);
       },
       'getAll'
     );
