@@ -11,18 +11,21 @@ const PriceListPage: React.FC = () => {
 
   const [categories, setCategories] = useState<{
     phoneProducts: Record<string, IProductPriceList[]>;
-    laptopProducts: Record<string, IProductPriceList[]>;
     tabletProducts: Record<string, IProductPriceList[]>;
+    macbookProducts: Record<string, IProductPriceList[]>;
+    windowsProducts: Record<string, IProductPriceList[]>;
   }>({
     phoneProducts: {},
-    laptopProducts: {},
-    tabletProducts: {}
+    tabletProducts: {},
+    macbookProducts: {},
+    windowsProducts: {}
   });
 
   const [activeTabs, setActiveTabs] = useState<{ [key: string]: string }>({
     phoneProducts: '',
-    laptopProducts: '',
-    tabletProducts: ''
+    tabletProducts: '',
+    macbookProducts: '',
+    windowsProducts: ''
   });
 
   useEffect(() => {
@@ -30,39 +33,44 @@ const PriceListPage: React.FC = () => {
 
     const aggregatedData = {
       phoneProducts: {} as Record<string, IProductPriceList[]>,
-      laptopProducts: {} as Record<string, IProductPriceList[]>,
-      tabletProducts: {} as Record<string, IProductPriceList[]>
+      tabletProducts: {} as Record<string, IProductPriceList[]>,
+      macbookProducts: {} as Record<string, IProductPriceList[]>,
+      windowsProducts: {} as Record<string, IProductPriceList[]>
     };
 
-    ['phoneProducts', 'laptopProducts', 'tabletProducts'].forEach(
-      categoryType => {
-        priceLists.forEach(list => {
-          const productsByCategory =
-            list[categoryType as keyof typeof list] || {};
+    [
+      'phoneProducts',
+      'tabletProducts',
+      'macbookProducts',
+      'windowsProducts'
+    ].forEach(categoryType => {
+      priceLists.forEach(list => {
+        const productsByCategory =
+          list[categoryType as keyof typeof list] || {};
 
-          Object.entries(productsByCategory).forEach(([category, products]) => {
-            if (Array.isArray(products)) {
+        Object.entries(productsByCategory).forEach(([category, products]) => {
+          if (Array.isArray(products)) {
+            aggregatedData[categoryType as keyof typeof aggregatedData][
+              category
+            ] =
               aggregatedData[categoryType as keyof typeof aggregatedData][
                 category
-              ] =
-                aggregatedData[categoryType as keyof typeof aggregatedData][
-                  category
-                ] || [];
-              aggregatedData[categoryType as keyof typeof aggregatedData][
-                category
-              ].push(...(products as IProductPriceList[]));
-            }
-          });
+              ] || [];
+            aggregatedData[categoryType as keyof typeof aggregatedData][
+              category
+            ].push(...(products as IProductPriceList[]));
+          }
         });
-      }
-    );
+      });
+    });
 
     setCategories(aggregatedData);
 
     setActiveTabs({
       phoneProducts: Object.keys(aggregatedData.phoneProducts)[0] || '',
-      laptopProducts: Object.keys(aggregatedData.laptopProducts)[0] || '',
-      tabletProducts: Object.keys(aggregatedData.tabletProducts)[0] || ''
+      tabletProducts: Object.keys(aggregatedData.tabletProducts)[0] || '',
+      macbookProducts: Object.keys(aggregatedData.macbookProducts)[0] || '',
+      windowsProducts: Object.keys(aggregatedData.tabletProducts)[0] || ''
     });
   }, [priceLists, location.pathname]);
 
@@ -84,20 +92,26 @@ const PriceListPage: React.FC = () => {
             </li>
           </ul>
         </div>
-
         {/* Danh mục sản phẩm */}
-        {['phoneProducts', 'laptopProducts', 'tabletProducts'].map(
+        {[
+          'phoneProducts',
+          'macbookProducts',
+          'tabletProducts',
+          'windowsProducts'
+        ].map(
           categoryType =>
             Object.keys(categories[categoryType as keyof typeof categories])
               .length > 0 && (
-              <div key={categoryType} className="mt-10 px-2 xl:px-[100px]">
+              <div key={categoryType} className="px-2 xl:px-[100px]">
                 <div role="region" aria-label={`Danh mục ${categoryType}`}>
                   <h2 className="my-5 font-bold text-primary">
                     {categoryType === 'phoneProducts'
-                      ? 'Điện Thoại'
-                      : categoryType === 'laptopProducts'
-                        ? 'Laptop'
-                        : 'Tablet'}
+                      ? 'Bảng giá iPhone'
+                      : categoryType === 'tabletProducts'
+                        ? 'Bảng giá iPad'
+                        : categoryType === 'macbookProducts'
+                          ? 'Bảng giá Laptop Macbook'
+                          : 'Bảng giá Laptop Windows'}
                   </h2>
                 </div>
 
