@@ -3,7 +3,7 @@ import { IPostCatalog } from '../../types/type/post-catalog/post-catalog';
 
 // Get All PostCatalog
 export const getAllPostCatalogsApi = () => {
-  return axios.get<{ postCatalog: IPostCatalog[] }>('/api/post-catalogs');
+  return axios.get<{ postCatalogs: IPostCatalog[] }>('/api/post-catalogs');
 };
 
 // Get PostCatalog By ID

@@ -3,7 +3,7 @@ import axios from '../config/axiosConfig';
 
 // Get All PriceListCatalogs
 export const getAllPriceListCatalogsApi = () => {
-  return axios.get<{ pricelistCatalog: IPriceListCatalog[] }>(
+  return axios.get<{ pricelistCatalogs: IPriceListCatalog[] }>(
     '/api/price-list-catalogs'
   );
 };
