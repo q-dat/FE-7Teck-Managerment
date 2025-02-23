@@ -26,7 +26,11 @@ interface PriceListsContextType {
   error: string | null;
   getAllPriceLists: () => void;
   getPriceListsById: (_id: string) => Promise<IPriceList | undefined>;
-  createPriceLists: (priceListData: FormData) => Promise<AxiosResponse<any>>;
+  createPriceLists: (
+    category: string,
+    productName: string,
+    data: any
+  ) => Promise<AxiosResponse<any>>;
   updatePriceLists: (
     _id: string,
     priceListData: FormData
@@ -120,7 +124,24 @@ export const PriceListsProvider = ({ children }: { children: ReactNode }) => {
 
   // Create PriceLists
   const createPriceLists = useCallback(
-    async (priceListData: FormData): Promise<AxiosResponse<any>> => {
+    async (
+      category: string,
+      productName: string,
+      data: any
+    ): Promise<AxiosResponse<any>> => {
+      const normalizedProductName =
+        productName.trim().charAt(0).toUpperCase() +
+        productName.trim().slice(1).toLowerCase();
+      const newProduct = {
+        name: data.name,
+        price: data.price,
+        storage: data.storage
+      };
+
+      const priceListData = {
+        [category]: { [normalizedProductName]: [newProduct] }
+      };
+
       return await fetchData(
         () => createPriceListApi(priceListData),
         data => {
@@ -148,9 +169,7 @@ export const PriceListsProvider = ({ children }: { children: ReactNode }) => {
         data => {
           if (data?.priceListData) {
             setPriceLists(prevPriceLists =>
-              prevPriceLists.map(p =>
-                p._id === _id ? data?.priceListData : p
-              )
+              prevPriceLists.map(p => (p._id === _id ? data?.priceListData : p))
             );
           }
         },

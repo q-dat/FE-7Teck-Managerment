@@ -12,12 +12,8 @@ export const getPriceListByIdApi = (_id: string) => {
 };
 
 // Create PriceList
-export const createPriceListApi = (formData: FormData) => {
-  return axios.post('/api/price-list', formData, {
-    headers: {
-      'Content-Type': 'multipart/form-data'
-    }
-  });
+export const createPriceListApi = (data: any) => {
+  return axios.post('/api/price-list', data);
 };
 
 // Update PriceList
@@ -25,11 +21,7 @@ export const updatePriceListApi = async (
   _id: string,
   priceListData: FormData
 ) => {
-  const response = await axios.put(`/api/price-list/${_id}`, priceListData, {
-    headers: {
-      'Content-Type': 'multipart/form-data'
-    }
-  });
+  const response = await axios.put(`/api/price-list/${_id}`, priceListData);
   return response.data;
 };
 

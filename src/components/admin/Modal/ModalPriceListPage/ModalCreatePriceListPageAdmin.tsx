@@ -1,42 +1,27 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
+import { PriceListsContext } from '../../../../context/price-list/PriceListContext';
 
 const ModalCreatePriceListPageAdmin: React.FC = () => {
   const { register, handleSubmit, reset } = useForm();
   const [productName, setProductName] = useState('');
   const [category, setCategory] = useState('phoneProducts');
 
+  const { createPriceLists } = useContext(PriceListsContext);
+
   const onSubmit = async (data: any) => {
-    const normalizedProductName =
-      productName.trim().charAt(0).toUpperCase() +
-      productName.trim().slice(1).toLowerCase();
-
-    if (!normalizedProductName) {
-      alert('Vui lòng nhập tên danh mục!');
-      return;
-    }
-
-    const newProduct = {
-      name: data.name,
-      price: data.price,
-      storage: data.storage
-    };
-
     try {
-      await axios.post('http://localhost:6001/api/price-list', {
-        [category]: { [normalizedProductName]: [newProduct] }
-      });
+      await createPriceLists(category, productName, data);
       reset();
       setProductName('');
     } catch (error) {
       console.error('Lỗi khi thêm sản phẩm:', error);
     }
   };
+
   return (
     <div className="p-4">
       <h2 className="mb-4 text-xl font-bold">Quản lý bảng giá</h2>
-
       <div>
         <label className="block font-semibold">Chọn danh mục:</label>
         <select
@@ -50,7 +35,6 @@ const ModalCreatePriceListPageAdmin: React.FC = () => {
           <option value="windowsProducts">💻 Laptop Windows</option>
         </select>
       </div>
-
       <form onSubmit={handleSubmit(onSubmit)} className="mt-4 space-y-4">
         <div>
           <label className="block">Tên danh mục:</label>
