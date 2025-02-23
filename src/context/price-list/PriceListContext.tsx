@@ -33,7 +33,7 @@ interface PriceListsContextType {
   ) => Promise<AxiosResponse<any>>;
   updatePriceLists: (
     _id: string,
-    priceListData: FormData
+    priceListData: IPriceList
   ) => Promise<AxiosResponse<any>>;
   deletePriceLists: (_id: string) => Promise<AxiosResponse<any>>;
 }
@@ -162,14 +162,14 @@ export const PriceListsProvider = ({ children }: { children: ReactNode }) => {
   const updatePriceLists = useCallback(
     async (
       _id: string,
-      priceListData: FormData
+      priceListData: IPriceList
     ): Promise<AxiosResponse<any>> => {
       return await fetchData(
         () => updatePriceListApi(_id, priceListData),
         data => {
-          if (data?.priceListData) {
+          if (data?.priceList) {
             setPriceLists(prevPriceLists =>
-              prevPriceLists.map(p => (p._id === _id ? data?.priceListData : p))
+              prevPriceLists.map(p => (p._id === _id ? data?.priceList : p))
             );
           }
         },

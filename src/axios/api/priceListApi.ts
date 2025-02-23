@@ -17,12 +17,11 @@ export const createPriceListApi = (data: any) => {
 };
 
 // Update PriceList
-export const updatePriceListApi = async (
-  _id: string,
-  priceListData: FormData
-) => {
-  const response = await axios.put(`/api/price-list/${_id}`, priceListData);
-  return response.data;
+export const updatePriceListApi = (_id: string, priceListData: IPriceList) => {
+  return axios.put<{ priceList: IPriceList }>(
+    `/api/price-list/${_id}`,
+    priceListData
+  );
 };
 
 // Delete PriceList
