@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
-import { Button } from 'react-daisyui';
+import { Button, Table } from 'react-daisyui';
 import { Link } from 'react-router-dom';
 import { IProductPriceList } from '../../types/type/price-list/price-list';
 import { PriceListsContext } from '../../context/price-list/PriceListContext';
@@ -140,35 +140,27 @@ const PriceListPage: React.FC = () => {
                   </div>
 
                   {/* Bảng sản phẩm */}
-                  <table className="mt-5 min-w-full border-collapse border border-gray-200">
-                    <thead>
-                      <tr className="bg-secondary text-white">
-                        <th>Tên sản phẩm</th>
-                        <th>Giá</th>
-                        <th>Dung lượng</th>
-                      </tr>
-                    </thead>
-                    <tbody>
+                  <Table className="mt-5 border border-black" zebra>
+                    <Table.Head className="bg-secondary text-center text-white">
+                      <span>Số thứ tự</span>
+                      <span>Tên sản phẩm</span>
+                      <span>Giá</span>
+                      <span>Dung lượng</span>
+                      <span>Hành động</span>
+                    </Table.Head>
+                    <Table.Body className="text-center text-sm">
                       {catalogs[categoryType as keyof typeof catalogs][
                         activeTabs[categoryType]
                       ]?.map((product, index) => (
-                        <tr
-                          key={index}
-                          className="hover:bg-black hover:bg-opacity-10"
-                        >
-                          <td className="border border-primary px-4 py-2 text-black">
-                            {product.name}
-                          </td>
-                          <td className="border border-primary px-4 py-2 text-black">
-                            {product.price}
-                          </td>
-                          <td className="border border-primary px-4 py-2 text-black">
-                            {product.storage}
-                          </td>
-                        </tr>
+                        <Table.Row key={index}>
+                          <span>#{index + 1}</span>
+                          <span>{product.name}</span>
+                          <span>{product.price}</span>
+                          <span>{product.storage}</span>
+                        </Table.Row>
                       ))}
-                    </tbody>
-                  </table>
+                    </Table.Body>
+                  </Table>
                 </div>
               )
           )}
