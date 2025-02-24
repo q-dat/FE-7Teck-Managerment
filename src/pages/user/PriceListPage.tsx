@@ -1,13 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
 import { Button } from 'react-daisyui';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { IProductPriceList } from '../../types/type/price-list/price-list';
 import { PriceListsContext } from '../../context/price-list/PriceListContext';
 
 const PriceListPage: React.FC = () => {
   const { priceLists } = useContext(PriceListsContext);
-  const location = useLocation();
 
   const [catalogs, setCatalogs] = useState<{
     phoneProducts: Record<string, IProductPriceList[]>;
@@ -72,7 +71,7 @@ const PriceListPage: React.FC = () => {
       macbookProducts: Object.keys(aggregatedData.macbookProducts)[0] || '',
       windowsProducts: Object.keys(aggregatedData.windowsProducts)[0] || ''
     });
-  }, [priceLists, location.pathname]);
+  }, [priceLists]);
 
   return (
     <div>
