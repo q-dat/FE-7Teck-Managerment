@@ -62,18 +62,6 @@ const SidebarAdmin: React.FC<{}> = () => {
       toastify: countTablet
     },
     {
-      name: 'DM Windows',
-      icon: FaList,
-      link: '/cms/admin/windows-catalog-manager',
-      toastify: countWindowsCatalog
-    },
-    {
-      name: 'Windows',
-      icon: FaWindows,
-      link: '/cms/admin/windows-manager',
-      toastify: countWindows
-    },
-    {
       name: 'DM Macbook',
       icon: FaList,
       link: '/cms/admin/macbook-catalog-manager',
@@ -84,6 +72,18 @@ const SidebarAdmin: React.FC<{}> = () => {
       icon: BsApple,
       link: '/cms/admin/macbook-manager',
       toastify: countMacbook
+    },
+    {
+      name: 'DM Windows',
+      icon: FaList,
+      link: '/cms/admin/windows-catalog-manager',
+      toastify: countWindowsCatalog
+    },
+    {
+      name: 'Windows',
+      icon: FaWindows,
+      link: '/cms/admin/windows-manager',
+      toastify: countWindows
     }
   ];
 
