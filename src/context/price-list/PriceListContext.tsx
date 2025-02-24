@@ -17,6 +17,7 @@ import { IPriceList } from '../../types/type/price-list/price-list';
 
 interface PriceListsContextType {
   priceLists: IPriceList[];
+  countPriceList: number;
   loading: {
     getAll: boolean;
     create: boolean;
@@ -40,6 +41,7 @@ interface PriceListsContextType {
 
 const defaultContextValue: PriceListsContextType = {
   priceLists: [],
+  countPriceList: 0,
   loading: {
     getAll: false,
     create: false,
@@ -61,6 +63,7 @@ export const PriceListsContext =
 
 export const PriceListsProvider = ({ children }: { children: ReactNode }) => {
   const [priceLists, setPriceLists] = useState<IPriceList[]>([]);
+  const [countPriceList, setCount] = useState<number>(0);
   const [loading, setLoading] = useState({
     getAll: false,
     create: false,
@@ -98,6 +101,7 @@ export const PriceListsProvider = ({ children }: { children: ReactNode }) => {
       getAllPriceListsApi,
       data => {
         setPriceLists(data.priceLists || []);
+        setCount(data.count || []);
       },
       'getAll'
     );
@@ -202,6 +206,7 @@ export const PriceListsProvider = ({ children }: { children: ReactNode }) => {
     <PriceListsContext.Provider
       value={{
         priceLists,
+        countPriceList,
         loading,
         error,
         getAllPriceLists,

@@ -5,12 +5,15 @@ import { Logo } from '../../../assets/images';
 import DarkModeToggle from '../../orther/darkmode/DarkMode';
 import { AiOutlineMenuFold } from 'react-icons/ai';
 import { BsFilePost } from 'react-icons/bs';
+import { ImTable } from 'react-icons/im';
 import { PostContext } from '../../../context/post/PostContext';
 import { PostCatalogContext } from '../../../context/post-catalog/PostCatalogContext';
+import { PriceListsContext } from '../../../context/price-list/PriceListContext';
 
 const SidebarPost: React.FC<{}> = () => {
   const { countPost } = useContext(PostContext);
   const { countPostCatalog } = useContext(PostCatalogContext);
+  const { countPriceList } = useContext(PriceListsContext);
   const [activeItem, setActiveItem] = useState('Dashboard');
 
   const location = useLocation();
@@ -27,6 +30,12 @@ const SidebarPost: React.FC<{}> = () => {
       icon: BsFilePost,
       link: '/cms/admin-post/post-manager',
       toastify: countPost
+    },
+    {
+      name: 'Quản lý bảng giá',
+      icon: ImTable,
+      link: '/cms/admin-post/price-list-manager',
+      toastify: countPriceList
     }
   ];
 
