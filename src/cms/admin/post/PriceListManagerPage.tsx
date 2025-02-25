@@ -3,7 +3,6 @@ import ModalCreatePriceListPageAdmin from '../../../components/admin/Modal/Modal
 import NavtitleAdmin from '../../../components/admin/NavtitleAdmin';
 import { Button, Table } from 'react-daisyui';
 import { RiAddBoxLine } from 'react-icons/ri';
-import NavbarAdmin from '../../../components/admin/Reponsive/Mobile/NavbarAdmin';
 import { PriceListsContext } from '../../../context/price-list/PriceListContext';
 import { IProductPriceList } from '../../../types/type/price-list/price-list';
 import ErrorLoading from '../../../components/orther/error/ErrorLoading';
@@ -13,6 +12,7 @@ import { Toastify } from '../../../helper/Toastify';
 import ModalDeletePriceListPageAdmin from '../../../components/admin/Modal/ModalPriceListPage/ModalDeletePriceListPageAdmin';
 import { FaPenToSquare } from 'react-icons/fa6';
 import { MdDelete } from 'react-icons/md';
+import NavbarPost from '../../../components/admin/Reponsive/Mobile/NavbarPost';
 
 const PriceListManagerPage: React.FC = () => {
   const { priceLists, getAllPriceLists, loading, error, deletePriceLists } =
@@ -115,7 +115,7 @@ const PriceListManagerPage: React.FC = () => {
   if (error) return <ErrorLoading />;
   return (
     <div className="w-full pb-10 xl:pb-0">
-      <NavbarAdmin Title_NavbarAdmin="Bảng Giá" />
+      <NavbarPost Title_NavbarPost="Bảng Giá" />
       <div className="">
         <NavtitleAdmin
           Title_NavtitleAdmin="Quản Lý Danh Sách Bảng Giá"
