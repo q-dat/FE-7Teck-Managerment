@@ -140,7 +140,7 @@ const PriceListPage: React.FC = () => {
                   </div>
 
                   {/* Bảng sản phẩm */}
-                  <Table className="mt-5" zebra>
+                  <Table className="mt-5 border border-secondary" zebra>
                     <Table.Head className="bg-secondary text-center text-white">
                       <span>Tên sản phẩm</span>
                       <span>Dung lượng</span>
@@ -150,7 +150,10 @@ const PriceListPage: React.FC = () => {
                       {catalogs[categoryType as keyof typeof catalogs][
                         activeTabs[categoryType]
                       ]?.map((product, index) => (
-                        <Table.Row key={index}>
+                        <Table.Row
+                          key={index}
+                          className="border border-secondary"
+                        >
                           <span>{product?.name}</span>
                           <span>{product?.storage}</span>
                           <span>
