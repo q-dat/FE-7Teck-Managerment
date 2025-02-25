@@ -240,7 +240,7 @@ const PhoneDetailPage: React.FC = () => {
               </div>
               {/* Note */}
               <Link role="navigation" aria-label="Hotline" to="tel:0983699993">
-                <div className="h-[80px] w-full rounded-md border border-gray-50 bg-blue-500 p-2">
+                <div className="h-[80px] w-full rounded-md border border-gray-50 bg-blue-900 p-2">
                   <p className="text-center text-white">
                     <span className="text-2xl font-bold uppercase xl:text-3xl">
                       Quan tâm
