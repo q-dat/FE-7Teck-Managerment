@@ -140,7 +140,7 @@ const PriceListPage: React.FC = () => {
                   </div>
 
                   {/* Bảng sản phẩm */}
-                  <Table className="mt-5 border border-black" zebra>
+                  <Table className="mt-5" zebra>
                     <Table.Head className="bg-secondary text-center text-white">
                       <span>Tên sản phẩm</span>
                       <span>Dung lượng</span>

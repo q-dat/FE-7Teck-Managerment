@@ -182,7 +182,7 @@ const PriceListManagerPage: React.FC = () => {
                 </div>
                 <div className="w-screen overflow-x-auto border-8 border-transparent scrollbar-hide xl:w-full xl:border-none">
                   {/* Bảng sản phẩm */}
-                  <Table className="mt-5 border border-black" zebra>
+                  <Table className="mt-5" zebra>
                     <Table.Head className="bg-secondary text-center text-white">
                       <span>Số thứ tự</span>
                       <span>Tên sản phẩm</span>
