@@ -1,7 +1,7 @@
 export interface IProductPriceList {
   _id: string;
   name: string;
-  price: string;
+  price: number;
   storage: string;
 }
 export interface IPriceList {

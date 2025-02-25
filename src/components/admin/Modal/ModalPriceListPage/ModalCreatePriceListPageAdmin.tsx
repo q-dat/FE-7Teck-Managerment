@@ -100,7 +100,7 @@ const ModalCreatePriceListPageAdmin: React.FC<ModalCreateAdminProps> = ({
               <LabelForm title={'Giá'} />
               <InputModal
                 placeholder="Giá* (Hệ số x1000: 1triệu = 1000)"
-                type="number"
+                type="text"
                 {...register('price', { required: true })}
               />
               <LabelForm title={'Dung lượng'} />
@@ -134,3 +134,4 @@ const ModalCreatePriceListPageAdmin: React.FC<ModalCreateAdminProps> = ({
 };
 
 export default ModalCreatePriceListPageAdmin;
+

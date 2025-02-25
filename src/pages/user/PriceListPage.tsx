@@ -116,7 +116,7 @@ const PriceListPage: React.FC = () => {
                   </div>
 
                   {/* Nút chọn danh mục */}
-                  <div className="grid grid-cols-2 gap-2 xl:grid-flow-col xl:grid-cols-none xl:grid-rows-1">
+                  <div className="grid grid-cols-3 gap-2 xl:grid-cols-6">
                     {Object.keys(
                       catalogs[categoryType as keyof typeof catalogs]
                     ).map(category => (
@@ -128,7 +128,7 @@ const PriceListPage: React.FC = () => {
                             [categoryType]: category
                           })
                         }
-                        className={`flex w-full items-center justify-center transition-all duration-500 ease-in-out hover:rounded-badge hover:bg-secondary hover:text-white ${
+                        className={`flex w-full items-center justify-center rounded-md text-xs transition-all duration-500 ease-in-out hover:rounded-box hover:bg-secondary hover:text-white xl:text-sm ${
                           activeTabs[categoryType] === category
                             ? 'bg-primary text-white hover:bg-primary hover:text-white'
                             : 'bg-white text-primary'
@@ -142,21 +142,20 @@ const PriceListPage: React.FC = () => {
                   {/* Bảng sản phẩm */}
                   <Table className="mt-5 border border-black" zebra>
                     <Table.Head className="bg-secondary text-center text-white">
-                      <span>Số thứ tự</span>
                       <span>Tên sản phẩm</span>
-                      <span>Giá</span>
                       <span>Dung lượng</span>
-                      <span>Hành động</span>
+                      <span>Giá thu cũ</span>
                     </Table.Head>
                     <Table.Body className="text-center text-sm">
                       {catalogs[categoryType as keyof typeof catalogs][
                         activeTabs[categoryType]
                       ]?.map((product, index) => (
                         <Table.Row key={index}>
-                          <span>#{index + 1}</span>
-                          <span>{product.name}</span>
-                          <span>{product.price}</span>
-                          <span>{product.storage}</span>
+                          <span>{product?.name}</span>
+                          <span>{product?.storage}</span>
+                          <span>
+                            {(product?.price * 1000).toLocaleString('vi-VN')}đ
+                          </span>
                         </Table.Row>
                       ))}
                     </Table.Body>
