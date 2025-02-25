@@ -92,7 +92,7 @@ const PriceListPage: React.FC = () => {
           </ul>
         </div>
         {/* Danh mục sản phẩm */}
-        <div>
+        <div className="px-2 xl:px-[100px]">
           {[
             'phoneProducts',
             'macbookProducts',
@@ -102,7 +102,7 @@ const PriceListPage: React.FC = () => {
             categoryType =>
               Object.keys(catalogs[categoryType as keyof typeof catalogs])
                 .length > 0 && (
-                <div key={categoryType} className="px-2 xl:px-[100px]">
+                <div key={categoryType}>
                   <div role="region" aria-label={`Danh mục ${categoryType}`}>
                     <h2 className="my-5 font-bold text-primary">
                       {categoryType === 'phoneProducts'

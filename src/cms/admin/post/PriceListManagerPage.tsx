@@ -133,6 +133,7 @@ const PriceListManagerPage: React.FC = () => {
           }
         />
       </div>
+      {/*  */}
       <div>
         {[
           'phoneProducts',
@@ -143,9 +144,9 @@ const PriceListManagerPage: React.FC = () => {
           categoryType =>
             Object.keys(catalogs[categoryType as keyof typeof catalogs])
               .length > 0 && (
-              <div key={categoryType} className="px-2 xl:px-0">
+              <div key={categoryType}>
                 <div role="region" aria-label={`Danh mục ${categoryType}`}>
-                  <h2 className="my-5 font-bold text-primary">
+                  <h2 className="my-5 px-2 font-bold text-primary">
                     {categoryType === 'phoneProducts'
                       ? 'Bảng giá iPhone'
                       : categoryType === 'tabletProducts'
@@ -157,7 +158,7 @@ const PriceListManagerPage: React.FC = () => {
                 </div>
 
                 {/* Nút chọn danh mục */}
-                <div className="grid grid-cols-2 gap-2 xl:grid-flow-col xl:grid-cols-none xl:grid-rows-1">
+                <div className="grid grid-cols-3 gap-2 px-2 xl:grid-cols-6 xl:px-0">
                   {Object.keys(
                     catalogs[categoryType as keyof typeof catalogs]
                   ).map(category => (
@@ -169,7 +170,7 @@ const PriceListManagerPage: React.FC = () => {
                           [categoryType]: category
                         })
                       }
-                      className={`flex w-full items-center justify-center transition-all duration-500 ease-in-out hover:rounded-badge hover:bg-secondary hover:text-white ${
+                      className={`flex w-full items-center justify-center rounded-md text-xs transition-all duration-500 ease-in-out hover:rounded-box hover:bg-secondary hover:text-white xl:text-sm ${
                         activeTabs[categoryType] === category
                           ? 'bg-primary text-white hover:bg-primary hover:text-white'
                           : 'bg-white text-primary'
@@ -179,50 +180,53 @@ const PriceListManagerPage: React.FC = () => {
                     </Button>
                   ))}
                 </div>
-
-                {/* Bảng sản phẩm */}
-                <Table className="mt-5 border border-black" zebra>
-                  <Table.Head className="bg-secondary text-center text-white">
-                    <span>Số thứ tự</span>
-                    <span>Tên sản phẩm</span>
-                    <span>Giá</span>
-                    <span>Dung lượng</span>
-                    <span>Hành động</span>
-                  </Table.Head>
-                  <Table.Body className="text-center text-sm">
-                    {catalogs[categoryType as keyof typeof catalogs][
-                      activeTabs[categoryType]
-                    ]?.map((product, index) => (
-                      <Table.Row key={index}>
-                        <span>#{index + 1}</span>
-                        <span>{product.name}</span>
-                        <span>{product.price}</span>
-                        <span>{product.storage}</span>
-                        <span className="flex flex-row items-center justify-center gap-2">
-                          <Button
-                            size="sm"
-                            color="success"
-                            // onClick={() =>
-                            //   // openModalEditAdmin(product?._id ?? '')
-                            // }
-                            className="text-sm font-light text-white"
-                          >
-                            <FaPenToSquare />
-                          </Button>
-                          <Button
-                            size="sm"
-                            onClick={() =>
-                              openModalDeleteAdmin(product?._id ?? '')
-                            }
-                            className="bg-red-600 text-sm font-light text-white"
-                          >
-                            <MdDelete />
-                          </Button>
-                        </span>
-                      </Table.Row>
-                    ))}
-                  </Table.Body>
-                </Table>
+                <div className="w-screen overflow-x-auto border-8 border-transparent scrollbar-hide xl:w-full xl:border-none">
+                  {/* Bảng sản phẩm */}
+                  <Table className="mt-5 border border-black" zebra>
+                    <Table.Head className="bg-secondary text-center text-white">
+                      <span>Số thứ tự</span>
+                      <span>Tên sản phẩm</span>
+                      <span>Dung Lượng</span>
+                      <span>Giá</span>
+                      <span>Hành động</span>
+                    </Table.Head>
+                    <Table.Body className="text-center text-sm">
+                      {catalogs[categoryType as keyof typeof catalogs][
+                        activeTabs[categoryType]
+                      ]?.map((product, index) => (
+                        <Table.Row key={index}>
+                          <span>#{index + 1}</span>
+                          <span>{product?.name}</span>
+                          <span>{product?.storage}</span>
+                          <span>
+                            {(product?.price * 1000).toLocaleString('vi-VN')}đ
+                          </span>
+                          <span className="flex flex-row items-center justify-center gap-2">
+                            <Button
+                              size="sm"
+                              color="success"
+                              // onClick={() =>
+                              //   // openModalEditAdmin(product?._id ?? '')
+                              // }
+                              className="text-sm font-light text-white"
+                            >
+                              <FaPenToSquare />
+                            </Button>
+                            <Button
+                              size="sm"
+                              onClick={() =>
+                                openModalDeleteAdmin(product?._id ?? '')
+                              }
+                              className="bg-red-600 text-sm font-light text-white"
+                            >
+                              <MdDelete />
+                            </Button>
+                          </span>
+                        </Table.Row>
+                      ))}
+                    </Table.Body>
+                  </Table>
+                </div>
               </div>
             )
         )}
