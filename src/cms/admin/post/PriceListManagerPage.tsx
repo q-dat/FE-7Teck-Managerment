@@ -110,7 +110,7 @@ const PriceListManagerPage: React.FC = () => {
           categoryType =>
             Object.keys(catalogs[categoryType as keyof typeof catalogs])
               .length > 0 && (
-              <div key={categoryType}>
+              <div key={categoryType} className='px-2 xl:px-0'>
                 <div role="region" aria-label={`Danh mục ${categoryType}`}>
                   <h2 className="my-5 font-bold text-primary">
                     {categoryType === 'phoneProducts'
