@@ -123,7 +123,7 @@ const PostManagerPage: React.FC = () => {
                         <FaCircleInfo />
                       </div>
                     </summary>
-                    <div className="flex flex-col items-center justify-center space-y-2">
+                    <div className="flex flex-col items-center justify-center gap-2">
                       <Button
                         color="success"
                         onClick={() => openModalEditAdmin(post?._id ?? '')}

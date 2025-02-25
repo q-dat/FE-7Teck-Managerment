@@ -6,13 +6,31 @@ import { RiAddBoxLine } from 'react-icons/ri';
 import NavbarAdmin from '../../../components/admin/Reponsive/Mobile/NavbarAdmin';
 import { PriceListsContext } from '../../../context/price-list/PriceListContext';
 import { IProductPriceList } from '../../../types/type/price-list/price-list';
+import ErrorLoading from '../../../components/orther/error/ErrorLoading';
+import { LoadingLocal } from '../../../components/orther/loading';
+import { isIErrorResponse } from '../../../types/error/error';
+import { Toastify } from '../../../helper/Toastify';
+import ModalDeletePriceListPageAdmin from '../../../components/admin/Modal/ModalPriceListPage/ModalDeletePriceListPageAdmin';
+import { FaPenToSquare } from 'react-icons/fa6';
+import { MdDelete } from 'react-icons/md';
 
 const PriceListManagerPage: React.FC = () => {
-  const { priceLists } = useContext(PriceListsContext);
+  const { priceLists, getAllPriceLists, loading, error, deletePriceLists } =
+    useContext(PriceListsContext);
 
   const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
+  const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const openModalCreateAdmin = () => setIsModalCreateOpen(true);
   const closeModalCreateAdmin = () => setIsModalCreateOpen(false);
+  const [selectedPriceListId, setSelectedPriceListId] = useState<string | null>(
+    null
+  );
+
+  const openModalDeleteAdmin = (id: string) => {
+    setSelectedPriceListId(id);
+    setIsModalDeleteOpen(true);
+  };
+  const closeModalDeleteAdmin = () => setIsModalDeleteOpen(false);
   // Get All Price List
 
   const [catalogs, setCatalogs] = useState<{
@@ -35,8 +53,6 @@ const PriceListManagerPage: React.FC = () => {
   });
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-
     const aggregatedData = {
       phoneProducts: {} as Record<string, IProductPriceList[]>,
       tabletProducts: {} as Record<string, IProductPriceList[]>,
@@ -79,7 +95,24 @@ const PriceListManagerPage: React.FC = () => {
       windowsProducts: Object.keys(aggregatedData.windowsProducts)[0] || ''
     });
   }, [priceLists]);
-
+  //
+  const handleDeletePhone = async () => {
+    if (selectedPriceListId) {
+      try {
+        await deletePriceLists(selectedPriceListId);
+        closeModalDeleteAdmin();
+        Toastify('Bạn đã xoá sản phẩm thành công', 201);
+        getAllPriceLists();
+      } catch (error) {
+        const errorMessage = isIErrorResponse(error)
+          ? error.data?.message
+          : 'Xoá sản phẩm thất bại!';
+        Toastify(`Lỗi: ${errorMessage}`, 500);
+      }
+    }
+  };
+  if (loading.getAll) return <LoadingLocal />;
+  if (error) return <ErrorLoading />;
   return (
     <div className="w-full pb-10 xl:pb-0">
       <NavbarAdmin Title_NavbarAdmin="Bảng Giá" />
@@ -110,7 +143,7 @@ const PriceListManagerPage: React.FC = () => {
           categoryType =>
             Object.keys(catalogs[categoryType as keyof typeof catalogs])
               .length > 0 && (
-              <div key={categoryType} className='px-2 xl:px-0'>
+              <div key={categoryType} className="px-2 xl:px-0">
                 <div role="region" aria-label={`Danh mục ${categoryType}`}>
                   <h2 className="my-5 font-bold text-primary">
                     {categoryType === 'phoneProducts'
@@ -165,6 +198,27 @@ const PriceListManagerPage: React.FC = () => {
                         <span>{product.name}</span>
                         <span>{product.price}</span>
                         <span>{product.storage}</span>
+                        <span className="flex flex-row items-center justify-center gap-2">
+                          <Button
+                            size="sm"
+                            color="success"
+                            // onClick={() =>
+                            //   // openModalEditAdmin(product?._id ?? '')
+                            // }
+                            className="text-sm font-light text-white"
+                          >
+                            <FaPenToSquare />
+                          </Button>
+                          <Button
+                            size="sm"
+                            onClick={() =>
+                              openModalDeleteAdmin(product?._id ?? '')
+                            }
+                            className="bg-red-600 text-sm font-light text-white"
+                          >
+                            <MdDelete />
+                          </Button>
+                        </span>
                       </Table.Row>
                     ))}
                   </Table.Body>
@@ -177,8 +231,14 @@ const PriceListManagerPage: React.FC = () => {
         isOpen={isModalCreateOpen}
         onClose={closeModalCreateAdmin}
       />
+      <ModalDeletePriceListPageAdmin
+        isOpen={isModalDeleteOpen}
+        onClose={closeModalDeleteAdmin}
+        onConfirm={handleDeletePhone}
+      />
     </div>
   );
 };
 
 export default PriceListManagerPage;
+
