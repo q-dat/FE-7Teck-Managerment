@@ -22,11 +22,10 @@ const PurchasePage: React.FC = () => {
           </ul>
         </div>
         {/*  */}
-    
+        <div className="px-2 xl:px-20"></div>
       </div>
     </div>
   );
 };
 
 export default PurchasePage;
-

@@ -243,23 +243,21 @@ const WindowsDetailPage: React.FC = () => {
                 </div>
               </div>
               {/* Note */}
-              <div className="h-[80px] w-full rounded-md border border-gray-50 bg-white p-2">
-                <p className="text-center text-2xl font-light xl:text-3xl">
-                  Hỗ trợ khách hàng:
-                  <Link
-                    role="navigation"
-                    aria-label="Hotline"
-                    to="tel:0983699993"
-                  >
-                    <span className="font-bold text-secondary">
-                      &nbsp; 0983.699.993
+              <Link role="navigation" aria-label="Hotline" to="tel:0983699993">
+                <div className="h-[80px] w-full rounded-md border border-gray-50 bg-blue-500 p-2">
+                  <p className="text-center text-white">
+                    <span className="text-2xl font-bold uppercase xl:text-3xl">
+                      Quan tâm
                     </span>
-                  </Link>
-                </p>
-                <i className="text-sm font-light text-secondary">
-                  *Nhấn vào hotline để gọi ngay!
-                </i>
-              </div>
+                    <span className="font-bol text-xs">
+                      &nbsp; (Ấn để gọi ngay)
+                    </span>
+                  </p>
+                  <i className="text-lg text-white">
+                    *Call ngay 0983.699.993 để có giá tốt nhất!
+                  </i>
+                </div>
+              </Link>
             </div>
           </div>
           {/* Tab */}
@@ -348,4 +346,3 @@ const WindowsDetailPage: React.FC = () => {
 };
 
 export default WindowsDetailPage;
-

@@ -92,7 +92,7 @@ const PriceListPage: React.FC = () => {
           </ul>
         </div>
         {/* Danh mục sản phẩm */}
-        <div className="px-2 xl:px-[100px]">
+        <div className="px-2 xl:px-20">
           {[
             'phoneProducts',
             'macbookProducts',
