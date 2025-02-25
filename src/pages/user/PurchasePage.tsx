@@ -3,6 +3,8 @@ import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
 import { Link } from 'react-router-dom';
 import { Textarea, Button } from 'react-daisyui';
 import InputForm from '../../components/UserPage/InputForm';
+import { ToastifyUPage } from '../../helper/ToastifyUPage';
+import LabelForm from '../../components/UserPage/LabelForm';
 
 const PurchasePage: React.FC = () => {
   const [result, setResult] = React.useState<string>('');
@@ -13,8 +15,24 @@ const PurchasePage: React.FC = () => {
   ): Promise<void> => {
     event.preventDefault();
     setResult('Đang gửi...');
-
     const formData = new FormData(event.currentTarget);
+    const phone = formData.get('Số điện thoại:') as string;
+    if (!phone.trim()) {
+      ToastifyUPage('Vui lòng nhập số điện thoại!', 400);
+      return;
+    }
+    const name = formData.get("Tên khách hàng:") as string;
+
+    if (!name.trim()) {
+      ToastifyUPage("Vui lòng nhập tên khách hàng!", 400);
+      return;
+    }
+    // 
+    const phoneRegex = /^(0\d{9,10})$/;
+    if (!phoneRegex.test(phone)) {
+      ToastifyUPage('Số điện thoại không hợp lệ! Vui lòng nhập đúng định dạng.', 400);
+      return;
+    }
 
     formData.append('access_key', import.meta.env.VITE_WEB3FORMS_KEY);
 
@@ -27,8 +45,11 @@ const PurchasePage: React.FC = () => {
       const data: { success: boolean; message: string } = await response.json();
 
       if (data.success) {
-        setResult('Đã gửi biểu mẫu thành công! Vui lòng đợi để được hỗ trợ!');
-
+        setResult('Đã gửi biểu mẫu thành công!');
+        ToastifyUPage(
+          'Đã gửi biểu mẫu thành công!. Vui lòng đợi để được hỗ trợ!',
+          200
+        );
         // Reset form using formRef
         formRef.current?.reset();
       } else {
@@ -71,7 +92,7 @@ const PurchasePage: React.FC = () => {
               aria-label="Thông tin liên hệ"
             >
               <h1 className="text-2xl font-bold">
-                Liên Hệ Thanh Toán Trực Tiếp – Đơn Giản & Nhanh Chóng:
+                Liên Hệ Thanh Toán Trực Tiếp
               </h1>
               <div className="flex w-full flex-col gap-5 xl:flex-row">
                 <div className="w-full">
@@ -93,11 +114,14 @@ const PurchasePage: React.FC = () => {
                   />
                 </div>
               </div>
+              <div className='flex flex-col text-primary'>
+                <LabelForm  title={'*Có thể bỏ qua phần đặt câu hỏi!'}/>
               <Textarea
                 name="Lời nhắn:"
-                className="border border-gray-300 bg-white pb-20 text-black placeholder:text-lg placeholder:text-primary focus:border-primary focus:outline-none"
+                className="border border-gray-300 bg-white px-2 pb-20 text-black placeholder:text-[14px] placeholder:text-gray-500 focus:border-primary focus:outline-none"
                 placeholder="Chúng tôi luôn sẵn sàng giải đáp mọi câu hỏi của bạn!. Hãy để lại câu hỏi tại đây."
               />
+              </div>
               <div className="w-full">
                 <Button
                   aria-label="Nút: Gửi"
@@ -117,3 +141,4 @@ const PurchasePage: React.FC = () => {
 };
 
 export default PurchasePage;
+
