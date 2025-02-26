@@ -1,9 +1,9 @@
 import axios from 'axios';
-const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_PORT, 
-  withCredentials: true,
-  // timeout: 10000
-});
+
+axios.defaults.withCredentials = true;
+axios.defaults.baseURL = import.meta.env.VITE_API_PORT;
+
+export default axios;
 
 // let csrfTokenCache: string | null = null;
 // let sessionTokenCache: string = localStorage.getItem('sessionToken') || '';
@@ -108,6 +108,3 @@ const axiosInstance = axios.create({
 //     return Promise.reject(error);
 //   }
 // );
-
-
-export default axiosInstance;
