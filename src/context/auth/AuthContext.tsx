@@ -1,6 +1,6 @@
-import { createContext, useState, ReactNode, useCallback } from "react";
-import { registerApi, loginApi } from "../../axios/api/authApi";
-import { AxiosResponse } from "axios";
+import { createContext, useState, ReactNode, useCallback } from 'react';
+import { registerApi, loginApi } from '../../axios/api/authApi';
+import { AxiosResponse } from 'axios';
 
 interface AuthContextType {
   user: {
@@ -11,8 +11,12 @@ interface AuthContextType {
   token: string | null;
   loading: boolean;
   error: string | null;
-  registerUser: (userData: { username: string; email: string; password: string }) => Promise<void>;
-  loginUser: (email: string, password: string) => Promise<void>; // Sửa lại kiểu login
+  registerUser: (userData: {
+    username: string;
+    email: string;
+    password: string;
+  }) => Promise<void>;
+  loginUser: (email: string, password: string) => Promise<void>;
   logoutUser: () => void;
 }
 
@@ -23,35 +27,44 @@ const defaultContextValue: AuthContextType = {
   error: null,
   registerUser: async () => {},
   loginUser: async () => {},
-  logoutUser: () => {},
+  logoutUser: () => {}
 };
 
 export const AuthContext = createContext<AuthContextType>(defaultContextValue);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<AuthContextType["user"]>(null);
-  const [token, setToken] = useState<string | null>(localStorage.getItem("jwt_token"));
+  const [token, setToken] = useState<string | null>(
+    localStorage.getItem('jwt_token')
+  );
+  const [user, setUser] = useState<AuthContextType['user']>(
+    localStorage.getItem('user')
+      ? JSON.parse(localStorage.getItem('user')!)
+      : null
+  );
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const handleError = (err: any) => {
-    setError(err.response?.data?.message || "Có lỗi xảy ra!");
+    setError(err.response?.data?.message || 'Có lỗi xảy ra!');
   };
 
   // Đăng ký
-  const registerUser = useCallback(async (userData: { username: string; email: string; password: string }) => {
-    setLoading(true);
-    setError(null);
-    try {
-      await registerApi(userData);
-    } catch (err: any) {
-      handleError(err);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+  const registerUser = useCallback(
+    async (userData: { username: string; email: string; password: string }) => {
+      setLoading(true);
+      setError(null);
+      try {
+        await registerApi(userData);
+      } catch (err: any) {
+        handleError(err);
+      } finally {
+        setLoading(false);
+      }
+    },
+    []
+  );
 
-  // Đăng nhập (Sử dụng GET thay vì POST)
+  // Đăng nhập
   const loginUser = useCallback(async (email: string, password: string) => {
     setLoading(true);
     setError(null);
@@ -59,7 +72,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       const response: AxiosResponse<any> = await loginApi(email, password);
       setToken(response.data.token);
       setUser(response.data.user);
-      localStorage.setItem("jwt_token", response.data.token);
+      localStorage.setItem('jwt_token', response.data.token);
+      localStorage.setItem('user', JSON.stringify(response.data.user));
     } catch (err: any) {
       handleError(err);
     } finally {
@@ -71,13 +85,24 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const logoutUser = useCallback(() => {
     setUser(null);
     setToken(null);
-    localStorage.removeItem("jwt_token");
+    localStorage.removeItem('jwt_token');
+    localStorage.removeItem('user');
   }, []);
 
-
   return (
-    <AuthContext.Provider value={{ user, token, loading, error, registerUser, loginUser, logoutUser }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        token,
+        loading,
+        error,
+        registerUser,
+        loginUser,
+        logoutUser
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
 };
+
