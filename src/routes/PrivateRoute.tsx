@@ -13,11 +13,11 @@ const PrivateRoute = ({
   const { user, token } = useContext(AuthContext);
 
   if (!token) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/auth" replace />;
   }
 
   if (!user) {
-    return <LoadingLocal/>;
+    return <LoadingLocal />;
   }
 
   if (user.role !== requiredRole) {
@@ -28,3 +28,4 @@ const PrivateRoute = ({
 };
 
 export default PrivateRoute;
+
