@@ -99,8 +99,9 @@ export const PostCatalogProvider = ({ children }: { children: ReactNode }) => {
   const getAllPostCatalogs = useCallback(() => {
     fetchData(
       getAllPostCatalogsApi,
-      data => {setPostCatalogs(data.postCatalogs || [])
-        setCountPostCatalog(data.count || 0)
+      data => {
+        setPostCatalogs(data.postCatalogs || []);
+        setCountPostCatalog(data.count || 0);
       },
       'getAll'
     );

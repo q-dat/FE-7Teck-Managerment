@@ -1,6 +1,7 @@
 import { createContext, useState, ReactNode, useCallback } from 'react';
 import { registerApi, loginApi } from '../../axios/api/authApi';
 import { AxiosResponse } from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 interface AuthContextType {
   user: {
@@ -43,6 +44,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   );
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const handleError = (err: any) => {
     setError(err.response?.data?.message || 'Có lỗi xảy ra!');
@@ -74,6 +76,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setUser(response.data.user);
       localStorage.setItem('jwt_token', response.data.token);
       localStorage.setItem('user', JSON.stringify(response.data.user));
+      navigate('/cms/admin/');
     } catch (err: any) {
       handleError(err);
     } finally {
