@@ -1,7 +1,8 @@
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import DefaultLayout from '../layout/DefaultLayout';
-import PriceListManagerPage from '../cms/admin/post/PriceListManagerPage';
+import PrivateRoute from './PrivateRoute';
+import LoginPage from '../pages/auth/LoginPage';
 
 // UserPage
 const User = lazy(() => import('../pages/user/User'));
@@ -63,6 +64,9 @@ const Post = lazy(() => import('../cms/admin/post/Post'));
 const PostManagerPage = lazy(() => import('../cms/admin/post/PostManagerPage'));
 const PostCatalogManagerPage = lazy(
   () => import('../cms/admin/post/PostCatalogManagerPage')
+);
+const PriceListManagerPage = lazy(
+  () => import('../cms/admin/post/PriceListManagerPage')
 );
 
 // gallery
@@ -126,7 +130,14 @@ export default function AppRoutes() {
 
         {/* Admin */}
         <Route element={<DefaultLayout />}>
-          <Route path="/cms/admin" element={<Admin />}>
+          <Route
+            path="/cms/admin/*"
+            element={
+              <PrivateRoute requiredRole="admin">
+                <Admin />
+              </PrivateRoute>
+            }
+          >
             <Route index path="" element={<DashboardPage />} />
             <Route
               path="phone-catalog-manager"
@@ -153,7 +164,14 @@ export default function AppRoutes() {
 
         {/* Post */}
         <Route element={<DefaultLayout />}>
-          <Route path="/cms/admin-post" element={<Post />}>
+          <Route
+            path="/cms/admin-post/*"
+            element={
+              <PrivateRoute requiredRole="admin">
+                <Post />
+              </PrivateRoute>
+            }
+          >
             <Route index path="" element={<PostManagerPage />} />
             <Route path="post-manager" element={<PostManagerPage />} />
             <Route
@@ -169,10 +187,22 @@ export default function AppRoutes() {
 
         {/* Gallery */}
         <Route element={<DefaultLayout />}>
-          <Route path="/cms/admin-gallery" element={<Gallery />}>
+          <Route
+            path="/cms/admin-gallery/*"
+            element={
+              <PrivateRoute requiredRole="admin">
+                <Gallery />
+              </PrivateRoute>
+            }
+          >
             <Route index path="" element={<GalleryManagerPage />} />
             <Route path="gallery-manager" element={<GalleryManagerPage />} />
           </Route>
+        </Route>
+
+        {/* Login */}
+        <Route element={<DefaultLayout />}>
+          <Route path="login" element={<LoginPage />} />
         </Route>
 
         {/* 404 not found */}

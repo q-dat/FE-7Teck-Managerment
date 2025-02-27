@@ -20,6 +20,7 @@ import { MacbookCatalogProvider } from './context/macbook-catalog/MacbookCatalog
 import { MacbookProvider } from './context/macbook/MacbookContext.tsx';
 import { OptionPhoneProvider } from './context/optionsData/OptionsPhoneContext.tsx';
 import { PriceListsProvider } from './context/price-list/PriceListContext.tsx';
+import { AuthProvider } from './context/auth/AuthContext.tsx';
 const App = lazy(() => import('./App.tsx'));
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -41,7 +42,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                                 <MacbookProvider>
                                   <OptionPhoneProvider>
                                     <ParallaxProvider>
-                                      <App />
+                                      <AuthProvider>
+                                        <App />
+                                      </AuthProvider>
                                       <Analytics />
                                       <ToastContainer />
                                     </ParallaxProvider>
