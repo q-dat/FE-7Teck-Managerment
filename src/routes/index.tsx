@@ -202,7 +202,7 @@ export default function AppRoutes() {
 
         {/* Login */}
         <Route element={<DefaultLayout />}>
-          <Route path="login" element={<LoginPage />} />
+          <Route path="auth" element={<LoginPage />} />
         </Route>
 
         {/* 404 not found */}

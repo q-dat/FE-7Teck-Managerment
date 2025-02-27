@@ -72,11 +72,18 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setError(null);
     try {
       const response: AxiosResponse<any> = await loginApi(email, password);
+      const userData = response.data.user;
+
       setToken(response.data.token);
-      setUser(response.data.user);
+      setUser(userData);
       localStorage.setItem('jwt_token', response.data.token);
-      localStorage.setItem('user', JSON.stringify(response.data.user));
-      navigate('/cms/admin/');
+      localStorage.setItem('user', JSON.stringify(userData));
+
+      if (userData.role === 'admin') {
+        navigate('/cms/admin/');
+      } else {
+        navigate('/');
+      }
     } catch (err: any) {
       handleError(err);
     } finally {
