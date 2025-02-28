@@ -1,7 +1,7 @@
 import React from 'react';
 import { Footer } from 'react-daisyui';
 import { Link } from 'react-router-dom';
-import { Logo, Popup } from '../../assets/images';
+import { Logo } from '../../assets/images';
 import { FaMapLocationDot } from 'react-icons/fa6';
 import { FaFacebook, FaFacebookMessenger, FaPhone } from 'react-icons/fa';
 import { IoMail } from 'react-icons/io5';
@@ -28,8 +28,8 @@ const FooterFC: React.FC = () => {
           <Link className="font-light hover:font-semibold" to="/ipad">
             iPad/ Máy Tính Bảng
           </Link>
-          <Link className="font-light hover:font-semibold" to="/window">
-            Laptop Window
+          <Link className="font-light hover:font-semibold" to="/windows">
+            Laptop Windows
           </Link>
           <Link className="font-light hover:font-semibold" to="/macbook">
             Laptop Macbook
@@ -48,7 +48,7 @@ const FooterFC: React.FC = () => {
           </Footer.Title>
           <Link
             className="font-light hover:font-semibold"
-            to="/warranty-policy"
+            to="/chinh-sach-bao-hanh"
           >
             Chính Sách Bảo Hành
           </Link>
@@ -107,11 +107,6 @@ const FooterFC: React.FC = () => {
               <FaMapLocationDot className="text-xl" />
               136/11 Trần Quang Diệu, Phường 12, Quận 3, HCM
             </p>
-            <img
-              className="h-full w-full rounded-md object-cover"
-              src={Popup}
-              alt="Greeting"
-            />
           </div>
         </div>
       </Footer>

@@ -241,14 +241,16 @@ const HomePage: React.FC = () => {
           </div>
         </div>
         {/* Sale */}
-        <div data-aos="fade-up">
-          <IPadFC />
-        </div>
-        <div data-aos="fade-up">
-          <WindowsFC />
-        </div>
-        <div data-aos="fade-up">
-          <MacbookFC />
+        <div className="flex w-full flex-col items-center justify-center gap-5">
+          <div data-aos="fade-up" className="w-full">
+            <IPadFC />
+          </div>
+          <div data-aos="fade-up" className="w-full">
+            <MacbookFC />
+          </div>
+          <div data-aos="fade-up" className="w-full">
+            <WindowsFC />
+          </div>
         </div>
         {/* Post */}
         <div
@@ -263,19 +265,16 @@ const HomePage: React.FC = () => {
             role="region"
             aria-label="Bản tin mới nhất"
           >
-            <h1 className="mb-2 bg-white bg-opacity-20 px-2 text-start text-xl font-semibold uppercase text-black xl:px-[100px]">
+            <h1 className="mb-2 bg-gradient-to-tr from-white via-transparent to-transparent px-2 text-start text-xl font-semibold uppercase text-black xl:px-[100px]">
               Tin công nghệ
             </h1>
             <div className="grid grid-cols-2 gap-2 px-2 md:grid-cols-3 lg:grid-cols-4 xl:px-[100px]">
               {news.slice(0, 4).map(post => (
                 <div
                   key={post?._id}
-                  className="relative flex cursor-pointer flex-row items-start justify-start gap-2 rounded border border-white bg-black bg-opacity-30 p-1 shadow-inner hover:shadow-lg"
+                  className="relative flex cursor-pointer flex-row items-start justify-start gap-2 rounded border border-white bg-black bg-opacity-70 p-1 shadow-inner hover:shadow-lg"
                   onClick={() => handlePostClick(post)}
                 >
-                  <p className="absolute left-[2px] top-[2px] z-20 rounded-sm bg-primary px-2 text-[12px] text-white">
-                    {post?.catalog}
-                  </p>
                   <div className="relative h-full w-full overflow-hidden">
                     <img
                       loading="lazy"
@@ -290,8 +289,8 @@ const HomePage: React.FC = () => {
                       className="absolute left-0 top-0 z-10 h-full w-full rounded-sm object-contain"
                     />
                   </div>
-                  <div>
-                    <p className="line-clamp-6 w-full py-1 text-sm font-semibold text-white">
+                  <div className="w-full">
+                    <p className="line-clamp-4 w-full py-1 text-sm text-white">
                       {post?.title}
                     </p>
                     <p className="pt-2 text-[12px] text-white">
@@ -310,19 +309,16 @@ const HomePage: React.FC = () => {
             role="region"
             aria-label="Thủ thuật và mẹo hay"
           >
-            <h1 className="my-2 bg-white bg-opacity-20 px-2 text-start text-xl font-semibold uppercase text-black xl:px-[100px]">
+            <h1 className="my-2 bg-gradient-to-tr from-white via-transparent to-transparent px-2 text-start text-xl font-semibold uppercase text-black xl:px-[100px]">
               Thủ thuật - Mẹo hay
             </h1>
             <div className="grid grid-cols-2 gap-2 px-2 md:grid-cols-3 lg:grid-cols-4 xl:px-[100px]">
               {tricks.slice(0, 4).map(post => (
                 <div
                   key={post?._id}
-                  className="relative flex cursor-pointer flex-row items-start justify-start gap-2 rounded border border-white bg-black bg-opacity-30 p-1 shadow-inner hover:shadow-lg"
+                  className="relative flex cursor-pointer flex-row items-start justify-start gap-2 rounded border border-white bg-black bg-opacity-70 p-1 shadow-inner hover:shadow-lg"
                   onClick={() => handlePostClick(post)}
                 >
-                  <p className="absolute left-[2px] top-[2px] z-20 rounded-sm bg-primary px-2 text-[12px] text-white">
-                    {post?.catalog}
-                  </p>
                   <div className="relative h-full w-full overflow-hidden">
                     <img
                       loading="lazy"
@@ -337,9 +333,8 @@ const HomePage: React.FC = () => {
                       className="absolute left-0 top-0 z-10 h-full w-full rounded-sm object-contain"
                     />
                   </div>
-                  <div>
-                    {' '}
-                    <p className="line-clamp-6 w-full py-1 text-sm font-semibold text-white">
+                  <div className="w-full">
+                    <p className="line-clamp-4 w-full py-1 text-sm text-white">
                       {post?.title}
                     </p>
                     <p className="pt-2 text-[12px] text-white">
@@ -356,7 +351,7 @@ const HomePage: React.FC = () => {
             <Link to="/tin-tuc-moi-nhat">
               <button
                 role="button"
-                className="relative z-10 mt-2 flex w-full items-center justify-center gap-1 bg-gradient-to-r from-white via-secondary to-white py-1 text-sm text-white"
+                className="text-md relative z-10 mt-2 flex w-full items-center justify-center py-1 text-black underline"
               >
                 Xem Thêm Bản Tin
                 <span>

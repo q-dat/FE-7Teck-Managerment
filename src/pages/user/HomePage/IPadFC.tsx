@@ -71,7 +71,7 @@ const IPadFC: React.FC = () => {
   const sortedTablets = tablets.filter(tablet => tablet.tablet_sale);
 
   return (
-    <div className={`mt-10 p-0 xl:px-[100px]`}>
+    <div className={`p-0 xl:px-[100px]`}>
       {/* Title */}
       <div
         role="region"

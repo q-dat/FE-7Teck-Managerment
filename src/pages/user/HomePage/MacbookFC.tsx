@@ -71,7 +71,7 @@ const MacbookFC: React.FC = () => {
   const sortedMacbook = macbook.filter(mac => mac.macbook_sale);
 
   return (
-    <div className={`mt-10 p-0 xl:px-[100px]`}>
+    <div className={`p-0 xl:px-[100px]`}>
       {/* Title */}
       <div
         role="region"
