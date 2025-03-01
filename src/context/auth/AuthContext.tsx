@@ -67,12 +67,23 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   );
 
   // Đăng nhập
+  const decodeBase64 = (data: string): string => {
+    return atob(data);
+  };
+
   const loginUser = useCallback(async (email: string, password: string) => {
     setLoading(true);
     setError(null);
     try {
       const response: AxiosResponse<any> = await loginApi(email, password);
-      const userData = response.data.user;
+      const encodedUserData = response.data.user; // Dữ liệu bị mã hóa từ BE
+
+      // Giải mã Base64 để FE có thể hiển thị đúng
+      const userData = {
+        id: encodedUserData.id,
+        username: decodeBase64(encodedUserData.username),
+        role: decodeBase64(encodedUserData.role)
+      };
 
       setToken(response.data.token);
       setUser(userData);
@@ -90,7 +101,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setLoading(false);
     }
   }, []);
-
   // Đăng xuất
   const logoutUser = useCallback(() => {
     setUser(null);
@@ -115,4 +125,3 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     </AuthContext.Provider>
   );
 };
-
