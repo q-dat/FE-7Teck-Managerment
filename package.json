@@ -17,6 +17,7 @@
     "aos": "^2.3.4",
     "axios": "^1.7.7",
     "boring-avatars": "^1.11.2",
+    "crypto-js": "^4.2.0",
     "daisyui": "^4.12.13",
     "eslint-plugin-prettier": "^5.2.1",
     "file-saver": "^2.0.5",
@@ -45,6 +46,7 @@
   "devDependencies": {
     "@eslint/js": "^9.9.0",
     "@types/aos": "^3.0.7",
+    "@types/crypto-js": "^4.2.2",
     "@types/file-saver": "^2.0.7",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",

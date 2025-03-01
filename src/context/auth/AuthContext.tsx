@@ -34,14 +34,28 @@ const defaultContextValue: AuthContextType = {
 export const AuthContext = createContext<AuthContextType>(defaultContextValue);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
+  //
   const [token, setToken] = useState<string | null>(
     localStorage.getItem('jwt_token')
   );
-  const [user, setUser] = useState<AuthContextType['user']>(
-    localStorage.getItem('user')
-      ? JSON.parse(localStorage.getItem('user')!)
-      : null
-  );
+  //
+  const [user, setUser] = useState<AuthContextType['user']>(() => {
+    const storedUser = localStorage.getItem('user');
+    if (!storedUser) return null;
+
+    try {
+      const encodedUser = JSON.parse(storedUser); // Đọc dữ liệu mã hóa từ localStorage
+      return {
+        id: encodedUser.id,
+        username: atob(encodedUser.username), // Giải mã Base64
+        role: atob(encodedUser.role) // Giải mã Base64
+      };
+    } catch (error) {
+      console.error('Lỗi giải mã user:', error);
+      return null;
+    }
+  });
+  //
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
@@ -67,28 +81,27 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   );
 
   // Đăng nhập
-  const decodeBase64 = (data: string): string => {
-    return atob(data);
-  };
 
   const loginUser = useCallback(async (email: string, password: string) => {
     setLoading(true);
     setError(null);
     try {
       const response: AxiosResponse<any> = await loginApi(email, password);
-      const encodedUserData = response.data.user; // Dữ liệu bị mã hóa từ BE
+      const encodedUserData = response.data.user; // Nhận dữ liệu đã mã hóa từ server
 
-      // Giải mã Base64 để FE có thể hiển thị đúng
+      // Lưu dữ liệu mã hóa vào localStorage
+      localStorage.setItem('jwt_token', response.data.token);
+      localStorage.setItem('user', JSON.stringify(encodedUserData));
+
+      // Giải mã để sử dụng trong ứng dụng
       const userData = {
         id: encodedUserData.id,
-        username: decodeBase64(encodedUserData.username),
-        role: decodeBase64(encodedUserData.role)
+        username: atob(encodedUserData.username),
+        role: atob(encodedUserData.role)
       };
 
       setToken(response.data.token);
       setUser(userData);
-      localStorage.setItem('jwt_token', response.data.token);
-      localStorage.setItem('user', JSON.stringify(userData));
 
       if (userData.role === 'admin') {
         navigate('/cms/admin/');
@@ -101,6 +114,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setLoading(false);
     }
   }, []);
+
   // Đăng xuất
   const logoutUser = useCallback(() => {
     setUser(null);
