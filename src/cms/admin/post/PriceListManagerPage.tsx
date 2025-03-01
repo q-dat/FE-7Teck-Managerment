@@ -31,69 +31,55 @@ const PriceListManagerPage: React.FC = () => {
     setIsModalDeleteOpen(true);
   };
   const closeModalDeleteAdmin = () => setIsModalDeleteOpen(false);
-  // Get All Price List
 
-  const [catalogs, setCatalogs] = useState<{
-    phoneProducts: Record<string, IProductPriceList[]>;
-    tabletProducts: Record<string, IProductPriceList[]>;
-    macbookProducts: Record<string, IProductPriceList[]>;
-    windowsProducts: Record<string, IProductPriceList[]>;
-  }>({
-    phoneProducts: {},
-    tabletProducts: {},
-    macbookProducts: {},
-    windowsProducts: {}
-  });
-
-  const [activeTabs, setActiveTabs] = useState<{ [key: string]: string }>({
-    phoneProducts: '',
-    tabletProducts: '',
-    macbookProducts: '',
-    windowsProducts: ''
-  });
+  const [catalogs, setCatalogs] = useState<
+    Record<string, Record<string, IProductPriceList[]>>
+  >({});
+  const [parentIds, setParentIds] = useState<Record<string, string>>({});
+  const [activeTabs, setActiveTabs] = useState<{ [key: string]: string }>({});
 
   useEffect(() => {
-    const aggregatedData = {
-      phoneProducts: {} as Record<string, IProductPriceList[]>,
-      tabletProducts: {} as Record<string, IProductPriceList[]>,
-      macbookProducts: {} as Record<string, IProductPriceList[]>,
-      windowsProducts: {} as Record<string, IProductPriceList[]>
-    };
+    const aggregatedData: Record<
+      string,
+      Record<string, IProductPriceList[]>
+    > = {};
+    const parentIdMap: Record<string, string> = {};
 
-    [
-      'phoneProducts',
-      'tabletProducts',
-      'macbookProducts',
-      'windowsProducts'
-    ].forEach(categoryType => {
-      priceLists.forEach(list => {
+    priceLists.forEach(list => {
+      [
+        'phoneProducts',
+        'tabletProducts',
+        'macbookProducts',
+        'windowsProducts'
+      ].forEach(categoryType => {
         const productsByCategory =
           list[categoryType as keyof typeof list] || {};
-
-        Object.entries(productsByCategory).forEach(([category, products]) => {
-          if (Array.isArray(products)) {
-            aggregatedData[categoryType as keyof typeof aggregatedData][
-              category
-            ] =
-              aggregatedData[categoryType as keyof typeof aggregatedData][
-                category
-              ] || [];
-            aggregatedData[categoryType as keyof typeof aggregatedData][
-              category
-            ].push(...(products as IProductPriceList[]));
+        Object.entries(productsByCategory).forEach(([category, data]) => {
+          if (Array.isArray(data)) {
+            if (!aggregatedData[categoryType]) {
+              aggregatedData[categoryType] = {};
+            }
+            if (!aggregatedData[categoryType][category]) {
+              aggregatedData[categoryType][category] = [];
+              parentIdMap[category] = list._id;
+            }
+            aggregatedData[categoryType][category].push(...data);
           }
         });
       });
     });
 
     setCatalogs(aggregatedData);
-
-    setActiveTabs({
-      phoneProducts: Object.keys(aggregatedData.phoneProducts)[0] || '',
-      tabletProducts: Object.keys(aggregatedData.tabletProducts)[0] || '',
-      macbookProducts: Object.keys(aggregatedData.macbookProducts)[0] || '',
-      windowsProducts: Object.keys(aggregatedData.windowsProducts)[0] || ''
-    });
+    setParentIds(parentIdMap);
+    setActiveTabs(
+      Object.keys(aggregatedData).reduce(
+        (acc, key) => ({
+          ...acc,
+          [key]: Object.keys(aggregatedData[key])[0] || ''
+        }),
+        {}
+      )
+    );
   }, [priceLists]);
   //
   const handleDeletePhone = async () => {
@@ -132,15 +118,7 @@ const PriceListManagerPage: React.FC = () => {
             </div>
           }
         />
-      </div>
-      {/*  */}
-      <div>
-        {[
-          'phoneProducts',
-          'macbookProducts',
-          'tabletProducts',
-          'windowsProducts'
-        ].map(
+        {Object.keys(catalogs).map(
           categoryType =>
             Object.keys(catalogs[categoryType as keyof typeof catalogs])
               .length > 0 && (
@@ -198,7 +176,10 @@ const PriceListManagerPage: React.FC = () => {
                           key={index}
                           className="border border-secondary"
                         >
-                          <span>#{index + 1}</span>
+                          <span>
+                            #{index + 1}
+                            {parentIds[activeTabs[categoryType]]}
+                          </span>
                           <span>{product?.name}</span>
                           <span>{product?.storage}</span>
                           <span>
@@ -218,7 +199,9 @@ const PriceListManagerPage: React.FC = () => {
                             <Button
                               size="sm"
                               onClick={() =>
-                                openModalDeleteAdmin(product?._id ?? '')
+                                openModalDeleteAdmin(
+                                  `${parentIds[activeTabs[categoryType]]}`
+                                )
                               }
                               className="bg-red-600 text-sm font-light text-white"
                             >
