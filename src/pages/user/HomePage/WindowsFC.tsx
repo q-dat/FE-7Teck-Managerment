@@ -175,7 +175,12 @@ const WindowsFC: React.FC = () => {
                   {/*  */}
                   {win?.windows_status && (
                     <div className="absolute -left-[3px] top-0 z-20">
-                      <img alt="" loading="lazy" width={60} src={Sale} />
+                      <img
+                        alt=""
+                        loading="lazy"
+                        className="h-full w-[60px]"
+                        src={Sale}
+                      />
                       <p className="absolute top-[1px] w-full pl-2 text-xs text-white">
                         {win?.windows_status}
                       </p>
