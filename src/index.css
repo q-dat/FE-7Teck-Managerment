@@ -10,12 +10,6 @@
   margin: 0;
   box-sizing: border-box;
 }
-/* BenefitsSection */
-.swiper-slide {
-  width: 100%;
-  min-height: 200px;
-}
-
 /* 
 @keyframes fadeIn {
   0% {

@@ -66,37 +66,35 @@ const items = [
 const BenefitsSection: React.FC = () => {
   return (
     <div className="w-full">
-      {/*   Mobile */}
+      {/* Mobile */}
       <div className="block md:hidden">
         <Swiper
           pagination={{ dynamicBullets: true, clickable: true }}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false // Vẫn giữ autoplay sau khi người dùng tương tác
-          }}
-          effect={'coverflow'}
-          grabCursor={true}
-          centeredSlides={true}
-          slidesPerView={'auto'}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
+          effect="coverflow"
+          grabCursor
+          centeredSlides
+          slidesPerView={1}
           coverflowEffect={{
-            rotate: 50,
+            rotate: 30,
             stretch: 0,
-            depth: 100,
+            depth: 80,
             modifier: 1,
-            slideShadows: true
+            slideShadows: false
           }}
           modules={[EffectCoverflow, Autoplay]}
-          className="mySwiper"
+          className="mySwiper min-h-[200px] w-full"
         >
           {items.map((item, index) => (
-            <SwiperSlide key={index}>
+            <SwiperSlide
+              key={index}
+              className="flex items-center justify-center"
+            >
               <div className="text-md my-4 flex flex-col items-center gap-2 text-center">
                 <div className="rounded-full bg-gradient-to-tr from-primary via-primary to-black p-4">
-                  <div>
-                    {React.cloneElement(item.icon, {
-                      className: 'text-[100px] text-white'
-                    })}
-                  </div>
+                  {React.cloneElement(item.icon, {
+                    className: 'text-[100px] text-white'
+                  })}
                 </div>
                 <div className="text-black">
                   <p>{item.text}</p>
@@ -106,17 +104,15 @@ const BenefitsSection: React.FC = () => {
           ))}
         </Swiper>
       </div>
-      {/*  Desktop */}
+
+      {/* Desktop */}
       <div className="mx-0 my-5 hidden flex-row items-start justify-between gap-2 rounded-2xl py-5 md:flex xl:mx-[100px]">
         <Swiper
           slidesPerView={4}
           pagination={{ dynamicBullets: true, clickable: true }}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false
-          }}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
           modules={[Pagination, Autoplay]}
-          className="mySwiper"
+          className="mySwiper min-h-[200px] w-full"
         >
           {items.map((item, index) => (
             <SwiperSlide key={index}>
