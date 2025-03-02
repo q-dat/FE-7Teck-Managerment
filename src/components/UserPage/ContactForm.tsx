@@ -15,7 +15,7 @@ const ContactForm: React.FC = () => {
           <img
             src={LogoMessenger}
             alt="Messenger"
-            className="h-full w-[45px] rounded-full xl:w-[50px]"
+            className="h-full w-[45px] rounded-xl xl:w-[50px]"
           />
         </Link>
       </div>
