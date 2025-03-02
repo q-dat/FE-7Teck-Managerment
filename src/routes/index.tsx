@@ -7,7 +7,7 @@ import LoginPage from '../pages/auth/LoginPage';
 // UserPage
 const User = lazy(() => import('../pages/user/User'));
 const HomePageSEO = lazy(() => import('../SEO/HomePageSEO'));
-const ContactPageSEO = lazy(() => import('../SEO/ContactPageSEO'));
+const WarrantyPageSEO = lazy(() => import('../SEO/WarrantyPageSEO'));
 const PurchasePageSEO = lazy(() => import('../SEO/PurchasePageSEO'));
 const PhonePageSEO = lazy(() => import('../SEO/products/PhonePageSEO'));
 const TabletPageSEO = lazy(() => import('../SEO/products/TabletPageSEO'));
@@ -124,7 +124,7 @@ export default function AppRoutes() {
             <Route path="thanh-toan" element={<PurchasePageSEO />} />
             <Route path="hanh-trinh-khach-hang" element={<GalleryPageSEO />} />
             <Route path="bang-gia-thu-mua" element={<PriceListPageSEO />} />
-            <Route path="chinh-sach-bao-hanh" element={<ContactPageSEO />} />
+            <Route path="chinh-sach-bao-hanh" element={<WarrantyPageSEO />} />
           </Route>
         </Route>
 
