@@ -65,7 +65,7 @@ const items = [
 ];
 const BenefitsSection: React.FC = () => {
   return (
-    <div className="w-full">
+    <div className="w-full h-full">
       {/* Mobile */}
       <div className="block md:hidden">
         <Swiper
