@@ -1,5 +1,5 @@
 import React from 'react';
-import UsedProductsPage from '../pages/user/UsedProductsPage';
+import UsedProductsPage from '../pages/user/UsedProductsPage/UsedProductsPage';
 import useSeo from '../hooks/useSeo';
 
 const UsedProductsPageSEO: React.FC = () => {
