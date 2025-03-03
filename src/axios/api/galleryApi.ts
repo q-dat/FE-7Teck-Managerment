@@ -1,9 +1,9 @@
 import axios from '../config/axiosConfig';
 import { IGallery } from '../../types/type/gallery/gallery';
 
-// Get All Gallerys
+// Get All Galleries
 export const getAllGallerysApi = () => {
-  return axios.get<{ gallerys: IGallery[] }>('/api/gallerys');
+  return axios.get<{ gallerys: IGallery[] }>('/api/galleries');
 };
 // Get Gallery By ID
 export const getGalleryByIdApi = (_id: string) => {

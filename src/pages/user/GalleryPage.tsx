@@ -7,7 +7,7 @@ import 'react-medium-image-zoom/dist/styles.css';
 import Pagination from '../../components/UserPage/Pagination';
 
 const GalleryPage: React.FC = () => {
-  const { gallerys } = useContext(GalleryContext);
+  const { galleries } = useContext(GalleryContext);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
@@ -21,10 +21,10 @@ const GalleryPage: React.FC = () => {
   // Panigation
   const itemsPerPage = 12;
 
-  const totalPages = Math.ceil(gallerys.length / itemsPerPage);
+  const totalPages = Math.ceil(galleries.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentGallerys = gallerys.slice(indexOfFirstItem, indexOfLastItem);
+  const currentGallerys = galleries.slice(indexOfFirstItem, indexOfLastItem);
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {

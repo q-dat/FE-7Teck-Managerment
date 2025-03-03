@@ -19,7 +19,7 @@ import 'react-medium-image-zoom/dist/styles.css';
 import TimeAgo from '../../../components/orther/timeAgo/TimeAgo';
 
 const GalleryManagerPage: React.FC = () => {
-  const { gallerys, loading, error, getAllGallerys, deleteGallery } =
+  const { galleries, loading, error, getAllGallerys, deleteGallery } =
     useContext(GalleryContext);
   const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
@@ -64,7 +64,7 @@ const GalleryManagerPage: React.FC = () => {
       <NavbarGallery Title_NavbarGallery="Gallery" />
       <div className="">
         <NavtitleAdmin
-          Title_NavtitleAdmin={`Quản Lý Danh Sách Hình Ảnh (${gallerys?.length})`}
+          Title_NavtitleAdmin={`Quản Lý Danh Sách Hình Ảnh (${galleries?.length})`}
           Btn_Create={
             <div className="flex flex-col items-start justify-center gap-2 md:flex-row md:items-end">
               <Button
@@ -80,7 +80,7 @@ const GalleryManagerPage: React.FC = () => {
         />
       </div>
       <div className="grid grid-flow-row grid-cols-2 items-start gap-[10px] px-2 md:grid-cols-4 xl:grid-cols-6 xl:px-0">
-        {gallerys.map((gallery: IGallery, index: number) => (
+        {galleries.map((gallery: IGallery, index: number) => (
           <div
             key={index}
             className="relative rounded-sm bg-white p-2 shadow-headerMenu"

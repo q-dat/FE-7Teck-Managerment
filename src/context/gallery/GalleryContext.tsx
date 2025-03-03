@@ -17,7 +17,7 @@ import {
 import { IGallery } from '../../types/type/gallery/gallery';
 
 interface GalleryContextType {
-  gallerys: IGallery[];
+  galleries: IGallery[];
   countGallery: number;
   loading: {
     getAll: boolean;
@@ -37,7 +37,7 @@ interface GalleryContextType {
 }
 
 const defaultContextValue: GalleryContextType = {
-  gallerys: [],
+  galleries: [],
   countGallery: 0,
   loading: {
     getAll: false,
@@ -57,7 +57,7 @@ export const GalleryContext =
   createContext<GalleryContextType>(defaultContextValue);
 
 export const GalleryProvider = ({ children }: { children: ReactNode }) => {
-  const [gallerys, setGallerys] = useState<IGallery[]>([]);
+  const [galleries, setGallerys] = useState<IGallery[]>([]);
   const [countGallery, setCountGallery] = useState(0);
   const [loading, setLoading] = useState({
     getAll: false,
@@ -90,13 +90,12 @@ export const GalleryProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  // Get All Gallerys
+  // Get All Galleries
   const getAllGallerys = useCallback(() => {
     fetchData(
       getAllGallerysApi,
       data => {
-        setGallerys(data?.gallerys || []),
-          setCountGallery(data?.count || 0);
+        setGallerys(data?.galleries || []), setCountGallery(data?.count || 0);
       },
       'getAll'
     );
@@ -105,7 +104,7 @@ export const GalleryProvider = ({ children }: { children: ReactNode }) => {
   // Get Gallery By Id
   const getGalleryById = useCallback(
     async (id: string): Promise<IGallery | undefined> => {
-      const cachedGallery = gallerys.find(gallery => gallery._id === id);
+      const cachedGallery = galleries.find(gallery => gallery._id === id);
       if (cachedGallery) return cachedGallery;
       const response = await fetchData(
         () => getGalleryByIdApi(id),
@@ -118,7 +117,7 @@ export const GalleryProvider = ({ children }: { children: ReactNode }) => {
       );
       return response.data?.gallery;
     },
-    [gallerys]
+    [galleries]
   );
 
   // Create Gallery
@@ -179,7 +178,7 @@ export const GalleryProvider = ({ children }: { children: ReactNode }) => {
   return (
     <GalleryContext.Provider
       value={{
-        gallerys,
+        galleries,
         countGallery,
         loading,
         error,

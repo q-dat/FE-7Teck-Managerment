@@ -18,7 +18,7 @@ const ModalEditGalleryPageAdmin: React.FC<ModalEditPageAdminProps> = ({
   onClose,
   galleryId
 }) => {
-  const { loading, gallerys, getAllGallerys, updateGallery } =
+  const { loading, galleries, getAllGallerys, updateGallery } =
     useContext(GalleryContext);
   const isLoading = loading.update;
   const { register, handleSubmit, watch, setValue, reset } =
@@ -29,7 +29,7 @@ const ModalEditGalleryPageAdmin: React.FC<ModalEditPageAdminProps> = ({
   );
 
   useEffect(() => {
-    const galleryData = gallerys.find(gallery => gallery._id === galleryId);
+    const galleryData = galleries.find(gallery => gallery._id === galleryId);
     if (galleryData) {
       setValue('name', galleryData.name);
       setValue('gallery', galleryData.gallery);
@@ -39,7 +39,7 @@ const ModalEditGalleryPageAdmin: React.FC<ModalEditPageAdminProps> = ({
 
       setExistingGallery(galleryData.gallery);
     }
-  }, [gallerys, galleryId, setValue]);
+  }, [galleries, galleryId, setValue]);
 
   const onSubmit: SubmitHandler<IGallery> = async formData => {
     const data = new FormData();
