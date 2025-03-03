@@ -3,6 +3,8 @@ import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
 import { Link } from 'react-router-dom';
 import UsedPhonePage from './UsedPhonePage';
 import UsedTabletPage from './UsedTabletPage';
+import UsedMacbookPage from './UsedMacbookPage';
+import UsedWindowsPage from './UsedWindowsPage';
 
 const UsedProductsPage: React.FC = () => {
   return (
@@ -26,7 +28,9 @@ const UsedProductsPage: React.FC = () => {
         {/*  */}
         <div className="mt-5 px-2 xl:px-20">
           <UsedPhonePage />
-          <UsedTabletPage/>
+          <UsedTabletPage />
+          <UsedMacbookPage />
+          <UsedWindowsPage />
         </div>
       </div>
     </div>

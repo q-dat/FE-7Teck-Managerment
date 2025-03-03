@@ -34,7 +34,7 @@ const UsedTabletPage: React.FC = () => {
   const itemsPerPage = 12;
   const NewiPhoneCatalogs = tabletCatalogs.filter(
     tabletCatalog =>
-      tabletCatalog?.t_cat_status === 1 && tabletCatalog?.t_cat_tabletCount >= 1 // status = 1 (Cũ) tabletCount: số lượng sản phẩm theo danh mục
+      tabletCatalog?.t_cat_status === 1 && tabletCatalog?.t_cat_tabletCount >= 1 // status = 1 (Cũ) t_cat_tabletCount: số lượng sản phẩm theo danh mục
   );
   const totalPages = Math.ceil(NewiPhoneCatalogs.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -105,7 +105,7 @@ const UsedTabletPage: React.FC = () => {
                       </p>
 
                       <p className="xl:group-hover:text-secondary">
-                        Điện Thoại {tabletCatalog.t_cat_name}
+                        Máy tính bảng {tabletCatalog.t_cat_name}
                       </p>
                     </div>
                     <div className="w-full p-1">
