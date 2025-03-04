@@ -46,19 +46,17 @@ const PostSection: React.FC = () => {
         aria-label="Bản tin mới nhất"
       >
         <div
-          className="my-2 flex flex-row items-center justify-between text-white"
+          className="my-2 flex flex-row items-center justify-between px-2 text-white xl:px-[100px]"
           aria-label="Thanh tiêu đề Tin công nghệ và liên kết xem tất cả"
         >
           <div>
-            <h1 className="px-2 text-xl font-semibold uppercase xl:px-[100px]">
-              Tin công nghệ
-            </h1>
+            <h1 className="text-xl font-semibold uppercase">Tin công nghệ</h1>
           </div>
-          <Link to="/tin-tuc-moi-nhat" className="px-2 xl:px-[100px]">
+          <Link to="/tin-tuc-moi-nhat">
             <Button
               role="button"
               size="sm"
-              className="relative z-10 flex w-full items-center justify-center gap-0 border-none py-1 font-semibold underline shadow-none"
+              className="relative z-10 flex w-full items-center justify-center gap-0 border-none px-0 py-1 font-semibold underline shadow-none"
             >
               Xem Thêm
               <span>
@@ -109,19 +107,19 @@ const PostSection: React.FC = () => {
         aria-label="Thủ thuật và mẹo hay"
       >
         <div
-          className="my-2 flex flex-row items-center justify-between text-white"
+          className="my-2 flex flex-row items-center justify-between px-2 text-white xl:px-[100px]"
           aria-label="Thanh tiêu đề Tin công nghệ và liên kết xem tất cả"
         >
-          <div className="">
-            <h1 className="px-2 text-xl font-semibold uppercase xl:px-[100px]">
+          <div>
+            <h1 className="text-xl font-semibold uppercase">
               Thủ thuật - Mẹo hay
             </h1>
           </div>
-          <Link to="/thu-thuat-va-meo-hay" className="px-2 xl:px-[100px]">
+          <Link to="/thu-thuat-va-meo-hay">
             <Button
               role="button"
               size="sm"
-              className="relative z-10 flex w-full items-center justify-center gap-0 border-none py-1 font-semibold underline shadow-none"
+              className="relative z-10 flex w-full items-center justify-center gap-0 border-none px-0 py-1 font-semibold underline shadow-none"
             >
               Xem Thêm
               <span>
