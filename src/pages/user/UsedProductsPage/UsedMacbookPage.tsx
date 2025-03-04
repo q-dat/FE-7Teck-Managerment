@@ -58,7 +58,8 @@ const UsedMacbookPage: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="my-5 rounded-md bg-white p-2">
+      <div className="py-2 text-2xl font-semibold">Macbook</div>
       <div className="grid grid-flow-row grid-cols-2 items-start gap-[10px] md:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8">
         {loading
           ? Array.from({ length: 12 }).map((_, index) => (
@@ -77,7 +78,7 @@ const UsedMacbookPage: React.FC = () => {
                 <div
                   key={macbookCatalog?._id}
                   onClick={() =>
-                    navigate(`/windows-da-qua-su-dung/${macbookCatalogUrl}`)
+                    navigate(`/macbook-da-qua-su-dung/${macbookCatalogUrl}`)
                   }
                   className="group flex h-full w-full flex-col justify-between rounded-md border border-white bg-white text-black"
                 >
@@ -137,3 +138,4 @@ const UsedMacbookPage: React.FC = () => {
 };
 
 export default UsedMacbookPage;
+

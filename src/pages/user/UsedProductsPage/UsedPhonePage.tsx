@@ -56,7 +56,8 @@ const UsedPhonePage: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="my-5 rounded-md bg-white p-2">
+      <div className="py-2 text-2xl font-semibold">iPhone</div>
       <div className="grid grid-flow-row grid-cols-2 items-start gap-[10px] md:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8">
         {loading
           ? Array.from({ length: 12 }).map((_, index) => (
@@ -132,3 +133,4 @@ const UsedPhonePage: React.FC = () => {
 };
 
 export default UsedPhonePage;
+
