@@ -30,21 +30,19 @@ const HomePage: React.FC = () => {
               up to 90%
             </h2>
           </div>
-          <img
-            src={BannerDesktop}
-            className="hidden h-full w-full bg-black object-cover xl:block"
-            alt="BannerDesktop"
-          />
-          <img
-            src={BannerTablet}
-            className="hidden h-full w-full bg-black object-cover md:block xl:hidden"
-            alt="BannerTablet"
-          />
-          <img
-            src={BannerMobile}
-            className="h-full w-full bg-black object-cover md:hidden"
-            alt="BannerMobile"
-          />
+          <picture>
+            {/* Hiển thị BannerDesktop khi màn hình >= 1024px */}
+            <source srcSet={BannerDesktop} media="(min-width: 1024px)" />
+            {/* Hiển thị BannerTablet khi màn hình từ 601px - 1023px */}
+            <source srcSet={BannerTablet} media="(min-width: 601px)" />
+            {/* Hiển thị BannerMobile khi màn hình <= 600px */}
+            <img
+              src={BannerMobile}
+              alt="Banner"
+              className="h-auto w-full object-cover"
+              loading="eager"
+            />
+          </picture>
         </div>
         {/* Benefits Section */}
         <BenefitsSection />
