@@ -54,7 +54,7 @@ const WindowsPage: React.FC = () => {
 
   return (
     <div>
-      <HeaderResponsive Title_NavbarMobile="Laptop windows" />
+      <HeaderResponsive Title_NavbarMobile="Laptop Windows" />
       <div className="py-[60px] xl:pt-0">
         <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow xl:px-20">
           <ul className="font-light">
@@ -64,8 +64,8 @@ const WindowsPage: React.FC = () => {
               </Link>
             </li>
             <li>
-              <Link aria-label="Laptop windows" to="">
-                Laptop windows
+              <Link aria-label="Laptop Windows" to="">
+                Laptop Windows
               </Link>
             </li>
           </ul>

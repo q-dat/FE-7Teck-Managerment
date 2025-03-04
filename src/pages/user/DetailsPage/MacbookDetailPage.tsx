@@ -105,7 +105,7 @@ const MacbookDetailPage: React.FC = () => {
 
   return (
     <div>
-      <HeaderResponsive Title_NavbarMobile="Laptop Macbook" />
+      <HeaderResponsive Title_NavbarMobile="Thông Tin Sản Phẩm" />
       <div className="py-[60px] xl:pt-0">
         <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow xl:px-20">
           <ul className="font-light">
