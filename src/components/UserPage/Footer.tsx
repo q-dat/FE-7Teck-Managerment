@@ -111,7 +111,8 @@ const FooterFC: React.FC = () => {
         </div>
       </Footer>
       <div className="border-t-[1px] border-gray-600 bg-black py-2 text-center text-white">
-        Copyright © 2024 7Teck. Designed & developed by Điểu Quốc Đạt.
+        Copyright © 2024 7Teck
+        {/* Designed & developed by Điểu Quốc Đạt. */}
       </div>
     </div>
   );
