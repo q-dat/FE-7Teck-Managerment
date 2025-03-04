@@ -31,15 +31,13 @@ const HomePage: React.FC = () => {
             </h2>
           </div>
           <picture>
-            {/* Hiển thị BannerDesktop khi màn hình >= 1024px */}
             <source srcSet={BannerDesktop} media="(min-width: 1024px)" />
-            {/* Hiển thị BannerTablet khi màn hình từ 601px - 1023px */}
             <source srcSet={BannerTablet} media="(min-width: 601px)" />
-            {/* Hiển thị BannerMobile khi màn hình <= 600px */}
             <img
               src={BannerMobile}
               alt="Banner"
-              className="h-auto w-full object-cover"
+              width="100%"
+              height="100%"
               loading="eager"
             />
           </picture>
