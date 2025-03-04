@@ -30,14 +30,13 @@ const HomePage: React.FC = () => {
               up to 90%
             </h2>
           </div>
-          <picture>
+          <picture className="h-full w-full">
             <source srcSet={BannerDesktop} media="(min-width: 1024px)" />
             <source srcSet={BannerTablet} media="(min-width: 601px)" />
             <img
               src={BannerMobile}
               alt="Banner"
-              width="100%"
-              height="100%"
+              className="h-full w-full object-cover"
               loading="eager"
             />
           </picture>
