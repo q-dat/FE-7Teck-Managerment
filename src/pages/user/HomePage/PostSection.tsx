@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { bgBlog } from '../../../assets/images';
 import TimeAgo from '../../../components/orther/timeAgo/TimeAgo';
 import { PostContext } from '../../../context/post/PostContext';
+import { Button } from 'react-daisyui';
 
 const PostSection: React.FC = () => {
   const { posts } = useContext(PostContext);
@@ -36,7 +37,7 @@ const PostSection: React.FC = () => {
       style={{
         backgroundImage: `url(${bgBlog})`
       }}
-      className={`relative mt-10 bg-cover bg-fixed bg-center bg-no-repeat py-5 ${posts.length === 0 ? 'hidden' : ''}`}
+      className={`relative mt-10 bg-cover bg-fixed bg-center bg-no-repeat pb-10 pt-5 ${posts.length === 0 ? 'hidden' : ''}`}
     >
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       <section
@@ -45,24 +46,25 @@ const PostSection: React.FC = () => {
         aria-label="Bản tin mới nhất"
       >
         <div
-          className="flex flex-row justify-between text-white"
+          className="my-2 flex flex-row items-center justify-between text-white"
           aria-label="Thanh tiêu đề Tin công nghệ và liên kết xem tất cả"
         >
           <div>
-            <h1 className="mb-2 px-2 text-xl font-semibold uppercase xl:px-[100px]">
+            <h1 className="px-2 text-xl font-semibold uppercase xl:px-[100px]">
               Tin công nghệ
             </h1>
           </div>
           <Link to="/tin-tuc-moi-nhat" className="px-2 xl:px-[100px]">
-            <button
+            <Button
               role="button"
-              className="text-md relative z-10 mt-2 flex w-full items-center justify-center py-1 underline"
+              size="sm"
+              className="relative z-10 flex w-full items-center justify-center gap-0 border-none py-1 font-semibold underline shadow-none"
             >
               Xem Thêm
               <span>
                 <IoIosArrowForward />
               </span>
-            </button>
+            </Button>
           </Link>
         </div>
         <div className="grid grid-cols-2 gap-2 px-2 md:grid-cols-3 lg:grid-cols-4 xl:px-[100px]">
@@ -107,24 +109,25 @@ const PostSection: React.FC = () => {
         aria-label="Thủ thuật và mẹo hay"
       >
         <div
-          className="flex flex-row justify-between text-white"
+          className="my-2 flex flex-row items-center justify-between text-white"
           aria-label="Thanh tiêu đề Tin công nghệ và liên kết xem tất cả"
         >
           <div className="">
-            <h1 className="mb-2 px-2 text-xl font-semibold uppercase xl:px-[100px]">
+            <h1 className="px-2 text-xl font-semibold uppercase xl:px-[100px]">
               Thủ thuật - Mẹo hay
             </h1>
           </div>
           <Link to="/thu-thuat-va-meo-hay" className="px-2 xl:px-[100px]">
-            <button
+            <Button
               role="button"
-              className="text-md relative z-10 mt-2 flex w-full items-center justify-center py-1 underline"
+              size="sm"
+              className="relative z-10 flex w-full items-center justify-center gap-0 border-none py-1 font-semibold underline shadow-none"
             >
               Xem Thêm
               <span>
                 <IoIosArrowForward />
               </span>
-            </button>
+            </Button>
           </Link>
         </div>
         <div className="grid grid-cols-2 gap-2 px-2 md:grid-cols-3 lg:grid-cols-4 xl:px-[100px]">
