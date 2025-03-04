@@ -113,9 +113,8 @@ const PurchasePage: React.FC = () => {
                 Hãy để lại thông tin liên hệ. Chúng tôi sẽ hỗ trợ bạn.
               </h1>
               <div className="flex w-full flex-col gap-5 xl:flex-row">
-                <div className="w-full">
+                <div className="w-full" aria-label="Số điện thoại hoặc Zalo">
                   <InputForm
-                    aria-label="Số điện thoại hoặc Zalo"
                     name="Số điện thoại:"
                     type="number"
                     placeholder="Nhập số điện thoại"
@@ -123,9 +122,8 @@ const PurchasePage: React.FC = () => {
                     classNameLabel="bg-white dark:peer-placeholder-shown:text-black dark:peer-focus:text-black"
                   />
                 </div>
-                <div className="w-full">
+                <div className="w-full" aria-label="Tên của bạn">
                   <InputForm
-                    aria-label="Tên của bạn"
                     name="Tên khách hàng:"
                     type="text"
                     className="border border-gray-300 bg-white text-black focus:border-primary"
