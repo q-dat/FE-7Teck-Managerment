@@ -91,6 +91,14 @@ const PurchasePage: React.FC = () => {
         </div>
         {/* Form */}
         <div className="mt-5 px-2 xl:px-20">
+          <div>
+            <div role="region" aria-label="Thông tin liên hệ">
+              <h1 className="text-2xl font-bold">
+                Liên Hệ Thanh Toán Trực Tiếp
+              </h1>
+            </div>
+            <div></div>
+          </div>
           <form
             ref={formRef}
             onSubmit={onSubmit}
@@ -102,11 +110,19 @@ const PurchasePage: React.FC = () => {
               aria-label="Thông tin liên hệ"
             >
               <h1 className="text-2xl font-bold">
-                Liên Hệ Thanh Toán Trực Tiếp
+                Hãy để lại thông tin liên hệ. Chúng tôi sẽ hỗ trợ bạn.
               </h1>
               <div className="flex w-full flex-col gap-5 xl:flex-row">
                 <div className="w-full">
+                  <label
+                    htmlFor="phone-number"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Số điện thoại/Zalo
+                  </label>
                   <InputForm
+                    id="phone-number"
+                    aria-label="Số điện thoại hoặc Zalo"
                     name="Số điện thoại:"
                     type="number"
                     placeholder="Nhập số điện thoại"
@@ -115,11 +131,19 @@ const PurchasePage: React.FC = () => {
                   />
                 </div>
                 <div className="w-full">
+                  <label
+                    htmlFor="your-name"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Tên của bạn
+                  </label>
                   <InputForm
+                    id="your-name"
+                    aria-label="Tên của bạn"
                     name="Tên khách hàng:"
                     type="text"
                     className="border border-gray-300 bg-white text-black focus:border-primary"
-                    placeholder="Tên của bạn"
+                    placeholder="Nhập tên của bạn"
                     classNameLabel="bg-white dark:peer-placeholder-shown:text-black dark:peer-focus:text-black"
                   />
                 </div>
@@ -129,7 +153,7 @@ const PurchasePage: React.FC = () => {
                 <Textarea
                   name="Lời nhắn:"
                   className="border border-gray-300 bg-white px-2 pb-20 text-black placeholder:text-[14px] placeholder:text-gray-500 focus:border-primary focus:outline-none"
-                  placeholder="Chúng tôi luôn sẵn sàng giải đáp mọi câu hỏi của bạn!. Hãy để lại câu hỏi tại đây."
+                  placeholder="Hãy để lại câu hỏi tại đây. Chúng tôi luôn sẵn sàng giải đáp mọi câu hỏi của bạn!"
                 />
               </div>
               <div className="w-full">
