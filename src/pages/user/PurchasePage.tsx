@@ -114,14 +114,7 @@ const PurchasePage: React.FC = () => {
               </h1>
               <div className="flex w-full flex-col gap-5 xl:flex-row">
                 <div className="w-full">
-                  <label
-                    htmlFor="phone-number"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Số điện thoại/Zalo
-                  </label>
                   <InputForm
-                    id="phone-number"
                     aria-label="Số điện thoại hoặc Zalo"
                     name="Số điện thoại:"
                     type="number"
@@ -131,14 +124,7 @@ const PurchasePage: React.FC = () => {
                   />
                 </div>
                 <div className="w-full">
-                  <label
-                    htmlFor="your-name"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Tên của bạn
-                  </label>
                   <InputForm
-                    id="your-name"
                     aria-label="Tên của bạn"
                     name="Tên khách hàng:"
                     type="text"
