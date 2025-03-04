@@ -35,7 +35,7 @@ const NewsPage: React.FC = () => {
 
   return (
     <div>
-      <HeaderResponsive Title_NavbarMobile="Tin Tức" />
+      <HeaderResponsive Title_NavbarMobile="Tin Công Nghệ" />
       <div className="py-[60px] xl:pt-0">
         <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow xl:px-20">
           <ul className="font-light">
@@ -45,22 +45,13 @@ const NewsPage: React.FC = () => {
               </Link>
             </li>
             <li>
-              <Link aria-label="Tin tức" to="">
-                Tin Tức
+              <Link aria-label="Tin công nghệ" to="">
+                Tin Công Nghệ
               </Link>
             </li>
           </ul>
         </div>
-        <div className="px-2 xl:px-20">
-          <div
-            role="region"
-            aria-label="Tin tức nổi bật"
-            className="my-2 flex w-full flex-col items-center justify-center"
-          >
-            <p className="font-title bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold text-transparent">
-              Tin tức nổi bật
-            </p>
-          </div>
+        <div className="mt-5 px-2 xl:px-20">
           <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-5">
             {news.map(post => (
               <div

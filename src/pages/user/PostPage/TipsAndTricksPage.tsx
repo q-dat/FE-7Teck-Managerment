@@ -35,7 +35,7 @@ const TipsAndTricksPage: React.FC = () => {
 
   return (
     <div>
-      <HeaderResponsive Title_NavbarMobile="Thủ Thuật - Mẹo" />
+      <HeaderResponsive Title_NavbarMobile="Thủ Thuật - Mẹo Hay" />
       <div className="py-[60px] xl:pt-0">
         <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow xl:px-20">
           <ul className="font-light">
@@ -45,22 +45,13 @@ const TipsAndTricksPage: React.FC = () => {
               </Link>
             </li>
             <li>
-              <Link aria-label="Thủ thuật và mẹo" to="">
-                Thủ Thuật - Mẹo
+              <Link aria-label="Thủ thuật công nghệ và mẹo hay" to="">
+                Thủ Thuật Công Nghệ - Mẹo Hay
               </Link>
             </li>
           </ul>
         </div>
-        <div className="px-2 xl:px-20">
-          <div
-            role="region"
-            aria-label="Thủ thuật công nghệ và mẹo hay"
-            className="my-2 flex w-full flex-col items-center justify-center"
-          >
-            <p className="font-title bg-gradient-to-tr from-black via-primary to-black bg-clip-text p-2 text-3xl font-bold text-transparent">
-            Thủ thuật công nghệ - Mẹo hay
-            </p>
-          </div>
+        <div className="px-2 xl:px-20 mt-5">
           <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-5">
             {tricks.map(post => (
               <div

@@ -89,7 +89,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
       link: `${window.location.href}`,
       submenu: [
         {
-          name: 'Tin tức nổi bật',
+          name: 'Tin công nghệ',
           icon: RiPagesLine,
           link: '/tin-tuc-moi-nhat'
         },

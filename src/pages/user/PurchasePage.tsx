@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
 import { Link } from 'react-router-dom';
 import { Textarea, Button } from 'react-daisyui';
@@ -10,6 +10,13 @@ const PurchasePage: React.FC = () => {
   const [result, setResult] = React.useState<string>('');
   const formRef = useRef<HTMLFormElement>(null);
 
+  useEffect(() => {
+    // Scroll To Top
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
   const onSubmit = async (
     event: React.FormEvent<HTMLFormElement>
   ): Promise<void> => {
@@ -21,16 +28,19 @@ const PurchasePage: React.FC = () => {
       ToastifyUPage('Vui lòng nhập số điện thoại!', 400);
       return;
     }
-    const name = formData.get("Tên khách hàng:") as string;
+    const name = formData.get('Tên khách hàng:') as string;
 
     if (!name.trim()) {
-      ToastifyUPage("Vui lòng nhập tên khách hàng!", 400);
+      ToastifyUPage('Vui lòng nhập tên khách hàng!', 400);
       return;
     }
-    // 
+    //
     const phoneRegex = /^(0\d{9,10})$/;
     if (!phoneRegex.test(phone)) {
-      ToastifyUPage('Số điện thoại không hợp lệ! Vui lòng nhập đúng định dạng.', 400);
+      ToastifyUPage(
+        'Số điện thoại không hợp lệ! Vui lòng nhập đúng định dạng.',
+        400
+      );
       return;
     }
 
@@ -114,13 +124,13 @@ const PurchasePage: React.FC = () => {
                   />
                 </div>
               </div>
-              <div className='flex flex-col text-primary'>
-                <LabelForm  title={'*Có thể bỏ qua phần đặt câu hỏi!'}/>
-              <Textarea
-                name="Lời nhắn:"
-                className="border border-gray-300 bg-white px-2 pb-20 text-black placeholder:text-[14px] placeholder:text-gray-500 focus:border-primary focus:outline-none"
-                placeholder="Chúng tôi luôn sẵn sàng giải đáp mọi câu hỏi của bạn!. Hãy để lại câu hỏi tại đây."
-              />
+              <div className="flex flex-col text-primary">
+                <LabelForm title={'*Có thể bỏ qua phần đặt câu hỏi!'} />
+                <Textarea
+                  name="Lời nhắn:"
+                  className="border border-gray-300 bg-white px-2 pb-20 text-black placeholder:text-[14px] placeholder:text-gray-500 focus:border-primary focus:outline-none"
+                  placeholder="Chúng tôi luôn sẵn sàng giải đáp mọi câu hỏi của bạn!. Hãy để lại câu hỏi tại đây."
+                />
               </div>
               <div className="w-full">
                 <Button
@@ -141,4 +151,3 @@ const PurchasePage: React.FC = () => {
 };
 
 export default PurchasePage;
-
