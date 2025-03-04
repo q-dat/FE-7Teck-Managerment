@@ -34,19 +34,16 @@ const HomePage: React.FC = () => {
             src={BannerDesktop}
             className="hidden h-full w-full bg-black object-cover xl:block"
             alt="BannerDesktop"
-            loading="lazy"
           />
           <img
             src={BannerTablet}
             className="hidden h-full w-full bg-black object-cover md:block xl:hidden"
             alt="BannerTablet"
-            loading="lazy"
           />
           <img
             src={BannerMobile}
             className="h-full w-full bg-black object-cover md:hidden"
             alt="BannerMobile"
-            loading="lazy"
           />
         </div>
         {/* Benefits Section */}

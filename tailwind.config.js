@@ -45,7 +45,6 @@ export default {
       animation: {
         fadeIn: "fadeIn 1.8s ease-in-out forwards",
         exfadeIn: "exfadeIn 0.3s ease-in-out forwards",
-        zoomBorder: "zoomBorder 2s infinite ease-in-out",
         zoomBorderBtn: "zoomBorderBtn 2s infinite ease-in-out",
       },
     },

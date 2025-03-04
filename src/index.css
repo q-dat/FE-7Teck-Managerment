@@ -1,16 +1,14 @@
-/* @tailwind base; */
-@import 'tailwindcss/base';
-/* @tailwind components; */
-@import 'tailwindcss/components';
-/* @tailwind utilities; */
-@import 'tailwindcss/utilities';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* ------------------------------------------------------------------------------------- */
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
-/* 
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -19,57 +17,11 @@
     opacity: 1;
   }
 }
-@keyframes exfadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 .animation-fadeIn {
   animation: fadeIn 1.8s ease-in-out forwards;
 }
-.animation-exfadeIn {
-  animation: exfadeIn 0.3s ease-in-out forwards;
-} */
 
 /* Contact-Form */
-/* @keyframes zoomBorder {
-  0%,
-  100% {
-    border: 1px solid transparent;
-    box-shadow: 0 0 0 transparent;
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    border: 1px solid #5e90cc;
-    box-shadow: 0 0 10px #5e90cc;
-    transform: translate(0, 0) scale(1.3);
-  }
-  25%,
-  75% {
-    border: 1px solid white;
-    box-shadow: 0 0 0 #5e90cc;
-    transform: translate(0, 0) scale(1);
-  }
-}
-
-.animation-zoomBorder {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: calc(100% + 1px);
-  height: calc(100% + 1px);
-  border-radius: 100px;
-  border: 1px solid transparent;
-  box-shadow: 0 0 0 transparent;
-  transform: translate(-50%, -50%) scale(1);
-  transition: all 0.5s ease-in-out;
-  animation: zoomBorder 2s infinite ease-in-out;
-} */
-
 @keyframes zoomBorderBtn {
   0%,
   100% {

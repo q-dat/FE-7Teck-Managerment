@@ -29,7 +29,7 @@ const ContactForm: React.FC = () => {
           <img
             src={LogoZalo}
             alt="Zalo"
-            className="h-full w-[45px] animate-zoomBorderBtn rounded-full xl:w-[50px]"
+            className="h-full w-[45px] animate-fadeIn rounded-full xl:w-[50px]"
           />
         </Link>
       </div>
