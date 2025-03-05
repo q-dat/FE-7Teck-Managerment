@@ -1,18 +1,79 @@
-import React, { useState } from 'react';
+import { useState, memo, useCallback } from 'react';
 import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
 import { Link } from 'react-router-dom';
+import { MdOutlineDoubleArrow } from 'react-icons/md';
 import UsedPhonePage from './UsedPhonePage';
 import UsedTabletPage from './UsedTabletPage';
 import UsedMacbookPage from './UsedMacbookPage';
 import UsedWindowsPage from './UsedWindowsPage';
-import { MdOutlineDoubleArrow } from 'react-icons/md';
 
-const UsedProductsPage: React.FC = () => {
+// Danh sách danh mục sản phẩm
+const categories = [
+  { id: 'used-phone', label: 'iPhone' },
+  { id: 'used-tablet', label: 'iPad' },
+  { id: 'used-macbook', label: 'Macbook' },
+  { id: 'used-windows', label: 'Windows' }
+];
+
+// Component điều hướng menu
+const CategoryMenu = memo(
+  ({ isOpen, toggleMenu, selectedCategory, scrollToSection }: any) => (
+    <div
+      onClick={toggleMenu}
+      className={`fixed left-0 top-1/3 z-[999] w-[200px] rounded-r-lg bg-primary px-1 py-2 text-white shadow-lg transition-transform duration-300 ${
+        isOpen ? 'translate-x-0' : 'ml-4 -translate-x-full'
+      }`}
+    >
+      <div className="flex h-full cursor-pointer flex-row items-center justify-center">
+        <nav className="flex w-full flex-col items-start justify-center gap-1">
+          {categories.map(({ id, label }) => (
+            <button
+              key={id}
+              className={`w-full rounded-sm border border-white px-1 py-2 text-start text-sm hover:bg-white hover:text-primary ${
+                selectedCategory === id ? 'bg-white text-primary' : ''
+              }`}
+              onClick={() => scrollToSection(id)}
+            >
+              {label}
+            </button>
+          ))}
+        </nav>
+        <div>
+          <MdOutlineDoubleArrow
+            className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
+          />
+        </div>
+      </div>
+    </div>
+  )
+);
+
+// Component hiển thị danh mục sản phẩm
+const CategorySection = memo(() => (
+  <div className="ml-4 px-2 xl:px-20">
+    <div id="used-phone">
+      <UsedPhonePage />
+    </div>
+    <div id="used-tablet">
+      <UsedTabletPage />
+    </div>
+    <div id="used-macbook">
+      <UsedMacbookPage />
+    </div>
+    <div id="used-windows">
+      <UsedWindowsPage />
+    </div>
+  </div>
+));
+
+const UsedProductsPage = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] =
     useState<string>('used-phone');
 
-  const scrollToSection = (id: string) => {
+  const toggleMenu = useCallback(() => setIsOpen(prev => !prev), []);
+
+  const scrollToSection = useCallback((id: string) => {
     setSelectedCategory(id);
     const element = document.getElementById(id);
     if (element) {
@@ -27,7 +88,7 @@ const UsedProductsPage: React.FC = () => {
         behavior: 'smooth'
       });
     }
-  };
+  }, []);
 
   return (
     <div>
@@ -48,63 +109,21 @@ const UsedProductsPage: React.FC = () => {
           </ul>
         </div>
 
-        {/* Menu điều hướng bên trái */}
-
         <div className="relative">
-          <div
-            onClick={() => setIsOpen(!isOpen)}
-            className={`fixed left-0 top-1/3 z-[999] w-[200px] rounded-r-lg bg-primary px-1 py-2 text-white shadow-lg transition-transform duration-300 ${
-              isOpen ? 'translate-x-0' : 'ml-4 -translate-x-full'
-            }`}
-          >
-            <div className="flex h-full cursor-pointer flex-row items-center justify-center">
-              <nav className="flex w-full flex-col items-start justify-center gap-1">
-                {[
-                  { id: 'used-phone', label: 'iPhone' },
-                  { id: 'used-tablet', label: 'iPad' },
-                  { id: 'used-macbook', label: 'Macbook' },
-                  { id: 'used-windows', label: 'Windows' }
-                ].map(category => (
-                  <button
-                    key={category.id}
-                    className={`w-full rounded-sm border border-white px-1 py-2 text-start text-sm hover:bg-white hover:text-primary ${
-                      selectedCategory === category.id
-                        ? 'bg-white text-primary'
-                        : ''
-                    }`}
-                    onClick={() => scrollToSection(category.id)}
-                  >
-                    {category.label}
-                  </button>
-                ))}
-              </nav>
-              <div>
-                <MdOutlineDoubleArrow
-                  className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
-                />
-              </div>
-            </div>
-          </div>
-
+          {/* Menu điều hướng */}
+          <CategoryMenu
+            isOpen={isOpen}
+            toggleMenu={toggleMenu}
+            selectedCategory={selectedCategory}
+            scrollToSection={scrollToSection}
+          />
           {/* Nội dung chính */}
-          <div className="px-2 ml-4 xl:px-20">
-            <div id="used-phone">
-              <UsedPhonePage />
-            </div>
-            <div id="used-tablet">
-              <UsedTabletPage />
-            </div>
-            <div id="used-macbook">
-              <UsedMacbookPage />
-            </div>
-            <div id="used-windows">
-              <UsedWindowsPage />
-            </div>
-          </div>
+          <CategorySection />
         </div>
       </div>
     </div>
   );
 };
 
-export default UsedProductsPage;
+export default memo(UsedProductsPage);
+
