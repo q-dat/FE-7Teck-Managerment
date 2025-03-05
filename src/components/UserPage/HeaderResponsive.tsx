@@ -35,7 +35,6 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/^-+|-+$/g, '');
   };
-  // const [leftVisible, setLeftVisible] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
   const [rightVisible, setRightVisible] = useState(false);
   // SearchToggle Input
@@ -141,10 +140,6 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
     setOpenSubmenu(prev => (prev === name ? null : name));
   };
 
-  // const toggleLeftVisible = useCallback(() => {
-  //   setLeftVisible(visible => !visible);
-  // }, []);
-
   const toggleRightVisible = () => setRightVisible(prev => !prev);
   // Search Input
   const handleSearchToggle = () => {
@@ -164,64 +159,10 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
   };
   return (
     <div className="fixed z-[99999] block w-full bg-gradient-to-b from-white to-primary xl:hidden">
-      {/* Menu 1 */}
-      {/* <header
-        className={`flex h-[40px] w-full transform flex-row items-center justify-between border-b bg-primary px-2 text-white transition-transform duration-300 ease-in-out ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}
-      >
-        <div className="flex w-full flex-row items-center justify-center gap-1">
-          <IoSearch className="animate-bounce text-xl" />
-          <Input
-            className="text-md w-full border-none bg-transparent pl-1 placeholder-white shadow-none focus:placeholder-black focus:outline-none"
-            placeholder="Bạn muốn tìm gì..."
-          ></Input>
-        </div>
-      </header> */}
-      {/* Menu 2 */}
       <header
-        // className={`fixed h-[60px] w-full bg-gradient-to-r from-primary via-primary to-primary px-2 transition-all delay-200 duration-300 ease-in-out ${showMenu ? 'top-[40px]' : 'top-0'}`}
         className={`fixed h-[60px] w-full bg-gradient-to-r from-primary via-primary to-primary px-2 transition-all delay-200 duration-300 ease-in-out ${showMenu ? 'top-0' : 'top-0'}`}
       >
         <div className="flex flex-row items-center justify-between">
-          {/* <div className="z-50">
-            <Drawer
-              open={leftVisible}
-              onClickOverlay={toggleLeftVisible}
-              side={
-                <Menu role="menu" className="fixed h-full w-[280px] bg-white ">
-                  {/* LOGO */}
-          {/* <div className="flex items-center justify-center">
-                    <img
-                      className="mb-5 rounded-full object-cover w-[120px] h-full"
-                      loading="lazy"
-                      src={Logo}
-                      alt="LOGO"
-                    />
-                  </div>
-                  <div className="w-full space-y-5">
-                    <div className="flex flex-row items-center justify-between rounded-md bg-gray-700 bg-opacity-20 p-2">
-                      <p className="text-lg font-light text-black ">
-                        Giao Diện
-                      </p>
-                    </div>
-                  </div>
-                </Menu>
-              }
-            > */}
-          {/*  */}
-          {/*  */}
-          {/* <div
-                onClick={toggleLeftVisible}
-                className="flex flex-row items-center justify-center gap-2 py-4 text-2xl text-black  xl:hidden"
-              >
-                <div className="rounded-md p-1 text-[20px] text-white">
-                  <IoSettingsSharp />
-                </div>
-              </div>
-            </Drawer>
-          </div> */}
-          {/* Title */}
-          {/*  */}
-          {/*  */}
           <Link aria-label="Trang chủ" to="/">
             <FaHome className="text-2xl text-white" />
           </Link>
@@ -279,8 +220,8 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
             <Drawer
               open={rightVisible}
               onClickOverlay={toggleRightVisible}
-              aria-hidden={rightVisible ? 'false' : 'true'}
-              tabIndex={rightVisible ? 0 : undefined}
+              aria-hidden={!rightVisible}
+              tabIndex={!rightVisible ? -1 : 0}
               side={
                 <Menu role="menu" className="fixed h-full w-[280px] bg-white">
                   {/* LOGO */}
@@ -374,7 +315,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
               <button
                 aria-expanded={rightVisible}
                 aria-controls="drawer-menu"
-                aria-hidden={rightVisible ? "false" : "true"} 
+                aria-hidden={rightVisible ? 'false' : 'true'}
                 onClick={toggleRightVisible}
                 className="flex flex-row items-center justify-center gap-2 py-4 text-2xl xl:hidden"
               >
