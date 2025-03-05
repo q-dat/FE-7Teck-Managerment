@@ -53,7 +53,7 @@ const UsedProductsPage: React.FC = () => {
         <div className="relative">
           <div
             onClick={() => setIsOpen(!isOpen)}
-            className={`fixed left-0 top-1/3 z-[99999] w-[200px] rounded-r-lg bg-primary px-1 py-2 text-white shadow-lg transition-transform duration-300 ${
+            className={`fixed left-0 top-1/3 z-[999] w-[200px] rounded-r-lg bg-primary px-1 py-2 text-white shadow-lg transition-transform duration-300 ${
               isOpen ? 'translate-x-0' : 'ml-4 -translate-x-full'
             }`}
           >
@@ -87,7 +87,7 @@ const UsedProductsPage: React.FC = () => {
           </div>
 
           {/* Nội dung chính */}
-          <div className="px-2 xl:px-20">
+          <div className="px-2 ml-4 xl:px-20">
             <div id="used-phone">
               <UsedPhonePage />
             </div>
