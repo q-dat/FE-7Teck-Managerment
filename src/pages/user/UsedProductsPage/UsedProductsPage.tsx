@@ -50,9 +50,10 @@ const UsedProductsPage: React.FC = () => {
 
         {/* Menu điều hướng bên trái */}
 
-        <div className="relative" onClick={() => setIsOpen(!isOpen)}>
+        <div className="relative">
           <div
-            className={`fixed left-0 top-1/3 z-20 w-[200px] rounded-r-lg bg-primary px-1 py-2 text-white shadow-lg transition-transform duration-300 ${
+            onClick={() => setIsOpen(!isOpen)}
+            className={`fixed left-0 top-1/3 z-[99999] w-[200px] rounded-r-lg bg-primary px-1 py-2 text-white shadow-lg transition-transform duration-300 ${
               isOpen ? 'translate-x-0' : 'ml-4 -translate-x-full'
             }`}
           >
@@ -107,4 +108,3 @@ const UsedProductsPage: React.FC = () => {
 };
 
 export default UsedProductsPage;
-

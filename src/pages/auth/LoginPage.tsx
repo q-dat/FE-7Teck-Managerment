@@ -59,7 +59,7 @@ const LoginPage: React.FC = () => {
       }}
       className="fixed inset-0 flex w-full flex-col items-center justify-center bg-cover bg-fixed bg-center bg-no-repeat px-2 xl:px-20"
     >
-      <h2 className="mb-5 text-3xl font-bold text-primary transition-all duration-300">
+      <h2 className="mb-5 text-3xl font-bold uppercase text-white transition-all duration-300">
         {isRegister ? 'Đăng Ký Tài Khoản' : 'Đăng Nhập'}
       </h2>
 
@@ -114,7 +114,7 @@ const LoginPage: React.FC = () => {
         </form>
       </div>
       <button
-        className="my-3 font-semibold text-blue-700 underline"
+        className="my-3 rounded-md bg-white bg-opacity-60 px-3 py-1 font-semibold text-blue-800 underline"
         onClick={() => setIsRegister(!isRegister)}
       >
         {isRegister ? 'Chuyển sang đăng nhập' : 'Chuyển sang đăng ký'}
@@ -124,4 +124,3 @@ const LoginPage: React.FC = () => {
 };
 
 export default LoginPage;
-
