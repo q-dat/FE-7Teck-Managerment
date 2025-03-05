@@ -221,101 +221,102 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
               open={rightVisible}
               onClickOverlay={toggleRightVisible}
               aria-hidden={!rightVisible}
-              tabIndex={!rightVisible ? -1 : 0}
+              tabIndex={rightVisible ? 0 : -1}
               side={
-                <Menu role="menu" className="fixed h-full w-[280px] bg-white">
-                  {/* LOGO */}
-                  <Link
-                    aria-label="Trang chủ"
-                    to="/"
-                    onClick={() => setActiveItem('Trang Chủ')}
-                  >
-                    <img
-                      className="h-full w-[120px]"
-                      loading="lazy"
-                      src={Logo}
-                      alt="LOGO"
-                    />
-                  </Link>
-                  {/* Menu */}
-                  {menuItems.map(item => {
-                    const Icon = item.icon;
-                    return (
-                      <div key={item.name} className="relative">
-                        <Menu.Item
-                          role="menuitem"
-                          className="group relative"
-                          onClick={() =>
-                            item.submenu && handleMenuClick(item.name)
-                          }
-                        >
-                          <NavLink
-                            to={item.link}
-                            className={`btn relative mt-2 flex w-full flex-row items-center justify-between rounded-none border-none pl-4 pr-3 ${
-                              item.name === activeItem
-                                ? 'bg-primary bg-opacity-30 text-sm font-bold text-primary'
-                                : 'border-none bg-primary bg-opacity-10 text-sm font-light text-black shadow-headerMenu'
-                            } `}
+                rightVisible ? (
+                  <Menu role="menu" className="fixed h-full w-[280px] bg-white">
+                    {/* LOGO */}
+                    <Link
+                      aria-label="Trang chủ"
+                      to="/"
+                      onClick={() => setActiveItem('Trang Chủ')}
+                    >
+                      <img
+                        className="h-full w-[120px]"
+                        loading="lazy"
+                        src={Logo}
+                        alt="LOGO"
+                      />
+                    </Link>
+                    {/* Menu */}
+                    {menuItems.map(item => {
+                      const Icon = item.icon;
+                      return (
+                        <div key={item.name} className="relative">
+                          <Menu.Item
+                            role="menuitem"
+                            className="group relative"
+                            onClick={() =>
+                              item.submenu && handleMenuClick(item.name)
+                            }
                           >
-                            <>
-                              {item.name === activeItem && (
-                                <div className="absolute bottom-0 left-0 h-[2px] w-full bg-primary" />
-                              )}
-                              {Icon && (
-                                <div
-                                  className={
-                                    item.name === activeItem
-                                      ? 'h-5 w-5 text-2xl text-primary'
-                                      : 'h-5 w-5'
-                                  }
+                            <NavLink
+                              to={item.link}
+                              className={`btn relative mt-2 flex w-full flex-row items-center justify-between rounded-none border-none pl-4 pr-3 ${
+                                item.name === activeItem
+                                  ? 'bg-primary bg-opacity-30 text-sm font-bold text-primary'
+                                  : 'border-none bg-primary bg-opacity-10 text-sm font-light text-black shadow-headerMenu'
+                              } `}
+                            >
+                              <>
+                                {item.name === activeItem && (
+                                  <div className="absolute bottom-0 left-0 h-[2px] w-full bg-primary" />
+                                )}
+                                {Icon && (
+                                  <div
+                                    className={
+                                      item.name === activeItem
+                                        ? 'h-5 w-5 text-2xl text-primary'
+                                        : 'h-5 w-5'
+                                    }
+                                  >
+                                    <Icon />
+                                  </div>
+                                )}
+                                <span className={Icon ? '' : ''}>
+                                  {item.name}
+                                </span>
+                                {item.submenu && (
+                                  <div
+                                    className={`ml-2 h-4 w-4 ${openSubmenu === item.name ? 'rotate-180' : ''}`}
+                                  >
+                                    <FaChevronDown />
+                                  </div>
+                                )}
+                              </>
+                            </NavLink>
+                          </Menu.Item>
+                          {/* SubMenu */}
+                          {item.submenu && openSubmenu === item.name && (
+                            <div className="relative w-full transform space-y-2 rounded-sm bg-white p-1 shadow-md transition-transform duration-300 ease-in-out">
+                              {item.submenu.map((subItem, index) => (
+                                <Link
+                                  key={index}
+                                  to={subItem.link}
+                                  className="block"
                                 >
-                                  <Icon />
-                                </div>
-                              )}
-                              <span className={Icon ? '' : ''}>
-                                {item.name}
-                              </span>
-                              {item.submenu && (
-                                <div
-                                  className={`ml-2 h-4 w-4 ${openSubmenu === item.name ? 'rotate-180' : ''}`}
-                                >
-                                  <FaChevronDown />
-                                </div>
-                              )}
-                            </>
-                          </NavLink>
-                        </Menu.Item>
-                        {/* SubMenu */}
-                        {item.submenu && openSubmenu === item.name && (
-                          <div className="relative w-full transform space-y-2 rounded-sm bg-white p-1 shadow-md transition-transform duration-300 ease-in-out">
-                            {item.submenu.map((subItem, index) => (
-                              <Link
-                                key={index}
-                                to={subItem.link}
-                                className="block"
-                              >
-                                <Button
-                                  size="sm"
-                                  className="flex w-full flex-row items-center justify-start rounded-sm border-none bg-primary text-sm font-light text-white shadow-headerMenu"
-                                >
-                                  {subItem.icon && <subItem.icon />}
-                                  {subItem.name}
-                                </Button>
-                              </Link>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
-                </Menu>
+                                  <Button
+                                    size="sm"
+                                    className="flex w-full flex-row items-center justify-start rounded-sm border-none bg-primary text-sm font-light text-white shadow-headerMenu"
+                                  >
+                                    {subItem.icon && <subItem.icon />}
+                                    {subItem.name}
+                                  </Button>
+                                </Link>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </Menu>
+                ) : null
               }
             >
               {/*  */}
               <button
                 aria-expanded={rightVisible}
                 aria-controls="drawer-menu"
-                aria-hidden={rightVisible ? 'false' : 'true'}
                 onClick={toggleRightVisible}
                 className="flex flex-row items-center justify-center gap-2 py-4 text-2xl xl:hidden"
               >
