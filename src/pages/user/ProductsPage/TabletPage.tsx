@@ -95,7 +95,7 @@ const TabletPage: React.FC = () => {
                       >
                         <div
                           onClick={() =>
-                            navigate(`/ipad/${tabletUrl}/${subUrl}`)
+                            navigate(`/may-tinh-bang/${tabletUrl}/${subUrl}`)
                           }
                           className="relative h-[200px] w-full cursor-pointer overflow-hidden rounded-md rounded-b-none"
                         >
@@ -116,7 +116,7 @@ const TabletPage: React.FC = () => {
                         <div className="flex w-full flex-col items-start justify-between">
                           <div
                             className="w-full cursor-pointer p-1"
-                            onClick={() => navigate(`/ipad/${tabletUrl}/${subUrl}`)}
+                            onClick={() => navigate(`/may-tinh-bang/${tabletUrl}/${subUrl}`)}
                           >
                             <p className="xl:group-hover:text-secondary">
                               Máy tính bảng {tablet?.tablet_name}

@@ -87,8 +87,8 @@ export default function AppRoutes() {
           <Route path="/" element={<User />}>
             <Route index path="" element={<HomePageSEO />} />
             {/*  */}
-            <Route path="iphone" element={<PhonePageSEO />} />
-            <Route path="ipad" element={<TabletPageSEO />} />
+            <Route path="dien-thoai" element={<PhonePageSEO />} />
+            <Route path="may-tinh-bang" element={<TabletPageSEO />} />
             <Route path="macbook" element={<MacbookPageSEO />} />
             <Route path="windows" element={<WindowsPageSEO />} />
             <Route
@@ -96,15 +96,15 @@ export default function AppRoutes() {
               element={<UsedProductsPage />}
             />
             <Route
-              path="iphone-da-qua-su-dung/:catalog"
+              path="dien-thoai/:catalog"
               element={<UsedPhoneByCatalogPageSEO />}
             />
             <Route
-              path="iphone-da-qua-su-dung/:catalog/:id"
+              path="dien-thoai/:catalog/:id"
               element={<PhoneDetailPageSEO />}
             />
-            <Route path="iphone/:name/:id" element={<PhoneDetailPageSEO />} />
-            <Route path="ipad/:name/:id" element={<TabletDetailPageSEO />} />
+            <Route path="dien-thoai/:name/:id" element={<PhoneDetailPageSEO />} />
+            <Route path="may-tinh-bang/:name/:id" element={<TabletDetailPageSEO />} />
             <Route
               path="windows/:name/:id"
               element={<WindowsDetailPageSEO />}

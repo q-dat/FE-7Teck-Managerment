@@ -5,7 +5,6 @@ import IPadFC from './IPadFC';
 import WindowsFC from './WindowsFC';
 import MacbookFC from './MacbookFC';
 import PostSection from './PostSection';
-import BenefitsSection from './BenefitsSection';
 
 import {
   BannerDesktop,
@@ -71,8 +70,7 @@ const HomePage = () => {
       <HeaderResponsive Title_NavbarMobile="Trang Chủ" />
       <div className="pt-[60px] xl:pt-0">
         <Banner />
-        {/* Benefits Section */}
-        <BenefitsSection />
+        {/* <BenefitsSection /> */}
         {/* Product Section */}
         <div data-aos="fade-down">
           <PhoneFC />

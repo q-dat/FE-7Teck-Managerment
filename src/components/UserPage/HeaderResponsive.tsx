@@ -52,16 +52,26 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
 
   const menuItems: MenuItem[] = [
     {
-      name: 'Thiết bị đã qua sử dụng',
-      link: '/thiet-bi-da-qua-su-dung'
+      name: 'Máy cũ, Thu cũ',
+      link: `${window.location.href}`,
+      submenu: [
+        {
+          name: 'Thiết bị đã qua sử dụng',
+          link: '/thiet-bi-da-qua-su-dung'
+        },
+        {
+          name: 'Bảng Giá Thu Mua',
+          link: '/bang-gia-thu-mua'
+        }
+      ]
     },
     {
-      name: 'iPhone',
-      link: '/iphone'
+      name: 'Điện Thoại',
+      link: '/dien-thoai'
     },
     {
-      name: 'iPad',
-      link: '/ipad'
+      name: 'Máy tính bảng',
+      link: '/may-tinh-bang'
     },
     {
       name: 'Laptop',
@@ -79,10 +89,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
         }
       ]
     },
-    {
-      name: 'Bảng Giá Thu Mua',
-      link: '/bang-gia-thu-mua'
-    },
+
     {
       name: 'Tin tức',
       link: `${window.location.href}`,

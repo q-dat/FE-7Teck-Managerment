@@ -17,7 +17,7 @@ const User: React.FC = () => {
     <div className="flex min-h-screen flex-col bg-[#f2f4f7]">
       <Header />
       <ScrollToTopButton />
-      <div className="flex-1 xl:pt-[100px]">
+      <div className="flex-1 xl:pt-[140px]">
         <Outlet />
       </div>
       <NotificationPopup/>

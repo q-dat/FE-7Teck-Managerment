@@ -99,7 +99,7 @@ const PhonePage: React.FC = () => {
                       >
                         <div
                           onClick={() =>
-                            navigate(`/iphone/${phoneUrl}/${subUrl}`)
+                            navigate(`/dien-thoai/${phoneUrl}/${subUrl}`)
                           }
                           className="relative h-[200px] w-full cursor-pointer overflow-hidden rounded-md rounded-b-none"
                         >
@@ -120,7 +120,7 @@ const PhonePage: React.FC = () => {
                         <div className="flex w-full flex-col items-start justify-between p-1">
                           <div
                             className="w-full cursor-pointer"
-                            onClick={() => navigate(`/iphone/${phoneUrl}`)}
+                            onClick={() => navigate(`/dien-thoai/${phoneUrl}`)}
                           >
                             <p className="xl:group-hover:text-secondary">
                               Điện Thoại {phone.name}

@@ -76,7 +76,7 @@ const UsedPhonePage: React.FC = () => {
                 <div
                   key={phoneCatalog?._id}
                   onClick={() =>
-                    navigate(`/iphone-da-qua-su-dung/${phoneCatalogUrl}`)
+                    navigate(`/dien-thoai/${phoneCatalogUrl}`)
                   }
                   className="group flex h-full w-full flex-col justify-between rounded-md border border-white bg-white text-black"
                 >

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { memo, useContext, useEffect, useState } from 'react';
 import { Button, Input, Menu } from 'react-daisyui';
 import { FaChevronDown, FaMagic } from 'react-icons/fa';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
@@ -50,21 +50,31 @@ const Header: React.FC = () => {
   const [activeItem, setActiveItem] = useState('Trang Chủ');
   const location = useLocation();
   //
-  const [showMenu, setShowMenu] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  // const [showMenu, setShowMenu] = useState(true);
+  // const [lastScrollY, setLastScrollY] = useState(0);
 
   const menuItems: MenuItem[] = [
     {
-      name: 'Thiết bị đã qua sử dụng',
-      link: '/thiet-bi-da-qua-su-dung'
+      name: 'Máy cũ, Thu cũ',
+      link: `${window.location.href}`,
+      submenu: [
+        {
+          name: 'Thiết bị đã qua sử dụng',
+          link: '/thiet-bi-da-qua-su-dung'
+        },
+        {
+          name: 'Bảng Giá Thu Mua',
+          link: '/bang-gia-thu-mua'
+        }
+      ]
     },
     {
-      name: 'iPhone',
-      link: '/iphone'
+      name: 'Điện Thoại',
+      link: '/dien-thoai'
     },
     {
-      name: 'iPad',
-      link: '/ipad'
+      name: 'Máy tính bảng',
+      link: '/may-tinh-bang'
     },
     {
       name: 'Laptop',
@@ -82,10 +92,7 @@ const Header: React.FC = () => {
         }
       ]
     },
-    {
-      name: 'Bảng Giá Thu Mua',
-      link: '/bang-gia-thu-mua'
-    },
+
     {
       name: 'Tin tức',
       link: `${window.location.href}`,
@@ -124,19 +131,19 @@ const Header: React.FC = () => {
     }
   }, [location.pathname, menuItems]);
   //
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY && currentScrollY > 50) {
-        setShowMenu(false);
-      } else {
-        setShowMenu(true);
-      }
-      setLastScrollY(currentScrollY);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const currentScrollY = window.scrollY;
+  //     if (currentScrollY > lastScrollY && currentScrollY > 50) {
+  //       setShowMenu(false);
+  //     } else {
+  //       setShowMenu(true);
+  //     }
+  //     setLastScrollY(currentScrollY);
+  //   };
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => window.removeEventListener('scroll', handleScroll);
+  // }, [lastScrollY]);
 
   //
   const handleSearch = (query: string) => {
@@ -153,8 +160,9 @@ const Header: React.FC = () => {
   return (
     <div className="fixed z-[99999] hidden w-full flex-col xl:block">
       {/* Menu 1 */}
-      <header
-        className={`flex h-[40px] w-full transform flex-row items-center justify-between border-b bg-primary px-10 text-xs text-white transition-transform delay-100 duration-300 ease-in-out hover:text-white ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}
+      <div
+        // className={`flex h-[40px] w-full transform flex-row items-center justify-between border-b bg-primary px-10 text-xs text-white transition-transform delay-100 duration-300 ease-in-out hover:text-white ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}
+        className={`flex h-[40px] w-full transform flex-row items-center justify-between border-b bg-primary px-10 text-xs text-white transition-transform delay-100 duration-300 ease-in-out hover:text-white`}
       >
         <div className="w-full">
           <div className="flex items-center">
@@ -235,10 +243,11 @@ const Header: React.FC = () => {
             </Link>
           </div>
         </div>
-      </header>
-      {/*  */}
+      </div>
+      {/* Menu */}
       <header
-        className={`h-[60px] w-full transform flex-row items-center justify-evenly bg-white py-2 shadow-md transition-transform delay-100 duration-300 ease-in-out xl:flex ${showMenu ? 'translate-y-0' : '-translate-y-[40px]'}`}
+        // className={`h-[60px] w-full transform flex-row items-center justify-evenly bg-white py-2 shadow-md transition-transform delay-100 duration-300 ease-in-out xl:flex ${showMenu ? 'translate-y-0' : '-translate-y-[40px]'}`}
+        className={`h-[60px] w-full transform flex-row items-center justify-evenly bg-white py-2 shadow-md transition-transform delay-100 duration-300 ease-in-out xl:flex`}
       >
         <nav>
           <Link
@@ -326,4 +335,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
+export default memo(Header);

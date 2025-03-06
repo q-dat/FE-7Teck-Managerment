@@ -78,7 +78,7 @@ const UsedWindowsPage: React.FC = () => {
                 <div
                   key={windowsCatalog?._id}
                   onClick={() =>
-                    navigate(`/windows-da-qua-su-dung/${windowsCatalogUrl}`)
+                    navigate(`/windows/${windowsCatalogUrl}`)
                   }
                   className="group flex h-full w-full flex-col justify-between rounded-md border border-white bg-white text-black"
                 >

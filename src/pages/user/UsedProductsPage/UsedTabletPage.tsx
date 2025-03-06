@@ -77,7 +77,7 @@ const UsedTabletPage: React.FC = () => {
                 <div
                   key={tabletCatalog?._id}
                   onClick={() =>
-                    navigate(`/ipad-da-qua-su-dung/${tabletCatalogUrl}`)
+                    navigate(`/may-tinh-bang/${tabletCatalogUrl}`)
                   }
                   className="group flex h-full w-full flex-col justify-between rounded-md border border-white bg-white text-black"
                 >

@@ -115,7 +115,7 @@ const IPadFC: React.FC = () => {
                 >
                   <Link
                     aria-label="Xem chi tiết sản phẩm khi ấn vào hình ảnh"
-                    to={`/ipad/${tabletUrl}/${tablet?._id}`}
+                    to={`/may-tinh-bang/${tabletUrl}/${tablet?._id}`}
                   >
                     <div className="relative h-[200px] w-full cursor-pointer overflow-hidden">
                       <img
@@ -138,7 +138,7 @@ const IPadFC: React.FC = () => {
                     <Link
                       aria-label="Xem chi tiết sản phẩm khi nhấn vào tên sản phẩm"
                       className="w-full cursor-pointer"
-                      to={`/ipad/${tabletUrl}/${tablet?._id}`}
+                      to={`/may-tinh-bang/${tabletUrl}/${tablet?._id}`}
                     >
                       <div className="flex w-[50px] items-center justify-start gap-1 rounded-sm p-[2px] text-center text-[12px] text-black">
                         <FaRegEye />
@@ -192,7 +192,7 @@ const IPadFC: React.FC = () => {
               );
             })}
       </section>
-      <Link to="/ipad" aria-label="Xem thêm điện thoại">
+      <Link to="/may-tinh-bang" aria-label="Xem thêm điện thoại">
         <button className="flex w-full cursor-pointer items-center justify-center bg-gradient-to-r from-white via-secondary to-white py-1 text-sm text-white xl:rounded-b-lg">
           {loading ? (
             <>Đang tải...</>

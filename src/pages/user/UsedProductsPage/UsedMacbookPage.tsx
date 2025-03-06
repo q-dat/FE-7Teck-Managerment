@@ -78,7 +78,7 @@ const UsedMacbookPage: React.FC = () => {
                 <div
                   key={macbookCatalog?._id}
                   onClick={() =>
-                    navigate(`/macbook-da-qua-su-dung/${macbookCatalogUrl}`)
+                    navigate(`/macbook/${macbookCatalogUrl}`)
                   }
                   className="group flex h-full w-full flex-col justify-between rounded-md border border-white bg-white text-black"
                 >

@@ -117,7 +117,7 @@ const PhoneFC: React.FC = () => {
                 >
                   <Link
                     aria-label="Xem chi tiết sản phẩm khi ấn vào hình ảnh"
-                    to={`/iphone-da-qua-su-dung/${phoneUrl}/${phone?._id}`}
+                    to={`/dien-thoai/${phoneUrl}/${phone?._id}`}
                   >
                     <div className="relative h-[200px] w-full cursor-pointer overflow-hidden">
                       <img
@@ -140,7 +140,7 @@ const PhoneFC: React.FC = () => {
                     <Link
                       aria-label="Xem chi tiết sản phẩm khi nhấn vào tên sản phẩm"
                       className="w-full cursor-pointer"
-                      to={`/iphone-da-qua-su-dung/${phoneUrl}/${phone?._id}`}
+                      to={`/dien-thoai/${phoneUrl}/${phone?._id}`}
                     >
                       <div className="flex w-[50px] items-center justify-start gap-1 rounded-sm p-[2px] text-center text-[12px] text-black">
                         <FaRegEye />
