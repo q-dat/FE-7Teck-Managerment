@@ -38,7 +38,7 @@ const UsedPhoneByCatalogPage = () => {
     <div>
       <HeaderResponsive Title_NavbarMobile="Điện Thoại" />
       <div className="py-[60px] xl:pt-0">
-        <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow xl:px-20">
+        <div className="xl:px-desktop-padding breadcrumbs px-[10px] py-2 text-sm text-black shadow">
           <ul className="font-light">
             <li>
               <Link role="navigation" aria-label="Trang chủ" to="/">
@@ -53,7 +53,7 @@ const UsedPhoneByCatalogPage = () => {
           </ul>
         </div>
         {/*  */}
-        <div className="space-y-10 px-2 xl:px-20">
+        <div className="xl:px-desktop-padding space-y-10 px-2">
           <div className="mt-5 w-full">
             <div className="grid grid-flow-row grid-cols-2 items-start gap-[10px] md:grid-cols-4 xl:grid-cols-6">
               {loading ? (
@@ -110,7 +110,7 @@ const UsedPhoneByCatalogPage = () => {
                             Điện Thoại {phone?.name}
                           </p>
                           <p className="text-red-700">
-                              {(phone?.price * 1000).toLocaleString('vi-VN')}₫
+                            {(phone?.price * 1000).toLocaleString('vi-VN')}₫
                             &nbsp;
                             <del className="text-xs font-light text-gray-400">
                               {phone?.sale &&

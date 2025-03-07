@@ -50,7 +50,7 @@ const CategoryMenu = memo(
 
 // Component hiển thị danh mục sản phẩm
 const CategorySection = memo(() => (
-  <div className="ml-4 px-2 xl:px-20">
+  <div className="xl:px-desktop-padding ml-4 px-2">
     <div id="used-phone">
       <UsedPhonePage />
     </div>
@@ -94,7 +94,7 @@ const UsedProductsPage = () => {
     <div>
       <HeaderResponsive Title_NavbarMobile="Thiết Bị Đã Qua Sử Dụng" />
       <div className="py-[60px] xl:pt-0">
-        <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow xl:px-20">
+        <div className="xl:px-desktop-padding breadcrumbs px-[10px] py-2 text-sm text-black shadow">
           <ul className="font-light">
             <li>
               <Link aria-label="Trang chủ" to="/">
@@ -126,4 +126,3 @@ const UsedProductsPage = () => {
 };
 
 export default memo(UsedProductsPage);
-

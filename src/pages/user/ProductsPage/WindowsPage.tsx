@@ -56,7 +56,7 @@ const WindowsPage: React.FC = () => {
     <div>
       <HeaderResponsive Title_NavbarMobile="Laptop Windows" />
       <div className="py-[60px] xl:pt-0">
-        <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow xl:px-20">
+        <div className="xl:px-desktop-padding breadcrumbs px-[10px] py-2 text-sm text-black shadow">
           <ul className="font-light">
             <li>
               <Link aria-label="Trang chủ" to="/">
@@ -71,7 +71,7 @@ const WindowsPage: React.FC = () => {
           </ul>
         </div>
         {/*  */}
-        <div className="space-y-10 px-2 xl:px-20">
+        <div className="xl:px-desktop-padding space-y-10 px-2">
           <div className="mt-5 w-full">
             <div className="grid grid-flow-row grid-cols-2 items-start gap-[10px] md:grid-cols-4 xl:grid-cols-6">
               {loading
@@ -116,9 +116,7 @@ const WindowsPage: React.FC = () => {
                         <div className="flex w-full flex-col items-start justify-between">
                           <div
                             className="w-full cursor-pointer p-1"
-                            onClick={() =>
-                              navigate(`/windows/${windowsUrl}`)
-                            }
+                            onClick={() => navigate(`/windows/${windowsUrl}`)}
                           >
                             <p className="xl:group-hover:text-secondary">
                               Laptop {windows?.windows_name}
@@ -167,4 +165,3 @@ const WindowsPage: React.FC = () => {
 };
 
 export default WindowsPage;
-

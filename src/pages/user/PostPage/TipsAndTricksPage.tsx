@@ -37,7 +37,7 @@ const TipsAndTricksPage: React.FC = () => {
     <div>
       <HeaderResponsive Title_NavbarMobile="Thủ Thuật - Mẹo Hay" />
       <div className="py-[60px] xl:pt-0">
-        <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow xl:px-20">
+        <div className="xl:px-desktop-padding breadcrumbs px-[10px] py-2 text-sm text-black shadow">
           <ul className="font-light">
             <li>
               <Link aria-label="Trang chủ" to="/">
@@ -51,7 +51,7 @@ const TipsAndTricksPage: React.FC = () => {
             </li>
           </ul>
         </div>
-        <div className="px-2 xl:px-20 mt-5">
+        <div className="xl:px-desktop-padding mt-5 px-2">
           <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-5">
             {tricks.map(post => (
               <div

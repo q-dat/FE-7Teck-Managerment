@@ -9,7 +9,7 @@ import { IoMail } from 'react-icons/io5';
 const FooterFC: React.FC = () => {
   return (
     <div className="mb-[50px] xl:mb-0">
-      <Footer className="item-center flex flex-col justify-between bg-black px-2 pb-0 pt-10 text-white xl:flex-row xl:px-[100px] xl:pb-10">
+      <Footer className="item-center flex flex-col justify-between bg-black px-2 pb-0 pt-10 text-white xl:flex-row xl:px-desktop-padding  xl:pb-10">
         {/* Logo */}
         <div className="w-full">
           <img

@@ -14,10 +14,10 @@ const User: React.FC = () => {
     AOS.init({ duration: 900 });
   }, []);
   return (
-    <div className="flex min-h-screen flex-col bg-[#f2f4f7]">
+    <div className="flex min-h-screen flex-col bg-white">
       <Header />
       <ScrollToTopButton />
-      <div className="flex-1 xl:pt-[140px]">
+      <div className="flex-1 xl:pt-[130px]">
         <Outlet />
       </div>
       <NotificationPopup/>

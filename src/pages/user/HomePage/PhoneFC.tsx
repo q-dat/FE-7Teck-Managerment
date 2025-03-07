@@ -73,7 +73,7 @@ const PhoneFC: React.FC = () => {
     .sort((a, b) => (b.view ?? 0) - (a.view ?? 0));
 
   return (
-    <div className={`mt-10 p-0 xl:px-[100px]`}>
+    <div className={`xl:px-desktop-padding mt-10 p-0`}>
       {/* Title */}
       <div
         role="region"

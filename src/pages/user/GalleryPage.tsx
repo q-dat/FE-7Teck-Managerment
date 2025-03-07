@@ -41,7 +41,7 @@ const GalleryPage: React.FC = () => {
     <div>
       <HeaderResponsive Title_NavbarMobile="Hành Trình Khách Hàng" />
       <div className="py-[60px] xl:pt-0">
-        <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow dark:text-white xl:px-20">
+        <div className="xl:px-desktop-padding breadcrumbs px-[10px] py-2 text-sm text-black shadow dark:text-white">
           <ul className="font-light">
             <li>
               <Link aria-label="Trang chủ" to="/">
@@ -56,7 +56,7 @@ const GalleryPage: React.FC = () => {
           </ul>
         </div>
         {/*  */}
-        <div className="mt-5 xl:px-20">
+        <div className="xl:px-desktop-padding mt-5">
           <div className="grid grid-flow-row grid-cols-2 gap-2 bg-white p-2 md:grid-cols-3 xl:grid-cols-6 xl:rounded-md">
             {currentGallerys.map((gallery, index) => (
               <Zoom key={index}>

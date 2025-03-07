@@ -46,7 +46,7 @@ const PostSection: React.FC = () => {
         aria-label="Bản tin mới nhất"
       >
         <div
-          className="my-2 flex flex-row items-center justify-between px-2 text-white xl:px-[100px]"
+          className="xl:px-desktop-padding my-2 flex flex-row items-center justify-between px-2 text-white"
           aria-label="Thanh tiêu đề Tin công nghệ và liên kết xem tất cả"
         >
           <div>
@@ -65,7 +65,7 @@ const PostSection: React.FC = () => {
             </Button>
           </Link>
         </div>
-        <div className="grid grid-cols-2 gap-2 px-2 md:grid-cols-3 lg:grid-cols-4 xl:px-[100px]">
+        <div className="xl:px-desktop-padding grid grid-cols-2 gap-2 px-2 md:grid-cols-3 lg:grid-cols-4">
           {news.slice(0, 4).map(post => (
             <div
               key={post?._id}
@@ -107,7 +107,7 @@ const PostSection: React.FC = () => {
         aria-label="Thủ thuật và mẹo hay"
       >
         <div
-          className="my-2 flex flex-row items-center justify-between px-2 text-white xl:px-[100px]"
+          className="xl:px-desktop-padding my-2 flex flex-row items-center justify-between px-2 text-white"
           aria-label="Thanh tiêu đề Tin công nghệ và liên kết xem tất cả"
         >
           <div>
@@ -128,7 +128,7 @@ const PostSection: React.FC = () => {
             </Button>
           </Link>
         </div>
-        <div className="grid grid-cols-2 gap-2 px-2 md:grid-cols-3 lg:grid-cols-4 xl:px-[100px]">
+        <div className="xl:px-desktop-padding grid grid-cols-2 gap-2 px-2 md:grid-cols-3 lg:grid-cols-4">
           {tricks.slice(0, 4).map(post => (
             <div
               key={post?._id}

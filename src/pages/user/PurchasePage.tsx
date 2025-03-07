@@ -75,7 +75,7 @@ const PurchasePage: React.FC = () => {
     <div>
       <HeaderResponsive Title_NavbarMobile="Mua Hàng" />
       <div className="py-[60px] xl:pt-0">
-        <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow dark:text-white xl:px-20">
+        <div className="xl:px-desktop-padding breadcrumbs px-[10px] py-2 text-sm text-black shadow dark:text-white">
           <ul className="font-light">
             <li>
               <Link aria-label="Trang chủ" to="/">
@@ -90,7 +90,7 @@ const PurchasePage: React.FC = () => {
           </ul>
         </div>
         {/* Form */}
-        <div className="mt-5 px-2 xl:px-20">
+        <div className="xl:px-desktop-padding mt-5 px-2">
           <div>
             <div role="region" aria-label="Thông tin liên hệ">
               <h1 className="text-2xl font-bold">

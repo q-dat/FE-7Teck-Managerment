@@ -57,7 +57,7 @@ const PostDetail: React.FC = () => {
     <div>
       <HeaderResponsive Title_NavbarMobile="Bài viết" />
       <div className="py-[60px] xl:pt-0">
-        <div className="breadcrumbs mb-10 px-[10px] py-2 text-sm text-black shadow xl:px-20">
+        <div className="xl:px-desktop-padding breadcrumbs mb-10 px-[10px] py-2 text-sm text-black shadow">
           <ul className="font-light">
             <li>
               <Link aria-label="Trang chủ" to="/">
@@ -78,7 +78,7 @@ const PostDetail: React.FC = () => {
           </ul>
         </div>
         <div className="px-2">
-          <div className="xl:px-20">
+          <div className="xl:px-desktop-padding">
             <Link
               aria-label="Trở về trang tin tức"
               to="/tin-tuc-moi-nhat"
@@ -124,7 +124,7 @@ const PostDetail: React.FC = () => {
               )}
             </>
           </div>
-          <div className="px-0 xl:px-20">
+          <div className="xl:px-desktop-padding px-0">
             <div role="region" aria-label="Bài viết nổi bật khác">
               <h1 className="p-1 font-semibold uppercase">Bài viết khác</h1>
               <p className="mx-1 mb-3 h-[2px] w-[110px] bg-primary"></p>
@@ -149,10 +149,10 @@ const PostDetail: React.FC = () => {
                       {post?.title}
                     </p>
                     <p className="pt-2 text-[12px] text-primary">
-                  {new Date(post?.updatedAt).toLocaleDateString('vi-VN')}
-                  &nbsp;(
-                  <TimeAgo date={post?.updatedAt} />)
-                </p>
+                      {new Date(post?.updatedAt).toLocaleDateString('vi-VN')}
+                      &nbsp;(
+                      <TimeAgo date={post?.updatedAt} />)
+                    </p>
                   </div>
                 </div>
               ))}

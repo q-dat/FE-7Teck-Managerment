@@ -18,11 +18,16 @@ export default {
       "2xl": "1536px", // Double extra large devices (extra large desktops, 1536px and up)
     },
     extend: {
+      spacing: {
+        "desktop-padding": "100px",
+      },
       fontFamily: {
         sans: [...defaultTheme.fontFamily.sans],
         sub: ["Roboto"],
       },
       colors: {
+        "white": " #FAFAFA",
+        "black": "#333333",
         "link-hover": "#383838",
         "primary-hover":
           "color-mix(oklab, oklch(var(--btn-color, var(--b2)) / var(--tw-bg-opacity, 1)) 90%, black)",
@@ -63,7 +68,7 @@ export default {
       {
         mytheme: {
           primary: "#a92d30",
-          secondary: "#009485",
+          secondary: "#e9efff",
           info: "#312e91",
           success: "#009485",
           warning: "#ff9900",
