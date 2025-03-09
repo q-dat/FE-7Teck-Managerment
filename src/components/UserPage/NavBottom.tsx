@@ -7,12 +7,12 @@ const navLink = [
   {
     icon: FaMobileAlt,
     name: 'iPhone',
-    link: '/iphone'
+    link: '/dien-thoai'
   },
   {
     icon: FaTabletAlt,
     name: 'ipad',
-    link: '/ipad'
+    link: '/may-tinh-bang'
   },
   {
     icon: RiMacbookFill,
