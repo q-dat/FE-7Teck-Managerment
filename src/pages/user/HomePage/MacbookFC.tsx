@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom';
 import { IoIosArrowForward } from 'react-icons/io';
 import { Placeholder } from 'semantic-ui-react';
 import { Button } from 'react-daisyui';
-import { FaRegEye } from 'react-icons/fa';
 import { Sale } from '../../../assets/image-represent';
 import { MacbookContext } from '../../../context/macbook/MacbookContext';
 
@@ -140,10 +139,6 @@ const MacbookFC: React.FC = () => {
                       className="w-full cursor-pointer"
                       to={`/macbook/${tabletUrl}/${mac?._id}`}
                     >
-                      <div className="flex w-[50px] items-center justify-start gap-1 rounded-sm p-[2px] text-center text-[12px] text-black">
-                        <FaRegEye />
-                        <p>{mac.macbook_view}</p>
-                      </div>
                       <p className="xl:group-hover:text-secondary">
                         Điện Thoại {mac.macbook_name}
                       </p>

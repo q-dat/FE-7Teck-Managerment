@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom';
 import { IoIosArrowForward } from 'react-icons/io';
 import { Placeholder } from 'semantic-ui-react';
 import { Button } from 'react-daisyui';
-import { FaRegEye } from 'react-icons/fa';
 import { Sale } from '../../../assets/image-represent';
 import { TabletContext } from '../../../context/tablet/TabletContext';
 
@@ -71,7 +70,7 @@ const IPadFC: React.FC = () => {
   const sortedTablets = tablets.filter(tablet => tablet.tablet_sale);
 
   return (
-    <div className={`xl:px-desktop-padding p-0`}>
+    <div className={`p-0 xl:px-desktop-padding`}>
       {/* Title */}
       <div
         role="region"
@@ -140,10 +139,6 @@ const IPadFC: React.FC = () => {
                       className="w-full cursor-pointer"
                       to={`/may-tinh-bang/${tabletUrl}/${tablet?._id}`}
                     >
-                      <div className="flex w-[50px] items-center justify-start gap-1 rounded-sm p-[2px] text-center text-[12px] text-black">
-                        <FaRegEye />
-                        <p>{tablet.tablet_view}</p>
-                      </div>
                       <p className="xl:group-hover:text-secondary">
                         Điện Thoại {tablet.tablet_name}
                       </p>
