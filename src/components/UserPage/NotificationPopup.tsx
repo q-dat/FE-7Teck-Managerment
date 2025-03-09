@@ -39,10 +39,10 @@ const NotificationPopup: React.FC = () => {
       {isVisible && (
         <div>
           <section
-            className="fixed left-0 top-0 z-50 h-full w-full cursor-pointer bg-black bg-opacity-60"
+            className="fixed left-0 top-0 z-[99999] h-full w-full cursor-pointer bg-black bg-opacity-60"
             onClick={closePopup}
           ></section>
-          <div className="fixed left-1/2 top-1/2 z-50 w-[350px] -translate-x-1/2 -translate-y-1/2 rounded-lg xl:w-[500px]">
+          <div className="fixed left-1/2 top-1/2 z-[99999] w-[350px] -translate-x-1/2 -translate-y-1/2 rounded-lg xl:w-[500px]">
             <Hero>
               <Hero.Content className="m-0 p-0">
                 <div className="relative w-full">
