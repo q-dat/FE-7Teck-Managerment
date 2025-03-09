@@ -38,7 +38,7 @@ const UsedTabletByCatalogPage = () => {
     <div>
       <HeaderResponsive Title_NavbarMobile="Điện Thoại" />
       <div className="py-[60px] xl:pt-0">
-        <div className="xl:px-desktop-padding breadcrumbs px-[10px] py-2 text-sm text-black shadow">
+        <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow xl:px-desktop-padding">
           <ul className="font-light">
             <li>
               <Link role="navigation" aria-label="Trang chủ" to="/">
@@ -53,7 +53,7 @@ const UsedTabletByCatalogPage = () => {
           </ul>
         </div>
         {/*  */}
-        <div className="xl:px-desktop-padding space-y-10 px-2">
+        <div className="space-y-10 px-2 xl:px-desktop-padding">
           <div className="mt-5 w-full">
             <div className="grid grid-flow-row grid-cols-2 items-start gap-[10px] md:grid-cols-4 xl:grid-cols-6">
               {loading ? (
@@ -80,7 +80,7 @@ const UsedTabletByCatalogPage = () => {
                         role="navigation"
                         aria-label="Chi tiết sản phẩm"
                         className="flex h-full w-full items-center justify-center rounded-md rounded-b-none bg-white"
-                        to={`/tablet-da-qua-su-dung/${tabletUrl}/${tablet?._id}`}
+                        to={`/may-tinh-bang/${tabletUrl}/${tablet?._id}`}
                       >
                         <div className="relative h-[200px] w-full overflow-hidden">
                           <img
@@ -100,7 +100,7 @@ const UsedTabletByCatalogPage = () => {
                       {/*  */}
                       <div className="flex flex-col items-start justify-center gap-1 p-1">
                         <Link
-                          to={`/itablet-da-qua-su-dung/${tabletUrl}/${tablet?._id}`}
+                          to={`/imay-tinh-bang/${tabletUrl}/${tablet?._id}`}
                         >
                           <div className="flex w-[50px] items-center justify-start gap-1 rounded-sm p-[2px] text-center text-[12px] text-black">
                             <FaRegEye />

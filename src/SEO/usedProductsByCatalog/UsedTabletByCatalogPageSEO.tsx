@@ -1,13 +1,13 @@
 import React, { lazy, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { PhoneContext } from '../context/phone/PhoneContext';
-import useSeo from '../hooks/useSeo';
-const UsedPhoneByCatalogPage = lazy(
-  () => import('../pages/user/usedProductsByCatalog/UsedPhoneByCatalogPage')
+import { TabletContext } from '../../context/tablet/TabletContext';
+import useSeo from '../../hooks/useSeo';
+const UsedTabletByCatalogPage = lazy(
+  () => import('../../pages/user/usedProductsByCatalog/UsedTabletByCatalogPage')
 );
 
-const PhoneByCatalogPageSEO: React.FC = () => {
-  const { phones } = useContext(PhoneContext);
+const TabletByCatalogPageSEO: React.FC = () => {
+  const { tablets } = useContext(TabletContext);
   const { catalog } = useParams();
   const slugify = (text: string) => {
     return text
@@ -18,13 +18,13 @@ const PhoneByCatalogPageSEO: React.FC = () => {
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/^-+|-+$/g, '');
   };
-  const filteredPhones = phones.filter(
-    phone => slugify(phone?.name) === catalog
+  const filteredTablets = tablets.filter(
+    tablet => slugify(tablet?.tablet_name) === catalog
   );
   useSeo({
     title:
-      filteredPhones.length > 0
-        ? `${filteredPhones[0]?.name}`
+      filteredTablets.length > 0
+        ? `${filteredTablets[0]?.tablet_name}`
         : 'Không tìm thấy sản phẩm!',
     canonical: `${window.location.href}`,
     meta: [
@@ -35,8 +35,7 @@ const PhoneByCatalogPageSEO: React.FC = () => {
       { name: 'keywords', content: '7Teck, điện thoại, laptop, máy tính bảng' }
     ]
   });
-  return <UsedPhoneByCatalogPage />;
+  return <UsedTabletByCatalogPage />;
 };
 
-export default PhoneByCatalogPageSEO;
-
+export default TabletByCatalogPageSEO;

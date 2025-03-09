@@ -23,8 +23,12 @@ const GalleryPageSEO = lazy(() => import('../SEO/GalleryPageSEO'));
 //----------------------------------------------------------------
 const UsedProductsPage = lazy(() => import('../pages/user/UsedProductsPage/UsedProductsPage'));
 const UsedPhoneByCatalogPageSEO = lazy(
-  () => import('../SEO/UsedPhoneByCatalogPageSEO')
+  () => import('../SEO/usedProductsByCatalog/UsedPhoneByCatalogPageSEO')
 );
+const UsedTabletByCatalogPageSEO = lazy(
+  () => import('../SEO/usedProductsByCatalog/UsedTabletByCatalogPageSEO')
+);
+//
 const PhoneDetailPageSEO = lazy(
   () => import('../SEO/productDetails/PhoneDetailPageSEO')
 );
@@ -98,6 +102,10 @@ export default function AppRoutes() {
             <Route
               path="dien-thoai/:catalog"
               element={<UsedPhoneByCatalogPageSEO />}
+            />
+               <Route
+              path="may-tinh-bang/:catalog"
+              element={<UsedTabletByCatalogPageSEO />}
             />
             <Route
               path="dien-thoai/:catalog/:id"
