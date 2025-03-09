@@ -10,25 +10,31 @@ export default {
   ],
   theme: {
     screens: {
-      xs: "200px", // Extra small devices (phones, less than 640px)
-      sm: "640px", // Small devices (phones, 640px and up)
-      md: "768px", // Medium devices (tablets, 768px and up)
-      lg: "1024px", // Large devices (desktops, 1024px and up)
-      xl: "1280px", // Extra large devices (large desktops, 1280px and up)
-      "2xl": "1536px", // Double extra large devices (extra large desktops, 1536px and up)
+      xs: "200px",
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
     },
     extend: {
+      //p-desktop-padding
       spacing: {
         "desktop-padding": "100px",
       },
       fontFamily: {
-        sans: [...defaultTheme.fontFamily.sans],
-        sub: ["Roboto"],
+        sans: ["Inter", ...defaultTheme.fontFamily.sans], //primary
+        sub: ["Roboto", "sans-serif"], //secondary
       },
       colors: {
-        "white": " #FAFAFA",
-        "black": "#333333",
-        "link-hover": "#383838",
+        //Lưu ý về màu sắc: do logo nhiều màu nên tone màu của web sẽ sẽ là bg-white và text-black
+        white: " #FAFAFA",
+        black: "#333333",
+        "secondary-white": "#FFFFFF",
+        "btn-section-borderless": "#D6D6D6", //Với button section không viền, nền trắng dùng hex code: #D6D6D6
+        "btn-section-border": "#F0F0F0", //Với button section có nền đen thì dùng hex code: #F0F0F0
+        price: "#E8E8E8",
+        del: "#D84315",
         "primary-hover":
           "color-mix(oklab, oklch(var(--btn-color, var(--b2)) / var(--tw-bg-opacity, 1)) 90%, black)",
         "gray-50": "#ababab",
@@ -37,17 +43,18 @@ export default {
         "gray-300": "#6f6f6f",
       },
       boxShadow: {
-        //shadow-sideBar, shadow-mainMenu, ...
+        //shadow
         sideBar: "10px 0 30px -2px #D9D9D9",
         mainMenu: "0px 4px 12.100000381469727px 0px #00000040",
         tableItem: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
         headerMenu: "rgba(0, 0, 0, 0.1) 0px 2px 1px 0px",
       },
       borderRadius: {
-        //rounded-modal
+        //rounded
         modal: "16px",
       },
       animation: {
+        //animate
         fadeIn: "fadeIn 1.8s ease-in-out forwards",
         exfadeIn: "exfadeIn 0.3s ease-in-out forwards",
         zoomBorderBtn: "zoomBorderBtn 2s infinite ease-in-out",
