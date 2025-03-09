@@ -1,7 +1,7 @@
 export { default as BannerMobile } from './BannerMobile.webp';
 export { default as BannerTablet } from './BannerTablet.webp';
 export { default as BannerDesktop } from './BannerDesktop.webp';
-export { default as Logo } from './Logo.webp';
+export { default as Logo } from './Logo.png';
 export { default as LogoFacebook } from './LogoFacebook.webp';
 export { default as LogoEmail } from './LogoEmail.webp';
 export { default as LogoZalo } from './LogoZalo.webp';
