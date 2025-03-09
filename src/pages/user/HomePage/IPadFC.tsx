@@ -188,7 +188,7 @@ const IPadFC: React.FC = () => {
             })}
       </section>
       <Link to="/may-tinh-bang" aria-label="Xem thêm điện thoại">
-        <button className="flex w-full cursor-pointer items-center justify-center bg-gradient-to-r from-white via-secondary to-white py-1 text-sm text-white xl:rounded-b-lg">
+        <button className="flex w-full cursor-pointer items-center justify-center bg-gradient-to-r from-white via-secondary to-white py-1 text-sm text-black xl:rounded-b-lg">
           {loading ? (
             <>Đang tải...</>
           ) : (
