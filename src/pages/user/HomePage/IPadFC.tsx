@@ -78,15 +78,7 @@ const IPadFC: React.FC = () => {
         className="flex w-full flex-col items-start justify-center px-2 xl:rounded-t-lg"
       >
         <h1 className="py-2 text-2xl font-semibold">
-          {loading ? (
-            <div className="w-[240px]">
-              <Placeholder>
-                <Placeholder.Line />
-              </Placeholder>
-            </div>
-          ) : (
-            <>iPad - Giảm giá mạnh</>
-          )}
+          {loading ? <></> : <>iPad - Giảm giá mạnh</>}
         </h1>
       </div>
       <section

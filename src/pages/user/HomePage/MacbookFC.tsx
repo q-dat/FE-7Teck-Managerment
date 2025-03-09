@@ -70,7 +70,7 @@ const MacbookFC: React.FC = () => {
   const sortedMacbook = macbook.filter(mac => mac.macbook_sale);
 
   return (
-    <div className={`xl:px-desktop-padding p-0`}>
+    <div className={`p-0 xl:px-desktop-padding`}>
       {/* Title */}
       <div
         role="region"
@@ -78,15 +78,7 @@ const MacbookFC: React.FC = () => {
         className="flex w-full flex-col items-start justify-center px-2 xl:rounded-t-lg"
       >
         <h1 className="py-2 text-2xl font-semibold">
-          {loading ? (
-            <div className="w-[240px]">
-              <Placeholder>
-                <Placeholder.Line />
-              </Placeholder>
-            </div>
-          ) : (
-            <>Macbook - Giảm giá mạnh</>
-          )}
+          {loading ? <></> : <>Macbook - Giảm giá mạnh</>}
         </h1>
       </div>
       <section

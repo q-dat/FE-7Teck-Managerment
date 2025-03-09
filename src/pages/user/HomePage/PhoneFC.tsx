@@ -81,15 +81,7 @@ const PhoneFC: React.FC = () => {
         className="flex w-full flex-col items-start justify-center px-2 xl:rounded-t-lg"
       >
         <h1 className="py-2 text-2xl font-semibold">
-          {loading ? (
-            <div className="w-[240px]">
-              <Placeholder>
-                <Placeholder.Line />
-              </Placeholder>
-            </div>
-          ) : (
-            <>Sản phẩm nổi bật</>
-          )}
+          {loading ? <></> : <>Sản phẩm nổi bật</>}
         </h1>
       </div>
       <section
