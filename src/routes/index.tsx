@@ -21,12 +21,20 @@ const TipsAndTricksPageSEO = lazy(
 );
 const GalleryPageSEO = lazy(() => import('../SEO/GalleryPageSEO'));
 //----------------------------------------------------------------
-const UsedProductsPage = lazy(() => import('../pages/user/UsedProductsPage/UsedProductsPage'));
+const UsedProductsPage = lazy(
+  () => import('../pages/user/UsedProductsPage/UsedProductsPage')
+);
 const UsedPhoneByCatalogPageSEO = lazy(
   () => import('../SEO/usedProductsByCatalog/UsedPhoneByCatalogPageSEO')
 );
 const UsedTabletByCatalogPageSEO = lazy(
   () => import('../SEO/usedProductsByCatalog/UsedTabletByCatalogPageSEO')
+);
+const UsedMacbookByCatalogPageSEO = lazy(
+  () => import('../SEO/usedProductsByCatalog/UsedMacbookByCatalogPageSEO')
+);
+const UsedWindowsByCatalogPageSEO = lazy(
+  () => import('../SEO/usedProductsByCatalog/UsedWindowsByCatalogPageSEO')
 );
 //
 const PhoneDetailPageSEO = lazy(
@@ -95,6 +103,7 @@ export default function AppRoutes() {
             <Route path="may-tinh-bang" element={<TabletPageSEO />} />
             <Route path="macbook" element={<MacbookPageSEO />} />
             <Route path="windows" element={<WindowsPageSEO />} />
+            {/* Used Products */}
             <Route
               path="thiet-bi-da-qua-su-dung"
               element={<UsedProductsPage />}
@@ -103,16 +112,31 @@ export default function AppRoutes() {
               path="dien-thoai/:catalog"
               element={<UsedPhoneByCatalogPageSEO />}
             />
-               <Route
+            <Route
               path="may-tinh-bang/:catalog"
               element={<UsedTabletByCatalogPageSEO />}
             />
             <Route
+              path="macbook/:catalog"
+              element={<UsedMacbookByCatalogPageSEO />}
+            />
+            <Route
+              path="windows/:catalog"
+              element={<UsedWindowsByCatalogPageSEO />}
+            />
+            {/*  */}
+            <Route
               path="dien-thoai/:catalog/:id"
               element={<PhoneDetailPageSEO />}
             />
-            <Route path="dien-thoai/:name/:id" element={<PhoneDetailPageSEO />} />
-            <Route path="may-tinh-bang/:name/:id" element={<TabletDetailPageSEO />} />
+            <Route
+              path="dien-thoai/:name/:id"
+              element={<PhoneDetailPageSEO />}
+            />
+            <Route
+              path="may-tinh-bang/:name/:id"
+              element={<TabletDetailPageSEO />}
+            />
             <Route
               path="windows/:name/:id"
               element={<WindowsDetailPageSEO />}

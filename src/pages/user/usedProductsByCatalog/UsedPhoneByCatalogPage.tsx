@@ -47,7 +47,7 @@ const UsedPhoneByCatalogPage = () => {
             </li>
             <li>
               <Link role="navigation" aria-label="Điện thoại" to="">
-                Danh mục iPhone
+                Điện thoại
               </Link>
             </li>
           </ul>
