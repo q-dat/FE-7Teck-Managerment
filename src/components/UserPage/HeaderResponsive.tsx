@@ -202,7 +202,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                         <div
                           key={index}
                           onClick={() => {
-                            navigate(`/iphone-da-qua-su-dung/${phoneUrl}`);
+                            navigate(`/dien-thoai/${phoneUrl}`);
                             setSearchQuery('');
                             setSearchResults([]);
                           }}

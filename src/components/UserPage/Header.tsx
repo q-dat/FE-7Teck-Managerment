@@ -160,7 +160,7 @@ const Header: React.FC = () => {
   return (
     <div className="fixed z-[99999] hidden w-full flex-col xl:block">
       {/* Benefits */}
-      <div className="xl:px-desktop-padding h-[30px] bg-[#FFC107] text-center text-black">
+      <div className="h-[30px] bg-[#FFC107] text-center text-black xl:px-desktop-padding">
         <div className="flex items-center justify-around">
           <p>
             <b>Thu cũ</b> đối mới <b>lên tới 90%</b>
@@ -177,7 +177,7 @@ const Header: React.FC = () => {
       {/* */}
       <div
         // className={`flex h-[40px] w-full transform flex-row items-center justify-between border-b bg-primary px-10 text-xs text-white transition-transform delay-100 duration-300 ease-in-out hover:text-white ${showMenu ? 'translate-y-0' : '-translate-y-full'}`}
-        className={`xl:px-desktop-padding flex h-[40px] w-full transform flex-row items-center justify-between border-b bg-primary text-xs text-white transition-transform delay-100 duration-300 ease-in-out hover:text-white`}
+        className={`flex h-[40px] w-full transform flex-row items-center justify-between border-b bg-primary text-xs text-white transition-transform delay-100 duration-300 ease-in-out hover:text-white xl:px-desktop-padding`}
       >
         <div className="w-full">
           <div className="flex items-center">
@@ -214,7 +214,7 @@ const Header: React.FC = () => {
                     <div
                       key={index}
                       onClick={() => {
-                        navigate(`/iphone-da-qua-su-dung/${phoneUrl}`);
+                        navigate(`/dien-thoai/${phoneUrl}`);
                         setSearchQuery('');
                         setSearchResults([]);
                       }}
@@ -262,7 +262,7 @@ const Header: React.FC = () => {
       {/* Menu */}
       <header
         // className={`h-[60px] w-full transform flex-row items-center justify-evenly bg-white py-2 shadow-md transition-transform delay-100 duration-300 ease-in-out xl:flex ${showMenu ? 'translate-y-0' : '-translate-y-[40px]'}`}
-        className={`xl:px-desktop-padding h-[60px] w-full transform flex-row items-center justify-between bg-white py-2 shadow-md transition-transform delay-100 duration-300 ease-in-out xl:flex`}
+        className={`h-[60px] w-full transform flex-row items-center justify-between bg-white py-2 shadow-md transition-transform delay-100 duration-300 ease-in-out xl:flex xl:px-desktop-padding`}
       >
         <nav>
           <Link
