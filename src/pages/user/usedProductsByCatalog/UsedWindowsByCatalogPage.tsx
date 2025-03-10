@@ -80,7 +80,7 @@ const UsedWindowsByCatalogPage = () => {
                         role="navigation"
                         aria-label="Chi tiết sản phẩm"
                         className="flex h-full w-full items-center justify-center rounded-md rounded-b-none bg-white"
-                        to={`/may-tinh-bang/${winUrl}/${win?._id}`}
+                        to={`/windows/${winUrl}/${win?._id}`}
                       >
                         <div className="relative h-[200px] w-full overflow-hidden">
                           <img
@@ -99,7 +99,7 @@ const UsedWindowsByCatalogPage = () => {
                       </Link>
                       {/*  */}
                       <div className="flex flex-col items-start justify-center gap-1 p-1">
-                        <Link to={`/imay-tinh-bang/${winUrl}/${win?._id}`}>
+                        <Link to={`/iwindows/${winUrl}/${win?._id}`}>
                           <div className="flex w-[50px] items-center justify-start gap-1 rounded-sm p-[2px] text-center text-[12px] text-black">
                             <FaRegEye />
                             <p>{win.windows_view}</p>
