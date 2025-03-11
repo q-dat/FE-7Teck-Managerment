@@ -221,8 +221,8 @@ const ModalEditWindowsCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                   <option disabled value={''}>
                     Chọn trạng thái
                   </option>
-                  <option value={0}>Máy mới</option>
-                  <option value={1}>Máy cũ</option>
+                  <option value={0}>New</option>
+                  <option value={1}>Đã sử dụng</option>
                 </SelectDaisyUi>
               </div>
               <LabelForm title={'Hình ảnh*'} />

@@ -36,7 +36,7 @@ const ModalCreateMacbookPageAdmin: React.FC<ModalCreateAdminProps> = ({
     label: `${macCatalog.m_cat_name}  \u00A0
     ${
       macCatalog?.m_cat_status === 0
-        ? '(Máy mới)'
+        ? '(New)'
         : macCatalog?.m_cat_status === 1
           ? '(Đã sử dụng)'
           : macCatalog?.m_cat_status

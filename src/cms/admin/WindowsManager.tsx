@@ -23,7 +23,9 @@ const WindowsManager: React.FC = () => {
   const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
-  const [selectedWindowsId, setSelectedWindowsId] = useState<string | null>(null);
+  const [selectedWindowsId, setSelectedWindowsId] = useState<string | null>(
+    null
+  );
 
   const openModalCreateAdmin = () => setIsModalCreateOpen(true);
   const closeModalCreateAdmin = () => setIsModalCreateOpen(false);
@@ -135,13 +137,13 @@ const WindowsManager: React.FC = () => {
                   <span className="">
                     {win?.windows_name}
                     <hr />
-                    <mark>
+                    <b>
                       {win?.windows_catalog_id?.w_cat_status === 0
-                        ? 'Máy mới'
+                        ? 'New'
                         : win?.windows_catalog_id?.w_cat_status === 1
                           ? 'Đã sử dụng'
                           : win?.windows_catalog_id?.w_cat_status}
-                    </mark>
+                    </b>
                   </span>
                   <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
                     {(win.windows_price * 1000).toLocaleString('vi-VN')}đ
@@ -179,9 +181,7 @@ const WindowsManager: React.FC = () => {
                           Cập Nhật
                         </Button>
                         <Button
-                          onClick={() =>
-                            openModalDeleteAdmin(win?._id ?? '')
-                          }
+                          onClick={() => openModalDeleteAdmin(win?._id ?? '')}
                           className="w-full max-w-[140px] bg-red-600 text-sm font-light text-white"
                         >
                           <MdDelete />
@@ -219,4 +219,3 @@ const WindowsManager: React.FC = () => {
 };
 
 export default WindowsManager;
-

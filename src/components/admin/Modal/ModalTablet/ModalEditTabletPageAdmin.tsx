@@ -36,9 +36,9 @@ const ModalEditTabletPageAdmin: React.FC<ModalEditPageAdminProps> = ({
     label: `${tabletCatalog.t_cat_name}  \u00A0
     ${
       tabletCatalog?.t_cat_status === 0
-        ? '(Mới)'
+        ? '(New)'
         : tabletCatalog?.t_cat_status === 1
-          ? '(Cũ)'
+          ? '(Đã sử dụng)'
           : tabletCatalog?.t_cat_status
     }`
   }));

@@ -124,11 +124,17 @@ const PhoneCatalogManager: React.FC = () => {
                       <TimeAgo date={phoneCatalog?.createdAt} />
                     </span>
                     <span>
-                      {phoneCatalog?.status === 0
-                        ? '0 (Mới)'
-                        : phoneCatalog?.status === 1
-                          ? '1 (Cũ)'
-                          : phoneCatalog?.status}
+                      {phoneCatalog?.status === 0 ? (
+                        <p className="rounded-md bg-green-500 p-1 text-white">
+                          New
+                        </p>
+                      ) : phoneCatalog?.status === 1 ? (
+                        <p className="rounded-md bg-yellow-700 p-1 text-white">
+                          Đã sử dụng
+                        </p>
+                      ) : (
+                        phoneCatalog?.status
+                      )}
                     </span>
                     {/* Hành động */}
                     <span>

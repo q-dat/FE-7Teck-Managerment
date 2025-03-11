@@ -102,34 +102,40 @@ const MacbookCatalogManager: React.FC = () => {
           <Table.Body className="text-center text-sm">
             {macbookCatalogs && macbookCatalogs.length > 0 ? (
               macbookCatalogs.map(
-                (winCatalog: IMacbookCatalog, index: number) => (
+                (macCatalog: IMacbookCatalog, index: number) => (
                   <Table.Row key={index}>
                     <span>#{index + 1}</span>
                     <span className="flex items-center justify-center">
                       <img
                         loading="lazy"
-                        src={winCatalog?.m_cat_img}
+                        src={macCatalog?.m_cat_img}
                         alt="Hình ảnh"
                         className="h-12 w-12 object-cover"
                       />
                     </span>
-                    <span>{winCatalog?.m_cat_name}</span>
+                    <span>{macCatalog?.m_cat_name}</span>
                     <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
-                      {(winCatalog?.m_cat_price * 1000).toLocaleString('vi-VN')}
+                      {(macCatalog?.m_cat_price * 1000).toLocaleString('vi-VN')}
                       ₫
                     </span>
                     <span>
-                      {/* {new Date(winCatalog?.createdAt).toLocaleString(
+                      {/* {new Date(macCatalog?.createdAt).toLocaleString(
                         'vi-VN'
                       )} */}
-                      <TimeAgo date={winCatalog?.createdAt} />
+                      <TimeAgo date={macCatalog?.createdAt} />
                     </span>
                     <span>
-                      {winCatalog?.m_cat_status === 0
-                        ? '0 (Mới)'
-                        : winCatalog?.m_cat_status === 1
-                          ? '1 (Cũ)'
-                          : winCatalog?.m_cat_status}
+                      {macCatalog?.m_cat_status === 0 ? (
+                        <p className="rounded-md bg-green-500 p-1 text-white">
+                          New
+                        </p>
+                      ) : macCatalog?.m_cat_status === 1 ? (
+                        <p className="rounded-md bg-yellow-700 p-1 text-white">
+                          Đã sử dụng
+                        </p>
+                      ) : (
+                        macCatalog?.m_cat_status
+                      )}
                     </span>
                     {/* Hành động */}
                     <span>
@@ -143,7 +149,7 @@ const MacbookCatalogManager: React.FC = () => {
                           <Button
                             color="success"
                             onClick={() =>
-                              openModalEditAdmin(winCatalog._id ?? '')
+                              openModalEditAdmin(macCatalog._id ?? '')
                             }
                             className="w-full max-w-[140px] text-sm font-light text-white"
                           >
@@ -152,7 +158,7 @@ const MacbookCatalogManager: React.FC = () => {
                           </Button>
                           <Button
                             onClick={() =>
-                              openModalDeleteAdmin(winCatalog._id ?? '')
+                              openModalDeleteAdmin(macCatalog._id ?? '')
                             }
                             className="w-full max-w-[140px] bg-red-600 text-sm font-light text-white"
                           >
@@ -192,4 +198,3 @@ const MacbookCatalogManager: React.FC = () => {
 };
 
 export default MacbookCatalogManager;
-

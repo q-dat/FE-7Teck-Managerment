@@ -36,9 +36,9 @@ const ModalEditMacbookPageAdmin: React.FC<ModalEditPageAdminProps> = ({
       label: `${macCatalog.m_cat_name}  \u00A0
       ${
         macCatalog?.m_cat_status === 0
-          ? '(Mới)'
+          ? '(New)'
           : macCatalog?.m_cat_status === 1
-            ? '(Cũ)'
+            ? '(Đã sử dụng)'
             : macCatalog?.m_cat_status
       }`
     }));

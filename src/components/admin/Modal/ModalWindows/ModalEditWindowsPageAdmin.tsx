@@ -36,9 +36,9 @@ const ModalEditWindowsPageAdmin: React.FC<ModalEditPageAdminProps> = ({
     label: `${winCatalog.w_cat_name}  \u00A0
     ${
       winCatalog?.w_cat_status === 0
-        ? '(Mới)'
+        ? '(New)'
         : winCatalog?.w_cat_status === 1
-          ? '(Cũ)'
+          ? '(Đã sử dụng)'
           : winCatalog?.w_cat_status
     }`
   }));

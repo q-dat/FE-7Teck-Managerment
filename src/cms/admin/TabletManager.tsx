@@ -135,13 +135,13 @@ const TabletManager: React.FC = () => {
                   <span className="">
                     {tablet?.tablet_name}
                     <hr />
-                    <mark>
+                    <b>
                       {tablet?.tablet_catalog_id?.t_cat_status === 0
-                        ? 'Máy mới'
+                        ? 'New'
                         : tablet?.tablet_catalog_id?.t_cat_status === 1
                           ? 'Đã sử dụng'
                           : tablet?.tablet_catalog_id?.t_cat_status}
-                    </mark>
+                    </b>
                   </span>
                   <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
                     {(tablet.tablet_price * 1000).toLocaleString('vi-VN')}đ

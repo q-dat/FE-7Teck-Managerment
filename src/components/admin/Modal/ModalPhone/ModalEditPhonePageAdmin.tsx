@@ -38,9 +38,9 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
     label: `${phoneCatalog.name}  \u00A0
     ${
       phoneCatalog?.status === 0
-        ? '(Mới)'
+        ? '(New)'
         : phoneCatalog?.status === 1
-          ? '(Cũ)'
+          ? '(Đã sử dụng)'
           : phoneCatalog?.status
     }`
   }));

@@ -36,7 +36,7 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreateAdminProps> = ({
     label: `${phoneCatalog.name}  \u00A0
     ${
       phoneCatalog?.status === 0
-        ? '(Máy mới)'
+        ? '(New)'
         : phoneCatalog?.status === 1
           ? '(Đã sử dụng)'
           : phoneCatalog?.status

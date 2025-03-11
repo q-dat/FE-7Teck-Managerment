@@ -125,11 +125,17 @@ const WindowsCatalogManager: React.FC = () => {
                       <TimeAgo date={winCatalog?.createdAt} />
                     </span>
                     <span>
-                      {winCatalog?.w_cat_status === 0
-                        ? '0 (Mới)'
-                        : winCatalog?.w_cat_status === 1
-                          ? '1 (Cũ)'
-                          : winCatalog?.w_cat_status}
+                      {winCatalog?.w_cat_status === 0 ? (
+                        <p className="rounded-md bg-green-500 p-1 text-white">
+                          New
+                        </p>
+                      ) : winCatalog?.w_cat_status === 1 ? (
+                        <p className="rounded-md bg-yellow-700 p-1 text-white">
+                          Đã sử dụng
+                        </p>
+                      ) : (
+                        winCatalog?.w_cat_status
+                      )}
                     </span>
                     {/* Hành động */}
                     <span>
@@ -192,4 +198,3 @@ const WindowsCatalogManager: React.FC = () => {
 };
 
 export default WindowsCatalogManager;
-

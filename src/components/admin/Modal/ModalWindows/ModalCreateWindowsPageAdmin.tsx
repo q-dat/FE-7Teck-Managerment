@@ -36,7 +36,7 @@ const ModalCreateWindowsPageAdmin: React.FC<ModalCreateAdminProps> = ({
     label: `${winCatalog.w_cat_name}  \u00A0
     ${
       winCatalog?.w_cat_status === 0
-        ? '(Máy mới)'
+        ? '(New)'
         : winCatalog?.w_cat_status === 1
           ? '(Đã sử dụng)'
           : winCatalog?.w_cat_status

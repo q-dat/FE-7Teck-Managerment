@@ -216,7 +216,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                 placeholder="Nhập giá"
               />
               <div>
-                <LabelForm title={'Trạng thái của máy*'} />
+                <LabelForm title={'Trạng thái*'} />
                 <SelectDaisyUi
                   className="my-2 w-full border border-gray-700 border-opacity-50 bg-white text-black focus:border-primary focus:outline-none dark:border-secondary dark:bg-gray-700 dark:text-white dark:focus:border-white"
                   defaultValue={''}
@@ -225,8 +225,8 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                   <option disabled value={''}>
                     Chọn trạng thái
                   </option>
-                  <option value={0}>Máy mới</option>
-                  <option value={1}>Máy cũ</option>
+                  <option value={0}>New</option>
+                  <option value={1}>Đã sử dụng</option>
                 </SelectDaisyUi>
               </div>
               <LabelForm title={'Hình ảnh'} />

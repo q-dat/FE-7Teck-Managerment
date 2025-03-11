@@ -127,11 +127,17 @@ const TabletCatalogManager: React.FC = () => {
                       <TimeAgo date={tabletCatalog?.createdAt} />
                     </span>
                     <span>
-                      {tabletCatalog?.t_cat_status === 0
-                        ? '0 (Mới)'
-                        : tabletCatalog?.t_cat_status === 1
-                          ? '1 (Cũ)'
-                          : tabletCatalog?.t_cat_status}
+                      {tabletCatalog?.t_cat_status === 0 ? (
+                        <p className="rounded-md bg-green-500 p-1 text-white">
+                          New
+                        </p>
+                      ) : tabletCatalog?.t_cat_status === 1 ? (
+                        <p className="rounded-md bg-yellow-700 p-1 text-white">
+                          Đã sử dụng
+                        </p>
+                      ) : (
+                        tabletCatalog?.t_cat_status
+                      )}
                     </span>
                     {/* Hành động */}
                     <span>
@@ -194,4 +200,3 @@ const TabletCatalogManager: React.FC = () => {
 };
 
 export default TabletCatalogManager;
-

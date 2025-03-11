@@ -36,7 +36,7 @@ const ModalCreateTabletPageAdmin: React.FC<ModalCreateAdminProps> = ({
     label: `${tabletCatalog.t_cat_name}  \u00A0
     ${
       tabletCatalog?.t_cat_status === 0
-        ? '(Máy mới)'
+        ? '(New)'
         : tabletCatalog?.t_cat_status === 1
           ? '(Đã sử dụng)'
           : tabletCatalog?.t_cat_status

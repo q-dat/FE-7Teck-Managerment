@@ -137,13 +137,13 @@ const MacbookManager: React.FC = () => {
                   <span className="">
                     {win?.macbook_name}
                     <hr />
-                    <mark>
+                    <b>
                       {win?.macbook_catalog_id?.m_cat_status === 0
-                        ? 'Máy mới'
+                        ? 'New'
                         : win?.macbook_catalog_id?.m_cat_status === 1
                           ? 'Đã sử dụng'
                           : win?.macbook_catalog_id?.m_cat_status}
-                    </mark>
+                    </b>
                   </span>
                   <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
                     {(win.macbook_price * 1000).toLocaleString('vi-VN')}đ
@@ -219,4 +219,3 @@ const MacbookManager: React.FC = () => {
 };
 
 export default MacbookManager;
-
