@@ -4,6 +4,7 @@ import { Toastify } from '../../../../helper/Toastify';
 import InputModal from '../../InputModal';
 import { Button } from 'react-daisyui';
 import Select from 'react-select';
+import { Select as SelectDaisyUi } from 'react-daisyui';
 import LabelForm from '../../LabelForm';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -213,12 +214,21 @@ const ModalEditTabletCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                 {...register('t_cat_price')}
                 placeholder="Nhập giá (Hệ số x1000: 1triệu = 1000)"
               />
-              <LabelForm title={'Trạng thái*'} />
-              <InputModal
-                type="number"
+             <div>
+             <LabelForm title={'Trạng thái*'} />
+              <SelectDaisyUi
+                className="my-2 w-full border border-gray-700 border-opacity-50 bg-white text-black focus:border-primary focus:outline-none dark:border-secondary dark:bg-gray-700 dark:text-white dark:focus:border-white"
+                defaultValue={''}
                 {...register('t_cat_status')}
-                placeholder="Chọn: 0(Mới) / 1(Cũ)"
-              />
+              >
+                <option disabled value={''}>
+                  Chọn trạng thái
+                </option>
+                <option value={0}>Máy mới</option>
+                <option value={1}>Máy cũ</option>
+              </SelectDaisyUi>
+             </div>
+
               <LabelForm title={'Hình ảnh*'} />
               <InputModal
                 type="file"
