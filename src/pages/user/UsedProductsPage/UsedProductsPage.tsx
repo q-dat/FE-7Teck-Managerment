@@ -20,7 +20,7 @@ const CategoryMenu = memo(
   ({ isOpen, toggleMenu, selectedCategory, scrollToSection }: any) => (
     <div
       onClick={toggleMenu}
-      className={`fixed left-0 top-1/3 z-[999] w-auto rounded-r-[70%] bg-primary  py-2   text-white shadow-lg transition-transform duration-300 ${
+      className={`fixed left-0 top-1/3 z-[999] w-auto rounded-b-full rounded-l-none rounded-r-[50%] rounded-t-full bg-primary py-10 text-white shadow-lg transition-transform duration-300 ${
         isOpen ? 'translate-x-0' : 'ml-4 -translate-x-full'
       }`}
     >
@@ -29,7 +29,7 @@ const CategoryMenu = memo(
           {categories.map(({ id, label }) => (
             <button
               key={id}
-              className={`w-full rounded-sm border border-white px-1 py-2 text-start text-sm bg-primary hover:bg-white hover:text-primary ${
+              className={`w-full rounded-sm border border-white bg-primary px-1 py-2 text-start text-sm hover:bg-white hover:text-primary ${
                 selectedCategory === id ? 'bg-white text-primary' : ''
               }`}
               onClick={() => scrollToSection(id)}
@@ -50,7 +50,7 @@ const CategoryMenu = memo(
 
 // Component hiển thị danh mục sản phẩm
 const CategorySection = memo(() => (
-  <div className="ml-0 px-2 xl:px-desktop-padding">
+  <div className="ml-2 px-2 xl:ml-0 xl:px-desktop-padding">
     <div id="used-phone">
       <UsedPhonePage />
     </div>
@@ -153,4 +153,3 @@ const UsedProductsPage = () => {
 };
 
 export default memo(UsedProductsPage);
-
