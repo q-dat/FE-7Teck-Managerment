@@ -20,7 +20,7 @@ const CategoryMenu = memo(
   ({ isOpen, toggleMenu, selectedCategory, scrollToSection }: any) => (
     <div
       onClick={toggleMenu}
-      className={`fixed left-0 top-1/3 z-[999] w-auto rounded-b-full rounded-l-none rounded-r-[50%] rounded-t-full bg-primary py-10 text-white shadow-lg transition-transform duration-300 ${
+      className={`fixed left-0 top-1/3 z-[999] mx-1 w-auto overflow-hidden rounded-r-[50%] border-2 border-b-0 border-l-0 border-t-0 border-primary bg-gradient-to-r from-transparent to-white py-[25px] text-primary transition-transform duration-300 ${
         isOpen ? 'translate-x-0' : 'ml-4 -translate-x-full'
       }`}
     >
@@ -29,8 +29,8 @@ const CategoryMenu = memo(
           {categories.map(({ id, label }) => (
             <button
               key={id}
-              className={`w-full rounded-sm border border-white bg-primary px-1 py-2 text-start text-sm hover:bg-white hover:text-primary ${
-                selectedCategory === id ? 'bg-white text-primary' : ''
+              className={`w-full rounded-sm border border-primary bg-primary px-1 py-2 text-start text-sm hover:scale-105 hover:outline hover:outline-offset-1 hover:outline-primary ${
+                selectedCategory === id ? 'bg-white text-primary' : 'text-white'
               }`}
               onClick={() => scrollToSection(id)}
             >
@@ -49,8 +49,12 @@ const CategoryMenu = memo(
 );
 
 // Component hiển thị danh mục sản phẩm
-const CategorySection = memo(() => (
-  <div className="ml-2 px-2 xl:ml-0 xl:px-desktop-padding">
+const CategorySection = memo(({ isOpen }: { isOpen: boolean }) => (
+  <div
+    className={`px-2 transition-all duration-300 xl:px-desktop-padding ${
+      isOpen ? 'ml-20 xl:ml-5' : 'ml-0'
+    }`}
+  >
     <div id="used-phone">
       <UsedPhonePage />
     </div>
@@ -145,7 +149,7 @@ const UsedProductsPage = () => {
             scrollToSection={scrollToSection}
           />
           {/* Nội dung chính */}
-          <CategorySection />
+          <CategorySection isOpen={isOpen} />
         </div>
       </div>
     </div>
@@ -153,3 +157,4 @@ const UsedProductsPage = () => {
 };
 
 export default memo(UsedProductsPage);
+
