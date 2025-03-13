@@ -2,39 +2,24 @@ import React, { ReactNode, useContext, useEffect, useState } from 'react';
 import { Button, Drawer, Input, Menu } from 'react-daisyui';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { FaHome, FaChevronDown, FaMagic, FaWindows } from 'react-icons/fa';
-import { IconType } from 'react-icons/lib';
+import { FaHome, FaChevronDown } from 'react-icons/fa';
 import { Logo } from '../../assets/images';
-import { RiMacbookFill, RiPagesLine } from 'react-icons/ri';
 import { SlClose } from 'react-icons/sl';
 import { IoSearch } from 'react-icons/io5';
 import { IPhoneCatalog } from '../../types/type/phone-catalog/phone-catalog';
 import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
+import menuItems from '../utils/menuItems';
+import { handleSearch, slugify } from '../utils/searchUtils';
 
 interface HeaderResponsiveProps {
   Title_NavbarMobile: ReactNode;
 }
-interface MenuItem {
-  name: string;
-  icon?: IconType;
-  link: string;
-  submenu?: { name: string; link: string; icon?: IconType }[];
-}
-
 const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
   Title_NavbarMobile
 }) => {
   const { phoneCatalogs } = useContext(PhoneCatalogContext);
   const navigate = useNavigate();
-  const slugify = (text: string) => {
-    return text
-      .toString()
-      .normalize('NFD')
-      .replace(/\p{Diacritic}/gu, '')
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-+|-+$/g, '');
-  };
+
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
   const [rightVisible, setRightVisible] = useState(false);
   // SearchToggle Input
@@ -49,72 +34,6 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
   //
   const [showMenu, setShowMenu] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-
-  const menuItems: MenuItem[] = [
-    {
-      name: 'Máy cũ, Thu cũ',
-      link: `${window.location.href}`,
-      submenu: [
-        {
-          name: 'Thiết bị đã qua sử dụng',
-          link: '/thiet-bi-da-qua-su-dung'
-        },
-        {
-          name: 'Bảng Giá Thu Mua',
-          link: '/bang-gia-thu-mua'
-        }
-      ]
-    },
-    {
-      name: 'Điện Thoại',
-      link: '/dien-thoai'
-    },
-    {
-      name: 'Máy tính bảng',
-      link: '/may-tinh-bang'
-    },
-    {
-      name: 'Laptop',
-      link: `${window.location.href}`,
-      submenu: [
-        {
-          icon: FaWindows,
-          name: 'Windows',
-          link: '/windows'
-        },
-        {
-          icon: RiMacbookFill,
-          name: 'Macbook',
-          link: '/macbook'
-        }
-      ]
-    },
-
-    {
-      name: 'Tin tức',
-      link: `${window.location.href}`,
-      submenu: [
-        {
-          name: 'Tin công nghệ',
-          icon: RiPagesLine,
-          link: '/tin-tuc-moi-nhat'
-        },
-        {
-          name: 'Thủ thuật - Mẹo hay',
-          icon: FaMagic,
-          link: '/thu-thuat-va-meo-hay'
-        }
-      ]
-    },
-    {
-      name: 'Hành trình',
-      link: '/hanh-trinh-khach-hang'
-    },
-    {
-      name: 'Chính sách bảo hành',
-      link: '/chinh-sach-bao-hanh'
-    }
-  ];
   //
   useEffect(() => {
     const pathname = location.pathname;
@@ -152,18 +71,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
   const handleSearchToggle = () => {
     setOpenSearch(!openSearch);
   };
-  //
-  const handleSearch = (query: string) => {
-    setSearchQuery(query);
-    if (query.trim() === '') {
-      setSearchResults([]);
-      return;
-    }
-    const phoneCatalogResults = phoneCatalogs.filter(phoneCatalog =>
-      phoneCatalog.name.toLowerCase().includes(query.toLowerCase())
-    );
-    setSearchResults(phoneCatalogResults);
-  };
+
   return (
     <div className="fixed z-[99999] block w-full bg-gradient-to-b from-white to-primary xl:hidden">
       <header
@@ -183,7 +91,14 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                   <div className="absolute -right-[50px] top-10 h-screen w-screen bg-black bg-opacity-50">
                     <Input
                       value={searchQuery}
-                      onChange={e => handleSearch(e.target.value)}
+                      onChange={e =>
+                        handleSearch(
+                          e.target.value,
+                          phoneCatalogs,
+                          setSearchQuery,
+                          setSearchResults
+                        )
+                      }
                       type="text"
                       className="w-screen animate-exfadeIn rounded-none border-none text-black placeholder-primary focus:outline-none"
                       autoFocus
@@ -230,7 +145,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
               aria-hidden={!rightVisible}
               tabIndex={rightVisible ? 0 : -1}
               side={
-                <Menu role="menu" className="fixed h-full w-[280px] bg-white">
+                <Menu role="menu" className="fixed h-full w-2/3 bg-white">
                   {/* LOGO */}
                   <Link
                     aria-label="Trang chủ"
@@ -238,7 +153,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                     onClick={() => setActiveItem('Trang Chủ')}
                   >
                     <img
-                      className="h-full w-[120px]"
+                      className="h-full w-[80px]"
                       loading="lazy"
                       src={Logo}
                       alt="LOGO"
@@ -258,7 +173,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                         >
                           <NavLink
                             to={item.link}
-                            className={`btn relative mt-2 flex w-full flex-row items-center justify-between rounded-none border-none pl-4 pr-3 ${
+                            className={`btn relative mt-2 flex w-full flex-row items-center justify-start rounded-none border-none ${
                               item.name === activeItem
                                 ? 'bg-primary bg-opacity-30 text-sm font-bold text-primary'
                                 : 'border-none bg-primary bg-opacity-10 text-sm font-light text-black shadow-headerMenu'
@@ -272,8 +187,8 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                                 <div
                                   className={
                                     item.name === activeItem
-                                      ? 'h-5 w-5 text-2xl text-primary'
-                                      : 'h-5 w-5'
+                                      ? 'text-xl text-primary'
+                                      : ''
                                   }
                                 >
                                   <Icon />
@@ -284,7 +199,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                               </span>
                               {item.submenu && (
                                 <div
-                                  className={`ml-2 h-4 w-4 ${openSubmenu === item.name ? 'rotate-180' : ''}`}
+                                  className={` ${openSubmenu === item.name ? 'rotate-180' : ''}`}
                                 >
                                   <FaChevronDown />
                                 </div>

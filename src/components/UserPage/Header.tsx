@@ -1,92 +1,20 @@
 import React, { memo, useContext, useEffect, useState } from 'react';
 import { Button, Input, Menu } from 'react-daisyui';
-import { FaChevronDown, FaMagic } from 'react-icons/fa';
+import { FaChevronDown } from 'react-icons/fa';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { IconType } from 'react-icons/lib';
 import { Logo } from '../../assets/images';
-import { RiArrowLeftRightFill, RiPagesLine } from 'react-icons/ri';
+import { RiArrowLeftRightFill } from 'react-icons/ri';
 import { IoLogoFacebook, IoSearch } from 'react-icons/io5';
 import { RiExternalLinkFill } from 'react-icons/ri';
 import { HiLocationMarker } from 'react-icons/hi';
-import { FaWindows } from 'react-icons/fa';
-import { RiMacbookFill } from 'react-icons/ri';
 import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
 import { HiPhoneArrowUpRight } from 'react-icons/hi2';
 import { IPhoneCatalog } from '../../types/type/phone-catalog/phone-catalog';
 import { TbPigMoney } from 'react-icons/tb';
 import { GiRibbonMedal } from 'react-icons/gi';
-interface MenuItem {
-  name: string;
-  icon?: IconType;
-  link: string;
-  submenu?: { name: string; link: string; icon?: IconType }[];
-}
-const menuItems: MenuItem[] = [
-  {
-    name: 'Máy cũ, Thu cũ',
-    link: `${window.location.href}`,
-    submenu: [
-      {
-        name: 'Thiết bị đã qua sử dụng',
-        link: '/thiet-bi-da-qua-su-dung'
-      },
-      {
-        name: 'Bảng Giá Thu Mua',
-        link: '/bang-gia-thu-mua'
-      }
-    ]
-  },
-  {
-    name: 'Điện Thoại',
-    link: '/dien-thoai'
-  },
-  {
-    name: 'Máy tính bảng',
-    link: '/may-tinh-bang'
-  },
-  {
-    name: 'Laptop',
-    link: `${window.location.href}`,
-    submenu: [
-      {
-        icon: FaWindows,
-        name: 'Windows',
-        link: '/windows'
-      },
-      {
-        icon: RiMacbookFill,
-        name: 'Macbook',
-        link: '/macbook'
-      }
-    ]
-  },
+import menuItems from '../utils/menuItems';
+import { handleSearch, slugify } from '../utils/searchUtils';
 
-  {
-    name: 'Tin tức',
-    link: `${window.location.href}`,
-    submenu: [
-      {
-        name: 'Tin công nghệ',
-        icon: RiPagesLine,
-        link: '/tin-tuc-moi-nhat'
-      },
-      {
-        name: 'Thủ thuật - Mẹo hay',
-        icon: FaMagic,
-        link: '/thu-thuat-va-meo-hay'
-      }
-    ]
-  },
-  {
-    name: 'Hành trình',
-    link: '/hanh-trinh-khach-hang'
-  },
-  {
-    name: 'Chính sách bảo hành',
-    link: '/chinh-sach-bao-hanh'
-  }
-];
-// Items Data
 const items = [
   {
     icon: <RiArrowLeftRightFill />,
@@ -117,15 +45,6 @@ const items = [
 const Header: React.FC = () => {
   const { phoneCatalogs } = useContext(PhoneCatalogContext);
   const navigate = useNavigate();
-  const slugify = (text: string) => {
-    return text
-      .toString()
-      .normalize('NFD')
-      .replace(/\p{Diacritic}/gu, '')
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-+|-+$/g, '');
-  };
   // Search
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<IPhoneCatalog[]>([]);
@@ -140,7 +59,6 @@ const Header: React.FC = () => {
     setOpenSubmenu(null);
   };
   // Naviga Active
-
   const [activeItem, setActiveItem] = useState('Trang Chủ');
   const location = useLocation();
   //
@@ -174,18 +92,6 @@ const Header: React.FC = () => {
   //   return () => window.removeEventListener('scroll', handleScroll);
   // }, [lastScrollY]);
 
-  //
-  const handleSearch = (query: string) => {
-    setSearchQuery(query);
-    if (query.trim() === '') {
-      setSearchResults([]);
-      return;
-    }
-    const phoneCatalogResults = phoneCatalogs.filter(phoneCatalog =>
-      phoneCatalog.name.toLowerCase().includes(query.toLowerCase())
-    );
-    setSearchResults(phoneCatalogResults);
-  };
   return (
     <div className="fixed z-[99999] hidden w-full flex-col xl:block">
       {/* Benefits */}
@@ -230,7 +136,14 @@ const Header: React.FC = () => {
           <Input
             size="sm"
             value={searchQuery}
-            onChange={e => handleSearch(e.target.value)}
+            onChange={e =>
+              handleSearch(
+                e.target.value,
+                phoneCatalogs,
+                setSearchQuery,
+                setSearchResults
+              )
+            }
             className="w-full border-none bg-transparent pl-1 text-sm text-black placeholder-primary shadow-none focus:placeholder-black focus:outline-none"
             placeholder="Bạn muốn tìm gì..."
           />
@@ -294,21 +207,21 @@ const Header: React.FC = () => {
         // className={`h-[60px] w-full transform flex-row items-center justify-evenly bg-white py-2 shadow-md transition-transform delay-100 duration-300 ease-in-out xl:flex ${showMenu ? 'translate-y-0' : '-translate-y-[40px]'}`}
         className={`h-[60px] w-full transform flex-row items-center justify-between bg-white py-2 shadow-md transition-transform delay-100 duration-300 ease-in-out xl:flex xl:px-desktop-padding`}
       >
-        <nav>
+        <nav className="h-full">
           <Link
             aria-label="Home"
             to="/"
             onClick={() => setActiveItem('Trang Chủ')}
           >
             <img
-              className="h-full w-[60px] rounded-full object-cover"
+              className="h-full w-full rounded-full object-contain filter"
               loading="lazy"
               src={Logo}
               alt="LOGO"
             />
           </Link>
         </nav>
-        <Menu className="flex flex-row items-center justify-center">
+        <Menu className="flex flex-row items-center justify-center gap-2">
           {menuItems.map(item => {
             const Icon = item.icon;
             return (
@@ -320,10 +233,10 @@ const Header: React.FC = () => {
               >
                 <NavLink
                   to={item.link}
-                  className={`btn relative flex w-full items-center justify-center rounded-none border-none pl-4 ${
+                  className={`btn relative flex w-full items-center justify-center gap-1 rounded-none border-none ${
                     item.name === activeItem
                       ? 'bg-primary bg-opacity-20 text-sm font-bold text-primary'
-                      : 'border-none bg-transparent text-sm font-light text-black shadow-none hover:border hover:border-primary hover:bg-gray-50 hover:bg-opacity-30 hover:text-primary'
+                      : 'border-none bg-transparent text-sm font-light text-primary shadow-none hover:scale-110 hover:border hover:border-primary hover:bg-gray-50 hover:bg-opacity-30'
                   }`}
                 >
                   <>
