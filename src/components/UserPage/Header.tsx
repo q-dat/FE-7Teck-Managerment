@@ -197,7 +197,7 @@ const Header: React.FC = () => {
               className="flex items-center justify-center gap-1 font-light"
             >
               {React.cloneElement(item.icon, {
-                className: 'text-2xl text-black'
+                className: 'text-xl text-black'
               })}
               <>{item.text}</>
             </div>
@@ -225,7 +225,7 @@ const Header: React.FC = () => {
           </div>
         </div>
         {/* Input Search */}
-        <div className="relative flex w-full flex-row items-center justify-center gap-1 rounded-md bg-white pl-2">
+        <div className="relative flex w-full flex-row items-center justify-center gap-1 rounded-full bg-white pl-2">
           <IoSearch className="text-xl text-primary" />
           <Input
             size="sm"
@@ -271,7 +271,7 @@ const Header: React.FC = () => {
               target="_blank"
               className="flex items-center gap-[1px]"
             >
-              <IoLogoFacebook />
+              <IoLogoFacebook className="text-xs" />
               Fanpage: &nbsp;
               <p>7Teck</p>
               <sup>
@@ -281,8 +281,8 @@ const Header: React.FC = () => {
           </div>
           <div className="flex items-center">
             <Link
-              className="flex items-center gap-[1px] font-light"
               to="tel:0983699993"
+              className="flex items-center gap-[1px] font-light"
             >
               <HiPhoneArrowUpRight className="text-xs" /> (+84) 983.699.993
             </Link>
