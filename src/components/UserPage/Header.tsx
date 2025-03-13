@@ -4,7 +4,7 @@ import { FaChevronDown, FaMagic } from 'react-icons/fa';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { IconType } from 'react-icons/lib';
 import { Logo } from '../../assets/images';
-import { RiPagesLine } from 'react-icons/ri';
+import { RiArrowLeftRightFill, RiPagesLine } from 'react-icons/ri';
 import { IoLogoFacebook, IoSearch } from 'react-icons/io5';
 import { RiExternalLinkFill } from 'react-icons/ri';
 import { HiLocationMarker } from 'react-icons/hi';
@@ -13,13 +13,107 @@ import { RiMacbookFill } from 'react-icons/ri';
 import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
 import { HiPhoneArrowUpRight } from 'react-icons/hi2';
 import { IPhoneCatalog } from '../../types/type/phone-catalog/phone-catalog';
-
+import { TbPigMoney } from 'react-icons/tb';
+import { GiRibbonMedal } from 'react-icons/gi';
 interface MenuItem {
   name: string;
   icon?: IconType;
   link: string;
   submenu?: { name: string; link: string; icon?: IconType }[];
 }
+const menuItems: MenuItem[] = [
+  {
+    name: 'Máy cũ, Thu cũ',
+    link: `${window.location.href}`,
+    submenu: [
+      {
+        name: 'Thiết bị đã qua sử dụng',
+        link: '/thiet-bi-da-qua-su-dung'
+      },
+      {
+        name: 'Bảng Giá Thu Mua',
+        link: '/bang-gia-thu-mua'
+      }
+    ]
+  },
+  {
+    name: 'Điện Thoại',
+    link: '/dien-thoai'
+  },
+  {
+    name: 'Máy tính bảng',
+    link: '/may-tinh-bang'
+  },
+  {
+    name: 'Laptop',
+    link: `${window.location.href}`,
+    submenu: [
+      {
+        icon: FaWindows,
+        name: 'Windows',
+        link: '/windows'
+      },
+      {
+        icon: RiMacbookFill,
+        name: 'Macbook',
+        link: '/macbook'
+      }
+    ]
+  },
+
+  {
+    name: 'Tin tức',
+    link: `${window.location.href}`,
+    submenu: [
+      {
+        name: 'Tin công nghệ',
+        icon: RiPagesLine,
+        link: '/tin-tuc-moi-nhat'
+      },
+      {
+        name: 'Thủ thuật - Mẹo hay',
+        icon: FaMagic,
+        link: '/thu-thuat-va-meo-hay'
+      }
+    ]
+  },
+  {
+    name: 'Hành trình',
+    link: '/hanh-trinh-khach-hang'
+  },
+  {
+    name: 'Chính sách bảo hành',
+    link: '/chinh-sach-bao-hanh'
+  }
+];
+// Items Data
+const items = [
+  {
+    icon: <RiArrowLeftRightFill />,
+    text: (
+      <>
+        <p className="font-bold">Thu cũ</p> đổi mới{' '}
+        <p className="font-bold">lên tới 90%</p>
+      </>
+    )
+  },
+  {
+    icon: <GiRibbonMedal />,
+    text: (
+      <>
+        Sản phẩm <p className="font-bold">Chính hãng</p>
+      </>
+    )
+  },
+  {
+    icon: <TbPigMoney />,
+    text: (
+      <>
+        Hỗ trợ <p className="font-bold">Trả góp</p>
+      </>
+    )
+  }
+];
 const Header: React.FC = () => {
   const { phoneCatalogs } = useContext(PhoneCatalogContext);
   const navigate = useNavigate();
@@ -53,71 +147,6 @@ const Header: React.FC = () => {
   // const [showMenu, setShowMenu] = useState(true);
   // const [lastScrollY, setLastScrollY] = useState(0);
 
-  const menuItems: MenuItem[] = [
-    {
-      name: 'Máy cũ, Thu cũ',
-      link: `${window.location.href}`,
-      submenu: [
-        {
-          name: 'Thiết bị đã qua sử dụng',
-          link: '/thiet-bi-da-qua-su-dung'
-        },
-        {
-          name: 'Bảng Giá Thu Mua',
-          link: '/bang-gia-thu-mua'
-        }
-      ]
-    },
-    {
-      name: 'Điện Thoại',
-      link: '/dien-thoai'
-    },
-    {
-      name: 'Máy tính bảng',
-      link: '/may-tinh-bang'
-    },
-    {
-      name: 'Laptop',
-      link: `${window.location.href}`,
-      submenu: [
-        {
-          icon: FaWindows,
-          name: 'Windows',
-          link: '/windows'
-        },
-        {
-          icon: RiMacbookFill,
-          name: 'Macbook',
-          link: '/macbook'
-        }
-      ]
-    },
-
-    {
-      name: 'Tin tức',
-      link: `${window.location.href}`,
-      submenu: [
-        {
-          name: 'Tin công nghệ',
-          icon: RiPagesLine,
-          link: '/tin-tuc-moi-nhat'
-        },
-        {
-          name: 'Thủ thuật - Mẹo hay',
-          icon: FaMagic,
-          link: '/thu-thuat-va-meo-hay'
-        }
-      ]
-    },
-    {
-      name: 'Hành trình',
-      link: '/hanh-trinh-khach-hang'
-    },
-    {
-      name: 'Chính sách bảo hành',
-      link: '/chinh-sach-bao-hanh'
-    }
-  ];
   //
   useEffect(() => {
     const pathname = location.pathname;
@@ -160,18 +189,19 @@ const Header: React.FC = () => {
   return (
     <div className="fixed z-[99999] hidden w-full flex-col xl:block">
       {/* Benefits */}
-      <div className="h-[30px] bg-[#FFC107] text-center text-black xl:px-desktop-padding">
-        <div className="flex items-center justify-around">
-          <p>
-            <b>Thu cũ</b> đối mới <b>lên tới 90%</b>
-          </p>
-          <p>
-            {' '}
-            Sản phẩm <b>Chính hãng</b>
-          </p>
-          <p>
-            Hỗ trợ <b>Trả góp</b>
-          </p>
+      <div className="h-[30px] bg-[#FFC107] text-black xl:px-desktop-padding">
+        <div className="flex h-full w-full flex-row items-center justify-around">
+          {items.map((item, index) => (
+            <div
+              key={index}
+              className="flex items-center justify-center gap-1 font-light"
+            >
+              {React.cloneElement(item.icon, {
+                className: 'text-2xl text-black'
+              })}
+              <>{item.text}</>
+            </div>
+          ))}
         </div>
       </div>
       {/* */}
