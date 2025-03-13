@@ -3,7 +3,8 @@ import {
   useState,
   ReactNode,
   useCallback,
-  useEffect
+  useEffect,
+  useMemo
 } from 'react';
 import { AxiosResponse } from 'axios';
 
@@ -200,22 +201,34 @@ export const TabletProvider = ({ children }: { children: ReactNode }) => {
     getAllTablets();
   }, [getAllTablets]);
 
+  const value = useMemo(
+    () => ({
+      tablets,
+      countTablet,
+      loading,
+      error,
+      getAllTablets,
+      getTabletById,
+      createTablet,
+      updateTablet,
+      updateTabletView,
+      deleteTablet
+    }),
+    [
+      tablets,
+      countTablet,
+      loading,
+      error,
+      getAllTablets,
+      getTabletById,
+      createTablet,
+      updateTablet,
+      updateTabletView,
+      deleteTablet
+    ]
+  );
   return (
-    <TabletContext.Provider
-      value={{
-        tablets,
-        countTablet,
-        loading,
-        error,
-        getAllTablets,
-        getTabletById,
-        createTablet,
-        updateTablet,
-        updateTabletView,
-        deleteTablet
-      }}
-    >
-      {children}
-    </TabletContext.Provider>
+    <TabletContext.Provider value={value}>{children}</TabletContext.Provider>
   );
 };
+

@@ -1,4 +1,10 @@
-import { createContext, useState, ReactNode, useCallback } from 'react';
+import {
+  createContext,
+  useState,
+  ReactNode,
+  useCallback,
+  useMemo
+} from 'react';
 import { registerApi, loginApi } from '../../axios/api/authApi';
 import { AxiosResponse } from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -121,20 +127,19 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     localStorage.removeItem('jwt_token');
     localStorage.removeItem('user');
   }, []);
-
-  return (
-    <AuthContext.Provider
-      value={{
-        user,
-        token,
-        loading,
-        error,
-        registerUser,
-        loginUser,
-        logoutUser
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
+  
+  const value = useMemo(
+    () => ({
+      user,
+      token,
+      loading,
+      error,
+      registerUser,
+      loginUser,
+      logoutUser
+    }),
+    [user, token, loading, error, registerUser, loginUser, logoutUser]
   );
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
+

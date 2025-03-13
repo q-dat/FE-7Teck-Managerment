@@ -3,7 +3,8 @@ import {
   useState,
   ReactNode,
   useCallback,
-  useEffect
+  useEffect,
+  useMemo
 } from 'react';
 import { AxiosResponse } from 'axios';
 import {
@@ -198,23 +199,34 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     getAllPhones();
   }, [getAllPhones]);
-
+  
+  const value = useMemo(
+    () => ({
+      phones,
+      countPhone,
+      loading,
+      error,
+      getAllPhones,
+      getPhoneById,
+      createPhone,
+      updatePhone,
+      updatePhoneView,
+      deletePhone
+    }),
+    [
+      phones,
+      countPhone,
+      loading,
+      error,
+      getAllPhones,
+      getPhoneById,
+      createPhone,
+      updatePhone,
+      updatePhoneView,
+      deletePhone
+    ]
+  );
   return (
-    <PhoneContext.Provider
-      value={{
-        phones,
-        countPhone,
-        loading,
-        error,
-        getAllPhones,
-        getPhoneById,
-        createPhone,
-        updatePhone,
-        updatePhoneView,
-        deletePhone
-      }}
-    >
-      {children}
-    </PhoneContext.Provider>
+    <PhoneContext.Provider value={value}>{children}</PhoneContext.Provider>
   );
 };

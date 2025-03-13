@@ -3,7 +3,8 @@ import {
   useState,
   ReactNode,
   useCallback,
-  useEffect
+  useEffect,
+  useMemo
 } from 'react';
 import { AxiosResponse } from 'axios';
 
@@ -18,7 +19,7 @@ import {
 
 interface TabletCatalogContextType {
   tabletCatalogs: ITabletCatalog[];
-  countTabletCatalog:number;
+  countTabletCatalog: number;
   loading: {
     getAll: boolean;
     create: boolean;
@@ -103,8 +104,9 @@ export const TabletCatalogProvider = ({
   const getAllTabletCatalogs = useCallback(() => {
     fetchData(
       getAllTabletCatalogsApi,
-      data =>{ setTabletCatalogs(data?.tabletCatalogs || [])
-        setCountTabletCatalog(data?.count || 0)
+      data => {
+        setTabletCatalogs(data?.tabletCatalogs || []);
+        setCountTabletCatalog(data?.count || 0);
       },
       'getAll'
     );
@@ -162,7 +164,9 @@ export const TabletCatalogProvider = ({
         data => {
           if (data?.tabletCatalogData) {
             setTabletCatalogs(prevTabletCatalogs =>
-              prevTabletCatalogs.map(tc => (tc._id === _id ? data?.tabletCatalogData : tc))
+              prevTabletCatalogs.map(tc =>
+                tc._id === _id ? data?.tabletCatalogData : tc
+              )
             );
           }
         },
@@ -191,20 +195,32 @@ export const TabletCatalogProvider = ({
     getAllTabletCatalogs();
   }, [getAllTabletCatalogs]);
 
+  const value = useMemo(
+    () => ({
+      tabletCatalogs,
+      countTabletCatalog,
+      loading,
+      error,
+      getAllTabletCatalogs,
+      getTabletCatalogById,
+      createTabletCatalog,
+      updateTabletCatalog,
+      deleteTabletCatalog
+    }),
+    [
+      tabletCatalogs,
+      countTabletCatalog,
+      loading,
+      error,
+      getAllTabletCatalogs,
+      getTabletCatalogById,
+      createTabletCatalog,
+      updateTabletCatalog,
+      deleteTabletCatalog
+    ]
+  );
   return (
-    <TabletCatalogContext.Provider
-      value={{
-        tabletCatalogs,
-        countTabletCatalog,
-        loading,
-        error,
-        getAllTabletCatalogs,
-        getTabletCatalogById,
-        createTabletCatalog,
-        updateTabletCatalog,
-        deleteTabletCatalog
-      }}
-    >
+    <TabletCatalogContext.Provider value={value}>
       {children}
     </TabletCatalogContext.Provider>
   );

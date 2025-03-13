@@ -3,7 +3,8 @@ import {
   useState,
   ReactNode,
   useCallback,
-  useEffect
+  useEffect,
+  useMemo
 } from 'react';
 import { AxiosResponse } from 'axios';
 import { IWindows } from '../../types/type/windows/windows';
@@ -212,22 +213,34 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
     getAllWindows();
   }, [getAllWindows]);
 
+  const value = useMemo(
+    () => ({
+      windows,
+      countWindows,
+      loading,
+      error,
+      getAllWindows,
+      getWindowsById,
+      createWindows,
+      updateWindows,
+      updateWindowsView,
+      deleteWindows
+    }),
+    [
+      windows,
+      countWindows,
+      loading,
+      error,
+      getAllWindows,
+      getWindowsById,
+      createWindows,
+      updateWindows,
+      updateWindowsView,
+      deleteWindows
+    ]
+  );
   return (
-    <WindowsContext.Provider
-      value={{
-        windows,
-        countWindows,
-        loading,
-        error,
-        getAllWindows,
-        getWindowsById,
-        createWindows,
-        updateWindows,
-        updateWindowsView,
-        deleteWindows
-      }}
-    >
-      {children}
-    </WindowsContext.Provider>
+    <WindowsContext.Provider value={value}>{children}</WindowsContext.Provider>
   );
 };
+

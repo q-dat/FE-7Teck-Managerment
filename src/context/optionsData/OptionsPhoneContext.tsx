@@ -3,7 +3,8 @@ import {
   useState,
   ReactNode,
   useCallback,
-  useEffect
+  useEffect,
+  useMemo
 } from 'react';
 import { AxiosResponse } from 'axios';
 import { IOptionPhoneData } from '../../types/type/optionsData/optionsPhoneData';
@@ -183,21 +184,34 @@ export const OptionPhoneProvider = ({ children }: { children: ReactNode }) => {
     getAllOptionPhones();
   }, [getAllOptionPhones]);
 
+  const value = useMemo(
+    () => ({
+      optionPhones,
+      countOptionPhoneData,
+      loading,
+      error,
+      getAllOptionPhones,
+      getOptionPhoneById,
+      createOptionPhone,
+      updateOptionPhone,
+      deleteOptionPhone
+    }),
+    [
+      optionPhones,
+      countOptionPhoneData,
+      loading,
+      error,
+      getAllOptionPhones,
+      getOptionPhoneById,
+      createOptionPhone,
+      updateOptionPhone,
+      deleteOptionPhone
+    ]
+  );
   return (
-    <OptionPhoneContext.Provider
-      value={{
-        optionPhones,
-        countOptionPhoneData,
-        loading,
-        error,
-        getAllOptionPhones,
-        getOptionPhoneById,
-        createOptionPhone,
-        updateOptionPhone,
-        deleteOptionPhone
-      }}
-    >
+    <OptionPhoneContext.Provider value={value}>
       {children}
     </OptionPhoneContext.Provider>
   );
 };
+

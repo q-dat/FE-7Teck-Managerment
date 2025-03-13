@@ -3,7 +3,8 @@ import {
   useState,
   ReactNode,
   useCallback,
-  useEffect
+  useEffect,
+  useMemo
 } from 'react';
 import { AxiosResponse } from 'axios';
 import { IMacbookCatalog } from '../../types/type/macbook-catalog/macbook-catalog';
@@ -17,7 +18,7 @@ import {
 
 interface MacbookCatalogContextType {
   macbookCatalogs: IMacbookCatalog[];
-  countMacbookCatalog:number;
+  countMacbookCatalog: number;
   loading: {
     getAll: boolean;
     create: boolean;
@@ -39,7 +40,7 @@ interface MacbookCatalogContextType {
 
 const defaultContextValue: MacbookCatalogContextType = {
   macbookCatalogs: [],
-  countMacbookCatalog:0,
+  countMacbookCatalog: 0,
   loading: {
     getAll: false,
     create: false,
@@ -102,8 +103,10 @@ export const MacbookCatalogProvider = ({
   const getAllMacbookCatalogs = useCallback(() => {
     fetchData(
       getAllMacbookCatalogsApi,
-      data =>{ setMacbookCatalog(data?.macbookCatalogs || [])
-        setCountMacbookCatalog(data?.macbookCatalogs?.length || 0)},
+      data => {
+        setMacbookCatalog(data?.macbookCatalogs || []);
+        setCountMacbookCatalog(data?.macbookCatalogs?.length || 0);
+      },
       'getAll'
     );
   }, []);
@@ -191,21 +194,34 @@ export const MacbookCatalogProvider = ({
     getAllMacbookCatalogs();
   }, [getAllMacbookCatalogs]);
 
+  const value = useMemo(
+    () => ({
+      macbookCatalogs,
+      countMacbookCatalog,
+      loading,
+      error,
+      getAllMacbookCatalogs,
+      getMacbookCatalogById,
+      createMacbookCatalog,
+      updateMacbookCatalog,
+      deleteMacbookCatalog
+    }),
+    [
+      macbookCatalogs,
+      countMacbookCatalog,
+      loading,
+      error,
+      getAllMacbookCatalogs,
+      getMacbookCatalogById,
+      createMacbookCatalog,
+      updateMacbookCatalog,
+      deleteMacbookCatalog
+    ]
+  );
   return (
-    <MacbookCatalogContext.Provider
-      value={{
-        macbookCatalogs,
-        countMacbookCatalog,
-        loading,
-        error,
-        getAllMacbookCatalogs,
-        getMacbookCatalogById,
-        createMacbookCatalog,
-        updateMacbookCatalog,
-        deleteMacbookCatalog
-      }}
-    >
+    <MacbookCatalogContext.Provider value={value}>
       {children}
     </MacbookCatalogContext.Provider>
   );
 };
+

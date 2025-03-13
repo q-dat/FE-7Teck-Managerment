@@ -3,7 +3,8 @@ import {
   useState,
   ReactNode,
   useCallback,
-  useEffect
+  useEffect,
+  useMemo
 } from 'react';
 
 import { AxiosResponse } from 'axios';
@@ -176,20 +177,32 @@ export const PostCatalogProvider = ({ children }: { children: ReactNode }) => {
     getAllPostCatalogs();
   }, [getAllPostCatalogs]);
 
+  const value = useMemo(
+    () => ({
+      postCatalogs,
+      countPostCatalog,
+      loading,
+      error,
+      getAllPostCatalogs,
+      getPostCatalogById,
+      createPostCatalog,
+      updatePostCatalog,
+      deletePostCatalog
+    }),
+    [
+      postCatalogs,
+      countPostCatalog,
+      loading,
+      error,
+      getAllPostCatalogs,
+      getPostCatalogById,
+      createPostCatalog,
+      updatePostCatalog,
+      deletePostCatalog
+    ]
+  );
   return (
-    <PostCatalogContext.Provider
-      value={{
-        postCatalogs,
-        countPostCatalog,
-        loading,
-        error,
-        getAllPostCatalogs,
-        getPostCatalogById,
-        createPostCatalog,
-        updatePostCatalog,
-        deletePostCatalog
-      }}
-    >
+    <PostCatalogContext.Provider value={value}>
       {children}
     </PostCatalogContext.Provider>
   );

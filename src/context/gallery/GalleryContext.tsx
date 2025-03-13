@@ -3,7 +3,8 @@ import {
   useState,
   ReactNode,
   useCallback,
-  useEffect
+  useEffect,
+  useMemo
 } from 'react';
 import { AxiosResponse } from 'axios';
 
@@ -175,21 +176,31 @@ export const GalleryProvider = ({ children }: { children: ReactNode }) => {
     getAllGallerys();
   }, [getAllGallerys]);
 
+  const value = useMemo(
+    () => ({
+      galleries,
+      countGallery,
+      loading,
+      error,
+      getAllGallerys,
+      getGalleryById,
+      createGallery,
+      updateGallery,
+      deleteGallery
+    }),
+    [
+      galleries,
+      countGallery,
+      loading,
+      error,
+      getAllGallerys,
+      getGalleryById,
+      createGallery,
+      updateGallery,
+      deleteGallery
+    ]
+  );
   return (
-    <GalleryContext.Provider
-      value={{
-        galleries,
-        countGallery,
-        loading,
-        error,
-        getAllGallerys,
-        getGalleryById,
-        createGallery,
-        updateGallery,
-        deleteGallery
-      }}
-    >
-      {children}
-    </GalleryContext.Provider>
+    <GalleryContext.Provider value={value}>{children}</GalleryContext.Provider>
   );
 };

@@ -3,7 +3,8 @@ import {
   useState,
   ReactNode,
   useCallback,
-  useEffect
+  useEffect,
+  useMemo
 } from 'react';
 import { AxiosResponse } from 'axios';
 import { IWindowsCatalog } from '../../types/type/windows-catalog/windows-catalog';
@@ -102,8 +103,9 @@ export const WindowsCatalogProvider = ({
   const getAllWindowsCatalogs = useCallback(() => {
     fetchData(
       getAllWindowsCatalogsApi,
-      data => {setWindowsCatalog(data?.windowsCatalogs || [])
-        setCountWindowsCatalog(data?.count || 0)
+      data => {
+        setWindowsCatalog(data?.windowsCatalogs || []);
+        setCountWindowsCatalog(data?.count || 0);
       },
       'getAll'
     );
@@ -161,7 +163,9 @@ export const WindowsCatalogProvider = ({
         data => {
           if (data?.windowsCatalogData) {
             setWindowsCatalog(prevWindowsCatalog =>
-              prevWindowsCatalog.map(wc => (wc._id === _id ? data?.windowsCatalogData : wc))
+              prevWindowsCatalog.map(wc =>
+                wc._id === _id ? data?.windowsCatalogData : wc
+              )
             );
           }
         },
@@ -190,21 +194,34 @@ export const WindowsCatalogProvider = ({
     getAllWindowsCatalogs();
   }, [getAllWindowsCatalogs]);
 
+  const value = useMemo(
+    () => ({
+      windowsCatalogs,
+      countWindowsCatalog,
+      loading,
+      error,
+      getAllWindowsCatalogs,
+      getWindowsCatalogById,
+      createWindowsCatalog,
+      updateWindowsCatalog,
+      deleteWindowsCatalog
+    }),
+    [
+      windowsCatalogs,
+      countWindowsCatalog,
+      loading,
+      error,
+      getAllWindowsCatalogs,
+      getWindowsCatalogById,
+      createWindowsCatalog,
+      updateWindowsCatalog,
+      deleteWindowsCatalog
+    ]
+  );
   return (
-    <WindowsCatalogContext.Provider
-      value={{
-        windowsCatalogs,
-        countWindowsCatalog,
-        loading,
-        error,
-        getAllWindowsCatalogs,
-        getWindowsCatalogById,
-        createWindowsCatalog,
-        updateWindowsCatalog,
-        deleteWindowsCatalog
-      }}
-    >
+    <WindowsCatalogContext.Provider value={value}>
       {children}
     </WindowsCatalogContext.Provider>
   );
 };
+

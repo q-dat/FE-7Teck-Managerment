@@ -3,7 +3,8 @@ import {
   useState,
   ReactNode,
   useCallback,
-  useEffect
+  useEffect,
+  useMemo
 } from 'react';
 import { AxiosResponse } from 'axios';
 import {
@@ -202,21 +203,34 @@ export const PriceListsProvider = ({ children }: { children: ReactNode }) => {
     getAllPriceLists();
   }, [getAllPriceLists]);
 
+  const value = useMemo(
+    () => ({
+      priceLists,
+      countPriceList,
+      loading,
+      error,
+      getAllPriceLists,
+      getPriceListsById,
+      createPriceLists,
+      updatePriceLists,
+      deletePriceLists
+    }),
+    [
+      priceLists,
+      countPriceList,
+      loading,
+      error,
+      getAllPriceLists,
+      getPriceListsById,
+      createPriceLists,
+      updatePriceLists,
+      deletePriceLists
+    ]
+  );
   return (
-    <PriceListsContext.Provider
-      value={{
-        priceLists,
-        countPriceList,
-        loading,
-        error,
-        getAllPriceLists,
-        getPriceListsById,
-        createPriceLists,
-        updatePriceLists,
-        deletePriceLists
-      }}
-    >
+    <PriceListsContext.Provider value={value}>
       {children}
     </PriceListsContext.Provider>
   );
 };
+

@@ -3,7 +3,8 @@ import {
   useState,
   ReactNode,
   useCallback,
-  useEffect
+  useEffect,
+  useMemo
 } from 'react';
 import { AxiosResponse } from 'axios';
 import { IMacbook } from '../../types/type/macbook/macbook';
@@ -212,22 +213,34 @@ export const MacbookProvider = ({ children }: { children: ReactNode }) => {
     getAllMacbook();
   }, [getAllMacbook]);
 
+  const value = useMemo(
+    () => ({
+      macbook,
+      countMacbook,
+      loading,
+      error,
+      getAllMacbook,
+      getMacbookById,
+      createMacbook,
+      updateMacbook,
+      updateMacbookView,
+      deleteMacbook
+    }),
+    [
+      macbook,
+      countMacbook,
+      loading,
+      error,
+      getAllMacbook,
+      getMacbookById,
+      createMacbook,
+      updateMacbook,
+      updateMacbookView,
+      deleteMacbook
+    ]
+  );
   return (
-    <MacbookContext.Provider
-      value={{
-        macbook,
-        countMacbook,
-        loading,
-        error,
-        getAllMacbook,
-        getMacbookById,
-        createMacbook,
-        updateMacbook,
-        updateMacbookView,
-        deleteMacbook
-      }}
-    >
-      {children}
-    </MacbookContext.Provider>
+    <MacbookContext.Provider value={value}>{children}</MacbookContext.Provider>
   );
 };
+

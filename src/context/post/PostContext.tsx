@@ -3,7 +3,8 @@ import {
   useState,
   useCallback,
   ReactNode,
-  useEffect
+  useEffect,
+  useMemo
 } from 'react';
 import {
   getAllPostsApi,
@@ -159,21 +160,29 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
     getAllPosts();
   }, [getAllPosts]);
 
-  return (
-    <PostContext.Provider
-      value={{
-        posts,
-        countPost,
-        loading,
-        error,
-        getAllPosts,
-        getPostById,
-        createPost,
-        updatePost,
-        deletePost
-      }}
-    >
-      {children}
-    </PostContext.Provider>
+  const value = useMemo(
+    () => ({
+      posts,
+      countPost,
+      loading,
+      error,
+      getAllPosts,
+      getPostById,
+      createPost,
+      updatePost,
+      deletePost
+    }),
+    [
+      posts,
+      countPost,
+      loading,
+      error,
+      getAllPosts,
+      getPostById,
+      createPost,
+      updatePost,
+      deletePost
+    ]
   );
+  return <PostContext.Provider value={value}>{children}</PostContext.Provider>;
 };
