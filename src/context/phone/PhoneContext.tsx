@@ -156,29 +156,43 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
     },
     []
   );
+  
   // updatePhoneView
   const updatePhoneView = useCallback(
     async (_id: string) => {
       try {
+        // Tìm sản phẩm trong danh sách
         const phone = phones.find(p => p._id === _id);
         if (!phone) return;
 
+        // Cập nhật nhanh trong UI để tránh delay
+        setPhones(prevPhones =>
+          prevPhones.map(p =>
+            p._id === _id ? { ...p, view: (p.view ?? 0) + 1 } : p
+          )
+        );
+
+        // Gọi API cập nhật view trên server
         const updatedData = new FormData();
         updatedData.append('view', String((phone.view ?? 0) + 1));
 
-        await fetchData(
-          () => updatePhoneApi(_id, updatedData),
-          data => {
-            if (data?.updatedData) {
-              setPhones(prevPhones =>
-                prevPhones.map(p => (p._id === _id ? data.updatedData : p))
-              );
-            }
-          },
-          'update'
-        );
+        const response = await updatePhoneApi(_id, updatedData);
+
+        // Nếu API thành công, cập nhật lại state với dữ liệu từ server
+        if (response.data?.phone) {
+          setPhones(prevPhones =>
+            prevPhones.map(p => (p._id === _id ? response.data.phone : p))
+          );
+        }
       } catch (error) {
         console.error('Lỗi khi cập nhật view:', error);
+
+        // Rollback nếu API thất bại
+        setPhones(prevPhones =>
+          prevPhones.map(p =>
+            p._id === _id ? { ...p, view: (p.view ?? 0) - 1 } : p
+          )
+        );
       }
     },
     [phones]

@@ -161,25 +161,41 @@ export const TabletProvider = ({ children }: { children: ReactNode }) => {
   const updateTabletView = useCallback(
     async (_id: string) => {
       try {
-        const tablet = tablets.find(t => t._id === _id);
+        // Tìm sản phẩm trong danh sách
+        const tablet = tablets.find(p => p._id === _id);
         if (!tablet) return;
 
-        const updatedData = new FormData();
-        updatedData.append('view', String((tablet.tablet_view ?? 0) + 1));
-
-        await fetchData(
-          () => updateTabletApi(_id, updatedData),
-          data => {
-            if (data?.updatedData) {
-              setTablets(prevTablets =>
-                prevTablets.map(t => (t._id === _id ? data.updatedData : t))
-              );
-            }
-          },
-          'update'
+        // Cập nhật nhanh trong UI để tránh delay
+        setTablets(prevTablets =>
+          prevTablets.map(t =>
+            t._id === _id ? { ...t, tablet_view: (t.tablet_view ?? 0) + 1 } : t
+          )
         );
+
+        // Gọi API cập nhật tablet_view trên server
+        const updatedData = new FormData();
+        updatedData.append(
+          'tablet_view',
+          String((tablet.tablet_view ?? 0) + 1)
+        );
+
+        const response = await updateTabletApi(_id, updatedData);
+
+        // Nếu API thành công, cập nhật lại state với dữ liệu từ server
+        if (response.data?.tablet) {
+          setTablets(prevTablets =>
+            prevTablets.map(t => (t._id === _id ? response.data.tablet : t))
+          );
+        }
       } catch (error) {
-        console.error('Lỗi khi cập nhật view:', error);
+        console.error('Lỗi khi cập nhật tablet_view:', error);
+
+        // Rollback nếu API thất bại
+        setTablets(prevTablets =>
+          prevTablets.map(t =>
+            t._id === _id ? { ...t, tablet_view: (t.tablet_view ?? 0) - 1 } : t
+          )
+        );
       }
     },
     [tablets]

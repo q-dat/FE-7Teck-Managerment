@@ -165,30 +165,38 @@ export const MacbookProvider = ({ children }: { children: ReactNode }) => {
   const updateMacbookView = useCallback(
     async (_id: string) => {
       try {
-        const laptopMacbook = macbook.find(m => m._id === _id);
-        if (!laptopMacbook) return;
+        // Tìm sản phẩm trong danh sách
+        const mac = macbook.find(m => m._id === _id);
+        if (!mac) return;
 
+        // Cập nhật nhanh trong UI để tránh delay
+        setMacbook(prevLaptopMacbook =>
+          prevLaptopMacbook.map(m =>
+            m._id === _id ? { ...m, macbook_view: (m.macbook_view ?? 0) + 1 } : m
+          )
+        );
+
+        // Gọi API cập nhật view trên server
         const updatedData = new FormData();
-        updatedData.append(
-          'view',
-          String((laptopMacbook.macbook_view ?? 0) + 1)
-        );
+        updatedData.append('macbook_view', String((mac.macbook_view ?? 0) + 1));
 
-        await fetchData(
-          () => updateMacbookApi(_id, updatedData),
-          data => {
-            if (data?.updatedData) {
-              setMacbook(prevLaptopMacbook =>
-                prevLaptopMacbook.map(m =>
-                  m._id === _id ? data.updatedData : m
-                )
-              );
-            }
-          },
-          'update'
-        );
+        const response = await updateMacbookApi(_id, updatedData);
+
+        // Nếu API thành công, cập nhật lại state với dữ liệu từ server
+        if (response.data?.mac) {
+          setMacbook(prevLaptopMacbook =>
+            prevLaptopMacbook.map(m => (m._id === _id ? response.data.mac : m))
+          );
+        }
       } catch (error) {
-        console.error('Lỗi khi cập nhật view:', error);
+        console.error('Lỗi khi cập nhật macbook_view:', error);
+
+        // Rollback nếu API thất bại
+        setMacbook(prevLaptopMacbook =>
+          prevLaptopMacbook.map(m =>
+            m._id === _id ? { ...m, view: (m.macbook_view ?? 0) - 1 } : m
+          )
+        );
       }
     },
     [macbook]

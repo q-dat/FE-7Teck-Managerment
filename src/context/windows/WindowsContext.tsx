@@ -165,30 +165,40 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
   const updateWindowsView = useCallback(
     async (_id: string) => {
       try {
-        const laptopWindows = windows.find(w => w._id === _id);
-        if (!laptopWindows) return;
+        // Tìm sản phẩm trong danh sách
+        const win = windows.find(w => w._id === _id);
+        if (!win) return;
 
+        // Cập nhật nhanh trong UI để tránh delay
+        setWindows(prevWindows =>
+          prevWindows.map(w =>
+            w._id === _id
+              ? { ...w, windows_view: (w.windows_view ?? 0) + 1 }
+              : w
+          )
+        );
+
+        // Gọi API cập nhật view trên server
         const updatedData = new FormData();
-        updatedData.append(
-          'view',
-          String((laptopWindows.windows_view ?? 0) + 1)
-        );
+        updatedData.append('windows_view', String((win.windows_view ?? 0) + 1));
 
-        await fetchData(
-          () => updateWindowsApi(_id, updatedData),
-          data => {
-            if (data?.updatedData) {
-              setWindows(prevLaptopWindows =>
-                prevLaptopWindows.map(w =>
-                  w._id === _id ? data.updatedData : w
-                )
-              );
-            }
-          },
-          'update'
-        );
+        const response = await updateWindowsApi(_id, updatedData);
+
+        // Nếu API thành công, cập nhật lại state với dữ liệu từ server
+        if (response.data?.win) {
+          setWindows(prevWindows =>
+            prevWindows.map(w => (w._id === _id ? response.data.win : w))
+          );
+        }
       } catch (error) {
         console.error('Lỗi khi cập nhật view:', error);
+
+        // Rollback nếu API thất bại
+        setWindows(prevWindows =>
+          prevWindows.map(w =>
+            w._id === _id ? { ...w, view: (w.windows_view ?? 0) - 1 } : w
+          )
+        );
       }
     },
     [windows]
