@@ -188,17 +188,7 @@ export const GalleryProvider = ({ children }: { children: ReactNode }) => {
       updateGallery,
       deleteGallery
     }),
-    [
-      galleries,
-      countGallery,
-      loading,
-      error,
-      getAllGallerys,
-      getGalleryById,
-      createGallery,
-      updateGallery,
-      deleteGallery
-    ]
+    [galleries, countGallery, loading, error]
   );
   return (
     <GalleryContext.Provider value={value}>{children}</GalleryContext.Provider>

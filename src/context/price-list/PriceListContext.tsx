@@ -215,17 +215,7 @@ export const PriceListsProvider = ({ children }: { children: ReactNode }) => {
       updatePriceLists,
       deletePriceLists
     }),
-    [
-      priceLists,
-      countPriceList,
-      loading,
-      error,
-      getAllPriceLists,
-      getPriceListsById,
-      createPriceLists,
-      updatePriceLists,
-      deletePriceLists
-    ]
+    [priceLists, countPriceList, loading, error]
   );
   return (
     <PriceListsContext.Provider value={value}>

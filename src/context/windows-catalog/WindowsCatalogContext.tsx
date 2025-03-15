@@ -206,17 +206,7 @@ export const WindowsCatalogProvider = ({
       updateWindowsCatalog,
       deleteWindowsCatalog
     }),
-    [
-      windowsCatalogs,
-      countWindowsCatalog,
-      loading,
-      error,
-      getAllWindowsCatalogs,
-      getWindowsCatalogById,
-      createWindowsCatalog,
-      updateWindowsCatalog,
-      deleteWindowsCatalog
-    ]
+    [windowsCatalogs, countWindowsCatalog, loading, error]
   );
   return (
     <WindowsCatalogContext.Provider value={value}>

@@ -214,18 +214,7 @@ export const TabletProvider = ({ children }: { children: ReactNode }) => {
       updateTabletView,
       deleteTablet
     }),
-    [
-      tablets,
-      countTablet,
-      loading,
-      error,
-      getAllTablets,
-      getTabletById,
-      createTablet,
-      updateTablet,
-      updateTabletView,
-      deleteTablet
-    ]
+    [tablets, countTablet, loading, error]
   );
   return (
     <TabletContext.Provider value={value}>{children}</TabletContext.Provider>

@@ -207,17 +207,7 @@ export const TabletCatalogProvider = ({
       updateTabletCatalog,
       deleteTabletCatalog
     }),
-    [
-      tabletCatalogs,
-      countTabletCatalog,
-      loading,
-      error,
-      getAllTabletCatalogs,
-      getTabletCatalogById,
-      createTabletCatalog,
-      updateTabletCatalog,
-      deleteTabletCatalog
-    ]
+    [tabletCatalogs, countTabletCatalog, loading, error]
   );
   return (
     <TabletCatalogContext.Provider value={value}>

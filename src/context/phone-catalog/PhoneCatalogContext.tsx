@@ -201,17 +201,7 @@ export const PhoneCatalogProvider = ({ children }: { children: ReactNode }) => {
       updatePhoneCatalog,
       deletePhoneCatalog
     }),
-    [
-      phoneCatalogs,
-      countPhoneCatalog,
-      loading,
-      error,
-      getAllPhoneCatalogs,
-      getPhoneCatalogById,
-      createPhoneCatalog,
-      updatePhoneCatalog,
-      deletePhoneCatalog
-    ]
+    [phoneCatalogs, countPhoneCatalog, loading, error]
   );
   return (
     <PhoneCatalogContext.Provider value={value}>

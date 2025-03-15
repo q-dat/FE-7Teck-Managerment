@@ -226,18 +226,7 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
       updateWindowsView,
       deleteWindows
     }),
-    [
-      windows,
-      countWindows,
-      loading,
-      error,
-      getAllWindows,
-      getWindowsById,
-      createWindows,
-      updateWindows,
-      updateWindowsView,
-      deleteWindows
-    ]
+    [windows, countWindows, loading, error]
   );
   return (
     <WindowsContext.Provider value={value}>{children}</WindowsContext.Provider>

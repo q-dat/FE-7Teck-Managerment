@@ -172,17 +172,7 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
       updatePost,
       deletePost
     }),
-    [
-      posts,
-      countPost,
-      loading,
-      error,
-      getAllPosts,
-      getPostById,
-      createPost,
-      updatePost,
-      deletePost
-    ]
+    [posts, countPost, loading, error]
   );
   return <PostContext.Provider value={value}>{children}</PostContext.Provider>;
 };

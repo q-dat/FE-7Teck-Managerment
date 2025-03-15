@@ -226,18 +226,7 @@ export const MacbookProvider = ({ children }: { children: ReactNode }) => {
       updateMacbookView,
       deleteMacbook
     }),
-    [
-      macbook,
-      countMacbook,
-      loading,
-      error,
-      getAllMacbook,
-      getMacbookById,
-      createMacbook,
-      updateMacbook,
-      updateMacbookView,
-      deleteMacbook
-    ]
+    [macbook, countMacbook, loading, error]
   );
   return (
     <MacbookContext.Provider value={value}>{children}</MacbookContext.Provider>

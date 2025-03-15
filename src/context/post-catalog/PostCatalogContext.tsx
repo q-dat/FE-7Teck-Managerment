@@ -189,17 +189,7 @@ export const PostCatalogProvider = ({ children }: { children: ReactNode }) => {
       updatePostCatalog,
       deletePostCatalog
     }),
-    [
-      postCatalogs,
-      countPostCatalog,
-      loading,
-      error,
-      getAllPostCatalogs,
-      getPostCatalogById,
-      createPostCatalog,
-      updatePostCatalog,
-      deletePostCatalog
-    ]
+    [postCatalogs, countPostCatalog, loading, error]
   );
   return (
     <PostCatalogContext.Provider value={value}>

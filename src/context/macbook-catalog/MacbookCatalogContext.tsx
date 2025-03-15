@@ -206,17 +206,7 @@ export const MacbookCatalogProvider = ({
       updateMacbookCatalog,
       deleteMacbookCatalog
     }),
-    [
-      macbookCatalogs,
-      countMacbookCatalog,
-      loading,
-      error,
-      getAllMacbookCatalogs,
-      getMacbookCatalogById,
-      createMacbookCatalog,
-      updateMacbookCatalog,
-      deleteMacbookCatalog
-    ]
+    [macbookCatalogs, countMacbookCatalog, loading, error]
   );
   return (
     <MacbookCatalogContext.Provider value={value}>

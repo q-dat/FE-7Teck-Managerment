@@ -199,7 +199,7 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     getAllPhones();
   }, [getAllPhones]);
-  
+
   const value = useMemo(
     () => ({
       phones,
@@ -213,18 +213,7 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
       updatePhoneView,
       deletePhone
     }),
-    [
-      phones,
-      countPhone,
-      loading,
-      error,
-      getAllPhones,
-      getPhoneById,
-      createPhone,
-      updatePhone,
-      updatePhoneView,
-      deletePhone
-    ]
+    [phones, countPhone, loading, error]
   );
   return (
     <PhoneContext.Provider value={value}>{children}</PhoneContext.Provider>

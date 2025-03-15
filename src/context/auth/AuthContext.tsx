@@ -127,7 +127,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     localStorage.removeItem('jwt_token');
     localStorage.removeItem('user');
   }, []);
-  
+
   const value = useMemo(
     () => ({
       user,
@@ -138,7 +138,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       loginUser,
       logoutUser
     }),
-    [user, token, loading, error, registerUser, loginUser, logoutUser]
+    [user, token, loading, error]
   );
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

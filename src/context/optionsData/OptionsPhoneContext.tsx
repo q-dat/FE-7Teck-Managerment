@@ -196,17 +196,7 @@ export const OptionPhoneProvider = ({ children }: { children: ReactNode }) => {
       updateOptionPhone,
       deleteOptionPhone
     }),
-    [
-      optionPhones,
-      countOptionPhoneData,
-      loading,
-      error,
-      getAllOptionPhones,
-      getOptionPhoneById,
-      createOptionPhone,
-      updateOptionPhone,
-      deleteOptionPhone
-    ]
+    [optionPhones, countOptionPhoneData, loading, error]
   );
   return (
     <OptionPhoneContext.Provider value={value}>
