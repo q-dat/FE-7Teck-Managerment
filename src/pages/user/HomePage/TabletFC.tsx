@@ -9,7 +9,7 @@ import { TabletContext } from '../../../context/tablet/TabletContext';
 import { useScroll } from '../../../hooks/useScroll';
 import { slugify } from '../../../components/utils/slugify';
 
-const IPadFC: React.FC = () => {
+const TabletFC: React.FC = () => {
   const { tablets, updateTabletView } = useContext(TabletContext);
   const { scrollRef, isLeftVisible, isRightVisible, scrollBy } = useScroll();
   const [loading, setLoading] = useState(true);
@@ -167,4 +167,4 @@ const IPadFC: React.FC = () => {
   );
 };
 
-export default memo(IPadFC);
+export default memo(TabletFC);
