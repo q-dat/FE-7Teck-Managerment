@@ -9,26 +9,12 @@ import { FaRegEye } from 'react-icons/fa';
 import { Sale } from '../../../assets/image-represent';
 import { useScroll } from '../../../hooks/useScroll';
 import { slugify } from '../../../components/utils/slugify';
-import { IPhone } from '../../../types/type/phone/phone';
 
 const PhoneFC: React.FC = () => {
-  const { updatePhoneView } = useContext(PhoneContext);
+  const { phones, updatePhoneView } = useContext(PhoneContext);
   const { scrollRef, isLeftVisible, isRightVisible, scrollBy } = useScroll();
-  const [phones, setPhones] = useState<IPhone[]>([]);
   const [loading, setLoading] = useState(true);
-  //
-  const fetchPhonesJson = async () => {
-    try {
-      const response = await fetch('/phones.json');
-      const data = await response.json();
-      setPhones(data.phones);
-      setLoading(false);
-    } catch (error) {
-      console.error('Lỗi khi tải danh sách điện thoại:', error);
-    }
-  };
   useEffect(() => {
-    fetchPhonesJson();
     if (phones.length > 0) {
       setLoading(false);
     }
