@@ -6,20 +6,12 @@ import { Sale } from '../../../assets/image-represent';
 import { Button } from 'react-daisyui';
 import { FaRegEye } from 'react-icons/fa';
 import { Placeholder } from 'semantic-ui-react';
+import { slugify } from '../../../components/utils/slugify';
 
 const UsedPhoneByCatalogPage = () => {
   const { phones, updatePhoneView } = useContext(PhoneContext);
   const [loading, setLoading] = useState(true);
   const { catalog } = useParams();
-  const slugify = (text: string) => {
-    return text
-      .toString()
-      .normalize('NFD')
-      .replace(/\p{Diacritic}/gu, '')
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-+|-+$/g, '');
-  };
   const filteredPhones = phones.filter(
     phone => slugify(phone?.name) === catalog
   );

@@ -6,20 +6,12 @@ import { Button } from 'react-daisyui';
 import { FaRegEye } from 'react-icons/fa';
 import { Placeholder } from 'semantic-ui-react';
 import { TabletContext } from '../../../context/tablet/TabletContext';
+import { slugify } from '../../../components/utils/slugify';
 
 const UsedTabletByCatalogPage = () => {
   const { tablets, updateTabletView } = useContext(TabletContext);
   const [loading, setLoading] = useState(true);
   const { catalog } = useParams();
-  const slugify = (text: string) => {
-    return text
-      .toString()
-      .normalize('NFD')
-      .replace(/\p{Diacritic}/gu, '')
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-+|-+$/g, '');
-  };
   const filteredPhones = tablets.filter(
     tablet => slugify(tablet?.tablet_name) === catalog
   );

@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Button } from 'react-daisyui';
 import { Placeholder } from 'semantic-ui-react';
 import { PhoneContext } from '../../../context/phone/PhoneContext';
+import { slugify } from '../../../components/utils/slugify';
 
 const PhonePage: React.FC = () => {
   const { phones } = useContext(PhoneContext);
@@ -24,15 +25,6 @@ const PhonePage: React.FC = () => {
   }, [phones, currentPage]);
   // Handle Click Phone To Phone Detail
   const navigate = useNavigate();
-  const slugify = (text: string) => {
-    return text
-      .toString()
-      .normalize('NFD') // Chuyển sang Unicode
-      .replace(/\p{Diacritic}/gu, '') // Loại bỏ dấu
-      .toLowerCase() // Chuyển tất cả thành chữ thường
-      .replace(/[^a-z0-9]+/g, '-') // Thay thế khoảng trắng và ký tự không phải chữ cái bằng dấu gạch ngang
-      .replace(/^-+|-+$/g, ''); // Loại bỏ dấu gạch ngang ở đầu và cuối chuỗi
-  };
   // Panigation
   const itemsPerPage = 12;
   const NewiPhones = phones.filter(
