@@ -1,8 +1,7 @@
 import React, {
+  memo,
   useContext,
   useEffect,
-  useLayoutEffect,
-  useRef,
   useState
 } from 'react';
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
@@ -13,60 +12,19 @@ import { Placeholder } from 'semantic-ui-react';
 import { Button } from 'react-daisyui';
 import { FaRegEye } from 'react-icons/fa';
 import { Sale } from '../../../assets/image-represent';
+import { useScroll } from '../../../hooks/useScroll';
+import { slugify } from '../../../components/utils/slugify';
 
 const PhoneFC: React.FC = () => {
   const { phones, updatePhoneView } = useContext(PhoneContext);
-  const slugify = (text: string) => {
-    return text
-      .toString()
-      .normalize('NFD')
-      .replace(/\p{Diacritic}/gu, '')
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-+|-+$/g, '');
-  };
+  const { scrollRef, isLeftVisible, isRightVisible, scrollBy } = useScroll();
   const [loading, setLoading] = useState(true);
-  const [isLeftVisible, setIsLeftVisible] = useState(true);
-  const [isRightVisible, setIsRightVisible] = useState(true);
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  useLayoutEffect(() => {
-    updateScrollButtons();
-  }, [phones]);
-  //
-  const updateScrollButtons = () => {
-    const scrollContainer = scrollRef.current;
-    if (scrollContainer) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollContainer;
-      setIsLeftVisible(scrollLeft > 0);
-      setIsRightVisible(scrollLeft + clientWidth < scrollWidth - 1);
-    }
-  };
-
-  const scrollBy = (offset: number) => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollLeft += offset;
-    }
-  };
-
   useEffect(() => {
-    if (phones.length > 0) {
-      setLoading(false);
-    }
-    //
-    if (phones.length > 0) updateScrollButtons();
+    if (!phones.length) return;
 
-    const handleResize = () => updateScrollButtons();
-    const scrollContainer = scrollRef.current;
-
-    window.addEventListener('resize', handleResize);
-    scrollContainer?.addEventListener('scroll', updateScrollButtons);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-      scrollContainer?.removeEventListener('scroll', updateScrollButtons);
-    };
+    setLoading(false);
   }, [phones]);
+
   //
   const sortedPhones = phones
     .filter(phone => phone.view !== undefined && phone.view >= 0)
@@ -219,4 +177,4 @@ const PhoneFC: React.FC = () => {
   );
 };
 
-export default PhoneFC;
+export default memo(PhoneFC);

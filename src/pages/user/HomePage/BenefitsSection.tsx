@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
@@ -139,4 +139,4 @@ const BenefitsSection: React.FC = () => {
   );
 };
 
-export default BenefitsSection;
+export default memo(BenefitsSection);

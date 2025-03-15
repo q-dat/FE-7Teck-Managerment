@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
 import PhoneFC from './PhoneFC';
-import IPadFC from './IPadFC';
+import TabletFC from './TabletFC';
 import WindowsFC from './WindowsFC';
 import MacbookFC from './MacbookFC';
 import PostSection from './PostSection';
@@ -79,7 +79,7 @@ const HomePage = () => {
         <BgFixedSection />
         {/* Discounted Products Section */}
         <div className="flex w-full flex-col items-center justify-center gap-5">
-          {[IPadFC, MacbookFC, WindowsFC].map((Component, index) => (
+          {[TabletFC, MacbookFC, WindowsFC].map((Component, index) => (
             <div key={index} data-aos="fade-up" className="w-full">
               <Component />
             </div>

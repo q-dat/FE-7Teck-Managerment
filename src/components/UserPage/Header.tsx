@@ -13,7 +13,8 @@ import { IPhoneCatalog } from '../../types/type/phone-catalog/phone-catalog';
 import { TbPigMoney } from 'react-icons/tb';
 import { GiRibbonMedal } from 'react-icons/gi';
 import menuItems from '../utils/menuItems';
-import { handleSearch, slugify } from '../utils/searchUtils';
+import { handleSearch } from '../utils/searchUtils';
+import { slugify } from '../utils/slugify';
 
 const items = [
   {

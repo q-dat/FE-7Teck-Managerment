@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { memo, useContext } from 'react';
 import { IoIosArrowForward } from 'react-icons/io';
 import { Link, useNavigate } from 'react-router-dom';
 import { bgBlog } from '../../../assets/images';
@@ -167,4 +167,4 @@ const PostSection: React.FC = () => {
   );
 };
 
-export default PostSection;
+export default memo(PostSection);

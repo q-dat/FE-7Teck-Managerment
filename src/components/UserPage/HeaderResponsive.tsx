@@ -9,7 +9,8 @@ import { IoSearch } from 'react-icons/io5';
 import { IPhoneCatalog } from '../../types/type/phone-catalog/phone-catalog';
 import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
 import menuItems from '../utils/menuItems';
-import { handleSearch, slugify } from '../utils/searchUtils';
+import { handleSearch } from '../utils/searchUtils';
+import { slugify } from '../utils/slugify';
 
 interface HeaderResponsiveProps {
   Title_NavbarMobile: ReactNode;

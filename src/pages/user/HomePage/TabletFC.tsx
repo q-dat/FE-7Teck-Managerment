@@ -1,10 +1,4 @@
-import React, {
-  useContext,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState
-} from 'react';
+import React, { memo, useContext, useEffect, useState } from 'react';
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { IoIosArrowForward } from 'react-icons/io';
@@ -12,59 +6,18 @@ import { Placeholder } from 'semantic-ui-react';
 import { Button } from 'react-daisyui';
 import { Sale } from '../../../assets/image-represent';
 import { TabletContext } from '../../../context/tablet/TabletContext';
+import { useScroll } from '../../../hooks/useScroll';
+import { slugify } from '../../../components/utils/slugify';
 
 const IPadFC: React.FC = () => {
   const { tablets, updateTabletView } = useContext(TabletContext);
-  const slugify = (text: string) => {
-    return text
-      .toString()
-      .normalize('NFD')
-      .replace(/\p{Diacritic}/gu, '')
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-+|-+$/g, '');
-  };
+  const { scrollRef, isLeftVisible, isRightVisible, scrollBy } = useScroll();
   const [loading, setLoading] = useState(true);
-  const [isLeftVisible, setIsLeftVisible] = useState(true);
-  const [isRightVisible, setIsRightVisible] = useState(true);
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  useLayoutEffect(() => {
-    updateScrollButtons();
-  }, [tablets]);
   //
-  const updateScrollButtons = () => {
-    const scrollContainer = scrollRef.current;
-    if (scrollContainer) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollContainer;
-      setIsLeftVisible(scrollLeft > 0);
-      setIsRightVisible(scrollLeft + clientWidth < scrollWidth - 1);
-    }
-  };
-
-  const scrollBy = (offset: number) => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollLeft += offset;
-    }
-  };
-
   useEffect(() => {
     if (tablets.length > 0) {
       setLoading(false);
     }
-    //
-    if (tablets.length > 0) updateScrollButtons();
-
-    const handleResize = () => updateScrollButtons();
-    const scrollContainer = scrollRef.current;
-
-    window.addEventListener('resize', handleResize);
-    scrollContainer?.addEventListener('scroll', updateScrollButtons);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-      scrollContainer?.removeEventListener('scroll', updateScrollButtons);
-    };
   }, [tablets]);
   //
   const sortedTablets = tablets.filter(tablet => tablet.tablet_sale);
@@ -214,4 +167,4 @@ const IPadFC: React.FC = () => {
   );
 };
 
-export default IPadFC;
+export default memo(IPadFC);
