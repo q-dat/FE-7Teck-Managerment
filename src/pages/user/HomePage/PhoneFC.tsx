@@ -18,8 +18,7 @@ const PhoneFC: React.FC = () => {
     if (phones.length > 0) {
       setLoading(false);
     }
-    setLoading(false);
-  }, []);
+  }, [phones]);
 
   //
   const sortedPhones = phones
