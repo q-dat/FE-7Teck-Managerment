@@ -1,0 +1,522 @@
+{
+  "message": "Lấy danh sách điện thoại thành công!",
+  "count": 5,
+  "phones": [
+    {
+      "_id": "678a5ce002cf4fbafdb469c7",
+      "phone_catalog_id": {
+        "configuration_and_memory": {
+          "operating_system": "1",
+          "cpu_chip": "1",
+          "cpu_speed": "1",
+          "gpu": "1",
+          "ram": "1",
+          "storage_capacity": "1",
+          "remaining_capacity": "1",
+          "memory_card": "1",
+          "contacts": "1"
+        },
+        "camera_and_screen": {
+          "rear_camera_resolution": "1",
+          "rear_camera_flash": "1",
+          "front_camera_resolution": "1",
+          "screen_technology": "1",
+          "screen_resolution": "1",
+          "screen_size": "1",
+          "max_brightness": "1",
+          "touchscreen_glass": "1",
+          "rear_camera_video": [
+            "4K@30fps",
+            "1080p@60fps"
+          ],
+          "rear_camera_features": [
+            "Auto Focus",
+            "HDR"
+          ],
+          "front_camera_features": [
+            "Portrait Mode",
+            "Beauty Mode"
+          ]
+        },
+        "battery_and_charging": {
+          "battery_capacity": "1",
+          "battery_type": "1",
+          "max_charging_support": "1",
+          "battery_technology": [
+            "Fast Charging",
+            "Wireless Charging"
+          ]
+        },
+        "features": {
+          "water_dust_resistant": "1",
+          "video_playback": "1",
+          "advanced_security": [
+            "Face ID",
+            "Fingerprint Scanner"
+          ],
+          "special_features": [
+            "5G Support",
+            "Dual SIM"
+          ],
+          "voice_recording": [
+            "Mono Recording",
+            "Stereo Recording"
+          ],
+          "radio": [
+            "FM Radio",
+            "AM Radio"
+          ],
+          "music_playback": [
+            "MP3",
+            "AAC"
+          ]
+        },
+        "connectivity": {
+          "mobile_network": "1",
+          "sim": "1",
+          "bluetooth": "1",
+          "charging_connection_port": "1",
+          "headphone_jack": "1",
+          "other_connectivity": "1",
+          "wifi": [
+            "Wi-Fi 5",
+            "Wi-Fi 6"
+          ],
+          "gps": [
+            "GPS",
+            "GLONASS"
+          ]
+        },
+        "design_and_material": {
+          "design": "1",
+          "material": "1",
+          "dimensions_and_weight": "1",
+          "release_date": "1",
+          "brand": "1"
+        },
+        "_id": "679ef2af21fbb8052b9a2463",
+        "name": "1",
+        "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1738470063/e5zjprfpiy6gyrgy6jub.jpg",
+        "price": 1,
+        "status": 0,
+        "content": "<p><br></p>"
+      },
+      "name": "IPhone 123",
+      "color": "Đỏ",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1737120990/lq1psjfxdf6yxh9mn9rc.jpg",
+      "thumbnail": [
+        "https://res.cloudinary.com/cloud7teck/image/upload/v1737120991/gvgqyoqvsb7p8drj3pby.jpg",
+        "https://res.cloudinary.com/cloud7teck/image/upload/v1737120991/t9ewrq7xtzher1go38rb.jpg",
+        "https://res.cloudinary.com/cloud7teck/image/upload/v1737120991/wyyasbunnv9ognwv8mii.jpg",
+        "https://res.cloudinary.com/cloud7teck/image/upload/v1737120991/k6hh27j5soddsuqw8puj.jpg",
+        "https://res.cloudinary.com/cloud7teck/image/upload/v1737120991/frwq6jrppedwmoz4yaof.webp",
+        "https://res.cloudinary.com/cloud7teck/image/upload/v1737120991/av7vozlzyftuopsalgjz.webp",
+        "https://res.cloudinary.com/cloud7teck/image/upload/v1737120991/h36q7z379oyi184vb3cc.webp",
+        "https://res.cloudinary.com/cloud7teck/image/upload/v1737120991/ktx5slhlqjtzkptm5hdn.webp",
+        "https://res.cloudinary.com/cloud7teck/image/upload/v1737120991/umoupenmj8rf42ahuntc.webp",
+        "https://res.cloudinary.com/cloud7teck/image/upload/v1737120991/ikv4nauyiq8q3nzuk7uh.webp"
+      ],
+      "price": 123,
+      "sale": 1234,
+      "status": "New",
+      "des": "Bảo hành 1 năm",
+      "createdAt": "2025-01-17T13:36:32.268Z",
+      "updatedAt": "2025-03-15T07:29:50.456Z",
+      "__v": 0,
+      "note": "",
+      "view": 143
+    },
+    {
+      "_id": "678a5d5a02cf4fbafdb469e0",
+      "phone_catalog_id": {
+        "configuration_and_memory": {
+          "operating_system": "a",
+          "cpu_chip": "a",
+          "cpu_speed": "a",
+          "gpu": "a",
+          "ram": "a",
+          "storage_capacity": "a",
+          "remaining_capacity": "a",
+          "memory_card": "a",
+          "contacts": "a"
+        },
+        "camera_and_screen": {
+          "rear_camera_resolution": "a",
+          "rear_camera_video": [
+            "4K@30fps",
+            "1080p@60fps"
+          ],
+          "rear_camera_flash": "a",
+          "rear_camera_features": [
+            "Auto Focus",
+            "HDR"
+          ],
+          "front_camera_resolution": "a",
+          "front_camera_features": [
+            "Portrait Mode",
+            "Beauty Mode"
+          ],
+          "screen_technology": "aa",
+          "screen_resolution": "a",
+          "screen_size": "a",
+          "max_brightness": "a",
+          "touchscreen_glass": "a"
+        },
+        "battery_and_charging": {
+          "battery_capacity": "a",
+          "battery_type": "a",
+          "max_charging_support": "a",
+          "battery_technology": [
+            "Fast Charging",
+            "Wireless Charging"
+          ]
+        },
+        "features": {
+          "advanced_security": [
+            "Face ID",
+            "Fingerprint Scanner"
+          ],
+          "special_features": [
+            "5G Support",
+            "Dual SIM"
+          ],
+          "water_dust_resistant": "a",
+          "voice_recording": [
+            "Stereo Recording",
+            "Mono Recording"
+          ],
+          "radio": [
+            "FM Radio",
+            "AM Radio"
+          ],
+          "video_playback": "a",
+          "music_playback": [
+            "MP3",
+            "AAC"
+          ]
+        },
+        "connectivity": {
+          "mobile_network": "a",
+          "sim": "a",
+          "wifi": [
+            "Wi-Fi 5",
+            "Wi-Fi 6"
+          ],
+          "gps": [
+            "GPS",
+            "GLONASS"
+          ],
+          "bluetooth": "a",
+          "charging_connection_port": "a",
+          "headphone_jack": "a",
+          "other_connectivity": "a"
+        },
+        "design_and_material": {
+          "design": "a",
+          "material": "a",
+          "dimensions_and_weight": "a",
+          "release_date": "a",
+          "brand": "a"
+        },
+        "_id": "677deda620b5c9ef4ee316dd",
+        "name": "IPhone 123",
+        "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1736856259/ea9m9uywtwgfae58dwtp.jpg",
+        "price": 123,
+        "des": "123456",
+        "status": 1,
+        "content": "<h3><strong>1. Những lợi ích của điện thoại thông minh mang lại</strong></h3><h4><strong>Kết nối dễ dàng và tiện lợi</strong></h4><p>Kết nối dễ dàng và tiện lợi là một trong những tác dụng của điện thoại mà bất kì ai cũng biết đến. Với tính năng này, bạn cũng có thể kết nối với mọi người từ gọi điện, nhắn tin, sticker, video, mạng xã hội… bằng những thao tác đơn giản.</p><p>Ngày nay với chiếc smartphone, dù đang ở bất cứ lúc nào hay ở bất cứ nơi đâu, chỉ cần một vài thao tác là bạn đã có vô số lựa chọn để kết nối với người thân, từ hội thoại kèm video, gửi tin nhắn có hình, chat tức thời và sinh động trên chat online, hay đơn giản là cập nhật trạng thái/hình ảnh trên Facebook,...</p><p><img src=\"https://cdn.tgdd.vn/News/1492992/nhung-loi-ich-cua-dien-thoai-thong-minh-khong-the-16-800x450.jpg\" alt=\"Kết nối với điện thoại dễ dàng và tiện lợi\" height=\"450\" width=\"800\"></p><p class=\"ql-align-center\">Kết nối với điện thoại dễ dàng và tiện lợi</p><h4><strong>Quản lý thời gian dễ dàng</strong></h4><p>Chiếc điện thoại sở hữu tất cả những ứng dụng như&nbsp;<a href=\"https://www.thegioididong.com/dong-ho\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(40, 138, 214);\">đồng hồ</a>&nbsp;báo thức hay lịch nhắc việc chuyên nghiệp. Vì thế mà nó trở thành một thiết bị điện tử đa năng thay thế cho đồng hồ báo thức hay lịch để bản, do vậy người dùng sẽ luôn yên tâm rằng mình không bao giờ để quên một cuộc hẹn hay sự kiện nào.</p><p>Ngoài ra, lịch trình có thể cập nhật và được nhắc nhở trên ứng dụng lịch,&nbsp;<a href=\"https://www.thegioididong.com/hoi-dap/google-calendar-la-gi-cach-su-dung-cac-tinh-nang-cua-1387971\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(40, 138, 214);\">google calendar</a>&nbsp;giúp bạn có thể quản lý thời gian dễ dàng.</p><p><img src=\"https://cdn.tgdd.vn/News/1492992/nhung-loi-ich-cua-dien-thoai-thong-minh-khong-the-17-800x450.jpg\" alt=\"Lịch trình có thể cập nhật và được nhắc nhở trên ứng dụng lịch\" height=\"450\" width=\"800\"></p><p class=\"ql-align-center\">Lịch trình có thể cập nhật và được nhắc nhở trên ứng dụng lịch</p><h4><strong>Thanh toán online nhanh chóng</strong></h4><p>Với chiếc điện thoại thì việc thanh toán online trở nên vô cùng nhanh chóng, dễ dàng và tiện lợi vì không phải mất thời gian rút tiền để thanh toán hóa đơn. Đồng thời, bạn có thể thanh toán các hóa đơn điện nước, internet, truyền hình,... trực tiếp trên smartphone.</p><p>Người dùng chỉ cần cầm chiếc điện thoại quẹt ngang qua các máy thanh toán, thanh toán qua một ứng dụng thanh toán điện tử trung gian hay nhắn tin đến tổng đài để lấy mã thanh toán một cách nhanh chóng.</p><p><img src=\"https://cdn.tgdd.vn/News/1492992/nhung-loi-ich-cua-dien-thoai-thong-minh-khong-the-18-800x449.jpg\" alt=\"Dễ dàng thanh toán các hóa đơn điện nước, internet, truyền hình \" height=\"449\" width=\"800\"></p><p class=\"ql-align-center\">Dễ dàng thanh toán các hóa đơn điện nước, internet, truyền hình</p><h4><strong>Học tập và làm việc từ xa hiệu quả</strong></h4><p>Điện thoại thông minh cũng được trang bị một số tính năng cơ bản như một chiếc&nbsp;<a href=\"https://www.thegioididong.com/laptop\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(40, 138, 214);\">laptop</a>&nbsp;giúp bạn có thể học tập và làm việc từ xa như soạn thảo văn bản, tra từ điển, call video học online hay họp, tìm kiếm thông tin trên internet,...</p><p>Ngoài ra, bạn cũng có thể tải các ứng dụng như từ điển, phần mềm văn phòng, chỉnh sửa hình ảnh, tìm việc làm,... hỗ trợ công việc và học tập hiệu quả hơn giúp bạn đáp ứng tốt nhất các nhu cầu cơ bản với mục đích của mình.</p><p><img src=\"https://cdn.tgdd.vn/News/1492992/nhung-loi-ich-cua-dien-thoai-thong-minh-khong-the-15-800x488.jpg\" alt=\"Trang bị một số tính năng cơ bản như một chiếc laptop\" height=\"488\" width=\"800\"></p><p class=\"ql-align-center\">Trang bị một số tính năng cơ bản như một chiếc laptop</p><h4><strong>Cập nhật thông tin kịp thời</strong></h4><p>Điện thoại có thể giúp bạn có thể đọc báo trực tiếp mà không cần phải cầm một tờ báo to, rườm rà. Đồng thời, người dùng còn có cũng có thể xem và cập nhật những thông tin mới nhất ở bất kỳ lúc nào hay thời gian nào mình mong muốn để cập nhật thông tin kịp thời.</p><p>Dù cho bạn là người bận rộn, không có thời gian đọc báo, xem tin tức thời sự thì chỉ cần một chiếc smartphone là có thể nắm rõ thông tin trong nước cũng như quốc tế.</p><p><img src=\"https://cdn.tgdd.vn/News/1492992/nhung-loi-ich-cua-dien-thoai-thong-minh-khong-the-19-800x595.jpg\" alt=\"Điện thoại có thể giúp bạn có thể đọc báo trực tiếp\" height=\"595\" width=\"800\"></p><p class=\"ql-align-center\">Điện thoại có thể giúp bạn có thể đọc báo trực tiếp</p><h4><strong>Thư giãn với nhiều lựa chọn giải trí</strong></h4><p>Chỉ với một chiếc điên thoại thông minh, bạn có thể xem phim, đọc sách, lướt web, chơi game,... thỏa thích, mang đến nhiều sự lựa chọn giải trí tuyệt vời. Giải trí trên điện thoại giúp người dùng có thể tiết kiệm tối đa thời gian di chuyển.</p><p>Dù bạn đang ở bất cứ đâu, dù đang làm gì thì bạn cũng có thể giải trí khi có một chiếc smartphone trong tay. Với lợi ích đó, thiết bị có thể giúp bạn lấp đầy thời gian chết của mỗi ngày bằng những khoảnh khắc giải trí và thư giãn thật giá trị.</p><p><img src=\"https://cdn.tgdd.vn/News/1492992/nhung-loi-ich-cua-dien-thoai-thong-minh-khong-the-20-800x449.jpg\" alt=\"Điện thoại giúp bạn xem phim, đọc sách, lướt web, chơi game\" height=\"449\" width=\"800\"></p><p class=\"ql-align-center\">Điện thoại giúp bạn xem phim, đọc sách, lướt web, chơi game</p><h4><strong>Định vị chính xác</strong></h4><p>Điện thoại còn được trang bị tính năng&nbsp;<a href=\"https://www.thegioididong.com/hoi-dap/he-thong-dinh-vi-gps-va-glonass-la-gi-729876#hmenuid1\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(40, 138, 214);\">định vị GPS</a>&nbsp;toàn cầu giúp bạn tìm đường đi dễ dàng mà không cần nhờ sự hỗ trợ của người khác. Chức năng này không chỉ giúp bạn không bị lạc đường mà còn thiết lập đường đi sao cho gần nhất với địa điểm cần đến, dễ dàng tìm kiếm địa điểm muốn tới, bị lạc có thể nhờ người thân giúp đỡ,...</p><p>Ngoài ra, bạn còn có thể tìm được vị trí của các cửa hàng tiện lợi, quán ăn, cây rút tiền ATM hay trạm xăng dễ dàng khi đến các vùng đất mới thông qua các ứng dụng đi kèm,</p><p><img src=\"https://cdn.tgdd.vn/News/1492992/nhung-loi-ich-cua-dien-thoai-thong-minh-khong-the-21-800x439.jpg\" alt=\"Trang bị tính năng định vị GPS toàn cầu giúp bạn tìm đường đi dễ dàng\" height=\"439\" width=\"800\"></p><p class=\"ql-align-center\">Trang bị tính năng định vị GPS toàn cầu giúp bạn tìm đường đi dễ dàng</p><h4><strong>Lưu giữ những khoảnh khắc đáng nhớ</strong></h4><p>Đa số những mẫu điện thoại hiện nay đều được các hãng trang bị camera hiện đại để người dùng có thể cho ra những tấm hình đẹp và chuyên nghiệp như máy ảnh. Với chiếc điện thoại thông minh, bạn sẽ có thể dễ dàng lưu giữ những khoảnh khắc đáng nhớ cùng với mọi người.</p><p>Để bức hình thêm xinh xắn, lung linh thì hàng loạt các ứng dụng chỉnh sửa ảnh đã ra đời. Người dùng có thể tải những ứng dụng này về máy để hỗ trợ việc chỉnh sửa hình thêm tiện lợi.</p><p><img src=\"https://cdn.tgdd.vn/News/1492992/nhung-loi-ich-cua-dien-thoai-thong-minh-khong-the-22-800x534.jpg\" alt=\"Trang bị camera hiện đại để người dùng có thể tạo ra tấm hình đẹp \" height=\"534\" width=\"800\"></p><p class=\"ql-align-center\">Trang bị camera hiện đại để người dùng có thể tạo ra tấm hình đẹp</p><h4><strong>Theo dõi sức khỏe</strong></h4><p>Theo dõi sức khỏe được xem một trong những lợi ích tuyệt vời của một chiếc điện thoại thông minh. Điện thoại còn có khá nhiều ứng dụng tốt để giúp bạn theo dõi sức khỏe như: Google Fit, Apple Health,.. đều hoàn toàn miễn phí.</p><p>Với ứng dụng theo dõi sức khỏe, bạn cũng có thể theo dõi, chăm sóc tình trạng sức khỏe của bản thân qua những tính toán tương đối chính xác. Qua đó giúp bạn cải thiện tình trạng sức khỏe tốt hơn, xây dựng cho bạn cuộc sống lành mạnh.</p><p><img src=\"https://cdn.tgdd.vn/News/1492992/nhung-loi-ich-cua-dien-thoai-thong-minh-khong-the-23-800x450.jpg\" alt=\"Theo dõi sức khỏe được là lợi ích tuyệt vời của một chiếc điện thoại\" height=\"450\" width=\"800\"></p><p class=\"ql-align-center\">Theo dõi sức khỏe được là lợi ích tuyệt vời của một chiếc điện thoại</p><h4><strong>Thể hiện cá tính, phong cách</strong></h4><p>Điện thoại thông minh được sở hữu với thiết kế sang trọng, độc đáo và đẳng cấp có thể giúp bạn thể hiện được cá tính và phong cách của bản thân. Đồng thời, smartphone còn giúp bạn tôn lên vẻ thời thượng, hiện đại và cá tính với các thiết kế như tràn viền màn hình, tai thỏ, cụm camera độc đáo,...</p><p><img src=\"https://cdn.tgdd.vn/News/1492992/nhung-loi-ich-cua-dien-thoai-thong-minh-khong-the-12-800x533.jpg\" alt=\"Sở hữu với thiết kế sang trọng, độc đáo và đẳng cấp\" height=\"533\" width=\"800\"></p>"
+      },
+      "name": "IPhone 123",
+      "color": "12",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1738596701/dt0jntfgefnayztf2veg.webp",
+      "thumbnail": [
+        "https://res.cloudinary.com/cloud7teck/image/upload/v1737123143/rmrhc0nmkzs8cfu8gr8i.jpg"
+      ],
+      "price": 213,
+      "sale": 123,
+      "status": "99%",
+      "des": "Bảo hành 7day ",
+      "note": "",
+      "createdAt": "2025-01-17T13:38:34.585Z",
+      "updatedAt": "2025-03-15T07:29:09.023Z",
+      "__v": 0,
+      "view": 114
+    },
+    {
+      "_id": "67b4e5e8ab409f86eec86d5f",
+      "phone_catalog_id": {
+        "configuration_and_memory": {
+          "operating_system": "",
+          "cpu_chip": "",
+          "cpu_speed": "",
+          "gpu": "",
+          "ram": "",
+          "storage_capacity": "",
+          "remaining_capacity": "",
+          "memory_card": "",
+          "contacts": ""
+        },
+        "camera_and_screen": {
+          "rear_camera_resolution": "",
+          "rear_camera_flash": "",
+          "front_camera_resolution": "",
+          "screen_technology": "",
+          "screen_resolution": "",
+          "screen_size": "",
+          "max_brightness": "",
+          "touchscreen_glass": "",
+          "rear_camera_video": [],
+          "rear_camera_features": [],
+          "front_camera_features": []
+        },
+        "battery_and_charging": {
+          "battery_capacity": "",
+          "battery_type": "",
+          "max_charging_support": "",
+          "battery_technology": []
+        },
+        "features": {
+          "water_dust_resistant": "",
+          "video_playback": "",
+          "advanced_security": [],
+          "special_features": [],
+          "voice_recording": [],
+          "radio": [],
+          "music_playback": []
+        },
+        "connectivity": {
+          "mobile_network": "",
+          "sim": "",
+          "bluetooth": "",
+          "charging_connection_port": "",
+          "headphone_jack": "",
+          "other_connectivity": "",
+          "wifi": [],
+          "gps": []
+        },
+        "design_and_material": {
+          "design": "",
+          "material": "",
+          "dimensions_and_weight": "",
+          "release_date": "",
+          "brand": ""
+        },
+        "_id": "6780ba028f66f1c62729c1f8",
+        "name": "Iphone 16 Pro",
+        "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1738470176/t9ndninzzgj0alazxdm7.webp",
+        "price": 123,
+        "des": "123",
+        "status": 1,
+        "content": ""
+      },
+      "name": "Iphone 16 Pro",
+      "color": "1",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1739908584/afzzc8mfemydieo6u2rk.webp",
+      "thumbnail": [
+        "https://res.cloudinary.com/cloud7teck/image/upload/v1739948985/ymka7arntw5tezvf1x26.jpg"
+      ],
+      "price": 1,
+      "sale": 1,
+      "status": "1",
+      "des": "1",
+      "createdAt": "2025-02-18T19:56:24.677Z",
+      "updatedAt": "2025-03-15T03:05:19.441Z",
+      "__v": 0,
+      "note": ""
+    },
+    {
+      "_id": "67b5fb1f44ee68f1e65b8e12",
+      "phone_catalog_id": {
+        "configuration_and_memory": {
+          "operating_system": "",
+          "cpu_chip": "",
+          "cpu_speed": "",
+          "gpu": "",
+          "ram": "",
+          "storage_capacity": "",
+          "remaining_capacity": "",
+          "memory_card": "",
+          "contacts": ""
+        },
+        "camera_and_screen": {
+          "rear_camera_resolution": "",
+          "rear_camera_flash": "",
+          "front_camera_resolution": "",
+          "screen_technology": "",
+          "screen_resolution": "",
+          "screen_size": "",
+          "max_brightness": "",
+          "touchscreen_glass": "",
+          "rear_camera_video": [],
+          "rear_camera_features": [],
+          "front_camera_features": []
+        },
+        "battery_and_charging": {
+          "battery_capacity": "",
+          "battery_type": "",
+          "max_charging_support": "",
+          "battery_technology": []
+        },
+        "features": {
+          "water_dust_resistant": "",
+          "video_playback": "",
+          "advanced_security": [],
+          "special_features": [],
+          "voice_recording": [],
+          "radio": [],
+          "music_playback": []
+        },
+        "connectivity": {
+          "mobile_network": "",
+          "sim": "",
+          "bluetooth": "",
+          "charging_connection_port": "",
+          "headphone_jack": "",
+          "other_connectivity": "",
+          "wifi": [],
+          "gps": []
+        },
+        "design_and_material": {
+          "design": "",
+          "material": "",
+          "dimensions_and_weight": "",
+          "release_date": "",
+          "brand": ""
+        },
+        "_id": "6780b9f58f66f1c62729c1f5",
+        "name": "IPhone 123 Pro Max",
+        "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1736489460/x5kx40ak1sus45gedcbp.jpg",
+        "price": 123,
+        "des": "a",
+        "status": 1,
+        "content": ""
+      },
+      "name": "IPhone 123 Pro Max",
+      "color": "1",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1739979551/kfnans7af97umyoy3ebf.webp",
+      "thumbnail": [],
+      "price": 1,
+      "sale": 1,
+      "status": "1",
+      "des": "1",
+      "createdAt": "2025-02-19T15:39:11.384Z",
+      "updatedAt": "2025-03-15T07:29:05.673Z",
+      "__v": 0,
+      "note": "",
+      "view": 36
+    },
+    {
+      "_id": "67b5fb8144ee68f1e65b8ec4",
+      "phone_catalog_id": {
+        "configuration_and_memory": {
+          "operating_system": "a",
+          "cpu_chip": "a",
+          "cpu_speed": "a",
+          "gpu": "a",
+          "ram": "a",
+          "storage_capacity": "a",
+          "remaining_capacity": "a",
+          "memory_card": "a",
+          "contacts": "a"
+        },
+        "camera_and_screen": {
+          "rear_camera_resolution": "a",
+          "rear_camera_video": [
+            "4K@30fps",
+            "1080p@60fps"
+          ],
+          "rear_camera_flash": "a",
+          "rear_camera_features": [
+            "Auto Focus",
+            "HDR"
+          ],
+          "front_camera_resolution": "a",
+          "front_camera_features": [
+            "Portrait Mode",
+            "Beauty Mode"
+          ],
+          "screen_technology": "aa",
+          "screen_resolution": "a",
+          "screen_size": "a",
+          "max_brightness": "a",
+          "touchscreen_glass": "a"
+        },
+        "battery_and_charging": {
+          "battery_capacity": "a",
+          "battery_type": "a",
+          "max_charging_support": "a",
+          "battery_technology": [
+            "Fast Charging",
+            "Wireless Charging"
+          ]
+        },
+        "features": {
+          "advanced_security": [
+            "Face ID",
+            "Fingerprint Scanner"
+          ],
+          "special_features": [
+            "5G Support",
+            "Dual SIM"
+          ],
+          "water_dust_resistant": "a",
+          "voice_recording": [
+            "Stereo Recording",
+            "Mono Recording"
+          ],
+          "radio": [
+            "FM Radio",
+            "AM Radio"
+          ],
+          "video_playback": "a",
+          "music_playback": [
+            "MP3",
+            "AAC"
+          ]
+        },
+        "connectivity": {
+          "mobile_network": "a",
+          "sim": "a",
+          "wifi": [
+            "Wi-Fi 5",
+            "Wi-Fi 6"
+          ],
+          "gps": [
+            "GPS",
+            "GLONASS"
+          ],
+          "bluetooth": "a",
+          "charging_connection_port": "a",
+          "headphone_jack": "a",
+          "other_connectivity": "a"
+        },
+        "design_and_material": {
+          "design": "a",
+          "material": "a",
+          "dimensions_and_weight": "a",
+          "release_date": "a",
+          "brand": "a"
+        },
+        "_id": "677deda620b5c9ef4ee316dd",
+        "name": "IPhone 123",
+        "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1736856259/ea9m9uywtwgfae58dwtp.jpg",
+        "price": 123,
+        "des": "123456",
+        "status": 1,
+        "content": "<h3><strong>1. Những lợi ích của điện thoại thông minh mang lại</strong></h3><h4><strong>Kết nối dễ dàng và tiện lợi</strong></h4><p>Kết nối dễ dàng và tiện lợi là một trong những tác dụng của điện thoại mà bất kì ai cũng biết đến. Với tính năng này, bạn cũng có thể kết nối với mọi người từ gọi điện, nhắn tin, sticker, video, mạng xã hội… bằng những thao tác đơn giản.</p><p>Ngày nay với chiếc smartphone, dù đang ở bất cứ lúc nào hay ở bất cứ nơi đâu, chỉ cần một vài thao tác là bạn đã có vô số lựa chọn để kết nối với người thân, từ hội thoại kèm video, gửi tin nhắn có hình, chat tức thời và sinh động trên chat online, hay đơn giản là cập nhật trạng thái/hình ảnh trên Facebook,...</p><p><img src=\"https://cdn.tgdd.vn/News/1492992/nhung-loi-ich-cua-dien-thoai-thong-minh-khong-the-16-800x450.jpg\" alt=\"Kết nối với điện thoại dễ dàng và tiện lợi\" height=\"450\" width=\"800\"></p><p class=\"ql-align-center\">Kết nối với điện thoại dễ dàng và tiện lợi</p><h4><strong>Quản lý thời gian dễ dàng</strong></h4><p>Chiếc điện thoại sở hữu tất cả những ứng dụng như&nbsp;<a href=\"https://www.thegioididong.com/dong-ho\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(40, 138, 214);\">đồng hồ</a>&nbsp;báo thức hay lịch nhắc việc chuyên nghiệp. Vì thế mà nó trở thành một thiết bị điện tử đa năng thay thế cho đồng hồ báo thức hay lịch để bản, do vậy người dùng sẽ luôn yên tâm rằng mình không bao giờ để quên một cuộc hẹn hay sự kiện nào.</p><p>Ngoài ra, lịch trình có thể cập nhật và được nhắc nhở trên ứng dụng lịch,&nbsp;<a href=\"https://www.thegioididong.com/hoi-dap/google-calendar-la-gi-cach-su-dung-cac-tinh-nang-cua-1387971\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(40, 138, 214);\">google calendar</a>&nbsp;giúp bạn có thể quản lý thời gian dễ dàng.</p><p><img src=\"https://cdn.tgdd.vn/News/1492992/nhung-loi-ich-cua-dien-thoai-thong-minh-khong-the-17-800x450.jpg\" alt=\"Lịch trình có thể cập nhật và được nhắc nhở trên ứng dụng lịch\" height=\"450\" width=\"800\"></p><p class=\"ql-align-center\">Lịch trình có thể cập nhật và được nhắc nhở trên ứng dụng lịch</p><h4><strong>Thanh toán online nhanh chóng</strong></h4><p>Với chiếc điện thoại thì việc thanh toán online trở nên vô cùng nhanh chóng, dễ dàng và tiện lợi vì không phải mất thời gian rút tiền để thanh toán hóa đơn. Đồng thời, bạn có thể thanh toán các hóa đơn điện nước, internet, truyền hình,... trực tiếp trên smartphone.</p><p>Người dùng chỉ cần cầm chiếc điện thoại quẹt ngang qua các máy thanh toán, thanh toán qua một ứng dụng thanh toán điện tử trung gian hay nhắn tin đến tổng đài để lấy mã thanh toán một cách nhanh chóng.</p><p><img src=\"https://cdn.tgdd.vn/News/1492992/nhung-loi-ich-cua-dien-thoai-thong-minh-khong-the-18-800x449.jpg\" alt=\"Dễ dàng thanh toán các hóa đơn điện nước, internet, truyền hình \" height=\"449\" width=\"800\"></p><p class=\"ql-align-center\">Dễ dàng thanh toán các hóa đơn điện nước, internet, truyền hình</p><h4><strong>Học tập và làm việc từ xa hiệu quả</strong></h4><p>Điện thoại thông minh cũng được trang bị một số tính năng cơ bản như một chiếc&nbsp;<a href=\"https://www.thegioididong.com/laptop\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(40, 138, 214);\">laptop</a>&nbsp;giúp bạn có thể học tập và làm việc từ xa như soạn thảo văn bản, tra từ điển, call video học online hay họp, tìm kiếm thông tin trên internet,...</p><p>Ngoài ra, bạn cũng có thể tải các ứng dụng như từ điển, phần mềm văn phòng, chỉnh sửa hình ảnh, tìm việc làm,... hỗ trợ công việc và học tập hiệu quả hơn giúp bạn đáp ứng tốt nhất các nhu cầu cơ bản với mục đích của mình.</p><p><img src=\"https://cdn.tgdd.vn/News/1492992/nhung-loi-ich-cua-dien-thoai-thong-minh-khong-the-15-800x488.jpg\" alt=\"Trang bị một số tính năng cơ bản như một chiếc laptop\" height=\"488\" width=\"800\"></p><p class=\"ql-align-center\">Trang bị một số tính năng cơ bản như một chiếc laptop</p><h4><strong>Cập nhật thông tin kịp thời</strong></h4><p>Điện thoại có thể giúp bạn có thể đọc báo trực tiếp mà không cần phải cầm một tờ báo to, rườm rà. Đồng thời, người dùng còn có cũng có thể xem và cập nhật những thông tin mới nhất ở bất kỳ lúc nào hay thời gian nào mình mong muốn để cập nhật thông tin kịp thời.</p><p>Dù cho bạn là người bận rộn, không có thời gian đọc báo, xem tin tức thời sự thì chỉ cần một chiếc smartphone là có thể nắm rõ thông tin trong nước cũng như quốc tế.</p><p><img src=\"https://cdn.tgdd.vn/News/1492992/nhung-loi-ich-cua-dien-thoai-thong-minh-khong-the-19-800x595.jpg\" alt=\"Điện thoại có thể giúp bạn có thể đọc báo trực tiếp\" height=\"595\" width=\"800\"></p><p class=\"ql-align-center\">Điện thoại có thể giúp bạn có thể đọc báo trực tiếp</p><h4><strong>Thư giãn với nhiều lựa chọn giải trí</strong></h4><p>Chỉ với một chiếc điên thoại thông minh, bạn có thể xem phim, đọc sách, lướt web, chơi game,... thỏa thích, mang đến nhiều sự lựa chọn giải trí tuyệt vời. Giải trí trên điện thoại giúp người dùng có thể tiết kiệm tối đa thời gian di chuyển.</p><p>Dù bạn đang ở bất cứ đâu, dù đang làm gì thì bạn cũng có thể giải trí khi có một chiếc smartphone trong tay. Với lợi ích đó, thiết bị có thể giúp bạn lấp đầy thời gian chết của mỗi ngày bằng những khoảnh khắc giải trí và thư giãn thật giá trị.</p><p><img src=\"https://cdn.tgdd.vn/News/1492992/nhung-loi-ich-cua-dien-thoai-thong-minh-khong-the-20-800x449.jpg\" alt=\"Điện thoại giúp bạn xem phim, đọc sách, lướt web, chơi game\" height=\"449\" width=\"800\"></p><p class=\"ql-align-center\">Điện thoại giúp bạn xem phim, đọc sách, lướt web, chơi game</p><h4><strong>Định vị chính xác</strong></h4><p>Điện thoại còn được trang bị tính năng&nbsp;<a href=\"https://www.thegioididong.com/hoi-dap/he-thong-dinh-vi-gps-va-glonass-la-gi-729876#hmenuid1\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(40, 138, 214);\">định vị GPS</a>&nbsp;toàn cầu giúp bạn tìm đường đi dễ dàng mà không cần nhờ sự hỗ trợ của người khác. Chức năng này không chỉ giúp bạn không bị lạc đường mà còn thiết lập đường đi sao cho gần nhất với địa điểm cần đến, dễ dàng tìm kiếm địa điểm muốn tới, bị lạc có thể nhờ người thân giúp đỡ,...</p><p>Ngoài ra, bạn còn có thể tìm được vị trí của các cửa hàng tiện lợi, quán ăn, cây rút tiền ATM hay trạm xăng dễ dàng khi đến các vùng đất mới thông qua các ứng dụng đi kèm,</p><p><img src=\"https://cdn.tgdd.vn/News/1492992/nhung-loi-ich-cua-dien-thoai-thong-minh-khong-the-21-800x439.jpg\" alt=\"Trang bị tính năng định vị GPS toàn cầu giúp bạn tìm đường đi dễ dàng\" height=\"439\" width=\"800\"></p><p class=\"ql-align-center\">Trang bị tính năng định vị GPS toàn cầu giúp bạn tìm đường đi dễ dàng</p><h4><strong>Lưu giữ những khoảnh khắc đáng nhớ</strong></h4><p>Đa số những mẫu điện thoại hiện nay đều được các hãng trang bị camera hiện đại để người dùng có thể cho ra những tấm hình đẹp và chuyên nghiệp như máy ảnh. Với chiếc điện thoại thông minh, bạn sẽ có thể dễ dàng lưu giữ những khoảnh khắc đáng nhớ cùng với mọi người.</p><p>Để bức hình thêm xinh xắn, lung linh thì hàng loạt các ứng dụng chỉnh sửa ảnh đã ra đời. Người dùng có thể tải những ứng dụng này về máy để hỗ trợ việc chỉnh sửa hình thêm tiện lợi.</p><p><img src=\"https://cdn.tgdd.vn/News/1492992/nhung-loi-ich-cua-dien-thoai-thong-minh-khong-the-22-800x534.jpg\" alt=\"Trang bị camera hiện đại để người dùng có thể tạo ra tấm hình đẹp \" height=\"534\" width=\"800\"></p><p class=\"ql-align-center\">Trang bị camera hiện đại để người dùng có thể tạo ra tấm hình đẹp</p><h4><strong>Theo dõi sức khỏe</strong></h4><p>Theo dõi sức khỏe được xem một trong những lợi ích tuyệt vời của một chiếc điện thoại thông minh. Điện thoại còn có khá nhiều ứng dụng tốt để giúp bạn theo dõi sức khỏe như: Google Fit, Apple Health,.. đều hoàn toàn miễn phí.</p><p>Với ứng dụng theo dõi sức khỏe, bạn cũng có thể theo dõi, chăm sóc tình trạng sức khỏe của bản thân qua những tính toán tương đối chính xác. Qua đó giúp bạn cải thiện tình trạng sức khỏe tốt hơn, xây dựng cho bạn cuộc sống lành mạnh.</p><p><img src=\"https://cdn.tgdd.vn/News/1492992/nhung-loi-ich-cua-dien-thoai-thong-minh-khong-the-23-800x450.jpg\" alt=\"Theo dõi sức khỏe được là lợi ích tuyệt vời của một chiếc điện thoại\" height=\"450\" width=\"800\"></p><p class=\"ql-align-center\">Theo dõi sức khỏe được là lợi ích tuyệt vời của một chiếc điện thoại</p><h4><strong>Thể hiện cá tính, phong cách</strong></h4><p>Điện thoại thông minh được sở hữu với thiết kế sang trọng, độc đáo và đẳng cấp có thể giúp bạn thể hiện được cá tính và phong cách của bản thân. Đồng thời, smartphone còn giúp bạn tôn lên vẻ thời thượng, hiện đại và cá tính với các thiết kế như tràn viền màn hình, tai thỏ, cụm camera độc đáo,...</p><p><img src=\"https://cdn.tgdd.vn/News/1492992/nhung-loi-ich-cua-dien-thoai-thong-minh-khong-the-12-800x533.jpg\" alt=\"Sở hữu với thiết kế sang trọng, độc đáo và đẳng cấp\" height=\"533\" width=\"800\"></p>"
+      },
+      "name": "IPhone 123",
+      "color": "1",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1739979648/uqczoncnxlu5dxxx9th1.jpg",
+      "thumbnail": [],
+      "price": 1,
+      "sale": 1,
+      "status": "12",
+      "des": "1",
+      "createdAt": "2025-02-19T15:40:49.290Z",
+      "updatedAt": "2025-03-15T07:29:03.956Z",
+      "__v": 0,
+      "view": 50
+    }
+  ]
+}

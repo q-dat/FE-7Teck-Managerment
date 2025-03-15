@@ -34,3 +34,28 @@ export const updatePhoneApi = async (_id: string, phoneData: FormData) => {
 export const deletePhoneApi = (id: string) => {
   return axios.delete(`/api/phone/${id}`);
 };
+
+// savePhonesToServer
+export const savePhonesToServer = async () => {
+  try {
+    const { data } = await axios.get('/api/phones');
+
+    // Kiểm tra và đảm bảo dữ liệu không bị lồng
+    const formattedData = {
+      message: 'Lấy danh sách điện thoại thành công!',
+      count: data.phones.length,
+      phones: data.phones
+    };
+
+    await fetch('/api/phones', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formattedData) // Đúng format
+    });
+
+    console.log('OK');
+  } catch (error) {
+    console.error('Lỗi khi lưu dữ liệu:', error);
+  }
+};
+savePhonesToServer();
