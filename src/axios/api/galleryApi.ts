@@ -3,7 +3,7 @@ import { IGallery } from '../../types/type/gallery/gallery';
 
 // Get All Galleries
 export const getAllGallerysApi = () => {
-  return axios.get<{ gallerys: IGallery[] }>('/api/galleries');
+  return axios.get<{ galleries: IGallery[] }>('/api/galleries');
 };
 // Get Gallery By ID
 export const getGalleryByIdApi = (_id: string) => {
