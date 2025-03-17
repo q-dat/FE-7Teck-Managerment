@@ -61,7 +61,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   const handleMenuClick = (name: string) => {
     setOpenSubmenu(prev => (prev === name ? null : name));
@@ -164,14 +164,14 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                   {menuItems.map(item => {
                     const Icon = item.icon;
                     return (
-                      <div key={item.name} className="relative">
-                        <Menu.Item
-                          role="menuitem"
-                          className="group relative"
-                          onClick={() =>
-                            item.submenu && handleMenuClick(item.name)
-                          }
-                        >
+                      <div
+                        key={item.name}
+                        className="relative"
+                        onClick={() =>
+                          item.submenu && handleMenuClick(item.name)
+                        }
+                      >
+                        <Menu.Item role="menuitem" className="group relative">
                           <NavLink
                             to={item.link}
                             className={`btn relative mt-2 flex w-full flex-row items-center justify-start rounded-none border-none ${
