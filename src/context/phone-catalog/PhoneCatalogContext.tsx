@@ -3,7 +3,6 @@ import {
   useState,
   ReactNode,
   useCallback,
-  useEffect,
   useMemo
 } from 'react';
 import { AxiosResponse } from 'axios';
@@ -95,8 +94,8 @@ export const PhoneCatalogProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // Get All PhoneCatalogs
-  const getAllPhoneCatalogs = useCallback(() => {
-    fetchData(
+  const getAllPhoneCatalogs = useCallback(async () => {
+    await fetchData(
       getAllPhoneCatalogsApi,
       data => {
         setPhoneCatalogs(data?.phoneCatalogs || []);
@@ -184,10 +183,6 @@ export const PhoneCatalogProvider = ({ children }: { children: ReactNode }) => {
     },
     []
   );
-
-  useEffect(() => {
-    getAllPhoneCatalogs();
-  }, [getAllPhoneCatalogs]);
 
   const value = useMemo(
     () => ({

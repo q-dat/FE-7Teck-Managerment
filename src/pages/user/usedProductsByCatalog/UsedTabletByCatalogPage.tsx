@@ -7,24 +7,30 @@ import { FaRegEye } from 'react-icons/fa';
 import { Placeholder } from 'semantic-ui-react';
 import { TabletContext } from '../../../context/tablet/TabletContext';
 import { slugify } from '../../../components/utils/slugify';
+import { scrollToTopSmoothly } from '../../../components/utils/scrollToTopSmoothly';
 
 const UsedTabletByCatalogPage = () => {
-  const { tablets, updateTabletView } = useContext(TabletContext);
+  const { tablets, getAllTablets, updateTabletView } =
+    useContext(TabletContext);
   const [loading, setLoading] = useState(true);
   const { catalog } = useParams();
   const filteredPhones = tablets.filter(
     tablet => slugify(tablet?.tablet_name) === catalog
   );
+
   useEffect(() => {
-    if (tablets.length > 0) {
+    scrollToTopSmoothly();
+    if (tablets.length === 0) {
+      const fetchData = async () => {
+        await getAllTablets();
+        setLoading(false);
+      };
+
+      fetchData();
+    } else {
       setLoading(false);
     }
-    // Scroll To Top
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  }, [tablets, filteredPhones]);
+  }, []);
 
   return (
     <div>
@@ -155,4 +161,3 @@ const UsedTabletByCatalogPage = () => {
 };
 
 export default UsedTabletByCatalogPage;
-

@@ -3,7 +3,6 @@ import {
   useState,
   ReactNode,
   useCallback,
-  useEffect,
   useMemo
 } from 'react';
 import { AxiosResponse } from 'axios';
@@ -93,8 +92,8 @@ export const OptionPhoneProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // Get All OptionPhones
-  const getAllOptionPhones = useCallback(() => {
-    fetchData(
+  const getAllOptionPhones = useCallback(async () => {
+    await fetchData(
       getAllOptionPhonesApi,
       data => {
         setOptionPhones(data?.optionPhones || []);
@@ -180,10 +179,6 @@ export const OptionPhoneProvider = ({ children }: { children: ReactNode }) => {
     []
   );
 
-  useEffect(() => {
-    getAllOptionPhones();
-  }, [getAllOptionPhones]);
-
   const value = useMemo(
     () => ({
       optionPhones,
@@ -204,4 +199,3 @@ export const OptionPhoneProvider = ({ children }: { children: ReactNode }) => {
     </OptionPhoneContext.Provider>
   );
 };
-

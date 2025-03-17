@@ -3,7 +3,6 @@ import {
   useState,
   ReactNode,
   useCallback,
-  useEffect,
   useMemo
 } from 'react';
 import { AxiosResponse } from 'axios';
@@ -100,8 +99,8 @@ export const MacbookCatalogProvider = ({
   };
 
   // Get All MacbookCatalog
-  const getAllMacbookCatalogs = useCallback(() => {
-    fetchData(
+  const getAllMacbookCatalogs = useCallback(async () => {
+    await fetchData(
       getAllMacbookCatalogsApi,
       data => {
         setMacbookCatalog(data?.macbookCatalogs || []);
@@ -190,10 +189,6 @@ export const MacbookCatalogProvider = ({
     []
   );
 
-  useEffect(() => {
-    getAllMacbookCatalogs();
-  }, [getAllMacbookCatalogs]);
-
   const value = useMemo(
     () => ({
       macbookCatalogs,
@@ -214,4 +209,3 @@ export const MacbookCatalogProvider = ({
     </MacbookCatalogContext.Provider>
   );
 };
-

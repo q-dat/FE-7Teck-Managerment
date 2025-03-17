@@ -3,7 +3,6 @@ import {
   useState,
   ReactNode,
   useCallback,
-  useEffect,
   useMemo
 } from 'react';
 import { AxiosResponse } from 'axios';
@@ -100,8 +99,8 @@ export const WindowsCatalogProvider = ({
   };
 
   // Get All WindowsCatalog
-  const getAllWindowsCatalogs = useCallback(() => {
-    fetchData(
+  const getAllWindowsCatalogs = useCallback(async () => {
+    await fetchData(
       getAllWindowsCatalogsApi,
       data => {
         setWindowsCatalog(data?.windowsCatalogs || []);
@@ -190,10 +189,6 @@ export const WindowsCatalogProvider = ({
     []
   );
 
-  useEffect(() => {
-    getAllWindowsCatalogs();
-  }, [getAllWindowsCatalogs]);
-
   const value = useMemo(
     () => ({
       windowsCatalogs,
@@ -214,4 +209,3 @@ export const WindowsCatalogProvider = ({
     </WindowsCatalogContext.Provider>
   );
 };
-

@@ -3,7 +3,6 @@ import {
   useState,
   ReactNode,
   useCallback,
-  useEffect,
   useMemo
 } from 'react';
 import { AxiosResponse } from 'axios';
@@ -18,6 +17,7 @@ import { IPhone } from '../../types/type/phone/phone';
 
 interface PhoneContextType {
   phones: IPhone[];
+  phoneDetails: { [key: string]: IPhone };
   countPhone: number;
   loading: {
     getAll: boolean;
@@ -39,6 +39,7 @@ interface PhoneContextType {
 
 const defaultContextValue: PhoneContextType = {
   phones: [],
+  phoneDetails: {},
   countPhone: 0,
   loading: {
     getAll: false,
@@ -60,6 +61,9 @@ export const PhoneContext =
 
 export const PhoneProvider = ({ children }: { children: ReactNode }) => {
   const [phones, setPhones] = useState<IPhone[]>([]);
+  const [phoneDetails, setPhoneDetails] = useState<{ [key: string]: IPhone }>(
+    {}
+  );
   const [countPhone, setCountPhone] = useState<number>(0);
   const [loading, setLoading] = useState({
     getAll: false,
@@ -93,8 +97,8 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // Get All Phones
-  const getAllPhones = useCallback(() => {
-    fetchData(
+  const getAllPhones = useCallback(async () => {
+    await fetchData(
       getAllPhonesApi,
       data => {
         setPhones(data?.phones || []);
@@ -107,20 +111,23 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
   // Get Phone By Id
   const getPhoneById = useCallback(
     async (id: string): Promise<IPhone | undefined> => {
-      const cachedPhone = phones.find(p => p._id === id);
-      if (cachedPhone) return cachedPhone;
-      const response = await fetchData(
-        () => getPhoneByIdApi(id),
-        data => {
-          if (data?.p) {
-            setPhones(prevPhones => [...prevPhones, data.p]);
-          }
-        },
-        'getAll'
-      );
-      return response.data?.p;
+      if (phoneDetails[id]) {
+        return phoneDetails[id];
+      }
+
+      try {
+        const response = await getPhoneByIdApi(id);
+        const phone = response.data?.phone;
+        if (phone) {
+          setPhoneDetails(prev => ({ ...prev, [id]: phone }));
+          return phone;
+        }
+      } catch (error) {
+        handleError(error);
+      }
+      return undefined;
     },
-    [phones]
+    [phoneDetails]
   );
 
   // Create Phone
@@ -156,7 +163,7 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
     },
     []
   );
-  
+
   // updatePhoneView
   const updatePhoneView = useCallback(
     async (_id: string) => {
@@ -210,13 +217,10 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
     []
   );
 
-  useEffect(() => {
-    getAllPhones();
-  }, [getAllPhones]);
-
   const value = useMemo(
     () => ({
       phones,
+      phoneDetails,
       countPhone,
       loading,
       error,
@@ -227,7 +231,7 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
       updatePhoneView,
       deletePhone
     }),
-    [phones, countPhone, loading, error]
+    [phones, phoneDetails, countPhone, loading, error]
   );
   return (
     <PhoneContext.Provider value={value}>{children}</PhoneContext.Provider>

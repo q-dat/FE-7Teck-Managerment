@@ -3,7 +3,6 @@ import {
   useState,
   ReactNode,
   useCallback,
-  useEffect,
   useMemo
 } from 'react';
 
@@ -97,8 +96,8 @@ export const PostCatalogProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // Get All PostCatalog
-  const getAllPostCatalogs = useCallback(() => {
-    fetchData(
+  const getAllPostCatalogs = useCallback(async () => {
+    await fetchData(
       getAllPostCatalogsApi,
       data => {
         setPostCatalogs(data.postCatalogs || []);
@@ -172,10 +171,6 @@ export const PostCatalogProvider = ({ children }: { children: ReactNode }) => {
     },
     []
   );
-
-  useEffect(() => {
-    getAllPostCatalogs();
-  }, [getAllPostCatalogs]);
 
   const value = useMemo(
     () => ({

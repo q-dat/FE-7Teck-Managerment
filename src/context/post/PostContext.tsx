@@ -3,7 +3,6 @@ import {
   useState,
   useCallback,
   ReactNode,
-  useEffect,
   useMemo
 } from 'react';
 import {
@@ -91,8 +90,8 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // Get All Post
-  const getAllPosts = useCallback(() => {
-    fetchData(
+  const getAllPosts = useCallback(async () => {
+    await fetchData(
       getAllPostsApi,
       data => {
         setPosts(data?.posts || []);
@@ -155,10 +154,6 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
     },
     []
   );
-
-  useEffect(() => {
-    getAllPosts();
-  }, [getAllPosts]);
 
   const value = useMemo(
     () => ({

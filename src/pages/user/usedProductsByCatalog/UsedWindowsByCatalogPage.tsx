@@ -7,24 +7,30 @@ import { FaRegEye } from 'react-icons/fa';
 import { Placeholder } from 'semantic-ui-react';
 import { WindowsContext } from '../../../context/windows/WindowsContext';
 import { slugify } from '../../../components/utils/slugify';
+import { scrollToTopSmoothly } from '../../../components/utils/scrollToTopSmoothly';
 
 const UsedWindowsByCatalogPage = () => {
-  const { windows, updateWindowsView } = useContext(WindowsContext);
+  const { windows, getAllWindows, updateWindowsView } =
+    useContext(WindowsContext);
   const [loading, setLoading] = useState(true);
   const { catalog } = useParams();
   const filteredPhones = windows.filter(
     win => slugify(win?.windows_name) === catalog
   );
+
   useEffect(() => {
-    if (windows.length > 0) {
+    scrollToTopSmoothly();
+    if (windows.length === 0) {
+      const fetchData = async () => {
+        await getAllWindows();
+        setLoading(false);
+      };
+
+      fetchData();
+    } else {
       setLoading(false);
     }
-    // Scroll To Top
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  }, [windows, filteredPhones]);
+  }, []);
 
   return (
     <div>
@@ -153,4 +159,3 @@ const UsedWindowsByCatalogPage = () => {
 };
 
 export default UsedWindowsByCatalogPage;
-

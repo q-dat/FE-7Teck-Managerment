@@ -3,7 +3,6 @@ import {
   useState,
   ReactNode,
   useCallback,
-  useEffect,
   useMemo
 } from 'react';
 import { AxiosResponse } from 'axios';
@@ -93,8 +92,8 @@ export const MacbookProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // Get All Macbook
-  const getAllMacbook = useCallback(() => {
-    fetchData(
+  const getAllMacbook = useCallback(async () => {
+    await fetchData(
       getAllMacbookApi,
       data => {
         setMacbook(data?.macbook || []);
@@ -172,7 +171,9 @@ export const MacbookProvider = ({ children }: { children: ReactNode }) => {
         // Cập nhật nhanh trong UI để tránh delay
         setMacbook(prevLaptopMacbook =>
           prevLaptopMacbook.map(m =>
-            m._id === _id ? { ...m, macbook_view: (m.macbook_view ?? 0) + 1 } : m
+            m._id === _id
+              ? { ...m, macbook_view: (m.macbook_view ?? 0) + 1 }
+              : m
           )
         );
 
@@ -217,10 +218,6 @@ export const MacbookProvider = ({ children }: { children: ReactNode }) => {
     []
   );
 
-  useEffect(() => {
-    getAllMacbook();
-  }, [getAllMacbook]);
-
   const value = useMemo(
     () => ({
       macbook,
@@ -240,4 +237,3 @@ export const MacbookProvider = ({ children }: { children: ReactNode }) => {
     <MacbookContext.Provider value={value}>{children}</MacbookContext.Provider>
   );
 };
-

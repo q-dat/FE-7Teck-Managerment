@@ -10,16 +10,23 @@ import { useScroll } from '../../../hooks/useScroll';
 import { slugify } from '../../../components/utils/slugify';
 
 const TabletFC: React.FC = () => {
-  const { tablets, updateTabletView } = useContext(TabletContext);
+  const { tablets,getAllTablets, updateTabletView } = useContext(TabletContext);
   const { scrollRef, isLeftVisible, isRightVisible, scrollBy } = useScroll();
   const [loading, setLoading] = useState(true);
-  //
-  useEffect(() => {
-    if (tablets.length > 0) {
-      setLoading(false);
-    }
-  }, [tablets]);
-  //
+  
+   useEffect(() => {
+     if (tablets.length === 0) {
+       const fetchData = async () => {
+         await getAllTablets();
+         setLoading(false);
+       };
+ 
+       fetchData();
+     } else {
+       setLoading(false);
+     }
+   }, []);
+
   const sortedTablets = tablets.filter(tablet => tablet.tablet_sale);
 
   return (

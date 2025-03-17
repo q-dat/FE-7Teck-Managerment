@@ -1,9 +1,4 @@
-import React, {
-  memo,
-  useContext,
-  useEffect,
-  useState
-} from 'react';
+import React, { memo, useContext, useEffect, useState } from 'react';
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { IoIosArrowForward } from 'react-icons/io';
@@ -15,16 +10,24 @@ import { useScroll } from '../../../hooks/useScroll';
 import { slugify } from '../../../components/utils/slugify';
 
 const MacbookFC: React.FC = () => {
-  const { macbook, updateMacbookView } = useContext(MacbookContext);
+  const { macbook, getAllMacbook, updateMacbookView } =
+    useContext(MacbookContext);
   const { scrollRef, isLeftVisible, isRightVisible, scrollBy } = useScroll();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (macbook.length > 0) {
+    if (macbook.length === 0) {
+      const fetchData = async () => {
+        await getAllMacbook();
+        setLoading(false);
+      };
+
+      fetchData();
+    } else {
       setLoading(false);
     }
-  }, [macbook]);
-  //
+  }, []);
+
   const sortedMacbook = macbook.filter(mac => mac.macbook_sale);
 
   return (

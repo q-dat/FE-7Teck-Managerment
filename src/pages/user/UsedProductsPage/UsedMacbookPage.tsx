@@ -4,22 +4,29 @@ import { useNavigate } from 'react-router-dom';
 import { Placeholder } from 'semantic-ui-react';
 import { MacbookCatalogContext } from '../../../context/macbook-catalog/MacbookCatalogContext';
 import { slugify } from '../../../components/utils/slugify';
+import { scrollToTopSmoothly } from '../../../components/utils/scrollToTopSmoothly';
 
 const UsedMacbookPage: React.FC = () => {
+  const { macbookCatalogs, getAllMacbookCatalogs } = useContext(
+    MacbookCatalogContext
+  );
   const [loading, setLoading] = useState(true);
-  const { macbookCatalogs } = useContext(MacbookCatalogContext);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    if (macbookCatalogs.length > 0) {
+    scrollToTopSmoothly();
+    if (macbookCatalogs.length === 0) {
+      const fetchData = async () => {
+        await getAllMacbookCatalogs();
+        setLoading(false);
+      };
+
+      fetchData();
+    } else {
       setLoading(false);
     }
-    // Scroll To Top
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  }, [macbookCatalogs, currentPage]);
+  }, []);
+
   // Handle Click Phone To Phone Detail
   const navigate = useNavigate();
   // Panigation
@@ -69,9 +76,7 @@ const UsedMacbookPage: React.FC = () => {
               return (
                 <div
                   key={macbookCatalog?._id}
-                  onClick={() =>
-                    navigate(`/macbook/${macbookCatalogUrl}`)
-                  }
+                  onClick={() => navigate(`/macbook/${macbookCatalogUrl}`)}
                   className="group flex h-full w-full flex-col justify-between rounded-md border border-white bg-white text-black"
                 >
                   <div className="relative h-[200px] w-full cursor-pointer overflow-hidden rounded-md rounded-b-none">
@@ -130,4 +135,3 @@ const UsedMacbookPage: React.FC = () => {
 };
 
 export default UsedMacbookPage;
-

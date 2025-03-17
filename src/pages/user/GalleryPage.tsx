@@ -5,18 +5,26 @@ import { GalleryContext } from '../../context/gallery/GalleryContext';
 import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
 import Pagination from '../../components/UserPage/Pagination';
+import { scrollToTopSmoothly } from '../../components/utils/scrollToTopSmoothly';
 
 const GalleryPage: React.FC = () => {
-  const { galleries } = useContext(GalleryContext);
+  const { galleries, getAllGallerys } = useContext(GalleryContext);
+  const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    // Scroll To Top
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  }, [currentPage]);
+    scrollToTopSmoothly();
+    if (galleries.length === 0) {
+      const fetchData = async () => {
+        await getAllGallerys();
+        setLoading(false);
+      };
+
+      fetchData();
+    } else {
+      setLoading(false);
+    }
+  }, []);
 
   // Panigation
   const itemsPerPage = 12;
@@ -41,7 +49,7 @@ const GalleryPage: React.FC = () => {
     <div>
       <HeaderResponsive Title_NavbarMobile="Hành Trình Khách Hàng" />
       <div className="py-[60px] xl:pt-0">
-        <div className="xl:px-desktop-padding breadcrumbs px-[10px] py-2 text-sm text-black shadow dark:text-white">
+        <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow dark:text-white xl:px-desktop-padding">
           <ul className="font-light">
             <li>
               <Link aria-label="Trang chủ" to="/">
@@ -56,21 +64,25 @@ const GalleryPage: React.FC = () => {
           </ul>
         </div>
         {/*  */}
-        <div className="xl:px-desktop-padding mt-5">
-          <div className="grid grid-flow-row grid-cols-2 gap-2 bg-white p-2 md:grid-cols-3 xl:grid-cols-6 xl:rounded-md">
-            {currentGallerys.map((gallery, index) => (
-              <Zoom key={index}>
-                <div className="w-full overflow-hidden rounded-md">
-                  <img
-                    alt=""
-                    src={`${gallery.gallery}`}
-                    className="h-auto w-full rounded-md border border-dashed border-black object-contain transition-transform duration-1000 ease-in-out hover:scale-110"
-                  />
-                </div>
-              </Zoom>
-            ))}
+        {loading ? (
+          <></>
+        ) : (
+          <div className="mt-5 xl:px-desktop-padding">
+            <div className="grid grid-flow-row grid-cols-2 gap-2 bg-white p-2 md:grid-cols-3 xl:grid-cols-6 xl:rounded-md">
+              {currentGallerys.map((gallery, index) => (
+                <Zoom key={index}>
+                  <div className="w-full overflow-hidden rounded-md">
+                    <img
+                      alt=""
+                      src={`${gallery.gallery}`}
+                      className="h-auto w-full rounded-md border border-dashed border-black object-contain transition-transform duration-1000 ease-in-out hover:scale-110"
+                    />
+                  </div>
+                </Zoom>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
         {/* Pagination Controls */}
         <Pagination
           currentPage={currentPage}

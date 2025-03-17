@@ -6,22 +6,27 @@ import { Button } from 'react-daisyui';
 import { Placeholder } from 'semantic-ui-react';
 import { MacbookContext } from '../../../context/macbook/MacbookContext';
 import { slugify } from '../../../components/utils/slugify';
+import { scrollToTopSmoothly } from '../../../components/utils/scrollToTopSmoothly';
 
 const MacbookPage: React.FC = () => {
-  const { macbook } = useContext(MacbookContext);
+  const { macbook,getAllMacbook } = useContext(MacbookContext);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    if (macbook.length > 0) {
+    scrollToTopSmoothly()
+    if (macbook.length === 0) {
+      const fetchData = async () => {
+        await getAllMacbook();
+        setLoading(false);
+      };
+
+      fetchData();
+    } else {
       setLoading(false);
     }
-    // Scroll To Top
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  }, [macbook, currentPage]);
+  }, []);
+  
   // Handle Click Macbook To Macbook Detail
   const navigate = useNavigate();
   // Panigation

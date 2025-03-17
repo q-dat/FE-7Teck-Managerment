@@ -3,7 +3,6 @@ import {
   useState,
   ReactNode,
   useCallback,
-  useEffect,
   useMemo
 } from 'react';
 import { AxiosResponse } from 'axios';
@@ -94,8 +93,8 @@ export const TabletProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // Get All Tablets
-  const getAllTablets = useCallback(() => {
-    fetchData(
+  const getAllTablets = useCallback(async () => {
+    await fetchData(
       getAllTabletsApi,
       data => {
         setTablets(data?.tablets || []);
@@ -213,10 +212,6 @@ export const TabletProvider = ({ children }: { children: ReactNode }) => {
     []
   );
 
-  useEffect(() => {
-    getAllTablets();
-  }, [getAllTablets]);
-
   const value = useMemo(
     () => ({
       tablets,
@@ -236,4 +231,3 @@ export const TabletProvider = ({ children }: { children: ReactNode }) => {
     <TabletContext.Provider value={value}>{children}</TabletContext.Provider>
   );
 };
-

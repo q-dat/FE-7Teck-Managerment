@@ -5,17 +5,14 @@ import { Textarea, Button } from 'react-daisyui';
 import InputForm from '../../components/UserPage/InputForm';
 import { ToastifyUPage } from '../../helper/ToastifyUPage';
 import LabelForm from '../../components/UserPage/LabelForm';
+import { scrollToTopSmoothly } from '../../components/utils/scrollToTopSmoothly';
 
 const PurchasePage: React.FC = () => {
   const [result, setResult] = React.useState<string>('');
   const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
-    // Scroll To Top
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    scrollToTopSmoothly();
   });
   const onSubmit = async (
     event: React.FormEvent<HTMLFormElement>
@@ -75,7 +72,7 @@ const PurchasePage: React.FC = () => {
     <div>
       <HeaderResponsive Title_NavbarMobile="Mua Hàng" />
       <div className="py-[60px] xl:pt-0">
-        <div className="xl:px-desktop-padding breadcrumbs px-[10px] py-2 text-sm text-black shadow dark:text-white">
+        <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow dark:text-white xl:px-desktop-padding">
           <ul className="font-light">
             <li>
               <Link aria-label="Trang chủ" to="/">
@@ -90,7 +87,7 @@ const PurchasePage: React.FC = () => {
           </ul>
         </div>
         {/* Form */}
-        <div className="xl:px-desktop-padding mt-5 px-2">
+        <div className="mt-5 px-2 xl:px-desktop-padding">
           <div>
             <div role="region" aria-label="Thông tin liên hệ">
               <h1 className="text-2xl font-bold">

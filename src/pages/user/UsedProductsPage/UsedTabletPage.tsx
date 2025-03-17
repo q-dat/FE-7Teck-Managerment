@@ -4,22 +4,28 @@ import { useNavigate } from 'react-router-dom';
 import { Placeholder } from 'semantic-ui-react';
 import { TabletCatalogContext } from '../../../context/tablet-catalog/TabletCatalogContext';
 import { slugify } from '../../../components/utils/slugify';
+import { scrollToTopSmoothly } from '../../../components/utils/scrollToTopSmoothly';
 
 const UsedTabletPage: React.FC = () => {
+  const { tabletCatalogs, getAllTabletCatalogs } =
+    useContext(TabletCatalogContext);
   const [loading, setLoading] = useState(true);
-  const { tabletCatalogs } = useContext(TabletCatalogContext);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    if (tabletCatalogs.length > 0) {
+    scrollToTopSmoothly();
+    if (tabletCatalogs.length === 0) {
+      const fetchData = async () => {
+        await getAllTabletCatalogs();
+        setLoading(false);
+      };
+
+      fetchData();
+    } else {
       setLoading(false);
     }
-    // Scroll To Top
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  }, [tabletCatalogs, currentPage]);
+  }, []);
+
   // Handle Click Phone To Phone Detail
   const navigate = useNavigate();
   // Panigation
@@ -68,9 +74,7 @@ const UsedTabletPage: React.FC = () => {
               return (
                 <div
                   key={tabletCatalog?._id}
-                  onClick={() =>
-                    navigate(`/may-tinh-bang/${tabletCatalogUrl}`)
-                  }
+                  onClick={() => navigate(`/may-tinh-bang/${tabletCatalogUrl}`)}
                   className="group flex h-full w-full flex-col justify-between rounded-md border border-white bg-white text-black"
                 >
                   <div className="relative h-[200px] w-full cursor-pointer overflow-hidden rounded-md rounded-b-none">
@@ -129,4 +133,3 @@ const UsedTabletPage: React.FC = () => {
 };
 
 export default UsedTabletPage;
-

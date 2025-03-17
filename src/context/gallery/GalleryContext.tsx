@@ -3,7 +3,6 @@ import {
   useState,
   ReactNode,
   useCallback,
-  useEffect,
   useMemo
 } from 'react';
 import { AxiosResponse } from 'axios';
@@ -92,8 +91,8 @@ export const GalleryProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // Get All Galleries
-  const getAllGallerys = useCallback(() => {
-    fetchData(
+  const getAllGallerys = useCallback(async () => {
+    await fetchData(
       getAllGallerysApi,
       data => {
         setGallerys(data?.galleries || []), setCountGallery(data?.count || 0);
@@ -171,10 +170,6 @@ export const GalleryProvider = ({ children }: { children: ReactNode }) => {
     },
     []
   );
-
-  useEffect(() => {
-    getAllGallerys();
-  }, [getAllGallerys]);
 
   const value = useMemo(
     () => ({

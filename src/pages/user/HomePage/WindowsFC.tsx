@@ -10,16 +10,23 @@ import { useScroll } from '../../../hooks/useScroll';
 import { slugify } from '../../../components/utils/slugify';
 
 const WindowsFC: React.FC = () => {
-  const { windows, updateWindowsView } = useContext(WindowsContext);
+  const { windows,getAllWindows, updateWindowsView } = useContext(WindowsContext);
   const { scrollRef, isLeftVisible, isRightVisible, scrollBy } = useScroll();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (windows.length > 0) {
+    if (windows.length === 0) {
+      const fetchData = async () => {
+        await getAllWindows();
+        setLoading(false);
+      };
+
+      fetchData();
+    } else {
       setLoading(false);
     }
-  }, [windows]);
-  //
+  }, []);
+
   const sortedWindows = windows.filter(win => win.windows_sale);
 
   return (

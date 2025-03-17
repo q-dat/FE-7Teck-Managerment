@@ -3,7 +3,6 @@ import {
   useState,
   ReactNode,
   useCallback,
-  useEffect,
   useMemo
 } from 'react';
 import { AxiosResponse } from 'axios';
@@ -101,8 +100,8 @@ export const TabletCatalogProvider = ({
   };
 
   // Get All TabletCatalogs
-  const getAllTabletCatalogs = useCallback(() => {
-    fetchData(
+  const getAllTabletCatalogs = useCallback(async () => {
+    await fetchData(
       getAllTabletCatalogsApi,
       data => {
         setTabletCatalogs(data?.tabletCatalogs || []);
@@ -191,10 +190,6 @@ export const TabletCatalogProvider = ({
     []
   );
 
-  useEffect(() => {
-    getAllTabletCatalogs();
-  }, [getAllTabletCatalogs]);
-
   const value = useMemo(
     () => ({
       tabletCatalogs,
@@ -215,4 +210,3 @@ export const TabletCatalogProvider = ({
     </TabletCatalogContext.Provider>
   );
 };
-

@@ -3,7 +3,6 @@ import {
   useState,
   ReactNode,
   useCallback,
-  useEffect,
   useMemo
 } from 'react';
 import { AxiosResponse } from 'axios';
@@ -93,8 +92,8 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // Get All Windowss
-  const getAllWindows = useCallback(() => {
-    fetchData(
+  const getAllWindows = useCallback(async () => {
+    await fetchData(
       getAllWindowsApi,
       data => {
         setWindows(data?.windows || []);
@@ -219,10 +218,6 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
     []
   );
 
-  useEffect(() => {
-    getAllWindows();
-  }, [getAllWindows]);
-
   const value = useMemo(
     () => ({
       windows,
@@ -242,4 +237,3 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
     <WindowsContext.Provider value={value}>{children}</WindowsContext.Provider>
   );
 };
-

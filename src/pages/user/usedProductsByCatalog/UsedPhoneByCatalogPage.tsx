@@ -7,24 +7,29 @@ import { Button } from 'react-daisyui';
 import { FaRegEye } from 'react-icons/fa';
 import { Placeholder } from 'semantic-ui-react';
 import { slugify } from '../../../components/utils/slugify';
+import { scrollToTopSmoothly } from '../../../components/utils/scrollToTopSmoothly';
 
 const UsedPhoneByCatalogPage = () => {
-  const { phones, updatePhoneView } = useContext(PhoneContext);
+  const { phones, getAllPhones, updatePhoneView } = useContext(PhoneContext);
   const [loading, setLoading] = useState(true);
   const { catalog } = useParams();
   const filteredPhones = phones.filter(
     phone => slugify(phone?.name) === catalog
   );
+
   useEffect(() => {
-    if (phones.length > 0) {
+    scrollToTopSmoothly();
+    if (phones.length === 0) {
+      const fetchData = async () => {
+        await getAllPhones();
+        setLoading(false);
+      };
+
+      fetchData();
+    } else {
       setLoading(false);
     }
-    // Scroll To Top
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  }, [phones, filteredPhones]);
+  }, []);
 
   return (
     <div>

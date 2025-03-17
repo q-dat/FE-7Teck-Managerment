@@ -11,11 +11,19 @@ import { useScroll } from '../../../hooks/useScroll';
 import { slugify } from '../../../components/utils/slugify';
 
 const PhoneFC: React.FC = () => {
-  const { phones, updatePhoneView } = useContext(PhoneContext);
+  const { phones, getAllPhones, updatePhoneView } = useContext(PhoneContext);
   const { scrollRef, isLeftVisible, isRightVisible, scrollBy } = useScroll();
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    if (phones.length > 0) {
+    if (phones.length === 0) {
+      const fetchData = async () => {
+        await getAllPhones();
+        setLoading(false);
+      };
+
+      fetchData();
+    } else {
       setLoading(false);
     }
   }, [phones]);

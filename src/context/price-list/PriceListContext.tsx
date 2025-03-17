@@ -3,7 +3,6 @@ import {
   useState,
   ReactNode,
   useCallback,
-  useEffect,
   useMemo
 } from 'react';
 import { AxiosResponse } from 'axios';
@@ -97,8 +96,8 @@ export const PriceListsProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // Get All PriceLists
-  const getAllPriceLists = useCallback(() => {
-    fetchData(
+  const getAllPriceLists = useCallback(async () => {
+    await fetchData(
       getAllPriceListsApi,
       data => {
         setPriceLists(data.priceLists || []);
@@ -199,10 +198,6 @@ export const PriceListsProvider = ({ children }: { children: ReactNode }) => {
     []
   );
 
-  useEffect(() => {
-    getAllPriceLists();
-  }, [getAllPriceLists]);
-
   const value = useMemo(
     () => ({
       priceLists,
@@ -223,4 +218,3 @@ export const PriceListsProvider = ({ children }: { children: ReactNode }) => {
     </PriceListsContext.Provider>
   );
 };
-

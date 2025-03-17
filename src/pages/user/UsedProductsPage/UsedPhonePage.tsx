@@ -4,22 +4,28 @@ import { useNavigate } from 'react-router-dom';
 import { PhoneCatalogContext } from '../../../context/phone-catalog/PhoneCatalogContext';
 import { Placeholder } from 'semantic-ui-react';
 import { slugify } from '../../../components/utils/slugify';
+import { scrollToTopSmoothly } from '../../../components/utils/scrollToTopSmoothly';
 
 const UsedPhonePage: React.FC = () => {
+  const { phoneCatalogs, getAllPhoneCatalogs } =
+    useContext(PhoneCatalogContext);
   const [loading, setLoading] = useState(true);
-  const { phoneCatalogs } = useContext(PhoneCatalogContext);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    if (phoneCatalogs.length > 0) {
+    scrollToTopSmoothly();
+    if (phoneCatalogs.length === 0) {
+      const fetchData = async () => {
+        await getAllPhoneCatalogs();
+        setLoading(false);
+      };
+
+      fetchData();
+    } else {
       setLoading(false);
     }
-    // Scroll To Top
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  }, [phoneCatalogs, currentPage]);
+  }, []);
+
   // Handle Click Phone To Phone Detail
   const navigate = useNavigate();
   // Panigation
@@ -67,9 +73,7 @@ const UsedPhonePage: React.FC = () => {
               return (
                 <div
                   key={phoneCatalog?._id}
-                  onClick={() =>
-                    navigate(`/dien-thoai/${phoneCatalogUrl}`)
-                  }
+                  onClick={() => navigate(`/dien-thoai/${phoneCatalogUrl}`)}
                   className="group flex h-full w-full flex-col justify-between rounded-md border border-white bg-white text-black"
                 >
                   <div className="relative h-[200px] w-full cursor-pointer overflow-hidden rounded-md rounded-b-none">
@@ -125,4 +129,3 @@ const UsedPhonePage: React.FC = () => {
 };
 
 export default UsedPhonePage;
-

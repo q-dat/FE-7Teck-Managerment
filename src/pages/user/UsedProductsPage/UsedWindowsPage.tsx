@@ -4,22 +4,29 @@ import { useNavigate } from 'react-router-dom';
 import { Placeholder } from 'semantic-ui-react';
 import { WindowsCatalogContext } from '../../../context/windows-catalog/WindowsCatalogContext';
 import { slugify } from '../../../components/utils/slugify';
+import { scrollToTopSmoothly } from '../../../components/utils/scrollToTopSmoothly';
 
 const UsedWindowsPage: React.FC = () => {
+  const { windowsCatalogs, getAllWindowsCatalogs } = useContext(
+    WindowsCatalogContext
+  );
   const [loading, setLoading] = useState(true);
-  const { windowsCatalogs } = useContext(WindowsCatalogContext);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    if (windowsCatalogs.length > 0) {
+    scrollToTopSmoothly();
+    if (windowsCatalogs.length === 0) {
+      const fetchData = async () => {
+        await getAllWindowsCatalogs();
+        setLoading(false);
+      };
+
+      fetchData();
+    } else {
       setLoading(false);
     }
-    // Scroll To Top
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  }, [windowsCatalogs, currentPage]);
+  }, []);
+
   // Handle Click Phone To Phone Detail
   const navigate = useNavigate();
   // Panigation
@@ -69,9 +76,7 @@ const UsedWindowsPage: React.FC = () => {
               return (
                 <div
                   key={windowsCatalog?._id}
-                  onClick={() =>
-                    navigate(`/windows/${windowsCatalogUrl}`)
-                  }
+                  onClick={() => navigate(`/windows/${windowsCatalogUrl}`)}
                   className="group flex h-full w-full flex-col justify-between rounded-md border border-white bg-white text-black"
                 >
                   <div className="relative h-[200px] w-full cursor-pointer overflow-hidden rounded-md rounded-b-none">
@@ -130,4 +135,3 @@ const UsedWindowsPage: React.FC = () => {
 };
 
 export default UsedWindowsPage;
-

@@ -4,10 +4,13 @@ import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
 import { PostContext } from '../../../context/post/PostContext';
 import { FaArrowLeftLong } from 'react-icons/fa6';
 import TimeAgo from '../../../components/orther/timeAgo/TimeAgo';
+import { scrollToTopSmoothly } from '../../../components/utils/scrollToTopSmoothly';
 const PostDetail: React.FC = () => {
   const navigate = useNavigate();
-  const { posts } = useContext(PostContext);
+  const { posts, getAllPosts } = useContext(PostContext);
+  const [loading, setLoading] = useState(true);
   const { title } = useParams<{ title: string }>();
+
   const [selectedPost, setSelectedPost] = useState<(typeof posts)[0] | null>(
     null
   );
@@ -15,11 +18,19 @@ const PostDetail: React.FC = () => {
   8;
 
   useEffect(() => {
-    // Scroll To Top
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    scrollToTopSmoothly();
+
+    if (posts.length === 0) {
+      const fetchData = async () => {
+        await getAllPosts();
+        setLoading(false);
+      };
+
+      fetchData();
+    } else {
+      setLoading(false);
+    }
+
     // Fetch Data By Title
     if (posts.length > 0 && title) {
       const post = posts.find(
@@ -35,7 +46,7 @@ const PostDetail: React.FC = () => {
       );
       setSelectedPost(post || null);
     }
-  }, [selectedPost, posts, title]);
+  }, []);
   // Handle Click Post To Post Detail
   const handlePostSelect = (post: (typeof posts)[0]) => {
     setSelectedPost(post);
@@ -57,7 +68,7 @@ const PostDetail: React.FC = () => {
     <div>
       <HeaderResponsive Title_NavbarMobile="Bài viết" />
       <div className="py-[60px] xl:pt-0">
-        <div className="xl:px-desktop-padding breadcrumbs mb-10 px-[10px] py-2 text-sm text-black shadow">
+        <div className="breadcrumbs mb-10 px-[10px] py-2 text-sm text-black shadow xl:px-desktop-padding">
           <ul className="font-light">
             <li>
               <Link aria-label="Trang chủ" to="/">
@@ -87,44 +98,52 @@ const PostDetail: React.FC = () => {
               <FaArrowLeftLong />
               Trở về trang tin tức
             </Link>
-            <>
-              {selectedPost ? (
-                <div className="mb-10">
-                  <p className="text-[35px] font-bold">{selectedPost?.title}</p>
-                  <p className="text-[14px] text-blue-500">
-                    {new Date(selectedPost?.updatedAt).toLocaleDateString(
-                      'vi-VN'
-                    )}
-                  </p>
-                  <p className="text-[14px] font-light">
-                    Danh mục:&nbsp;{selectedPost?.catalog}
-                  </p>
-                  <hr className="my-4" />
-                  <div
-                    dangerouslySetInnerHTML={{ __html: selectedPost?.content }}
-                    className="text-[18px] text-black"
-                  ></div>
-                </div>
-              ) : (
-                <p
-                  aria-label="Bài viết này không tồn tại"
-                  className="my-3 rounded-md bg-white p-2 text-center text-2xl font-light text-primary"
-                >
-                  Bài viết này không tồn tại!
-                  <br />
-                  <span
-                    aria-label=" Xin lỗi vì sự bất tiện này. Quý độc giả vui lòng theo dõi
-                    các bài viết khác trên trang."
-                    className="text-xl"
+            {loading ? (
+              <>Đang tải...</>
+            ) : (
+              <div>
+                {selectedPost ? (
+                  <div className="mb-10">
+                    <p className="text-[35px] font-bold">
+                      {selectedPost?.title}
+                    </p>
+                    <p className="text-[14px] text-blue-500">
+                      {new Date(selectedPost?.updatedAt).toLocaleDateString(
+                        'vi-VN'
+                      )}
+                    </p>
+                    <p className="text-[14px] font-light">
+                      Danh mục:&nbsp;{selectedPost?.catalog}
+                    </p>
+                    <hr className="my-4" />
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: selectedPost?.content
+                      }}
+                      className="text-[18px] text-black"
+                    ></div>
+                  </div>
+                ) : (
+                  <p
+                    aria-label="Bài viết này không tồn tại"
+                    className="my-3 rounded-md bg-white p-2 text-center text-2xl font-light text-primary"
                   >
-                    Xin lỗi vì sự bất tiện này. Quý độc giả vui lòng theo dõi
-                    các bài viết khác trên trang.
-                  </span>
-                </p>
-              )}
-            </>
+                    Bài viết này không tồn tại!
+                    <br />
+                    <span
+                      aria-label=" Xin lỗi vì sự bất tiện này. Quý độc giả vui lòng theo dõi
+                    các bài viết khác trên trang."
+                      className="text-xl"
+                    >
+                      Xin lỗi vì sự bất tiện này. Quý độc giả vui lòng theo dõi
+                      các bài viết khác trên trang.
+                    </span>
+                  </p>
+                )}
+              </div>
+            )}
           </div>
-          <div className="xl:px-desktop-padding px-0">
+          <div className="px-0 xl:px-desktop-padding">
             <div role="region" aria-label="Bài viết nổi bật khác">
               <h1 className="p-1 font-semibold uppercase">Bài viết khác</h1>
               <p className="mx-1 mb-3 h-[2px] w-[110px] bg-primary"></p>

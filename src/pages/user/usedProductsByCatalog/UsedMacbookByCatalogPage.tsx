@@ -7,24 +7,30 @@ import { FaRegEye } from 'react-icons/fa';
 import { Placeholder } from 'semantic-ui-react';
 import { MacbookContext } from '../../../context/macbook/MacbookContext';
 import { slugify } from '../../../components/utils/slugify';
+import { scrollToTopSmoothly } from '../../../components/utils/scrollToTopSmoothly';
 
 const UsedMacbookByCatalogPage = () => {
-  const { macbook, updateMacbookView } = useContext(MacbookContext);
+  const { macbook, getAllMacbook, updateMacbookView } =
+    useContext(MacbookContext);
   const [loading, setLoading] = useState(true);
   const { catalog } = useParams();
   const filteredPhones = macbook.filter(
     mac => slugify(mac?.macbook_name) === catalog
   );
+
   useEffect(() => {
-    if (macbook.length > 0) {
+    scrollToTopSmoothly();
+    if (macbook.length === 0) {
+      const fetchData = async () => {
+        await getAllMacbook();
+        setLoading(false);
+      };
+
+      fetchData();
+    } else {
       setLoading(false);
     }
-    // Scroll To Top
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  }, [macbook, filteredPhones]);
+  }, []);
 
   return (
     <div>
@@ -91,9 +97,7 @@ const UsedMacbookByCatalogPage = () => {
                       </Link>
                       {/*  */}
                       <div className="flex flex-col items-start justify-center gap-1 p-1">
-                        <Link
-                          to={`/imacbook/${macUrl}/${mac?._id}`}
-                        >
+                        <Link to={`/imacbook/${macUrl}/${mac?._id}`}>
                           <div className="flex w-[50px] items-center justify-start gap-1 rounded-sm p-[2px] text-center text-[12px] text-black">
                             <FaRegEye />
                             <p>{mac.macbook_view}</p>
@@ -155,4 +159,3 @@ const UsedMacbookByCatalogPage = () => {
 };
 
 export default UsedMacbookByCatalogPage;
-
