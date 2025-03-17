@@ -17,8 +17,8 @@ const PhonePage: React.FC = () => {
     scrollToTopSmoothly();
     if (phones.length === 0) {
       const fetchData = async () => {
+        setLoading(true);
         await getAllPhones();
-        setLoading(false);
       };
 
       fetchData();

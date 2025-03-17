@@ -22,8 +22,8 @@ const UsedTabletByCatalogPage = () => {
     scrollToTopSmoothly();
     if (tablets.length === 0) {
       const fetchData = async () => {
+        setLoading(true);
         await getAllTablets();
-        setLoading(false);
       };
 
       fetchData();

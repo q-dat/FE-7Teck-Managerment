@@ -17,8 +17,8 @@ const WindowsFC: React.FC = () => {
   useEffect(() => {
     if (windows.length === 0) {
       const fetchData = async () => {
+        setLoading(true);
         await getAllWindows();
-        setLoading(false);
       };
 
       fetchData();

@@ -16,8 +16,8 @@ const UsedPhonePage: React.FC = () => {
     scrollToTopSmoothly();
     if (phoneCatalogs.length === 0) {
       const fetchData = async () => {
+        setLoading(true);
         await getAllPhoneCatalogs();
-        setLoading(false);
       };
 
       fetchData();

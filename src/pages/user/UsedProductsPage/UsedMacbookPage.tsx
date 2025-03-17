@@ -17,8 +17,8 @@ const UsedMacbookPage: React.FC = () => {
     scrollToTopSmoothly();
     if (macbookCatalogs.length === 0) {
       const fetchData = async () => {
+        setLoading(true);
         await getAllMacbookCatalogs();
-        setLoading(false);
       };
 
       fetchData();

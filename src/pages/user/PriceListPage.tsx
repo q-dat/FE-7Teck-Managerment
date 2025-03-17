@@ -33,8 +33,8 @@ const PriceListPage: React.FC = () => {
     scrollToTopSmoothly();
     if (priceLists.length === 0) {
       const fetchData = async () => {
+        setLoading(true);
         await getAllPriceLists();
-        setLoading(false);
       };
 
       fetchData();

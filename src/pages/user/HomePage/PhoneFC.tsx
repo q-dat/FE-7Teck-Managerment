@@ -18,8 +18,8 @@ const PhoneFC: React.FC = () => {
   useEffect(() => {
     if (phones.length === 0) {
       const fetchData = async () => {
+        setLoading(true);
         await getAllPhones();
-        setLoading(false);
       };
 
       fetchData();

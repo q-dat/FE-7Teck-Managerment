@@ -17,8 +17,8 @@ const MacbookPage: React.FC = () => {
     scrollToTopSmoothly()
     if (macbook.length === 0) {
       const fetchData = async () => {
+        setLoading(true);
         await getAllMacbook();
-        setLoading(false);
       };
 
       fetchData();

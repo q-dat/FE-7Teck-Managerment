@@ -16,8 +16,8 @@ const TipsAndTricksPage: React.FC = () => {
     scrollToTopSmoothly();
     if (posts.length === 0) {
       const fetchData = async () => {
+        setLoading(true);
         await getAllPosts();
-        setLoading(false);
       };
 
       fetchData();

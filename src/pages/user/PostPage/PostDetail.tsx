@@ -22,8 +22,8 @@ const PostDetail: React.FC = () => {
 
     if (posts.length === 0) {
       const fetchData = async () => {
+        setLoading(true);
         await getAllPosts();
-        setLoading(false);
       };
 
       fetchData();

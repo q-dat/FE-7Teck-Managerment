@@ -18,8 +18,8 @@ const MacbookFC: React.FC = () => {
   useEffect(() => {
     if (macbook.length === 0) {
       const fetchData = async () => {
+        setLoading(true);
         await getAllMacbook();
-        setLoading(false);
       };
 
       fetchData();

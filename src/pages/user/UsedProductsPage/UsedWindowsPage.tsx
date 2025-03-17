@@ -17,8 +17,8 @@ const UsedWindowsPage: React.FC = () => {
     scrollToTopSmoothly();
     if (windowsCatalogs.length === 0) {
       const fetchData = async () => {
+        setLoading(true);
         await getAllWindowsCatalogs();
-        setLoading(false);
       };
 
       fetchData();

@@ -16,8 +16,8 @@ const GalleryPage: React.FC = () => {
     scrollToTopSmoothly();
     if (galleries.length === 0) {
       const fetchData = async () => {
+        setLoading(true);
         await getAllGallerys();
-        setLoading(false);
       };
 
       fetchData();

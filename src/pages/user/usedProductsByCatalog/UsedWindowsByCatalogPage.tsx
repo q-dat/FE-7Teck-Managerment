@@ -22,8 +22,8 @@ const UsedWindowsByCatalogPage = () => {
     scrollToTopSmoothly();
     if (windows.length === 0) {
       const fetchData = async () => {
+        setLoading(true);
         await getAllWindows();
-        setLoading(false);
       };
 
       fetchData();
