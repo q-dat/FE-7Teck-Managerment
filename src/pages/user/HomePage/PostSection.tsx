@@ -14,13 +14,14 @@ const PostSection: React.FC = () => {
       const fetchData = async () => {
         setLoading(true);
         await getAllPosts();
+        setLoading(false);
       };
 
       fetchData();
     } else {
       setLoading(false);
     }
-  }, [posts]);
+  }, []);
 
   const news = posts?.filter(post =>
     post?.catalog.toLowerCase().includes('tin')

@@ -18,6 +18,7 @@ const UsedPhonePage: React.FC = () => {
       const fetchData = async () => {
         setLoading(true);
         await getAllPhoneCatalogs();
+        setLoading(false);
       };
 
       fetchData();

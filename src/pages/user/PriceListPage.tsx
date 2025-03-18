@@ -35,6 +35,7 @@ const PriceListPage: React.FC = () => {
       const fetchData = async () => {
         setLoading(true);
         await getAllPriceLists();
+        setLoading(false);
       };
 
       fetchData();
@@ -83,7 +84,7 @@ const PriceListPage: React.FC = () => {
       macbookProducts: Object.keys(aggregatedData.macbookProducts)[0] || '',
       windowsProducts: Object.keys(aggregatedData.windowsProducts)[0] || ''
     });
-  }, [priceLists]);
+  }, []);
 
   return (
     <div>

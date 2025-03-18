@@ -18,6 +18,7 @@ const UsedTabletPage: React.FC = () => {
       const fetchData = async () => {
         setLoading(true);
         await getAllTabletCatalogs();
+        setLoading(false);
       };
 
       fetchData();

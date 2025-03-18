@@ -24,6 +24,7 @@ const UsedMacbookByCatalogPage = () => {
       const fetchData = async () => {
         setLoading(true);
         await getAllMacbook();
+        setLoading(false);
       };
 
       fetchData();

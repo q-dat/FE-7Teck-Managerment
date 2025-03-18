@@ -19,6 +19,7 @@ const UsedWindowsPage: React.FC = () => {
       const fetchData = async () => {
         setLoading(true);
         await getAllWindowsCatalogs();
+        setLoading(false);
       };
 
       fetchData();

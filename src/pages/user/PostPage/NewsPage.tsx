@@ -19,6 +19,7 @@ const NewsPage: React.FC = () => {
       const fetchData = async () => {
         setLoading(true);
         await getAllPosts();
+        setLoading(false);
       };
 
       fetchData();

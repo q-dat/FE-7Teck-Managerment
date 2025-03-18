@@ -24,6 +24,7 @@ const UsedTabletByCatalogPage = () => {
       const fetchData = async () => {
         setLoading(true);
         await getAllTablets();
+        setLoading(false);
       };
 
       fetchData();

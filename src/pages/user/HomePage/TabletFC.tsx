@@ -19,7 +19,8 @@ const TabletFC: React.FC = () => {
        const fetchData = async () => {
         setLoading(true);
          await getAllTablets();
-       };
+         setLoading(false);
+        };
  
        fetchData();
      } else {

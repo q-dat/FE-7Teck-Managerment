@@ -23,6 +23,7 @@ const UsedPhoneByCatalogPage = () => {
       const fetchData = async () => {
         setLoading(true);
         await getAllPhones();
+        setLoading(false);
       };
 
       fetchData();

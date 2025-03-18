@@ -20,13 +20,14 @@ const PhoneFC: React.FC = () => {
       const fetchData = async () => {
         setLoading(true);
         await getAllPhones();
+        setLoading(false);
       };
 
       fetchData();
     } else {
       setLoading(false);
     }
-  }, [phones]);
+  }, []);
 
   //
   const sortedPhones = phones

@@ -19,6 +19,7 @@ const WindowsPage: React.FC = () => {
       const fetchData = async () => {
         setLoading(true);
         await getAllWindows();
+        setLoading(false);
       };
 
       fetchData();

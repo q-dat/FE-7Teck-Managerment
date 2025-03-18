@@ -19,6 +19,7 @@ const UsedMacbookPage: React.FC = () => {
       const fetchData = async () => {
         setLoading(true);
         await getAllMacbookCatalogs();
+        setLoading(false);
       };
 
       fetchData();

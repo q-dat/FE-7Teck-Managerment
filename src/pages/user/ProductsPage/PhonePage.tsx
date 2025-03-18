@@ -19,6 +19,7 @@ const PhonePage: React.FC = () => {
       const fetchData = async () => {
         setLoading(true);
         await getAllPhones();
+        setLoading(false);
       };
 
       fetchData();

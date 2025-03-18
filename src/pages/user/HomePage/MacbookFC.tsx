@@ -20,6 +20,7 @@ const MacbookFC: React.FC = () => {
       const fetchData = async () => {
         setLoading(true);
         await getAllMacbook();
+        setLoading(false);
       };
 
       fetchData();

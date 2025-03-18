@@ -18,6 +18,7 @@ const GalleryPage: React.FC = () => {
       const fetchData = async () => {
         setLoading(true);
         await getAllGallerys();
+        setLoading(false);
       };
 
       fetchData();
