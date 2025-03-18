@@ -11,15 +11,16 @@ import { useScroll } from '../../../hooks/useScroll';
 import { slugify } from '../../../components/utils/slugify';
 
 const PhoneFC: React.FC = () => {
-  const { phones, getAllPhones, updatePhoneView } = useContext(PhoneContext);
+  const { mostViewedPhones, getMostViewedPhones, updatePhoneView } =
+    useContext(PhoneContext);
   const { scrollRef, isLeftVisible, isRightVisible, scrollBy } = useScroll();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (phones.length === 0) {
+    if (mostViewedPhones.length === 0) {
       const fetchData = async () => {
         setLoading(true);
-        await getAllPhones();
+        await getMostViewedPhones();
         setLoading(false);
       };
 
@@ -28,11 +29,6 @@ const PhoneFC: React.FC = () => {
       setLoading(false);
     }
   }, []);
-
-  //
-  const sortedPhones = phones
-    .filter(phone => phone.view !== undefined && phone.view >= 0)
-    .sort((a, b) => (b.view ?? 0) - (a.view ?? 0));
 
   return (
     <div className={`mt-10 p-0 xl:px-desktop-padding`}>
@@ -61,7 +57,7 @@ const PhoneFC: React.FC = () => {
                 </Placeholder>
               </div>
             ))
-          : sortedPhones.map(phone => {
+          : mostViewedPhones.map(phone => {
               const phoneUrl = slugify(phone.name);
               return (
                 <div
@@ -147,7 +143,7 @@ const PhoneFC: React.FC = () => {
       </section>
       <Link to="/iphone" aria-label="Xem thêm sản phẩm điện thoại iPhone">
         <button className="flex w-full cursor-pointer items-center justify-center bg-gradient-to-r from-white via-secondary to-white py-1 text-sm text-white xl:rounded-b-lg">
-          {/* ({phones.length}) */}
+          {/* ({mostViewedPhones.length}) */}
           {loading ? (
             <>Đang tải...</>
           ) : (

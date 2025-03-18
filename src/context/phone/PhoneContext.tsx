@@ -11,22 +11,26 @@ import {
   createPhoneApi,
   updatePhoneApi,
   deletePhoneApi,
-  getPhoneByIdApi
+  getPhoneByIdApi,
+  getMostViewedPhonesApi
 } from '../../axios/api/phoneApi';
 import { IPhone } from '../../types/type/phone/phone';
 
 interface PhoneContextType {
   phones: IPhone[];
+  mostViewedPhones: IPhone[];
   phoneDetails: { [key: string]: IPhone };
   countPhone: number;
   loading: {
     getAll: boolean;
+    getMostViewedPhones: boolean;
     create: boolean;
     update: boolean;
     delete: boolean;
   };
   error: string | null;
   getAllPhones: () => void;
+  getMostViewedPhones: () => void;
   getPhoneById: (_id: string) => Promise<IPhone | undefined>;
   createPhone: (phoneData: FormData) => Promise<AxiosResponse<any>>;
   updatePhone: (
@@ -39,16 +43,19 @@ interface PhoneContextType {
 
 const defaultContextValue: PhoneContextType = {
   phones: [],
+  mostViewedPhones: [],
   phoneDetails: {},
   countPhone: 0,
   loading: {
     getAll: false,
+    getMostViewedPhones: false,
     create: false,
     update: false,
     delete: false
   },
   error: null,
   getAllPhones: () => {},
+  getMostViewedPhones: () => {},
   getPhoneById: async () => undefined,
   createPhone: async () => ({ data: { phone: null } }) as AxiosResponse,
   updatePhone: async () => ({ data: { phone: null } }) as AxiosResponse,
@@ -61,12 +68,14 @@ export const PhoneContext =
 
 export const PhoneProvider = ({ children }: { children: ReactNode }) => {
   const [phones, setPhones] = useState<IPhone[]>([]);
+  const [mostViewedPhones, setMostViewedPhones] = useState<IPhone[]>([]);
   const [phoneDetails, setPhoneDetails] = useState<{ [key: string]: IPhone }>(
     {}
   );
   const [countPhone, setCountPhone] = useState<number>(0);
   const [loading, setLoading] = useState({
     getAll: false,
+    getMostViewedPhones: false,
     create: false,
     update: false,
     delete: false
@@ -108,6 +117,16 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
     );
   }, []);
 
+  //Get MostViewedPhones
+  const getMostViewedPhones = useCallback(async () => {
+    await fetchData(
+      getMostViewedPhonesApi,
+      data => {
+        setMostViewedPhones(data?.phones || []);
+      },
+      'getMostViewedPhones'
+    );
+  }, []);
   // Get Phone By Id
   const getPhoneById = useCallback(
     async (id: string): Promise<IPhone | undefined> => {
@@ -220,18 +239,20 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
   const value = useMemo(
     () => ({
       phones,
+      mostViewedPhones,
       phoneDetails,
       countPhone,
       loading,
       error,
       getAllPhones,
+      getMostViewedPhones,
       getPhoneById,
       createPhone,
       updatePhone,
       updatePhoneView,
       deletePhone
     }),
-    [phones, phoneDetails, countPhone, loading, error]
+    [phones, mostViewedPhones, phoneDetails, countPhone, loading, error]
   );
   return (
     <PhoneContext.Provider value={value}>{children}</PhoneContext.Provider>

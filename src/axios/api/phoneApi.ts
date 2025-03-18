@@ -5,6 +5,10 @@ import { IPhone } from '../../types/type/phone/phone';
 export const getAllPhonesApi = () => {
   return axios.get<{ phones: IPhone[] }>('/api/phones');
 };
+//Get MostViewedPhones
+export const getMostViewedPhonesApi = () => {
+  return axios.get<{ phones: IPhone[] }>('/api/phones/most-viewed');
+};
 
 // Get Phone By ID
 export const getPhoneByIdApi = (_id: string) => {
