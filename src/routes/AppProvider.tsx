@@ -5,12 +5,12 @@ import { AuthProvider } from '../context/auth/AuthContext';
 import { GalleryProvider } from '../context/gallery/GalleryContext';
 import { MacbookCatalogProvider } from '../context/macbook-catalog/MacbookCatalogContext';
 import { MacbookProvider } from '../context/macbook/MacbookContext';
-import { OptionPhoneProvider } from '../context/optionsData/OptionsPhoneContext';
+import { OptionPhoneProvider } from '../context/optionsData/OptionPhoneContext';
 import { PhoneCatalogProvider } from '../context/phone-catalog/PhoneCatalogContext';
 import { PhoneProvider } from '../context/phone/PhoneContext';
 import { PostCatalogProvider } from '../context/post-catalog/PostCatalogContext';
 import { PostProvider } from '../context/post/PostContext';
-import { PriceListsProvider } from '../context/price-list/PriceListContext';
+import { PriceListProvider } from '../context/price-list/PriceListContext';
 import { TabletCatalogProvider } from '../context/tablet-catalog/TabletCatalogContext';
 import { TabletProvider } from '../context/tablet/TabletContext';
 import { WindowsCatalogProvider } from '../context/windows-catalog/WindowsCatalogContext';
@@ -19,7 +19,7 @@ import { WindowsProvider } from '../context/windows/WindowsContext';
 const AppProvider = ({ children }: { children: ReactNode }) => {
   return (
     <AuthProvider>
-      <PriceListsProvider>
+      <PriceListProvider>
         <GalleryProvider>
           <PostCatalogProvider>
             <PostProvider>
@@ -45,7 +45,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
             </PostProvider>
           </PostCatalogProvider>
         </GalleryProvider>
-      </PriceListsProvider>
+      </PriceListProvider>
       <ToastContainer />
     </AuthProvider>
   );

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { PriceListsContext } from '../../../../context/price-list/PriceListContext';
+import { PriceListContext } from '../../../../context/price-list/PriceListContext';
 import { Toastify } from '../../../../helper/Toastify';
 import { Button, Select } from 'react-daisyui';
 import LabelForm from '../../LabelForm';
@@ -16,7 +16,7 @@ const ModalCreatePriceListPageAdmin: React.FC<ModalCreateAdminProps> = ({
   onClose
 }) => {
   const { getAllPriceLists, createPriceLists, loading } =
-    useContext(PriceListsContext);
+    useContext(PriceListContext);
   const isLoading = loading.create;
   const { register, handleSubmit, reset } = useForm();
 

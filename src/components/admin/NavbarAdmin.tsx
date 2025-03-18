@@ -1,13 +1,65 @@
-import React, { useState } from 'react';
-import { IoSettings } from 'react-icons/io5';
+import React, { useContext, useEffect, useState } from 'react';
 import Avatar from 'boring-avatars';
 import { Button } from 'react-daisyui';
-import { BiSolidUserRectangle } from 'react-icons/bi';
-// import NavigationBtnAdmin from './NavigationBtnAdmin';
+import { AuthContext } from '../../context/auth/AuthContext';
+import { MdLogout } from 'react-icons/md';
+import { GalleryContext } from '../../context/gallery/GalleryContext';
+import { MacbookCatalogContext } from '../../context/macbook-catalog/MacbookCatalogContext';
+import { MacbookContext } from '../../context/macbook/MacbookContext';
+import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
+import { PhoneContext } from '../../context/phone/PhoneContext';
+import { PostCatalogContext } from '../../context/post-catalog/PostCatalogContext';
+import { PostContext } from '../../context/post/PostContext';
+import { TabletCatalogContext } from '../../context/tablet-catalog/TabletCatalogContext';
+import { TabletContext } from '../../context/tablet/TabletContext';
+import { WindowsCatalogContext } from '../../context/windows-catalog/WindowsCatalogContext';
+import { WindowsContext } from '../../context/windows/WindowsContext';
+import { PriceListContext } from '../../context/price-list/PriceListContext';
+import { OptionPhoneContext } from '../../context/optionsData/OptionPhoneContext';
 
 const NavbarAdmin: React.FC<{}> = () => {
+  const { logoutUser } = useContext(AuthContext);
+  const { getAllGallerys } = useContext(GalleryContext);
+  const { getAllMacbookCatalogs } = useContext(MacbookCatalogContext);
+  const { getAllMacbook } = useContext(MacbookContext);
+  const { getAllPhoneCatalogs } = useContext(PhoneCatalogContext);
+  const { getAllPhones } = useContext(PhoneContext);
+  const { getAllPostCatalogs } = useContext(PostCatalogContext);
+  const { getAllPosts } = useContext(PostContext);
+  const { getAllTabletCatalogs } = useContext(TabletCatalogContext);
+  const { getAllTablets } = useContext(TabletContext);
+  const { getAllWindowsCatalogs } = useContext(WindowsCatalogContext);
+  const { getAllWindows } = useContext(WindowsContext);
+  const { getAllPriceLists } = useContext(PriceListContext);
+  const { getAllOptionPhones } = useContext(OptionPhoneContext);
+
   const [dropdownVisible, setDropdownVisible] = useState(false);
 
+  useEffect(() => {
+    const initializeData = async () => {
+      try {
+        await Promise.all([
+          getAllGallerys(),
+          getAllMacbookCatalogs(),
+          getAllMacbook(),
+          getAllPhoneCatalogs(),
+          getAllPhones(),
+          getAllPostCatalogs(),
+          getAllPosts(),
+          getAllTabletCatalogs(),
+          getAllTablets(),
+          getAllWindowsCatalogs(),
+          getAllWindows(),
+          getAllPriceLists(),
+          getAllOptionPhones()
+        ]);
+      } catch (error) {
+        console.error('Error initializing data:', error);
+      }
+    };
+
+    initializeData();
+  }, []);
   const handleAvatarClick = () => {
     setDropdownVisible(!dropdownVisible);
   };
@@ -68,34 +120,29 @@ const NavbarAdmin: React.FC<{}> = () => {
               />
             </div> */}
           </nav>
-          <div className="text-black dark:text-white">
-            Hello,&nbsp;
-            <span className="font-semibold text-red-500">Sếp</span>
-          </div>
-          <div className="ml-4 cursor-pointer" onClick={handleAvatarClick}>
-            <Avatar />
-            {dropdownVisible && (
-              <div className="absolute right-6 mt-1 flex flex-col gap-[1px] bg-white font-light shadow">
-                <Button
-                  size="md"
-                  className="text-md flex w-full items-center justify-start rounded-none border-b-[0.5px] border-b-gray-50"
-                >
-                  <div className="mr-2 text-base">
-                    <BiSolidUserRectangle />
-                  </div>
-                  Profile
-                </Button>
-                <Button
-                  size="md"
-                  className="text-md flex w-full items-center justify-start rounded-none border-b-[0.5px] border-b-gray-50"
-                >
-                  <div className="mr-2 text-base">
-                    <IoSettings />
-                  </div>
-                  Settings
-                </Button>
-              </div>
-            )}
+          <div
+            className="relative ml-4 flex cursor-pointer items-center justify-center gap-2"
+            onClick={handleAvatarClick}
+          >
+            <div className="text-black dark:text-white">
+              Xin chào,&nbsp;
+              <span className="font-semibold text-red-500">Admin</span>
+            </div>
+            <Avatar className="h-10 w-10" />
+            <div>
+              {dropdownVisible && (
+                <div className="absolute right-0 top-10 flex flex-col bg-white p-1 text-white">
+                  <Button
+                    onClick={logoutUser}
+                    size="sm"
+                    className="rounded-none bg-red-600 font-light shadow-none hover:bg-white hover:text-red-600"
+                  >
+                    <MdLogout />
+                    Đăng Xuất
+                  </Button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

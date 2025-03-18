@@ -8,12 +8,12 @@ import { BsFilePost } from 'react-icons/bs';
 import { ImTable } from 'react-icons/im';
 import { PostContext } from '../../../context/post/PostContext';
 import { PostCatalogContext } from '../../../context/post-catalog/PostCatalogContext';
-import { PriceListsContext } from '../../../context/price-list/PriceListContext';
+import { PriceListContext } from '../../../context/price-list/PriceListContext';
 
 const SidebarPost: React.FC<{}> = () => {
   const { countPost } = useContext(PostContext);
   const { countPostCatalog } = useContext(PostCatalogContext);
-  const { countPriceList } = useContext(PriceListsContext);
+  const { countPriceList } = useContext(PriceListContext);
   const [activeItem, setActiveItem] = useState('Dashboard');
 
   const location = useLocation();

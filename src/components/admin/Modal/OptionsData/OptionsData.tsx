@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { IOptionPhoneData } from '../../../../types/type/optionsData/optionsPhoneData';
-import { OptionPhoneContext } from '../../../../context/optionsData/OptionsPhoneContext';
+import { OptionPhoneContext } from '../../../../context/optionsData/OptionPhoneContext';
 import { Toastify } from '../../../../helper/Toastify';
 import { Button } from 'react-daisyui';
 interface ModalCreateAdminProps {

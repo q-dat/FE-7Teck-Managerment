@@ -3,7 +3,7 @@ import ModalCreatePriceListPageAdmin from '../../../components/admin/Modal/Modal
 import NavtitleAdmin from '../../../components/admin/NavtitleAdmin';
 import { Button, Table } from 'react-daisyui';
 import { RiAddBoxLine } from 'react-icons/ri';
-import { PriceListsContext } from '../../../context/price-list/PriceListContext';
+import { PriceListContext } from '../../../context/price-list/PriceListContext';
 import { IProductPriceList } from '../../../types/type/price-list/price-list';
 import ErrorLoading from '../../../components/orther/error/ErrorLoading';
 import { LoadingLocal } from '../../../components/orther/loading';
@@ -16,7 +16,7 @@ import NavbarPost from '../../../components/admin/Reponsive/Mobile/NavbarPost';
 
 const PriceListManagerPage: React.FC = () => {
   const { priceLists, getAllPriceLists, loading, error, deletePriceLists } =
-    useContext(PriceListsContext);
+    useContext(PriceListContext);
 
   const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);

@@ -58,10 +58,10 @@ const defaultContextValue: PriceListsContextType = {
   deletePriceLists: async () => ({ data: { deleted: true } }) as AxiosResponse
 };
 
-export const PriceListsContext =
+export const PriceListContext =
   createContext<PriceListsContextType>(defaultContextValue);
 
-export const PriceListsProvider = ({ children }: { children: ReactNode }) => {
+export const PriceListProvider = ({ children }: { children: ReactNode }) => {
   const [priceLists, setPriceLists] = useState<IPriceList[]>([]);
   const [countPriceList, setCount] = useState<number>(0);
   const [loading, setLoading] = useState({
@@ -213,8 +213,8 @@ export const PriceListsProvider = ({ children }: { children: ReactNode }) => {
     [priceLists, countPriceList, loading, error]
   );
   return (
-    <PriceListsContext.Provider value={value}>
+    <PriceListContext.Provider value={value}>
       {children}
-    </PriceListsContext.Provider>
+    </PriceListContext.Provider>
   );
 };

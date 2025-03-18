@@ -3,11 +3,11 @@ import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
 import { Button, Table } from 'react-daisyui';
 import { Link } from 'react-router-dom';
 import { IProductPriceList } from '../../types/type/price-list/price-list';
-import { PriceListsContext } from '../../context/price-list/PriceListContext';
+import { PriceListContext } from '../../context/price-list/PriceListContext';
 import { scrollToTopSmoothly } from '../../components/utils/scrollToTopSmoothly';
 
 const PriceListPage: React.FC = () => {
-  const { priceLists, getAllPriceLists } = useContext(PriceListsContext);
+  const { priceLists, getAllPriceLists } = useContext(PriceListContext);
   const [loading, setLoading] = useState(true);
 
   const [catalogs, setCatalogs] = useState<{
