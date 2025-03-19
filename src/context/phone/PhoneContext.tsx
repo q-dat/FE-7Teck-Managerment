@@ -188,11 +188,11 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
     async (_id: string) => {
       try {
         // Tìm sản phẩm trong danh sách
-        const phone = phones.find(p => p._id === _id);
-        if (!phone) return;
+        const mostViewedPhone = mostViewedPhones.find(p => p._id === _id);
+        if (!mostViewedPhone) return;
 
         // Cập nhật nhanh trong UI để tránh delay
-        setPhones(prevPhones =>
+        setMostViewedPhones(prevPhones =>
           prevPhones.map(p =>
             p._id === _id ? { ...p, view: (p.view ?? 0) + 1 } : p
           )
@@ -200,28 +200,28 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
 
         // Gọi API cập nhật view trên server
         const updatedData = new FormData();
-        updatedData.append('view', String((phone.view ?? 0) + 1));
+        updatedData.append('view', String((mostViewedPhone.view ?? 0) + 1));
 
         const response = await updatePhoneApi(_id, updatedData);
 
         // Nếu API thành công, cập nhật lại state với dữ liệu từ server
-        if (response.data?.phone) {
-          setPhones(prevPhones =>
-            prevPhones.map(p => (p._id === _id ? response.data.phone : p))
+        if (response.data?.phones) {
+          setMostViewedPhones(prevPhones =>
+            prevPhones.map(p => (p._id === _id ? response.data.phones : p))
           );
         }
       } catch (error) {
         console.error('Lỗi khi cập nhật view:', error);
 
         // Rollback nếu API thất bại
-        setPhones(prevPhones =>
+        setMostViewedPhones(prevPhones =>
           prevPhones.map(p =>
             p._id === _id ? { ...p, view: (p.view ?? 0) - 1 } : p
           )
         );
       }
     },
-    [phones]
+    [mostViewedPhones]
   );
 
   // Delete Phone
