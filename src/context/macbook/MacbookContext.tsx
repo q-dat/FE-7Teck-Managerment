@@ -17,6 +17,7 @@ import {
 
 interface MacbookContextType {
   macbook: IMacbook[];
+  macbookDetails: { [key: string]: IMacbook };
   countMacbook: number;
   loading: {
     getAll: boolean;
@@ -38,6 +39,7 @@ interface MacbookContextType {
 
 const defaultContextValue: MacbookContextType = {
   macbook: [],
+  macbookDetails: {},
   countMacbook: 0,
   loading: {
     getAll: false,
@@ -59,6 +61,9 @@ export const MacbookContext =
 
 export const MacbookProvider = ({ children }: { children: ReactNode }) => {
   const [macbook, setMacbook] = useState<IMacbook[]>([]);
+  const [macbookDetails, setMacbookDetails] = useState<{
+    [key: string]: IMacbook;
+  }>({});
   const [countMacbook, setCountMacbook] = useState<number>(0);
   const [loading, setLoading] = useState({
     getAll: false,
@@ -106,20 +111,23 @@ export const MacbookProvider = ({ children }: { children: ReactNode }) => {
   // Get Macbook By Id
   const getMacbookById = useCallback(
     async (id: string): Promise<IMacbook | undefined> => {
-      const cachedMacbook = macbook.find(m => m._id === id);
-      if (cachedMacbook) return cachedMacbook;
-      const response = await fetchData(
-        () => getMacbookByIdApi(id),
-        data => {
-          if (data?.m) {
-            setMacbook(prevLaptopMacbook => [...prevLaptopMacbook, data.m]);
-          }
-        },
-        'getAll'
-      );
-      return response.data?.m;
+      if (macbookDetails[id]) {
+        return macbookDetails[id];
+      }
+
+      try {
+        const response = await getMacbookByIdApi(id);
+        const phone = response.data?.macbook;
+        if (phone) {
+          setMacbookDetails(prev => ({ ...prev, [id]: phone }));
+          return phone;
+        }
+      } catch (error) {
+        handleError(error);
+      }
+      return undefined;
     },
-    [macbook]
+    [macbookDetails]
   );
 
   // Create Macbook
@@ -221,6 +229,7 @@ export const MacbookProvider = ({ children }: { children: ReactNode }) => {
   const value = useMemo(
     () => ({
       macbook,
+      macbookDetails,
       countMacbook,
       loading,
       error,
@@ -231,9 +240,10 @@ export const MacbookProvider = ({ children }: { children: ReactNode }) => {
       updateMacbookView,
       deleteMacbook
     }),
-    [macbook, countMacbook, loading, error]
+    [macbook, macbookDetails, countMacbook, loading, error]
   );
   return (
     <MacbookContext.Provider value={value}>{children}</MacbookContext.Provider>
   );
 };
+

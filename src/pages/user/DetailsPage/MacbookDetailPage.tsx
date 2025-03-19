@@ -15,99 +15,60 @@ import 'react-medium-image-zoom/dist/styles.css';
 import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
 import { macbookFieldMap } from '../../../types/type/optionsData/macbookFieldMap';
 import { MacbookContext } from '../../../context/macbook/MacbookContext';
-
+import { scrollToTopSmoothly } from '../../../components/utils/scrollToTopSmoothly';
+import {
+  scrollBy,
+  updateScrollButtons,
+  handleScrollButtons,
+  handleThumbnailClick
+} from '../../../components/utils/DetailPage/scrollUtils';
 const MacbookDetailPage: React.FC = () => {
   const { id } = useParams();
-  const { getMacbookById, macbook } = useContext(MacbookContext);
+  const { getMacbookById, macbookDetails } = useContext(MacbookContext);
   const [mac, setMac] = useState<any>(null);
   const [selectedImage, setSelectedImage] = useState<string | null | undefined>(
     null
   );
+  const [activeTab, setActiveTab] = useState<string>('specs');
   const [isLeftVisible, setIsLeftVisible] = useState(true);
   const [isRightVisible, setIsRightVisible] = useState(true);
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [activeTab, setActiveTab] = useState<string>('specs');
+  const scrollRef = useRef<HTMLDivElement>(null!);
 
-  //
-  useLayoutEffect(() => {
-    updateScrollButtons();
-  }, [mac, mac?.macbook_thumbnail]);
-  //
-  const updateScrollButtons = () => {
-    const scrollContainer = scrollRef.current;
-    if (scrollContainer) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollContainer;
-      setIsLeftVisible(scrollLeft > 0);
-      setIsRightVisible(scrollLeft + clientWidth < scrollWidth - 1);
-    }
-  };
-
-  const scrollBy = (offset: number) => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollLeft += offset;
-    }
-  };
-
-  useEffect(() => {
-    // Scroll To Top
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-    // Fetch Data By Id
+  const fetchData = () => {
     if (id) {
       getMacbookById(id)
-        .then(fetchedMacbook => {
-          if (fetchedMacbook) {
-            setMac(fetchedMacbook);
-            setSelectedImage(fetchedMacbook.macbook_img);
+        .then(fetchedPhone => {
+          if (fetchedPhone) {
+            setMac(fetchedPhone);
+            setSelectedImage(fetchedPhone.macbook_img);
           }
         })
         .catch(error =>
-          console.error('Lỗi khi lấy dữ liệu laptop Macbook:', error)
+          console.error('Lỗi khi lấy dữ liệu điện thoại:', error)
         );
     }
-
-    if (macbook.length > 0) updateScrollButtons();
-
-    const handleResize = () => updateScrollButtons();
-    const scrollContainer = scrollRef.current;
-
-    window.addEventListener('resize', handleResize);
-    scrollContainer?.addEventListener('scroll', updateScrollButtons);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-      scrollContainer?.removeEventListener('scroll', updateScrollButtons);
-    };
-  }, [macbook, mac, id, getMacbookById]);
-  //
-  const handleThumbnailClick = (thumb: string, index: number) => {
-    setSelectedImage(thumb);
-    const scrollContainer = scrollRef.current;
-    if (scrollContainer) {
-      const thumbnailElement = scrollContainer.children[index] as HTMLElement;
-      if (thumbnailElement) {
-        const containerWidth = scrollContainer.offsetWidth;
-        const elementOffsetLeft = thumbnailElement.offsetLeft;
-        const elementWidth = thumbnailElement.offsetWidth;
-
-        // Tính toán vị trí cần scroll sao cho ảnh nằm ở giữa
-        const scrollPosition =
-          elementOffsetLeft - (containerWidth - elementWidth) / 2;
-        scrollContainer.scrollTo({
-          left: scrollPosition,
-          behavior: 'smooth'
-        });
-      }
-    }
   };
+
+  useLayoutEffect(() => {
+    updateScrollButtons(scrollRef, setIsLeftVisible, setIsRightVisible);
+  }, [mac, mac?.thumbnail]);
+
+  useEffect(() => {
+    scrollToTopSmoothly();
+    fetchData();
+    const cleanup = handleScrollButtons(
+      scrollRef,
+      Object.keys(macbookDetails).length,
+      () => updateScrollButtons(scrollRef, setIsLeftVisible, setIsRightVisible)
+    );
+    return cleanup;
+  }, []);
 
   return (
     <div>
       <HeaderResponsive Title_NavbarMobile="Thông Tin Sản Phẩm" />
       <div className="py-[60px] xl:pt-0">
-        <div className="xl:px-desktop-padding breadcrumbs px-[10px] py-2 text-sm text-black shadow">
+        <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow xl:px-desktop-padding">
           <ul className="font-light">
             <li>
               <Link role="navigation" aria-label="Trang chủ" to="/">
@@ -157,7 +118,14 @@ const MacbookDetailPage: React.FC = () => {
                         src={thumb}
                         alt="Ảnh thu nhỏ"
                         className="h-[70px] w-[70px] cursor-pointer rounded-md border object-cover"
-                        onClick={() => handleThumbnailClick(thumb, index)}
+                        onClick={() =>
+                          handleThumbnailClick(
+                            scrollRef,
+                            thumb,
+                            index,
+                            setSelectedImage
+                          )
+                        }
                       />
                     ))
                   ) : (
@@ -172,14 +140,14 @@ const MacbookDetailPage: React.FC = () => {
                   <div className="relative w-full">
                     <button
                       aria-label="Cuộn sang trái"
-                      onClick={() => scrollBy(-70)}
+                      onClick={() => scrollBy(scrollRef, -70)}
                       className={`absolute -left-1 z-[100] rounded-xl bg-black bg-opacity-20 py-2 text-white xl:-left-2 ${isLeftVisible ? '' : 'hidden'}`}
                     >
                       <MdArrowBackIosNew className="text-2xl" />
                     </button>
                     <button
                       aria-label="Cuộn sang phải"
-                      onClick={() => scrollBy(70)}
+                      onClick={() => scrollBy(scrollRef, 70)}
                       className={`absolute -right-1 z-[100] rounded-xl bg-black bg-opacity-20 py-2 text-white xl:-right-2 ${isRightVisible ? '' : 'hidden'}`}
                     >
                       <MdArrowForwardIos className="text-2xl" />
@@ -346,3 +314,4 @@ const MacbookDetailPage: React.FC = () => {
 };
 
 export default MacbookDetailPage;
+
