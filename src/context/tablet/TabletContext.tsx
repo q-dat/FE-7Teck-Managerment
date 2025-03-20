@@ -18,6 +18,7 @@ import { ITablet } from '../../types/type/tablet/tablet';
 
 interface TabletContextType {
   tablets: ITablet[];
+  tabletDetails: {};
   countTablet: number;
   loading: {
     getAll: boolean;
@@ -39,6 +40,7 @@ interface TabletContextType {
 
 const defaultContextValue: TabletContextType = {
   tablets: [],
+  tabletDetails: {},
   countTablet: 0,
   loading: {
     getAll: false,
@@ -60,6 +62,9 @@ export const TabletContext =
 
 export const TabletProvider = ({ children }: { children: ReactNode }) => {
   const [tablets, setTablets] = useState<ITablet[]>([]);
+  const [tabletDetails, setPhoneDetails] = useState<{ [key: string]: ITablet }>(
+    {}
+  );
   const [countTablet, setCountTablet] = useState<number>(0);
   const [loading, setLoading] = useState({
     getAll: false,
@@ -107,20 +112,23 @@ export const TabletProvider = ({ children }: { children: ReactNode }) => {
   // Get Tablet By Id
   const getTabletById = useCallback(
     async (id: string): Promise<ITablet | undefined> => {
-      const cachedTablet = tablets.find(t => t._id === id);
-      if (cachedTablet) return cachedTablet;
-      const response = await fetchData(
-        () => getTabletByIdApi(id),
-        data => {
-          if (data?.t) {
-            setTablets(prevTablets => [...prevTablets, data.t]);
-          }
-        },
-        'getAll'
-      );
-      return response.data?.t;
+      if (tabletDetails[id]) {
+        return tabletDetails[id];
+      }
+
+      try {
+        const response = await getTabletByIdApi(id);
+        const tablet = response.data?.tablet;
+        if (tablet) {
+          setPhoneDetails(prev => ({ ...prev, [id]: tablet }));
+          return tablet;
+        }
+      } catch (error) {
+        handleError(error);
+      }
+      return undefined;
     },
-    [tablets]
+    [tabletDetails]
   );
 
   // Create Tablet
@@ -215,6 +223,7 @@ export const TabletProvider = ({ children }: { children: ReactNode }) => {
   const value = useMemo(
     () => ({
       tablets,
+      tabletDetails,
       countTablet,
       loading,
       error,
@@ -225,7 +234,7 @@ export const TabletProvider = ({ children }: { children: ReactNode }) => {
       updateTabletView,
       deleteTablet
     }),
-    [tablets, countTablet, loading, error]
+    [tablets, tabletDetails, countTablet, loading, error]
   );
   return (
     <TabletContext.Provider value={value}>{children}</TabletContext.Provider>
