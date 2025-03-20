@@ -62,7 +62,7 @@ export const TabletContext =
 
 export const TabletProvider = ({ children }: { children: ReactNode }) => {
   const [tablets, setTablets] = useState<ITablet[]>([]);
-  const [tabletDetails, setPhoneDetails] = useState<{ [key: string]: ITablet }>(
+  const [tabletDetails, setTabletDetails] = useState<{ [key: string]: ITablet }>(
     {}
   );
   const [countTablet, setCountTablet] = useState<number>(0);
@@ -120,7 +120,7 @@ export const TabletProvider = ({ children }: { children: ReactNode }) => {
         const response = await getTabletByIdApi(id);
         const tablet = response.data?.tablet;
         if (tablet) {
-          setPhoneDetails(prev => ({ ...prev, [id]: tablet }));
+          setTabletDetails(prev => ({ ...prev, [id]: tablet }));
           return tablet;
         }
       } catch (error) {

@@ -51,7 +51,7 @@ const MacbookDetailPage: React.FC = () => {
 
   useLayoutEffect(() => {
     updateScrollButtons(scrollRef, setIsLeftVisible, setIsRightVisible);
-  }, [mac, mac?.thumbnail]);
+  }, [mac, mac?.macbook_thumbnail]);
 
   useEffect(() => {
     scrollToTopSmoothly();
@@ -110,8 +110,8 @@ const MacbookDetailPage: React.FC = () => {
                   ref={scrollRef}
                   className="flex w-full flex-row items-start justify-start gap-2 overflow-x-auto scroll-smooth scrollbar-hide xl:w-[550px]"
                 >
-                  {mac?.macbook_thumbnail && Array.isArray(mac?.thumbnail) ? (
-                    mac?.thumbnail.map((thumb: string, index: number) => (
+                  {mac?.macbook_thumbnail && Array.isArray(mac?.macbook_thumbnail) ? (
+                    mac?.macbook_thumbnail.map((thumb: string, index: number) => (
                       <img
                         loading="lazy"
                         key={index}

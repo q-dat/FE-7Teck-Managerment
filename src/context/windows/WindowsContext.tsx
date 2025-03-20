@@ -17,6 +17,7 @@ import {
 
 interface WindowsContextType {
   windows: IWindows[];
+  windowsDetails: { [key: string]: IWindows };
   countWindows: number;
   loading: {
     getAll: boolean;
@@ -38,6 +39,7 @@ interface WindowsContextType {
 
 const defaultContextValue: WindowsContextType = {
   windows: [],
+  windowsDetails: {},
   countWindows: 0,
   loading: {
     getAll: false,
@@ -59,6 +61,9 @@ export const WindowsContext =
 
 export const WindowsProvider = ({ children }: { children: ReactNode }) => {
   const [windows, setWindows] = useState<IWindows[]>([]);
+  const [windowsDetails, setWindowsDetails] = useState<{
+    [key: string]: IWindows;
+  }>({});
   const [countWindows, setCountWindows] = useState(0);
   const [loading, setLoading] = useState({
     getAll: false,
@@ -106,20 +111,23 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
   // Get Windows By Id
   const getWindowsById = useCallback(
     async (id: string): Promise<IWindows | undefined> => {
-      const cachedWindows = windows.find(w => w._id === id);
-      if (cachedWindows) return cachedWindows;
-      const response = await fetchData(
-        () => getWindowsByIdApi(id),
-        data => {
-          if (data?.w) {
-            setWindows(prevLaptopWindows => [...prevLaptopWindows, data.w]);
-          }
-        },
-        'getAll'
-      );
-      return response.data?.w;
+      if (windowsDetails[id]) {
+        return windowsDetails[id];
+      }
+
+      try {
+        const response = await getWindowsByIdApi(id);
+        const windows = response.data?.windows;
+        if (windows) {
+          setWindowsDetails(prev => ({ ...prev, [id]: windows }));
+          return windows;
+        }
+      } catch (error) {
+        handleError(error);
+      }
+      return undefined;
     },
-    [windows]
+    [windowsDetails]
   );
 
   // Create Windows
@@ -221,6 +229,7 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
   const value = useMemo(
     () => ({
       windows,
+      windowsDetails,
       countWindows,
       loading,
       error,
@@ -231,7 +240,7 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
       updateWindowsView,
       deleteWindows
     }),
-    [windows, countWindows, loading, error]
+    [windows, windowsDetails, countWindows, loading, error]
   );
   return (
     <WindowsContext.Provider value={value}>{children}</WindowsContext.Provider>
