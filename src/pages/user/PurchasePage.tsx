@@ -3,9 +3,9 @@ import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
 import { Link } from 'react-router-dom';
 import { Textarea, Button } from 'react-daisyui';
 import InputForm from '../../components/UserPage/InputForm';
-import { ToastifyUPage } from '../../helper/ToastifyUPage';
 import LabelForm from '../../components/UserPage/LabelForm';
 import { scrollToTopSmoothly } from '../../components/utils/scrollToTopSmoothly';
+import { Toastify } from '../../helper/Toastify';
 
 const PurchasePage: React.FC = () => {
   const [result, setResult] = React.useState<string>('');
@@ -22,19 +22,19 @@ const PurchasePage: React.FC = () => {
     const formData = new FormData(event.currentTarget);
     const phone = formData.get('Số điện thoại:') as string;
     if (!phone.trim()) {
-      ToastifyUPage('Vui lòng nhập số điện thoại!', 400);
+      Toastify('Vui lòng nhập số điện thoại!', 400);
       return;
     }
     const name = formData.get('Tên khách hàng:') as string;
 
     if (!name.trim()) {
-      ToastifyUPage('Vui lòng nhập tên khách hàng!', 400);
+      Toastify('Vui lòng nhập tên khách hàng!', 400);
       return;
     }
     //
     const phoneRegex = /^(0\d{9,10})$/;
     if (!phoneRegex.test(phone)) {
-      ToastifyUPage(
+      Toastify(
         'Số điện thoại không hợp lệ! Vui lòng nhập đúng định dạng.',
         400
       );
@@ -53,7 +53,7 @@ const PurchasePage: React.FC = () => {
 
       if (data.success) {
         setResult('Đã gửi biểu mẫu thành công!');
-        ToastifyUPage(
+        Toastify(
           'Đã gửi biểu mẫu thành công!. Vui lòng đợi để được hỗ trợ!',
           200
         );

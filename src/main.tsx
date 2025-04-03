@@ -17,7 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <AppProvider>
             <App />
             <Analytics />
-            <ToastContainer />
+            <ToastContainer style={{ marginTop: '50px' }} />
           </AppProvider>
         </ErrorBoundary>
       </Suspense>
