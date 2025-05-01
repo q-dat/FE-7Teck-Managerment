@@ -10,7 +10,8 @@ import { useScroll } from '../../../hooks/useScroll';
 import { slugify } from '../../../components/utils/slugify';
 
 const WindowsFC: React.FC = () => {
-  const { windows,getAllWindows, updateWindowsView } = useContext(WindowsContext);
+  const { windows, getAllWindows, updateWindowsView } =
+    useContext(WindowsContext);
   const { scrollRef, isLeftVisible, isRightVisible, scrollBy } = useScroll();
   const [loading, setLoading] = useState(true);
 
@@ -28,6 +29,9 @@ const WindowsFC: React.FC = () => {
     }
   }, []);
 
+  if (!loading && windows.length === 0) {
+    return null;
+  }
   const sortedWindows = windows.filter(win => win.windows_sale);
 
   return (
@@ -39,7 +43,7 @@ const WindowsFC: React.FC = () => {
         className="flex w-full flex-col items-start justify-center px-2 xl:rounded-t-lg"
       >
         <h1 className="py-2 text-2xl font-semibold">
-          {loading ? <></> : <>Windows - Giảm giá mạnh</>}
+          {loading ? <>Đang tải</> : <>Windows - Giảm giá mạnh</>}
         </h1>
       </div>
       <section

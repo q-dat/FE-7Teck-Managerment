@@ -10,24 +10,28 @@ import { useScroll } from '../../../hooks/useScroll';
 import { slugify } from '../../../components/utils/slugify';
 
 const TabletFC: React.FC = () => {
-  const { tablets,getAllTablets, updateTabletView } = useContext(TabletContext);
+  const { tablets, getAllTablets, updateTabletView } =
+    useContext(TabletContext);
   const { scrollRef, isLeftVisible, isRightVisible, scrollBy } = useScroll();
   const [loading, setLoading] = useState(true);
-  
-   useEffect(() => {
-     if (tablets.length === 0) {
-       const fetchData = async () => {
-        setLoading(true);
-         await getAllTablets();
-         setLoading(false);
-        };
- 
-       fetchData();
-     } else {
-       setLoading(false);
-     }
-   }, []);
 
+  useEffect(() => {
+    if (tablets.length === 0) {
+      const fetchData = async () => {
+        setLoading(true);
+        await getAllTablets();
+        setLoading(false);
+      };
+
+      fetchData();
+    } else {
+      setLoading(false);
+    }
+  }, []);
+
+  if (!loading && tablets.length === 0) {
+    return null;
+  }
   const sortedTablets = tablets.filter(tablet => tablet.tablet_sale);
 
   return (
@@ -39,7 +43,7 @@ const TabletFC: React.FC = () => {
         className="flex w-full flex-col items-start justify-center px-2 xl:rounded-t-lg"
       >
         <h1 className="py-2 text-2xl font-semibold">
-          {loading ? <></> : <>iPad - Giảm giá mạnh</>}
+          {loading ? <>Đang tải...</> : <>iPad - Giảm giá mạnh</>}
         </h1>
       </div>
       <section

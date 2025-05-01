@@ -29,6 +29,9 @@ const MacbookFC: React.FC = () => {
     }
   }, []);
 
+  if (!loading && macbook.length === 0) {
+    return null;
+  }
   const sortedMacbook = macbook.filter(mac => mac.macbook_sale);
 
   return (
@@ -40,7 +43,7 @@ const MacbookFC: React.FC = () => {
         className="flex w-full flex-col items-start justify-center px-2 xl:rounded-t-lg"
       >
         <h1 className="py-2 text-2xl font-semibold">
-          {loading ? <></> : <>Macbook - Giảm giá mạnh</>}
+          {loading ? <>Đang tải...</> : <>Macbook - Giảm giá mạnh</>}
         </h1>
       </div>
       <section
