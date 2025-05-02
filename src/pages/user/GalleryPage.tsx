@@ -6,25 +6,19 @@ import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
 import Pagination from '../../components/UserPage/Pagination';
 import { scrollToTopSmoothly } from '../../components/utils/scrollToTopSmoothly';
+import ErrorLoading from '../../components/orther/error/ErrorLoading';
 
 const GalleryPage: React.FC = () => {
   const { galleries, getAllGallerys } = useContext(GalleryContext);
-  const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     scrollToTopSmoothly();
-    if (galleries.length === 0) {
-      const fetchData = async () => {
-        setLoading(true);
-        await getAllGallerys();
-        setLoading(false);
-      };
+    const fetchData = async () => {
+      await getAllGallerys();
+    };
 
-      fetchData();
-    } else {
-      setLoading(false);
-    }
+    fetchData();
   }, []);
 
   // Panigation
@@ -46,6 +40,7 @@ const GalleryPage: React.FC = () => {
       setCurrentPage(currentPage - 1);
     }
   };
+  if (galleries.length === 0) return <ErrorLoading />;
   return (
     <div>
       <HeaderResponsive Title_NavbarMobile="Hành Trình Khách Hàng" />
@@ -65,25 +60,22 @@ const GalleryPage: React.FC = () => {
           </ul>
         </div>
         {/*  */}
-        {loading ? (
-          <></>
-        ) : (
-          <div className="mt-5 xl:px-desktop-padding">
-            <div className="grid grid-flow-row grid-cols-2 gap-2 bg-white p-2 md:grid-cols-3 xl:grid-cols-6 xl:rounded-md">
-              {currentGallerys.map((gallery, index) => (
-                <Zoom key={index}>
-                  <div className="w-full overflow-hidden rounded-md">
-                    <img
-                      alt=""
-                      src={`${gallery.gallery}`}
-                      className="h-auto w-full rounded-md border border-dashed border-black object-contain transition-transform duration-1000 ease-in-out hover:scale-110"
-                    />
-                  </div>
-                </Zoom>
-              ))}
-            </div>
+
+        <div className="mt-5 xl:px-desktop-padding">
+          <div className="grid grid-flow-row grid-cols-2 gap-2 bg-white p-2 md:grid-cols-3 xl:grid-cols-6 xl:rounded-md">
+            {currentGallerys.map((gallery, index) => (
+              <Zoom key={index}>
+                <div className="w-full overflow-hidden rounded-md">
+                  <img
+                    alt=""
+                    src={`${gallery.gallery}`}
+                    className="h-auto w-full rounded-md border border-dashed border-black object-contain transition-transform duration-1000 ease-in-out hover:scale-110"
+                  />
+                </div>
+              </Zoom>
+            ))}
           </div>
-        )}
+        </div>
         {/* Pagination Controls */}
         <Pagination
           currentPage={currentPage}
