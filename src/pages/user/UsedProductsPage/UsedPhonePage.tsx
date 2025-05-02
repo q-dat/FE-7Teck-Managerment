@@ -26,7 +26,8 @@ const UsedPhonePage: React.FC = () => {
       setLoading(false);
     }
   }, []);
-
+  if (phoneCatalogs.length === 0) return null;
+  
   // Handle Click Phone To Phone Detail
   const navigate = useNavigate();
   // Panigation

@@ -26,6 +26,7 @@ const UsedTabletPage: React.FC = () => {
       setLoading(false);
     }
   }, []);
+  if (tabletCatalogs.length === 0) return null;
 
   // Handle Click Phone To Phone Detail
   const navigate = useNavigate();

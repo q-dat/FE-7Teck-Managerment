@@ -27,6 +27,7 @@ const UsedMacbookPage: React.FC = () => {
       setLoading(false);
     }
   }, []);
+  if (macbookCatalogs.length === 0) return null;
 
   // Handle Click Phone To Phone Detail
   const navigate = useNavigate();
