@@ -1,4 +1,4 @@
-import { useState, memo, useCallback, useEffect, useContext } from 'react';
+import { useState, memo, useCallback, useEffect } from 'react';
 import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
 import { Link } from 'react-router-dom';
 import { MdOutlineDoubleArrow } from 'react-icons/md';
@@ -6,11 +6,6 @@ import UsedPhonePage from './UsedPhonePage';
 import UsedTabletPage from './UsedTabletPage';
 import UsedMacbookPage from './UsedMacbookPage';
 import UsedWindowsPage from './UsedWindowsPage';
-import { PhoneCatalogContext } from '../../../context/phone-catalog/PhoneCatalogContext';
-import { MacbookCatalogContext } from '../../../context/macbook-catalog/MacbookCatalogContext';
-import { WindowsCatalogContext } from '../../../context/windows-catalog/WindowsCatalogContext';
-import { TabletCatalogContext } from '../../../context/tablet-catalog/TabletCatalogContext';
-import ErrorLoading from '../../../components/orther/error/ErrorLoading';
 
 // Danh sách danh mục sản phẩm
 const categories = [
@@ -76,10 +71,6 @@ const CategorySection = memo(({ isOpen }: { isOpen: boolean }) => (
 ));
 
 const UsedProductsPage = () => {
-  const { phoneCatalogs } = useContext(PhoneCatalogContext);
-  const { tabletCatalogs } = useContext(TabletCatalogContext);
-  const { macbookCatalogs } = useContext(MacbookCatalogContext);
-  const { windowsCatalogs } = useContext(WindowsCatalogContext);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] =
     useState<string>('used-phone');
@@ -129,13 +120,7 @@ const UsedProductsPage = () => {
 
     return () => observer.disconnect();
   }, []);
-  if (
-    phoneCatalogs.length === 0 &&
-    tabletCatalogs.length === 0 &&
-    macbookCatalogs.length === 0 &&
-    windowsCatalogs.length === 0
-  )
-    return <ErrorLoading />;
+
   return (
     <div>
       <HeaderResponsive Title_NavbarMobile="Thiết Bị Đã Qua Sử Dụng" />

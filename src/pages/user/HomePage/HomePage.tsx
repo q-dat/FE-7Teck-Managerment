@@ -1,4 +1,4 @@
-import { memo, useContext } from 'react';
+import { memo } from 'react';
 import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
 import PhoneFC from './PhoneFC';
 import TabletFC from './TabletFC';
@@ -12,11 +12,6 @@ import {
   BannerTablet,
   bgFixed
 } from '../../../assets/images';
-import { PhoneContext } from '../../../context/phone/PhoneContext';
-import { TabletContext } from '../../../context/tablet/TabletContext';
-import { MacbookContext } from '../../../context/macbook/MacbookContext';
-import { WindowsContext } from '../../../context/windows/WindowsContext';
-import ErrorLoading from '../../../components/orther/error/ErrorLoading';
 
 // Component Banner
 const Banner = memo(() => (
@@ -70,18 +65,6 @@ const BgFixedSection = memo(() => (
 ));
 
 const HomePage = () => {
-  const { mostViewedPhones } = useContext(PhoneContext);
-  const { macbook } = useContext(MacbookContext);
-  const { tablets } = useContext(TabletContext);
-  const { windows } = useContext(WindowsContext);
-  if (
-    mostViewedPhones.length === 0 &&
-    tablets.length === 0 &&
-    macbook.length === 0 &&
-    windows.length === 0
-  )
-    return <ErrorLoading />;
-    
   return (
     <div>
       <HeaderResponsive Title_NavbarMobile="Trang Chủ" />
