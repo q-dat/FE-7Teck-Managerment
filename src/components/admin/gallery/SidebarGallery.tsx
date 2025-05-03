@@ -101,7 +101,7 @@ const SidebarGallery: React.FC<{}> = () => {
                           </div>
                         </div>
                         <div className="">
-                          {item.toastify ? (
+                          {item.toastify && item.toastify > 0 ? (
                             <div className="flex w-[22px] justify-center rounded-md bg-secondary py-1">
                               <p className="text-xs font-light text-white">
                                 {item.toastify > 99 ? '99+' : item.toastify}

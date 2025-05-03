@@ -49,7 +49,7 @@ const PostSection: React.FC = () => {
       style={{
         backgroundImage: `url(${bgBlog})`
       }}
-      className={`relative bg-cover bg-fixed bg-center bg-no-repeat ${posts.length === 0 ? 'm-0 py-5 blur-3xl filter' : 'mt-10 pb-10 pt-5'}`}
+      className={`relative bg-cover bg-fixed bg-center bg-no-repeat ${posts.length === 0 ? 'hidden' : 'mt-10 pb-10 pt-5'}`}
     >
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
