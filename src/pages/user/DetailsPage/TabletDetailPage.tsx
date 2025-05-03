@@ -113,23 +113,25 @@ const TabletDetailPage: React.FC = () => {
                 >
                   {tablet?.tablet_thumbnail &&
                   Array.isArray(tablet?.tablet_thumbnail) ? (
-                    tablet?.tablet_thumbnail.map((thumb: string, index: number) => (
-                      <img
-                        loading="lazy"
-                        key={index}
-                        src={thumb}
-                        alt="Ảnh thu nhỏ"
-                        className="h-[70px] w-[70px] cursor-pointer rounded-md border object-cover"
-                        onClick={() =>
-                          handleThumbnailClick(
-                            scrollRef,
-                            thumb,
-                            index,
-                            setSelectedImage
-                          )
-                        }
-                      />
-                    ))
+                    tablet?.tablet_thumbnail.map(
+                      (thumb: string, index: number) => (
+                        <img
+                          loading="lazy"
+                          key={index}
+                          src={thumb}
+                          alt="Ảnh thu nhỏ"
+                          className="h-[70px] w-[70px] cursor-pointer rounded-md border object-cover"
+                          onClick={() =>
+                            handleThumbnailClick(
+                              scrollRef,
+                              thumb,
+                              index,
+                              setSelectedImage
+                            )
+                          }
+                        />
+                      )
+                    )
                   ) : (
                     <span>Không có ảnh thu nhỏ</span>
                   )}
@@ -170,11 +172,11 @@ const TabletDetailPage: React.FC = () => {
                     <span>
                       {(tablet?.tablet_price * 1000).toLocaleString('vi-VN')}₫
                     </span>
-                    <del className="text-sm font-light text-gray-100">
-                      {tablet?.tablet_sale &&
-                        (tablet?.tablet_sale * 1000).toLocaleString('vi-VN')}
-                      ₫
-                    </del>
+                    {tablet?.tablet_sale && (
+                      <del className="text-sm font-light text-gray-100">
+                        (tablet?.tablet_sale * 1000).toLocaleString('vi-VN') ₫
+                      </del>
+                    )}
                   </p>
                   {tablet?.tablet_color && (
                     <p className="space-x-1 text-gray-500">

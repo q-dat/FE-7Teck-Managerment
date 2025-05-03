@@ -169,11 +169,11 @@ const PhoneDetailPage: React.FC = () => {
                     <span>
                       {(phone?.price * 1000).toLocaleString('vi-VN')}₫
                     </span>
-                    <del className="text-sm font-light text-gray-100">
-                      {phone?.sale &&
-                        (phone?.sale * 1000).toLocaleString('vi-VN')}
-                      ₫
-                    </del>
+                    {phone?.sale && (
+                      <del className="text-sm font-light text-gray-100">
+                        (phone?.sale * 1000).toLocaleString('vi-VN') ₫
+                      </del>
+                    )}
                   </p>
                   {phone?.color && (
                     <p className="space-x-1 text-gray-500">

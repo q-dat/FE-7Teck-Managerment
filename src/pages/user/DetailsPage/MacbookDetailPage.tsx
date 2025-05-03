@@ -110,24 +110,27 @@ const MacbookDetailPage: React.FC = () => {
                   ref={scrollRef}
                   className="flex w-full flex-row items-start justify-start gap-2 overflow-x-auto scroll-smooth scrollbar-hide xl:w-[550px]"
                 >
-                  {mac?.macbook_thumbnail && Array.isArray(mac?.macbook_thumbnail) ? (
-                    mac?.macbook_thumbnail.map((thumb: string, index: number) => (
-                      <img
-                        loading="lazy"
-                        key={index}
-                        src={thumb}
-                        alt="Ảnh thu nhỏ"
-                        className="h-[70px] w-[70px] cursor-pointer rounded-md border object-cover"
-                        onClick={() =>
-                          handleThumbnailClick(
-                            scrollRef,
-                            thumb,
-                            index,
-                            setSelectedImage
-                          )
-                        }
-                      />
-                    ))
+                  {mac?.macbook_thumbnail &&
+                  Array.isArray(mac?.macbook_thumbnail) ? (
+                    mac?.macbook_thumbnail.map(
+                      (thumb: string, index: number) => (
+                        <img
+                          loading="lazy"
+                          key={index}
+                          src={thumb}
+                          alt="Ảnh thu nhỏ"
+                          className="h-[70px] w-[70px] cursor-pointer rounded-md border object-cover"
+                          onClick={() =>
+                            handleThumbnailClick(
+                              scrollRef,
+                              thumb,
+                              index,
+                              setSelectedImage
+                            )
+                          }
+                        />
+                      )
+                    )
                   ) : (
                     <span>Không có ảnh thu nhỏ</span>
                   )}
@@ -168,11 +171,11 @@ const MacbookDetailPage: React.FC = () => {
                     <span>
                       {(mac?.macbook_price * 1000).toLocaleString('vi-VN')}₫
                     </span>
-                    <del className="text-sm font-light text-gray-100">
-                      {mac?.macbook_sale &&
-                        (mac?.macbook_sale * 1000).toLocaleString('vi-VN')}
-                      ₫
-                    </del>
+                    {mac?.macbook_sale && (
+                      <del className="text-sm font-light text-gray-100">
+                        (mac?.macbook_sale * 1000).toLocaleString('vi-VN') ₫
+                      </del>
+                    )}
                   </p>
                   {mac?.macbook_color && (
                     <p className="space-x-1 text-gray-500">
@@ -314,4 +317,3 @@ const MacbookDetailPage: React.FC = () => {
 };
 
 export default MacbookDetailPage;
-
