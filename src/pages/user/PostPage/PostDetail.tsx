@@ -5,63 +5,39 @@ import { PostContext } from '../../../context/post/PostContext';
 import { FaArrowLeftLong } from 'react-icons/fa6';
 import TimeAgo from '../../../components/orther/timeAgo/TimeAgo';
 import { scrollToTopSmoothly } from '../../../components/utils/scrollToTopSmoothly';
+import { IPost } from '../../../types/type/post/post';
+import { slugify } from '../../../components/utils/slugify';
+
 const PostDetail: React.FC = () => {
   const navigate = useNavigate();
-  const { posts, getAllPosts } = useContext(PostContext);
-  const [loading, setLoading] = useState(true);
-  const { title } = useParams<{ title: string }>();
+  const { id } = useParams<{ id: string; title: string }>();
+  const { getPostById, posts } = useContext(PostContext);
 
-  const [selectedPost, setSelectedPost] = useState<(typeof posts)[0] | null>(
-    null
-  );
-  const otherPosts = posts.filter(post => post?._id !== selectedPost?._id);
-  8;
+  const [selectedPost, setSelectedPost] = useState<IPost | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     scrollToTopSmoothly();
 
-    if (posts.length === 0) {
-      const fetchData = async () => {
+    const fetchPost = async () => {
+      if (id) {
         setLoading(true);
-        await getAllPosts();
+        const post = await getPostById(id);
+        setSelectedPost(post || null);
         setLoading(false);
-      };
+      }
+    };
 
-      fetchData();
-    } else {
-      setLoading(false);
-    }
+    fetchPost();
+  }, [id]);
 
-    // Fetch Data By Title
-    if (posts.length > 0 && title) {
-      const post = posts.find(
-        post =>
-          post?.title
-            .toString()
-            .replace(/đ/g, 'd')
-            .normalize('NFD')
-            .replace(/\p{Diacritic}/gu, '')
-            .toLowerCase()
-            .replace(/[^a-z0-9]+/g, '-')
-            .replace(/^-+|-+$/g, '') === title.toLowerCase()
-      );
-      setSelectedPost(post || null);
-    }
-  }, []);
-  // Handle Click Post To Post Detail
-  const handlePostSelect = (post: (typeof posts)[0]) => {
-    setSelectedPost(post);
-    const titleSlug = encodeURIComponent(
-      post?.title
-        .toString()
-        .replace(/đ/g, 'd')
-        .normalize('NFD')
-        .replace(/\p{Diacritic}/gu, '')
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/^-+|-+$/g, '')
-    );
-    navigate(`/tin-tuc/${titleSlug}`);
+  // Các bài viết khác (loại bỏ bài hiện tại)
+  const otherPosts: IPost[] = posts.filter(p => p._id !== selectedPost?._id);
+
+  // Điều hướng tới chi tiết bài viết khác
+  const handlePostSelect = (post: IPost) => {
+    const titleSlug = encodeURIComponent(slugify(post?.title));
+    navigate(`/tin-tuc/${titleSlug}/${post._id}`);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -89,6 +65,7 @@ const PostDetail: React.FC = () => {
             </li>
           </ul>
         </div>
+
         <div className="px-2">
           <div className="xl:px-desktop-padding">
             <Link
@@ -99,6 +76,7 @@ const PostDetail: React.FC = () => {
               <FaArrowLeftLong />
               Trở về trang tin tức
             </Link>
+
             {loading ? (
               <>Đang tải...</>
             ) : (

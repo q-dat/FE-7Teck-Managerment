@@ -7,6 +7,7 @@ import {
 } from 'react';
 import {
   getAllPostsApi,
+  getPostByIdApi,
   createPostApi,
   updatePostApi,
   deletePostApi
@@ -19,13 +20,14 @@ interface PostContextType {
   countPost: number;
   loading: {
     getAll: boolean;
+    getById: boolean;
     create: boolean;
     update: boolean;
     delete: boolean;
   };
   error: string | null;
-  getAllPosts: () => void;
-  getPostById: (_id: string) => IPost | undefined;
+  getAllPosts: () => Promise<void>;
+  getPostById: (_id: string) => Promise<IPost | undefined>;
   createPost: (postData: FormData) => Promise<AxiosResponse<any>>;
   updatePost: (id: string, postData: FormData) => Promise<AxiosResponse<any>>;
   deletePost: (id: string) => Promise<AxiosResponse<any>>;
@@ -36,13 +38,14 @@ const defaultContextValue: PostContextType = {
   countPost: 0,
   loading: {
     getAll: false,
+    getById: false,
     create: false,
     update: false,
     delete: false
   },
   error: null,
-  getAllPosts: () => {},
-  getPostById: () => undefined,
+  getAllPosts: async () => {},
+  getPostById: async () => undefined,
   createPost: async () => ({ data: { post: null } }) as AxiosResponse,
   updatePost: async () => ({ data: { post: null } }) as AxiosResponse,
   deletePost: async () => ({ data: { deleted: true } }) as AxiosResponse
@@ -55,11 +58,13 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
   const [countPost, setCountPost] = useState<number>(0);
   const [loading, setLoading] = useState<{
     getAll: boolean;
+    getById: boolean;
     create: boolean;
     update: boolean;
     delete: boolean;
   }>({
     getAll: false,
+    getById: false,
     create: false,
     update: false,
     delete: false
@@ -89,7 +94,7 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  // Get All Post
+  // Get All Posts
   const getAllPosts = useCallback(async () => {
     await fetchData(
       getAllPostsApi,
@@ -103,10 +108,29 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
 
   // Get Post By Id
   const getPostById = useCallback(
-    (id: string) => {
-      return posts.find(p => p._id === id);
+    async (_id: string): Promise<IPost | undefined> => {
+      try {
+        const response = await fetchData(
+          () => getPostByIdApi(_id),
+          data => {
+            if (data?.post) {
+              setPosts(prev => {
+                const exists = prev.find(p => p._id === _id);
+                if (!exists) {
+                  return [...prev, data.post];
+                }
+                return prev.map(p => (p._id === _id ? data.post : p));
+              });
+            }
+          },
+          'getById'
+        );
+        return response.data.post;
+      } catch (err) {
+        return undefined;
+      }
     },
-    [posts]
+    []
   );
 
   // Create Post
@@ -167,7 +191,18 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
       updatePost,
       deletePost
     }),
-    [posts, countPost, loading, error]
+    [
+      posts,
+      countPost,
+      loading,
+      error,
+      getAllPosts,
+      getPostById,
+      createPost,
+      updatePost,
+      deletePost
+    ]
   );
+
   return <PostContext.Provider value={value}>{children}</PostContext.Provider>;
 };

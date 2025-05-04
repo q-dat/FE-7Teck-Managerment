@@ -147,7 +147,7 @@ export default function AppRoutes() {
             />
             {/*  */}
             <Route path="tin-tuc-moi-nhat" element={<NewsPageSEO />} />
-            <Route path="tin-tuc/:title" element={<PostDetailSEO />} />
+            <Route path="tin-tuc/:title/:id" element={<PostDetailSEO />} />
             {/*  */}
             <Route
               path="thu-thuat-va-meo-hay"

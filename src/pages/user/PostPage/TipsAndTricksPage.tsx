@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { PostContext } from '../../../context/post/PostContext';
 import TimeAgo from '../../../components/orther/timeAgo/TimeAgo';
 import { scrollToTopSmoothly } from '../../../components/utils/scrollToTopSmoothly';
+import { slugify } from '../../../components/utils/slugify';
 
 const TipsAndTricksPage: React.FC = () => {
   const { posts, getAllPosts } = useContext(PostContext);
@@ -30,17 +31,8 @@ const TipsAndTricksPage: React.FC = () => {
   const navigate = useNavigate();
   // Handle Click Post To Post Detail
   const handlePostClick = (post: (typeof posts)[0]) => {
-    const titleSlug = encodeURIComponent(
-      post?.title
-        .toString()
-        .replace(/đ/g, 'd')
-        .normalize('NFD')
-        .replace(/\p{Diacritic}/gu, '')
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/^-+|-+$/g, '')
-    );
-    navigate(`/tin-tuc/${titleSlug}`);
+    const titleSlug = encodeURIComponent(slugify(post?.title));
+    navigate(`/tin-tuc/${titleSlug}/${post._id}`);
   };
 
   return (
