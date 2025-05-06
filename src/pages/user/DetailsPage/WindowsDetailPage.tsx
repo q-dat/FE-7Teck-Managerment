@@ -174,7 +174,7 @@ const WindowsDetailPage: React.FC = () => {
                     </span>
                     {win?.windows_sale && (
                       <del className="text-sm font-light text-gray-100">
-                        (win?.windows_sale * 1000).toLocaleString('vi-VN') ₫
+                        {(win?.windows_sale * 1000).toLocaleString('vi-VN')} ₫
                       </del>
                     )}
                   </p>

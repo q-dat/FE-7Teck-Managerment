@@ -174,7 +174,7 @@ const TabletDetailPage: React.FC = () => {
                     </span>
                     {tablet?.tablet_sale && (
                       <del className="text-sm font-light text-gray-100">
-                        (tablet?.tablet_sale * 1000).toLocaleString('vi-VN') ₫
+                        {(tablet?.tablet_sale * 1000).toLocaleString('vi-VN')}₫
                       </del>
                     )}
                   </p>

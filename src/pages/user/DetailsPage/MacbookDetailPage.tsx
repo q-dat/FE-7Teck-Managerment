@@ -173,7 +173,7 @@ const MacbookDetailPage: React.FC = () => {
                     </span>
                     {mac?.macbook_sale && (
                       <del className="text-sm font-light text-gray-100">
-                        (mac?.macbook_sale * 1000).toLocaleString('vi-VN') ₫
+                        {(mac?.macbook_sale * 1000).toLocaleString('vi-VN')} ₫
                       </del>
                     )}
                   </p>
