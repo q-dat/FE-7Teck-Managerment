@@ -94,7 +94,7 @@ const HomePage = () => {
           <PhoneFC data={mostViewedPhones} loading={loading} />
         </div>
         {/* Bg Fixed */}
-        {mostViewedPhones.length === 0 && <BgFixedSection />}
+        {mostViewedPhones.length !== 0 && <BgFixedSection />}
         {/* Discounted Products Section */}
         <div className="flex w-full flex-col items-center justify-center gap-5">
           {[TabletFC, MacbookFC, WindowsFC].map((Component, index) => (
