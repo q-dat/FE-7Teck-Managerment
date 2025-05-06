@@ -49,28 +49,27 @@ const MacbookFC: React.FC = () => {
           )}
         </h1>
       </div>
-
-      {loading ? (
-        Array.from({ length: 6 }).map((_, index) => (
-          <div key={index} className="w-[195px] p-2">
-            <Placeholder>
-              <Placeholder.Image square />
-              <Placeholder.Line />
-              <Placeholder.Line length="full" />
-              <Placeholder.Line length="full" />
-            </Placeholder>
-          </div>
-        ))
-      ) : sortedMacbook.length === 0 ? (
-        <></>
-      ) : (
-        sortedMacbook.map(mac => {
-          const tabletUrl = slugify(mac.macbook_name);
-          return (
-            <section
-              ref={scrollRef}
-              className="relative grid w-full grid-flow-col grid-rows-1 items-center justify-start gap-[10px] overflow-x-auto scroll-smooth rounded-none border-[10px] border-transparent bg-white pt-0 scrollbar-hide xl:rounded-t-lg xl:pt-0"
-            >
+      <section
+        ref={scrollRef}
+        className="relative grid w-full grid-flow-col grid-rows-1 items-center justify-start gap-[10px] overflow-x-auto scroll-smooth rounded-none border-[10px] border-transparent bg-white pt-0 scrollbar-hide xl:rounded-t-lg xl:pt-0"
+      >
+        {loading ? (
+          Array.from({ length: 6 }).map((_, index) => (
+            <div key={index} className="w-[195px] p-2">
+              <Placeholder>
+                <Placeholder.Image square />
+                <Placeholder.Line />
+                <Placeholder.Line length="full" />
+                <Placeholder.Line length="full" />
+              </Placeholder>
+            </div>
+          ))
+        ) : sortedMacbook.length === 0 ? (
+          <></>
+        ) : (
+          sortedMacbook.map(mac => {
+            const tabletUrl = slugify(mac.macbook_name);
+            return (
               <div
                 onClick={() => updateMacbookView(mac._id)}
                 key={mac._id}
@@ -146,10 +145,10 @@ const MacbookFC: React.FC = () => {
                   </div>
                 )}
               </div>
-            </section>
-          );
-        })
-      )}
+            );
+          })
+        )}
+      </section>
       <Link to="/macbook" aria-label="Xem thêm sản phẩm laptop Macbook">
         <>
           {loading ? (

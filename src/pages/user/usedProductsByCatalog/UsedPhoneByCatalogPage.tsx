@@ -53,7 +53,7 @@ const UsedPhoneByCatalogPage = () => {
         {/*  */}
         <div className="space-y-10 px-2 xl:px-desktop-padding">
           <div className="mt-5 w-full">
-            <div className="grid grid-flow-row grid-cols-2 items-start gap-[10px] md:grid-cols-4 xl:grid-cols-6">
+            <div className="grid grid-flow-row grid-cols-2 items-start gap-[10px] md:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-7">
               {loading ? (
                 Array.from({ length: 12 }).map((_, index) => (
                   <div key={index} className="w-[195px] p-2">

@@ -36,6 +36,10 @@ const PhoneFC: React.FC<PhoneFCProps> = ({ data, loading }) => {
           )}
         </h1>
       </div>
+      <section
+        ref={scrollRef}
+        className="relative grid w-full grid-flow-col grid-rows-2 items-center justify-start gap-[10px] overflow-x-auto scroll-smooth rounded-none border-[10px] border-transparent bg-white pt-0 scrollbar-hide xl:rounded-t-lg xl:pt-0"
+      >
         {loading ? (
           Array.from({ length: 12 }).map((_, index) => (
             <div key={index} className="w-[195px] p-2">
@@ -53,92 +57,88 @@ const PhoneFC: React.FC<PhoneFCProps> = ({ data, loading }) => {
           data.map(phone => {
             const phoneUrl = slugify(phone.name);
             return (
-              <section
-                ref={scrollRef}
-                className="relative grid w-full grid-flow-col grid-rows-2 items-center justify-start gap-[10px] overflow-x-auto scroll-smooth rounded-none border-[10px] border-transparent bg-white pt-0 scrollbar-hide xl:rounded-t-lg xl:pt-0"
+              <div
+                onClick={() => updatePhoneView(phone._id)}
+                key={phone._id}
+                className="group relative flex h-full w-[195px] flex-col justify-between rounded-md border border-[#f2f4f7] text-black"
               >
-                <div
-                  onClick={() => updatePhoneView(phone._id)}
-                  key={phone._id}
-                  className="group relative flex h-full w-[195px] flex-col justify-between rounded-md border border-[#f2f4f7] text-black"
+                <Link
+                  aria-label="Xem chi tiết sản phẩm khi ấn vào hình ảnh"
+                  to={`/dien-thoai/${phoneUrl}/${phone?._id}`}
                 >
+                  <div className="relative h-[200px] w-full cursor-pointer overflow-hidden">
+                    <img
+                      alt="Hình ảnh"
+                      loading="lazy"
+                      className="absolute left-0 top-0 z-0 h-full w-full rounded-[5px] rounded-b-none object-cover blur-xl filter"
+                      src={phone.img}
+                    />
+                    <img
+                      alt="Hình ảnh"
+                      loading="lazy"
+                      className="absolute left-0 top-0 z-10 h-full w-full rounded-[5px] rounded-b-none object-contain transition-transform duration-1000 ease-in-out hover:scale-110"
+                      src={phone.img}
+                    />
+                  </div>
+                </Link>
+
+                {/*  */}
+                <div className="flex h-full w-full flex-col items-start justify-between p-1">
                   <Link
-                    aria-label="Xem chi tiết sản phẩm khi ấn vào hình ảnh"
+                    aria-label="Xem chi tiết sản phẩm khi nhấn vào tên sản phẩm"
+                    className="w-full cursor-pointer"
                     to={`/dien-thoai/${phoneUrl}/${phone?._id}`}
                   >
-                    <div className="relative h-[200px] w-full cursor-pointer overflow-hidden">
-                      <img
-                        alt="Hình ảnh"
-                        loading="lazy"
-                        className="absolute left-0 top-0 z-0 h-full w-full rounded-[5px] rounded-b-none object-cover blur-xl filter"
-                        src={phone.img}
-                      />
-                      <img
-                        alt="Hình ảnh"
-                        loading="lazy"
-                        className="absolute left-0 top-0 z-10 h-full w-full rounded-[5px] rounded-b-none object-contain transition-transform duration-1000 ease-in-out hover:scale-110"
-                        src={phone.img}
-                      />
+                    <div className="flex w-[50px] items-center justify-start gap-1 rounded-sm p-[2px] text-center text-[12px] text-black">
+                      <FaRegEye />
+                      <p>{phone.view}</p>
                     </div>
+                    <p className="xl:group-hover:text-secondary">
+                      Điện Thoại {phone.name}
+                    </p>
                   </Link>
-
-                  {/*  */}
-                  <div className="flex h-full w-full flex-col items-start justify-between p-1">
+                  <div className="w-full">
+                    <p className="text-red-700">
+                      {(phone?.price * 1000).toLocaleString('vi-VN')}₫ &nbsp;
+                      <del className="text-xs font-light text-gray-500">
+                        {phone?.sale &&
+                          (phone?.sale * 1000).toLocaleString('vi-VN')}
+                        ₫
+                      </del>
+                    </p>
                     <Link
-                      aria-label="Xem chi tiết sản phẩm khi nhấn vào tên sản phẩm"
-                      className="w-full cursor-pointer"
-                      to={`/dien-thoai/${phoneUrl}/${phone?._id}`}
+                      aria-label="Mua ngay"
+                      to="/thanh-toan"
+                      className="z-50 w-full"
                     >
-                      <div className="flex w-[50px] items-center justify-start gap-1 rounded-sm p-[2px] text-center text-[12px] text-black">
-                        <FaRegEye />
-                        <p>{phone.view}</p>
-                      </div>
-                      <p className="xl:group-hover:text-secondary">
-                        Điện Thoại {phone.name}
-                      </p>
-                    </Link>
-                    <div className="w-full">
-                      <p className="text-red-700">
-                        {(phone?.price * 1000).toLocaleString('vi-VN')}₫ &nbsp;
-                        <del className="text-xs font-light text-gray-500">
-                          {phone?.sale &&
-                            (phone?.sale * 1000).toLocaleString('vi-VN')}
-                          ₫
-                        </del>
-                      </p>
-                      <Link
-                        aria-label="Mua ngay"
-                        to="/thanh-toan"
-                        className="z-50 w-full"
+                      <Button
+                        size="xs"
+                        className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary hover:bg-primary hover:bg-opacity-20"
                       >
-                        <Button
-                          size="xs"
-                          className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary hover:bg-primary hover:bg-opacity-20"
-                        >
-                          Mua Ngay
-                        </Button>
-                      </Link>
-                    </div>
+                        Mua Ngay
+                      </Button>
+                    </Link>
                   </div>
-                  {/*  */}
-                  {phone?.status && (
-                    <div className="absolute -left-[3px] top-0 z-20">
-                      <img
-                        alt=""
-                        loading="lazy"
-                        className="h-full w-[60px]"
-                        src={Sale}
-                      />
-                      <p className="absolute top-[1px] w-full pl-2 text-xs text-white">
-                        {phone?.status}
-                      </p>
-                    </div>
-                  )}
                 </div>
-              </section>
+                {/*  */}
+                {phone?.status && (
+                  <div className="absolute -left-[3px] top-0 z-20">
+                    <img
+                      alt=""
+                      loading="lazy"
+                      className="h-full w-[60px]"
+                      src={Sale}
+                    />
+                    <p className="absolute top-[1px] w-full pl-2 text-xs text-white">
+                      {phone?.status}
+                    </p>
+                  </div>
+                )}
+              </div>
             );
           })
         )}
+      </section>
       <Link to="/dien-thoai" aria-label="Xem thêm sản phẩm điện thoại iPhone">
         <>
           {loading ? (
