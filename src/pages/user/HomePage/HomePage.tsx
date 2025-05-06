@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useContext, useEffect, useState } from 'react';
 import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
 import PhoneFC from './PhoneFC';
 import TabletFC from './TabletFC';
@@ -12,6 +12,7 @@ import {
   BannerTablet,
   bgFixed
 } from '../../../assets/images';
+import { PhoneContext } from '../../../context/phone/PhoneContext';
 
 // Component Banner
 const Banner = memo(() => (
@@ -65,6 +66,23 @@ const BgFixedSection = memo(() => (
 ));
 
 const HomePage = () => {
+  const { mostViewedPhones, getMostViewedPhones } = useContext(PhoneContext);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (mostViewedPhones.length === 0) {
+      const fetchData = async () => {
+        setLoading(true);
+        await getMostViewedPhones();
+        setLoading(false);
+      };
+
+      fetchData();
+    } else {
+      setLoading(false);
+    }
+  }, []);
+
   return (
     <div>
       <HeaderResponsive Title_NavbarMobile="Trang Chủ" />
@@ -73,10 +91,10 @@ const HomePage = () => {
         {/* <BenefitsSection /> */}
         {/* Product Section */}
         <div data-aos="fade-down">
-          <PhoneFC />
+          <PhoneFC data={mostViewedPhones} loading={loading} />
         </div>
         {/* Bg Fixed */}
-        <BgFixedSection />
+        {mostViewedPhones.length === 0 && <BgFixedSection />}
         {/* Discounted Products Section */}
         <div className="flex w-full flex-col items-center justify-center gap-5">
           {[TabletFC, MacbookFC, WindowsFC].map((Component, index) => (

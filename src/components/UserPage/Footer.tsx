@@ -22,10 +22,10 @@ const FooterFC: React.FC = () => {
         {/* 1 */}
         <div className="w-full">
           <Footer.Title className="border-b-[1px]">Thông Tin</Footer.Title>
-          <Link className="font-light hover:font-semibold" to="/iphone">
+          <Link className="font-light hover:font-semibold" to="/dient-thoai">
             Điện Thoại IPhone
           </Link>
-          <Link className="font-light hover:font-semibold" to="/ipad">
+          <Link className="font-light hover:font-semibold" to="/may-tinh-bang">
             iPad/ Máy Tính Bảng
           </Link>
           <Link className="font-light hover:font-semibold" to="/windows">
