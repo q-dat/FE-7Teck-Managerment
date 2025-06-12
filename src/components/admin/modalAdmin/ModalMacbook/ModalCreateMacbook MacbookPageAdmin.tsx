@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Toastify } from '../../../../helper/Toastify';
 import InputModal from '../../InputModal';
@@ -25,7 +25,8 @@ const ModalCreateMacbookPageAdmin: React.FC<ModalCreateAdminProps> = ({
 }) => {
   const { loading, createMacbook, getAllMacbook } = useContext(MacbookContext);
   const isLoading = loading.create;
-  const { control, register, handleSubmit, reset } = useForm<IMacbook>();
+  const { control, register, handleSubmit, reset, setValue, watch } =
+    useForm<IMacbook>();
 
   // macbookCatalog
   const { macbookCatalogs } = useContext(MacbookCatalogContext);
@@ -42,6 +43,22 @@ const ModalCreateMacbookPageAdmin: React.FC<ModalCreateAdminProps> = ({
           : macCatalog?.m_cat_status
     }`
   }));
+
+  // Theo dõi giá trị của macbook_catalog_id
+  const selectedCatalogId = watch('macbook_catalog_id._id');
+
+  // Cập nhật macbook_name khi danh mục được chọn, chỉ khi macbook_name rỗng
+  useEffect(() => {
+    if (selectedCatalogId) {
+      const selectedCatalog = macbookCatalogs.find(
+        catalog => catalog._id === selectedCatalogId
+      );
+      const currentName = watch('macbook_name');
+      if (selectedCatalog && !currentName) {
+        setValue('macbook_name', selectedCatalog.m_cat_name);
+      }
+    }
+  }, [selectedCatalogId, macbookCatalogs, setValue, watch]);
 
   const onSubmit: SubmitHandler<IMacbook> = async formData => {
     const data = new FormData();
@@ -101,8 +118,8 @@ const ModalCreateMacbookPageAdmin: React.FC<ModalCreateAdminProps> = ({
             <p className="font-bold text-black dark:text-white">
               Tạo sản phẩm mới
             </p>
-
             <InputModal
+              className="hidden"
               type="text"
               {...register('macbook_name', { required: true })}
               placeholder="Tên sản phẩm*"

@@ -51,11 +51,26 @@ const ModalEditTabletPageAdmin: React.FC<ModalEditPageAdminProps> = ({
     string[] | undefined
   >([]);
 
+  // Theo dõi giá trị của tablet_catalog_id
+  const selectedCatalogId = watch('tablet_catalog_id._id');
+
+  // Cập nhật tablet_name khi danh mục được chọn
+  useEffect(() => {
+    if (selectedCatalogId) {
+      const selectedCatalog = tabletCatalogs.find(
+        catalog => catalog._id === selectedCatalogId
+      );
+      if (selectedCatalog) {
+        setValue('tablet_name', selectedCatalog.t_cat_name);
+      }
+    }
+  }, [selectedCatalogId, tabletCatalogs, setValue]);
+
   useEffect(() => {
     const tabletData = tablets.find(tablet => tablet._id === tabletId);
     if (tabletData) {
       setValue('tablet_name', tabletData.tablet_name);
-      setValue('tablet_catalog_id', tabletData.tablet_catalog_id);
+      setValue('tablet_catalog_id._id', tabletData.tablet_catalog_id._id);
       setValue('tablet_color', tabletData.tablet_color);
       setValue('tablet_price', tabletData.tablet_price);
       setValue('tablet_sale', tabletData.tablet_sale);
@@ -148,8 +163,8 @@ const ModalEditTabletPageAdmin: React.FC<ModalEditPageAdminProps> = ({
           />
           <div className="flex w-full flex-row items-start justify-between gap-10">
             <div className="flex w-full flex-col items-start justify-center">
-              <LabelForm title={'Tên danh mục'} />
               <InputModal
+                className="hidden"
                 type="text"
                 {...register('tablet_name')}
                 placeholder="Tên danh mục"

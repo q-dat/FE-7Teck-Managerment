@@ -51,11 +51,27 @@ const ModalEditMacbookPageAdmin: React.FC<ModalEditPageAdminProps> = ({
     string[] | undefined
   >([]);
 
+  // Theo dõi giá trị của macbook_catalog_id
+  const selectedCatalogId = watch('macbook_catalog_id._id');
+
+  // Cập nhật macbook_name khi danh mục được chọn, chỉ khi macbook_name rỗng
+  useEffect(() => {
+    if (selectedCatalogId) {
+      const selectedCatalog = macbookCatalogs.find(
+        catalog => catalog._id === selectedCatalogId
+      );
+      const currentName = watch('macbook_name');
+      if (selectedCatalog && !currentName) {
+        setValue('macbook_name', selectedCatalog.m_cat_name);
+      }
+    }
+  }, [selectedCatalogId, macbookCatalogs, setValue, watch]);
+
   useEffect(() => {
     const macbookData = macbook.find(mac => mac._id === macbookId);
     if (macbookData) {
       setValue('macbook_name', macbookData.macbook_name);
-      setValue('macbook_catalog_id', macbookData.macbook_catalog_id);
+      setValue('macbook_catalog_id._id', macbookData.macbook_catalog_id._id);
       setValue('macbook_color', macbookData.macbook_color);
       setValue('macbook_price', macbookData.macbook_price);
       setValue('macbook_sale', macbookData.macbook_sale);
@@ -148,8 +164,8 @@ const ModalEditMacbookPageAdmin: React.FC<ModalEditPageAdminProps> = ({
           />
           <div className="flex w-full flex-row items-start justify-between gap-10">
             <div className="flex w-full flex-col items-start justify-center">
-              <LabelForm title={'Tên danh mục'} />
               <InputModal
+                className="hidden"
                 type="text"
                 {...register('macbook_name')}
                 placeholder="Tên danh mục"

@@ -53,11 +53,27 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
     string[] | undefined
   >([]);
 
+  // Theo dõi giá trị của phone_catalog_id
+  const selectedCatalogId = watch('phone_catalog_id._id');
+
+  // Cập nhật name khi danh mục được chọn, chỉ khi name rỗng
+  useEffect(() => {
+    if (selectedCatalogId) {
+      const selectedCatalog = phoneCatalogs.find(
+        catalog => catalog._id === selectedCatalogId
+      );
+      const currentName = watch('name');
+      if (selectedCatalog && !currentName) {
+        setValue('name', selectedCatalog.name);
+      }
+    }
+  }, [selectedCatalogId, phoneCatalogs, setValue, watch]);
+
   useEffect(() => {
     const phoneData = phones.find(phone => phone._id === phoneId);
     if (phoneData) {
       setValue('name', phoneData.name);
-      setValue('phone_catalog_id', phoneData.phone_catalog_id);
+      setValue('phone_catalog_id._id', phoneData.phone_catalog_id._id);
       setValue('color', phoneData.color);
       setValue('price', phoneData.price);
       setValue('sale', phoneData.sale);
@@ -150,8 +166,8 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
           />
           <div className="flex w-full flex-row items-start justify-between gap-10">
             <div className="flex w-full flex-col items-start justify-center">
-              <LabelForm title={'Tên danh mục'} />
               <InputModal
+                className="hidden"
                 type="text"
                 {...register('name')}
                 placeholder="Tên danh mục"

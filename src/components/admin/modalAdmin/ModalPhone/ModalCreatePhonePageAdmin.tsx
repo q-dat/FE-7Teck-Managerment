@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Toastify } from '../../../../helper/Toastify';
 import InputModal from '../../InputModal';
@@ -25,7 +25,8 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreateAdminProps> = ({
 }) => {
   const { loading, createPhone, getAllPhones } = useContext(PhoneContext);
   const isLoading = loading.create;
-  const { control, register, handleSubmit, reset } = useForm<IPhone>();
+  const { control, register, handleSubmit, reset, setValue, watch } =
+    useForm<IPhone>();
 
   // PhoneCatalog
   const { phoneCatalogs } = useContext(PhoneCatalogContext);
@@ -42,6 +43,21 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreateAdminProps> = ({
           : phoneCatalog?.status
     }`
   }));
+
+  // Theo dõi giá trị của phone_catalog_id
+  const selectedCatalogId = watch('phone_catalog_id._id');
+
+  // Cập nhật name khi danh mục được chọn
+  useEffect(() => {
+    if (selectedCatalogId) {
+      const selectedCatalog = phoneCatalogs.find(
+        catalog => catalog._id === selectedCatalogId
+      );
+      if (selectedCatalog) {
+        setValue('name', selectedCatalog.name);
+      }
+    }
+  }, [selectedCatalogId, phoneCatalogs, setValue]);
 
   const onSubmit: SubmitHandler<IPhone> = async formData => {
     const data = new FormData();
@@ -101,8 +117,8 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreateAdminProps> = ({
             <p className="font-bold text-black dark:text-white">
               Tạo sản phẩm mới
             </p>
-
             <InputModal
+              className="hidden"
               type="text"
               {...register('name', { required: true })}
               placeholder="Tên sản phẩm*"

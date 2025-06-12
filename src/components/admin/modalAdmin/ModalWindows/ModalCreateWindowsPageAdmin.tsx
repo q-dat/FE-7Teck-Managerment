@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Toastify } from '../../../../helper/Toastify';
 import InputModal from '../../InputModal';
@@ -25,7 +25,8 @@ const ModalCreateWindowsPageAdmin: React.FC<ModalCreateAdminProps> = ({
 }) => {
   const { loading, createWindows, getAllWindows } = useContext(WindowsContext);
   const isLoading = loading.create;
-  const { control, register, handleSubmit, reset } = useForm<IWindows>();
+  const { control, register, handleSubmit, reset, setValue, watch } =
+    useForm<IWindows>();
 
   // windowsCatalog
   const { windowsCatalogs } = useContext(WindowsCatalogContext);
@@ -42,6 +43,21 @@ const ModalCreateWindowsPageAdmin: React.FC<ModalCreateAdminProps> = ({
           : winCatalog?.w_cat_status
     }`
   }));
+
+  // Theo dõi giá trị của windows_catalog_id
+  const selectedCatalogId = watch('windows_catalog_id._id');
+
+  // Cập nhật windows_name khi danh mục được chọn
+  useEffect(() => {
+    if (selectedCatalogId) {
+      const selectedCatalog = windowsCatalogs.find(
+        catalog => catalog._id === selectedCatalogId
+      );
+      if (selectedCatalog) {
+        setValue('windows_name', selectedCatalog.w_cat_name);
+      }
+    }
+  }, [selectedCatalogId, windowsCatalogs, setValue]);
 
   const onSubmit: SubmitHandler<IWindows> = async formData => {
     const data = new FormData();
@@ -101,8 +117,8 @@ const ModalCreateWindowsPageAdmin: React.FC<ModalCreateAdminProps> = ({
             <p className="font-bold text-black dark:text-white">
               Tạo sản phẩm mới
             </p>
-
             <InputModal
+              className="hidden"
               type="text"
               {...register('windows_name', { required: true })}
               placeholder="Tên sản phẩm*"

@@ -51,11 +51,26 @@ const ModalEditWindowsPageAdmin: React.FC<ModalEditPageAdminProps> = ({
     string[] | undefined
   >([]);
 
+  // Theo dõi giá trị của windows_catalog_id
+  const selectedCatalogId = watch('windows_catalog_id._id');
+
+  // Cập nhật windows_name khi danh mục được chọn
+  useEffect(() => {
+    if (selectedCatalogId) {
+      const selectedCatalog = windowsCatalogs.find(
+        catalog => catalog._id === selectedCatalogId
+      );
+      if (selectedCatalog) {
+        setValue('windows_name', selectedCatalog.w_cat_name);
+      }
+    }
+  }, [selectedCatalogId, windowsCatalogs, setValue]);
+
   useEffect(() => {
     const windowstData = windows.find(win => win._id === windowsId);
     if (windowstData) {
       setValue('windows_name', windowstData.windows_name);
-      setValue('windows_catalog_id', windowstData.windows_catalog_id);
+      setValue('windows_catalog_id._id', windowstData.windows_catalog_id._id);
       setValue('windows_color', windowstData.windows_color);
       setValue('windows_price', windowstData.windows_price);
       setValue('windows_sale', windowstData.windows_sale);
@@ -148,8 +163,8 @@ const ModalEditWindowsPageAdmin: React.FC<ModalEditPageAdminProps> = ({
           />
           <div className="flex w-full flex-row items-start justify-between gap-10">
             <div className="flex w-full flex-col items-start justify-center">
-              <LabelForm title={'Tên danh mục'} />
               <InputModal
+                className="hidden"
                 type="text"
                 {...register('windows_name')}
                 placeholder="Tên danh mục"
