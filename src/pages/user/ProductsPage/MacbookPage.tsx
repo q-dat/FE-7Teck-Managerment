@@ -9,12 +9,12 @@ import { slugify } from '../../../components/utils/slugify';
 import { scrollToTopSmoothly } from '../../../components/utils/scrollToTopSmoothly';
 
 const MacbookPage: React.FC = () => {
-  const { macbook,getAllMacbook } = useContext(MacbookContext);
+  const { macbook, getAllMacbook } = useContext(MacbookContext);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    scrollToTopSmoothly()
+    scrollToTopSmoothly();
     if (macbook.length === 0) {
       const fetchData = async () => {
         setLoading(true);
@@ -27,7 +27,7 @@ const MacbookPage: React.FC = () => {
       setLoading(false);
     }
   }, []);
-  
+
   // Handle Click Macbook To Macbook Detail
   const navigate = useNavigate();
   // Panigation
@@ -54,7 +54,7 @@ const MacbookPage: React.FC = () => {
     <div>
       <HeaderResponsive Title_NavbarMobile="Laptop Macbook" />
       <div className="py-[60px] xl:pt-0">
-        <div className="xl:px-desktop-padding breadcrumbs px-[10px] py-2 text-sm text-black shadow">
+        <div className="breadcrumbs px-[10px] py-2 text-sm text-black shadow xl:px-desktop-padding">
           <ul className="font-light">
             <li>
               <Link aria-label="Trang chủ" to="/">
@@ -69,7 +69,7 @@ const MacbookPage: React.FC = () => {
           </ul>
         </div>
         {/*  */}
-        <div className="xl:px-desktop-padding space-y-10 px-2">
+        <div className="space-y-10 px-2 xl:px-desktop-padding">
           <div className="mt-5 w-full">
             <div className="grid grid-flow-row grid-cols-2 items-start gap-[10px] md:grid-cols-4 xl:grid-cols-6">
               {loading
@@ -124,8 +124,8 @@ const MacbookPage: React.FC = () => {
                           </div>
                           <div className="w-full p-1">
                             <p className="text-gray-700">
-                              Từ:&nbsp;
-                              <span className="text-red-700">
+                              &nbsp;
+                              <span className="font-semibold text-red-700">
                                 {(macbook?.macbook_price * 1000).toLocaleString(
                                   'vi-VN'
                                 )}
