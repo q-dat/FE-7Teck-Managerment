@@ -106,17 +106,16 @@ const UsedMacbookByCatalogPage = () => {
                           <p className="xl:group-hover:text-secondary">
                             Laptop {mac?.macbook_name}
                           </p>
-                          <p className="text-red-700">
+                          <p className="font-[500] text-red-700">
                             {(mac?.macbook_price * 1000).toLocaleString(
                               'vi-VN'
                             )}
                             ₫ &nbsp;
-                            <del className="text-xs font-light text-gray-400">
+                            <del className="text-xs text-gray-400">
                               {mac?.macbook_sale &&
-                                (mac?.macbook_sale * 1000).toLocaleString(
+                                `${(mac?.macbook_sale * 1000).toLocaleString(
                                   'vi-VN'
-                                )}
-                              ₫
+                                )}₫`}
                             </del>
                           </p>
                         </Link>

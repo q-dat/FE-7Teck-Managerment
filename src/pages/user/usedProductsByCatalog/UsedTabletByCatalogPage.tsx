@@ -108,17 +108,16 @@ const UsedTabletByCatalogPage = () => {
                           <p className="xl:group-hover:text-secondary">
                             Điện Thoại {tablet?.tablet_name}
                           </p>
-                          <p className="text-red-700">
+                          <p className="font-[500] text-red-700">
                             {(tablet?.tablet_price * 1000).toLocaleString(
                               'vi-VN'
                             )}
                             ₫ &nbsp;
-                            <del className="text-xs font-light text-gray-400">
+                            <del className="text-xs text-gray-400">
                               {tablet?.tablet_sale &&
-                                (tablet?.tablet_sale * 1000).toLocaleString(
+                                `${(tablet?.tablet_sale * 1000).toLocaleString(
                                   'vi-VN'
-                                )}
-                              ₫
+                                )}₫`}
                             </del>
                           </p>
                         </Link>

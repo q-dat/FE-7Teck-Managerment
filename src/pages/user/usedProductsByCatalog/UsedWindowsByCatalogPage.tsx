@@ -106,17 +106,16 @@ const UsedWindowsByCatalogPage = () => {
                           <p className="xl:group-hover:text-secondary">
                             Laptop {win?.windows_name}
                           </p>
-                          <p className="text-red-700">
+                          <p className="font-[500] text-red-700">
                             {(win?.windows_price * 1000).toLocaleString(
                               'vi-VN'
                             )}
                             ₫ &nbsp;
-                            <del className="text-xs font-light text-gray-400">
+                            <del className="text-xs text-gray-400">
                               {win?.windows_sale &&
-                                (win?.windows_sale * 1000).toLocaleString(
+                                `${(win?.windows_sale * 1000).toLocaleString(
                                   'vi-VN'
-                                )}
-                              ₫
+                                )}₫`}
                             </del>
                           </p>
                         </Link>
