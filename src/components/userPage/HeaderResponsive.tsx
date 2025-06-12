@@ -219,7 +219,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                               >
                                 <Button
                                   size="sm"
-                                  className="flex w-full flex-row items-center justify-start rounded-sm border-none bg-primary text-sm font-light text-white shadow-headerMenu"
+                                  className="flex w-full flex-row items-center justify-start rounded-sm border-none bg-primary text-sm font-light text-white shadow-headerMenu hover:bg-primary/80"
                                 >
                                   {subItem.icon && <subItem.icon />}
                                   {subItem.name}
