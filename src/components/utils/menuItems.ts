@@ -23,7 +23,7 @@ const menuItems: MenuItem[] = [
   {
     icon: PiDevicesDuotone,
     name: 'Máy cũ, Thu cũ',
-    link: `${window.location.href}`,
+    link: '',
     submenu: [
       {
         icon: PiDevicesBold,
@@ -50,7 +50,7 @@ const menuItems: MenuItem[] = [
   {
     icon: GiLaptop,
     name: 'Laptop',
-    link: `${window.location.href}`,
+    link: '',
     submenu: [
       {
         icon: FaWindows,
@@ -68,7 +68,7 @@ const menuItems: MenuItem[] = [
   {
     icon: FaRegNewspaper,
     name: 'Tin tức',
-    link: `${window.location.href}`,
+    link: '',
     submenu: [
       {
         name: 'Tin công nghệ',

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { IProductPriceList } from '../../types/type/price-list/price-list';
 import { PriceListContext } from '../../context/price-list/PriceListContext';
 import { scrollToTopSmoothly } from '../../components/utils/scrollToTopSmoothly';
+import ErrorLoading from '../../components/orther/error/ErrorLoading';
 
 const PriceListPage: React.FC = () => {
   const { priceLists, getAllPriceLists } = useContext(PriceListContext);
@@ -85,7 +86,10 @@ const PriceListPage: React.FC = () => {
       windowsProducts: Object.keys(aggregatedData.windowsProducts)[0] || ''
     });
   }, []);
-
+  
+  if (!loading && priceLists.length === 0) {
+    return <ErrorLoading />;
+  }
   return (
     <div>
       <HeaderResponsive Title_NavbarMobile="Bảng Giá Thu Mua" />
