@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { IoIosArrowForward } from 'react-icons/io';
 import { Placeholder } from 'semantic-ui-react';
 import { Button } from 'react-daisyui';
-import { Sale } from '../../../assets/image-represent';
+import { Status } from '../../../assets/image-represent';
 import { TabletContext } from '../../../context/tablet/TabletContext';
 import { useScroll } from '../../../hooks/useScroll';
 import { slugify } from '../../../components/utils/slugify';
@@ -138,7 +138,7 @@ const TabletFC: React.FC = () => {
                       alt=""
                       loading="lazy"
                       className="h-full w-[60px]"
-                      src={Sale}
+                      src={Status}
                     />
                     <p className="absolute top-[1px] w-full pl-2 text-xs text-white">
                       {tablet?.tablet_status}
