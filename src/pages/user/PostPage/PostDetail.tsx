@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
+import HeaderResponsive from '../../../components/userPage/HeaderResponsive';
 import { PostContext } from '../../../context/post/PostContext';
 import { FaArrowLeftLong } from 'react-icons/fa6';
 import TimeAgo from '../../../components/orther/timeAgo/TimeAgo';

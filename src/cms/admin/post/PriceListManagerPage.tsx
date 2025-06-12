@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import ModalCreatePriceListPageAdmin from '../../../components/admin/Modal/ModalPriceListPage/ModalCreatePriceListPageAdmin';
+import ModalCreatePriceListPageAdmin from '../../../components/admin/modalAdmin/ModalPriceListPage/ModalCreatePriceListPageAdmin';
 import NavtitleAdmin from '../../../components/admin/NavtitleAdmin';
 import { Button, Table } from 'react-daisyui';
 import { RiAddBoxLine } from 'react-icons/ri';
@@ -9,10 +9,10 @@ import ErrorLoading from '../../../components/orther/error/ErrorLoading';
 import { LoadingLocal } from '../../../components/orther/loading';
 import { isIErrorResponse } from '../../../types/error/error';
 import { Toastify } from '../../../helper/Toastify';
-import ModalDeletePriceListPageAdmin from '../../../components/admin/Modal/ModalPriceListPage/ModalDeletePriceListPageAdmin';
+import ModalDeletePriceListPageAdmin from '../../../components/admin/modalAdmin/ModalPriceListPage/ModalDeletePriceListPageAdmin';
 import { FaPenToSquare } from 'react-icons/fa6';
 import { MdDelete } from 'react-icons/md';
-import NavbarPost from '../../../components/admin/Reponsive/Mobile/NavbarPost';
+import NavbarPost from '../../../components/admin/responsiveUI/mobile/NavbarPost';
 
 const PriceListManagerPage: React.FC = () => {
   const { priceLists, getAllPriceLists, loading, error, deletePriceLists } =

@@ -10,12 +10,12 @@ import { RiAddBoxLine } from 'react-icons/ri';
 import NavtitleAdmin from '../../components/admin/NavtitleAdmin';
 import TableListAdmin from '../../components/admin/TablelistAdmin';
 import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
-import NavbarAdmin from '../../components/admin/Reponsive/Mobile/NavbarAdmin';
+import NavbarAdmin from '../../components/admin/responsiveUI/mobile/NavbarAdmin';
 import { WindowsContext } from '../../context/windows/WindowsContext';
 import { IWindows } from '../../types/type/windows/windows';
-import ModalCreateWindowsPageAdmin from '../../components/admin/Modal/ModalWindows/ModalCreateWindowsPageAdmin';
-import ModalDeleteWindowsPageAdmin from '../../components/admin/Modal/ModalWindows/ModalDeleteWindowsPageAdmin';
-import ModalEditWindowsPageAdmin from '../../components/admin/Modal/ModalWindows/ModalEditWindowsPageAdmin';
+import ModalCreateWindowsPageAdmin from '../../components/admin/modalAdmin/ModalWindows/ModalCreateWindowsPageAdmin';
+import ModalDeleteWindowsPageAdmin from '../../components/admin/modalAdmin/ModalWindows/ModalDeleteWindowsPageAdmin';
+import ModalEditWindowsPageAdmin from '../../components/admin/modalAdmin/ModalWindows/ModalEditWindowsPageAdmin';
 
 const WindowsManager: React.FC = () => {
   const { windows, loading, error, getAllWindows, deleteWindows } =
@@ -148,9 +148,17 @@ const WindowsManager: React.FC = () => {
                   <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
                     {(win.windows_price * 1000).toLocaleString('vi-VN')}đ
                   </span>
-                  <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
-                    {(win?.windows_sale * 1000).toLocaleString('vi-VN')}₫
-                  </span>
+                  <>
+                    {win?.windows_sale === null ||
+                    win?.windows_sale === 0 ||
+                    win?.windows_sale === undefined ? (
+                      <>Chưa có giá giảm!</>
+                    ) : (
+                      <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
+                        {(win?.windows_sale * 1000).toLocaleString('vi-VN')}₫
+                      </span>
+                    )}
+                  </>
                   <span className="line-clamp-3">
                     {win?.windows_status || 'Không có tình trạng!'}
                   </span>

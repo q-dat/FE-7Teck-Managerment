@@ -10,12 +10,12 @@ import { FaCircleInfo, FaPenToSquare } from 'react-icons/fa6';
 import { isIErrorResponse } from '../../types/error/error';
 import TableListAdmin from '../../components/admin/TablelistAdmin';
 import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
-import NavbarAdmin from '../../components/admin/Reponsive/Mobile/NavbarAdmin';
+import NavbarAdmin from '../../components/admin/responsiveUI/mobile/NavbarAdmin';
 import { WindowsCatalogContext } from '../../context/windows-catalog/WindowsCatalogContext';
 import { IWindowsCatalog } from '../../types/type/windows-catalog/windows-catalog';
-import ModalCreateWindowsCatalogPageAdmin from '../../components/admin/Modal/ModalWindowsCatalog/ModalCreateWindowsCatalogPageAdmin';
-import ModalDeleteWindowsCatalogPageAdmin from '../../components/admin/Modal/ModalWindowsCatalog/ModalDeleteWindowsCatalogPageAdmin';
-import ModalEditWindowsCatalogPageAdmin from '../../components/admin/Modal/ModalWindowsCatalog/ModalEditWindowsCatalogPageAdmin';
+import ModalCreateWindowsCatalogPageAdmin from '../../components/admin/modalAdmin/ModalWindowsCatalog/ModalCreateWindowsCatalogPageAdmin';
+import ModalDeleteWindowsCatalogPageAdmin from '../../components/admin/modalAdmin/ModalWindowsCatalog/ModalDeleteWindowsCatalogPageAdmin';
+import ModalEditWindowsCatalogPageAdmin from '../../components/admin/modalAdmin/ModalWindowsCatalog/ModalEditWindowsCatalogPageAdmin';
 
 const WindowsCatalogManager: React.FC = () => {
   const {

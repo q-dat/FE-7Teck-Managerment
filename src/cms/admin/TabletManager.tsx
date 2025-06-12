@@ -10,12 +10,12 @@ import { RiAddBoxLine } from 'react-icons/ri';
 import NavtitleAdmin from '../../components/admin/NavtitleAdmin';
 import TableListAdmin from '../../components/admin/TablelistAdmin';
 import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
-import NavbarAdmin from '../../components/admin/Reponsive/Mobile/NavbarAdmin';
+import NavbarAdmin from '../../components/admin/responsiveUI/mobile/NavbarAdmin';
 import { TabletContext } from '../../context/tablet/TabletContext';
 import { ITablet } from '../../types/type/tablet/tablet';
-import ModalCreateTabletPageAdmin from '../../components/admin/Modal/ModalTablet/ModalCreateTabletPageAdmin';
-import ModalDeleteTabletPageAdmin from '../../components/admin/Modal/ModalTablet/ModalDeleteTabletPageAdmin';
-import ModalEditTabletPageAdmin from '../../components/admin/Modal/ModalTablet/ModalEditTabletPageAdmin';
+import ModalCreateTabletPageAdmin from '../../components/admin/modalAdmin/ModalTablet/ModalCreateTabletPageAdmin';
+import ModalDeleteTabletPageAdmin from '../../components/admin/modalAdmin/ModalTablet/ModalDeleteTabletPageAdmin';
+import ModalEditTabletPageAdmin from '../../components/admin/modalAdmin/ModalTablet/ModalEditTabletPageAdmin';
 
 const TabletManager: React.FC = () => {
   const { tablets, loading, error, getAllTablets, deleteTablet } =
@@ -146,9 +146,17 @@ const TabletManager: React.FC = () => {
                   <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
                     {(tablet.tablet_price * 1000).toLocaleString('vi-VN')}đ
                   </span>
-                  <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
-                    {(tablet?.tablet_sale * 1000).toLocaleString('vi-VN')}₫
-                  </span>
+                  <>
+                    {tablet?.tablet_sale === null ||
+                    tablet?.tablet_sale === 0 ||
+                    tablet?.tablet_sale === undefined ? (
+                      <>Chưa có giá giảm!</>
+                    ) : (
+                      <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
+                        {(tablet?.tablet_sale * 1000).toLocaleString('vi-VN')}₫
+                      </span>
+                    )}
+                  </>
                   <span className="line-clamp-3">
                     {tablet?.tablet_status || 'Không có tình trạng!'}
                   </span>
@@ -219,4 +227,3 @@ const TabletManager: React.FC = () => {
 };
 
 export default TabletManager;
-

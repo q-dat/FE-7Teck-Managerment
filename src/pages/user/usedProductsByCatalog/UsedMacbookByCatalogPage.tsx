@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
+import HeaderResponsive from '../../../components/userPage/HeaderResponsive';
 import { Sale } from '../../../assets/image-represent';
 import { Button } from 'react-daisyui';
 import { FaRegEye } from 'react-icons/fa';

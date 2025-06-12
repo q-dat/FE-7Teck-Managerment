@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
-import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
+import HeaderResponsive from '../../components/userPage/HeaderResponsive';
 import { Link } from 'react-router-dom';
 import { Textarea, Button } from 'react-daisyui';
-import InputForm from '../../components/UserPage/InputForm';
-import LabelForm from '../../components/UserPage/LabelForm';
+import InputForm from '../../components/userPage/InputForm';
+import LabelForm from '../../components/userPage/LabelForm';
 import { scrollToTopSmoothly } from '../../components/utils/scrollToTopSmoothly';
 import { Toastify } from '../../helper/Toastify';
 

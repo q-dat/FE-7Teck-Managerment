@@ -10,12 +10,12 @@ import { FaCircleInfo, FaPenToSquare } from 'react-icons/fa6';
 import { isIErrorResponse } from '../../types/error/error';
 import TableListAdmin from '../../components/admin/TablelistAdmin';
 import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
-import NavbarAdmin from '../../components/admin/Reponsive/Mobile/NavbarAdmin';
+import NavbarAdmin from '../../components/admin/responsiveUI/mobile/NavbarAdmin';
 import { MacbookCatalogContext } from '../../context/macbook-catalog/MacbookCatalogContext';
 import { IMacbookCatalog } from '../../types/type/macbook-catalog/macbook-catalog';
-import ModalCreateMacbookCatalogPageAdmin from '../../components/admin/Modal/ModalMacbookCatalog/ModalCreateMacbookCatalogPageAdmin';
-import ModalDeleteMacbookCatalogPageAdmin from '../../components/admin/Modal/ModalMacbookCatalog/ModalDeleteMacbookCatalogPageAdmin';
-import ModalEditMacbookCatalogPageAdmin from '../../components/admin/Modal/ModalMacbookCatalog/ModalEditMacbookCatalogPageAdmin';
+import ModalCreateMacbookCatalogPageAdmin from '../../components/admin/modalAdmin/ModalMacbookCatalog/ModalCreateMacbookCatalogPageAdmin';
+import ModalDeleteMacbookCatalogPageAdmin from '../../components/admin/modalAdmin/ModalMacbookCatalog/ModalDeleteMacbookCatalogPageAdmin';
+import ModalEditMacbookCatalogPageAdmin from '../../components/admin/modalAdmin/ModalMacbookCatalog/ModalEditMacbookCatalogPageAdmin';
 
 const MacbookCatalogManager: React.FC = () => {
   const {

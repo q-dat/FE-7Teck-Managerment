@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
+import HeaderResponsive from '../../components/userPage/HeaderResponsive';
 import { GalleryContext } from '../../context/gallery/GalleryContext';
 import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
-import Pagination from '../../components/UserPage/Pagination';
+import Pagination from '../../components/userPage/Pagination';
 import { scrollToTopSmoothly } from '../../components/utils/scrollToTopSmoothly';
 import ErrorLoading from '../../components/orther/error/ErrorLoading';
 

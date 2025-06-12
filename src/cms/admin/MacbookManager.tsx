@@ -10,12 +10,12 @@ import { RiAddBoxLine } from 'react-icons/ri';
 import NavtitleAdmin from '../../components/admin/NavtitleAdmin';
 import TableListAdmin from '../../components/admin/TablelistAdmin';
 import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
-import NavbarAdmin from '../../components/admin/Reponsive/Mobile/NavbarAdmin';
+import NavbarAdmin from '../../components/admin/responsiveUI/mobile/NavbarAdmin';
 import { MacbookContext } from '../../context/macbook/MacbookContext';
 import { IMacbook } from '../../types/type/macbook/macbook';
-import ModalCreateMacbookPageAdmin from '../../components/admin/Modal/ModalMacbook/ModalCreateMacbook MacbookPageAdmin';
-import ModalDeleteMacbookPageAdmin from '../../components/admin/Modal/ModalMacbook/ModalDeleteMacbook MacbookPageAdmin';
-import ModalEditMacbookPageAdmin from '../../components/admin/Modal/ModalMacbook/ModalEditMacbook MacbookPageAdmin';
+import ModalCreateMacbookPageAdmin from '../../components/admin/modalAdmin/ModalMacbook/ModalCreateMacbook MacbookPageAdmin';
+import ModalDeleteMacbookPageAdmin from '../../components/admin/modalAdmin/ModalMacbook/ModalDeleteMacbook MacbookPageAdmin';
+import ModalEditMacbookPageAdmin from '../../components/admin/modalAdmin/ModalMacbook/ModalEditMacbook MacbookPageAdmin';
 
 const MacbookManager: React.FC = () => {
   const { macbook, loading, error, getAllMacbook, deleteMacbook } =
@@ -100,22 +100,22 @@ const MacbookManager: React.FC = () => {
         table_body={
           <Table.Body className="text-center text-sm">
             {macbook && macbook.length > 0 ? (
-              macbook.map((win: IMacbook, index: number) => (
+              macbook.map((mac: IMacbook, index: number) => (
                 <Table.Row key={index}>
                   <span>#{index + 1}</span>
                   <span className="flex items-center justify-center">
                     <img
                       loading="lazy"
-                      src={win?.macbook_img}
+                      src={mac?.macbook_img}
                       alt="Hình ảnh"
                       className="h-12 w-12 object-cover"
                     />
                   </span>
                   <span className="flex flex-wrap items-center justify-center gap-2">
-                    {win?.macbook_thumbnail &&
-                    Array.isArray(win?.macbook_thumbnail) ? (
+                    {mac?.macbook_thumbnail &&
+                    Array.isArray(mac?.macbook_thumbnail) ? (
                       <>
-                        {win.macbook_thumbnail
+                        {mac.macbook_thumbnail
                           .slice(0, 1)
                           .map((thumb, index) => (
                             <img
@@ -127,7 +127,7 @@ const MacbookManager: React.FC = () => {
                             />
                           ))}
                         <span className="text-xs text-red-500">
-                          (Ảnh thu nhỏ: {win?.macbook_thumbnail?.length})
+                          (Ảnh thu nhỏ: {mac?.macbook_thumbnail?.length})
                         </span>
                       </>
                     ) : (
@@ -135,34 +135,42 @@ const MacbookManager: React.FC = () => {
                     )}
                   </span>
                   <span className="">
-                    {win?.macbook_name}
+                    {mac?.macbook_name}
                     <hr />
                     <b>
-                      {win?.macbook_catalog_id?.m_cat_status === 0
+                      {mac?.macbook_catalog_id?.m_cat_status === 0
                         ? 'New'
-                        : win?.macbook_catalog_id?.m_cat_status === 1
+                        : mac?.macbook_catalog_id?.m_cat_status === 1
                           ? 'Đã sử dụng'
-                          : win?.macbook_catalog_id?.m_cat_status}
+                          : mac?.macbook_catalog_id?.m_cat_status}
                     </b>
                   </span>
                   <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
-                    {(win.macbook_price * 1000).toLocaleString('vi-VN')}đ
+                    {(mac.macbook_price * 1000).toLocaleString('vi-VN')}đ
                   </span>
-                  <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
-                    {(win?.macbook_sale * 1000).toLocaleString('vi-VN')}₫
+                  <>
+                    {mac?.macbook_sale === null ||
+                    mac?.macbook_sale === 0 ||
+                    mac?.macbook_sale === undefined ? (
+                      <>Chưa có giá giảm!</>
+                    ) : (
+                      <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
+                        {(mac?.macbook_sale * 1000).toLocaleString('vi-VN')}₫
+                      </span>
+                    )}
+                  </>
+                  <span className="line-clamp-3">
+                    {mac?.macbook_status || 'Không có tình trạng!'}
                   </span>
                   <span className="line-clamp-3">
-                    {win?.macbook_status || 'Không có tình trạng!'}
-                  </span>
-                  <span className="line-clamp-3">
-                    {win?.macbook_des || 'Không có mô tả!'}
+                    {mac?.macbook_des || 'Không có mô tả!'}
                   </span>
                   <mark className="line-clamp-3">
-                    {win?.macbook_note || 'Không có ghi chú!'}
+                    {mac?.macbook_note || 'Không có ghi chú!'}
                   </mark>
                   <span>
-                    {/* {new Date(win?.createdAt).toLocaleString('vi-VN')} */}
-                    <TimeAgo date={win?.createdAt} />
+                    {/* {new Date(mac?.createdAt).toLocaleString('vi-VN')} */}
+                    <TimeAgo date={mac?.createdAt} />
                   </span>
                   <span>
                     <details>
@@ -174,14 +182,14 @@ const MacbookManager: React.FC = () => {
                       <div className="flex flex-col items-center justify-center gap-2">
                         <Button
                           color="success"
-                          onClick={() => openModalEditAdmin(win?._id ?? '')}
+                          onClick={() => openModalEditAdmin(mac?._id ?? '')}
                           className="w-full max-w-[140px] text-sm font-light text-white"
                         >
                           <FaPenToSquare />
                           Cập Nhật
                         </Button>
                         <Button
-                          onClick={() => openModalDeleteAdmin(win?._id ?? '')}
+                          onClick={() => openModalDeleteAdmin(mac?._id ?? '')}
                           className="w-full max-w-[140px] bg-red-600 text-sm font-light text-white"
                         >
                           <MdDelete />

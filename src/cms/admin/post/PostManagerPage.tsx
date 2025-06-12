@@ -8,14 +8,14 @@ import { MdDelete } from 'react-icons/md';
 import ErrorLoading from '../../../components/orther/error/ErrorLoading';
 import { FaCircleInfo, FaPenToSquare } from 'react-icons/fa6';
 import TableListAdmin from '../../../components/admin/TablelistAdmin';
-import ModalCreatePostPageAdmin from '../../../components/admin/Modal/ModalPost/ModalCreatePostPageAdmin';
-import ModalDeletePostPageAdmin from '../../../components/admin/Modal/ModalPost/ModalDeletePostPageAdmin';
-import ModalEditPostPageAdmin from '../../../components/admin/Modal/ModalPost/ModalEditPostPageAdmin';
+import ModalCreatePostPageAdmin from '../../../components/admin/modalAdmin/ModalPost/ModalCreatePostPageAdmin';
+import ModalDeletePostPageAdmin from '../../../components/admin/modalAdmin/ModalPost/ModalDeletePostPageAdmin';
+import ModalEditPostPageAdmin from '../../../components/admin/modalAdmin/ModalPost/ModalEditPostPageAdmin';
 import { IPost } from '../../../types/type/post/post';
 import { PostContext } from '../../../context/post/PostContext';
 import { isIErrorResponse } from '../../../types/error/error';
 import TimeAgo from '../../../components/orther/timeAgo/TimeAgo';
-import NavbarPost from '../../../components/admin/Reponsive/Mobile/NavbarPost';
+import NavbarPost from '../../../components/admin/responsiveUI/mobile/NavbarPost';
 
 const PostManagerPage: React.FC = () => {
   const { loading, posts, deletePost, getAllPosts, error } =

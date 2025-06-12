@@ -1,5 +1,5 @@
 import React from 'react';
-import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
+import HeaderResponsive from '../../components/userPage/HeaderResponsive';
 import { Link } from 'react-router-dom';
 
 const WarrantyPage: React.FC = () => {

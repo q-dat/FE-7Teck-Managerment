@@ -12,7 +12,7 @@ import { Button } from 'react-daisyui';
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
 import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
-import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
+import HeaderResponsive from '../../../components/userPage/HeaderResponsive';
 import { WindowsContext } from '../../../context/windows/WindowsContext';
 import { windowsFieldMap } from '../../../types/type/optionsData/windowsFieldMap';
 import {

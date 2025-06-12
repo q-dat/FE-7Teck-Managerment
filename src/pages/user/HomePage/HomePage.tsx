@@ -1,5 +1,5 @@
 import { memo, useContext, useEffect, useState } from 'react';
-import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
+import HeaderResponsive from '../../../components/userPage/HeaderResponsive';
 import PhoneFC from './PhoneFC';
 import TabletFC from './TabletFC';
 import WindowsFC from './WindowsFC';

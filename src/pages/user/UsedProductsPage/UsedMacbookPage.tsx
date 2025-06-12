@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import Pagination from '../../../components/UserPage/Pagination';
+import Pagination from '../../../components/userPage/Pagination';
 import { useNavigate } from 'react-router-dom';
 import { Placeholder } from 'semantic-ui-react';
 import { MacbookCatalogContext } from '../../../context/macbook-catalog/MacbookCatalogContext';

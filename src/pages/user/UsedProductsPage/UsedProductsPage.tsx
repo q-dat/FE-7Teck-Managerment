@@ -1,5 +1,5 @@
 import { useState, memo, useCallback, useEffect } from 'react';
-import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
+import HeaderResponsive from '../../../components/userPage/HeaderResponsive';
 import { Link } from 'react-router-dom';
 import { MdOutlineDoubleArrow } from 'react-icons/md';
 import UsedPhonePage from './UsedPhonePage';

@@ -1,7 +1,7 @@
 import { Button } from 'react-daisyui';
 import { NotFounds } from '../../../assets/image-represent';
 import { IoMdRefreshCircle } from 'react-icons/io';
-import HeaderResponsive from '../../UserPage/HeaderResponsive';
+import HeaderResponsive from '../../userPage/HeaderResponsive';
 
 const ErrorLoading: React.FC<{}> = () => {
   const navigate = () => {

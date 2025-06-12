@@ -1,13 +1,13 @@
 import React, { useContext, useState } from 'react';
-import NavbarGallery from '../../../components/admin/Reponsive/Mobile/NavbarGallery';
+import NavbarGallery from '../../../components/admin/responsiveUI/mobile/NavbarGallery';
 import { GalleryContext } from '../../../context/gallery/GalleryContext';
 import ErrorLoading from '../../../components/orther/error/ErrorLoading';
 import { LoadingLocal } from '../../../components/orther/loading';
 import { Toastify } from '../../../helper/Toastify';
 import { isIErrorResponse } from '../../../types/error/error';
-import ModalCreateGalleryPageAdmin from '../../../components/admin/Modal/ModalGallery/ModalCreateGalleryPageAdmin';
-import ModalDeleteGalleryPageAdmin from '../../../components/admin/Modal/ModalGallery/ModalDeleteGalleryPageAdmin';
-import ModalEditGalleryPageAdmin from '../../../components/admin/Modal/ModalGallery/ModalEditGalleryPageAdmin';
+import ModalCreateGalleryPageAdmin from '../../../components/admin/modalAdmin/ModalGallery/ModalCreateGalleryPageAdmin';
+import ModalDeleteGalleryPageAdmin from '../../../components/admin/modalAdmin/ModalGallery/ModalDeleteGalleryPageAdmin';
+import ModalEditGalleryPageAdmin from '../../../components/admin/modalAdmin/ModalGallery/ModalEditGalleryPageAdmin';
 import { IGallery } from '../../../types/type/gallery/gallery';
 import { Button } from 'react-daisyui';
 import { RiAddBoxLine } from 'react-icons/ri';

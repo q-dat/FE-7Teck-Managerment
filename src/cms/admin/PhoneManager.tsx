@@ -9,13 +9,13 @@ import { MdDelete } from 'react-icons/md';
 import { RiAddBoxLine } from 'react-icons/ri';
 import NavtitleAdmin from '../../components/admin/NavtitleAdmin';
 import TableListAdmin from '../../components/admin/TablelistAdmin';
-import ModalCreatePhonePageAdmin from '../../components/admin/Modal/ModalPhone/ModalCreatePhonePageAdmin';
-import ModalDeletePhonePageAdmin from '../../components/admin/Modal/ModalPhone/ModalDeletePhonePageAdmin';
-import ModalEditPhonePageAdmin from '../../components/admin/Modal/ModalPhone/ModalEditPhonePageAdmin';
+import ModalCreatePhonePageAdmin from '../../components/admin/modalAdmin/ModalPhone/ModalCreatePhonePageAdmin';
+import ModalDeletePhonePageAdmin from '../../components/admin/modalAdmin/ModalPhone/ModalDeletePhonePageAdmin';
+import ModalEditPhonePageAdmin from '../../components/admin/modalAdmin/ModalPhone/ModalEditPhonePageAdmin';
 import { PhoneContext } from '../../context/phone/PhoneContext';
 import { IPhone } from '../../types/type/phone/phone';
 import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
-import NavbarAdmin from '../../components/admin/Reponsive/Mobile/NavbarAdmin';
+import NavbarAdmin from '../../components/admin/responsiveUI/mobile/NavbarAdmin';
 
 const PhoneManager: React.FC = () => {
   const { phones, loading, error, getAllPhones, deletePhone } =
@@ -143,9 +143,17 @@ const PhoneManager: React.FC = () => {
                   <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
                     {(phone.price * 1000).toLocaleString('vi-VN')}đ
                   </span>
-                  <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
-                    {(phone?.sale * 1000).toLocaleString('vi-VN')}₫
-                  </span>
+                  <>
+                    {phone?.sale === null ||
+                    phone?.sale === 0 ||
+                    phone?.sale === undefined ? (
+                      <>Chưa có giá giảm!</>
+                    ) : (
+                      <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
+                        {(phone?.sale * 1000).toLocaleString('vi-VN')}₫
+                      </span>
+                    )}
+                  </>
                   <span className="line-clamp-3">
                     {phone?.status || 'Không có tình trạng!'}
                   </span>

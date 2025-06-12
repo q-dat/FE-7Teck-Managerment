@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-import Header from '../../components/UserPage/Header';
-import FooterFC from '../../components/UserPage/Footer';
-import ContactForm from '../../components/UserPage/ContactForm';
+import Header from '../../components/userPage/Header';
+import FooterFC from '../../components/userPage/Footer';
+import ContactForm from '../../components/userPage/ContactForm';
 import ScrollToTopButton from '../../components/orther/scrollToTop/ScrollToTopButton';
-import NavBottom from '../../components/UserPage/NavBottom';
+import NavBottom from '../../components/userPage/NavBottom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import NotificationPopup from '../../components/UserPage/NotificationPopup';
+import NotificationPopup from '../../components/userPage/NotificationPopup';
 
 const User: React.FC = () => {
   useEffect(() => {

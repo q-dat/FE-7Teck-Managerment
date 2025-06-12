@@ -14,7 +14,7 @@ import { WindowsCatalogContext } from '../../context/windows-catalog/WindowsCata
 import { WindowsContext } from '../../context/windows/WindowsContext';
 import { MacbookContext } from '../../context/macbook/MacbookContext';
 import { MacbookCatalogContext } from '../../context/macbook-catalog/MacbookCatalogContext';
-import OptionsData from './Modal/OptionsData/OptionsData';
+import OptionsData from './modalAdmin/OptionsData/OptionsData';
 
 const SidebarAdmin: React.FC<{}> = () => {
   const { countPhoneCatalog } = useContext(PhoneCatalogContext);

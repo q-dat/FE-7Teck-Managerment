@@ -10,12 +10,12 @@ import { FaCircleInfo, FaPenToSquare } from 'react-icons/fa6';
 import TableListAdmin from '../../../components/admin/TablelistAdmin';
 import { isIErrorResponse } from '../../../types/error/error';
 import TimeAgo from '../../../components/orther/timeAgo/TimeAgo';
-import NavbarPost from '../../../components/admin/Reponsive/Mobile/NavbarPost';
+import NavbarPost from '../../../components/admin/responsiveUI/mobile/NavbarPost';
 import { PostCatalogContext } from '../../../context/post-catalog/PostCatalogContext';
 import { IPostCatalog } from '../../../types/type/post-catalog/post-catalog';
-import ModalCreatePostCatalogPageAdmin from '../../../components/admin/Modal/ModalPostCatalog/ModalCreatePostCatalogPageAdmin';
-import ModalDeletePostCatalogPageAdmin from '../../../components/admin/Modal/ModalPostCatalog/ModalDeletePostCatalogPageAdmin';
-import ModalEditPostCatalogPageAdmin from '../../../components/admin/Modal/ModalPostCatalog/ModalEditPostCatalogPageAdmin';
+import ModalCreatePostCatalogPageAdmin from '../../../components/admin/modalAdmin/ModalPostCatalog/ModalCreatePostCatalogPageAdmin';
+import ModalDeletePostCatalogPageAdmin from '../../../components/admin/modalAdmin/ModalPostCatalog/ModalDeletePostCatalogPageAdmin';
+import ModalEditPostCatalogPageAdmin from '../../../components/admin/modalAdmin/ModalPostCatalog/ModalEditPostCatalogPageAdmin';
 
 const PostCatalogManagerPage: React.FC = () => {
   const {

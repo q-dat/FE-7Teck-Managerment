@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
+import HeaderResponsive from '../../../components/userPage/HeaderResponsive';
 import { Link, useNavigate } from 'react-router-dom';
 import { PostContext } from '../../../context/post/PostContext';
 import TimeAgo from '../../../components/orther/timeAgo/TimeAgo';

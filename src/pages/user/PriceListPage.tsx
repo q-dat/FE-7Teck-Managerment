@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import HeaderResponsive from '../../components/UserPage/HeaderResponsive';
+import HeaderResponsive from '../../components/userPage/HeaderResponsive';
 import { Button, Table } from 'react-daisyui';
 import { Link } from 'react-router-dom';
 import { IProductPriceList } from '../../types/type/price-list/price-list';

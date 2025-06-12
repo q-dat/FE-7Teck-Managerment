@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
-import Pagination from '../../../components/UserPage/Pagination';
-import HeaderResponsive from '../../../components/UserPage/HeaderResponsive';
+import Pagination from '../../../components/userPage/Pagination';
+import HeaderResponsive from '../../../components/userPage/HeaderResponsive';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from 'react-daisyui';
 import { Placeholder } from 'semantic-ui-react';
