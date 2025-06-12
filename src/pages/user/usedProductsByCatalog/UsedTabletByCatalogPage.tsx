@@ -113,7 +113,7 @@ const UsedTabletByCatalogPage = () => {
                               'vi-VN'
                             )}
                             ₫ &nbsp;
-                            <del className="text-xs text-gray-400">
+                            <del className="text-xs font-light text-gray-400">
                               {tablet?.tablet_sale &&
                                 `${(tablet?.tablet_sale * 1000).toLocaleString(
                                   'vi-VN'

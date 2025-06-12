@@ -111,7 +111,7 @@ const UsedMacbookByCatalogPage = () => {
                               'vi-VN'
                             )}
                             ₫ &nbsp;
-                            <del className="text-xs text-gray-400">
+                            <del className="text-xs font-light text-gray-400">
                               {mac?.macbook_sale &&
                                 `${(mac?.macbook_sale * 1000).toLocaleString(
                                   'vi-VN'

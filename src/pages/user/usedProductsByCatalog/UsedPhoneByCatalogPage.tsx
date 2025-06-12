@@ -108,7 +108,7 @@ const UsedPhoneByCatalogPage = () => {
                           <p className="font-[500] text-red-700">
                             {(phone?.price * 1000).toLocaleString('vi-VN')}₫
                             &nbsp;
-                            <del className="text-xs text-gray-400">
+                            <del className="text-xs font-light text-gray-400">
                               {phone?.sale &&
                                 `${(phone?.sale * 1000).toLocaleString('vi-VN')}₫`}
                             </del>
