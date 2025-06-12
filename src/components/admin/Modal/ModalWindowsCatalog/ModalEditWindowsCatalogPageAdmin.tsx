@@ -205,12 +205,6 @@ const ModalEditWindowsCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                 {...register('w_cat_price')}
                 placeholder="Nhập giá (Hệ số x1000: 1triệu = 1000)"
               />
-              <LabelForm title={'Trạng thái*'} />
-              <InputModal
-                type="number"
-                {...register('w_cat_status')}
-                placeholder="Chọn: 0(Mới) / 1(Cũ)"
-              />
               <div>
                 <LabelForm title={'Trạng thái*'} />
                 <SelectDaisyUi
