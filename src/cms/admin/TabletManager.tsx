@@ -16,6 +16,7 @@ import { ITablet } from '../../types/type/tablet/tablet';
 import ModalCreateTabletPageAdmin from '../../components/admin/modalAdmin/ModalTablet/ModalCreateTabletPageAdmin';
 import ModalDeleteTabletPageAdmin from '../../components/admin/modalAdmin/ModalTablet/ModalDeleteTabletPageAdmin';
 import ModalEditTabletPageAdmin from '../../components/admin/modalAdmin/ModalTablet/ModalEditTabletPageAdmin';
+import Zoom from '../../lib/Zoom';
 
 const TabletManager: React.FC = () => {
   const { tablets, loading, error, getAllTablets, deleteTablet } =
@@ -102,12 +103,14 @@ const TabletManager: React.FC = () => {
                 <Table.Row key={index}>
                   <span>#{index + 1}</span>
                   <span className="flex items-center justify-center">
-                    <img
-                      loading="lazy"
-                      src={tablet?.tablet_img}
-                      alt="Hình ảnh"
-                      className="h-12 w-12 object-cover"
-                    />
+                    <Zoom>
+                      <img
+                        loading="lazy"
+                        src={tablet?.tablet_img}
+                        alt="Hình ảnh"
+                        className="h-12 w-12 object-cover"
+                      />
+                    </Zoom>
                   </span>
                   <span className="flex flex-wrap items-center justify-center gap-2">
                     {tablet?.tablet_thumbnail &&

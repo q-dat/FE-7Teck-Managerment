@@ -16,6 +16,7 @@ import { IMacbookCatalog } from '../../types/type/macbook-catalog/macbook-catalo
 import ModalCreateMacbookCatalogPageAdmin from '../../components/admin/modalAdmin/ModalMacbookCatalog/ModalCreateMacbookCatalogPageAdmin';
 import ModalDeleteMacbookCatalogPageAdmin from '../../components/admin/modalAdmin/ModalMacbookCatalog/ModalDeleteMacbookCatalogPageAdmin';
 import ModalEditMacbookCatalogPageAdmin from '../../components/admin/modalAdmin/ModalMacbookCatalog/ModalEditMacbookCatalogPageAdmin';
+import Zoom from '../../lib/Zoom';
 
 const MacbookCatalogManager: React.FC = () => {
   const {
@@ -106,12 +107,14 @@ const MacbookCatalogManager: React.FC = () => {
                   <Table.Row key={index}>
                     <span>#{index + 1}</span>
                     <span className="flex items-center justify-center">
-                      <img
-                        loading="lazy"
-                        src={macCatalog?.m_cat_img}
-                        alt="Hình ảnh"
-                        className="h-12 w-12 object-cover"
-                      />
+                      <Zoom>
+                        <img
+                          loading="lazy"
+                          src={macCatalog?.m_cat_img}
+                          alt="Hình ảnh"
+                          className="h-12 w-12 object-cover"
+                        />
+                      </Zoom>
                     </span>
                     <span>{macCatalog?.m_cat_name}</span>
                     <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">

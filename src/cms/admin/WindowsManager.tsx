@@ -16,6 +16,7 @@ import { IWindows } from '../../types/type/windows/windows';
 import ModalCreateWindowsPageAdmin from '../../components/admin/modalAdmin/ModalWindows/ModalCreateWindowsPageAdmin';
 import ModalDeleteWindowsPageAdmin from '../../components/admin/modalAdmin/ModalWindows/ModalDeleteWindowsPageAdmin';
 import ModalEditWindowsPageAdmin from '../../components/admin/modalAdmin/ModalWindows/ModalEditWindowsPageAdmin';
+import Zoom from '../../lib/Zoom';
 
 const WindowsManager: React.FC = () => {
   const { windows, loading, error, getAllWindows, deleteWindows } =
@@ -104,12 +105,14 @@ const WindowsManager: React.FC = () => {
                 <Table.Row key={index}>
                   <span>#{index + 1}</span>
                   <span className="flex items-center justify-center">
-                    <img
-                      loading="lazy"
-                      src={win?.windows_img}
-                      alt="Hình ảnh"
-                      className="h-12 w-12 object-cover"
-                    />
+                    <Zoom>
+                      <img
+                        loading="lazy"
+                        src={win?.windows_img}
+                        alt="Hình ảnh"
+                        className="h-12 w-12 object-cover"
+                      />
+                    </Zoom>
                   </span>
                   <span className="flex flex-wrap items-center justify-center gap-2">
                     {win?.windows_thumbnail &&

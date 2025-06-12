@@ -16,6 +16,7 @@ import { IMacbook } from '../../types/type/macbook/macbook';
 import ModalCreateMacbookPageAdmin from '../../components/admin/modalAdmin/ModalMacbook/ModalCreateMacbook MacbookPageAdmin';
 import ModalDeleteMacbookPageAdmin from '../../components/admin/modalAdmin/ModalMacbook/ModalDeleteMacbook MacbookPageAdmin';
 import ModalEditMacbookPageAdmin from '../../components/admin/modalAdmin/ModalMacbook/ModalEditMacbook MacbookPageAdmin';
+import Zoom from '../../lib/Zoom';
 
 const MacbookManager: React.FC = () => {
   const { macbook, loading, error, getAllMacbook, deleteMacbook } =
@@ -104,12 +105,14 @@ const MacbookManager: React.FC = () => {
                 <Table.Row key={index}>
                   <span>#{index + 1}</span>
                   <span className="flex items-center justify-center">
-                    <img
-                      loading="lazy"
-                      src={mac?.macbook_img}
-                      alt="Hình ảnh"
-                      className="h-12 w-12 object-cover"
-                    />
+                    <Zoom>
+                      <img
+                        loading="lazy"
+                        src={mac?.macbook_img}
+                        alt="Hình ảnh"
+                        className="h-12 w-12 object-cover"
+                      />
+                    </Zoom>
                   </span>
                   <span className="flex flex-wrap items-center justify-center gap-2">
                     {mac?.macbook_thumbnail &&

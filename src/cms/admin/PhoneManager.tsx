@@ -16,6 +16,7 @@ import { PhoneContext } from '../../context/phone/PhoneContext';
 import { IPhone } from '../../types/type/phone/phone';
 import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
 import NavbarAdmin from '../../components/admin/responsiveUI/mobile/NavbarAdmin';
+import Zoom from '../../lib/Zoom';
 
 const PhoneManager: React.FC = () => {
   const { phones, loading, error, getAllPhones, deletePhone } =
@@ -102,12 +103,14 @@ const PhoneManager: React.FC = () => {
                 <Table.Row key={index}>
                   <span>#{index + 1}</span>
                   <span className="flex items-center justify-center">
-                    <img
-                      loading="lazy"
-                      src={phone?.img}
-                      alt="Hình ảnh"
-                      className="h-12 w-12 object-cover"
-                    />
+                    <Zoom>
+                      <img
+                        loading="lazy"
+                        src={phone?.img}
+                        alt="Hình ảnh"
+                        className="h-12 w-12 object-cover"
+                      />
+                    </Zoom>
                   </span>
                   <span className="flex flex-wrap items-center justify-center gap-2">
                     {phone?.thumbnail && Array.isArray(phone?.thumbnail) ? (

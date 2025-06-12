@@ -16,6 +16,7 @@ import { ITabletCatalog } from '../../types/type/tablet-catalog/tablet-catalog';
 import ModalCreateTabletCatalogPageAdmin from '../../components/admin/modalAdmin/ModalTabletCatalog/ModalCreateTabletCatalogPageAdmin';
 import ModalDeleteTabletCatalogPageAdmin from '../../components/admin/modalAdmin/ModalTabletCatalog/ModalDeleteTabletCatalogPageAdmin';
 import ModalEditTabletCatalogPageAdmin from '../../components/admin/modalAdmin/ModalTabletCatalog/ModalEditTabletCatalogPageAdmin';
+import Zoom from '../../lib/Zoom';
 
 const TabletCatalogManager: React.FC = () => {
   const {
@@ -106,12 +107,14 @@ const TabletCatalogManager: React.FC = () => {
                   <Table.Row key={index}>
                     <span>#{index + 1}</span>
                     <span className="flex items-center justify-center">
-                      <img
-                        loading="lazy"
-                        src={tabletCatalog?.t_cat_img}
-                        alt="Hình ảnh"
-                        className="h-12 w-12 object-cover"
-                      />
+                      <Zoom>
+                        <img
+                          loading="lazy"
+                          src={tabletCatalog?.t_cat_img}
+                          alt="Hình ảnh"
+                          className="h-12 w-12 object-cover"
+                        />
+                      </Zoom>
                     </span>
                     <span>{tabletCatalog?.t_cat_name}</span>
                     <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">

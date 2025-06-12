@@ -16,6 +16,7 @@ import { IWindowsCatalog } from '../../types/type/windows-catalog/windows-catalo
 import ModalCreateWindowsCatalogPageAdmin from '../../components/admin/modalAdmin/ModalWindowsCatalog/ModalCreateWindowsCatalogPageAdmin';
 import ModalDeleteWindowsCatalogPageAdmin from '../../components/admin/modalAdmin/ModalWindowsCatalog/ModalDeleteWindowsCatalogPageAdmin';
 import ModalEditWindowsCatalogPageAdmin from '../../components/admin/modalAdmin/ModalWindowsCatalog/ModalEditWindowsCatalogPageAdmin';
+import Zoom from '../../lib/Zoom';
 
 const WindowsCatalogManager: React.FC = () => {
   const {
@@ -106,12 +107,14 @@ const WindowsCatalogManager: React.FC = () => {
                   <Table.Row key={index}>
                     <span>#{index + 1}</span>
                     <span className="flex items-center justify-center">
-                      <img
-                        loading="lazy"
-                        src={winCatalog?.w_cat_img}
-                        alt="Hình ảnh"
-                        className="h-12 w-12 object-cover"
-                      />
+                      <Zoom>
+                        <img
+                          loading="lazy"
+                          src={winCatalog?.w_cat_img}
+                          alt="Hình ảnh"
+                          className="h-12 w-12 object-cover"
+                        />
+                      </Zoom>
                     </span>
                     <span>{winCatalog?.w_cat_name}</span>
                     <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">

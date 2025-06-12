@@ -16,6 +16,7 @@ import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogCon
 import { IPhoneCatalog } from '../../types/type/phone-catalog/phone-catalog';
 import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
 import NavbarAdmin from '../../components/admin/responsiveUI/mobile/NavbarAdmin';
+import Zoom from '../../lib/Zoom';
 
 const PhoneCatalogManager: React.FC = () => {
   const {
@@ -106,12 +107,14 @@ const PhoneCatalogManager: React.FC = () => {
                   <Table.Row key={index}>
                     <span>#{index + 1}</span>
                     <span className="flex items-center justify-center">
-                      <img
-                        loading="lazy"
-                        src={phoneCatalog?.img}
-                        alt="Hình ảnh"
-                        className="h-12 w-12 object-cover"
-                      />
+                      <Zoom>
+                        <img
+                          loading="lazy"
+                          src={phoneCatalog?.img}
+                          alt="Hình ảnh"
+                          className="h-12 w-12 object-cover"
+                        />
+                      </Zoom>
                     </span>
                     <span>{phoneCatalog?.name}</span>
                     <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
