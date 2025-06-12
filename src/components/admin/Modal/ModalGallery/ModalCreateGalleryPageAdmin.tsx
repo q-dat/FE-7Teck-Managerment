@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Toastify } from '../../../../helper/Toastify';
 import InputModal from '../../InputModal';
-import { Button } from 'react-daisyui';
+import { Button, Textarea } from 'react-daisyui';
 import LabelForm from '../../LabelForm';
 import { IGallery } from '../../../../types/type/gallery/gallery';
 import { GalleryContext } from '../../../../context/gallery/GalleryContext';
@@ -71,9 +71,9 @@ const ModalCreateGalleryPageAdmin: React.FC<ModalCreateAdminProps> = ({
               type="text"
               {...register('name')}
               placeholder="Tên hình ảnh (Không bắt buộc)"
-            />{' '}
-            <InputModal
-              type="text"
+            />
+            <Textarea
+              className="w-full border p-2 focus:outline-none"
               {...register('des')}
               placeholder="Mô tả (Không bắt buộc)"
             />

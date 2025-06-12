@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Toastify } from '../../../../helper/Toastify';
 import InputModal from '../../InputModal';
-import { Button } from 'react-daisyui';
+import { Button, Textarea } from 'react-daisyui';
 import { IPhone } from '../../../../types/type/phone/phone';
 import { PhoneContext } from '../../../../context/phone/PhoneContext';
 import { PhoneCatalogContext } from '../../../../context/phone-catalog/PhoneCatalogContext';
@@ -140,7 +140,11 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreateAdminProps> = ({
               {...register('status', { required: true })}
               placeholder="Tình trạng*"
             />
-            <InputModal type="text" {...register('des')} placeholder="Mô tả" />
+            <Textarea
+              className="w-full border p-2 focus:outline-none"
+              {...register('des')}
+              placeholder="Mô tả"
+            />
             <LabelForm title={'Hình ảnh*'} />
             <InputModal
               type="file"

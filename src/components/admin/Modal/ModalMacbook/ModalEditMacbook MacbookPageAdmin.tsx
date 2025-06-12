@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Toastify } from '../../../../helper/Toastify';
 import InputModal from '../../InputModal';
-import { Button } from 'react-daisyui';
+import { Button, Textarea } from 'react-daisyui';
 import LabelForm from '../../LabelForm';
 import ReactSelect from '../../../orther/react-select/ReactSelect';
 import { MacbookCatalogContext } from '../../../../context/macbook-catalog/MacbookCatalogContext';
@@ -30,10 +30,10 @@ const ModalEditMacbookPageAdmin: React.FC<ModalEditPageAdminProps> = ({
   const isLoading = loading.update;
   const { macbookCatalogs } = useContext(MacbookCatalogContext);
 
-    // react-select
-    const macbookCatalog: Option[] = macbookCatalogs.map(macCatalog => ({
-      value: macCatalog._id,
-      label: `${macCatalog.m_cat_name}  \u00A0
+  // react-select
+  const macbookCatalog: Option[] = macbookCatalogs.map(macCatalog => ({
+    value: macCatalog._id,
+    label: `${macCatalog.m_cat_name}  \u00A0
       ${
         macCatalog?.m_cat_status === 0
           ? '(New)'
@@ -41,7 +41,7 @@ const ModalEditMacbookPageAdmin: React.FC<ModalEditPageAdminProps> = ({
             ? '(Đã sử dụng)'
             : macCatalog?.m_cat_status
       }`
-    }));
+  }));
 
   const { control, register, handleSubmit, watch, setValue, reset } =
     useForm<IMacbook>();
@@ -192,8 +192,8 @@ const ModalEditMacbookPageAdmin: React.FC<ModalEditPageAdminProps> = ({
                 placeholder="Tình trạng"
               />
               <LabelForm title={'Mô tả'} />
-              <InputModal
-                type="text"
+              <Textarea
+                className="w-full border p-2 focus:outline-none"
                 {...register('macbook_des')}
                 placeholder="Mô tả"
               />

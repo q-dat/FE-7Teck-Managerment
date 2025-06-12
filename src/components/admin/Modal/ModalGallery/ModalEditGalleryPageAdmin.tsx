@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Toastify } from '../../../../helper/Toastify';
 import InputModal from '../../InputModal';
-import { Button } from 'react-daisyui';
+import { Button, Textarea } from 'react-daisyui';
 import LabelForm from '../../LabelForm';
 import { IGallery } from '../../../../types/type/gallery/gallery';
 import { GalleryContext } from '../../../../context/gallery/GalleryContext';
@@ -104,8 +104,8 @@ const ModalEditGalleryPageAdmin: React.FC<ModalEditPageAdminProps> = ({
                 placeholder="Tên hình ảnh"
               />
               <LabelForm title={'Mô tả'} />
-              <InputModal
-                type="text"
+              <Textarea
+                className="w-full border p-2 focus:outline-none"
                 {...register('des')}
                 placeholder="Mô tả"
               />

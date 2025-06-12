@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Toastify } from '../../../../helper/Toastify';
 import InputModal from '../../InputModal';
-import { Button } from 'react-daisyui';
+import { Button, Textarea } from 'react-daisyui';
 import LabelForm from '../../LabelForm';
 import ReactSelect from '../../../orther/react-select/ReactSelect';
 import { ITablet } from '../../../../types/type/tablet/tablet';
@@ -138,8 +138,8 @@ const ModalCreateTabletPageAdmin: React.FC<ModalCreateAdminProps> = ({
               {...register('tablet_status', { required: true })}
               placeholder="Tình trạng*"
             />
-            <InputModal
-              type="text"
+            <Textarea
+              className="w-full border p-2 focus:outline-none"
               {...register('tablet_des')}
               placeholder="Mô tả"
             />

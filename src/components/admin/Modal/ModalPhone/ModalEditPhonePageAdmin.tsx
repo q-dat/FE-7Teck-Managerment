@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Toastify } from '../../../../helper/Toastify';
 import InputModal from '../../InputModal';
-import { Button } from 'react-daisyui';
+import { Button, Textarea } from 'react-daisyui';
 import { IPhone } from '../../../../types/type/phone/phone';
 import { PhoneContext } from '../../../../context/phone/PhoneContext';
 import { PhoneCatalogContext } from '../../../../context/phone-catalog/PhoneCatalogContext';
@@ -194,8 +194,8 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
                 placeholder="Tình trạng"
               />
               <LabelForm title={'Mô tả'} />
-              <InputModal
-                type="text"
+              <Textarea
+                className="w-full border p-2 focus:outline-none"
                 {...register('des')}
                 placeholder="Mô tả"
               />

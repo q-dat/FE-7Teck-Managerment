@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Toastify } from '../../../../helper/Toastify';
 import InputModal from '../../InputModal';
-import { Button } from 'react-daisyui';
+import { Button, Textarea } from 'react-daisyui';
 import LabelForm from '../../LabelForm';
 import ReactSelect from '../../../orther/react-select/ReactSelect';
 import { WindowsContext } from '../../../../context/windows/WindowsContext';
@@ -192,8 +192,8 @@ const ModalEditWindowsPageAdmin: React.FC<ModalEditPageAdminProps> = ({
                 placeholder="Tình trạng"
               />
               <LabelForm title={'Mô tả'} />
-              <InputModal
-                type="text"
+              <Textarea
+                className="w-full border p-2 focus:outline-none"
                 {...register('windows_des')}
                 placeholder="Mô tả"
               />
