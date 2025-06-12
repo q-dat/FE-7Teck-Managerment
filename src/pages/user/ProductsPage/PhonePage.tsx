@@ -7,6 +7,8 @@ import { Placeholder } from 'semantic-ui-react';
 import { PhoneContext } from '../../../context/phone/PhoneContext';
 import { slugify } from '../../../components/utils/slugify';
 import { scrollToTopSmoothly } from '../../../components/utils/scrollToTopSmoothly';
+import ErrorLoading from '../../../components/orther/error/ErrorLoading';
+import { Status } from '../../../assets/image-represent';
 
 const PhonePage: React.FC = () => {
   const { phones, getAllPhones } = useContext(PhoneContext);
@@ -32,13 +34,13 @@ const PhonePage: React.FC = () => {
   const navigate = useNavigate();
   // Panigation
   const itemsPerPage = 12;
-  const NewiPhones = phones.filter(
-    phone => phone?.phone_catalog_id?.status === 0
-  );
-  const totalPages = Math.ceil(NewiPhones.length / itemsPerPage);
+  // const NewiPhones = phones.filter(
+  //   phone => phone?.phone_catalog_id?.status === 0
+  // );
+  const totalPages = Math.ceil(phones.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentPhones = NewiPhones.slice(indexOfFirstItem, indexOfLastItem);
+  const currentPhones = phones.slice(indexOfFirstItem, indexOfLastItem);
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
@@ -51,6 +53,9 @@ const PhonePage: React.FC = () => {
       setCurrentPage(currentPage - 1);
     }
   };
+  if (!loading && phones.length === 0) {
+    return <ErrorLoading />;
+  }
 
   return (
     <div>
@@ -92,7 +97,7 @@ const PhonePage: React.FC = () => {
                     return (
                       <section
                         key={phone?._id}
-                        className="group flex h-full w-full flex-col justify-between rounded-md border border-white text-black"
+                        className="group relative flex h-full w-full flex-col justify-between rounded-md border border-white text-black"
                       >
                         <div
                           onClick={() =>
@@ -150,6 +155,19 @@ const PhonePage: React.FC = () => {
                             </Link>
                           </div>
                         </div>
+                        {phone?.status && (
+                          <div className="absolute -left-[3px] top-0 z-20">
+                            <img
+                              alt=""
+                              loading="lazy"
+                              width={60}
+                              src={Status}
+                            />
+                            <p className="absolute top-[1px] w-full pl-1 text-xs text-white">
+                              {phone?.status}
+                            </p>
+                          </div>
+                        )}
                       </section>
                     );
                   })}

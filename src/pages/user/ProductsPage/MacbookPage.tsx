@@ -7,6 +7,8 @@ import { Placeholder } from 'semantic-ui-react';
 import { MacbookContext } from '../../../context/macbook/MacbookContext';
 import { slugify } from '../../../components/utils/slugify';
 import { scrollToTopSmoothly } from '../../../components/utils/scrollToTopSmoothly';
+import ErrorLoading from '../../../components/orther/error/ErrorLoading';
+import { Status } from '../../../assets/image-represent';
 
 const MacbookPage: React.FC = () => {
   const { macbook, getAllMacbook } = useContext(MacbookContext);
@@ -49,7 +51,9 @@ const MacbookPage: React.FC = () => {
       setCurrentPage(currentPage - 1);
     }
   };
-
+  if (!loading && macbook.length === 0) {
+    return <ErrorLoading />;
+  }
   return (
     <div>
       <HeaderResponsive Title_NavbarMobile="Laptop Macbook" />
@@ -89,7 +93,7 @@ const MacbookPage: React.FC = () => {
                     return (
                       <section
                         key={macbook?._id}
-                        className="group flex h-full w-full flex-col justify-between rounded-md border border-white text-black"
+                        className="group flex relative h-full w-full flex-col justify-between rounded-md border border-white text-black"
                       >
                         <div
                           onClick={() =>
@@ -146,6 +150,19 @@ const MacbookPage: React.FC = () => {
                             </Link>
                           </div>
                         </div>
+                        {macbook?.macbook_status && (
+                          <div className="absolute -left-[3px] top-0 z-20">
+                            <img
+                              alt=""
+                              loading="lazy"
+                              width={60}
+                              src={Status}
+                            />
+                            <p className="absolute top-[1px] w-full pl-1 text-xs text-white">
+                              {macbook?.macbook_status}
+                            </p>
+                          </div>
+                        )}
                       </section>
                     );
                   })}

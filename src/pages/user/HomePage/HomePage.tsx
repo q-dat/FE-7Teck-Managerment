@@ -90,15 +90,19 @@ const HomePage = () => {
         <Banner />
         {/* <BenefitsSection /> */}
         {/* Product Section */}
-        <div data-aos="fade-down">
-          <PhoneFC data={mostViewedPhones} loading={loading} />
-        </div>
+        {/* <div data-aos="fade-down"> */}
+        <PhoneFC data={mostViewedPhones} loading={loading} />
+        {/* </div> */}
         {/* Bg Fixed */}
         {mostViewedPhones.length !== 0 && <BgFixedSection />}
         {/* Discounted Products Section */}
         <div className="flex w-full flex-col items-center justify-center gap-5">
           {[TabletFC, MacbookFC, WindowsFC].map((Component, index) => (
-            <div key={index} data-aos="fade-up" className="w-full">
+            <div
+              key={index}
+              //  data-aos="fade-up"
+              className="w-full"
+            >
               <Component />
             </div>
           ))}

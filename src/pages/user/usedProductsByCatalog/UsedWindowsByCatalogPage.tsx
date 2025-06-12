@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import HeaderResponsive from '../../../components/userPage/HeaderResponsive';
-import { Sale } from '../../../assets/image-represent';
+import { Status } from '../../../assets/image-represent';
 import { Button } from 'react-daisyui';
 import { FaRegEye } from 'react-icons/fa';
 import { Placeholder } from 'semantic-ui-react';
@@ -136,7 +136,7 @@ const UsedWindowsByCatalogPage = () => {
                       {/*  */}
                       {win?.windows_status && (
                         <div className="absolute -left-[3px] top-0 z-20">
-                          <img alt="" loading="lazy" width={60} src={Sale} />
+                          <img alt="" loading="lazy" width={60} src={Status} />
                           <p className="absolute top-[1px] w-full pl-1 text-xs text-white">
                             {win?.windows_status}
                           </p>
