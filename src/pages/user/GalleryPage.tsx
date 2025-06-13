@@ -31,12 +31,14 @@ const GalleryPage: React.FC = () => {
   const currentGallerys = galleries.slice(indexOfFirstItem, indexOfLastItem);
 
   const handleNextPage = () => {
+    scrollToTopSmoothly();
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
     }
   };
 
   const handlePrevPage = () => {
+    scrollToTopSmoothly();
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
     }
@@ -62,7 +64,7 @@ const GalleryPage: React.FC = () => {
         </div>
         {/*  */}
 
-        <div className="mt-5 xl:px-desktop-padding">
+        <div className="mt-5 px-2 xl:px-desktop-padding">
           <Masonry
             breakpointCols={{
               default: 6,
