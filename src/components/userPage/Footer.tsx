@@ -5,11 +5,22 @@ import { Logo } from '../../assets/images';
 import { FaMapLocationDot } from 'react-icons/fa6';
 import { FaFacebook, FaFacebookMessenger, FaPhone } from 'react-icons/fa';
 import { IoMail } from 'react-icons/io5';
+import {
+  address,
+  contact,
+  copyright,
+  fanpageUrl,
+  hotlineUrl,
+  mail,
+  mailUrl,
+  messengerUrl,
+  zaloUrl
+} from '../utils/socialLinks';
 
 const FooterFC: React.FC = () => {
   return (
     <div className="mb-[50px] xl:mb-0">
-      <Footer className="item-center flex flex-col justify-between bg-black px-2 pb-0 pt-10 text-white xl:flex-row xl:px-desktop-padding  xl:pb-10">
+      <Footer className="item-center flex flex-col justify-between bg-black px-2 pb-0 pt-10 text-white xl:flex-row xl:px-desktop-padding xl:pb-10">
         {/* Logo */}
         <div className="w-full">
           <img
@@ -62,7 +73,7 @@ const FooterFC: React.FC = () => {
             <Link
               title="Liên hệ qua Fanpage"
               target="_blank"
-              to={'https://www.facebook.com/7teck.vn'}
+              to={fanpageUrl}
               className="rounded-full"
             >
               <FaFacebook />
@@ -70,7 +81,7 @@ const FooterFC: React.FC = () => {
             <Link
               title="Liên hệ qua Messenger"
               target="_blank"
-              to={'https://www.messenger.com/t/dangkhoa.pham.93'}
+              to={messengerUrl}
               className="rounded-full"
             >
               <FaFacebookMessenger />
@@ -79,7 +90,7 @@ const FooterFC: React.FC = () => {
               title="Liên hệ qua Zalo"
               target="_blank"
               className="black rounded-full bg-white px-[2px] py-[6px] text-sm font-semibold text-black"
-              to={'https://zalo.me/0983699993'}
+              to={zaloUrl}
             >
               Zalo
             </Link>
@@ -87,16 +98,16 @@ const FooterFC: React.FC = () => {
           <Link
             title="Liên hệ qua Hotline"
             className="flex items-center gap-2 font-light hover:font-semibold"
-            to="tel:0983699993"
+            to={hotlineUrl}
           >
-            <FaPhone /> (+84) 983.699.993 (Khoa)
+            <FaPhone /> {contact}
           </Link>
           <Link
             target="_blank"
             className="flex items-center gap-2 font-light hover:font-semibold"
-            to="mailto:cskh.7teck@gmail.com"
+            to={mailUrl}
           >
-            <IoMail /> cskh.7teck@gmail.com
+            <IoMail /> {mail}
           </Link>
         </div>
         {/* 4 */}
@@ -105,13 +116,13 @@ const FooterFC: React.FC = () => {
           <div className="flex w-full flex-col gap-2 font-light">
             <p className="flex items-start gap-2">
               <FaMapLocationDot className="text-xl" />
-              136/11 Trần Quang Diệu, Phường 12, Quận 3, HCM
+              {address}
             </p>
           </div>
         </div>
       </Footer>
       <div className="border-t-[1px] border-gray-600 bg-black py-2 text-center text-white">
-        Copyright © 2024 7Teck
+        {copyright}
         {/* Designed & developed by Điểu Quốc Đạt. */}
       </div>
     </div>

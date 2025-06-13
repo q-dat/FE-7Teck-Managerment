@@ -21,6 +21,8 @@ import {
   handleThumbnailClick
 } from '../../../components/utils/DetailPage/scrollUtils';
 import Zoom from '../../../lib/Zoom';
+import { contact, hotlineUrl } from '../../../components/utils/socialLinks';
+
 const MacbookDetailPage: React.FC = () => {
   const { id } = useParams();
   const { getMacbookById, macbookDetails } = useContext(MacbookContext);
@@ -213,7 +215,7 @@ const MacbookDetailPage: React.FC = () => {
                 </div>
               </div>
               {/* Note */}
-              <Link role="navigation" aria-label="Hotline" to="tel:0983699993">
+              <Link role="navigation" aria-label="Hotline" to={hotlineUrl}>
                 <div className="h-[80px] w-full rounded-md border border-gray-50 bg-blue-900 p-2">
                   <p className="text-center text-white">
                     <span className="text-2xl font-bold uppercase xl:text-3xl">
@@ -224,7 +226,7 @@ const MacbookDetailPage: React.FC = () => {
                     </span>
                   </p>
                   <i className="text-lg text-white">
-                    *Call ngay 0983.699.993 để có giá tốt nhất!
+                    *Call ngay {contact} để có giá tốt nhất!
                   </i>
                 </div>
               </Link>
