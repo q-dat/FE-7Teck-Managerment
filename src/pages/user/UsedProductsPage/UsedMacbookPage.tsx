@@ -113,7 +113,7 @@ const UsedMacbookPage: React.FC = () => {
                   <div className="w-full p-1">
                     <p className="text-gray-700">
                       Từ:&nbsp;
-                      <span className="text-red-700">
+                      <span className="font-semibold text-red-700">
                         {(macbookCatalog.m_cat_price * 1000).toLocaleString(
                           'vi-VN'
                         )}

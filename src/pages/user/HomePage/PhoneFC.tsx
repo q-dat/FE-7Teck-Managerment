@@ -98,13 +98,13 @@ const PhoneFC: React.FC<PhoneFCProps> = ({ data, loading }) => {
                     </p>
                   </Link>
                   <div className="w-full">
-                    <p className="text-red-700">
+                    <p className="font-semibold text-red-700">
                       {(phone?.price * 1000).toLocaleString('vi-VN')}₫ &nbsp;
-                      <del className="text-xs font-light text-gray-500">
-                        {phone?.sale &&
-                          (phone?.sale * 1000).toLocaleString('vi-VN')}
-                        ₫
-                      </del>
+                      {phone?.sale && (
+                        <del className="text-xs font-light text-gray-500">
+                          (phone?.sale * 1000).toLocaleString('vi-VN') ₫
+                        </del>
+                      )}
                     </p>
                     <Link
                       aria-label="Mua ngay"
