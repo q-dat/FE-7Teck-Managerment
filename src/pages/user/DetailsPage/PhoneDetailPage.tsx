@@ -22,6 +22,7 @@ import {
 } from '../../../components/utils/DetailPage/scrollUtils';
 import Zoom from '../../../lib/Zoom';
 import { contact, hotlineUrl } from '../../../components/utils/socialLinks';
+import { LoadingLocal } from '../../../components/orther/loading';
 
 const PhoneDetailPage: React.FC = () => {
   const { id } = useParams();
@@ -34,20 +35,24 @@ const PhoneDetailPage: React.FC = () => {
   const [isLeftVisible, setIsLeftVisible] = useState(true);
   const [isRightVisible, setIsRightVisible] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null!);
+  const [loading, setLoading] = useState(true);
 
   const fetchData = () => {
-    if (id) {
-      getPhoneById(id)
-        .then(fetchedPhone => {
-          if (fetchedPhone) {
-            setPhone(fetchedPhone);
-            setSelectedImage(fetchedPhone.img);
-          }
-        })
-        .catch(error =>
-          console.error('Lỗi khi lấy dữ liệu điện thoại:', error)
-        );
-    }
+    if (!id) return;
+
+    setLoading(true);
+
+    getPhoneById(id)
+      .then(fetchedData => {
+        if (fetchedData) {
+          setPhone(fetchedData);
+          setSelectedImage(fetchedData.img);
+        } else {
+          console.warn('Không tìm thấy sản phẩm với id:', id);
+        }
+      })
+      .catch(error => console.error('Lỗi khi lấy dữ liệu sản phẩm:', error))
+      .finally(() => setLoading(false));
   };
 
   useLayoutEffect(() => {
@@ -64,7 +69,10 @@ const PhoneDetailPage: React.FC = () => {
     );
     return cleanup;
   }, []);
-
+  
+  if (loading || !phone || !phone?.phone_catalog_id) {
+    return <LoadingLocal />;
+  }
   return (
     <div>
       <HeaderResponsive Title_NavbarMobile="Thông Tin Sản Phẩm" />

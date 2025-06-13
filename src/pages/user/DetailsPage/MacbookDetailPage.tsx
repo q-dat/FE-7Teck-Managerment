@@ -22,6 +22,7 @@ import {
 } from '../../../components/utils/DetailPage/scrollUtils';
 import Zoom from '../../../lib/Zoom';
 import { contact, hotlineUrl } from '../../../components/utils/socialLinks';
+import { LoadingLocal } from '../../../components/orther/loading';
 
 const MacbookDetailPage: React.FC = () => {
   const { id } = useParams();
@@ -34,20 +35,24 @@ const MacbookDetailPage: React.FC = () => {
   const [isLeftVisible, setIsLeftVisible] = useState(true);
   const [isRightVisible, setIsRightVisible] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null!);
+  const [loading, setLoading] = useState(true);
 
   const fetchData = () => {
-    if (id) {
-      getMacbookById(id)
-        .then(fetchedPhone => {
-          if (fetchedPhone) {
-            setMac(fetchedPhone);
-            setSelectedImage(fetchedPhone.macbook_img);
-          }
-        })
-        .catch(error =>
-          console.error('Lỗi khi lấy dữ liệu điện thoại:', error)
-        );
-    }
+    if (!id) return;
+
+    setLoading(true);
+
+    getMacbookById(id)
+      .then(fetchedData => {
+        if (fetchedData) {
+          setMac(fetchedData);
+          setSelectedImage(fetchedData.macbook_img);
+        } else {
+          console.warn('Không tìm thấy sản phẩm với id:', id);
+        }
+      })
+      .catch(error => console.error('Lỗi khi lấy dữ liệu sản phẩm:', error))
+      .finally(() => setLoading(false));
   };
 
   useLayoutEffect(() => {
@@ -64,6 +69,10 @@ const MacbookDetailPage: React.FC = () => {
     );
     return cleanup;
   }, []);
+  
+  if (loading || !mac || !mac?.macbook_catalog_id) {
+    return <LoadingLocal />;
+  }
 
   return (
     <div>

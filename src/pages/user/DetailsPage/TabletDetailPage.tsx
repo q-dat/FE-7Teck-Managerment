@@ -22,6 +22,7 @@ import {
 } from '../../../components/utils/DetailPage/scrollUtils';
 import Zoom from '../../../lib/Zoom';
 import { contact, hotlineUrl } from '../../../components/utils/socialLinks';
+import { LoadingLocal } from '../../../components/orther/loading';
 
 const TabletDetailPage: React.FC = () => {
   const { id } = useParams();
@@ -34,20 +35,24 @@ const TabletDetailPage: React.FC = () => {
   const [isLeftVisible, setIsLeftVisible] = useState(true);
   const [isRightVisible, setIsRightVisible] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null!);
+  const [loading, setLoading] = useState(true);
 
   const fetchData = () => {
-    if (id) {
-      getTabletById(id)
-        .then(fetchedPhone => {
-          if (fetchedPhone) {
-            setTablet(fetchedPhone);
-            setSelectedImage(fetchedPhone.tablet_img);
-          }
-        })
-        .catch(error =>
-          console.error('Lỗi khi lấy dữ liệu điện thoại:', error)
-        );
-    }
+    if (!id) return;
+
+    setLoading(true);
+
+    getTabletById(id)
+      .then(fetchedData => {
+        if (fetchedData) {
+          setTablet(fetchedData);
+          setSelectedImage(fetchedData.tablet_img);
+        } else {
+          console.warn('Không tìm thấy sản phẩm với id:', id);
+        }
+      })
+      .catch(error => console.error('Lỗi khi lấy dữ liệu sản phẩm:', error))
+      .finally(() => setLoading(false));
   };
 
   useLayoutEffect(() => {
@@ -65,6 +70,9 @@ const TabletDetailPage: React.FC = () => {
     return cleanup;
   }, []);
 
+  if (loading || !tablet || !tablet?.tablet_catalog_id) {
+    return <LoadingLocal />;
+  }
   return (
     <div>
       <HeaderResponsive Title_NavbarMobile="Thông Tin Sản Phẩm" />

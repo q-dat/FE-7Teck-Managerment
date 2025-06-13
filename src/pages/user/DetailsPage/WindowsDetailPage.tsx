@@ -22,6 +22,7 @@ import {
 import { scrollToTopSmoothly } from '../../../components/utils/scrollToTopSmoothly';
 import Zoom from '../../../lib/Zoom';
 import { contact, hotlineUrl } from '../../../components/utils/socialLinks';
+import { LoadingLocal } from '../../../components/orther/loading';
 
 const WindowsDetailPage: React.FC = () => {
   const { id } = useParams();
@@ -34,20 +35,24 @@ const WindowsDetailPage: React.FC = () => {
   const [isLeftVisible, setIsLeftVisible] = useState(true);
   const [isRightVisible, setIsRightVisible] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null!);
+  const [loading, setLoading] = useState(true);
 
   const fetchData = () => {
-    if (id) {
-      getWindowsById(id)
-        .then(fetchedPhone => {
-          if (fetchedPhone) {
-            setWin(fetchedPhone);
-            setSelectedImage(fetchedPhone.windows_img);
-          }
-        })
-        .catch(error =>
-          console.error('Lỗi khi lấy dữ liệu điện thoại:', error)
-        );
-    }
+    if (!id) return;
+
+    setLoading(true);
+
+    getWindowsById(id)
+      .then(fetchedData => {
+        if (fetchedData) {
+          setWin(fetchedData);
+          setSelectedImage(fetchedData.windows_img);
+        } else {
+          console.warn('Không tìm thấy sản phẩm với id:', id);
+        }
+      })
+      .catch(error => console.error('Lỗi khi lấy dữ liệu sản phẩm:', error))
+      .finally(() => setLoading(false));
   };
 
   useLayoutEffect(() => {
@@ -65,6 +70,9 @@ const WindowsDetailPage: React.FC = () => {
     return cleanup;
   }, []);
 
+  if (loading || !win || !win?.windows_catalog_id) {
+    return <LoadingLocal />;
+  }
   return (
     <div>
       <HeaderResponsive Title_NavbarMobile="Thông Tin Sản Phẩm" />
