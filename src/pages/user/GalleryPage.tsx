@@ -7,6 +7,7 @@ import 'react-medium-image-zoom/dist/styles.css';
 import Pagination from '../../components/userPage/Pagination';
 import { scrollToTopSmoothly } from '../../components/utils/scrollToTopSmoothly';
 import ErrorLoading from '../../components/orther/error/ErrorLoading';
+import Masonry from 'react-masonry-css';
 
 const GalleryPage: React.FC = () => {
   const { galleries, getAllGallerys } = useContext(GalleryContext);
@@ -22,7 +23,7 @@ const GalleryPage: React.FC = () => {
   }, []);
 
   // Panigation
-  const itemsPerPage = 12;
+  const itemsPerPage = 24;
 
   const totalPages = Math.ceil(galleries.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -62,19 +63,29 @@ const GalleryPage: React.FC = () => {
         {/*  */}
 
         <div className="mt-5 xl:px-desktop-padding">
-          <div className="grid grid-flow-row grid-cols-2 gap-2 bg-white p-2 md:grid-cols-3 xl:grid-cols-6 xl:rounded-md">
+          <Masonry
+            breakpointCols={{
+              default: 6,
+              1280: 6,
+              1024: 4,
+              768: 3,
+              640: 2
+            }}
+            className="my-masonry-grid"
+            columnClassName="my-masonry-grid_column"
+          >
             {currentGallerys.map((gallery, index) => (
               <Zoom key={index}>
-                <div className="w-full overflow-hidden rounded-md">
+                <div className="mb-2 overflow-hidden rounded-md">
                   <img
-                    alt=""
                     src={`${gallery.gallery}`}
-                    className="h-auto w-full rounded-md border border-dashed border-black object-contain transition-transform duration-1000 ease-in-out hover:scale-110"
+                    alt=""
+                    className="w-full rounded-md border border-dashed border-black object-contain transition-transform duration-300 hover:scale-105"
                   />
                 </div>
               </Zoom>
             ))}
-          </div>
+          </Masonry>
         </div>
         {/* Pagination Controls */}
         <Pagination

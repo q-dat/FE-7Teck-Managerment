@@ -233,7 +233,7 @@ const Header: React.FC = () => {
                 onMouseLeave={handleMouseLeave}
               >
                 <NavLink
-                  to={item.link}
+                  to={item.link || window.location}
                   className={`btn relative flex w-full items-center justify-center gap-1 rounded-none border-none ${
                     item.name === activeItem
                       ? 'bg-primary bg-opacity-20 text-sm font-bold text-primary'

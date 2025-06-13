@@ -135,11 +135,11 @@ const PhonePage: React.FC = () => {
                                 {(phone?.price * 1000).toLocaleString('vi-VN')}₫
                               </span>
                               &nbsp;
-                              <del className="text-xs font-light text-gray-100">
-                                {phone?.sale &&
-                                  (phone?.sale * 1000).toLocaleString('vi-VN')}
-                                ₫
-                              </del>
+                              {phone?.sale && (
+                                <del className="text-xs font-light text-gray-100">
+                                  (phone?.sale * 1000).toLocaleString('vi-VN') ₫
+                                </del>
+                              )}
                             </p>
                             <Link
                               aria-label="Mua ngay"

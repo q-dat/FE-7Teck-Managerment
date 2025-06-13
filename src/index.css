@@ -54,3 +54,16 @@
   transition: all 0.5s ease-in-out;
   animation: zoomBorderBtn 2s infinite ease-in-out;
 }
+/* react-masonry-css */
+.my-masonry-grid {
+  display: flex;
+  margin-left: -10px; /* gutter size offset */
+  width: auto;
+}
+.my-masonry-grid_column {
+  padding-left: 10px; /* gutter size */
+  background-clip: padding-box;
+}
+.my-masonry-grid_column > div {
+  margin-bottom: 10px;
+}
