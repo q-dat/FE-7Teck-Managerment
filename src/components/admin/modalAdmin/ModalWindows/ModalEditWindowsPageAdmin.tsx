@@ -8,6 +8,8 @@ import ReactSelect from '../../../orther/react-select/ReactSelect';
 import { WindowsContext } from '../../../../context/windows/WindowsContext';
 import { WindowsCatalogContext } from '../../../../context/windows-catalog/WindowsCatalogContext';
 import { IWindows } from '../../../../types/type/windows/windows';
+import { IWindowsCatalog } from '../../../../types/type/windows-catalog/windows-catalog';
+import Zoom from '../../../../lib/Zoom';
 
 interface ModalEditPageAdminProps {
   isOpen: boolean;
@@ -53,6 +55,9 @@ const ModalEditWindowsPageAdmin: React.FC<ModalEditPageAdminProps> = ({
 
   // Theo dõi giá trị của windows_catalog_id
   const selectedCatalogId = watch('windows_catalog_id._id');
+  const [selectedCategory, setSelectedCategory] =
+    useState<IWindowsCatalog | null>(null);
+  const [useCategoryImage, setUseCategoryImage] = useState(false);
 
   // Cập nhật windows_name khi danh mục được chọn
   useEffect(() => {
@@ -62,6 +67,7 @@ const ModalEditWindowsPageAdmin: React.FC<ModalEditPageAdminProps> = ({
       );
       if (selectedCatalog) {
         setValue('windows_name', selectedCatalog.w_cat_name);
+        setSelectedCategory(selectedCatalog);
       }
     }
   }, [selectedCatalogId, windowsCatalogs, setValue]);
@@ -99,27 +105,34 @@ const ModalEditWindowsPageAdmin: React.FC<ModalEditPageAdminProps> = ({
     data.append('windows_des', formData.windows_des || '');
     data.append('windows_note', formData.windows_note || '');
 
-    // Thêm ảnh chính
-    const imgFile = watch('windows_img');
-    if (imgFile && imgFile[0]) {
-      data.append('windows_img', imgFile[0]);
-    } else if (existingImg) {
-      data.append('windows_img', existingImg);
-    }
-
-    // Thêm nhiều ảnh thu nhỏ
-    const thumbnailFiles = watch('windows_thumbnail');
-    if (thumbnailFiles && thumbnailFiles.length > 0) {
-      Array.from(thumbnailFiles).forEach(file => {
-        data.append('windows_thumbnail', file);
-      });
-    } else if (existingThumbnail && existingThumbnail.length > 0) {
-      existingThumbnail.forEach(thumbnail => {
-        data.append('windows_thumbnail', thumbnail);
-      });
-    }
-
     try {
+      // Thêm ảnh chính (Ảnh có sẵn từ danh mục nếu không sẽ lấy ảnh từ upload)
+      if (useCategoryImage && selectedCategory?.w_cat_img) {
+        const res = await fetch(selectedCategory.w_cat_img);
+        const blob = await res.blob();
+        const file = new File([blob], 'category-img.jpg', { type: blob.type });
+        data.append('windows_img', file);
+      } else {
+        const imgFile = watch('windows_img');
+        if (imgFile && imgFile[0]) {
+          data.append('windows_img', imgFile[0]);
+        } else if (existingImg) {
+          data.append('windows_img', existingImg);
+        }
+      }
+
+      // Thêm nhiều ảnh thu nhỏ
+      const thumbnailFiles = watch('windows_thumbnail');
+      if (thumbnailFiles && thumbnailFiles.length > 0) {
+        Array.from(thumbnailFiles).forEach(file => {
+          data.append('windows_thumbnail', file);
+        });
+      } else if (existingThumbnail && existingThumbnail.length > 0) {
+        existingThumbnail.forEach(thumbnail => {
+          data.append('windows_thumbnail', thumbnail);
+        });
+      }
+
       await updateWindows(windowsId, data);
       reset();
       getAllWindows();
@@ -180,6 +193,37 @@ const ModalEditWindowsPageAdmin: React.FC<ModalEditPageAdminProps> = ({
                   className="w-full"
                 />
               </div>
+              {/* Ảnh từ danh mục */}
+              {selectedCategory?.w_cat_img && (
+                <div className="mt-2 w-full">
+                  <p className="text-sm text-gray-600">
+                    Ảnh từ danh mục đã chọn (Click ảnh để xem):
+                  </p>
+                  <Zoom>
+                    <img
+                      src={selectedCategory.w_cat_img}
+                      alt="Ảnh danh mục"
+                      className="mt-1 w-20 rounded border"
+                    />
+                  </Zoom>
+                  <label
+                    className={`mt-2 flex cursor-pointer items-center space-x-2 rounded border px-2 py-1 ${
+                      useCategoryImage ? 'bg-green-100' : 'bg-red-50'
+                    }`}
+                  >
+                    <input
+                      type="checkbox"
+                      className="checkbox-primary checkbox scale-90"
+                      checked={useCategoryImage}
+                      onChange={e => setUseCategoryImage(e.target.checked)}
+                    />
+                    <span className="text-sm text-black dark:text-white">
+                      Dùng ảnh này làm ảnh sản phẩm
+                    </span>
+                  </label>
+                </div>
+              )}
+
               <LabelForm title={'Giá'} />
               <InputModal
                 type="number"
@@ -212,29 +256,38 @@ const ModalEditWindowsPageAdmin: React.FC<ModalEditPageAdminProps> = ({
                 {...register('windows_des')}
                 placeholder="Mô tả"
               />
-              <LabelForm title={'Hình ảnh'} />
-              {existingImg && (
-                <div className="my-2">
-                  <img
-                    src={existingImg}
-                    className="h-10 w-10 rounded-md object-cover"
+              {!useCategoryImage && (
+                <>
+                  <LabelForm title={'Hình ảnh hiện tại:'} />
+                  {existingImg && (
+                    <div className="my-2">
+                      <Zoom>
+                        <img
+                          src={existingImg}
+                          className="h-auto w-16 rounded-md object-contain"
+                        />
+                      </Zoom>
+                    </div>
+                  )}
+                  <InputModal
+                    type="file"
+                    {...register('windows_img')}
+                    placeholder="Chèn ảnh hình ảnh"
                   />
-                </div>
+                </>
               )}
-              <InputModal
-                type="file"
-                {...register('windows_img')}
-                placeholder="Chèn ảnh hình ảnh"
-              />
-              <LabelForm title={'Ảnh thu nhỏ'} />
+
+              <LabelForm title={'Ảnh thu nhỏ:'} />
               {existingThumbnail && existingThumbnail.length > 0 && (
                 <div className="my-2 flex flex-wrap gap-2">
                   {existingThumbnail.map((thumbnail, index) => (
-                    <img
-                      key={index}
-                      src={thumbnail}
-                      className="h-10 w-10 rounded-md object-cover"
-                    />
+                    <Zoom>
+                      <img
+                        key={index}
+                        src={thumbnail}
+                        className="h-10 w-10 rounded-md object-cover"
+                      />
+                    </Zoom>
                   ))}
                 </div>
               )}
