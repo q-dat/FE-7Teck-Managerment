@@ -7,11 +7,9 @@ import Select from 'react-select';
 import { Select as SelectDaisyUi } from 'react-daisyui';
 import LabelForm from '../../LabelForm';
 import { optionsMacbookData } from '../../../../types/type/optionsData/optionsMacbookData';
-
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
 import { MacbookCatalogContext } from '../../../../context/macbook-catalog/MacbookCatalogContext';
 import { IMacbookCatalog } from '../../../../types/type/macbook-catalog/macbook-catalog';
+import ReactQuill from 'react-quill';
 
 const modules = {
   toolbar: [

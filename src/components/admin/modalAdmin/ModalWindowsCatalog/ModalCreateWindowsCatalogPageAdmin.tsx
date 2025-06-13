@@ -7,11 +7,9 @@ import Select from 'react-select';
 import { Select as SelectDaisyUi } from 'react-daisyui';
 import LabelForm from '../../LabelForm';
 import { optionsWindowsData } from '../../../../types/type/optionsData/optionsWindowsData';
-
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
 import { IWindowsCatalog } from '../../../../types/type/windows-catalog/windows-catalog';
 import { WindowsCatalogContext } from '../../../../context/windows-catalog/WindowsCatalogContext';
+import ReactQuill from 'react-quill';
 
 const modules = {
   toolbar: [

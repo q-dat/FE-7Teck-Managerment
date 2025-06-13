@@ -6,11 +6,10 @@ import { Button } from 'react-daisyui';
 import Select from 'react-select';
 import { Select as SelectDaisyUi } from 'react-daisyui';
 import LabelForm from '../../LabelForm';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
 import { optionsTabletData } from '../../../../types/type/optionsData/optionsTabletData';
 import { TabletCatalogContext } from '../../../../context/tablet-catalog/TabletCatalogContext';
 import { ITabletCatalog } from '../../../../types/type/tablet-catalog/tablet-catalog';
+import ReactQuill from 'react-quill';
 
 const modules = {
   toolbar: [
@@ -214,20 +213,20 @@ const ModalEditTabletCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                 {...register('t_cat_price')}
                 placeholder="Nhập giá (Hệ số x1000: 1triệu = 1000)"
               />
-             <div>
-             <LabelForm title={'Trạng thái*'} />
-              <SelectDaisyUi
-                className="my-2 w-full border border-gray-700 border-opacity-50 bg-white text-black focus:border-primary focus:outline-none dark:border-secondary dark:bg-gray-700 dark:text-white dark:focus:border-white"
-                defaultValue={''}
-                {...register('t_cat_status')}
-              >
-                <option disabled value={''}>
-                  Chọn trạng thái
-                </option>
-                <option value={0}>New</option>
-                <option value={1}>Đã sử dụng</option>
-              </SelectDaisyUi>
-             </div>
+              <div>
+                <LabelForm title={'Trạng thái*'} />
+                <SelectDaisyUi
+                  className="my-2 w-full border border-gray-700 border-opacity-50 bg-white text-black focus:border-primary focus:outline-none dark:border-secondary dark:bg-gray-700 dark:text-white dark:focus:border-white"
+                  defaultValue={''}
+                  {...register('t_cat_status')}
+                >
+                  <option disabled value={''}>
+                    Chọn trạng thái
+                  </option>
+                  <option value={0}>New</option>
+                  <option value={1}>Đã sử dụng</option>
+                </SelectDaisyUi>
+              </div>
 
               <LabelForm title={'Hình ảnh*'} />
               <InputModal

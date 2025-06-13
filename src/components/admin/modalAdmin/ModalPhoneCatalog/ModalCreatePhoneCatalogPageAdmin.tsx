@@ -8,10 +8,8 @@ import { Select as SelectDaisyUi } from 'react-daisyui';
 import LabelForm from '../../LabelForm';
 import { PhoneCatalogContext } from '../../../../context/phone-catalog/PhoneCatalogContext';
 import { IPhoneCatalog } from '../../../../types/type/phone-catalog/phone-catalog';
-
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
 import { optionsPhoneData } from '../../../../types/type/optionsData/optionsPhoneData';
+import ReactQuill from 'react-quill';
 
 const modules = {
   toolbar: [

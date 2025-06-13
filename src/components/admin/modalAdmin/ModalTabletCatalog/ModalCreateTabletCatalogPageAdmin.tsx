@@ -7,11 +7,9 @@ import Select from 'react-select';
 import { Select as SelectDaisyUi } from 'react-daisyui';
 import LabelForm from '../../LabelForm';
 import { optionsTabletData } from '../../../../types/type/optionsData/optionsTabletData';
-
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
 import { TabletCatalogContext } from '../../../../context/tablet-catalog/TabletCatalogContext';
 import { ITabletCatalog } from '../../../../types/type/tablet-catalog/tablet-catalog';
+import ReactQuill from 'react-quill';
 
 const modules = {
   toolbar: [

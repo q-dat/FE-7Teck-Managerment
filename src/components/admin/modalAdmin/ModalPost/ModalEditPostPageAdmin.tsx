@@ -3,12 +3,11 @@ import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { IPost } from '../../../../types/type/post/post';
 import InputModal from '../../InputModal';
 import { Button, Select, Textarea } from 'react-daisyui';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
 import { Toastify } from '../../../../helper/Toastify';
 import { PostContext } from '../../../../context/post/PostContext';
 import { PostCatalogContext } from '../../../../context/post-catalog/PostCatalogContext';
 import LabelForm from '../../LabelForm';
+import ReactQuill from 'react-quill';
 
 const modules = {
   toolbar: [

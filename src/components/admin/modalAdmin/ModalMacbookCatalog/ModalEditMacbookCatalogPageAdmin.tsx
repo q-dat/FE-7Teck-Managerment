@@ -6,11 +6,10 @@ import { Button } from 'react-daisyui';
 import Select from 'react-select';
 import { Select as SelectDaisyUi } from 'react-daisyui';
 import LabelForm from '../../LabelForm';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
 import { IMacbookCatalog } from '../../../../types/type/macbook-catalog/macbook-catalog';
 import { MacbookCatalogContext } from '../../../../context/macbook-catalog/MacbookCatalogContext';
 import { optionsMacbookData } from '../../../../types/type/optionsData/optionsMacbookData';
+import ReactQuill from 'react-quill';
 
 const modules = {
   toolbar: [
