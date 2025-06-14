@@ -15,6 +15,7 @@ import { GiRibbonMedal } from 'react-icons/gi';
 import menuItems from '../utils/menuItems';
 import { handleSearch } from '../utils/searchUtils';
 import { slugify } from '../utils/slugify';
+import { hotlineUrl } from '../utils/socialLinks';
 
 const items = [
   {
@@ -195,10 +196,10 @@ const Header: React.FC = () => {
           </div>
           <div className="flex items-center">
             <Link
-              to="tel:0983699993"
+              to={hotlineUrl}
               className="flex items-center gap-[1px] font-light"
             >
-              <HiPhoneArrowUpRight className="text-xs" /> (+84) 983.699.993
+              <HiPhoneArrowUpRight className="text-xs" /> (+84) 333.133.050
             </Link>
           </div>
         </div>
