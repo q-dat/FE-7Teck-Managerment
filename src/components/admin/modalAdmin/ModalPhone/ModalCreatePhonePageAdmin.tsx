@@ -118,7 +118,7 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreateAdminProps> = ({
               Tạo sản phẩm mới
             </p>
             <InputModal
-              className="hidden"
+              // className="hidden"
               type="text"
               {...register('name', { required: true })}
               placeholder="Tên sản phẩm*"

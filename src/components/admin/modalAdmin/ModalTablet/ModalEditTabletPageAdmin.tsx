@@ -164,7 +164,7 @@ const ModalEditTabletPageAdmin: React.FC<ModalEditPageAdminProps> = ({
           <div className="flex w-full flex-row items-start justify-between gap-10">
             <div className="flex w-full flex-col items-start justify-center">
               <InputModal
-                className="hidden"
+                // className="hidden"
                 type="text"
                 {...register('tablet_name')}
                 placeholder="Tên danh mục"

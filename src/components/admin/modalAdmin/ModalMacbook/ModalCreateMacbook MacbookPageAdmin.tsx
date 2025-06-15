@@ -119,7 +119,7 @@ const ModalCreateMacbookPageAdmin: React.FC<ModalCreateAdminProps> = ({
               Tạo sản phẩm mới
             </p>
             <InputModal
-              className="hidden"
+              // className="hidden"
               type="text"
               {...register('macbook_name', { required: true })}
               placeholder="Tên sản phẩm*"
