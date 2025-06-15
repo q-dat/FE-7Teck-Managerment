@@ -1,6 +1,8 @@
 import React from 'react';
-import { LogoMessenger, LogoZalo } from '../../assets/images';
+import { LogoZalo } from '../../assets/images';
 import { Link } from 'react-router-dom';
+import { FaFacebookMessenger } from 'react-icons/fa6';
+import { messengerUrl, zaloUrl } from '../utils/socialLinks';
 
 const ContactForm: React.FC = () => {
   return (
@@ -9,21 +11,17 @@ const ContactForm: React.FC = () => {
         <Link
           title="Liên hệ qua Messenger"
           target="_blank"
-          to={'https://www.messenger.com/t/dangkhoa.pham.93'}
+          to={messengerUrl}
           aria-label="Liên hệ qua Messenger"
         >
-          <img
-            src={LogoMessenger}
-            alt="Messenger"
-            className="h-full w-[45px] rounded-xl xl:w-[50px]"
-          />
+          <FaFacebookMessenger className="text-[50px] text-[#1f6bf6]" />
         </Link>
       </div>
       <div>
         <Link
           title="Liên hệ qua Zalo"
           target="_blank"
-          to={'https://zalo.me/0983699993'}
+          to={zaloUrl}
           aria-label="Liên hệ qua Zalo"
         >
           <img
