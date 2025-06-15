@@ -49,138 +49,141 @@ const TabletFC: React.FC = () => {
           )}
         </h1>
       </div>
-      <section
-        ref={scrollRef}
-        className="relative grid w-full grid-flow-col grid-rows-1 items-center justify-start gap-[10px] overflow-x-auto scroll-smooth rounded-none border-[10px] border-transparent bg-white pt-0 scrollbar-hide xl:rounded-t-lg xl:pt-0"
-      >
-        {loading ? (
-          Array.from({ length: 6 }).map((_, index) => (
-            <div key={index} className="w-[195px] p-2">
-              <Placeholder>
-                <Placeholder.Image square />
-                <Placeholder.Line />
-                <Placeholder.Line length="full" />
-                <Placeholder.Line length="full" />
-              </Placeholder>
-            </div>
-          ))
-        ) : sortedTablets.length === 0 ? (
-          <></>
-        ) : (
-          sortedTablets.map(tablet => {
-            const tabletUrl = slugify(tablet.tablet_name);
-
-            return (
-              <div
-                onClick={() => updateTabletView(tablet._id)}
-                key={tablet._id}
-                className="group relative flex h-full w-[195px] flex-col justify-between rounded-md border border-[#f2f4f7] text-black"
-              >
-                <Link
-                  aria-label="Xem chi tiết sản phẩm khi ấn vào hình ảnh"
-                  to={`/may-tinh-bang/${tabletUrl}/${tablet?._id}`}
-                >
-                  <div className="relative h-[200px] w-full cursor-pointer overflow-hidden">
-                    <img
-                      alt="Hình ảnh"
-                      loading="lazy"
-                      className="absolute left-0 top-0 z-0 h-full w-full rounded-[5px] rounded-b-none object-cover blur-xl filter"
-                      src={tablet.tablet_img}
-                    />
-                    <img
-                      alt="Hình ảnh"
-                      loading="lazy"
-                      className="absolute left-0 top-0 z-10 h-full w-full rounded-[5px] rounded-b-none object-contain transition-transform duration-1000 ease-in-out hover:scale-110"
-                      src={tablet.tablet_img}
-                    />
-                  </div>
-                </Link>
-
-                {/*  */}
-                <div className="flex h-full w-full flex-col items-start justify-between p-1">
-                  <Link
-                    aria-label="Xem chi tiết sản phẩm khi nhấn vào tên sản phẩm"
-                    className="w-full cursor-pointer"
-                    to={`/may-tinh-bang/${tabletUrl}/${tablet?._id}`}
-                  >
-                    <p className="xl:group-hover:text-secondary">
-                      Điện Thoại {tablet.tablet_name}
-                    </p>
-                  </Link>
-                  <div className="w-full">
-                    <p className="text-red-700">
-                      {(tablet?.tablet_price * 1000).toLocaleString('vi-VN')}₫
-                      &nbsp;
-                      {tablet?.tablet_sale && (
-                        <del className="text-xs font-light text-gray-500">
-                          (tablet?.tablet_sale * 1000).toLocaleString('vi-VN') ₫
-                        </del>
-                      )}
-                    </p>
-                    <Link
-                      aria-label="Mua ngay"
-                      to="/thanh-toan"
-                      className="z-50 w-full"
-                    >
-                      <Button
-                        size="xs"
-                        className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary hover:bg-primary hover:bg-opacity-20"
-                      >
-                        Mua Ngay
-                      </Button>
-                    </Link>
-                  </div>
-                </div>
-                {/*  */}
-                {tablet?.tablet_status && (
-                  <div className="absolute -left-[3px] top-0 z-20">
-                    <img
-                      alt=""
-                      loading="lazy"
-                      className="h-full w-[60px]"
-                      src={Status}
-                    />
-                    <p className="absolute top-[1px] w-full pl-2 text-xs text-white">
-                      {tablet?.tablet_status}
-                    </p>
-                  </div>
-                )}
-              </div>
-            );
-          })
-        )}
-      </section>
-      <Link to="/may-tinh-bang" aria-label=" Xem thêm sản phẩm iPad">
-        <>
+      <div className="relative">
+        <section
+          ref={scrollRef}
+          className="grid w-full grid-flow-col grid-rows-1 items-center justify-start gap-[10px] overflow-x-auto scroll-smooth rounded-none border-[10px] border-transparent bg-white pt-0 scrollbar-hide xl:rounded-t-lg xl:pt-0"
+        >
           {loading ? (
-            <>Đang tải...</>
+            Array.from({ length: 6 }).map((_, index) => (
+              <div key={index} className="w-[195px] p-2">
+                <Placeholder>
+                  <Placeholder.Image square />
+                  <Placeholder.Line />
+                  <Placeholder.Line length="full" />
+                  <Placeholder.Line length="full" />
+                </Placeholder>
+              </div>
+            ))
           ) : sortedTablets.length === 0 ? (
             <></>
           ) : (
-            <button className="flex w-full cursor-pointer items-center justify-center bg-gradient-to-r from-white via-secondary to-white py-1 text-sm text-white xl:rounded-b-lg">
-              Xem Thêm Sản Phẩm iPad
-              <IoIosArrowForward className="text-xl" />
-            </button>
+            sortedTablets.map(tablet => {
+              const tabletUrl = slugify(tablet.tablet_name);
+
+              return (
+                <div
+                  onClick={() => updateTabletView(tablet._id)}
+                  key={tablet._id}
+                  className="group relative flex h-full w-[195px] flex-col justify-between rounded-md border border-[#f2f4f7] text-black"
+                >
+                  <Link
+                    aria-label="Xem chi tiết sản phẩm khi ấn vào hình ảnh"
+                    to={`/may-tinh-bang/${tabletUrl}/${tablet?._id}`}
+                  >
+                    <div className="relative h-[200px] w-full cursor-pointer overflow-hidden">
+                      <img
+                        alt="Hình ảnh"
+                        loading="lazy"
+                        className="absolute left-0 top-0 z-0 h-full w-full rounded-[5px] rounded-b-none object-cover blur-xl filter"
+                        src={tablet.tablet_img}
+                      />
+                      <img
+                        alt="Hình ảnh"
+                        loading="lazy"
+                        className="absolute left-0 top-0 z-10 h-full w-full rounded-[5px] rounded-b-none object-contain transition-transform duration-1000 ease-in-out hover:scale-110"
+                        src={tablet.tablet_img}
+                      />
+                    </div>
+                  </Link>
+
+                  {/*  */}
+                  <div className="flex h-full w-full flex-col items-start justify-between p-1">
+                    <Link
+                      aria-label="Xem chi tiết sản phẩm khi nhấn vào tên sản phẩm"
+                      className="w-full cursor-pointer"
+                      to={`/may-tinh-bang/${tabletUrl}/${tablet?._id}`}
+                    >
+                      <p className="xl:group-hover:text-secondary">
+                        Điện Thoại {tablet.tablet_name}
+                      </p>
+                    </Link>
+                    <div className="w-full">
+                      <p className="text-red-700">
+                        {(tablet?.tablet_price * 1000).toLocaleString('vi-VN')}₫
+                        &nbsp;
+                        {tablet?.tablet_sale && (
+                          <del className="text-xs font-light text-gray-500">
+                            (tablet?.tablet_sale * 1000).toLocaleString('vi-VN')
+                            ₫
+                          </del>
+                        )}
+                      </p>
+                      <Link
+                        aria-label="Mua ngay"
+                        to="/thanh-toan"
+                        className="z-50 w-full"
+                      >
+                        <Button
+                          size="xs"
+                          className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary hover:bg-primary hover:bg-opacity-20"
+                        >
+                          Mua Ngay
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                  {/*  */}
+                  {tablet?.tablet_status && (
+                    <div className="absolute -left-[3px] top-0 z-20">
+                      <img
+                        alt=""
+                        loading="lazy"
+                        className="h-full w-[60px]"
+                        src={Status}
+                      />
+                      <p className="absolute top-[1px] w-full pl-2 text-xs text-white">
+                        {tablet?.tablet_status}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              );
+            })
           )}
-        </>
-      </Link>
-      {/* Navigation Button  */}
-      <div className="absolute top-1/2 flex w-full items-center justify-between">
-        <div className="relative w-full">
-          <button
-            aria-label="Cuộn sang trái"
-            onClick={() => scrollBy(-380)}
-            className={`absolute -top-2 left-0 z-[100] rounded-full border-none bg-black bg-opacity-20 text-white ${isLeftVisible ? '' : 'hidden'}`}
-          >
-            <MdArrowBackIosNew className="text-4xl" />
-          </button>
-          <button
-            aria-label="Cuộn sang phải"
-            onClick={() => scrollBy(380)}
-            className={`absolute -top-2 right-0 z-[100] rounded-full border-none bg-black bg-opacity-20 text-white ${isRightVisible ? '' : 'hidden'}`}
-          >
-            <MdArrowForwardIos className="text-4xl" />
-          </button>
+        </section>
+        <Link to="/may-tinh-bang" aria-label=" Xem thêm sản phẩm iPad">
+          <>
+            {loading ? (
+              <>Đang tải...</>
+            ) : sortedTablets.length === 0 ? (
+              <></>
+            ) : (
+              <button className="flex w-full cursor-pointer items-center justify-center bg-gradient-to-r from-white via-secondary to-white py-1 text-sm text-white xl:rounded-b-lg">
+                Xem Thêm Sản Phẩm iPad
+                <IoIosArrowForward className="text-xl" />
+              </button>
+            )}
+          </>
+        </Link>
+        {/* Navigation Button  */}
+        <div className="absolute top-1/2 flex w-full items-center justify-between">
+          <div className="relative w-full">
+            <button
+              aria-label="Cuộn sang trái"
+              onClick={() => scrollBy(-380)}
+              className={`absolute -top-2 left-0 z-[100] rounded-full border-none bg-black bg-opacity-20 text-white ${isLeftVisible ? '' : 'hidden'}`}
+            >
+              <MdArrowBackIosNew className="text-4xl" />
+            </button>
+            <button
+              aria-label="Cuộn sang phải"
+              onClick={() => scrollBy(380)}
+              className={`absolute -top-2 right-0 z-[100] rounded-full border-none bg-black bg-opacity-20 text-white ${isRightVisible ? '' : 'hidden'}`}
+            >
+              <MdArrowForwardIos className="text-4xl" />
+            </button>
+          </div>
         </div>
       </div>
     </div>
