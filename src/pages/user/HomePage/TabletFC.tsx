@@ -152,20 +152,7 @@ const TabletFC: React.FC = () => {
             })
           )}
         </section>
-        <Link to="/may-tinh-bang" aria-label=" Xem thêm sản phẩm iPad">
-          <>
-            {loading ? (
-              <>Đang tải...</>
-            ) : sortedTablets.length === 0 ? (
-              <></>
-            ) : (
-              <button className="flex w-full cursor-pointer items-center justify-center bg-gradient-to-r from-white via-secondary to-white py-1 text-sm text-white xl:rounded-b-lg">
-                Xem Thêm Sản Phẩm iPad
-                <IoIosArrowForward className="text-xl" />
-              </button>
-            )}
-          </>
-        </Link>
+
         {/* Navigation Button  */}
         <div className="absolute top-1/2 flex w-full items-center justify-between">
           <div className="relative w-full">
@@ -186,6 +173,21 @@ const TabletFC: React.FC = () => {
           </div>
         </div>
       </div>
+      {/* See more */}
+      <Link to="/may-tinh-bang" aria-label=" Xem thêm sản phẩm iPad">
+        <>
+          {loading ? (
+            <>Đang tải...</>
+          ) : sortedTablets.length === 0 ? (
+            <></>
+          ) : (
+            <button className="flex w-full cursor-pointer items-center justify-center bg-gradient-to-r from-white via-secondary to-white py-1 text-sm text-white xl:rounded-b-lg">
+              Xem Thêm Sản Phẩm iPad
+              <IoIosArrowForward className="text-xl" />
+            </button>
+          )}
+        </>
+      </Link>
     </div>
   );
 };

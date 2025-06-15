@@ -141,20 +141,7 @@ const PhoneFC: React.FC<PhoneFCProps> = ({ data, loading }) => {
             })
           )}
         </section>
-        <Link to="/dien-thoai" aria-label="Xem thêm sản phẩm điện thoại iPhone">
-          <>
-            {loading ? (
-              <>Đang tải...</>
-            ) : data.length === 0 ? (
-              <></>
-            ) : (
-              <button className="flex w-full cursor-pointer items-center justify-center bg-gradient-to-r from-white via-secondary to-white py-1 text-sm text-white xl:rounded-b-lg">
-                Xem Thêm Điện Thoại
-                <IoIosArrowForward className="text-xl" />
-              </button>
-            )}
-          </>
-        </Link>
+
         {/* Navigation Button  */}
         {!loading && data.length > 0 && (hasOverflow || data.length > 12) && (
           <div className="absolute top-1/2 flex w-full items-center justify-between">
@@ -162,14 +149,14 @@ const PhoneFC: React.FC<PhoneFCProps> = ({ data, loading }) => {
               <button
                 aria-label="Cuộn sang trái"
                 onClick={() => scrollBy(-380)}
-                className={`absolute -top-2 left-0 z-[100] rounded-full border-none bg-black bg-opacity-20 text-white ${isLeftVisible ? '' : 'hidden'}`}
+                className={`absolute -top-5 left-0 z-[100] rounded-full border-none bg-black bg-opacity-20 text-white ${isLeftVisible ? '' : 'hidden'}`}
               >
                 <MdArrowBackIosNew className="text-4xl" />
               </button>
               <button
                 aria-label="Cuộn sang phải"
                 onClick={() => scrollBy(380)}
-                className={`absolute -top-2 right-0 z-[100] rounded-full border-none bg-black bg-opacity-20 text-white ${isRightVisible ? '' : 'hidden'}`}
+                className={`absolute -top-5 right-0 z-[100] rounded-full border-none bg-black bg-opacity-20 text-white ${isRightVisible ? '' : 'hidden'}`}
               >
                 <MdArrowForwardIos className="text-4xl" />
               </button>
@@ -177,6 +164,21 @@ const PhoneFC: React.FC<PhoneFCProps> = ({ data, loading }) => {
           </div>
         )}
       </div>
+      {/* See more */}
+      <Link to="/dien-thoai" aria-label="Xem thêm sản phẩm điện thoại iPhone">
+        <>
+          {loading ? (
+            <>Đang tải...</>
+          ) : data.length === 0 ? (
+            <></>
+          ) : (
+            <button className="flex w-full cursor-pointer items-center justify-center bg-gradient-to-r from-white via-secondary to-white py-1 text-sm text-white xl:rounded-b-lg">
+              Xem Thêm Điện Thoại
+              <IoIosArrowForward className="text-xl" />
+            </button>
+          )}
+        </>
+      </Link>
     </div>
   );
 };
