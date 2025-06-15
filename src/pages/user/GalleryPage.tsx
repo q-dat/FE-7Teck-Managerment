@@ -31,14 +31,12 @@ const GalleryPage: React.FC = () => {
   const currentGallerys = galleries.slice(indexOfFirstItem, indexOfLastItem);
 
   const handleNextPage = () => {
-    scrollToTopSmoothly();
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
     }
   };
 
   const handlePrevPage = () => {
-    scrollToTopSmoothly();
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
     }

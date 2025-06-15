@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'react-daisyui';
 import { IoIosArrowDropleft, IoIosArrowDropright } from 'react-icons/io';
+import { scrollToTopSmoothly } from '../utils/scrollToTopSmoothly';
 
 interface PaginationProps {
   currentPage: number;
@@ -26,7 +27,10 @@ const Pagination: React.FC<PaginationProps> = ({
             color="primary"
             size="sm"
             // disabled={currentPage === 1}
-            onClick={onPrevPage}
+            onClick={() => {
+              onPrevPage();
+              scrollToTopSmoothly();
+            }}
           >
             <IoIosArrowDropleft className="text-xl" /> Trang Trước
           </Button>
@@ -46,7 +50,10 @@ const Pagination: React.FC<PaginationProps> = ({
             color="primary"
             size="sm"
             // disabled={currentPage === totalPages}
-            onClick={onNextPage}
+            onClick={() => {
+              onNextPage();
+              scrollToTopSmoothly();
+            }}
           >
             Trang Tiếp <IoIosArrowDropright className="text-xl" />
           </Button>
