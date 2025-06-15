@@ -138,12 +138,6 @@ const ModalCreateWindowsPageAdmin: React.FC<ModalCreateAdminProps> = ({
             <p className="font-bold text-black dark:text-white">
               Tạo sản phẩm mới
             </p>
-            <InputModal
-              // className="hidden"
-              type="text"
-              {...register('windows_name', { required: true })}
-              placeholder="Tên sản phẩm*"
-            />
             <div className="flex items-center">
               <ReactSelect
                 placeholder="Chọn danh mục*"
@@ -154,6 +148,12 @@ const ModalCreateWindowsPageAdmin: React.FC<ModalCreateAdminProps> = ({
                 className=""
               />
             </div>
+            <InputModal
+              // className="hidden"
+              type="text"
+              {...register('windows_name', { required: true })}
+              placeholder="Tên sản phẩm*"
+            />
             <InputModal
               type="text"
               {...register('windows_color', { required: true })}
@@ -169,7 +169,6 @@ const ModalCreateWindowsPageAdmin: React.FC<ModalCreateAdminProps> = ({
               {...register('windows_sale')}
               placeholder="Nhập giá giảm (Hệ số x1000: 1triệu = 1000)"
             />
-
             <InputModal
               type="text"
               {...register('windows_status', { required: true })}
@@ -210,7 +209,6 @@ const ModalCreateWindowsPageAdmin: React.FC<ModalCreateAdminProps> = ({
                 </label>
               </div>
             )}
-
             {!useCategoryImage && (
               <>
                 <LabelForm title={'Hình ảnh*'} />
@@ -221,7 +219,6 @@ const ModalCreateWindowsPageAdmin: React.FC<ModalCreateAdminProps> = ({
                 />
               </>
             )}
-
             <LabelForm title={'Ảnh thu nhỏ'} />
             <InputModal
               type="file"

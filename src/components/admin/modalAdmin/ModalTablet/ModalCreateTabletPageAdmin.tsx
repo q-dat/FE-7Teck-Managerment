@@ -117,12 +117,6 @@ const ModalCreateTabletPageAdmin: React.FC<ModalCreateAdminProps> = ({
             <p className="font-bold text-black dark:text-white">
               Tạo sản phẩm mới
             </p>
-            <InputModal
-              // className="hidden"
-              type="text"
-              {...register('tablet_name', { required: true })}
-              placeholder="Tên sản phẩm*"
-            />
             <div className="flex items-center">
               <ReactSelect
                 placeholder="Chọn danh mục*"
@@ -133,6 +127,12 @@ const ModalCreateTabletPageAdmin: React.FC<ModalCreateAdminProps> = ({
                 className=""
               />
             </div>
+            <InputModal
+              // className="hidden"
+              type="text"
+              {...register('tablet_name', { required: true })}
+              placeholder="Tên sản phẩm*"
+            />
             <InputModal
               type="text"
               {...register('tablet_color', { required: true })}
@@ -148,7 +148,6 @@ const ModalCreateTabletPageAdmin: React.FC<ModalCreateAdminProps> = ({
               {...register('tablet_sale')}
               placeholder="Nhập giá giảm (Hệ số x1000: 1triệu = 1000)"
             />
-
             <InputModal
               type="text"
               {...register('tablet_status', { required: true })}

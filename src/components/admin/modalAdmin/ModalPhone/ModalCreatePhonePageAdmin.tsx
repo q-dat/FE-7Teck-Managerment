@@ -117,12 +117,6 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreateAdminProps> = ({
             <p className="font-bold text-black dark:text-white">
               Tạo sản phẩm mới
             </p>
-            <InputModal
-              // className="hidden"
-              type="text"
-              {...register('name', { required: true })}
-              placeholder="Tên sản phẩm*"
-            />
             <div className="flex items-center">
               <ReactSelect
                 placeholder="Chọn danh mục*"
@@ -133,7 +127,12 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreateAdminProps> = ({
                 className=""
               />
             </div>
-
+            <InputModal
+              // className="hidden"
+              type="text"
+              {...register('name', { required: true })}
+              placeholder="Tên sản phẩm*"
+            />
             <InputModal
               type="text"
               {...register('color', { required: true })}
