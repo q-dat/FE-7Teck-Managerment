@@ -5,25 +5,25 @@ import { FaHome, FaMobileAlt, FaTabletAlt } from 'react-icons/fa';
 import DarkModeToggle from '../orther/darkmode/DarkMode';
 import { Logo } from '../../assets/images';
 import { PhoneContext } from '../../context/phone/PhoneContext';
-import { FaList, FaWindows } from 'react-icons/fa6';
+import { FaWindows } from 'react-icons/fa6';
 import { BsApple } from 'react-icons/bs';
-import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
 import { TabletContext } from '../../context/tablet/TabletContext';
-import { TabletCatalogContext } from '../../context/tablet-catalog/TabletCatalogContext';
-import { WindowsCatalogContext } from '../../context/windows-catalog/WindowsCatalogContext';
 import { WindowsContext } from '../../context/windows/WindowsContext';
 import { MacbookContext } from '../../context/macbook/MacbookContext';
-import { MacbookCatalogContext } from '../../context/macbook-catalog/MacbookCatalogContext';
 import OptionsData from './modalAdmin/OptionsData/OptionsData';
+// import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
+// import { TabletCatalogContext } from '../../context/tablet-catalog/TabletCatalogContext';
+// import { WindowsCatalogContext } from '../../context/windows-catalog/WindowsCatalogContext';
+// import { MacbookCatalogContext } from '../../context/macbook-catalog/MacbookCatalogContext';
 
 const SidebarAdmin: React.FC<{}> = () => {
-  const { countPhoneCatalog } = useContext(PhoneCatalogContext);
+  //  const { countPhoneCatalog } = useContext(PhoneCatalogContext);
+  //  const { countTabletCatalog } = useContext(TabletCatalogContext);
+  //  const { countWindowsCatalog } = useContext(WindowsCatalogContext);
+  //  const { countMacbookCatalog } = useContext(MacbookCatalogContext);
   const { countPhone } = useContext(PhoneContext);
-  const { countTabletCatalog } = useContext(TabletCatalogContext);
   const { countTablet } = useContext(TabletContext);
-  const { countWindowsCatalog } = useContext(WindowsCatalogContext);
   const { countWindows } = useContext(WindowsContext);
-  const { countMacbookCatalog } = useContext(MacbookCatalogContext);
   const { countMacbook } = useContext(MacbookContext);
   const [activeItem, setActiveItem] = useState('Dashboard');
   const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
@@ -37,48 +37,48 @@ const SidebarAdmin: React.FC<{}> = () => {
       icon: FaHome,
       link: '/cms/admin'
     },
-    {
-      name: 'DM Điện Thoại',
-      icon: FaList,
-      link: '/cms/admin/phone-catalog-manager',
-      toastify: countPhoneCatalog
-    },
+    // {
+    //   name: 'DM Điện Thoại',
+    //   icon: FaList,
+    //   link: '/cms/admin/phone-catalog-manager',
+    //   toastify: countPhoneCatalog
+    // },
     {
       name: 'Điện Thoại',
       icon: FaMobileAlt,
       link: '/cms/admin/phone-manager',
       toastify: countPhone
     },
-    {
-      name: 'DM Máy Tính Bảng',
-      icon: FaList,
-      link: '/cms/admin/tablet-catalog-manager',
-      toastify: countTabletCatalog
-    },
+    // {
+    //   name: 'DM Máy Tính Bảng',
+    //   icon: FaList,
+    //   link: '/cms/admin/tablet-catalog-manager',
+    //   toastify: countTabletCatalog
+    // },
     {
       name: ' Máy Tính Bảng',
       icon: FaTabletAlt,
       link: '/cms/admin/tablet-manager',
       toastify: countTablet
     },
-    {
-      name: 'DM Macbook',
-      icon: FaList,
-      link: '/cms/admin/macbook-catalog-manager',
-      toastify: countMacbookCatalog
-    },
+    // {
+    //   name: 'DM Macbook',
+    //   icon: FaList,
+    //   link: '/cms/admin/macbook-catalog-manager',
+    //   toastify: countMacbookCatalog
+    // },
     {
       name: 'Macbook',
       icon: BsApple,
       link: '/cms/admin/macbook-manager',
       toastify: countMacbook
     },
-    {
-      name: 'DM Windows',
-      icon: FaList,
-      link: '/cms/admin/windows-catalog-manager',
-      toastify: countWindowsCatalog
-    },
+    // {
+    //   name: 'DM Windows',
+    //   icon: FaList,
+    //   link: '/cms/admin/windows-catalog-manager',
+    //   toastify: countWindowsCatalog
+    // },
     {
       name: 'Windows',
       icon: FaWindows,
@@ -119,12 +119,8 @@ const SidebarAdmin: React.FC<{}> = () => {
                 alt="7Teck ."
               />
               <div className="">
-                <p className="text-base font-bold text-primary dark:text-white">
-                  7Teck
-                </p>
-                <p className="text-xs font-light dark:text-white">
-                  Product Management
-                </p>
+                <p className="text-base font-bold text-primary dark:text-white">7Teck</p>
+                <p className="text-xs font-light dark:text-white">Product Management</p>
               </div>
             </div>
           </Link>
@@ -150,16 +146,8 @@ const SidebarAdmin: React.FC<{}> = () => {
                     >
                       <div className="flex w-full items-center justify-between">
                         <div className="flex items-center">
-                          {item.name === activeItem && (
-                            <div className="absolute left-0 top-0 h-full w-1 bg-primary" />
-                          )}
-                          <Icon
-                            className={
-                              item.name === activeItem
-                                ? 'mr-2 h-5 w-5 text-primary'
-                                : 'mr-2 h-5 w-5'
-                            }
-                          />
+                          {item.name === activeItem && <div className="absolute left-0 top-0 h-full w-1 bg-primary" />}
+                          <Icon className={item.name === activeItem ? 'mr-2 h-5 w-5 text-primary' : 'mr-2 h-5 w-5'} />
                           <div className="flex items-center justify-between gap-2">
                             <div className="">
                               <p>{item.name}</p>
@@ -189,13 +177,8 @@ const SidebarAdmin: React.FC<{}> = () => {
       {/*  */}
       <div className="flex flex-col items-center">
         <div className="rounded-lg bg-primary p-4 text-center text-white">
-          <p className="w-40 text-center text-xs">
-            Chọn nút bên dưới để thêm options thông tin sản phẩm!
-          </p>
-          <Button
-            onClick={openModalCreateAdmin}
-            className="my-4 rounded-lg bg-white text-primary hover:bg-white"
-          >
+          <p className="w-40 text-center text-xs">Chọn nút bên dưới để thêm options thông tin sản phẩm!</p>
+          <Button onClick={openModalCreateAdmin} className="my-4 rounded-lg bg-white text-primary hover:bg-white">
             +Thêm Options
           </Button>
         </div>
@@ -205,10 +188,7 @@ const SidebarAdmin: React.FC<{}> = () => {
         </div>
       </div>
       <div>
-        <OptionsData
-          isOpen={isModalCreateOpen}
-          onClose={closeModalCreateAdmin}
-        />
+        <OptionsData isOpen={isModalCreateOpen} onClose={closeModalCreateAdmin} />
       </div>
     </div>
   );

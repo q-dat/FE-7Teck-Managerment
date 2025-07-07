@@ -17,17 +17,22 @@ import ModalCreateWindowsPageAdmin from '../../components/admin/modalAdmin/Modal
 import ModalDeleteWindowsPageAdmin from '../../components/admin/modalAdmin/ModalWindows/ModalDeleteWindowsPageAdmin';
 import ModalEditWindowsPageAdmin from '../../components/admin/modalAdmin/ModalWindows/ModalEditWindowsPageAdmin';
 import Zoom from '../../lib/Zoom';
+import WindowsCatalogManager from './WindowsCatalogManager';
+import { FaList } from 'react-icons/fa';
 
 const WindowsManager: React.FC = () => {
-  const { windows, loading, error, getAllWindows, deleteWindows } =
-    useContext(WindowsContext);
+  const { windows, loading, error, getAllWindows, deleteWindows } = useContext(WindowsContext);
   const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
-  const [selectedWindowsId, setSelectedWindowsId] = useState<string | null>(
-    null
-  );
-
+  const [selectedWindowsId, setSelectedWindowsId] = useState<string | null>(null);
+  // handleCatalogModal
+  const [selectedCatalog, setSelectedCatalog] = useState(false);
+  // handleCatalogModal
+  const handleCatalogModal = () => {
+    setSelectedCatalog(!selectedCatalog);
+  };
+  //
   const openModalCreateAdmin = () => setIsModalCreateOpen(true);
   const closeModalCreateAdmin = () => setIsModalCreateOpen(false);
   const openModalDeleteAdmin = (id: string) => {
@@ -49,9 +54,7 @@ const WindowsManager: React.FC = () => {
         Toastify('Bạn đã xoá sản phẩm thành công', 201);
         getAllWindows();
       } catch (error) {
-        const errorMessage = isIErrorResponse(error)
-          ? error.data?.message
-          : 'Xoá sản phẩm thất bại!';
+        const errorMessage = isIErrorResponse(error) ? error.data?.message : 'Xoá sản phẩm thất bại!';
         Toastify(`Lỗi: ${errorMessage}`, 500);
       }
     }
@@ -68,6 +71,25 @@ const WindowsManager: React.FC = () => {
           Title_NavtitleAdmin="Quản Lý Danh Sách Laptop Windows"
           Btn_Create={
             <div className="flex flex-col items-start justify-center gap-2 md:flex-row md:items-end">
+              <Button color="secondary" onClick={handleCatalogModal} className="w-auto text-sm font-light text-white">
+                <FaList className="text-xl" color="white" />
+                Danh mục
+              </Button>
+              {/* Modal */}
+              {selectedCatalog && (
+                <div
+                  className="fixed inset-0 z-50 flex cursor-pointer items-center justify-center bg-black/50"
+                  onClick={handleCatalogModal} // Click nền để đóng
+                >
+                  <div
+                    className="relative h-[90%] w-3/4 cursor-default overflow-y-auto rounded-md border-4 border-white bg-[#F3F2F7] p-2 scrollbar-hide dark:bg-gray-900"
+                    onClick={e => e.stopPropagation()} // Ngăn chặn click xuyên modal
+                  >
+                    <WindowsCatalogManager />
+                  </div>
+                </div>
+              )}
+              {/* Add Product */}{' '}
               <Button
                 color="primary"
                 onClick={openModalCreateAdmin}
@@ -106,32 +128,22 @@ const WindowsManager: React.FC = () => {
                   <span>#{index + 1}</span>
                   <span className="flex items-center justify-center">
                     <Zoom>
-                      <img
-                        loading="lazy"
-                        src={win?.windows_img}
-                        alt="Hình ảnh"
-                        className="h-12 w-12 object-cover"
-                      />
+                      <img loading="lazy" src={win?.windows_img} alt="Hình ảnh" className="h-12 w-12 object-cover" />
                     </Zoom>
                   </span>
                   <span className="flex flex-wrap items-center justify-center gap-2">
-                    {win?.windows_thumbnail &&
-                    Array.isArray(win?.windows_thumbnail) ? (
+                    {win?.windows_thumbnail && Array.isArray(win?.windows_thumbnail) ? (
                       <>
-                        {win.windows_thumbnail
-                          .slice(0, 1)
-                          .map((thumb, index) => (
-                            <img
-                              loading="lazy"
-                              key={index}
-                              src={thumb}
-                              alt="Ảnh thu nhỏ"
-                              className="h-12 w-12 object-cover"
-                            />
-                          ))}
-                        <span className="text-xs text-red-500">
-                          (Ảnh thu nhỏ: {win?.windows_thumbnail?.length})
-                        </span>
+                        {win.windows_thumbnail.slice(0, 1).map((thumb, index) => (
+                          <img
+                            loading="lazy"
+                            key={index}
+                            src={thumb}
+                            alt="Ảnh thu nhỏ"
+                            className="h-12 w-12 object-cover"
+                          />
+                        ))}
+                        <span className="text-xs text-red-500">(Ảnh thu nhỏ: {win?.windows_thumbnail?.length})</span>
                       </>
                     ) : (
                       <span>Không có ảnh thu nhỏ</span>
@@ -152,9 +164,7 @@ const WindowsManager: React.FC = () => {
                     {(win.windows_price * 1000).toLocaleString('vi-VN')}đ
                   </span>
                   <>
-                    {win?.windows_sale === null ||
-                    win?.windows_sale === 0 ||
-                    win?.windows_sale === undefined ? (
+                    {win?.windows_sale === null || win?.windows_sale === 0 || win?.windows_sale === undefined ? (
                       <>Chưa có giá giảm!</>
                     ) : (
                       <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
@@ -162,15 +172,17 @@ const WindowsManager: React.FC = () => {
                       </span>
                     )}
                   </>
-                  <span className="line-clamp-3">
-                    {win?.windows_status || 'Không có tình trạng!'}
-                  </span>
-                  <span className="line-clamp-3">
-                    {win?.windows_des || 'Không có mô tả!'}
-                  </span>
-                  <mark className="line-clamp-3">
-                    {win?.windows_note || 'Không có ghi chú!'}
-                  </mark>
+                  {win?.windows_status.toLocaleLowerCase() === 'new' ? (
+                    <span className="line-clamp-3 rounded-md bg-green-500">
+                      {win?.windows_status || 'Không có tình trạng!'}
+                    </span>
+                  ) : (
+                    <span className="line-clamp-3 rounded-md bg-red-500">
+                      {win?.windows_status || 'Không có tình trạng!'}
+                    </span>
+                  )}
+                  <span className="line-clamp-3">{win?.windows_des || 'Không có mô tả!'}</span>
+                  <mark className="line-clamp-3">{win?.windows_note || 'Không có ghi chú!'}</mark>
                   <span>
                     {/* {new Date(win?.createdAt).toLocaleString('vi-VN')} */}
                     <TimeAgo date={win?.createdAt} />
@@ -211,10 +223,7 @@ const WindowsManager: React.FC = () => {
           </Table.Body>
         }
       />
-      <ModalCreateWindowsPageAdmin
-        isOpen={isModalCreateOpen}
-        onClose={closeModalCreateAdmin}
-      />
+      <ModalCreateWindowsPageAdmin isOpen={isModalCreateOpen} onClose={closeModalCreateAdmin} />
       <ModalDeleteWindowsPageAdmin
         isOpen={isModalDeleteOpen}
         onClose={closeModalDeleteAdmin}
