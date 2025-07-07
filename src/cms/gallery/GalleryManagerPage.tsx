@@ -83,23 +83,18 @@ const GalleryManagerPage: React.FC = () => {
         {galleries.map((gallery: IGallery, index: number) => (
           <div
             key={index}
-            className="relative rounded-sm bg-white p-2 shadow-headerMenu"
+            className="relative rounded-sm bg-white p-1 shadow-headerMenu"
           >
             {/*  */}
-            <div className="relative h-[280px] overflow-hidden">
-              <img
-                className="object-covercover absolute z-0 h-[200px] w-full rounded-sm py-1 blur-sm filter"
-                src={`${gallery?.gallery}`}
-                alt={`${gallery?.gallery}`}
-              />
+            <div>
               <Zoom>
                 <img
-                  className="absolute z-10 h-[200px] w-full rounded-sm object-contain py-1"
+                  className="relative h-[200px] w-full rounded-sm object-contain py-1"
                   src={`${gallery?.gallery}`}
                   alt={`${gallery?.gallery}`}
                 />
               </Zoom>
-              <p className="absolute bottom-1 left-2 text-xs text-primary">
+              <p className=" text-xs text-primary">
                 <p className="line-clamp-1 text-xs font-light">
                   {gallery?.des}
                 </p>
@@ -125,7 +120,7 @@ const GalleryManagerPage: React.FC = () => {
             </div>
             <div
               onClick={() => openModalDeleteAdmin(gallery?._id ?? '')}
-              className="absolute right-1 top-1 z-20 flex cursor-pointer flex-row items-center justify-center gap-1 rounded-sm bg-white p-1 text-red-500"
+              className="absolute right-1 top-1 z-20 flex cursor-pointer flex-row items-center justify-center gap-1 rounded-sm bg-white p-1  text-red-500"
             >
               <MdDelete />
             </div>

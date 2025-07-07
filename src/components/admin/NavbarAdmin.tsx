@@ -16,6 +16,7 @@ import { WindowsCatalogContext } from '../../context/windows-catalog/WindowsCata
 import { WindowsContext } from '../../context/windows/WindowsContext';
 import { PriceListContext } from '../../context/price-list/PriceListContext';
 import { OptionPhoneContext } from '../../context/optionsData/OptionPhoneContext';
+import { Link } from 'react-router-dom';
 
 const NavbarAdmin: React.FC<{}> = () => {
   const { logoutUser } = useContext(AuthContext);
@@ -121,7 +122,7 @@ const NavbarAdmin: React.FC<{}> = () => {
             </div> */}
           </nav>
           <div
-            className="relative ml-4 flex cursor-pointer items-center justify-center gap-2"
+            className="relative ml-4 flex cursor-pointer items-center justify-center gap-2 z-[99999]"
             onClick={handleAvatarClick}
           >
             <div className="text-black dark:text-white">
@@ -131,7 +132,7 @@ const NavbarAdmin: React.FC<{}> = () => {
             <Avatar className="h-10 w-10" />
             <div>
               {dropdownVisible && (
-                <div className="absolute right-0 top-10 flex flex-col bg-white p-1 text-white">
+                <div className="absolute right-0 top-10 flex flex-col bg-white p-1 text-white border gap-1">
                   <Button
                     onClick={logoutUser}
                     size="sm"
@@ -140,6 +141,11 @@ const NavbarAdmin: React.FC<{}> = () => {
                     <MdLogout />
                     Đăng Xuất
                   </Button>
+                  <div className='text-black flex flex-col gap-1 '>
+                  <Link className='bg-primary text-white p-1 font-light text-sm hover:bg-white hover:text-primary border border-primary' to='/cms/admin'>Dashboard</Link>
+                  <Link className='bg-primary text-white p-1 font-light text-sm hover:bg-white hover:text-primary border border-primary'  to='/cms/admin-post'>Post Managerment</Link>
+                  <Link  className='bg-primary text-white p-1 font-light text-sm hover:bg-white hover:text-primary border border-primary'  to='/cms/admin-gallery'>Gallery Managerment</Link>
+                  </div>
                 </div>
               )}
             </div>

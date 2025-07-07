@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import NavbarAdmin from '../../components/admin/NavbarAdmin';
 import SidebarAdmin from '../../components/admin/SidebarAdmin';
+import ScrollToTopButton from '../../components/orther/scrollToTop/ScrollToTopButton';
 const Admin: React.FC<{}> = () => {
   // Title Tag
   useEffect(() => {
@@ -19,6 +20,7 @@ const Admin: React.FC<{}> = () => {
               <NavbarAdmin />
             </div>
             <div>
+              <ScrollToTopButton />
               <Outlet />
             </div>
           </div>

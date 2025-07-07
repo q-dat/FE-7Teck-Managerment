@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import NavbarAdmin from '../../components/admin/NavbarAdmin';
 import SidebarPost from '../../components/admin/post/SidebarPost';
+import ScrollToTopButton from '../../components/orther/scrollToTop/ScrollToTopButton';
 
 const Post: React.FC<{}> = () => {
   // Title Tag
@@ -20,6 +21,7 @@ const Post: React.FC<{}> = () => {
               <NavbarAdmin />
             </div>
             <div>
+              <ScrollToTopButton />
               <Outlet />
             </div>
           </div>
