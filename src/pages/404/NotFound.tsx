@@ -14,14 +14,12 @@ const NotFound: React.FC<{}> = () => {
         }}
       >
         <Hero.Overlay />
-        <Hero.Content className="text-center">
+        <Hero.Content className="absolute text-center">
           <div className="max-w-md">
-            <h1 className="flex items-center justify-center gap-1 text-4xl font-bold text-white xl:text-5xl">
+            <h1 className="flex items-center justify-center gap-1 text-4xl font-bold text-black xl:text-5xl">
               404 NOT FOUND <TbMoodSadDizzy />
             </h1>
-            <p className="py-6 text-white">
-              Trang bạn tìm hiện không có, xin lỗi vì sự bất tiện này!
-            </p>
+            <p className="py-6 text-black">Trang bạn tìm hiện không có, xin lỗi vì sự bất tiện này!</p>
             <div className="flex items-center justify-center gap-4">
               <Link to="/">
                 <Button className="rounded-md border-none bg-gradient-to-r from-primary to-black text-white">
