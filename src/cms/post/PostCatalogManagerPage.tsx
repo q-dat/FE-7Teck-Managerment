@@ -1,54 +1,61 @@
 import React, { useState, useContext } from 'react';
-import { Toastify } from '../../../helper/Toastify';
-import LoadingLocal from '../../../components/orther/loading/LoadingLocal';
-import NavtitleAdmin from '../../../components/admin/NavtitleAdmin';
+import { Toastify } from '../../helper/Toastify';
+import LoadingLocal from '../../components/orther/loading/LoadingLocal';
+import NavtitleAdmin from '../../components/admin/NavtitleAdmin';
 import { RiAddBoxLine } from 'react-icons/ri';
 import { Button, Table } from 'react-daisyui';
 import { MdDelete } from 'react-icons/md';
-import ErrorLoading from '../../../components/orther/error/ErrorLoading';
+import ErrorLoading from '../../components/orther/error/ErrorLoading';
 import { FaCircleInfo, FaPenToSquare } from 'react-icons/fa6';
-import TableListAdmin from '../../../components/admin/TablelistAdmin';
-import ModalCreatePostPageAdmin from '../../../components/admin/modalAdmin/ModalPost/ModalCreatePostPageAdmin';
-import ModalDeletePostPageAdmin from '../../../components/admin/modalAdmin/ModalPost/ModalDeletePostPageAdmin';
-import ModalEditPostPageAdmin from '../../../components/admin/modalAdmin/ModalPost/ModalEditPostPageAdmin';
-import { IPost } from '../../../types/type/post/post';
-import { PostContext } from '../../../context/post/PostContext';
-import { isIErrorResponse } from '../../../types/error/error';
-import TimeAgo from '../../../components/orther/timeAgo/TimeAgo';
-import NavbarPost from '../../../components/admin/responsiveUI/mobile/NavbarPost';
+import TableListAdmin from '../../components/admin/TablelistAdmin';
+import { isIErrorResponse } from '../../types/error/error';
+import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
+import NavbarPost from '../../components/admin/responsiveUI/mobile/NavbarPost';
+import { PostCatalogContext } from '../../context/post-catalog/PostCatalogContext';
+import { IPostCatalog } from '../../types/type/post-catalog/post-catalog';
+import ModalCreatePostCatalogPageAdmin from '../../components/admin/modalAdmin/ModalPostCatalog/ModalCreatePostCatalogPageAdmin';
+import ModalDeletePostCatalogPageAdmin from '../../components/admin/modalAdmin/ModalPostCatalog/ModalDeletePostCatalogPageAdmin';
+import ModalEditPostCatalogPageAdmin from '../../components/admin/modalAdmin/ModalPostCatalog/ModalEditPostCatalogPageAdmin';
 
-const PostManagerPage: React.FC = () => {
-  const { loading, posts, deletePost, getAllPosts, error } =
-    useContext(PostContext);
+const PostCatalogManagerPage: React.FC = () => {
+  const {
+    loading,
+    postCatalogs,
+    deletePostCatalog,
+    getAllPostCatalogs,
+    error
+  } = useContext(PostCatalogContext);
   const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
-  const [selectedPostId, setSelectedPostId] = useState<string | null>(null);
+  const [selectedPostCatalogId, setSelectedPostCatalogId] = useState<
+    string | null
+  >(null);
 
   const openModalCreateAdmin = () => setIsModalCreateOpen(true);
   const closeModalCreateAdmin = () => setIsModalCreateOpen(false);
   const openModalDeleteAdmin = (id: string) => {
-    setSelectedPostId(id);
+    setSelectedPostCatalogId(id);
     setIsModalDeleteOpen(true);
   };
   const closeModalDeleteAdmin = () => setIsModalDeleteOpen(false);
   const openModalEditAdmin = (id: string) => {
-    setSelectedPostId(id);
+    setSelectedPostCatalogId(id);
     setIsModalEditOpen(true);
   };
   const closeModalEditAdmin = () => setIsModalEditOpen(false);
 
-  const handleDeletePost = async () => {
-    if (selectedPostId) {
+  const handleDeletePostCatalog = async () => {
+    if (selectedPostCatalogId) {
       try {
-        await deletePost(selectedPostId);
+        await deletePostCatalog(selectedPostCatalogId);
         closeModalDeleteAdmin();
-        Toastify('Bạn đã xoá bài viết thành công', 201);
-        getAllPosts();
+        Toastify('Bạn đã xoá danh mục bài viết thành công', 201);
+        getAllPostCatalogs();
       } catch (error) {
         const errorMessage = isIErrorResponse(error)
           ? error.data?.message
-          : 'Xoá bài viết thất bại!';
+          : 'Xoá danh mục bài viết thất bại!';
         Toastify(`Lỗi: ${errorMessage}`, 500);
       }
     }
@@ -59,10 +66,10 @@ const PostManagerPage: React.FC = () => {
 
   return (
     <div className="w-full pb-10 xl:pb-0">
-      <NavbarPost Title_NavbarPost="Bài Viết" />
+      <NavbarPost Title_NavbarPost="Danh Mục Bài Viết" />
       <div className="">
         <NavtitleAdmin
-          Title_NavtitleAdmin="Quản Lý Danh Sách Bài Viết"
+          Title_NavtitleAdmin="Quản Lý Danh Sách Danh Mục Bài Viết"
           Btn_Create={
             <div className="flex flex-col items-start justify-center gap-2 md:flex-row md:items-end">
               <Button
@@ -79,43 +86,26 @@ const PostManagerPage: React.FC = () => {
       </div>
 
       <TableListAdmin
-        Title_TableListAdmin={`Danh Sách Bài Viết (${posts.length})`}
+        Title_TableListAdmin={`Danh Sách Danh Mục Bài Viết (${postCatalogs.length})`}
         table_head={
           <Table.Head className="bg-primary text-center text-white">
             <span>STT</span>
-            <span>Tiêu Đề</span>
-            <span>Ảnh Đại Diện</span>
-            <span>Danh Mục</span>
+            <span>Tên Danh Mục</span>
             <span>Ngày Tạo</span>
-            {/* <span>Ngày Cập Nhật</span> */}
-            <span>Nội dung</span>
             <span>Hành Động</span>
           </Table.Head>
         }
         table_body={
           <Table.Body className="text-center text-sm">
-            {posts.map((post: IPost, index: number) => (
+            {postCatalogs.map((post: IPostCatalog, index: number) => (
               <Table.Row key={index}>
                 <span>#{index + 1}</span>
-                <span className="line-clamp-2">{post?.title}</span>
-                <span className="flex items-center justify-center">
-                  <img
-                    loading="lazy"
-                    src={post?.imageUrl}
-                    alt="Ảnh đại diện"
-                    className="h-12 w-12 object-cover"
-                  />
-                </span>
-                <span className="line-clamp-1">{post?.catalog}</span>
-                {/* <span>{new Date(post?.createdAt).toLocaleString('vi-VN')}</span> */}
+                <span className="line-clamp-2">{post?.name}</span>
                 <span>
                   {/* {new Date(post?.updatedAt).toLocaleDateString('vi-VN')} */}
                   <TimeAgo date={post?.updatedAt} />
                 </span>
-                <span
-                  className="line-clamp-2"
-                  dangerouslySetInnerHTML={{ __html: post.content }}
-                ></span>
+
                 <span>
                   <details>
                     <summary className="inline cursor-pointer text-base text-warning">
@@ -147,22 +137,22 @@ const PostManagerPage: React.FC = () => {
           </Table.Body>
         }
       />
-      <ModalCreatePostPageAdmin
+      <ModalCreatePostCatalogPageAdmin
         isOpen={isModalCreateOpen}
         onClose={closeModalCreateAdmin}
       />
-      <ModalDeletePostPageAdmin
+      <ModalDeletePostCatalogPageAdmin
         isOpen={isModalDeleteOpen}
         onClose={closeModalDeleteAdmin}
-        onConfirm={handleDeletePost}
+        onConfirm={handleDeletePostCatalog}
       />
-      <ModalEditPostPageAdmin
+      <ModalEditPostCatalogPageAdmin
         isOpen={isModalEditOpen}
         onClose={closeModalEditAdmin}
-        postId={selectedPostId ?? ''}
+        postCatalogId={selectedPostCatalogId ?? ''}
       />
     </div>
   );
 };
 
-export default PostManagerPage;
+export default PostCatalogManagerPage;

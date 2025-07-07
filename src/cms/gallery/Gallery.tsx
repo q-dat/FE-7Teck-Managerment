@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-import NavbarAdmin from '../../../components/admin/NavbarAdmin';
-import SidebarPost from '../../../components/admin/post/SidebarPost';
+import SidebarGallery from '../../components/admin/gallery/SidebarGallery';
+import NavbarAdmin from '../../components/admin/NavbarAdmin';
 
-const Post: React.FC<{}> = () => {
+const Gallery: React.FC<{}> = () => {
   // Title Tag
   useEffect(() => {
-    document.title = `Trang Quản Trị Bài Viết`;
+    document.title = `Trang Quản Trị Gallery`;
   });
   return (
     <div className="flex min-h-screen w-full flex-col bg-[#F3F2F7] dark:bg-gray-900">
       <div className="flex flex-1">
         <div className="hidden xl:block">
-          <SidebarPost />
+          <SidebarGallery />
         </div>
         <div className="flex-1 xl:p-6">
           <div className="xl:ml-64">
@@ -29,4 +29,4 @@ const Post: React.FC<{}> = () => {
   );
 };
 
-export default Post;
+export default Gallery;

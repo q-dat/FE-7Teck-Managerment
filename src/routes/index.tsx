@@ -44,14 +44,14 @@ const WindowsCatalogManager = lazy(() => import('../cms/admin/WindowsCatalogMana
 const WindowsManager = lazy(() => import('../cms/admin/WindowsManager'));
 
 // post
-const Post = lazy(() => import('../cms/admin/post/Post'));
-const PostManagerPage = lazy(() => import('../cms/admin/post/PostManagerPage'));
-const PostCatalogManagerPage = lazy(() => import('../cms/admin/post/PostCatalogManagerPage'));
-const PriceListManagerPage = lazy(() => import('../cms/admin/post/PriceListManagerPage'));
+const Post = lazy(() => import('../cms/post/Post'));
+const PostManagerPage = lazy(() => import('../cms/post/PostManagerPage'));
+const PostCatalogManagerPage = lazy(() => import('../cms/post/PostCatalogManagerPage'));
+const PriceListManagerPage = lazy(() => import('../cms/post/PriceListManagerPage'));
 
 // gallery
-const Gallery = lazy(() => import('../cms/admin/gallery/Gallery'));
-const GalleryManagerPage = lazy(() => import('../cms/admin/gallery/GalleryManagerPage'));
+const Gallery = lazy(() => import('../cms/gallery/Gallery'));
+const GalleryManagerPage = lazy(() => import('../cms/gallery/GalleryManagerPage'));
 
 // not found page
 const NotFound = lazy(() => import('../pages/404/NotFound'));
