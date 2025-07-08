@@ -2,8 +2,8 @@ import axios from '../config/axiosConfig';
 import { IMacbook } from '../../types/type/macbook/macbook';
 
 // Get All Macbook
-export const getAllMacbookApi = () => {
-  return axios.get<{ macbook: IMacbook[] }>('/api/laptop-macbook');
+export const getAllMacbookApi = (params?: { macbook_status?: number }) => {
+  return axios.get<{ macbook: IMacbook[] }>('/api/laptop-macbook', { params });
 };
 
 // Get Macbook By ID

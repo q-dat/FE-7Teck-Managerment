@@ -71,39 +71,42 @@ const PhoneManager: React.FC = () => {
           Title_NavtitleAdmin="Quản Lý Danh Sách Điện Thoại"
           Btn_Create={
             <div className="flex flex-col items-start justify-center gap-2 md:flex-row md:items-end">
-               {/* All */}
-              <Button
-              size='sm'
-                color="primary"
-                className="w-[80px] text-sm font-light text-white"
-                onClick={() => getAllPhones()}
-              >
-                Tất cả
-              </Button>
+              <div className='flex flex-row gap-2 items-end justify-center'>
+                {/* All */}
+                <Button
+                  size="sm"
+                  color="primary"
+                  className="w-[80px] text-sm font-light text-white"
+                  onClick={() => getAllPhones()}
+                >
+                  Tất cả
+                </Button>
 
-              {/* New */}
-              <Button
-              size='sm'
-                color="info"
-                className="w-[80px] text-sm font-light text-white"
-                onClick={() => getAllPhones({ status: 0 })}
-              >
-                Mới
-              </Button>
+                {/* New */}
+                <Button
+                  size="sm"
+                  color="info"
+                  className="w-[80px] text-sm font-light text-white"
+                  onClick={() => getAllPhones({ status: 0 })}
+                >
+                  Mới
+                </Button>
 
-              {/* Used */}
-              <Button
-              size='sm'
-                color="warning"
-                className="w-[80px] text-sm font-light text-white"
-                onClick={() => getAllPhones({ status: 1 })}
-              >
-                Cũ
-              </Button>
-              <Button color="secondary" onClick={handleCatalogModal} className="w-auto text-sm font-light text-white">
-                <FaList className="text-xl" color="white" />
-                Danh mục
-              </Button>
+                {/* Used */}
+                <Button
+                  size="sm"
+                  color="warning"
+                  className="w-[80px] text-sm font-light text-white"
+                  onClick={() => getAllPhones({ status: 1 })}
+                >
+                  Cũ
+                </Button>
+                {/* Catalog */}
+                <Button color="secondary" onClick={handleCatalogModal} className="w-auto text-sm font-light text-white">
+                  <FaList className="text-xl" color="white" />
+                  Danh mục
+                </Button>
+              </div>
               {/* Modal */}
               {selectedCatalog && (
                 <div

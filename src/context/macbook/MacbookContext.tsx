@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useState,
-  ReactNode,
-  useCallback,
-  useMemo
-} from 'react';
+import { createContext, useState, ReactNode, useCallback, useMemo } from 'react';
 import { AxiosResponse } from 'axios';
 import { IMacbook } from '../../types/type/macbook/macbook';
 import {
@@ -26,13 +20,10 @@ interface MacbookContextType {
     delete: boolean;
   };
   error: string | null;
-  getAllMacbook: () => void;
+  getAllMacbook: (filter?: { macbook_status?: number }) => void;
   getMacbookById: (_id: string) => Promise<IMacbook | undefined>;
   createMacbook: (macbookData: FormData) => Promise<AxiosResponse<any>>;
-  updateMacbook: (
-    _id: string,
-    macbookData: FormData
-  ) => Promise<AxiosResponse<any>>;
+  updateMacbook: (_id: string, macbookData: FormData) => Promise<AxiosResponse<any>>;
   updateMacbookView: (_id: string) => Promise<void>;
   deleteMacbook: (_id: string) => Promise<AxiosResponse<any>>;
 }
@@ -56,8 +47,7 @@ const defaultContextValue: MacbookContextType = {
   deleteMacbook: async () => ({ data: { deleted: true } }) as AxiosResponse
 };
 
-export const MacbookContext =
-  createContext<MacbookContextType>(defaultContextValue);
+export const MacbookContext = createContext<MacbookContextType>(defaultContextValue);
 
 export const MacbookProvider = ({ children }: { children: ReactNode }) => {
   const [macbook, setMacbook] = useState<IMacbook[]>([]);
@@ -97,9 +87,9 @@ export const MacbookProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // Get All Macbook
-  const getAllMacbook = useCallback(async () => {
+  const getAllMacbook = useCallback(async (filter?: { macbook_status?: number }) => {
     await fetchData(
-      getAllMacbookApi,
+      () => getAllMacbookApi(filter),
       data => {
         setMacbook(data?.macbook || []);
         setCountMacbook(data?.count || 0);
@@ -131,43 +121,30 @@ export const MacbookProvider = ({ children }: { children: ReactNode }) => {
   );
 
   // Create Macbook
-  const createMacbook = useCallback(
-    async (macbookData: FormData): Promise<AxiosResponse<any>> => {
-      return await fetchData(
-        () => createMacbookApi(macbookData),
-        data => {
-          if (data?.macbookData) {
-            setMacbook(prevLaptopMacbook => [
-              ...prevLaptopMacbook,
-              data?.macbookData
-            ]);
-          }
-        },
-        'create'
-      );
-    },
-    []
-  );
+  const createMacbook = useCallback(async (macbookData: FormData): Promise<AxiosResponse<any>> => {
+    return await fetchData(
+      () => createMacbookApi(macbookData),
+      data => {
+        if (data?.macbookData) {
+          setMacbook(prevLaptopMacbook => [...prevLaptopMacbook, data?.macbookData]);
+        }
+      },
+      'create'
+    );
+  }, []);
 
   // Update Macbook
-  const updateMacbook = useCallback(
-    async (_id: string, macbookData: FormData): Promise<AxiosResponse<any>> => {
-      return await fetchData(
-        () => updateMacbookApi(_id, macbookData),
-        data => {
-          if (data?.macbookData) {
-            setMacbook(prevLaptopMacbook =>
-              prevLaptopMacbook.map(m =>
-                m._id === _id ? data?.macbookData : m
-              )
-            );
-          }
-        },
-        'update'
-      );
-    },
-    []
-  );
+  const updateMacbook = useCallback(async (_id: string, macbookData: FormData): Promise<AxiosResponse<any>> => {
+    return await fetchData(
+      () => updateMacbookApi(_id, macbookData),
+      data => {
+        if (data?.macbookData) {
+          setMacbook(prevLaptopMacbook => prevLaptopMacbook.map(m => (m._id === _id ? data?.macbookData : m)));
+        }
+      },
+      'update'
+    );
+  }, []);
   // updateMacbookView
   const updateMacbookView = useCallback(
     async (_id: string) => {
@@ -178,11 +155,7 @@ export const MacbookProvider = ({ children }: { children: ReactNode }) => {
 
         // Cập nhật nhanh trong UI để tránh delay
         setMacbook(prevLaptopMacbook =>
-          prevLaptopMacbook.map(m =>
-            m._id === _id
-              ? { ...m, macbook_view: (m.macbook_view ?? 0) + 1 }
-              : m
-          )
+          prevLaptopMacbook.map(m => (m._id === _id ? { ...m, macbook_view: (m.macbook_view ?? 0) + 1 } : m))
         );
 
         // Gọi API cập nhật view trên server
@@ -193,18 +166,14 @@ export const MacbookProvider = ({ children }: { children: ReactNode }) => {
 
         // Nếu API thành công, cập nhật lại state với dữ liệu từ server
         if (response.data?.mac) {
-          setMacbook(prevLaptopMacbook =>
-            prevLaptopMacbook.map(m => (m._id === _id ? response.data.mac : m))
-          );
+          setMacbook(prevLaptopMacbook => prevLaptopMacbook.map(m => (m._id === _id ? response.data.mac : m)));
         }
       } catch (error) {
         console.error('Lỗi khi cập nhật macbook_view:', error);
 
         // Rollback nếu API thất bại
         setMacbook(prevLaptopMacbook =>
-          prevLaptopMacbook.map(m =>
-            m._id === _id ? { ...m, view: (m.macbook_view ?? 0) - 1 } : m
-          )
+          prevLaptopMacbook.map(m => (m._id === _id ? { ...m, view: (m.macbook_view ?? 0) - 1 } : m))
         );
       }
     },
@@ -212,19 +181,13 @@ export const MacbookProvider = ({ children }: { children: ReactNode }) => {
   );
 
   // Delete Macbook
-  const deleteMacbook = useCallback(
-    async (id: string): Promise<AxiosResponse<any>> => {
-      return await fetchData(
-        () => deleteMacbookApi(id),
-        () =>
-          setMacbook(prevLaptopMacbook =>
-            prevLaptopMacbook.filter(m => m._id !== id)
-          ),
-        'delete'
-      );
-    },
-    []
-  );
+  const deleteMacbook = useCallback(async (id: string): Promise<AxiosResponse<any>> => {
+    return await fetchData(
+      () => deleteMacbookApi(id),
+      () => setMacbook(prevLaptopMacbook => prevLaptopMacbook.filter(m => m._id !== id)),
+      'delete'
+    );
+  }, []);
 
   const value = useMemo(
     () => ({
@@ -242,8 +205,6 @@ export const MacbookProvider = ({ children }: { children: ReactNode }) => {
     }),
     [macbook, macbookDetails, countMacbook, loading, error]
   );
-  return (
-    <MacbookContext.Provider value={value}>{children}</MacbookContext.Provider>
-  );
+  return <MacbookContext.Provider value={value}>{children}</MacbookContext.Provider>;
 };
 

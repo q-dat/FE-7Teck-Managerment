@@ -71,10 +71,42 @@ const TabletManager: React.FC = () => {
           Title_NavtitleAdmin="Quản Lý Danh Sách Máy Tính Bảng"
           Btn_Create={
             <div className="flex flex-col items-start justify-center gap-2 md:flex-row md:items-end">
-              <Button color="secondary" onClick={handleCatalogModal} className="w-auto text-sm font-light text-white">
-                <FaList className="text-xl" color="white" />
-                Danh mục
-              </Button>
+              <div className="flex flex-row items-end justify-center gap-2">
+                {/* All */}
+                <Button
+                  size="sm"
+                  color="primary"
+                  className="w-[80px] text-sm font-light text-white"
+                  onClick={() => getAllTablets()}
+                >
+                  Tất cả
+                </Button>
+
+                {/* New */}
+                <Button
+                  size="sm"
+                  color="info"
+                  className="w-[80px] text-sm font-light text-white"
+                  onClick={() => getAllTablets({ tablet_status: 0 })}
+                >
+                  Mới
+                </Button>
+
+                {/* Used */}
+                <Button
+                  size="sm"
+                  color="warning"
+                  className="w-[80px] text-sm font-light text-white"
+                  onClick={() => getAllTablets({ tablet_status: 1 })}
+                >
+                  Cũ
+                </Button>
+                {/* Catalog */}
+                <Button color="secondary" onClick={handleCatalogModal} className="w-auto text-sm font-light text-white">
+                  <FaList className="text-xl" color="white" />
+                  Danh mục
+                </Button>
+              </div>
               {/* Modal */}
               {selectedCatalog && (
                 <div

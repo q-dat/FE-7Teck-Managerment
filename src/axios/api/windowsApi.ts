@@ -2,8 +2,8 @@ import axios from '../config/axiosConfig';
 import { IWindows } from '../../types/type/windows/windows';
 
 // Get All Windows
-export const getAllWindowsApi = () => {
-  return axios.get<{ windows: IWindows[] }>('/api/laptop-windows');
+export const getAllWindowsApi = (params?: { windows_status?: number }) => {
+  return axios.get<{ windows: IWindows[] }>('/api/laptop-windows', { params });
 };
 
 // Get Windows By ID
