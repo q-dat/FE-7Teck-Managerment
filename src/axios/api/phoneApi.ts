@@ -2,8 +2,10 @@ import axios from '../config/axiosConfig';
 import { IPhone } from '../../types/type/phone/phone';
 
 // Get All Phones
-export const getAllPhonesApi = () => {
-  return axios.get<{ phones: IPhone[] }>('/api/phones');
+export const getAllPhonesApi = (params?: { status?: number }) => {
+  return axios.get<{ phones: IPhone[] }>('/api/phones', {
+    params
+  });
 };
 //Get MostViewedPhones
 export const getMostViewedPhonesApi = () => {

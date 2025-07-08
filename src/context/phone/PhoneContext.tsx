@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useState,
-  ReactNode,
-  useCallback,
-  useMemo
-} from 'react';
+import { createContext, useState, ReactNode, useCallback, useMemo } from 'react';
 import { AxiosResponse } from 'axios';
 import {
   getAllPhonesApi,
@@ -29,14 +23,11 @@ interface PhoneContextType {
     delete: boolean;
   };
   error: string | null;
-  getAllPhones: () => void;
+  getAllPhones: (filter?: { status?: number }) => void;
   getMostViewedPhones: () => void;
   getPhoneById: (_id: string) => Promise<IPhone | undefined>;
   createPhone: (phoneData: FormData) => Promise<AxiosResponse<any>>;
-  updatePhone: (
-    _id: string,
-    phoneData: FormData
-  ) => Promise<AxiosResponse<any>>;
+  updatePhone: (_id: string, phoneData: FormData) => Promise<AxiosResponse<any>>;
   updatePhoneView: (_id: string) => Promise<void>;
   deletePhone: (_id: string) => Promise<AxiosResponse<any>>;
 }
@@ -63,15 +54,12 @@ const defaultContextValue: PhoneContextType = {
   deletePhone: async () => ({ data: { deleted: true } }) as AxiosResponse
 };
 
-export const PhoneContext =
-  createContext<PhoneContextType>(defaultContextValue);
+export const PhoneContext = createContext<PhoneContextType>(defaultContextValue);
 
 export const PhoneProvider = ({ children }: { children: ReactNode }) => {
   const [phones, setPhones] = useState<IPhone[]>([]);
   const [mostViewedPhones, setMostViewedPhones] = useState<IPhone[]>([]);
-  const [phoneDetails, setPhoneDetails] = useState<{ [key: string]: IPhone }>(
-    {}
-  );
+  const [phoneDetails, setPhoneDetails] = useState<{ [key: string]: IPhone }>({});
   const [countPhone, setCountPhone] = useState<number>(0);
   const [loading, setLoading] = useState({
     getAll: false,
@@ -106,9 +94,9 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // Get All Phones
-  const getAllPhones = useCallback(async () => {
+  const getAllPhones = useCallback(async (filter?: { status?: number }) => {
     await fetchData(
-      getAllPhonesApi,
+      () => getAllPhonesApi(filter),
       data => {
         setPhones(data?.phones || []);
         setCountPhone(data?.count || 0);
@@ -150,38 +138,30 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
   );
 
   // Create Phone
-  const createPhone = useCallback(
-    async (phoneData: FormData): Promise<AxiosResponse<any>> => {
-      return await fetchData(
-        () => createPhoneApi(phoneData),
-        data => {
-          if (data?.phoneData) {
-            setPhones(prevPhones => [...prevPhones, data?.phoneData]);
-          }
-        },
-        'create'
-      );
-    },
-    []
-  );
+  const createPhone = useCallback(async (phoneData: FormData): Promise<AxiosResponse<any>> => {
+    return await fetchData(
+      () => createPhoneApi(phoneData),
+      data => {
+        if (data?.phoneData) {
+          setPhones(prevPhones => [...prevPhones, data?.phoneData]);
+        }
+      },
+      'create'
+    );
+  }, []);
 
   // Update Phone
-  const updatePhone = useCallback(
-    async (_id: string, phoneData: FormData): Promise<AxiosResponse<any>> => {
-      return await fetchData(
-        () => updatePhoneApi(_id, phoneData),
-        data => {
-          if (data?.phoneData) {
-            setPhones(prevPhones =>
-              prevPhones.map(p => (p._id === _id ? data?.phoneData : p))
-            );
-          }
-        },
-        'update'
-      );
-    },
-    []
-  );
+  const updatePhone = useCallback(async (_id: string, phoneData: FormData): Promise<AxiosResponse<any>> => {
+    return await fetchData(
+      () => updatePhoneApi(_id, phoneData),
+      data => {
+        if (data?.phoneData) {
+          setPhones(prevPhones => prevPhones.map(p => (p._id === _id ? data?.phoneData : p)));
+        }
+      },
+      'update'
+    );
+  }, []);
 
   // updatePhoneView
   const updatePhoneView = useCallback(
@@ -192,11 +172,7 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
         if (!mostViewedPhone) return;
 
         // Cập nhật nhanh trong UI để tránh delay
-        setMostViewedPhones(prevPhones =>
-          prevPhones.map(p =>
-            p._id === _id ? { ...p, view: (p.view ?? 0) + 1 } : p
-          )
-        );
+        setMostViewedPhones(prevPhones => prevPhones.map(p => (p._id === _id ? { ...p, view: (p.view ?? 0) + 1 } : p)));
 
         // Gọi API cập nhật view trên server
         const updatedData = new FormData();
@@ -206,35 +182,26 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
 
         // Nếu API thành công, cập nhật lại state với dữ liệu từ server
         if (response.data?.phones) {
-          setMostViewedPhones(prevPhones =>
-            prevPhones.map(p => (p._id === _id ? response.data.phones : p))
-          );
+          setMostViewedPhones(prevPhones => prevPhones.map(p => (p._id === _id ? response.data.phones : p)));
         }
       } catch (error) {
         console.error('Lỗi khi cập nhật view:', error);
 
         // Rollback nếu API thất bại
-        setMostViewedPhones(prevPhones =>
-          prevPhones.map(p =>
-            p._id === _id ? { ...p, view: (p.view ?? 0) - 1 } : p
-          )
-        );
+        setMostViewedPhones(prevPhones => prevPhones.map(p => (p._id === _id ? { ...p, view: (p.view ?? 0) - 1 } : p)));
       }
     },
     [mostViewedPhones]
   );
 
   // Delete Phone
-  const deletePhone = useCallback(
-    async (id: string): Promise<AxiosResponse<any>> => {
-      return await fetchData(
-        () => deletePhoneApi(id),
-        () => setPhones(prevPhones => prevPhones.filter(p => p._id !== id)),
-        'delete'
-      );
-    },
-    []
-  );
+  const deletePhone = useCallback(async (id: string): Promise<AxiosResponse<any>> => {
+    return await fetchData(
+      () => deletePhoneApi(id),
+      () => setPhones(prevPhones => prevPhones.filter(p => p._id !== id)),
+      'delete'
+    );
+  }, []);
 
   const value = useMemo(
     () => ({
@@ -254,7 +221,5 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
     }),
     [phones, mostViewedPhones, phoneDetails, countPhone, loading, error]
   );
-  return (
-    <PhoneContext.Provider value={value}>{children}</PhoneContext.Provider>
-  );
+  return <PhoneContext.Provider value={value}>{children}</PhoneContext.Provider>;
 };
