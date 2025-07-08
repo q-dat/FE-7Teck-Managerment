@@ -150,15 +150,15 @@ const MacbookManager: React.FC = () => {
                     )}
                   </span>
                   <span className="">
-                    {mac?.macbook_name}
-                    <hr />
-                    <b>
-                      {mac?.macbook_catalog_id?.m_cat_status === 0
-                        ? 'New'
-                        : mac?.macbook_catalog_id?.m_cat_status === 1
-                          ? 'Đã sử dụng'
-                          : mac?.macbook_catalog_id?.m_cat_status}
-                    </b>
+                    <b>{mac?.macbook_name}</b>
+                    &nbsp;
+                    {mac?.macbook_catalog_id?.m_cat_status === 0 ? (
+                      <span className="bg-green-500 p-1 text-black">New</span>
+                    ) : mac?.macbook_catalog_id?.m_cat_status === 1 ? (
+                      <span className="bg-red-500 p-1 text-white">Used</span>
+                    ) : (
+                      mac?.macbook_catalog_id?.m_cat_status
+                    )}
                   </span>
                   <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
                     {(mac.macbook_price * 1000).toLocaleString('vi-VN')}đ
@@ -173,11 +173,11 @@ const MacbookManager: React.FC = () => {
                     )}
                   </>
                   {mac?.macbook_status.toLocaleLowerCase() === 'new' ? (
-                    <span className="line-clamp-3 rounded-md bg-green-500">
+                    <span className="line-clamp-3 rounded-md bg-green-500 text-black">
                       {mac?.macbook_status || 'Không có tình trạng!'}
                     </span>
                   ) : (
-                    <span className="line-clamp-3 rounded-md bg-red-500">
+                    <span className="line-clamp-3 rounded-md bg-red-500 text-white">
                       {mac?.macbook_status || 'Không có tình trạng!'}
                     </span>
                   )}

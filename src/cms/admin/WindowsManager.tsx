@@ -150,15 +150,15 @@ const WindowsManager: React.FC = () => {
                     )}
                   </span>
                   <span className="">
-                    {win?.windows_name}
-                    <hr />
-                    <b>
-                      {win?.windows_catalog_id?.w_cat_status === 0
-                        ? 'New'
-                        : win?.windows_catalog_id?.w_cat_status === 1
-                          ? 'Đã sử dụng'
-                          : win?.windows_catalog_id?.w_cat_status}
-                    </b>
+                    <b>{win?.windows_name}</b>
+                    &nbsp;
+                    {win?.windows_catalog_id?.w_cat_status === 0 ? (
+                      <span className="bg-green-500 p-1 text-black">New</span>
+                    ) : win?.windows_catalog_id?.w_cat_status === 1 ? (
+                      <span className="bg-red-500 p-1 text-white">Used</span>
+                    ) : (
+                      win?.windows_catalog_id?.w_cat_status
+                    )}
                   </span>
                   <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
                     {(win.windows_price * 1000).toLocaleString('vi-VN')}đ
@@ -173,11 +173,11 @@ const WindowsManager: React.FC = () => {
                     )}
                   </>
                   {win?.windows_status.toLocaleLowerCase() === 'new' ? (
-                    <span className="line-clamp-3 rounded-md bg-green-500">
+                    <span className="line-clamp-3 rounded-md bg-green-500 text-black">
                       {win?.windows_status || 'Không có tình trạng!'}
                     </span>
                   ) : (
-                    <span className="line-clamp-3 rounded-md bg-red-500">
+                    <span className="line-clamp-3 rounded-md bg-red-500 text-white">
                       {win?.windows_status || 'Không có tình trạng!'}
                     </span>
                   )}

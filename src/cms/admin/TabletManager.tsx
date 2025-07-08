@@ -150,15 +150,15 @@ const TabletManager: React.FC = () => {
                     )}
                   </span>
                   <span className="">
-                    {tablet?.tablet_name}
-                    <hr />
-                    <b>
-                      {tablet?.tablet_catalog_id?.t_cat_status === 0
-                        ? 'New'
-                        : tablet?.tablet_catalog_id?.t_cat_status === 1
-                          ? 'Đã sử dụng'
-                          : tablet?.tablet_catalog_id?.t_cat_status}
-                    </b>
+                    <b>{tablet?.tablet_name}</b>
+                    &nbsp;
+                    {tablet?.tablet_catalog_id?.t_cat_status === 0 ? (
+                      <span className="bg-green-500 p-1 text-black">New</span>
+                    ) : tablet?.tablet_catalog_id?.t_cat_status === 1 ? (
+                      <span className="bg-red-500 p-1 text-white">Used</span>
+                    ) : (
+                      tablet?.tablet_catalog_id?.t_cat_status
+                    )}
                   </span>
                   <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
                     {(tablet.tablet_price * 1000).toLocaleString('vi-VN')}đ
@@ -173,11 +173,11 @@ const TabletManager: React.FC = () => {
                     )}
                   </>
                   {tablet?.tablet_status.toLocaleLowerCase() === 'new' ? (
-                    <span className="line-clamp-3 rounded-md bg-green-500">
+                    <span className="line-clamp-3 rounded-md bg-green-500 text-black">
                       {tablet?.tablet_status || 'Không có tình trạng!'}
                     </span>
                   ) : (
-                    <span className="line-clamp-3 rounded-md bg-red-500">
+                    <span className="line-clamp-3 rounded-md bg-red-500 text-white">
                       {tablet?.tablet_status || 'Không có tình trạng!'}
                     </span>
                   )}
