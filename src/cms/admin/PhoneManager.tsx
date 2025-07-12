@@ -71,7 +71,7 @@ const PhoneManager: React.FC = () => {
           Title_NavtitleAdmin="Quản Lý Danh Sách Điện Thoại"
           Btn_Create={
             <div className="flex flex-col items-start justify-center gap-2 md:flex-row md:items-end">
-              <div className='flex flex-row gap-2 items-end justify-center'>
+              <div className="flex flex-row items-end justify-center gap-2">
                 {/* All */}
                 <Button
                   size="sm"
@@ -191,6 +191,7 @@ const PhoneManager: React.FC = () => {
                     ) : (
                       phone?.phone_catalog_id?.status
                     )}
+                    <span className="bg-black p-1 text-white dark:bg-white dark:text-black">{phone?.color}</span>
                   </span>
                   <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
                     {(phone.price * 1000).toLocaleString('vi-VN')}đ

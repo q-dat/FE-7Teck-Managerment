@@ -189,6 +189,7 @@ const MacbookManager: React.FC = () => {
                     ) : (
                       mac?.macbook_catalog_id?.m_cat_status
                     )}
+                    <span className="bg-black p-1 text-white dark:bg-white dark:text-black">{mac?.macbook_color}</span>
                   </span>
                   <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
                     {(mac.macbook_price * 1000).toLocaleString('vi-VN')}đ
