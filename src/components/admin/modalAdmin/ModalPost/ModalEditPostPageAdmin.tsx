@@ -7,7 +7,7 @@ import { Toastify } from '../../../../helper/Toastify';
 import { PostContext } from '../../../../context/post/PostContext';
 import { PostCatalogContext } from '../../../../context/post-catalog/PostCatalogContext';
 import LabelForm from '../../LabelForm';
-import ReactQuill from 'react-quill';
+import QuillEditor from '../../../../lib/ReactQuill';
 
 const modules = {
   toolbar: [
@@ -30,11 +30,7 @@ interface ModalEditPostPageAdminProps {
   postId: string;
 }
 
-const ModalEditPostPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({
-  isOpen,
-  onClose,
-  postId
-}) => {
+const ModalEditPostPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({ isOpen, onClose, postId }) => {
   const { loading, posts, updatePost, getAllPosts } = useContext(PostContext);
   const isLoading = loading.update;
   const { postCatalogs } = useContext(PostCatalogContext);
@@ -73,9 +69,7 @@ const ModalEditPostPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({
     }
   };
 
-  const handleOverlayClick = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if ((e.target as HTMLElement).classList.contains('modal-overlay')) {
       onClose();
     }
@@ -93,9 +87,7 @@ const ModalEditPostPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({
           onClick={e => e.stopPropagation()}
           className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:mx-[200px] xl:w-screen"
         >
-          <p className="font-bold text-black dark:text-white">
-            Chỉnh sửa bài viết
-          </p>
+          <p className="font-bold text-black dark:text-white">Chỉnh sửa bài viết</p>
           <div className="mt-5 flex flex-col items-start justify-center gap-5 xl:flex-row">
             <div className="w-full xl:w-1/2">
               <LabelForm title={'Tiêu đề bài viết'} />
@@ -120,11 +112,7 @@ const ModalEditPostPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({
                 ))}
               </Select>
               <LabelForm title={'Ảnh đại diện'} />
-              <InputModal
-                type="file"
-                {...register('imageUrl')}
-                placeholder="Ảnh đại diện"
-              />
+              <InputModal type="file" {...register('imageUrl')} placeholder="Ảnh đại diện" />
             </div>
             <div className="w-full">
               <LabelForm title={'Nội dung'} />
@@ -133,7 +121,7 @@ const ModalEditPostPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({
                 control={control}
                 defaultValue={editorValue}
                 render={({ field }) => (
-                  <ReactQuill
+                  <QuillEditor
                     value={field.value || ''}
                     onChange={value => field.onChange(value)}
                     theme="snow"
@@ -146,18 +134,10 @@ const ModalEditPostPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({
             </div>
           </div>
           <div className="flex flex-row items-center justify-center space-x-5 text-center">
-            <Button
-              onClick={onClose}
-              className="border-gray-50 text-black dark:text-white"
-            >
+            <Button onClick={onClose} className="border-gray-50 text-black dark:text-white">
               Hủy
             </Button>
-            <Button
-              disabled={isLoading}
-              color="primary"
-              type="submit"
-              className="group text-white"
-            >
+            <Button disabled={isLoading} color="primary" type="submit" className="group text-white">
               {isLoading ? 'Đang cập nhật...' : 'Xác nhận'}
             </Button>
           </div>
