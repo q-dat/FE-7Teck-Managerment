@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useState,
-  ReactNode,
-  useCallback,
-  useMemo
-} from 'react';
+import { createContext, useState, ReactNode, useCallback, useMemo } from 'react';
 import { registerApi, loginApi } from '../../axios/api/authApi';
 import { AxiosResponse } from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -18,11 +12,7 @@ interface AuthContextType {
   token: string | null;
   loading: boolean;
   error: string | null;
-  registerUser: (userData: {
-    username: string;
-    email: string;
-    password: string;
-  }) => Promise<void>;
+  registerUser: (userData: { username: string; email: string; password: string }) => Promise<void>;
   loginUser: (email: string, password: string) => Promise<void>;
   logoutUser: () => void;
 }
@@ -41,9 +31,7 @@ export const AuthContext = createContext<AuthContextType>(defaultContextValue);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   //
-  const [token, setToken] = useState<string | null>(
-    localStorage.getItem('jwt_token')
-  );
+  const [token, setToken] = useState<string | null>(localStorage.getItem('jwt_token'));
   //
   const [user, setUser] = useState<AuthContextType['user']>(() => {
     const storedUser = localStorage.getItem('user');
@@ -71,20 +59,17 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // Đăng ký
-  const registerUser = useCallback(
-    async (userData: { username: string; email: string; password: string }) => {
-      setLoading(true);
-      setError(null);
-      try {
-        await registerApi(userData);
-      } catch (err: any) {
-        handleError(err);
-      } finally {
-        setLoading(false);
-      }
-    },
-    []
-  );
+  const registerUser = useCallback(async (userData: { username: string; email: string; password: string }) => {
+    setLoading(true);
+    setError(null);
+    try {
+      await registerApi(userData);
+    } catch (err: any) {
+      handleError(err);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   // Đăng nhập
   const loginUser = useCallback(async (email: string, password: string) => {
@@ -142,4 +127,3 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   );
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
-

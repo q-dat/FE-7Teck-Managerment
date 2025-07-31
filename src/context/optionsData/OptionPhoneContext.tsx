@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useState,
-  ReactNode,
-  useCallback,
-  useMemo
-} from 'react';
+import { createContext, useState, ReactNode, useCallback, useMemo } from 'react';
 import { AxiosResponse } from 'axios';
 import { IOptionPhoneData } from '../../types/type/optionsData/optionsPhoneData';
 import {
@@ -28,10 +22,7 @@ interface OptionPhoneContextType {
   getAllOptionPhones: () => void;
   getOptionPhoneById: (_id: string) => Promise<IOptionPhoneData | undefined>;
   createOptionPhone: (phoneOptionData: FormData) => Promise<AxiosResponse<any>>;
-  updateOptionPhone: (
-    _id: string,
-    optionPhoneData: FormData
-  ) => Promise<AxiosResponse<any>>;
+  updateOptionPhone: (_id: string, optionPhoneData: FormData) => Promise<AxiosResponse<any>>;
   deleteOptionPhone: (_id: string) => Promise<AxiosResponse<any>>;
 }
 
@@ -47,15 +38,12 @@ const defaultContextValue: OptionPhoneContextType = {
   error: null,
   getAllOptionPhones: () => {},
   getOptionPhoneById: async () => undefined,
-  createOptionPhone: async () =>
-    ({ data: { optionPhones: null } }) as AxiosResponse,
-  updateOptionPhone: async () =>
-    ({ data: { optionPhones: null } }) as AxiosResponse,
+  createOptionPhone: async () => ({ data: { optionPhones: null } }) as AxiosResponse,
+  updateOptionPhone: async () => ({ data: { optionPhones: null } }) as AxiosResponse,
   deleteOptionPhone: async () => ({ data: { deleted: true } }) as AxiosResponse
 };
 
-export const OptionPhoneContext =
-  createContext<OptionPhoneContextType>(defaultContextValue);
+export const OptionPhoneContext = createContext<OptionPhoneContextType>(defaultContextValue);
 
 export const OptionPhoneProvider = ({ children }: { children: ReactNode }) => {
   const [optionPhones, setOptionPhones] = useState<IOptionPhoneData[]>([]);
@@ -123,61 +111,41 @@ export const OptionPhoneProvider = ({ children }: { children: ReactNode }) => {
   );
 
   // Create OptionPhone
-  const createOptionPhone = useCallback(
-    async (optionPhoneData: FormData): Promise<AxiosResponse<any>> => {
-      return await fetchData(
-        () => createOptionPhoneApi(optionPhoneData),
-        data => {
-          if (data?.op) {
-            setOptionPhones(prevOptionPhones => [
-              ...prevOptionPhones,
-              data?.op
-            ]);
-          }
-        },
-        'create'
-      );
-    },
-    []
-  );
+  const createOptionPhone = useCallback(async (optionPhoneData: FormData): Promise<AxiosResponse<any>> => {
+    return await fetchData(
+      () => createOptionPhoneApi(optionPhoneData),
+      data => {
+        if (data?.op) {
+          setOptionPhones(prevOptionPhones => [...prevOptionPhones, data?.op]);
+        }
+      },
+      'create'
+    );
+  }, []);
 
   // Update OptionPhone
-  const updateOptionPhone = useCallback(
-    async (
-      _id: string,
-      optionPhoneData: FormData
-    ): Promise<AxiosResponse<any>> => {
-      return await fetchData(
-        () => updateOptionPhoneApi(_id, optionPhoneData),
-        data => {
-          if (data?.optionPhoneData) {
-            setOptionPhones(prevOptionPhones =>
-              prevOptionPhones.map(op =>
-                op._id === _id ? data?.optionPhoneData : op
-              )
-            );
-          }
-        },
-        'update'
-      );
-    },
-    []
-  );
+  const updateOptionPhone = useCallback(async (_id: string, optionPhoneData: FormData): Promise<AxiosResponse<any>> => {
+    return await fetchData(
+      () => updateOptionPhoneApi(_id, optionPhoneData),
+      data => {
+        if (data?.optionPhoneData) {
+          setOptionPhones(prevOptionPhones =>
+            prevOptionPhones.map(op => (op._id === _id ? data?.optionPhoneData : op))
+          );
+        }
+      },
+      'update'
+    );
+  }, []);
 
   // Delete OptionPhone
-  const deleteOptionPhone = useCallback(
-    async (id: string): Promise<AxiosResponse<any>> => {
-      return await fetchData(
-        () => deleteOptionPhoneApi(id),
-        () =>
-          setOptionPhones(prevOptionPhones =>
-            prevOptionPhones.filter(op => op._id !== id)
-          ),
-        'delete'
-      );
-    },
-    []
-  );
+  const deleteOptionPhone = useCallback(async (id: string): Promise<AxiosResponse<any>> => {
+    return await fetchData(
+      () => deleteOptionPhoneApi(id),
+      () => setOptionPhones(prevOptionPhones => prevOptionPhones.filter(op => op._id !== id)),
+      'delete'
+    );
+  }, []);
 
   const value = useMemo(
     () => ({
@@ -193,9 +161,5 @@ export const OptionPhoneProvider = ({ children }: { children: ReactNode }) => {
     }),
     [optionPhones, countOptionPhoneData, loading, error]
   );
-  return (
-    <OptionPhoneContext.Provider value={value}>
-      {children}
-    </OptionPhoneContext.Provider>
-  );
+  return <OptionPhoneContext.Provider value={value}>{children}</OptionPhoneContext.Provider>;
 };

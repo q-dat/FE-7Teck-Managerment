@@ -9,7 +9,7 @@ import LabelForm from '../../LabelForm';
 import { PhoneCatalogContext } from '../../../../context/phone-catalog/PhoneCatalogContext';
 import { IPhoneCatalog } from '../../../../types/type/phone-catalog/phone-catalog';
 import { optionsPhoneData } from '../../../../types/type/optionsData/optionsPhoneData';
-import ReactQuill from 'react-quill';
+import QuillEditor from '../../../../lib/ReactQuill';
 
 const modules = {
   toolbar: [
@@ -88,23 +88,15 @@ const fields = [
   'design_and_material.release_date',
   'design_and_material.brand'
 ];
-const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
-  isOpen,
-  onClose,
-  phoneCatalogId
-}) => {
-  const { loading, getAllPhoneCatalogs, phoneCatalogs, updatePhoneCatalog } =
-    useContext(PhoneCatalogContext);
+const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({ isOpen, onClose, phoneCatalogId }) => {
+  const { loading, getAllPhoneCatalogs, phoneCatalogs, updatePhoneCatalog } = useContext(PhoneCatalogContext);
   const isLoading = loading.update;
-  const { control, register, handleSubmit, reset, setValue, watch } =
-    useForm<IPhoneCatalog>();
+  const { control, register, handleSubmit, reset, setValue, watch } = useForm<IPhoneCatalog>();
   const [existingImg, setExistingImg] = useState<string | undefined>('');
   const [editorValue, setEditorValue] = useState<string>('');
 
   useEffect(() => {
-    const phoneData = phoneCatalogs.find(
-      phoneCatalog => phoneCatalog._id === phoneCatalogId
-    );
+    const phoneData = phoneCatalogs.find(phoneCatalog => phoneCatalog._id === phoneCatalogId);
     if (phoneData) {
       setValue('name', phoneData.name);
       setValue('img', phoneData.img);
@@ -161,10 +153,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
     ];
 
     nestedFields.forEach(field => {
-      data.append(
-        field,
-        JSON.stringify(formData[field as keyof IPhoneCatalog] || {})
-      );
+      data.append(field, JSON.stringify(formData[field as keyof IPhoneCatalog] || {}));
     });
 
     try {
@@ -181,9 +170,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
 
   if (!isOpen) return null;
 
-  const handleOverlayClick = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if ((e.target as HTMLElement).classList.contains('modal-overlay')) {
       onClose();
     }
@@ -196,24 +183,14 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
         className="modal-overlay fixed inset-0 z-50 flex w-full cursor-pointer items-center justify-center bg-black bg-opacity-40"
       >
         <div className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:w-1/2">
-          <p className="font-bold text-black dark:text-white">
-            Cập nhật danh mục
-          </p>
+          <p className="font-bold text-black dark:text-white">Cập nhật danh mục</p>
           <div className="h-[500px] w-full overflow-y-auto scrollbar-hide 2xl:h-[700px]">
             {/* Các trường cơ bản */}
             <div className="mt-5">
               <LabelForm title={'Tên sản phẩm'} />
-              <InputModal
-                type="text"
-                {...register('name')}
-                placeholder="Nhập tên sản phẩm"
-              />
+              <InputModal type="text" {...register('name')} placeholder="Nhập tên sản phẩm" />
               <LabelForm title={'Giá'} />
-              <InputModal
-                type="number"
-                {...register('price')}
-                placeholder="Nhập giá"
-              />
+              <InputModal type="number" {...register('price')} placeholder="Nhập giá" />
               <div>
                 <LabelForm title={'Trạng thái*'} />
                 <SelectDaisyUi
@@ -231,17 +208,10 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
               <LabelForm title={'Hình ảnh'} />
               {existingImg && (
                 <div className="my-2">
-                  <img
-                    src={existingImg}
-                    className="h-10 w-10 rounded-md object-cover"
-                  />
+                  <img src={existingImg} className="h-10 w-10 rounded-md object-cover" />
                 </div>
               )}
-              <InputModal
-                type="file"
-                {...register('img')}
-                placeholder="Chèn ảnh hình ảnh"
-              />
+              <InputModal type="file" {...register('img')} placeholder="Chèn ảnh hình ảnh" />
             </div>
             {/* Cấu hình và bộ nhớ */}
             <div className="">
@@ -270,11 +240,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                 placeholder="Nhập chip đồ họa GPU"
               />
               <LabelForm title={'RAM'} />
-              <InputModal
-                type="text"
-                {...register('configuration_and_memory.ram')}
-                placeholder="Nhập RAM"
-              />
+              <InputModal type="text" {...register('configuration_and_memory.ram')} placeholder="Nhập RAM" />
               <LabelForm title={'Dung lượng lưu trữ'} />
               <InputModal
                 type="text"
@@ -294,11 +260,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                 placeholder="Nhập thẻ nhớ"
               />
               <LabelForm title={'Danh bạ'} />
-              <InputModal
-                type="text"
-                {...register('configuration_and_memory.contacts')}
-                placeholder="Nhập danh bạ"
-              />
+              <InputModal type="text" {...register('configuration_and_memory.contacts')} placeholder="Nhập danh bạ" />
 
               {/* Camera và màn hình */}
               <div className="">
@@ -373,11 +335,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                 placeholder="Nhập độ phân giải màn hình"
               />
               <LabelForm title={'Màn hình rộng'} />
-              <InputModal
-                type="text"
-                {...register('camera_and_screen.screen_size')}
-                placeholder="Nhập màn hình rộng"
-              />
+              <InputModal type="text" {...register('camera_and_screen.screen_size')} placeholder="Nhập màn hình rộng" />
               <LabelForm title={'Độ sáng tối đa'} />
               <InputModal
                 type="text"
@@ -400,11 +358,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                 placeholder="Nhập dung lượng pin"
               />
               <LabelForm title={'Loại pin'} />
-              <InputModal
-                type="text"
-                {...register('battery_and_charging.battery_type')}
-                placeholder="Nhập loại pin"
-              />
+              <InputModal type="text" {...register('battery_and_charging.battery_type')} placeholder="Nhập loại pin" />
               <LabelForm title={'Hỗ trợ sạc tối đa'} />
               <InputModal
                 type="text"
@@ -486,11 +440,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                 />
               </div>
               <LabelForm title={'Xem phim'} />
-              <InputModal
-                type="text"
-                {...register('features.video_playback')}
-                placeholder="Nhập xem phim"
-              />
+              <InputModal type="text" {...register('features.video_playback')} placeholder="Nhập xem phim" />
               <div className="my-2">
                 <LabelForm title={'Nghe nhạc'} />
                 <Select
@@ -508,17 +458,9 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
             {/* Kết nối */}
             <div className="">
               <LabelForm title={'Mạng di động'} />
-              <InputModal
-                type="text"
-                {...register('connectivity.mobile_network')}
-                placeholder="Nhập mạng di động"
-              />
+              <InputModal type="text" {...register('connectivity.mobile_network')} placeholder="Nhập mạng di động" />
               <LabelForm title={'Sim'} />
-              <InputModal
-                type="text"
-                {...register('connectivity.sim')}
-                placeholder="Nhập Sim"
-              />
+              <InputModal type="text" {...register('connectivity.sim')} placeholder="Nhập Sim" />
               <div className="my-2">
                 <LabelForm title={'Wi-Fi'} />
                 <Select
@@ -546,11 +488,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                 />
               </div>
               <LabelForm title={'Bluetooth'} />
-              <InputModal
-                type="text"
-                {...register('connectivity.bluetooth')}
-                placeholder="Nhập bluetooth"
-              />
+              <InputModal type="text" {...register('connectivity.bluetooth')} placeholder="Nhập bluetooth" />
               <LabelForm title={'Cổng kết nối/sạc'} />
               <InputModal
                 type="text"
@@ -558,11 +496,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                 placeholder="Nhập cổng kết nối/sạc"
               />
               <LabelForm title={'Jack tai nghe'} />
-              <InputModal
-                type="text"
-                {...register('connectivity.headphone_jack')}
-                placeholder="Nhập jack tai nghe"
-              />
+              <InputModal type="text" {...register('connectivity.headphone_jack')} placeholder="Nhập jack tai nghe" />
               <LabelForm title={'Kết nối khác'} />
               <InputModal
                 type="text"
@@ -573,17 +507,9 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
             {/* Thiết kế và chất liệu */}
             <div className="">
               <LabelForm title={'Thiết kế'} />
-              <InputModal
-                type="text"
-                {...register('design_and_material.design')}
-                placeholder="Nhập thiết kế"
-              />
+              <InputModal type="text" {...register('design_and_material.design')} placeholder="Nhập thiết kế" />
               <LabelForm title={'Chất liệu'} />
-              <InputModal
-                type="text"
-                {...register('design_and_material.material')}
-                placeholder="Nhập chất liệu"
-              />
+              <InputModal type="text" {...register('design_and_material.material')} placeholder="Nhập chất liệu" />
               <LabelForm title={'Kích thước và khối lượng'} />
               <InputModal
                 type="text"
@@ -597,11 +523,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                 placeholder="Nhập thời điểm ra mắt"
               />
               <LabelForm title={'Hãng'} />
-              <InputModal
-                type="text"
-                {...register('design_and_material.brand')}
-                placeholder="Nhập hãng"
-              />
+              <InputModal type="text" {...register('design_and_material.brand')} placeholder="Nhập hãng" />
             </div>
             <div className="flex w-full flex-col items-start justify-center">
               <LabelForm title={'Nội dung'} />
@@ -610,7 +532,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                 control={control}
                 defaultValue={editorValue}
                 render={({ field }) => (
-                  <ReactQuill
+                  <QuillEditor
                     className="w-full bg-white text-black"
                     value={field.value || ''}
                     onChange={value => field.onChange(value)}
@@ -623,18 +545,10 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
             </div>
           </div>
           <div className="mt-5 space-x-5 text-center">
-            <Button
-              onClick={onClose}
-              className="border-gray-50 text-black dark:text-white"
-            >
+            <Button onClick={onClose} className="border-gray-50 text-black dark:text-white">
               Hủy
             </Button>
-            <Button
-              disabled={isLoading}
-              color="primary"
-              type="submit"
-              className="text-white"
-            >
+            <Button disabled={isLoading} color="primary" type="submit" className="text-white">
               {isLoading ? 'Đang cập nhật...' : 'Xác nhận'}
             </Button>
           </div>

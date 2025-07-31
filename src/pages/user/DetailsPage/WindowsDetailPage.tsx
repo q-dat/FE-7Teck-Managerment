@@ -1,10 +1,4 @@
-import React, {
-  useContext,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState
-} from 'react';
+import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import { IoIosArrowDropdownCircle } from 'react-icons/io';
@@ -28,9 +22,7 @@ const WindowsDetailPage: React.FC = () => {
   const { id } = useParams();
   const { getWindowsById, windowsDetails } = useContext(WindowsContext);
   const [win, setWin] = useState<any>(null);
-  const [selectedImage, setSelectedImage] = useState<string | null | undefined>(
-    null
-  );
+  const [selectedImage, setSelectedImage] = useState<string | null | undefined>(null);
   const [activeTab, setActiveTab] = useState<string>('specs');
   const [isLeftVisible, setIsLeftVisible] = useState(true);
   const [isRightVisible, setIsRightVisible] = useState(true);
@@ -62,10 +54,8 @@ const WindowsDetailPage: React.FC = () => {
   useEffect(() => {
     scrollToTopSmoothly();
     fetchData();
-    const cleanup = handleScrollButtons(
-      scrollRef,
-      Object.keys(windowsDetails).length,
-      () => updateScrollButtons(scrollRef, setIsLeftVisible, setIsRightVisible)
+    const cleanup = handleScrollButtons(scrollRef, Object.keys(windowsDetails).length, () =>
+      updateScrollButtons(scrollRef, setIsLeftVisible, setIsRightVisible)
     );
     return cleanup;
   }, []);
@@ -119,36 +109,23 @@ const WindowsDetailPage: React.FC = () => {
                   ref={scrollRef}
                   className="flex w-full flex-row items-start justify-start gap-2 overflow-x-auto scroll-smooth scrollbar-hide xl:w-[550px]"
                 >
-                  {win?.windows_thumbnail &&
-                  Array.isArray(win?.windows_thumbnail) ? (
-                    win?.windows_thumbnail.map(
-                      (thumb: string, index: number) => (
-                        <img
-                          loading="lazy"
-                          key={index}
-                          src={thumb}
-                          alt="Ảnh thu nhỏ"
-                          className="h-[70px] w-[70px] cursor-pointer rounded-md border object-cover"
-                          onClick={() =>
-                            handleThumbnailClick(
-                              scrollRef,
-                              thumb,
-                              index,
-                              setSelectedImage
-                            )
-                          }
-                        />
-                      )
-                    )
+                  {win?.windows_thumbnail && Array.isArray(win?.windows_thumbnail) ? (
+                    win?.windows_thumbnail.map((thumb: string, index: number) => (
+                      <img
+                        loading="lazy"
+                        key={index}
+                        src={thumb}
+                        alt="Ảnh thu nhỏ"
+                        className="h-[70px] w-[70px] cursor-pointer rounded-md border object-cover"
+                        onClick={() => handleThumbnailClick(scrollRef, thumb, index, setSelectedImage)}
+                      />
+                    ))
                   ) : (
                     <span>Không có ảnh thu nhỏ</span>
                   )}
                 </div>
                 {/* Navigation Button  */}
-                <div
-                  role="button"
-                  className="absolute left-0 top-4 flex w-full items-center justify-between"
-                >
+                <div role="button" className="absolute left-0 top-4 flex w-full items-center justify-between">
                   <div className="relative w-full">
                     <button
                       aria-label="Cuộn sang trái"
@@ -173,13 +150,9 @@ const WindowsDetailPage: React.FC = () => {
               {/* Info */}
               <div className="flex h-full flex-col items-start justify-between gap-5 rounded-md border border-gray-50 bg-white p-2 leading-10 xl:h-[490px]">
                 <div className="w-full">
-                  <h1 className="text-xl font-semibold text-black">
-                    Laptop {win?.windows_name}
-                  </h1>
+                  <h1 className="text-xl font-semibold text-black">Laptop {win?.windows_name}</h1>
                   <p className="text-3xl font-semibold text-red-500">
-                    <span>
-                      {(win?.windows_price * 1000).toLocaleString('vi-VN')}₫
-                    </span>
+                    <span>{(win?.windows_price * 1000).toLocaleString('vi-VN')}₫</span>
                     {win?.windows_sale && (
                       <del className="text-sm font-light text-gray-100">
                         {(win?.windows_sale * 1000).toLocaleString('vi-VN')} ₫
@@ -189,17 +162,13 @@ const WindowsDetailPage: React.FC = () => {
                   {win?.windows_color && (
                     <p className="space-x-1 text-gray-500">
                       <span>Màu sắc:</span>
-                      <strong className="text-black">
-                        {win?.windows_color}
-                      </strong>
+                      <strong className="text-black">{win?.windows_color}</strong>
                     </p>
                   )}
                   {win?.windows_status && (
                     <p className="space-x-1 text-gray-500">
                       <span>Tình trạng:</span>
-                      <strong className="text-black">
-                        {win?.windows_status}
-                      </strong>
+                      <strong className="text-black">{win?.windows_status}</strong>
                     </p>
                   )}
                   {win?.windows_des && (
@@ -226,16 +195,10 @@ const WindowsDetailPage: React.FC = () => {
               <Link role="navigation" aria-label="Hotline" to={hotlineUrl}>
                 <div className="h-[80px] w-full rounded-md border border-gray-50 bg-blue-900 p-2">
                   <p className="text-center text-white">
-                    <span className="text-2xl font-bold uppercase xl:text-3xl">
-                      Quan tâm
-                    </span>
-                    <span className="font-bol text-xs">
-                      &nbsp; (Ấn để gọi ngay)
-                    </span>
+                    <span className="text-2xl font-bold uppercase xl:text-3xl">Quan tâm</span>
+                    <span className="font-bol text-xs">&nbsp; (Ấn để gọi ngay)</span>
                   </p>
-                  <i className="text-lg text-white">
-                    *Call ngay {contact} để có giá tốt nhất!
-                  </i>
+                  <i className="text-lg text-white">*Call ngay {contact} để có giá tốt nhất!</i>
                 </div>
               </Link>
             </div>
@@ -268,25 +231,15 @@ const WindowsDetailPage: React.FC = () => {
                     <div key={group?.group}>
                       <details className="group transform divide-y-[1px] bg-primary bg-opacity-5">
                         <summary className="flex cursor-pointer items-center justify-between p-2">
-                          <span className="font-semibold text-primary">
-                            {group?.name}
-                          </span>
+                          <span className="font-semibold text-primary">{group?.name}</span>
                           <span className="transform text-primary transition-transform duration-300 ease-in-out group-open:rotate-180">
                             <IoIosArrowDropdownCircle className="text-2xl" />
                           </span>
                         </summary>
                         {group?.fields
-                          .filter(
-                            field =>
-                              win?.windows_catalog_id?.[group?.group]?.[
-                                field?.field
-                              ]
-                          )
+                          .filter(field => win?.windows_catalog_id?.[group?.group]?.[field?.field])
                           .map(field => {
-                            const fieldValue =
-                              win?.windows_catalog_id?.[group?.group]?.[
-                                field?.field
-                              ];
+                            const fieldValue = win?.windows_catalog_id?.[group?.group]?.[field?.field];
                             return (
                               <div
                                 className="flex w-full flex-row items-start justify-between rounded-md bg-white p-2"
@@ -294,11 +247,7 @@ const WindowsDetailPage: React.FC = () => {
                               >
                                 <p>{field?.name}</p>
                                 <p className="font-light italic text-gray-700">
-                                  {Array.isArray(fieldValue) ? (
-                                    <span>{fieldValue.join(',')}</span>
-                                  ) : (
-                                    fieldValue
-                                  )}
+                                  {Array.isArray(fieldValue) ? <span>{fieldValue.join(',')}</span> : fieldValue}
                                 </p>
                               </div>
                             );

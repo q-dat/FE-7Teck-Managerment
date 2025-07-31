@@ -207,4 +207,3 @@ export const MacbookProvider = ({ children }: { children: ReactNode }) => {
   );
   return <MacbookContext.Provider value={value}>{children}</MacbookContext.Provider>;
 };
-

@@ -21,17 +21,12 @@ interface Option {
   label: string;
 }
 
-const ModalCreateWindowsPageAdmin: React.FC<ModalCreateAdminProps> = ({
-  isOpen,
-  onClose
-}) => {
+const ModalCreateWindowsPageAdmin: React.FC<ModalCreateAdminProps> = ({ isOpen, onClose }) => {
   const { loading, createWindows, getAllWindows } = useContext(WindowsContext);
   const isLoading = loading.create;
-  const { control, register, handleSubmit, reset, setValue, watch } =
-    useForm<IWindows>();
+  const { control, register, handleSubmit, reset, setValue, watch } = useForm<IWindows>();
   // Chọn ảnh từ danh mục
-  const [selectedCategory, setSelectedCategory] =
-    React.useState<IWindowsCatalog | null>(null);
+  const [selectedCategory, setSelectedCategory] = React.useState<IWindowsCatalog | null>(null);
   const [useCategoryImage, setUseCategoryImage] = React.useState(false);
 
   // windowsCatalog
@@ -56,9 +51,7 @@ const ModalCreateWindowsPageAdmin: React.FC<ModalCreateAdminProps> = ({
   // Cập nhật windows_name khi danh mục được chọn
   useEffect(() => {
     if (selectedCatalogId) {
-      const selectedCatalog = windowsCatalogs.find(
-        catalog => catalog._id === selectedCatalogId
-      );
+      const selectedCatalog = windowsCatalogs.find(catalog => catalog._id === selectedCatalogId);
       if (selectedCatalog) {
         setSelectedCategory(selectedCatalog);
         setValue('windows_name', selectedCatalog.w_cat_name);
@@ -114,9 +107,7 @@ const ModalCreateWindowsPageAdmin: React.FC<ModalCreateAdminProps> = ({
     }
   };
 
-  const handleOverlayClick = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if ((e.target as HTMLElement).classList.contains('modal-overlay')) {
       onClose();
     }
@@ -135,9 +126,7 @@ const ModalCreateWindowsPageAdmin: React.FC<ModalCreateAdminProps> = ({
           className="mx-2 flex max-h-[95%] w-full flex-col overflow-y-auto rounded-lg bg-white p-5 text-start shadow scrollbar-hide dark:bg-gray-800 xl:w-1/2"
         >
           <div>
-            <p className="font-bold text-black dark:text-white">
-              Tạo sản phẩm mới
-            </p>
+            <p className="font-bold text-black dark:text-white">Tạo sản phẩm mới</p>
             <div className="flex items-center">
               <ReactSelect
                 placeholder="Chọn danh mục*"
@@ -154,11 +143,7 @@ const ModalCreateWindowsPageAdmin: React.FC<ModalCreateAdminProps> = ({
               {...register('windows_name', { required: true })}
               placeholder="Tên sản phẩm*"
             />
-            <InputModal
-              type="text"
-              {...register('windows_color', { required: true })}
-              placeholder="Nhập màu*"
-            />
+            <InputModal type="text" {...register('windows_color', { required: true })} placeholder="Nhập màu*" />
             <InputModal
               type="number"
               {...register('windows_price', { required: true })}
@@ -169,11 +154,7 @@ const ModalCreateWindowsPageAdmin: React.FC<ModalCreateAdminProps> = ({
               {...register('windows_sale')}
               placeholder="Nhập giá giảm (Hệ số x1000: 1triệu = 1000)"
             />
-            <InputModal
-              type="text"
-              {...register('windows_status', { required: true })}
-              placeholder="Tình trạng*"
-            />
+            <InputModal type="text" {...register('windows_status', { required: true })} placeholder="Tình trạng*" />
             <Textarea
               className="w-full border p-2 focus:outline-none"
               {...register('windows_des')}
@@ -182,15 +163,9 @@ const ModalCreateWindowsPageAdmin: React.FC<ModalCreateAdminProps> = ({
             {/* Ảnh từ danh mục */}
             {selectedCategory?.w_cat_img && (
               <div className="mt-2">
-                <p className="text-sm text-gray-600">
-                  Ảnh từ danh mục đã chọn (Click ảnh để xem):
-                </p>
+                <p className="text-sm text-gray-600">Ảnh từ danh mục đã chọn (Click ảnh để xem):</p>
                 <Zoom>
-                  <img
-                    src={selectedCategory.w_cat_img}
-                    alt="Ảnh danh mục"
-                    className="mt-1 w-20 rounded border"
-                  />
+                  <img src={selectedCategory.w_cat_img} alt="Ảnh danh mục" className="mt-1 w-20 rounded border" />
                 </Zoom>
                 <label
                   className={`mt-2 flex cursor-pointer items-center space-x-2 rounded border px-2 py-1 ${
@@ -203,9 +178,7 @@ const ModalCreateWindowsPageAdmin: React.FC<ModalCreateAdminProps> = ({
                     checked={useCategoryImage}
                     onChange={e => setUseCategoryImage(e.target.checked)}
                   />
-                  <span className="text-sm text-black dark:text-white">
-                    Dùng ảnh này làm ảnh sản phẩm
-                  </span>
+                  <span className="text-sm text-black dark:text-white">Dùng ảnh này làm ảnh sản phẩm</span>
                 </label>
               </div>
             )}
@@ -220,27 +193,14 @@ const ModalCreateWindowsPageAdmin: React.FC<ModalCreateAdminProps> = ({
               </>
             )}
             <LabelForm title={'Ảnh thu nhỏ'} />
-            <InputModal
-              type="file"
-              {...register('windows_thumbnail')}
-              placeholder="Chèn ảnh thu nhỏ"
-              multiple
-            />
+            <InputModal type="file" {...register('windows_thumbnail')} placeholder="Chèn ảnh thu nhỏ" multiple />
           </div>
 
           <div className="flex flex-row items-center justify-center space-x-5 text-center">
-            <Button
-              onClick={onClose}
-              className="border-gray-50 text-black dark:text-white"
-            >
+            <Button onClick={onClose} className="border-gray-50 text-black dark:text-white">
               Hủy
             </Button>
-            <Button
-              disabled={isLoading}
-              color="primary"
-              type="submit"
-              className="group text-white"
-            >
+            <Button disabled={isLoading} color="primary" type="submit" className="group text-white">
               {isLoading ? 'Đang tạo...' : 'Xác nhận'}
             </Button>
           </div>

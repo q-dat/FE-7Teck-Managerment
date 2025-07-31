@@ -13,20 +13,12 @@ interface ModalEditPageAdminProps {
   galleryId: string;
 }
 
-const ModalEditGalleryPageAdmin: React.FC<ModalEditPageAdminProps> = ({
-  isOpen,
-  onClose,
-  galleryId
-}) => {
-  const { loading, galleries, getAllGallerys, updateGallery } =
-    useContext(GalleryContext);
+const ModalEditGalleryPageAdmin: React.FC<ModalEditPageAdminProps> = ({ isOpen, onClose, galleryId }) => {
+  const { loading, galleries, getAllGallerys, updateGallery } = useContext(GalleryContext);
   const isLoading = loading.update;
-  const { register, handleSubmit, watch, setValue, reset } =
-    useForm<IGallery>();
+  const { register, handleSubmit, watch, setValue, reset } = useForm<IGallery>();
 
-  const [existingGallery, setExistingGallery] = useState<string[] | undefined>(
-    []
-  );
+  const [existingGallery, setExistingGallery] = useState<string[] | undefined>([]);
 
   useEffect(() => {
     const galleryData = galleries.find(gallery => gallery._id === galleryId);
@@ -71,9 +63,7 @@ const ModalEditGalleryPageAdmin: React.FC<ModalEditPageAdminProps> = ({
     }
   };
 
-  const handleOverlayClick = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if ((e.target as HTMLElement).classList.contains('modal-overlay')) {
       onClose();
     }
@@ -91,57 +81,30 @@ const ModalEditGalleryPageAdmin: React.FC<ModalEditPageAdminProps> = ({
           onClick={e => e.stopPropagation()}
           className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:w-1/2"
         >
-          <p className="font-bold text-black dark:text-white">
-            Cập nhật hình ảnh
-          </p>
+          <p className="font-bold text-black dark:text-white">Cập nhật hình ảnh</p>
 
           <div className="flex w-full flex-row items-start justify-between gap-10">
             <div className="flex w-full flex-col items-start justify-center">
               <LabelForm title={'Tên hình ảnh'} />
-              <InputModal
-                type="text"
-                {...register('name')}
-                placeholder="Tên hình ảnh"
-              />
+              <InputModal type="text" {...register('name')} placeholder="Tên hình ảnh" />
               <LabelForm title={'Mô tả'} />
-              <Textarea
-                className="w-full border p-2 focus:outline-none"
-                {...register('des')}
-                placeholder="Mô tả"
-              />
+              <Textarea className="w-full border p-2 focus:outline-none" {...register('des')} placeholder="Mô tả" />
               <LabelForm title={'Hình ảnh'} />
               {existingGallery && existingGallery.length > 0 && (
                 <div className="my-2 flex flex-wrap gap-2">
                   {existingGallery.map((gallery, index) => (
-                    <img
-                      key={index}
-                      src={gallery}
-                      className="h-10 w-10 rounded-md object-cover"
-                    />
+                    <img key={index} src={gallery} className="h-10 w-10 rounded-md object-cover" />
                   ))}
                 </div>
               )}
-              <InputModal
-                type="file"
-                {...register('gallery')}
-                placeholder="Chèn hình ảnh"
-                multiple
-              />
+              <InputModal type="file" {...register('gallery')} placeholder="Chèn hình ảnh" multiple />
             </div>
           </div>
           <div className="flex flex-row items-center justify-center space-x-5 text-center">
-            <Button
-              onClick={onClose}
-              className="border-gray-50 text-black dark:text-white"
-            >
+            <Button onClick={onClose} className="border-gray-50 text-black dark:text-white">
               Hủy
             </Button>
-            <Button
-              disabled={isLoading}
-              color="primary"
-              type="submit"
-              className="group text-white"
-            >
+            <Button disabled={isLoading} color="primary" type="submit" className="group text-white">
               {isLoading ? 'Đang cập nhật...' : 'Xác nhận'}
             </Button>
           </div>

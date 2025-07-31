@@ -53,11 +53,7 @@ const NotificationPopup: React.FC = () => {
                     <p>Đóng:</p>
                     <p>{secondsLeft}s</p>
                   </div>
-                  <img
-                    className="h-full w-full rounded-lg object-cover"
-                    src={Popup}
-                    alt="Greeting"
-                  />
+                  <img className="h-full w-full rounded-lg object-cover" src={Popup} alt="Greeting" />
                 </div>
               </Hero.Content>
             </Hero>

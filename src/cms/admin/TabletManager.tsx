@@ -191,7 +191,9 @@ const TabletManager: React.FC = () => {
                     ) : (
                       tablet?.tablet_catalog_id?.t_cat_status
                     )}
-                    <span className="bg-black p-1 text-white dark:bg-white dark:text-black">{tablet?.tablet_color}</span>
+                    <span className="bg-black p-1 text-white dark:bg-white dark:text-black">
+                      {tablet?.tablet_color}
+                    </span>
                   </span>
                   <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
                     {(tablet.tablet_price * 1000).toLocaleString('vi-VN')}đ

@@ -19,19 +19,11 @@ import NavbarAdmin from '../../components/admin/responsiveUI/mobile/NavbarAdmin'
 import Zoom from '../../lib/Zoom';
 
 const PhoneCatalogManager: React.FC = () => {
-  const {
-    loading,
-    phoneCatalogs,
-    deletePhoneCatalog,
-    getAllPhoneCatalogs,
-    error
-  } = useContext(PhoneCatalogContext);
+  const { loading, phoneCatalogs, deletePhoneCatalog, getAllPhoneCatalogs, error } = useContext(PhoneCatalogContext);
   const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
-  const [selectedPhoneCatalogId, setSelectedPhoneCatalogId] = useState<
-    string | null
-  >(null);
+  const [selectedPhoneCatalogId, setSelectedPhoneCatalogId] = useState<string | null>(null);
 
   const openModalCreateAdmin = () => setIsModalCreateOpen(true);
   const closeModalCreateAdmin = () => setIsModalCreateOpen(false);
@@ -54,9 +46,7 @@ const PhoneCatalogManager: React.FC = () => {
         Toastify('Bạn đã xoá danh mục thành công', 201);
         getAllPhoneCatalogs();
       } catch {
-        const errorMessPhoneCatalog = isIErrorResponse(error)
-          ? error.data?.message
-          : 'Xoá danh mục thất bại!';
+        const errorMessPhoneCatalog = isIErrorResponse(error) ? error.data?.message : 'Xoá danh mục thất bại!';
         Toastify(`Lỗi: ${errorMessPhoneCatalog}`, 500);
       }
     }
@@ -102,77 +92,62 @@ const PhoneCatalogManager: React.FC = () => {
         table_body={
           <Table.Body className="text-center text-sm">
             {phoneCatalogs && phoneCatalogs.length > 0 ? (
-              phoneCatalogs.map(
-                (phoneCatalog: IPhoneCatalog, index: number) => (
-                  <Table.Row key={index}>
-                    <span>#{index + 1}</span>
-                    <span className="flex items-center justify-center">
-                      <Zoom>
-                        <img
-                          loading="lazy"
-                          src={phoneCatalog?.img}
-                          alt="Hình ảnh"
-                          className="h-12 w-12 object-cover"
-                        />
-                      </Zoom>
-                    </span>
-                    <span>{phoneCatalog?.name}</span>
-                    <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
-                      {(phoneCatalog?.price * 1000).toLocaleString('vi-VN')}₫
-                    </span>
-                    <span>
-                      {/* {new Date(phoneCatalog?.createdAt).toLocaleString(
+              phoneCatalogs.map((phoneCatalog: IPhoneCatalog, index: number) => (
+                <Table.Row key={index}>
+                  <span>#{index + 1}</span>
+                  <span className="flex items-center justify-center">
+                    <Zoom>
+                      <img loading="lazy" src={phoneCatalog?.img} alt="Hình ảnh" className="h-12 w-12 object-cover" />
+                    </Zoom>
+                  </span>
+                  <span>{phoneCatalog?.name}</span>
+                  <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
+                    {(phoneCatalog?.price * 1000).toLocaleString('vi-VN')}₫
+                  </span>
+                  <span>
+                    {/* {new Date(phoneCatalog?.createdAt).toLocaleString(
                         'vi-VN'
                       )} */}
-                      <TimeAgo date={phoneCatalog?.createdAt} />
-                    </span>
-                    <span>
-                      {phoneCatalog?.status === 0 ? (
-                        <p className="rounded-md bg-green-500 p-1 text-white">
-                          New
-                        </p>
-                      ) : phoneCatalog?.status === 1 ? (
-                        <p className="rounded-md bg-yellow-700 p-1 text-white">
-                          Đã sử dụng
-                        </p>
-                      ) : (
-                        phoneCatalog?.status
-                      )}
-                    </span>
-                    {/* Hành động */}
-                    <span>
-                      <details>
-                        <summary className="inline cursor-pointer text-base text-warning">
-                          <div className="flex items-center justify-center px-[55px] py-2">
-                            <FaCircleInfo />
-                          </div>
-                        </summary>
-                        <div className="flex flex-col items-center justify-center gap-2">
-                          <Button
-                            color="success"
-                            onClick={() =>
-                              openModalEditAdmin(phoneCatalog._id ?? '')
-                            }
-                            className="w-full max-w-[140px] text-sm font-light text-white"
-                          >
-                            <FaPenToSquare />
-                            Cập Nhật
-                          </Button>
-                          <Button
-                            onClick={() =>
-                              openModalDeleteAdmin(phoneCatalog._id ?? '')
-                            }
-                            className="w-full max-w-[140px] bg-red-600 text-sm font-light text-white"
-                          >
-                            <MdDelete />
-                            Xoá
-                          </Button>
+                    <TimeAgo date={phoneCatalog?.createdAt} />
+                  </span>
+                  <span>
+                    {phoneCatalog?.status === 0 ? (
+                      <p className="rounded-md bg-green-500 p-1 text-white">New</p>
+                    ) : phoneCatalog?.status === 1 ? (
+                      <p className="rounded-md bg-yellow-700 p-1 text-white">Đã sử dụng</p>
+                    ) : (
+                      phoneCatalog?.status
+                    )}
+                  </span>
+                  {/* Hành động */}
+                  <span>
+                    <details>
+                      <summary className="inline cursor-pointer text-base text-warning">
+                        <div className="flex items-center justify-center px-[55px] py-2">
+                          <FaCircleInfo />
                         </div>
-                      </details>
-                    </span>
-                  </Table.Row>
-                )
-              )
+                      </summary>
+                      <div className="flex flex-col items-center justify-center gap-2">
+                        <Button
+                          color="success"
+                          onClick={() => openModalEditAdmin(phoneCatalog._id ?? '')}
+                          className="w-full max-w-[140px] text-sm font-light text-white"
+                        >
+                          <FaPenToSquare />
+                          Cập Nhật
+                        </Button>
+                        <Button
+                          onClick={() => openModalDeleteAdmin(phoneCatalog._id ?? '')}
+                          className="w-full max-w-[140px] bg-red-600 text-sm font-light text-white"
+                        >
+                          <MdDelete />
+                          Xoá
+                        </Button>
+                      </div>
+                    </details>
+                  </span>
+                </Table.Row>
+              ))
             ) : (
               <tr>
                 <td colSpan={6}>Không có danh mục điện thoại nào!</td>
@@ -181,10 +156,7 @@ const PhoneCatalogManager: React.FC = () => {
           </Table.Body>
         }
       />
-      <ModalCreatePhoneCatalogPageAdmin
-        isOpen={isModalCreateOpen}
-        onClose={closeModalCreateAdmin}
-      />
+      <ModalCreatePhoneCatalogPageAdmin isOpen={isModalCreateOpen} onClose={closeModalCreateAdmin} />
       <ModalDeletePhoneCatalogPageAdmin
         isOpen={isModalDeleteOpen}
         onClose={closeModalDeleteAdmin}

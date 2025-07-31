@@ -19,14 +19,11 @@ import 'react-medium-image-zoom/dist/styles.css';
 import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
 
 const GalleryManagerPage: React.FC = () => {
-  const { galleries, loading, error, getAllGallerys, deleteGallery } =
-    useContext(GalleryContext);
+  const { galleries, loading, error, getAllGallerys, deleteGallery } = useContext(GalleryContext);
   const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
-  const [selectedGalleryId, setSelectedGalleryId] = useState<string | null>(
-    null
-  );
+  const [selectedGalleryId, setSelectedGalleryId] = useState<string | null>(null);
 
   const openModalCreateAdmin = () => setIsModalCreateOpen(true);
   const closeModalCreateAdmin = () => setIsModalCreateOpen(false);
@@ -49,9 +46,7 @@ const GalleryManagerPage: React.FC = () => {
         Toastify('Bạn đã xoá hình ảnh thành công', 201);
         getAllGallerys();
       } catch (error) {
-        const errorMessage = isIErrorResponse(error)
-          ? error.data?.message
-          : 'Xoá hình ảnh thất bại!';
+        const errorMessage = isIErrorResponse(error) ? error.data?.message : 'Xoá hình ảnh thất bại!';
         Toastify(`Lỗi: ${errorMessage}`, 500);
       }
     }
@@ -81,10 +76,7 @@ const GalleryManagerPage: React.FC = () => {
       </div>
       <div className="grid grid-flow-row grid-cols-2 items-start gap-[10px] px-2 md:grid-cols-4 xl:grid-cols-6 xl:px-0">
         {galleries.map((gallery: IGallery, index: number) => (
-          <div
-            key={index}
-            className="relative rounded-sm bg-white p-1 shadow-headerMenu"
-          >
+          <div key={index} className="relative rounded-sm bg-white p-1 shadow-headerMenu">
             {/*  */}
             <div>
               <Zoom>
@@ -94,17 +86,11 @@ const GalleryManagerPage: React.FC = () => {
                   alt={`${gallery?.gallery}`}
                 />
               </Zoom>
-              <p className=" text-xs text-primary">
-                <p className="line-clamp-1 text-xs font-light">
-                  {gallery?.des}
-                </p>
-                <p className="line-clamp-2 text-sm font-semibold">
-                  {gallery?.name}
-                </p>
+              <p className="text-xs text-primary">
+                <p className="line-clamp-1 text-xs font-light">{gallery?.des}</p>
+                <p className="line-clamp-2 text-sm font-semibold">{gallery?.name}</p>
                 <hr />
-                <span className="font-light">
-                  {new Date(gallery?.updatedAt).toLocaleDateString('vi-VN')}
-                </span>
+                <span className="font-light">{new Date(gallery?.updatedAt).toLocaleDateString('vi-VN')}</span>
                 &nbsp;
                 <b>
                   <TimeAgo date={gallery?.updatedAt} />
@@ -120,7 +106,7 @@ const GalleryManagerPage: React.FC = () => {
             </div>
             <div
               onClick={() => openModalDeleteAdmin(gallery?._id ?? '')}
-              className="absolute right-1 top-1 z-20 flex cursor-pointer flex-row items-center justify-center gap-1 rounded-sm bg-white p-1  text-red-500"
+              className="absolute right-1 top-1 z-20 flex cursor-pointer flex-row items-center justify-center gap-1 rounded-sm bg-white p-1 text-red-500"
             >
               <MdDelete />
             </div>
@@ -128,10 +114,7 @@ const GalleryManagerPage: React.FC = () => {
         ))}
       </div>
       {/*  */}
-      <ModalCreateGalleryPageAdmin
-        isOpen={isModalCreateOpen}
-        onClose={closeModalCreateAdmin}
-      />
+      <ModalCreateGalleryPageAdmin isOpen={isModalCreateOpen} onClose={closeModalCreateAdmin} />
       <ModalDeleteGalleryPageAdmin
         isOpen={isModalDeleteOpen}
         onClose={closeModalDeleteAdmin}

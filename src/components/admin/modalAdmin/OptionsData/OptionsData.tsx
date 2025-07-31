@@ -22,9 +22,8 @@ const fields: (keyof IOptionPhoneData)[] = [
   'music_playback'
 ];
 const OptionsData: React.FC<ModalCreateAdminProps> = ({ isOpen, onClose }) => {
-  const {  handleSubmit, reset } = useForm<IOptionPhoneData>();
-  const { loading, getAllOptionPhones, createOptionPhone } =
-    useContext(OptionPhoneContext);
+  const { handleSubmit, reset } = useForm<IOptionPhoneData>();
+  const { loading, getAllOptionPhones, createOptionPhone } = useContext(OptionPhoneContext);
   const isLoading = loading.create;
 
   const onSubmit: SubmitHandler<IOptionPhoneData> = async formData => {
@@ -34,9 +33,7 @@ const OptionsData: React.FC<ModalCreateAdminProps> = ({ isOpen, onClose }) => {
       if (formData[field]) {
         Object.entries(formData[field]).forEach(([key, value]) => {
           if (Array.isArray(value)) {
-            value.forEach(item =>
-              data.append(`${field}[${key}][]`, item.value)
-            );
+            value.forEach(item => data.append(`${field}[${key}][]`, item.value));
           } else {
             data.append(`${field}[${key}]`, value.value);
           }
@@ -55,9 +52,7 @@ const OptionsData: React.FC<ModalCreateAdminProps> = ({ isOpen, onClose }) => {
     }
   };
 
-  const handleOverlayClick = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if ((e.target as HTMLElement).classList.contains('modal-overlay')) {
       onClose();
     }
@@ -78,12 +73,7 @@ const OptionsData: React.FC<ModalCreateAdminProps> = ({ isOpen, onClose }) => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <h1>OptionsPhoneDate</h1>
 
-            <Button
-              disabled={isLoading}
-              color="primary"
-              type="submit"
-              className="group text-white"
-            >
+            <Button disabled={isLoading} color="primary" type="submit" className="group text-white">
               {isLoading ? 'Đang tạo...' : 'Xác nhận'}
             </Button>
           </form>

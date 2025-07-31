@@ -13,18 +13,12 @@ export const getPostCatalogByIdApi = (id: string) => {
 
 // Post PostCatalog
 export const createPostCatalogApi = (postCatalog: IPostCatalog) => {
-  return axios.post<{ postCatalog: IPostCatalog }>(
-    '/api/post-catalog',
-    postCatalog
-  );
+  return axios.post<{ postCatalog: IPostCatalog }>('/api/post-catalog', postCatalog);
 };
 
 // Put PostCatalog
 export const updatePostCatalogApi = (id: string, postCatalog: IPostCatalog) => {
-  return axios.put<{ postCatalog: IPostCatalog }>(
-    `/api/post-catalog/${id}`,
-    postCatalog
-  );
+  return axios.put<{ postCatalog: IPostCatalog }>(`/api/post-catalog/${id}`, postCatalog);
 };
 
 // Delete PostCatalog

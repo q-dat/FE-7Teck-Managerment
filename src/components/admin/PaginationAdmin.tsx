@@ -9,12 +9,7 @@ interface PaginationProps {
   onPrevPage: () => void;
 }
 
-const PaginationAdmin: React.FC<PaginationProps> = ({
-  currentPage,
-  totalPages,
-  onNextPage,
-  onPrevPage
-}) => {
+const PaginationAdmin: React.FC<PaginationProps> = ({ currentPage, totalPages, onNextPage, onPrevPage }) => {
   if (totalPages <= 1) return null;
 
   return (

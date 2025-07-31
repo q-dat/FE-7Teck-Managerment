@@ -5,9 +5,7 @@ import { RxHamburgerMenu } from 'react-icons/rx';
 import { IoSearchOutline } from 'react-icons/io5';
 import SidebarPost from '../../post/SidebarPost';
 
-const NavbarPost: React.FC<{ Title_NavbarPost: string }> = ({
-  Title_NavbarPost
-}) => {
+const NavbarPost: React.FC<{ Title_NavbarPost: string }> = ({ Title_NavbarPost }) => {
   const [leftVisible, setLeftVisible] = useState(false);
   const [rightVisible, setRightVisible] = useState(false);
 
@@ -36,19 +34,14 @@ const NavbarPost: React.FC<{ Title_NavbarPost: string }> = ({
               </Menu>
             }
           >
-            <div
-              onClick={toggleLeftVisible}
-              className="py-4 text-2xl text-black dark:text-white xl:hidden"
-            >
+            <div onClick={toggleLeftVisible} className="py-4 text-2xl text-black dark:text-white xl:hidden">
               <RxHamburgerMenu />
             </div>
           </Drawer>
         </div>
         {/* Title_NavbarMobile */}
         <div>
-          <p className="font-semibold text-black dark:text-white">
-            {Title_NavbarPost}
-          </p>
+          <p className="font-semibold text-black dark:text-white">{Title_NavbarPost}</p>
         </div>
         {/* Sidebar Right */}
         <div className="z-50">
@@ -71,14 +64,7 @@ const NavbarPost: React.FC<{ Title_NavbarPost: string }> = ({
                 width="40"
                 height="40"
               >
-                <mask
-                  id=":rlr:"
-                  maskUnits="userSpaceOnUse"
-                  x="0"
-                  y="0"
-                  width="36"
-                  height="36"
-                >
+                <mask id=":rlr:" maskUnits="userSpaceOnUse" x="0" y="0" width="36" height="36">
                   <rect width="36" height="36" rx="72" fill="#FFFFFF"></rect>
                 </mask>
                 <g mask="url(#:rlr:)">
@@ -93,30 +79,9 @@ const NavbarPost: React.FC<{ Title_NavbarPost: string }> = ({
                     rx="36"
                   ></rect>
                   <g transform="translate(-4 -1) rotate(0 18 18)">
-                    <path
-                      d="M15 20c2 1 4 1 6 0"
-                      stroke="#000000"
-                      fill="none"
-                      strokeLinecap="round"
-                    ></path>
-                    <rect
-                      x="14"
-                      y="14"
-                      width="1.5"
-                      height="2"
-                      rx="1"
-                      stroke="none"
-                      fill="#000000"
-                    ></rect>
-                    <rect
-                      x="20"
-                      y="14"
-                      width="1.5"
-                      height="2"
-                      rx="1"
-                      stroke="none"
-                      fill="#000000"
-                    ></rect>
+                    <path d="M15 20c2 1 4 1 6 0" stroke="#000000" fill="none" strokeLinecap="round"></path>
+                    <rect x="14" y="14" width="1.5" height="2" rx="1" stroke="none" fill="#000000"></rect>
+                    <rect x="20" y="14" width="1.5" height="2" rx="1" stroke="none" fill="#000000"></rect>
                   </g>
                 </g>
               </svg>
@@ -126,11 +91,7 @@ const NavbarPost: React.FC<{ Title_NavbarPost: string }> = ({
       </div>
       {/* Input Search */}
       <div className="relative flex items-center">
-        <Input
-          className="w-full text-black focus:outline-none"
-          type="text"
-          placeholder="Tìm Kiếm..."
-        />
+        <Input className="w-full text-black focus:outline-none" type="text" placeholder="Tìm Kiếm..." />
         <div className="absolute right-2 h-5 w-5 cursor-pointer text-gray-50">
           <IoSearchOutline />
         </div>

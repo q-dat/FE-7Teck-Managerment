@@ -19,19 +19,12 @@ import ModalEditTabletCatalogPageAdmin from '../../components/admin/modalAdmin/M
 import Zoom from '../../lib/Zoom';
 
 const TabletCatalogManager: React.FC = () => {
-  const {
-    loading,
-    tabletCatalogs,
-    deleteTabletCatalog,
-    getAllTabletCatalogs,
-    error
-  } = useContext(TabletCatalogContext);
+  const { loading, tabletCatalogs, deleteTabletCatalog, getAllTabletCatalogs, error } =
+    useContext(TabletCatalogContext);
   const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
-  const [selectedTabletCatalogId, setSelectedTabletCatalogId] = useState<
-    string | null
-  >(null);
+  const [selectedTabletCatalogId, setSelectedTabletCatalogId] = useState<string | null>(null);
 
   const openModalCreateAdmin = () => setIsModalCreateOpen(true);
   const closeModalCreateAdmin = () => setIsModalCreateOpen(false);
@@ -54,9 +47,7 @@ const TabletCatalogManager: React.FC = () => {
         Toastify('Bạn đã xoá danh mục thành công', 201);
         getAllTabletCatalogs();
       } catch {
-        const errorMessTabletCatalog = isIErrorResponse(error)
-          ? error.data?.message
-          : 'Xoá danh mục thất bại!';
+        const errorMessTabletCatalog = isIErrorResponse(error) ? error.data?.message : 'Xoá danh mục thất bại!';
         Toastify(`Lỗi: ${errorMessTabletCatalog}`, 500);
       }
     }
@@ -102,80 +93,67 @@ const TabletCatalogManager: React.FC = () => {
         table_body={
           <Table.Body className="text-center text-sm">
             {tabletCatalogs && tabletCatalogs.length > 0 ? (
-              tabletCatalogs.map(
-                (tabletCatalog: ITabletCatalog, index: number) => (
-                  <Table.Row key={index}>
-                    <span>#{index + 1}</span>
-                    <span className="flex items-center justify-center">
-                      <Zoom>
-                        <img
-                          loading="lazy"
-                          src={tabletCatalog?.t_cat_img}
-                          alt="Hình ảnh"
-                          className="h-12 w-12 object-cover"
-                        />
-                      </Zoom>
-                    </span>
-                    <span>{tabletCatalog?.t_cat_name}</span>
-                    <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
-                      {(tabletCatalog?.t_cat_price * 1000).toLocaleString(
-                        'vi-VN'
-                      )}
-                      ₫
-                    </span>
-                    <span>
-                      {/* {new Date(tabletCatalog?.createdAt).toLocaleString(
+              tabletCatalogs.map((tabletCatalog: ITabletCatalog, index: number) => (
+                <Table.Row key={index}>
+                  <span>#{index + 1}</span>
+                  <span className="flex items-center justify-center">
+                    <Zoom>
+                      <img
+                        loading="lazy"
+                        src={tabletCatalog?.t_cat_img}
+                        alt="Hình ảnh"
+                        className="h-12 w-12 object-cover"
+                      />
+                    </Zoom>
+                  </span>
+                  <span>{tabletCatalog?.t_cat_name}</span>
+                  <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
+                    {(tabletCatalog?.t_cat_price * 1000).toLocaleString('vi-VN')}₫
+                  </span>
+                  <span>
+                    {/* {new Date(tabletCatalog?.createdAt).toLocaleString(
                         'vi-VN'
                       )} */}
-                      <TimeAgo date={tabletCatalog?.createdAt} />
-                    </span>
-                    <span>
-                      {tabletCatalog?.t_cat_status === 0 ? (
-                        <p className="rounded-md bg-green-500 p-1 text-white">
-                          New
-                        </p>
-                      ) : tabletCatalog?.t_cat_status === 1 ? (
-                        <p className="rounded-md bg-yellow-700 p-1 text-white">
-                          Đã sử dụng
-                        </p>
-                      ) : (
-                        tabletCatalog?.t_cat_status
-                      )}
-                    </span>
-                    {/* Hành động */}
-                    <span>
-                      <details>
-                        <summary className="inline cursor-pointer text-base text-warning">
-                          <div className="flex items-center justify-center px-[55px] py-2">
-                            <FaCircleInfo />
-                          </div>
-                        </summary>
-                        <div className="flex flex-col items-center justify-center gap-2">
-                          <Button
-                            color="success"
-                            onClick={() =>
-                              openModalEditAdmin(tabletCatalog._id ?? '')
-                            }
-                            className="w-full max-w-[140px] text-sm font-light text-white"
-                          >
-                            <FaPenToSquare />
-                            Cập Nhật
-                          </Button>
-                          <Button
-                            onClick={() =>
-                              openModalDeleteAdmin(tabletCatalog._id ?? '')
-                            }
-                            className="w-full max-w-[140px] bg-red-600 text-sm font-light text-white"
-                          >
-                            <MdDelete />
-                            Xoá
-                          </Button>
+                    <TimeAgo date={tabletCatalog?.createdAt} />
+                  </span>
+                  <span>
+                    {tabletCatalog?.t_cat_status === 0 ? (
+                      <p className="rounded-md bg-green-500 p-1 text-white">New</p>
+                    ) : tabletCatalog?.t_cat_status === 1 ? (
+                      <p className="rounded-md bg-yellow-700 p-1 text-white">Đã sử dụng</p>
+                    ) : (
+                      tabletCatalog?.t_cat_status
+                    )}
+                  </span>
+                  {/* Hành động */}
+                  <span>
+                    <details>
+                      <summary className="inline cursor-pointer text-base text-warning">
+                        <div className="flex items-center justify-center px-[55px] py-2">
+                          <FaCircleInfo />
                         </div>
-                      </details>
-                    </span>
-                  </Table.Row>
-                )
-              )
+                      </summary>
+                      <div className="flex flex-col items-center justify-center gap-2">
+                        <Button
+                          color="success"
+                          onClick={() => openModalEditAdmin(tabletCatalog._id ?? '')}
+                          className="w-full max-w-[140px] text-sm font-light text-white"
+                        >
+                          <FaPenToSquare />
+                          Cập Nhật
+                        </Button>
+                        <Button
+                          onClick={() => openModalDeleteAdmin(tabletCatalog._id ?? '')}
+                          className="w-full max-w-[140px] bg-red-600 text-sm font-light text-white"
+                        >
+                          <MdDelete />
+                          Xoá
+                        </Button>
+                      </div>
+                    </details>
+                  </span>
+                </Table.Row>
+              ))
             ) : (
               <tr>
                 <td colSpan={6}>Không có danh mục Máy Tính Bảng nào!</td>
@@ -184,10 +162,7 @@ const TabletCatalogManager: React.FC = () => {
           </Table.Body>
         }
       />
-      <ModalCreateTabletCatalogPageAdmin
-        isOpen={isModalCreateOpen}
-        onClose={closeModalCreateAdmin}
-      />
+      <ModalCreateTabletCatalogPageAdmin isOpen={isModalCreateOpen} onClose={closeModalCreateAdmin} />
       <ModalDeleteTabletCatalogPageAdmin
         isOpen={isModalDeleteOpen}
         onClose={closeModalDeleteAdmin}

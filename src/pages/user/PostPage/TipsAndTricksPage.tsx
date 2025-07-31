@@ -10,9 +10,7 @@ const TipsAndTricksPage: React.FC = () => {
   const { posts, getAllPosts } = useContext(PostContext);
   const [loading, setLoading] = useState(true);
 
-  const tricks = posts?.filter(post =>
-    post?.catalog.toLowerCase().includes('mẹo')
-  );
+  const tricks = posts?.filter(post => post?.catalog.toLowerCase().includes('mẹo'));
   useEffect(() => {
     scrollToTopSmoothly();
     if (posts.length === 0) {
@@ -75,9 +73,7 @@ const TipsAndTricksPage: React.FC = () => {
                       className="h-auto w-full rounded-sm border transition-transform duration-1000 ease-in-out hover:scale-110"
                     />
                   </div>
-                  <p className="line-clamp-3 py-1 text-base text-black">
-                    {post?.title}
-                  </p>
+                  <p className="line-clamp-3 py-1 text-base text-black">{post?.title}</p>
                   <hr />
                   <p className="pt-2 text-[12px] text-primary">
                     {new Date(post?.updatedAt).toLocaleDateString('vi-VN')}

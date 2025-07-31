@@ -62,4 +62,3 @@ export const useScroll = () => {
     scrollBy
   };
 };
-

@@ -34,4 +34,3 @@ export const updateWindowsApi = async (_id: string, windowsData: FormData) => {
 export const deleteWindowsApi = (id: string) => {
   return axios.delete(`/api/windows/${id}`);
 };
-

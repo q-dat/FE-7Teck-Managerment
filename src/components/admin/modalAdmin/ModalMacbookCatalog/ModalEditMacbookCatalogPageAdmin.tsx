@@ -9,7 +9,7 @@ import LabelForm from '../../LabelForm';
 import { IMacbookCatalog } from '../../../../types/type/macbook-catalog/macbook-catalog';
 import { MacbookCatalogContext } from '../../../../context/macbook-catalog/MacbookCatalogContext';
 import { optionsMacbookData } from '../../../../types/type/optionsData/optionsMacbookData';
-import ReactQuill from 'react-quill';
+import QuillEditor from '../../../../lib/ReactQuill';
 
 const modules = {
   toolbar: [
@@ -73,27 +73,15 @@ const fields = [
   'm_cat_dimensions_weight_battery.m_cat_release_date'
 ];
 
-const ModalEditMacbookCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
-  isOpen,
-  onClose,
-  macbookCatalogId
-}) => {
-  const {
-    loading,
-    getAllMacbookCatalogs,
-    macbookCatalogs,
-    updateMacbookCatalog
-  } = useContext(MacbookCatalogContext);
+const ModalEditMacbookCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({ isOpen, onClose, macbookCatalogId }) => {
+  const { loading, getAllMacbookCatalogs, macbookCatalogs, updateMacbookCatalog } = useContext(MacbookCatalogContext);
   const isLoading = loading.update;
-  const { control, register, handleSubmit, reset, setValue, watch } =
-    useForm<IMacbookCatalog>();
+  const { control, register, handleSubmit, reset, setValue, watch } = useForm<IMacbookCatalog>();
   const [existingImg, setExistingImg] = useState<string | undefined>('');
   const [editorValue, setEditorValue] = useState<string>('');
 
   useEffect(() => {
-    const macbookData = macbookCatalogs.find(
-      macCatalog => macCatalog._id === macbookCatalogId
-    );
+    const macbookData = macbookCatalogs.find(macCatalog => macCatalog._id === macbookCatalogId);
     if (macbookData) {
       setValue('m_cat_name', macbookData.m_cat_name);
       setValue('m_cat_img', macbookData.m_cat_img);
@@ -151,10 +139,7 @@ const ModalEditMacbookCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
     ];
 
     nestedFields.forEach(field => {
-      data.append(
-        field,
-        JSON.stringify(formData[field as keyof IMacbookCatalog] || {})
-      );
+      data.append(field, JSON.stringify(formData[field as keyof IMacbookCatalog] || {}));
     });
 
     try {
@@ -171,9 +156,7 @@ const ModalEditMacbookCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
 
   if (!isOpen) return null;
 
-  const handleOverlayClick = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if ((e.target as HTMLElement).classList.contains('modal-overlay')) {
       onClose();
     }
@@ -186,19 +169,13 @@ const ModalEditMacbookCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
         className="modal-overlay fixed inset-0 z-50 flex w-full cursor-pointer items-center justify-center bg-black bg-opacity-40"
       >
         <div className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:w-1/2">
-          <p className="font-bold text-black dark:text-white">
-            Cập nhật danh mục
-          </p>
+          <p className="font-bold text-black dark:text-white">Cập nhật danh mục</p>
 
           <div className="h-[500px] w-full overflow-y-auto scrollbar-hide 2xl:h-[700px]">
             {/* Các trường cơ bản */}
             <div className="mt-5">
               <LabelForm title={'Tên danh mục sản phẩm*'} />
-              <InputModal
-                type="text"
-                {...register('m_cat_name')}
-                placeholder="Nhập tên danh mục sản phẩm"
-              />
+              <InputModal type="text" {...register('m_cat_name')} placeholder="Nhập tên danh mục sản phẩm" />
               <LabelForm title={'Giá*'} />
               <InputModal
                 type="number"
@@ -222,17 +199,10 @@ const ModalEditMacbookCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
               <LabelForm title={'Hình ảnh*'} />
               {existingImg && (
                 <div className="my-2">
-                  <img
-                    src={existingImg}
-                    className="h-10 w-10 rounded-md object-cover"
-                  />
+                  <img src={existingImg} className="h-10 w-10 rounded-md object-cover" />
                 </div>
               )}
-              <InputModal
-                type="file"
-                {...register('m_cat_img')}
-                placeholder="Chèn hình ảnh"
-              />
+              <InputModal type="file" {...register('m_cat_img')} placeholder="Chèn hình ảnh" />
             </div>
             {/*  Bộ xử lý */}
             <div className="">
@@ -243,11 +213,7 @@ const ModalEditMacbookCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                 placeholder="Nhập công nghệ CPU"
               />
               <LabelForm title={'Số nhân'} />
-              <InputModal
-                type="number"
-                {...register('m_cat_processor.m_cat_core_count')}
-                placeholder="Nhập số nhân"
-              />
+              <InputModal type="number" {...register('m_cat_processor.m_cat_core_count')} placeholder="Nhập số nhân" />
 
               <LabelForm title={'Số luồng'} />
               <InputModal
@@ -257,11 +223,7 @@ const ModalEditMacbookCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
               />
 
               <LabelForm title={'Tốc độ CPU'} />
-              <InputModal
-                type="text"
-                {...register('m_cat_processor.m_cat_cpu_speed')}
-                placeholder="Nhập tốc độ CPU"
-              />
+              <InputModal type="text" {...register('m_cat_processor.m_cat_cpu_speed')} placeholder="Nhập tốc độ CPU" />
 
               <LabelForm title={'Tốc độ tối đa'} />
               <InputModal
@@ -313,18 +275,10 @@ const ModalEditMacbookCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
               </div>
               {/* Màn hình */}
               <LabelForm title={'Màn hình'} />
-              <InputModal
-                type="text"
-                {...register('m_cat_display.m_cat_screen_size')}
-                placeholder="Nhập màn hình"
-              />
+              <InputModal type="text" {...register('m_cat_display.m_cat_screen_size')} placeholder="Nhập màn hình" />
 
               <LabelForm title={'Độ phân giải'} />
-              <InputModal
-                type="text"
-                {...register('m_cat_display.m_cat_resolution')}
-                placeholder="Nhập độ phân giải"
-              />
+              <InputModal type="text" {...register('m_cat_display.m_cat_resolution')} placeholder="Nhập độ phân giải" />
 
               <LabelForm title={'Tần số quét'} />
               <InputModal
@@ -427,9 +381,7 @@ const ModalEditMacbookCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
               <LabelForm title={'Đèn bàn phím'} />
               <InputModal
                 type="text"
-                {...register(
-                  'm_cat_connectivity_and_ports.m_cat_keyboard_backlight'
-                )}
+                {...register('m_cat_connectivity_and_ports.m_cat_keyboard_backlight')}
                 placeholder="Nhập đèn bàn phím"
               />
               {/* Kích thước - Khối lượng - Pin */}
@@ -458,27 +410,21 @@ const ModalEditMacbookCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
               <LabelForm title={'Thông tin Pin'} />
               <InputModal
                 type="text"
-                {...register(
-                  'm_cat_dimensions_weight_battery.m_cat_battery_info'
-                )}
+                {...register('m_cat_dimensions_weight_battery.m_cat_battery_info')}
                 placeholder="Nhập thông tin về Pin"
               />
 
               <LabelForm title={'Hệ điều hành'} />
               <InputModal
                 type="text"
-                {...register(
-                  'm_cat_dimensions_weight_battery.m_cat_operating_system'
-                )}
+                {...register('m_cat_dimensions_weight_battery.m_cat_operating_system')}
                 placeholder="Nhập hệ điều hành"
               />
 
               <LabelForm title={'Thời điểm ra mắt'} />
               <InputModal
                 type="text"
-                {...register(
-                  'm_cat_dimensions_weight_battery.m_cat_release_date'
-                )}
+                {...register('m_cat_dimensions_weight_battery.m_cat_release_date')}
                 placeholder="Nhập thời điểm ra mắt"
               />
               {/*  */}
@@ -489,7 +435,7 @@ const ModalEditMacbookCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                   control={control}
                   defaultValue={editorValue}
                   render={({ field }) => (
-                    <ReactQuill
+                    <QuillEditor
                       className="w-full bg-white text-black"
                       value={field.value || ''}
                       onChange={value => field.onChange(value)}
@@ -504,18 +450,10 @@ const ModalEditMacbookCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
           </div>
 
           <div className="mt-5 space-x-5 text-center">
-            <Button
-              onClick={onClose}
-              className="border-gray-50 text-black dark:text-white"
-            >
+            <Button onClick={onClose} className="border-gray-50 text-black dark:text-white">
               Hủy
             </Button>
-            <Button
-              disabled={isLoading}
-              color="primary"
-              type="submit"
-              className="text-white"
-            >
+            <Button disabled={isLoading} color="primary" type="submit" className="text-white">
               {isLoading ? 'Đang cập nhật...' : 'Xác nhận'}
             </Button>
           </div>

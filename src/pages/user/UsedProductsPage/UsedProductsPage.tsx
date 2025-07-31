@@ -16,45 +16,37 @@ const categories = [
 ];
 
 // Component điều hướng menu
-const CategoryMenu = memo(
-  ({ isOpen, toggleMenu, selectedCategory, scrollToSection }: any) => (
-    <div
-      onClick={toggleMenu}
-      className={`fixed left-0 top-1/3 z-[999] mx-1 w-auto overflow-hidden rounded-r-[50%] border-2 border-b-0 border-l-0 border-t-0 border-primary bg-gradient-to-r from-transparent to-white py-[25px] text-primary transition-transform duration-300 ${
-        isOpen ? 'translate-x-0' : 'ml-4 -translate-x-full'
-      }`}
-    >
-      <div className="flex h-full cursor-pointer flex-row items-center justify-center gap-1">
-        <nav className="flex w-full flex-col items-start justify-center gap-2">
-          {categories.map(({ id, label }) => (
-            <button
-              key={id}
-              className={`w-full rounded-sm border border-primary bg-primary px-1 py-2 text-start text-sm hover:scale-105 hover:outline hover:outline-offset-1 hover:outline-primary ${
-                selectedCategory === id ? 'bg-white text-primary' : 'text-white'
-              }`}
-              onClick={() => scrollToSection(id)}
-            >
-              {label}
-            </button>
-          ))}
-        </nav>
-        <div>
-          <MdOutlineDoubleArrow
-            className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
-          />
-        </div>
+const CategoryMenu = memo(({ isOpen, toggleMenu, selectedCategory, scrollToSection }: any) => (
+  <div
+    onClick={toggleMenu}
+    className={`fixed left-0 top-1/3 z-[999] mx-1 w-auto overflow-hidden rounded-r-[50%] border-2 border-b-0 border-l-0 border-t-0 border-primary bg-gradient-to-r from-transparent to-white py-[25px] text-primary transition-transform duration-300 ${
+      isOpen ? 'translate-x-0' : 'ml-4 -translate-x-full'
+    }`}
+  >
+    <div className="flex h-full cursor-pointer flex-row items-center justify-center gap-1">
+      <nav className="flex w-full flex-col items-start justify-center gap-2">
+        {categories.map(({ id, label }) => (
+          <button
+            key={id}
+            className={`w-full rounded-sm border border-primary bg-primary px-1 py-2 text-start text-sm hover:scale-105 hover:outline hover:outline-offset-1 hover:outline-primary ${
+              selectedCategory === id ? 'bg-white text-primary' : 'text-white'
+            }`}
+            onClick={() => scrollToSection(id)}
+          >
+            {label}
+          </button>
+        ))}
+      </nav>
+      <div>
+        <MdOutlineDoubleArrow className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`} />
       </div>
     </div>
-  )
-);
+  </div>
+));
 
 // Component hiển thị danh mục sản phẩm
 const CategorySection = memo(({ isOpen }: { isOpen: boolean }) => (
-  <div
-    className={`px-2 transition-all duration-300 xl:px-desktop-padding ${
-      isOpen ? 'ml-20 xl:ml-5' : 'ml-0'
-    }`}
-  >
+  <div className={`px-2 transition-all duration-300 xl:px-desktop-padding ${isOpen ? 'ml-20 xl:ml-5' : 'ml-0'}`}>
     <div id="used-phone">
       <UsedPhonePage />
     </div>
@@ -72,8 +64,7 @@ const CategorySection = memo(({ isOpen }: { isOpen: boolean }) => (
 
 const UsedProductsPage = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedCategory, setSelectedCategory] =
-    useState<string>('used-phone');
+  const [selectedCategory, setSelectedCategory] = useState<string>('used-phone');
 
   const toggleMenu = useCallback(() => setIsOpen(prev => !prev), []);
 
@@ -109,10 +100,7 @@ const UsedProductsPage = () => {
       });
     };
 
-    const observer = new IntersectionObserver(
-      observerCallback,
-      observerOptions
-    );
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
     categories.forEach(({ id }) => {
       const section = document.getElementById(id);
       if (section) observer.observe(section);

@@ -18,8 +18,7 @@ import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
 import NavbarPost from '../../components/admin/responsiveUI/mobile/NavbarPost';
 
 const PostManagerPage: React.FC = () => {
-  const { loading, posts, deletePost, getAllPosts, error } =
-    useContext(PostContext);
+  const { loading, posts, deletePost, getAllPosts, error } = useContext(PostContext);
   const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
@@ -46,9 +45,7 @@ const PostManagerPage: React.FC = () => {
         Toastify('Bạn đã xoá bài viết thành công', 201);
         getAllPosts();
       } catch (error) {
-        const errorMessage = isIErrorResponse(error)
-          ? error.data?.message
-          : 'Xoá bài viết thất bại!';
+        const errorMessage = isIErrorResponse(error) ? error.data?.message : 'Xoá bài viết thất bại!';
         Toastify(`Lỗi: ${errorMessage}`, 500);
       }
     }
@@ -99,12 +96,7 @@ const PostManagerPage: React.FC = () => {
                 <span>#{index + 1}</span>
                 <span className="line-clamp-2">{post?.title}</span>
                 <span className="flex items-center justify-center">
-                  <img
-                    loading="lazy"
-                    src={post?.imageUrl}
-                    alt="Ảnh đại diện"
-                    className="h-12 w-12 object-cover"
-                  />
+                  <img loading="lazy" src={post?.imageUrl} alt="Ảnh đại diện" className="h-12 w-12 object-cover" />
                 </span>
                 <span className="line-clamp-1">{post?.catalog}</span>
                 {/* <span>{new Date(post?.createdAt).toLocaleString('vi-VN')}</span> */}
@@ -112,10 +104,7 @@ const PostManagerPage: React.FC = () => {
                   {/* {new Date(post?.updatedAt).toLocaleDateString('vi-VN')} */}
                   <TimeAgo date={post?.updatedAt} />
                 </span>
-                <span
-                  className="line-clamp-2"
-                  dangerouslySetInnerHTML={{ __html: post.content }}
-                ></span>
+                <span className="line-clamp-2" dangerouslySetInnerHTML={{ __html: post.content }}></span>
                 <span>
                   <details>
                     <summary className="inline cursor-pointer text-base text-warning">
@@ -147,20 +136,13 @@ const PostManagerPage: React.FC = () => {
           </Table.Body>
         }
       />
-      <ModalCreatePostPageAdmin
-        isOpen={isModalCreateOpen}
-        onClose={closeModalCreateAdmin}
-      />
+      <ModalCreatePostPageAdmin isOpen={isModalCreateOpen} onClose={closeModalCreateAdmin} />
       <ModalDeletePostPageAdmin
         isOpen={isModalDeleteOpen}
         onClose={closeModalDeleteAdmin}
         onConfirm={handleDeletePost}
       />
-      <ModalEditPostPageAdmin
-        isOpen={isModalEditOpen}
-        onClose={closeModalEditAdmin}
-        postId={selectedPostId ?? ''}
-      />
+      <ModalEditPostPageAdmin isOpen={isModalEditOpen} onClose={closeModalEditAdmin} postId={selectedPostId ?? ''} />
     </div>
   );
 };

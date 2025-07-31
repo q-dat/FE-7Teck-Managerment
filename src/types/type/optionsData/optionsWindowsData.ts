@@ -37,4 +37,3 @@ export interface IOptionWindowsData {
   w_cat_other_features: IOption[];
   w_cat_dimensions: IOption[];
 }
-

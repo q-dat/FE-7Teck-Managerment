@@ -11,12 +11,8 @@ interface ModalCreateAdminProps {
   onClose: () => void;
 }
 
-const ModalCreatePriceListPageAdmin: React.FC<ModalCreateAdminProps> = ({
-  isOpen,
-  onClose
-}) => {
-  const { getAllPriceLists, createPriceLists, loading } =
-    useContext(PriceListContext);
+const ModalCreatePriceListPageAdmin: React.FC<ModalCreateAdminProps> = ({ isOpen, onClose }) => {
+  const { getAllPriceLists, createPriceLists, loading } = useContext(PriceListContext);
   const isLoading = loading.create;
   const { register, handleSubmit, reset } = useForm();
 
@@ -37,9 +33,7 @@ const ModalCreatePriceListPageAdmin: React.FC<ModalCreateAdminProps> = ({
     }
   };
 
-  const handleOverlayClick = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if ((e.target as HTMLElement).classList.contains('modal-overlay')) {
       onClose();
     }
@@ -58,9 +52,7 @@ const ModalCreatePriceListPageAdmin: React.FC<ModalCreateAdminProps> = ({
           className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:w-1/2"
         >
           <div>
-            <p className="font-bold text-black dark:text-white">
-              Quản lý bảng giá
-            </p>
+            <p className="font-bold text-black dark:text-white">Quản lý bảng giá</p>
             <div className="mt-5 flex flex-col items-start justify-center gap-5">
               <div className="w-full">
                 <Select
@@ -85,18 +77,8 @@ const ModalCreatePriceListPageAdmin: React.FC<ModalCreateAdminProps> = ({
                 onChange={e => setProductName(e.target.value)}
                 placeholder={'Nhập tên danh mục'}
               />
-              <LabelForm
-                title={
-                  productName
-                    ? `${productName} - Tên sản phẩm:`
-                    : 'Tên sản phẩm:'
-                }
-              />
-              <InputModal
-                placeholder={'Nhập tên sản phẩm'}
-                type="text"
-                {...register('name', { required: true })}
-              />
+              <LabelForm title={productName ? `${productName} - Tên sản phẩm:` : 'Tên sản phẩm:'} />
+              <InputModal placeholder={'Nhập tên sản phẩm'} type="text" {...register('name', { required: true })} />
               <LabelForm title={'Giá'} />
               <InputModal
                 placeholder="Giá* (Hệ số x1000: 1triệu = 1000)"
@@ -104,26 +86,14 @@ const ModalCreatePriceListPageAdmin: React.FC<ModalCreateAdminProps> = ({
                 {...register('price', { required: true })}
               />
               <LabelForm title={'Dung lượng'} />
-              <InputModal
-                placeholder={'Nhập dung lượng'}
-                type="text"
-                {...register('storage', { required: true })}
-              />
+              <InputModal placeholder={'Nhập dung lượng'} type="text" {...register('storage', { required: true })} />
             </div>
           </div>
           <div className="flex flex-row items-center justify-center space-x-5 text-center">
-            <Button
-              onClick={onClose}
-              className="border-gray-50 text-black dark:text-white"
-            >
+            <Button onClick={onClose} className="border-gray-50 text-black dark:text-white">
               Hủy
             </Button>
-            <Button
-              disabled={isLoading}
-              color="primary"
-              type="submit"
-              className="group text-white"
-            >
+            <Button disabled={isLoading} color="primary" type="submit" className="group text-white">
               {isLoading ? 'Đang tạo...' : 'Xác nhận'}
             </Button>
           </div>
@@ -134,4 +104,3 @@ const ModalCreatePriceListPageAdmin: React.FC<ModalCreateAdminProps> = ({
 };
 
 export default ModalCreatePriceListPageAdmin;
-

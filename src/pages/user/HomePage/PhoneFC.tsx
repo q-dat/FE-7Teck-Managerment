@@ -16,8 +16,7 @@ interface PhoneFCProps {
 }
 const PhoneFC: React.FC<PhoneFCProps> = ({ data, loading }) => {
   const { updatePhoneView } = useContext(PhoneContext);
-  const { scrollRef, isLeftVisible, isRightVisible, hasOverflow, scrollBy } =
-    useScroll();
+  const { scrollRef, isLeftVisible, isRightVisible, hasOverflow, scrollBy } = useScroll();
 
   return (
     <div className={`mt-10 p-0 xl:px-desktop-padding`}>
@@ -28,13 +27,7 @@ const PhoneFC: React.FC<PhoneFCProps> = ({ data, loading }) => {
         className="flex w-full flex-col items-start justify-center px-2 xl:rounded-t-lg"
       >
         <h1 className="py-2 text-2xl font-semibold">
-          {loading ? (
-            <>Đang tải...</>
-          ) : data.length === 0 ? (
-            <></>
-          ) : (
-            <>Sản phẩm nổi bật</>
-          )}
+          {loading ? <>Đang tải...</> : data.length === 0 ? <></> : <>Sản phẩm nổi bật</>}
         </h1>
       </div>
       <div className="relative">
@@ -95,9 +88,7 @@ const PhoneFC: React.FC<PhoneFCProps> = ({ data, loading }) => {
                         <FaRegEye />
                         <p>{phone.view}</p>
                       </div>
-                      <p className="xl:group-hover:text-secondary">
-                        Điện Thoại {phone.name}
-                      </p>
+                      <p className="xl:group-hover:text-secondary">Điện Thoại {phone.name}</p>
                     </Link>
                     <div className="w-full">
                       <p className="font-semibold text-red-700">
@@ -108,11 +99,7 @@ const PhoneFC: React.FC<PhoneFCProps> = ({ data, loading }) => {
                           </del>
                         )}
                       </p>
-                      <Link
-                        aria-label="Mua ngay"
-                        to="/thanh-toan"
-                        className="z-50 w-full"
-                      >
+                      <Link aria-label="Mua ngay" to="/thanh-toan" className="z-50 w-full">
                         <Button
                           size="xs"
                           className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary hover:bg-primary hover:bg-opacity-20"
@@ -125,15 +112,8 @@ const PhoneFC: React.FC<PhoneFCProps> = ({ data, loading }) => {
                   {/*  */}
                   {phone?.status && (
                     <div className="absolute -left-[3px] top-0 z-20">
-                      <img
-                        alt=""
-                        loading="lazy"
-                        className="h-full w-[60px]"
-                        src={Status}
-                      />
-                      <p className="absolute top-[1px] w-full pl-2 text-xs text-white">
-                        {phone?.status}
-                      </p>
+                      <img alt="" loading="lazy" className="h-full w-[60px]" src={Status} />
+                      <p className="absolute top-[1px] w-full pl-2 text-xs text-white">{phone?.status}</p>
                     </div>
                   )}
                 </div>

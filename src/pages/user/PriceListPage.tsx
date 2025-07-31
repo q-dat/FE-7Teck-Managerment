@@ -51,27 +51,17 @@ const PriceListPage: React.FC = () => {
       windowsProducts: {} as Record<string, IProductPriceList[]>
     };
 
-    [
-      'phoneProducts',
-      'tabletProducts',
-      'macbookProducts',
-      'windowsProducts'
-    ].forEach(categoryType => {
+    ['phoneProducts', 'tabletProducts', 'macbookProducts', 'windowsProducts'].forEach(categoryType => {
       priceLists.forEach(list => {
-        const productsByCategory =
-          list[categoryType as keyof typeof list] || {};
+        const productsByCategory = list[categoryType as keyof typeof list] || {};
 
         Object.entries(productsByCategory).forEach(([category, products]) => {
           if (Array.isArray(products)) {
-            aggregatedData[categoryType as keyof typeof aggregatedData][
-              category
-            ] =
-              aggregatedData[categoryType as keyof typeof aggregatedData][
-                category
-              ] || [];
-            aggregatedData[categoryType as keyof typeof aggregatedData][
-              category
-            ].push(...(products as IProductPriceList[]));
+            aggregatedData[categoryType as keyof typeof aggregatedData][category] =
+              aggregatedData[categoryType as keyof typeof aggregatedData][category] || [];
+            aggregatedData[categoryType as keyof typeof aggregatedData][category].push(
+              ...(products as IProductPriceList[])
+            );
           }
         });
       });
@@ -86,7 +76,7 @@ const PriceListPage: React.FC = () => {
       windowsProducts: Object.keys(aggregatedData.windowsProducts)[0] || ''
     });
   }, []);
-  
+
   if (!loading && priceLists.length === 0) {
     return <ErrorLoading />;
   }
@@ -113,15 +103,9 @@ const PriceListPage: React.FC = () => {
           <></>
         ) : (
           <div className="px-2 xl:px-desktop-padding">
-            {[
-              'phoneProducts',
-              'macbookProducts',
-              'tabletProducts',
-              'windowsProducts'
-            ].map(
+            {['phoneProducts', 'macbookProducts', 'tabletProducts', 'windowsProducts'].map(
               categoryType =>
-                Object.keys(catalogs[categoryType as keyof typeof catalogs])
-                  .length > 0 && (
+                Object.keys(catalogs[categoryType as keyof typeof catalogs]).length > 0 && (
                   <div key={categoryType}>
                     <div role="region" aria-label={`Danh mục ${categoryType}`}>
                       <h2 className="my-5 font-bold text-primary">
@@ -137,9 +121,7 @@ const PriceListPage: React.FC = () => {
 
                     {/* Nút chọn danh mục */}
                     <div className="grid grid-cols-3 gap-2 xl:grid-cols-6">
-                      {Object.keys(
-                        catalogs[categoryType as keyof typeof catalogs]
-                      ).map(category => (
+                      {Object.keys(catalogs[categoryType as keyof typeof catalogs]).map(category => (
                         <Button
                           key={category}
                           onClick={() =>
@@ -167,20 +149,15 @@ const PriceListPage: React.FC = () => {
                         <span>Giá thu cũ</span>
                       </Table.Head>
                       <Table.Body className="text-center text-sm">
-                        {catalogs[categoryType as keyof typeof catalogs][
-                          activeTabs[categoryType]
-                        ]?.map((product, index) => (
-                          <Table.Row
-                            key={index}
-                            className="border border-secondary"
-                          >
-                            <span>{product?.name}</span>
-                            <span>{product?.storage}</span>
-                            <span>
-                              {(product?.price * 1000).toLocaleString('vi-VN')}đ
-                            </span>
-                          </Table.Row>
-                        ))}
+                        {catalogs[categoryType as keyof typeof catalogs][activeTabs[categoryType]]?.map(
+                          (product, index) => (
+                            <Table.Row key={index} className="border border-secondary">
+                              <span>{product?.name}</span>
+                              <span>{product?.storage}</span>
+                              <span>{(product?.price * 1000).toLocaleString('vi-VN')}đ</span>
+                            </Table.Row>
+                          )
+                        )}
                       </Table.Body>
                     </Table>
                   </div>

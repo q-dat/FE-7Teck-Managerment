@@ -122,7 +122,7 @@ const NavbarAdmin: React.FC<{}> = () => {
             </div> */}
           </nav>
           <div
-            className="relative ml-4 flex cursor-pointer items-center justify-center gap-2 z-[99999]"
+            className="relative z-[99999] ml-4 flex cursor-pointer items-center justify-center gap-2"
             onClick={handleAvatarClick}
           >
             <div className="text-black dark:text-white">
@@ -132,7 +132,7 @@ const NavbarAdmin: React.FC<{}> = () => {
             <Avatar className="h-10 w-10" />
             <div>
               {dropdownVisible && (
-                <div className="absolute right-0 top-10 flex flex-col bg-white p-1 text-white border gap-1">
+                <div className="absolute right-0 top-10 flex flex-col gap-1 border bg-white p-1 text-white">
                   <Button
                     onClick={logoutUser}
                     size="sm"
@@ -141,10 +141,25 @@ const NavbarAdmin: React.FC<{}> = () => {
                     <MdLogout />
                     Đăng Xuất
                   </Button>
-                  <div className='text-black flex flex-col gap-1 '>
-                  <Link className='bg-primary text-white p-1 font-light text-sm hover:bg-white hover:text-primary border border-primary' to='/cms/admin'>Dashboard</Link>
-                  <Link className='bg-primary text-white p-1 font-light text-sm hover:bg-white hover:text-primary border border-primary'  to='/cms/admin-post'>Post Managerment</Link>
-                  <Link  className='bg-primary text-white p-1 font-light text-sm hover:bg-white hover:text-primary border border-primary'  to='/cms/admin-gallery'>Gallery Managerment</Link>
+                  <div className="flex flex-col gap-1 text-black">
+                    <Link
+                      className="border border-primary bg-primary p-1 text-sm font-light text-white hover:bg-white hover:text-primary"
+                      to="/cms/admin"
+                    >
+                      Dashboard
+                    </Link>
+                    <Link
+                      className="border border-primary bg-primary p-1 text-sm font-light text-white hover:bg-white hover:text-primary"
+                      to="/cms/admin-post"
+                    >
+                      Post Managerment
+                    </Link>
+                    <Link
+                      className="border border-primary bg-primary p-1 text-sm font-light text-white hover:bg-white hover:text-primary"
+                      to="/cms/admin-gallery"
+                    >
+                      Gallery Managerment
+                    </Link>
                   </div>
                 </div>
               )}

@@ -22,8 +22,7 @@ const items = [
     icon: <RiArrowLeftRightFill />,
     text: (
       <>
-        <p className="font-bold">Thu cũ</p> đổi mới{' '}
-        <p className="font-bold">lên tới 90%</p>
+        <p className="font-bold">Thu cũ</p> đổi mới <p className="font-bold">lên tới 90%</p>
       </>
     )
   },
@@ -71,9 +70,7 @@ const Header: React.FC = () => {
   useEffect(() => {
     const pathname = location.pathname;
     const foundItem = menuItems.find(
-      item =>
-        item.link === pathname ||
-        item.submenu?.some(sub => sub.link === pathname)
+      item => item.link === pathname || item.submenu?.some(sub => sub.link === pathname)
     );
     if (foundItem) {
       setActiveItem(foundItem.name);
@@ -100,10 +97,7 @@ const Header: React.FC = () => {
       <div className="h-[30px] bg-[#FFC107] text-black xl:px-desktop-padding">
         <div className="flex h-full w-full flex-row items-center justify-around">
           {items.map((item, index) => (
-            <div
-              key={index}
-              className="flex items-center justify-center gap-1 font-light"
-            >
+            <div key={index} className="flex items-center justify-center gap-1 font-light">
               {React.cloneElement(item.icon, {
                 className: 'text-xl text-black'
               })}
@@ -138,14 +132,7 @@ const Header: React.FC = () => {
           <Input
             size="sm"
             value={searchQuery}
-            onChange={e =>
-              handleSearch(
-                e.target.value,
-                phoneCatalogs,
-                setSearchQuery,
-                setSearchResults
-              )
-            }
+            onChange={e => handleSearch(e.target.value, phoneCatalogs, setSearchQuery, setSearchResults)}
             className="w-full border-none bg-transparent pl-1 text-sm text-black placeholder-primary shadow-none focus:placeholder-black focus:outline-none"
             placeholder="Bạn muốn tìm gì..."
           />
@@ -165,11 +152,7 @@ const Header: React.FC = () => {
                       }}
                       className="flex h-[60px] cursor-pointer items-center justify-start gap-2 p-3 hover:bg-primary hover:bg-opacity-10"
                     >
-                      <img
-                        loading="lazy"
-                        src={phoneCatalog.img}
-                        className="h-10 w-10 object-cover"
-                      />
+                      <img loading="lazy" src={phoneCatalog.img} className="h-10 w-10 object-cover" />
                       <p>{phoneCatalog.name}</p>
                     </div>
                   );
@@ -181,11 +164,7 @@ const Header: React.FC = () => {
         <div className="flex w-full flex-row items-center justify-end gap-5">
           {/*  */}
           <div className="flex items-center">
-            <Link
-              to="https://www.facebook.com/7teck.vn"
-              target="_blank"
-              className="flex items-center gap-[1px]"
-            >
+            <Link to="https://www.facebook.com/7teck.vn" target="_blank" className="flex items-center gap-[1px]">
               <IoLogoFacebook className="text-xs" />
               Fanpage: &nbsp;
               <p>7Teck</p>
@@ -195,10 +174,7 @@ const Header: React.FC = () => {
             </Link>
           </div>
           <div className="flex items-center">
-            <Link
-              to={hotlineUrl}
-              className="flex items-center gap-[1px] font-light"
-            >
+            <Link to={hotlineUrl} className="flex items-center gap-[1px] font-light">
               <HiPhoneArrowUpRight className="text-xs" /> (+84) 333.133.050
             </Link>
           </div>
@@ -210,17 +186,8 @@ const Header: React.FC = () => {
         className={`h-[60px] w-full transform flex-row items-center justify-between bg-white py-2 shadow-md transition-transform delay-100 duration-300 ease-in-out xl:flex xl:px-desktop-padding`}
       >
         <nav className="h-full">
-          <Link
-            aria-label="Home"
-            to="/"
-            onClick={() => setActiveItem('Trang Chủ')}
-          >
-            <img
-              className="h-full w-full rounded-full object-contain filter"
-              loading="lazy"
-              src={Logo}
-              alt="LOGO"
-            />
+          <Link aria-label="Home" to="/" onClick={() => setActiveItem('Trang Chủ')}>
+            <img className="h-full w-full rounded-full object-contain filter" loading="lazy" src={Logo} alt="LOGO" />
           </Link>
         </nav>
         <Menu className="flex flex-row items-center justify-center gap-2">
@@ -242,23 +209,11 @@ const Header: React.FC = () => {
                   }`}
                 >
                   <>
-                    {item.name === activeItem && (
-                      <div className="absolute bottom-0 left-0 h-[2px] w-full bg-primary" />
-                    )}
-                    {Icon && (
-                      <Icon
-                        className={
-                          item.name === activeItem
-                            ? 'h-5 w-5 text-primary'
-                            : 'h-5 w-5'
-                        }
-                      />
-                    )}
+                    {item.name === activeItem && <div className="absolute bottom-0 left-0 h-[2px] w-full bg-primary" />}
+                    {Icon && <Icon className={item.name === activeItem ? 'h-5 w-5 text-primary' : 'h-5 w-5'} />}
                     <span className={Icon ? '' : ''}>{item.name}</span>
                     {item.submenu && (
-                      <FaChevronDown
-                        className={`m-0 h-4 w-4 p-0 ${openSubmenu === item.name ? 'rotate-180' : ''}`}
-                      />
+                      <FaChevronDown className={`m-0 h-4 w-4 p-0 ${openSubmenu === item.name ? 'rotate-180' : ''}`} />
                     )}
                   </>
                 </NavLink>
@@ -266,11 +221,7 @@ const Header: React.FC = () => {
                 {item.submenu && (
                   <Menu className="absolute top-full m-0 hidden w-[260px] transform flex-col gap-2 rounded-sm bg-white bg-opacity-90 p-1 shadow-mainMenu transition-transform duration-300 ease-in-out group-hover:flex">
                     {item.submenu.map((subItem, index) => (
-                      <Link
-                        key={index}
-                        to={subItem.link}
-                        className="flex flex-row gap-0"
-                      >
+                      <Link key={index} to={subItem.link} className="flex flex-row gap-0">
                         <Button
                           size="sm"
                           className="flex w-full flex-row items-center justify-start rounded-sm border-none bg-primary text-sm font-light text-white shadow-headerMenu hover:h-[50px] hover:bg-primary hover:bg-opacity-50"

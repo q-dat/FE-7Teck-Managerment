@@ -13,20 +13,13 @@ interface ModalEditPostPageAdminProps {
   postCatalogId: string;
 }
 
-const ModalEditPostCatalogPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({
-  isOpen,
-  onClose,
-  postCatalogId
-}) => {
-  const { loading, postCatalogs, updatePostCatalog, getAllPostCatalogs } =
-    useContext(PostCatalogContext);
+const ModalEditPostCatalogPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({ isOpen, onClose, postCatalogId }) => {
+  const { loading, postCatalogs, updatePostCatalog, getAllPostCatalogs } = useContext(PostCatalogContext);
   const isLoading = loading.update;
   const { register, handleSubmit, setValue, reset } = useForm<IPostCatalog>();
 
   useEffect(() => {
-    const postData = postCatalogs.find(
-      postCatalog => postCatalog._id === postCatalogId
-    );
+    const postData = postCatalogs.find(postCatalog => postCatalog._id === postCatalogId);
     if (postData) {
       setValue('name', postData.name);
     }
@@ -45,9 +38,7 @@ const ModalEditPostCatalogPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({
     }
   };
 
-  const handleOverlayClick = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if ((e.target as HTMLElement).classList.contains('modal-overlay')) {
       onClose();
     }
@@ -66,28 +57,14 @@ const ModalEditPostCatalogPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({
           className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:w-1/2"
         >
           <div>
-            <p className="font-bold text-black dark:text-white">
-              Chỉnh sửa danh mục bài viết
-            </p>
-            <InputModal
-              type="text"
-              {...register('name')}
-              placeholder="Tên danh mục bài viết"
-            />
+            <p className="font-bold text-black dark:text-white">Chỉnh sửa danh mục bài viết</p>
+            <InputModal type="text" {...register('name')} placeholder="Tên danh mục bài viết" />
           </div>
           <div className="flex flex-row items-center justify-center space-x-5 text-center">
-            <Button
-              onClick={onClose}
-              className="border-gray-50 text-black dark:text-white"
-            >
+            <Button onClick={onClose} className="border-gray-50 text-black dark:text-white">
               Hủy
             </Button>
-            <Button
-              disabled={isLoading}
-              color="primary"
-              type="submit"
-              className="group text-white"
-            >
+            <Button disabled={isLoading} color="primary" type="submit" className="group text-white">
               {isLoading ? 'Đang cập nhật...' : 'Xác nhận'}
             </Button>
           </div>

@@ -1,10 +1,4 @@
-import React, {
-  useContext,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState
-} from 'react';
+import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import { IoIosArrowDropdownCircle } from 'react-icons/io';
@@ -28,9 +22,7 @@ const PhoneDetailPage: React.FC = () => {
   const { id } = useParams();
   const { getPhoneById, phoneDetails } = useContext(PhoneContext);
   const [phone, setPhone] = useState<any>(null);
-  const [selectedImage, setSelectedImage] = useState<string | null | undefined>(
-    null
-  );
+  const [selectedImage, setSelectedImage] = useState<string | null | undefined>(null);
   const [activeTab, setActiveTab] = useState<string>('specs');
   const [isLeftVisible, setIsLeftVisible] = useState(true);
   const [isRightVisible, setIsRightVisible] = useState(true);
@@ -62,14 +54,12 @@ const PhoneDetailPage: React.FC = () => {
   useEffect(() => {
     scrollToTopSmoothly();
     fetchData();
-    const cleanup = handleScrollButtons(
-      scrollRef,
-      Object.keys(phoneDetails).length,
-      () => updateScrollButtons(scrollRef, setIsLeftVisible, setIsRightVisible)
+    const cleanup = handleScrollButtons(scrollRef, Object.keys(phoneDetails).length, () =>
+      updateScrollButtons(scrollRef, setIsLeftVisible, setIsRightVisible)
     );
     return cleanup;
   }, []);
-  
+
   if (loading || !phone || !phone?.phone_catalog_id) {
     return <LoadingLocal />;
   }
@@ -127,14 +117,7 @@ const PhoneDetailPage: React.FC = () => {
                         src={thumb}
                         alt="Ảnh thu nhỏ"
                         className="h-[70px] w-[70px] cursor-pointer rounded-md border object-cover"
-                        onClick={() =>
-                          handleThumbnailClick(
-                            scrollRef,
-                            thumb,
-                            index,
-                            setSelectedImage
-                          )
-                        }
+                        onClick={() => handleThumbnailClick(scrollRef, thumb, index, setSelectedImage)}
                       />
                     ))
                   ) : (
@@ -142,10 +125,7 @@ const PhoneDetailPage: React.FC = () => {
                   )}
                 </div>
                 {/* Navigation Button  */}
-                <div
-                  role="button"
-                  className="absolute left-0 top-4 flex w-full items-center justify-between"
-                >
+                <div role="button" className="absolute left-0 top-4 flex w-full items-center justify-between">
                   <div className="relative w-full">
                     <button
                       aria-label="Cuộn sang trái"
@@ -170,13 +150,9 @@ const PhoneDetailPage: React.FC = () => {
               {/* Info */}
               <div className="flex h-full flex-col items-start justify-between gap-5 rounded-md border border-gray-50 bg-white p-2 leading-10 xl:h-[490px]">
                 <div className="w-full">
-                  <h1 className="text-xl font-semibold text-black">
-                    Điện thoại {phone?.name}
-                  </h1>
+                  <h1 className="text-xl font-semibold text-black">Điện thoại {phone?.name}</h1>
                   <p className="text-3xl font-semibold text-red-500">
-                    <span>
-                      {(phone?.price * 1000).toLocaleString('vi-VN')}₫
-                    </span>
+                    <span>{(phone?.price * 1000).toLocaleString('vi-VN')}₫</span>
                     {phone?.sale && (
                       <del className="pl-2 text-sm font-light text-gray-100">
                         {(phone?.sale * 1000).toLocaleString('vi-VN')}₫
@@ -219,16 +195,10 @@ const PhoneDetailPage: React.FC = () => {
               <Link role="navigation" aria-label="Hotline" to={hotlineUrl}>
                 <div className="h-[80px] w-full rounded-md border border-gray-50 bg-blue-900 p-2">
                   <p className="text-center text-white">
-                    <span className="text-2xl font-bold uppercase xl:text-3xl">
-                      Quan tâm
-                    </span>
-                    <span className="font-bol text-xs">
-                      &nbsp; (Ấn để gọi ngay)
-                    </span>
+                    <span className="text-2xl font-bold uppercase xl:text-3xl">Quan tâm</span>
+                    <span className="font-bol text-xs">&nbsp; (Ấn để gọi ngay)</span>
                   </p>
-                  <i className="text-lg text-white">
-                    *Call ngay {contact} để có giá tốt nhất!
-                  </i>
+                  <i className="text-lg text-white">*Call ngay {contact} để có giá tốt nhất!</i>
                 </div>
               </Link>
             </div>
@@ -262,25 +232,15 @@ const PhoneDetailPage: React.FC = () => {
                     <div key={group?.group}>
                       <details className="group transform divide-y-[1px] bg-primary bg-opacity-5">
                         <summary className="flex cursor-pointer items-center justify-between p-2">
-                          <span className="font-semibold text-primary">
-                            {group?.name}
-                          </span>
+                          <span className="font-semibold text-primary">{group?.name}</span>
                           <span className="transform text-primary transition-transform duration-300 ease-in-out group-open:rotate-180">
                             <IoIosArrowDropdownCircle className="text-2xl" />
                           </span>
                         </summary>
                         {group?.fields
-                          .filter(
-                            field =>
-                              phone?.phone_catalog_id?.[group?.group]?.[
-                                field?.field
-                              ]
-                          )
+                          .filter(field => phone?.phone_catalog_id?.[group?.group]?.[field?.field])
                           .map(field => {
-                            const fieldValue =
-                              phone?.phone_catalog_id?.[group?.group]?.[
-                                field?.field
-                              ];
+                            const fieldValue = phone?.phone_catalog_id?.[group?.group]?.[field?.field];
                             return (
                               <div
                                 className="flex w-full flex-row items-start justify-between rounded-md bg-white p-2"
@@ -288,11 +248,7 @@ const PhoneDetailPage: React.FC = () => {
                               >
                                 <p>{field?.name}</p>
                                 <p className="font-light italic text-gray-700">
-                                  {Array.isArray(fieldValue) ? (
-                                    <span>{fieldValue.join(',')}</span>
-                                  ) : (
-                                    fieldValue
-                                  )}
+                                  {Array.isArray(fieldValue) ? <span>{fieldValue.join(',')}</span> : fieldValue}
                                 </p>
                               </div>
                             );

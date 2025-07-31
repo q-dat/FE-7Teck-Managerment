@@ -20,13 +20,8 @@ interface Option {
   label: string;
 }
 
-const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
-  isOpen,
-  onClose,
-  phoneId
-}) => {
-  const { loading, phones, getAllPhones, updatePhone } =
-    useContext(PhoneContext);
+const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({ isOpen, onClose, phoneId }) => {
+  const { loading, phones, getAllPhones, updatePhone } = useContext(PhoneContext);
   const isLoading = loading.update;
 
   // PhoneCatalog
@@ -36,22 +31,13 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
   const phoneCatalog: Option[] = phoneCatalogs.map(phoneCatalog => ({
     value: phoneCatalog._id,
     label: `${phoneCatalog.name}  \u00A0
-    ${
-      phoneCatalog?.status === 0
-        ? '(New)'
-        : phoneCatalog?.status === 1
-          ? '(Đã sử dụng)'
-          : phoneCatalog?.status
-    }`
+    ${phoneCatalog?.status === 0 ? '(New)' : phoneCatalog?.status === 1 ? '(Đã sử dụng)' : phoneCatalog?.status}`
   }));
 
-  const { control, register, handleSubmit, watch, setValue, reset } =
-    useForm<IPhone>();
+  const { control, register, handleSubmit, watch, setValue, reset } = useForm<IPhone>();
 
   const [existingImg, setExistingImg] = useState<string | undefined>('');
-  const [existingThumbnail, setExistingThumbnail] = useState<
-    string[] | undefined
-  >([]);
+  const [existingThumbnail, setExistingThumbnail] = useState<string[] | undefined>([]);
 
   // Theo dõi giá trị của phone_catalog_id
   const selectedCatalogId = watch('phone_catalog_id._id');
@@ -59,9 +45,7 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
   // Cập nhật name khi danh mục được chọn, chỉ khi name rỗng
   useEffect(() => {
     if (selectedCatalogId) {
-      const selectedCatalog = phoneCatalogs.find(
-        catalog => catalog._id === selectedCatalogId
-      );
+      const selectedCatalog = phoneCatalogs.find(catalog => catalog._id === selectedCatalogId);
       const currentName = watch('name');
       if (selectedCatalog && !currentName) {
         setValue('name', selectedCatalog.name);
@@ -134,9 +118,7 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
     }
   };
 
-  const handleOverlayClick = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if ((e.target as HTMLElement).classList.contains('modal-overlay')) {
       onClose();
     }
@@ -154,16 +136,9 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
           onClick={e => e.stopPropagation()}
           className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:w-1/2"
         >
-          <p className="font-bold text-black dark:text-white">
-            Cập nhật sản phẩm
-          </p>
+          <p className="font-bold text-black dark:text-white">Cập nhật sản phẩm</p>
           <LabelForm title={'Ghi chú (Chỉ mỗi admin)'} />
-          <InputModal
-            className="bg-yellow-400 px-2"
-            type="text"
-            {...register('note')}
-            placeholder="Điền ghi chú..."
-          />
+          <InputModal className="bg-yellow-400 px-2" type="text" {...register('note')} placeholder="Điền ghi chú..." />
           <div className="flex w-full flex-row items-start justify-between gap-10">
             <div className="flex w-full flex-col items-start justify-center">
               <InputModal
@@ -184,84 +159,40 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({
                 />
               </div>
               <LabelForm title={'Giá'} />
-              <InputModal
-                type="number"
-                {...register('price')}
-                placeholder="Giá"
-              />
+              <InputModal type="number" {...register('price')} placeholder="Giá" />
               <LabelForm title={'Giá giảm'} />
-              <InputModal
-                type="number"
-                {...register('sale')}
-                placeholder="Nhập giá giảm"
-              />
+              <InputModal type="number" {...register('sale')} placeholder="Nhập giá giảm" />
               <LabelForm title={'Màu sắc'} />
-              <InputModal
-                type="text"
-                {...register('color')}
-                placeholder="Nhập màu"
-              />
+              <InputModal type="text" {...register('color')} placeholder="Nhập màu" />
             </div>
             <div className="flex w-full flex-col items-start justify-center">
               <LabelForm title={'Tình trạng'} />
-              <InputModal
-                type="text"
-                {...register('status')}
-                placeholder="Tình trạng"
-              />
+              <InputModal type="text" {...register('status')} placeholder="Tình trạng" />
               <LabelForm title={'Mô tả'} />
-              <Textarea
-                className="w-full border p-2 focus:outline-none"
-                {...register('des')}
-                placeholder="Mô tả"
-              />
+              <Textarea className="w-full border p-2 focus:outline-none" {...register('des')} placeholder="Mô tả" />
               <LabelForm title={'Hình ảnh'} />
               {existingImg && (
                 <div className="my-2">
-                  <img
-                    src={existingImg}
-                    className="h-10 w-10 rounded-md object-cover"
-                  />
+                  <img src={existingImg} className="h-10 w-10 rounded-md object-cover" />
                 </div>
               )}
-              <InputModal
-                type="file"
-                {...register('img')}
-                placeholder="Chèn ảnh hình ảnh"
-              />
+              <InputModal type="file" {...register('img')} placeholder="Chèn ảnh hình ảnh" />
               <LabelForm title={'Ảnh thu nhỏ'} />
               {existingThumbnail && existingThumbnail.length > 0 && (
                 <div className="my-2 flex flex-wrap gap-2">
                   {existingThumbnail.map((thumbnail, index) => (
-                    <img
-                      key={index}
-                      src={thumbnail}
-                      className="h-10 w-10 rounded-md object-cover"
-                    />
+                    <img key={index} src={thumbnail} className="h-10 w-10 rounded-md object-cover" />
                   ))}
                 </div>
               )}
-              <InputModal
-                type="file"
-                {...register('thumbnail')}
-                placeholder="Chèn ảnh thu nhỏ"
-                multiple
-              />
+              <InputModal type="file" {...register('thumbnail')} placeholder="Chèn ảnh thu nhỏ" multiple />
             </div>
           </div>
           <div className="flex flex-row items-center justify-center space-x-5 text-center">
-            <Button
-              onClick={onClose}
-              className="border-gray-50 text-black dark:text-white"
-            >
+            <Button onClick={onClose} className="border-gray-50 text-black dark:text-white">
               Hủy
             </Button>
-            <Button
-              disabled={isLoading}
-              color="primary"
-              type="submit"
-              className="group text-white"
-            >
+            <Button disabled={isLoading} color="primary" type="submit" className="group text-white">
               {isLoading ? 'Đang cập nhật...' : 'Xác nhận'}
             </Button>
           </div>

@@ -7,16 +7,10 @@ interface ModalDeleteAdminProps {
   onConfirm: () => void;
 }
 
-const ModalDeleteGalleryPageAdmin: React.FC<ModalDeleteAdminProps> = ({
-  isOpen,
-  onClose,
-  onConfirm
-}) => {
+const ModalDeleteGalleryPageAdmin: React.FC<ModalDeleteAdminProps> = ({ isOpen, onClose, onConfirm }) => {
   //
   if (!isOpen) return null;
-  const handleOverlayClick = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if ((e.target as HTMLElement).classList.contains('modal-overlay')) {
       onClose();
     }
@@ -41,19 +35,11 @@ const ModalDeleteGalleryPageAdmin: React.FC<ModalDeleteAdminProps> = ({
           <label className="font-bold text-primary">"Xác Nhận"</label>
         </div>
         <div className="flex w-64 flex-col space-y-3 text-center">
-          <Button
-            color="primary"
-            type="submit"
-            className="text-white"
-            onClick={onConfirm}
-          >
+          <Button color="primary" type="submit" className="text-white" onClick={onConfirm}>
             Xác Nhận
           </Button>
 
-          <Button
-            onClick={onClose}
-            className="border-gray-50 text-black dark:text-white"
-          >
+          <Button onClick={onClose} className="border-gray-50 text-black dark:text-white">
             Huỷ
           </Button>
         </div>

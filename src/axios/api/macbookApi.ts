@@ -34,4 +34,3 @@ export const updateMacbookApi = async (_id: string, macbookData: FormData) => {
 export const deleteMacbookApi = (id: string) => {
   return axios.delete(`/api/macbook/${id}`);
 };
-

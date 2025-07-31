@@ -206,4 +206,3 @@ export const TabletProvider = ({ children }: { children: ReactNode }) => {
   );
   return <TabletContext.Provider value={value}>{children}</TabletContext.Provider>;
 };
-

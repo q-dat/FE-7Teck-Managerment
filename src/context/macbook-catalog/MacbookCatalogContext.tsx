@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useState,
-  ReactNode,
-  useCallback,
-  useMemo
-} from 'react';
+import { createContext, useState, ReactNode, useCallback, useMemo } from 'react';
 import { AxiosResponse } from 'axios';
 import { IMacbookCatalog } from '../../types/type/macbook-catalog/macbook-catalog';
 import {
@@ -27,13 +21,8 @@ interface MacbookCatalogContextType {
   error: string | null;
   getAllMacbookCatalogs: () => void;
   getMacbookCatalogById: (_id: string) => Promise<IMacbookCatalog | undefined>;
-  createMacbookCatalog: (
-    macbookCatalogData: FormData
-  ) => Promise<AxiosResponse<any>>;
-  updateMacbookCatalog: (
-    _id: string,
-    macbookCatalogData: FormData
-  ) => Promise<AxiosResponse<any>>;
+  createMacbookCatalog: (macbookCatalogData: FormData) => Promise<AxiosResponse<any>>;
+  updateMacbookCatalog: (_id: string, macbookCatalogData: FormData) => Promise<AxiosResponse<any>>;
   deleteMacbookCatalog: (_id: string) => Promise<AxiosResponse<any>>;
 }
 
@@ -49,22 +38,14 @@ const defaultContextValue: MacbookCatalogContextType = {
   error: null,
   getAllMacbookCatalogs: () => {},
   getMacbookCatalogById: async () => undefined,
-  createMacbookCatalog: async () =>
-    ({ data: { macbookCatalog: null } }) as AxiosResponse,
-  updateMacbookCatalog: async () =>
-    ({ data: { macbookCatalog: null } }) as AxiosResponse,
-  deleteMacbookCatalog: async () =>
-    ({ data: { deleted: true } }) as AxiosResponse
+  createMacbookCatalog: async () => ({ data: { macbookCatalog: null } }) as AxiosResponse,
+  updateMacbookCatalog: async () => ({ data: { macbookCatalog: null } }) as AxiosResponse,
+  deleteMacbookCatalog: async () => ({ data: { deleted: true } }) as AxiosResponse
 };
 
-export const MacbookCatalogContext =
-  createContext<MacbookCatalogContextType>(defaultContextValue);
+export const MacbookCatalogContext = createContext<MacbookCatalogContextType>(defaultContextValue);
 
-export const MacbookCatalogProvider = ({
-  children
-}: {
-  children: ReactNode;
-}) => {
+export const MacbookCatalogProvider = ({ children }: { children: ReactNode }) => {
   const [macbookCatalogs, setMacbookCatalog] = useState<IMacbookCatalog[]>([]);
   const [countMacbookCatalog, setCountMacbookCatalog] = useState<number>(0);
   const [loading, setLoading] = useState({
@@ -119,10 +100,7 @@ export const MacbookCatalogProvider = ({
         () => getMacbookCatalogByIdApi(id),
         data => {
           if (data?.wc) {
-            setMacbookCatalog(prevMacbookCatalog => [
-              ...prevMacbookCatalog,
-              data.wc
-            ]);
+            setMacbookCatalog(prevMacbookCatalog => [...prevMacbookCatalog, data.wc]);
           }
         },
         'getAll'
@@ -133,38 +111,27 @@ export const MacbookCatalogProvider = ({
   );
 
   // Create MacbookCatalog
-  const createMacbookCatalog = useCallback(
-    async (macbookCatalogData: FormData): Promise<AxiosResponse<any>> => {
-      return await fetchData(
-        () => createMacbookCatalogApi(macbookCatalogData),
-        data => {
-          if (data?.wc) {
-            setMacbookCatalog(prevMacbookCatalog => [
-              ...prevMacbookCatalog,
-              data?.wc
-            ]);
-          }
-        },
-        'create'
-      );
-    },
-    []
-  );
+  const createMacbookCatalog = useCallback(async (macbookCatalogData: FormData): Promise<AxiosResponse<any>> => {
+    return await fetchData(
+      () => createMacbookCatalogApi(macbookCatalogData),
+      data => {
+        if (data?.wc) {
+          setMacbookCatalog(prevMacbookCatalog => [...prevMacbookCatalog, data?.wc]);
+        }
+      },
+      'create'
+    );
+  }, []);
 
   // Update MacbookCatalog
   const updateMacbookCatalog = useCallback(
-    async (
-      _id: string,
-      macbookCatalogData: FormData
-    ): Promise<AxiosResponse<any>> => {
+    async (_id: string, macbookCatalogData: FormData): Promise<AxiosResponse<any>> => {
       return await fetchData(
         () => updateMacbookCatalogApi(_id, macbookCatalogData),
         data => {
           if (data?.macbookCatalogData) {
             setMacbookCatalog(prevMacbookCatalog =>
-              prevMacbookCatalog.map(wc =>
-                wc._id === _id ? data?.macbookCatalogData : wc
-              )
+              prevMacbookCatalog.map(wc => (wc._id === _id ? data?.macbookCatalogData : wc))
             );
           }
         },
@@ -175,19 +142,13 @@ export const MacbookCatalogProvider = ({
   );
 
   // Delete MacbookCatalog
-  const deleteMacbookCatalog = useCallback(
-    async (id: string): Promise<AxiosResponse<any>> => {
-      return await fetchData(
-        () => deleteMacbookCatalogApi(id),
-        () =>
-          setMacbookCatalog(prevMacbookCatalog =>
-            prevMacbookCatalog.filter(wc => wc._id !== id)
-          ),
-        'delete'
-      );
-    },
-    []
-  );
+  const deleteMacbookCatalog = useCallback(async (id: string): Promise<AxiosResponse<any>> => {
+    return await fetchData(
+      () => deleteMacbookCatalogApi(id),
+      () => setMacbookCatalog(prevMacbookCatalog => prevMacbookCatalog.filter(wc => wc._id !== id)),
+      'delete'
+    );
+  }, []);
 
   const value = useMemo(
     () => ({
@@ -203,9 +164,5 @@ export const MacbookCatalogProvider = ({
     }),
     [macbookCatalogs, countMacbookCatalog, loading, error]
   );
-  return (
-    <MacbookCatalogContext.Provider value={value}>
-      {children}
-    </MacbookCatalogContext.Provider>
-  );
+  return <MacbookCatalogContext.Provider value={value}>{children}</MacbookCatalogContext.Provider>;
 };

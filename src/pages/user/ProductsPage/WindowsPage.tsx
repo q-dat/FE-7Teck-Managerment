@@ -96,9 +96,7 @@ const WindowsPage: React.FC = () => {
                         className="group relative flex h-full w-full flex-col justify-between rounded-md border border-white text-black"
                       >
                         <div
-                          onClick={() =>
-                            navigate(`/windows/${windowsUrl}/${subUrl}`)
-                          }
+                          onClick={() => navigate(`/windows/${windowsUrl}/${subUrl}`)}
                           className="relative h-[200px] w-full cursor-pointer overflow-hidden rounded-md rounded-b-none"
                         >
                           <img
@@ -116,29 +114,17 @@ const WindowsPage: React.FC = () => {
                         </div>
                         {/*  */}
                         <div className="flex w-full flex-col items-start justify-between">
-                          <div
-                            className="w-full cursor-pointer p-1"
-                            onClick={() => navigate(`/windows/${windowsUrl}`)}
-                          >
-                            <p className="xl:group-hover:text-secondary">
-                              Laptop {windows?.windows_name}
-                            </p>
+                          <div className="w-full cursor-pointer p-1" onClick={() => navigate(`/windows/${windowsUrl}`)}>
+                            <p className="xl:group-hover:text-secondary">Laptop {windows?.windows_name}</p>
                           </div>
                           <div className="w-full p-1">
                             <p className="text-gray-700">
                               &nbsp;
                               <span className="font-semibold text-red-700">
-                                {(windows?.windows_price * 1000).toLocaleString(
-                                  'vi-VN'
-                                )}
-                                ₫
+                                {(windows?.windows_price * 1000).toLocaleString('vi-VN')}₫
                               </span>
                             </p>
-                            <Link
-                              aria-label="Mua ngay"
-                              to="/thanh-toan"
-                              className="z-50 w-full"
-                            >
+                            <Link aria-label="Mua ngay" to="/thanh-toan" className="z-50 w-full">
                               <Button
                                 size="xs"
                                 className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary hover:bg-primary hover:bg-opacity-20"
@@ -150,12 +136,7 @@ const WindowsPage: React.FC = () => {
                         </div>
                         {windows?.windows_status && (
                           <div className="absolute -left-[3px] top-0 z-20">
-                            <img
-                              alt=""
-                              loading="lazy"
-                              width={60}
-                              src={Status}
-                            />
+                            <img alt="" loading="lazy" width={60} src={Status} />
                             <p className="absolute top-[1px] w-full pl-1 text-xs text-white">
                               {windows?.windows_status}
                             </p>

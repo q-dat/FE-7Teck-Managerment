@@ -8,7 +8,7 @@ export interface IPhoneCatalog {
   phoneCount: number;
   createdAt: string;
   updatedAt: string;
-  
+
   configuration_and_memory: {
     // Cấu hình và bộ nhớ
     operating_system: string; // Hệ điều hành

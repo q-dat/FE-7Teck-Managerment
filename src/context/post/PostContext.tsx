@@ -1,17 +1,5 @@
-import {
-  createContext,
-  useState,
-  useCallback,
-  ReactNode,
-  useMemo
-} from 'react';
-import {
-  getAllPostsApi,
-  getPostByIdApi,
-  createPostApi,
-  updatePostApi,
-  deletePostApi
-} from '../../axios/api/postApi';
+import { createContext, useState, useCallback, ReactNode, useMemo } from 'react';
+import { getAllPostsApi, getPostByIdApi, createPostApi, updatePostApi, deletePostApi } from '../../axios/api/postApi';
 import { IPost } from '../../types/type/post/post';
 import { AxiosResponse } from 'axios';
 
@@ -107,77 +95,63 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   // Get Post By Id
-  const getPostById = useCallback(
-    async (_id: string): Promise<IPost | undefined> => {
-      try {
-        const response = await fetchData(
-          () => getPostByIdApi(_id),
-          data => {
-            if (data?.post) {
-              setPosts(prev => {
-                const exists = prev.find(p => p._id === _id);
-                if (!exists) {
-                  return [...prev, data.post];
-                }
-                return prev.map(p => (p._id === _id ? data.post : p));
-              });
-            }
-          },
-          'getById'
-        );
-        return response.data.post;
-      } catch (err) {
-        return undefined;
-      }
-    },
-    []
-  );
+  const getPostById = useCallback(async (_id: string): Promise<IPost | undefined> => {
+    try {
+      const response = await fetchData(
+        () => getPostByIdApi(_id),
+        data => {
+          if (data?.post) {
+            setPosts(prev => {
+              const exists = prev.find(p => p._id === _id);
+              if (!exists) {
+                return [...prev, data.post];
+              }
+              return prev.map(p => (p._id === _id ? data.post : p));
+            });
+          }
+        },
+        'getById'
+      );
+      return response.data.post;
+    } catch (err) {
+      return undefined;
+    }
+  }, []);
 
   // Create Post
-  const createPost = useCallback(
-    async (postData: FormData): Promise<AxiosResponse<any>> => {
-      return await fetchData(
-        () => createPostApi(postData),
-        data => {
-          if (data?.p) {
-            setPosts(prevPosts => [...prevPosts, data?.p]);
-          }
-        },
-        'create'
-      );
-    },
-    []
-  );
+  const createPost = useCallback(async (postData: FormData): Promise<AxiosResponse<any>> => {
+    return await fetchData(
+      () => createPostApi(postData),
+      data => {
+        if (data?.p) {
+          setPosts(prevPosts => [...prevPosts, data?.p]);
+        }
+      },
+      'create'
+    );
+  }, []);
 
   // Update Post
-  const updatePost = useCallback(
-    async (id: string, postData: FormData): Promise<AxiosResponse<any>> => {
-      return await fetchData(
-        () => updatePostApi(id, postData),
-        data => {
-          if (data?.postData) {
-            setPosts(prevPosts =>
-              prevPosts.map(p => (p._id === id ? data?.postData : p))
-            );
-          }
-        },
-        'update'
-      );
-    },
-    []
-  );
+  const updatePost = useCallback(async (id: string, postData: FormData): Promise<AxiosResponse<any>> => {
+    return await fetchData(
+      () => updatePostApi(id, postData),
+      data => {
+        if (data?.postData) {
+          setPosts(prevPosts => prevPosts.map(p => (p._id === id ? data?.postData : p)));
+        }
+      },
+      'update'
+    );
+  }, []);
 
   // Delete Post
-  const deletePost = useCallback(
-    async (id: string): Promise<AxiosResponse<any>> => {
-      return await fetchData(
-        () => deletePostApi(id),
-        () => setPosts(prevPosts => prevPosts.filter(p => p._id !== id)),
-        'delete'
-      );
-    },
-    []
-  );
+  const deletePost = useCallback(async (id: string): Promise<AxiosResponse<any>> => {
+    return await fetchData(
+      () => deletePostApi(id),
+      () => setPosts(prevPosts => prevPosts.filter(p => p._id !== id)),
+      'delete'
+    );
+  }, []);
 
   const value = useMemo(
     () => ({
@@ -191,17 +165,7 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
       updatePost,
       deletePost
     }),
-    [
-      posts,
-      countPost,
-      loading,
-      error,
-      getAllPosts,
-      getPostById,
-      createPost,
-      updatePost,
-      deletePost
-    ]
+    [posts, countPost, loading, error, getAllPosts, getPostById, createPost, updatePost, deletePost]
   );
 
   return <PostContext.Provider value={value}>{children}</PostContext.Provider>;

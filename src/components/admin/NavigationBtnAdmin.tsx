@@ -8,13 +8,7 @@ interface NavigationBtnProps {
   onClick: () => void;
 }
 
-const NavigationBtn: React.FC<NavigationBtnProps> = ({
-  Icons,
-  badgeNumber = 1,
-  bg_span,
-  style,
-  onClick
-}) => {
+const NavigationBtn: React.FC<NavigationBtnProps> = ({ Icons, badgeNumber = 1, bg_span, style, onClick }) => {
   return (
     <div onClick={onClick} className={`${style} btn relative text-[20px]`}>
       {Icons}

@@ -14,9 +14,7 @@ const PurchasePage: React.FC = () => {
   useEffect(() => {
     scrollToTopSmoothly();
   });
-  const onSubmit = async (
-    event: React.FormEvent<HTMLFormElement>
-  ): Promise<void> => {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();
     setResult('Đang gửi...');
     const formData = new FormData(event.currentTarget);
@@ -34,10 +32,7 @@ const PurchasePage: React.FC = () => {
     //
     const phoneRegex = /^(0\d{9,10})$/;
     if (!phoneRegex.test(phone)) {
-      Toastify(
-        'Số điện thoại không hợp lệ! Vui lòng nhập đúng định dạng.',
-        400
-      );
+      Toastify('Số điện thoại không hợp lệ! Vui lòng nhập đúng định dạng.', 400);
       return;
     }
 
@@ -53,10 +48,7 @@ const PurchasePage: React.FC = () => {
 
       if (data.success) {
         setResult('Đã gửi biểu mẫu thành công!');
-        Toastify(
-          'Đã gửi biểu mẫu thành công!. Vui lòng đợi để được hỗ trợ!',
-          200
-        );
+        Toastify('Đã gửi biểu mẫu thành công!. Vui lòng đợi để được hỗ trợ!', 200);
         // Reset form using formRef
         formRef.current?.reset();
       } else {
@@ -90,9 +82,7 @@ const PurchasePage: React.FC = () => {
         <div className="mt-5 px-2 xl:px-desktop-padding">
           <div>
             <div role="region" aria-label="Thông tin liên hệ">
-              <h1 className="text-2xl font-bold">
-                Liên Hệ Thanh Toán Trực Tiếp
-              </h1>
+              <h1 className="text-2xl font-bold">Liên Hệ Thanh Toán Trực Tiếp</h1>
             </div>
             <div></div>
           </div>
@@ -101,14 +91,8 @@ const PurchasePage: React.FC = () => {
             onSubmit={onSubmit}
             className="flex flex-col items-center justify-center gap-y-10 rounded-xl px-0 py-5 shadow-none dark:bg-white xl:flex-row xl:gap-x-10 xl:gap-y-0 xl:px-10 xl:py-10 xl:shadow-mainMenu"
           >
-            <div
-              className="flex w-full flex-col gap-5"
-              role="region"
-              aria-label="Thông tin liên hệ"
-            >
-              <h1 className="text-2xl font-bold">
-                Hãy để lại thông tin liên hệ. Chúng tôi sẽ hỗ trợ bạn.
-              </h1>
+            <div className="flex w-full flex-col gap-5" role="region" aria-label="Thông tin liên hệ">
+              <h1 className="text-2xl font-bold">Hãy để lại thông tin liên hệ. Chúng tôi sẽ hỗ trợ bạn.</h1>
               <div className="flex w-full flex-col gap-5 xl:flex-row">
                 <div className="w-full" aria-label="Số điện thoại hoặc Zalo">
                   <InputForm

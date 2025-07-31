@@ -23,12 +23,7 @@ const FooterFC: React.FC = () => {
       <Footer className="item-center flex flex-col justify-between bg-black px-2 pb-0 pt-10 text-white xl:flex-row xl:px-desktop-padding xl:pb-10">
         {/* Logo */}
         <div className="w-full">
-          <img
-            loading="lazy"
-            src={Logo}
-            alt="LOGO"
-            className="h-full w-[140px] rounded-full border border-white"
-          />
+          <img loading="lazy" src={Logo} alt="LOGO" className="h-full w-[140px] rounded-full border border-white" />
         </div>
         {/* 1 */}
         <div className="w-full">
@@ -45,45 +40,25 @@ const FooterFC: React.FC = () => {
           <Link className="font-light hover:font-semibold" to="/macbook">
             Laptop Macbook
           </Link>
-          <Link
-            className="font-light hover:font-semibold"
-            to="/bang-gia-thu-mua"
-          >
+          <Link className="font-light hover:font-semibold" to="/bang-gia-thu-mua">
             Bảng Giá Thu Mua
           </Link>
         </div>
         {/* 2 */}
         <div className="w-full">
-          <Footer.Title className="border-b-[1px]">
-            Chính Sách Bán Hàng
-          </Footer.Title>
-          <Link
-            className="font-light hover:font-semibold"
-            to="/chinh-sach-bao-hanh"
-          >
+          <Footer.Title className="border-b-[1px]">Chính Sách Bán Hàng</Footer.Title>
+          <Link className="font-light hover:font-semibold" to="/chinh-sach-bao-hanh">
             Chính Sách Bảo Hành
           </Link>
         </div>
         {/* 3 */}
         <div className="w-full">
-          <Footer.Title className="border-b-[1px]">
-            Liên Hệ & Mua Hàng
-          </Footer.Title>
+          <Footer.Title className="border-b-[1px]">Liên Hệ & Mua Hàng</Footer.Title>
           <div className="mb-2 flex flex-row items-center justify-center gap-5 text-3xl">
-            <Link
-              title="Liên hệ qua Fanpage"
-              target="_blank"
-              to={fanpageUrl}
-              className="rounded-full"
-            >
+            <Link title="Liên hệ qua Fanpage" target="_blank" to={fanpageUrl} className="rounded-full">
               <FaFacebook />
             </Link>
-            <Link
-              title="Liên hệ qua Messenger"
-              target="_blank"
-              to={messengerUrl}
-              className="rounded-full"
-            >
+            <Link title="Liên hệ qua Messenger" target="_blank" to={messengerUrl} className="rounded-full">
               <FaFacebookMessenger />
             </Link>
             <Link
@@ -102,11 +77,7 @@ const FooterFC: React.FC = () => {
           >
             <FaPhone /> {contact}
           </Link>
-          <Link
-            target="_blank"
-            className="flex items-center gap-2 font-light hover:font-semibold"
-            to={mailUrl}
-          >
+          <Link target="_blank" className="flex items-center gap-2 font-light hover:font-semibold" to={mailUrl}>
             <IoMail /> {mail}
           </Link>
         </div>

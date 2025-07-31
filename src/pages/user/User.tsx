@@ -20,7 +20,7 @@ const User: React.FC = () => {
       <div className="flex-1 xl:pt-[130px]">
         <Outlet />
       </div>
-      <NotificationPopup/>
+      <NotificationPopup />
       <ContactForm />
       <FooterFC />
       <NavBottom />

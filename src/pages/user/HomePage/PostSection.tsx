@@ -14,13 +14,9 @@ const PostSection: React.FC = () => {
     getAllPosts();
   }, []);
 
-  const news = posts?.filter(post =>
-    post?.catalog.toLowerCase().includes('tin')
-  );
+  const news = posts?.filter(post => post?.catalog.toLowerCase().includes('tin'));
 
-  const tricks = posts?.filter(post =>
-    post?.catalog.toLowerCase().includes('mẹo')
-  );
+  const tricks = posts?.filter(post => post?.catalog.toLowerCase().includes('mẹo'));
 
   const navigate = useNavigate();
 
@@ -46,9 +42,7 @@ const PostSection: React.FC = () => {
               aria-label="Thanh tiêu đề Tin công nghệ và liên kết xem tất cả"
             >
               <div>
-                <h1 className="text-xl font-semibold uppercase">
-                  Tin công nghệ
-                </h1>
+                <h1 className="text-xl font-semibold uppercase">Tin công nghệ</h1>
               </div>
               <Link to="/tin-tuc-moi-nhat">
                 <Button
@@ -85,9 +79,7 @@ const PostSection: React.FC = () => {
                     />
                   </div>
                   <div className="w-full">
-                    <p className="line-clamp-4 w-full py-1 text-sm font-semibold">
-                      {post?.title}
-                    </p>
+                    <p className="line-clamp-4 w-full py-1 text-sm font-semibold">{post?.title}</p>
                     <p className="pt-2 text-[12px]">
                       {new Date(post?.updatedAt).toLocaleDateString('vi-VN')} (
                       <TimeAgo date={post?.updatedAt} />)
@@ -106,9 +98,7 @@ const PostSection: React.FC = () => {
               aria-label="Thanh tiêu đề Thủ thuật và liên kết xem tất cả"
             >
               <div>
-                <h1 className="text-xl font-semibold uppercase">
-                  Thủ thuật - Mẹo hay
-                </h1>
+                <h1 className="text-xl font-semibold uppercase">Thủ thuật - Mẹo hay</h1>
               </div>
               <Link to="/thu-thuat-va-meo-hay">
                 <Button
@@ -145,9 +135,7 @@ const PostSection: React.FC = () => {
                     />
                   </div>
                   <div className="w-full">
-                    <p className="line-clamp-4 w-full py-1 text-sm font-semibold">
-                      {post?.title}
-                    </p>
+                    <p className="line-clamp-4 w-full py-1 text-sm font-semibold">{post?.title}</p>
                     <p className="pt-2 text-[12px]">
                       {new Date(post?.updatedAt).toLocaleDateString('vi-VN')} (
                       <TimeAgo date={post?.updatedAt} />)

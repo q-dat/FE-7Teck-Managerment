@@ -56,4 +56,3 @@ export interface IMacbookCatalog {
     m_cat_release_date: string; // Thời điểm ra mắt
   };
 }
-

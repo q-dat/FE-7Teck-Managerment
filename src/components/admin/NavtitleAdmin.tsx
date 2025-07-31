@@ -5,21 +5,14 @@ interface NavtitleAdminProps {
   Title_NavtitleAdmin: string;
   Btn_Create: React.ReactNode;
 }
-const NavtitleAdmin: React.FC<NavtitleAdminProps> = ({
-  Title_NavtitleAdmin,
-  Btn_Create
-}) => {
+const NavtitleAdmin: React.FC<NavtitleAdminProps> = ({ Title_NavtitleAdmin, Btn_Create }) => {
   // const [value, setValue] = React.useState('default');
 
   return (
     <div className="mt-5 justify-between px-2 py-5 md:flex xl:px-0">
       <div className="hidden flex-col md:flex">
-        <h1 className="text-[25px] font-bold text-black dark:text-white">
-          {Title_NavtitleAdmin}
-        </h1>
-        <p className="text-xs text-gray-500">
-          Xin Chào, đây là trang {Title_NavtitleAdmin}
-        </p>
+        <h1 className="text-[25px] font-bold text-black dark:text-white">{Title_NavtitleAdmin}</h1>
+        <p className="text-xs text-gray-500">Xin Chào, đây là trang {Title_NavtitleAdmin}</p>
       </div>
       <div className="flex flex-row items-center justify-between">
         {/* Create Modal */}

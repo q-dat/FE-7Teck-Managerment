@@ -9,7 +9,7 @@ import LabelForm from '../../LabelForm';
 import { optionsTabletData } from '../../../../types/type/optionsData/optionsTabletData';
 import { TabletCatalogContext } from '../../../../context/tablet-catalog/TabletCatalogContext';
 import { ITabletCatalog } from '../../../../types/type/tablet-catalog/tablet-catalog';
-import ReactQuill from 'react-quill';
+import QuillEditor from '../../../../lib/ReactQuill';
 
 const modules = {
   toolbar: [
@@ -30,12 +30,8 @@ interface ModalCreateAdminProps {
   onClose: () => void;
 }
 
-const ModalCreateTabletCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
-  isOpen,
-  onClose
-}) => {
-  const { loading, createTabletCatalog, getAllTabletCatalogs } =
-    useContext(TabletCatalogContext);
+const ModalCreateTabletCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({ isOpen, onClose }) => {
+  const { loading, createTabletCatalog, getAllTabletCatalogs } = useContext(TabletCatalogContext);
   const isLoading = loading.create;
   const { register, handleSubmit, reset, setValue } = useForm<ITabletCatalog>();
   const [editorValue, setEditorValue] = React.useState<string>('');
@@ -92,9 +88,7 @@ const ModalCreateTabletCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
 
   if (!isOpen) return null;
 
-  const handleOverlayClick = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if ((e.target as HTMLElement).classList.contains('modal-overlay')) {
       onClose();
     }
@@ -107,9 +101,7 @@ const ModalCreateTabletCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
         className="modal-overlay fixed inset-0 z-50 flex w-full cursor-pointer items-center justify-center bg-black bg-opacity-40"
       >
         <div className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:w-2/3">
-          <p className="font-bold text-black dark:text-white">
-            Tạo danh mục mới
-          </p>
+          <p className="font-bold text-black dark:text-white">Tạo danh mục mới</p>
           <div className="h-[500px] w-full overflow-y-auto scrollbar-hide 2xl:h-[700px]">
             {/* Các trường cơ bản */}
             <div className="mt-5">
@@ -140,11 +132,7 @@ const ModalCreateTabletCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
                 </SelectDaisyUi>
               </div>
               <LabelForm title={'Hình ảnh*'} />
-              <InputModal
-                type="file"
-                {...register('t_cat_img', { required: true })}
-                placeholder="Chèn hình ảnh"
-              />
+              <InputModal type="file" {...register('t_cat_img', { required: true })} placeholder="Chèn hình ảnh" />
             </div>
             {/* Màn hình*/}
             <div className="">
@@ -155,11 +143,7 @@ const ModalCreateTabletCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
                 placeholder="Nhập công nghệ màn hình"
               />
               <LabelForm title={'Độ phân giải'} />
-              <InputModal
-                type="text"
-                {...register('t_cat_display.t_cat_resolution')}
-                placeholder="Nhập độ phân giải"
-              />
+              <InputModal type="text" {...register('t_cat_display.t_cat_resolution')} placeholder="Nhập độ phân giải" />
               <LabelForm title={'Màn hình rộng'} />
               <InputModal
                 type="text"
@@ -170,9 +154,7 @@ const ModalCreateTabletCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
               <LabelForm title={'Hệ điều hành'} />
               <InputModal
                 type="text"
-                {...register(
-                  't_cat_operating_system_and_cpu.t_cat_operating_system'
-                )}
+                {...register('t_cat_operating_system_and_cpu.t_cat_operating_system')}
                 placeholder="Nhập hệ điều hành"
               />
               <LabelForm title={'Chip xử lý (CPU)'} />
@@ -195,11 +177,7 @@ const ModalCreateTabletCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
               />
               {/*  Bộ nhớ & Lưu trữ */}
               <LabelForm title={'RAM'} />
-              <InputModal
-                type="text"
-                {...register('t_cat_memory_and_storage.t_cat_ram')}
-                placeholder="Nhập RAM"
-              />
+              <InputModal type="text" {...register('t_cat_memory_and_storage.t_cat_ram')} placeholder="Nhập RAM" />
               <LabelForm title={'Dung lượng lưu trữ'} />
               <InputModal
                 type="text"
@@ -209,9 +187,7 @@ const ModalCreateTabletCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
               <LabelForm title={'Dung lượng còn lại'} />
               <InputModal
                 type="text"
-                {...register(
-                  't_cat_memory_and_storage.t_cat_available_storage'
-                )}
+                {...register('t_cat_memory_and_storage.t_cat_available_storage')}
                 placeholder="Nhập dung lượng còn lại"
               />
 
@@ -278,11 +254,7 @@ const ModalCreateTabletCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
                 placeholder="Nhập mạng di động"
               />
               <LabelForm title={'SIM'} />
-              <InputModal
-                type="text"
-                {...register('t_cat_connectivity.t_cat_sim')}
-                placeholder="Nhập SIM"
-              />
+              <InputModal type="text" {...register('t_cat_connectivity.t_cat_sim')} placeholder="Nhập SIM" />
               <LabelForm title={'Thực hiện cuộc gọi'} />
               <InputModal
                 type="text"
@@ -344,9 +316,7 @@ const ModalCreateTabletCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
               <LabelForm title={'Dung lượng pin'} />
               <InputModal
                 type="text"
-                {...register(
-                  't_cat_battery_and_charging.t_cat_battery_capacity'
-                )}
+                {...register('t_cat_battery_and_charging.t_cat_battery_capacity')}
                 placeholder="Nhập Dung lượng pin"
               />
               <LabelForm title={'Loại pin'} />
@@ -371,9 +341,7 @@ const ModalCreateTabletCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
               <LabelForm title={'Hỗ trợ sạc tối đa'} />
               <InputModal
                 type="text"
-                {...register(
-                  't_cat_battery_and_charging.t_cat_max_charging_support'
-                )}
+                {...register('t_cat_battery_and_charging.t_cat_max_charging_support')}
                 placeholder="Nhập hỗ trợ sạc tối đa"
               />
             </div>
@@ -381,9 +349,7 @@ const ModalCreateTabletCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
               <LabelForm title={'Sạc kèm theo máy'} />
               <InputModal
                 type="text"
-                {...register(
-                  't_cat_battery_and_charging.t_cat_included_charger'
-                )}
+                {...register('t_cat_battery_and_charging.t_cat_included_charger')}
                 placeholder="Nhập sạc kèm theo máy"
               />
               {/* Thông tin chung */}
@@ -397,9 +363,7 @@ const ModalCreateTabletCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
               <LabelForm title={'Kích thước và khối lượng'} />
               <InputModal
                 type="text"
-                {...register(
-                  't_cat_general_information.t_cat_dimensions_and_weight'
-                )}
+                {...register('t_cat_general_information.t_cat_dimensions_and_weight')}
                 placeholder="Nhập kích thước và khối lượng"
               />
               <LabelForm title={'Thời điểm ra mắt'} />
@@ -409,15 +373,11 @@ const ModalCreateTabletCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
                 placeholder="Nhập thời điểm ra mắt"
               />
               <LabelForm title={'Hãng'} />
-              <InputModal
-                type="text"
-                {...register('t_cat_general_information.t_cat_brand')}
-                placeholder="Nhập hãng"
-              />
+              <InputModal type="text" {...register('t_cat_general_information.t_cat_brand')} placeholder="Nhập hãng" />
             </div>
             {/*  */}
             <div className="w-full">
-              <ReactQuill
+              <QuillEditor
                 value={editorValue}
                 onChange={setEditorValue}
                 theme="snow"
@@ -427,18 +387,10 @@ const ModalCreateTabletCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
             </div>
           </div>
           <div className="mt-5 flex flex-row items-center justify-center space-x-5 text-center">
-            <Button
-              onClick={onClose}
-              className="border-gray-50 text-black dark:text-white"
-            >
+            <Button onClick={onClose} className="border-gray-50 text-black dark:text-white">
               Hủy
             </Button>
-            <Button
-              disabled={isLoading}
-              color="primary"
-              type="submit"
-              className="group text-white"
-            >
+            <Button disabled={isLoading} color="primary" type="submit" className="group text-white">
               {isLoading ? 'Đang tạo...' : 'Xác nhận'}
             </Button>
           </div>

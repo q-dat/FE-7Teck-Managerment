@@ -16,4 +16,3 @@ export interface IMacbook {
   createdAt: string;
   updatedAt: string;
 }
-

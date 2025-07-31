@@ -15,9 +15,7 @@ const ParallaxSectionFC: React.FC = () => {
               aria-label=" Các ưu đãi đặc biệt tại 7Teck"
               className="absolute inset-0 flex items-center justify-center"
             >
-              <h1 className="text-3xl font-extralight text-white xl:text-5xl">
-                Các ưu đãi đặc biệt tại 7Teck
-              </h1>
+              <h1 className="text-3xl font-extralight text-white xl:text-5xl">Các ưu đãi đặc biệt tại 7Teck</h1>
             </div>
           )
         },
@@ -29,4 +27,3 @@ const ParallaxSectionFC: React.FC = () => {
 };
 
 export default ParallaxSectionFC;
-

@@ -65,7 +65,7 @@ const items = [
 ];
 const BenefitsSection: React.FC = () => {
   return (
-    <div className="w-full h-full">
+    <div className="h-full w-full">
       {/* Mobile */}
       <div className="block md:hidden">
         <Swiper
@@ -86,10 +86,7 @@ const BenefitsSection: React.FC = () => {
           className="mySwiper min-h-[200px] w-full"
         >
           {items.map((item, index) => (
-            <SwiperSlide
-              key={index}
-              className="flex items-center justify-center"
-            >
+            <SwiperSlide key={index} className="flex items-center justify-center">
               <div className="text-md my-4 flex flex-col items-center gap-2 text-center">
                 <div className="rounded-full bg-gradient-to-tr from-primary via-primary to-black p-4">
                   {React.cloneElement(item.icon, {

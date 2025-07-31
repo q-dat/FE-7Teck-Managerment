@@ -34,4 +34,3 @@ export const updateTabletApi = async (_id: string, tabletData: FormData) => {
 export const deleteTabletApi = (id: string) => {
   return axios.delete(`/api/tablet/${id}`);
 };
-

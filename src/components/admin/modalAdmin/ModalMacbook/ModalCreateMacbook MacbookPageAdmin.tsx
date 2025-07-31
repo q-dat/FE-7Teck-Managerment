@@ -19,14 +19,10 @@ interface Option {
   label: string;
 }
 
-const ModalCreateMacbookPageAdmin: React.FC<ModalCreateAdminProps> = ({
-  isOpen,
-  onClose
-}) => {
+const ModalCreateMacbookPageAdmin: React.FC<ModalCreateAdminProps> = ({ isOpen, onClose }) => {
   const { loading, createMacbook, getAllMacbook } = useContext(MacbookContext);
   const isLoading = loading.create;
-  const { control, register, handleSubmit, reset, setValue, watch } =
-    useForm<IMacbook>();
+  const { control, register, handleSubmit, reset, setValue, watch } = useForm<IMacbook>();
 
   // macbookCatalog
   const { macbookCatalogs } = useContext(MacbookCatalogContext);
@@ -50,9 +46,7 @@ const ModalCreateMacbookPageAdmin: React.FC<ModalCreateAdminProps> = ({
   // Cập nhật macbook_name khi danh mục được chọn, chỉ khi macbook_name rỗng
   useEffect(() => {
     if (selectedCatalogId) {
-      const selectedCatalog = macbookCatalogs.find(
-        catalog => catalog._id === selectedCatalogId
-      );
+      const selectedCatalog = macbookCatalogs.find(catalog => catalog._id === selectedCatalogId);
       const currentName = watch('macbook_name');
       if (selectedCatalog && !currentName) {
         setValue('macbook_name', selectedCatalog.m_cat_name);
@@ -94,9 +88,7 @@ const ModalCreateMacbookPageAdmin: React.FC<ModalCreateAdminProps> = ({
     }
   };
 
-  const handleOverlayClick = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if ((e.target as HTMLElement).classList.contains('modal-overlay')) {
       onClose();
     }
@@ -115,10 +107,8 @@ const ModalCreateMacbookPageAdmin: React.FC<ModalCreateAdminProps> = ({
           className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:w-1/2"
         >
           <div>
-            <p className="font-bold text-black dark:text-white">
-              Tạo sản phẩm mới
-            </p>
-                   <div className="flex items-center">
+            <p className="font-bold text-black dark:text-white">Tạo sản phẩm mới</p>
+            <div className="flex items-center">
               <ReactSelect
                 placeholder="Chọn danh mục*"
                 name="macbook_catalog_id._id"
@@ -134,11 +124,7 @@ const ModalCreateMacbookPageAdmin: React.FC<ModalCreateAdminProps> = ({
               {...register('macbook_name', { required: true })}
               placeholder="Tên sản phẩm*"
             />
-            <InputModal
-              type="text"
-              {...register('macbook_color', { required: true })}
-              placeholder="Nhập màu*"
-            />
+            <InputModal type="text" {...register('macbook_color', { required: true })} placeholder="Nhập màu*" />
             <InputModal
               type="number"
               {...register('macbook_price', { required: true })}
@@ -150,44 +136,23 @@ const ModalCreateMacbookPageAdmin: React.FC<ModalCreateAdminProps> = ({
               placeholder="Nhập giá giảm (Hệ số x1000: 1triệu = 1000)"
             />
 
-            <InputModal
-              type="text"
-              {...register('macbook_status', { required: true })}
-              placeholder="Tình trạng*"
-            />
+            <InputModal type="text" {...register('macbook_status', { required: true })} placeholder="Tình trạng*" />
             <Textarea
               className="w-full border p-2 focus:outline-none"
               {...register('macbook_des')}
               placeholder="Mô tả"
             />
             <LabelForm title={'Hình ảnh*'} />
-            <InputModal
-              type="file"
-              {...register('macbook_img', { required: true })}
-              placeholder="Hình ảnh*"
-            />
+            <InputModal type="file" {...register('macbook_img', { required: true })} placeholder="Hình ảnh*" />
             <LabelForm title={'Ảnh thu nhỏ'} />
-            <InputModal
-              type="file"
-              {...register('macbook_thumbnail')}
-              placeholder="Chèn ảnh thu nhỏ"
-              multiple
-            />
+            <InputModal type="file" {...register('macbook_thumbnail')} placeholder="Chèn ảnh thu nhỏ" multiple />
           </div>
 
           <div className="flex flex-row items-center justify-center space-x-5 text-center">
-            <Button
-              onClick={onClose}
-              className="border-gray-50 text-black dark:text-white"
-            >
+            <Button onClick={onClose} className="border-gray-50 text-black dark:text-white">
               Hủy
             </Button>
-            <Button
-              disabled={isLoading}
-              color="primary"
-              type="submit"
-              className="group text-white"
-            >
+            <Button disabled={isLoading} color="primary" type="submit" className="group text-white">
               {isLoading ? 'Đang tạo...' : 'Xác nhận'}
             </Button>
           </div>

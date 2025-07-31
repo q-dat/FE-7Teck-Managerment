@@ -1,10 +1,7 @@
 import { toast, ToastOptions } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export const Toastify = (
-  message: string | Record<string, string>,
-  statusCode: number
-) => {
+export const Toastify = (message: string | Record<string, string>, statusCode: number) => {
   const toastOptions: ToastOptions = {
     position: 'top-right',
     autoClose: 2000,

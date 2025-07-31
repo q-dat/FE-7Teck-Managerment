@@ -18,19 +18,11 @@ import ModalDeletePostCatalogPageAdmin from '../../components/admin/modalAdmin/M
 import ModalEditPostCatalogPageAdmin from '../../components/admin/modalAdmin/ModalPostCatalog/ModalEditPostCatalogPageAdmin';
 
 const PostCatalogManagerPage: React.FC = () => {
-  const {
-    loading,
-    postCatalogs,
-    deletePostCatalog,
-    getAllPostCatalogs,
-    error
-  } = useContext(PostCatalogContext);
+  const { loading, postCatalogs, deletePostCatalog, getAllPostCatalogs, error } = useContext(PostCatalogContext);
   const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
-  const [selectedPostCatalogId, setSelectedPostCatalogId] = useState<
-    string | null
-  >(null);
+  const [selectedPostCatalogId, setSelectedPostCatalogId] = useState<string | null>(null);
 
   const openModalCreateAdmin = () => setIsModalCreateOpen(true);
   const closeModalCreateAdmin = () => setIsModalCreateOpen(false);
@@ -53,9 +45,7 @@ const PostCatalogManagerPage: React.FC = () => {
         Toastify('Bạn đã xoá danh mục bài viết thành công', 201);
         getAllPostCatalogs();
       } catch (error) {
-        const errorMessage = isIErrorResponse(error)
-          ? error.data?.message
-          : 'Xoá danh mục bài viết thất bại!';
+        const errorMessage = isIErrorResponse(error) ? error.data?.message : 'Xoá danh mục bài viết thất bại!';
         Toastify(`Lỗi: ${errorMessage}`, 500);
       }
     }
@@ -137,10 +127,7 @@ const PostCatalogManagerPage: React.FC = () => {
           </Table.Body>
         }
       />
-      <ModalCreatePostCatalogPageAdmin
-        isOpen={isModalCreateOpen}
-        onClose={closeModalCreateAdmin}
-      />
+      <ModalCreatePostCatalogPageAdmin isOpen={isModalCreateOpen} onClose={closeModalCreateAdmin} />
       <ModalDeletePostCatalogPageAdmin
         isOpen={isModalDeleteOpen}
         onClose={closeModalDeleteAdmin}

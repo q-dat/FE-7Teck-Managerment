@@ -15,9 +15,7 @@ import { slugify } from '../utils/slugify';
 interface HeaderResponsiveProps {
   Title_NavbarMobile: ReactNode;
 }
-const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
-  Title_NavbarMobile
-}) => {
+const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({ Title_NavbarMobile }) => {
   const { phoneCatalogs } = useContext(PhoneCatalogContext);
   const navigate = useNavigate();
 
@@ -39,9 +37,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
   useEffect(() => {
     const pathname = location.pathname;
     const foundItem = menuItems.find(
-      item =>
-        item.link === pathname ||
-        item.submenu?.some(sub => sub.link === pathname)
+      item => item.link === pathname || item.submenu?.some(sub => sub.link === pathname)
     );
     if (foundItem) {
       setActiveItem(foundItem.name);
@@ -92,14 +88,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                   <div className="absolute -right-[50px] top-10 h-screen w-screen bg-black bg-opacity-50">
                     <Input
                       value={searchQuery}
-                      onChange={e =>
-                        handleSearch(
-                          e.target.value,
-                          phoneCatalogs,
-                          setSearchQuery,
-                          setSearchResults
-                        )
-                      }
+                      onChange={e => handleSearch(e.target.value, phoneCatalogs, setSearchQuery, setSearchResults)}
                       type="text"
                       className="w-screen animate-exfadeIn rounded-none border-none text-black placeholder-primary focus:outline-none"
                       autoFocus
@@ -124,11 +113,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                           }}
                           className="flex h-[60px] cursor-pointer items-center justify-start gap-2 bg-white p-3 hover:bg-primary hover:bg-opacity-10"
                         >
-                          <img
-                            loading="lazy"
-                            src={phoneCatalog.img}
-                            className="h-10 w-10 object-cover"
-                          />
+                          <img loading="lazy" src={phoneCatalog.img} className="h-10 w-10 object-cover" />
                           <p>{phoneCatalog.name}</p>
                         </div>
                       );
@@ -148,17 +133,8 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
               side={
                 <Menu role="menu" className="fixed h-full w-2/3 bg-white">
                   {/* LOGO */}
-                  <Link
-                    aria-label="Trang chủ"
-                    to="/"
-                    onClick={() => setActiveItem('Trang Chủ')}
-                  >
-                    <img
-                      className="h-full w-[80px]"
-                      loading="lazy"
-                      src={Logo}
-                      alt="LOGO"
-                    />
+                  <Link aria-label="Trang chủ" to="/" onClick={() => setActiveItem('Trang Chủ')}>
+                    <img className="h-full w-[80px]" loading="lazy" src={Logo} alt="LOGO" />
                   </Link>
                   {/* Menu */}
                   {menuItems.map(item => {
@@ -167,9 +143,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                       <div
                         key={item.name}
                         className="relative"
-                        onClick={() =>
-                          item.submenu && handleMenuClick(item.name)
-                        }
+                        onClick={() => item.submenu && handleMenuClick(item.name)}
                       >
                         <Menu.Item role="menuitem" className="group relative">
                           <NavLink
@@ -185,23 +159,13 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                                 <div className="absolute bottom-0 left-0 h-[2px] w-full bg-primary" />
                               )}
                               {Icon && (
-                                <div
-                                  className={
-                                    item.name === activeItem
-                                      ? 'text-xl text-primary'
-                                      : ''
-                                  }
-                                >
+                                <div className={item.name === activeItem ? 'text-xl text-primary' : ''}>
                                   <Icon />
                                 </div>
                               )}
-                              <span className={Icon ? '' : ''}>
-                                {item.name}
-                              </span>
+                              <span className={Icon ? '' : ''}>{item.name}</span>
                               {item.submenu && (
-                                <div
-                                  className={` ${openSubmenu === item.name ? 'rotate-180' : ''}`}
-                                >
+                                <div className={` ${openSubmenu === item.name ? 'rotate-180' : ''}`}>
                                   <FaChevronDown />
                                 </div>
                               )}
@@ -212,11 +176,7 @@ const HeaderResponsive: React.FC<HeaderResponsiveProps> = ({
                         {item.submenu && openSubmenu === item.name && (
                           <div className="relative w-full transform space-y-2 rounded-sm bg-white p-1 shadow-md transition-transform duration-300 ease-in-out">
                             {item.submenu.map((subItem, index) => (
-                              <Link
-                                key={index}
-                                to={subItem.link}
-                                className="block"
-                              >
+                              <Link key={index} to={subItem.link} className="block">
                                 <Button
                                   size="sm"
                                   className="flex w-full flex-row items-center justify-start rounded-sm border-none bg-primary text-sm font-light text-white shadow-headerMenu hover:bg-primary/80"

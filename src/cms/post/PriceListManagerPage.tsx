@@ -15,16 +15,13 @@ import { MdDelete } from 'react-icons/md';
 import NavbarPost from '../../components/admin/responsiveUI/mobile/NavbarPost';
 
 const PriceListManagerPage: React.FC = () => {
-  const { priceLists, getAllPriceLists, loading, error, deletePriceLists } =
-    useContext(PriceListContext);
+  const { priceLists, getAllPriceLists, loading, error, deletePriceLists } = useContext(PriceListContext);
 
   const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const openModalCreateAdmin = () => setIsModalCreateOpen(true);
   const closeModalCreateAdmin = () => setIsModalCreateOpen(false);
-  const [selectedPriceListId, setSelectedPriceListId] = useState<string | null>(
-    null
-  );
+  const [selectedPriceListId, setSelectedPriceListId] = useState<string | null>(null);
 
   const openModalDeleteAdmin = (id: string) => {
     setSelectedPriceListId(id);
@@ -32,28 +29,17 @@ const PriceListManagerPage: React.FC = () => {
   };
   const closeModalDeleteAdmin = () => setIsModalDeleteOpen(false);
 
-  const [catalogs, setCatalogs] = useState<
-    Record<string, Record<string, IProductPriceList[]>>
-  >({});
+  const [catalogs, setCatalogs] = useState<Record<string, Record<string, IProductPriceList[]>>>({});
   const [parentIds, setParentIds] = useState<Record<string, string>>({});
   const [activeTabs, setActiveTabs] = useState<{ [key: string]: string }>({});
 
   useEffect(() => {
-    const aggregatedData: Record<
-      string,
-      Record<string, IProductPriceList[]>
-    > = {};
+    const aggregatedData: Record<string, Record<string, IProductPriceList[]>> = {};
     const parentIdMap: Record<string, string> = {};
 
     priceLists.forEach(list => {
-      [
-        'phoneProducts',
-        'tabletProducts',
-        'macbookProducts',
-        'windowsProducts'
-      ].forEach(categoryType => {
-        const productsByCategory =
-          list[categoryType as keyof typeof list] || {};
+      ['phoneProducts', 'tabletProducts', 'macbookProducts', 'windowsProducts'].forEach(categoryType => {
+        const productsByCategory = list[categoryType as keyof typeof list] || {};
         Object.entries(productsByCategory).forEach(([category, data]) => {
           if (Array.isArray(data)) {
             if (!aggregatedData[categoryType]) {
@@ -90,9 +76,7 @@ const PriceListManagerPage: React.FC = () => {
         Toastify('Bạn đã xoá sản phẩm thành công', 201);
         getAllPriceLists();
       } catch (error) {
-        const errorMessage = isIErrorResponse(error)
-          ? error.data?.message
-          : 'Xoá sản phẩm thất bại!';
+        const errorMessage = isIErrorResponse(error) ? error.data?.message : 'Xoá sản phẩm thất bại!';
         Toastify(`Lỗi: ${errorMessage}`, 500);
       }
     }
@@ -120,8 +104,7 @@ const PriceListManagerPage: React.FC = () => {
         />
         {Object.keys(catalogs).map(
           categoryType =>
-            Object.keys(catalogs[categoryType as keyof typeof catalogs])
-              .length > 0 && (
+            Object.keys(catalogs[categoryType as keyof typeof catalogs]).length > 0 && (
               <div key={categoryType}>
                 <div role="region" aria-label={`Danh mục ${categoryType}`}>
                   <h2 className="my-5 px-2 font-bold text-primary">
@@ -137,9 +120,7 @@ const PriceListManagerPage: React.FC = () => {
 
                 {/* Nút chọn danh mục */}
                 <div className="grid grid-cols-3 gap-2 px-2 xl:grid-cols-6 xl:px-0">
-                  {Object.keys(
-                    catalogs[categoryType as keyof typeof catalogs]
-                  ).map(category => (
+                  {Object.keys(catalogs[categoryType as keyof typeof catalogs]).map(category => (
                     <Button
                       key={category}
                       onClick={() =>
@@ -169,47 +150,38 @@ const PriceListManagerPage: React.FC = () => {
                       <span>Hành động</span>
                     </Table.Head>
                     <Table.Body className="text-center text-sm">
-                      {catalogs[categoryType as keyof typeof catalogs][
-                        activeTabs[categoryType]
-                      ]?.map((product, index) => (
-                        <Table.Row
-                          key={index}
-                          className="border border-secondary"
-                        >
-                          <span>
-                            #{index + 1}
-                            {parentIds[activeTabs[categoryType]]}
-                          </span>
-                          <span>{product?.name}</span>
-                          <span>{product?.storage}</span>
-                          <span>
-                            {(product?.price * 1000).toLocaleString('vi-VN')}đ
-                          </span>
-                          <span className="flex flex-row items-center justify-center gap-2">
-                            <Button
-                              size="sm"
-                              color="success"
-                              // onClick={() =>
-                              //   // openModalEditAdmin(product?._id ?? '')
-                              // }
-                              className="text-sm font-light text-white"
-                            >
-                              <FaPenToSquare />
-                            </Button>
-                            <Button
-                              size="sm"
-                              onClick={() =>
-                                openModalDeleteAdmin(
-                                  `${parentIds[activeTabs[categoryType]]}`
-                                )
-                              }
-                              className="bg-red-600 text-sm font-light text-white"
-                            >
-                              <MdDelete />
-                            </Button>
-                          </span>
-                        </Table.Row>
-                      ))}
+                      {catalogs[categoryType as keyof typeof catalogs][activeTabs[categoryType]]?.map(
+                        (product, index) => (
+                          <Table.Row key={index} className="border border-secondary">
+                            <span>
+                              #{index + 1}
+                              {parentIds[activeTabs[categoryType]]}
+                            </span>
+                            <span>{product?.name}</span>
+                            <span>{product?.storage}</span>
+                            <span>{(product?.price * 1000).toLocaleString('vi-VN')}đ</span>
+                            <span className="flex flex-row items-center justify-center gap-2">
+                              <Button
+                                size="sm"
+                                color="success"
+                                // onClick={() =>
+                                //   // openModalEditAdmin(product?._id ?? '')
+                                // }
+                                className="text-sm font-light text-white"
+                              >
+                                <FaPenToSquare />
+                              </Button>
+                              <Button
+                                size="sm"
+                                onClick={() => openModalDeleteAdmin(`${parentIds[activeTabs[categoryType]]}`)}
+                                className="bg-red-600 text-sm font-light text-white"
+                              >
+                                <MdDelete />
+                              </Button>
+                            </span>
+                          </Table.Row>
+                        )
+                      )}
                     </Table.Body>
                   </Table>
                 </div>
@@ -217,10 +189,7 @@ const PriceListManagerPage: React.FC = () => {
             )
         )}
       </div>
-      <ModalCreatePriceListPageAdmin
-        isOpen={isModalCreateOpen}
-        onClose={closeModalCreateAdmin}
-      />
+      <ModalCreatePriceListPageAdmin isOpen={isModalCreateOpen} onClose={closeModalCreateAdmin} />
       <ModalDeletePriceListPageAdmin
         isOpen={isModalDeleteOpen}
         onClose={closeModalDeleteAdmin}
@@ -231,4 +200,3 @@ const PriceListManagerPage: React.FC = () => {
 };
 
 export default PriceListManagerPage;
-

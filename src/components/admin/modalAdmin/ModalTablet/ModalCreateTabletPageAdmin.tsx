@@ -19,14 +19,10 @@ interface Option {
   label: string;
 }
 
-const ModalCreateTabletPageAdmin: React.FC<ModalCreateAdminProps> = ({
-  isOpen,
-  onClose
-}) => {
+const ModalCreateTabletPageAdmin: React.FC<ModalCreateAdminProps> = ({ isOpen, onClose }) => {
   const { loading, createTablet, getAllTablets } = useContext(TabletContext);
   const isLoading = loading.create;
-  const { control, register, handleSubmit, reset, setValue, watch } =
-    useForm<ITablet>();
+  const { control, register, handleSubmit, reset, setValue, watch } = useForm<ITablet>();
 
   // TabletCatalog
   const { tabletCatalogs } = useContext(TabletCatalogContext);
@@ -50,9 +46,7 @@ const ModalCreateTabletPageAdmin: React.FC<ModalCreateAdminProps> = ({
   // Cập nhật tablet_name khi danh mục được chọn
   useEffect(() => {
     if (selectedCatalogId) {
-      const selectedCatalog = tabletCatalogs.find(
-        catalog => catalog._id === selectedCatalogId
-      );
+      const selectedCatalog = tabletCatalogs.find(catalog => catalog._id === selectedCatalogId);
       if (selectedCatalog) {
         setValue('tablet_name', selectedCatalog.t_cat_name);
       }
@@ -93,9 +87,7 @@ const ModalCreateTabletPageAdmin: React.FC<ModalCreateAdminProps> = ({
     }
   };
 
-  const handleOverlayClick = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if ((e.target as HTMLElement).classList.contains('modal-overlay')) {
       onClose();
     }
@@ -114,9 +106,7 @@ const ModalCreateTabletPageAdmin: React.FC<ModalCreateAdminProps> = ({
           className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:w-1/2"
         >
           <div>
-            <p className="font-bold text-black dark:text-white">
-              Tạo sản phẩm mới
-            </p>
+            <p className="font-bold text-black dark:text-white">Tạo sản phẩm mới</p>
             <div className="flex items-center">
               <ReactSelect
                 placeholder="Chọn danh mục*"
@@ -133,11 +123,7 @@ const ModalCreateTabletPageAdmin: React.FC<ModalCreateAdminProps> = ({
               {...register('tablet_name', { required: true })}
               placeholder="Tên sản phẩm*"
             />
-            <InputModal
-              type="text"
-              {...register('tablet_color', { required: true })}
-              placeholder="Nhập màu*"
-            />
+            <InputModal type="text" {...register('tablet_color', { required: true })} placeholder="Nhập màu*" />
             <InputModal
               type="number"
               {...register('tablet_price', { required: true })}
@@ -148,44 +134,23 @@ const ModalCreateTabletPageAdmin: React.FC<ModalCreateAdminProps> = ({
               {...register('tablet_sale')}
               placeholder="Nhập giá giảm (Hệ số x1000: 1triệu = 1000)"
             />
-            <InputModal
-              type="text"
-              {...register('tablet_status', { required: true })}
-              placeholder="Tình trạng*"
-            />
+            <InputModal type="text" {...register('tablet_status', { required: true })} placeholder="Tình trạng*" />
             <Textarea
               className="w-full border p-2 focus:outline-none"
               {...register('tablet_des')}
               placeholder="Mô tả"
             />
             <LabelForm title={'Hình ảnh*'} />
-            <InputModal
-              type="file"
-              {...register('tablet_img', { required: true })}
-              placeholder="Hình ảnh*"
-            />
+            <InputModal type="file" {...register('tablet_img', { required: true })} placeholder="Hình ảnh*" />
             <LabelForm title={'Ảnh thu nhỏ'} />
-            <InputModal
-              type="file"
-              {...register('tablet_thumbnail')}
-              placeholder="Chèn ảnh thu nhỏ"
-              multiple
-            />
+            <InputModal type="file" {...register('tablet_thumbnail')} placeholder="Chèn ảnh thu nhỏ" multiple />
           </div>
 
           <div className="flex flex-row items-center justify-center space-x-5 text-center">
-            <Button
-              onClick={onClose}
-              className="border-gray-50 text-black dark:text-white"
-            >
+            <Button onClick={onClose} className="border-gray-50 text-black dark:text-white">
               Hủy
             </Button>
-            <Button
-              disabled={isLoading}
-              color="primary"
-              type="submit"
-              className="group text-white"
-            >
+            <Button disabled={isLoading} color="primary" type="submit" className="group text-white">
               {isLoading ? 'Đang tạo...' : 'Xác nhận'}
             </Button>
           </div>

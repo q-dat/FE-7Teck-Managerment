@@ -7,8 +7,7 @@ import { slugify } from '../../../components/utils/slugify';
 import { scrollToTopSmoothly } from '../../../components/utils/scrollToTopSmoothly';
 
 const UsedPhonePage: React.FC = () => {
-  const { phoneCatalogs, getAllPhoneCatalogs } =
-    useContext(PhoneCatalogContext);
+  const { phoneCatalogs, getAllPhoneCatalogs } = useContext(PhoneCatalogContext);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -36,10 +35,7 @@ const UsedPhonePage: React.FC = () => {
   const totalPages = Math.ceil(NewiPhoneCatalogs.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentPhones = NewiPhoneCatalogs.slice(
-    indexOfFirstItem,
-    indexOfLastItem
-  );
+  const currentPhones = NewiPhoneCatalogs.slice(indexOfFirstItem, indexOfLastItem);
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
@@ -97,15 +93,10 @@ const UsedPhonePage: React.FC = () => {
                 <div className="flex w-full flex-col items-start justify-between">
                   <div className="w-full cursor-pointer p-1">
                     <p className="w-[75px] rounded-sm bg-gray-100 text-center text-[10px] text-white">
-                      {phoneCatalog?.phoneCount > 99
-                        ? '99+'
-                        : phoneCatalog?.phoneCount}{' '}
-                      {' Sản phẩm'}
+                      {phoneCatalog?.phoneCount > 99 ? '99+' : phoneCatalog?.phoneCount} {' Sản phẩm'}
                     </p>
 
-                    <p className="xl:group-hover:text-secondary">
-                      Điện Thoại {phoneCatalog.name}
-                    </p>
+                    <p className="xl:group-hover:text-secondary">Điện Thoại {phoneCatalog.name}</p>
                   </div>
                   <div className="w-full p-1">
                     <p className="text-gray-700">

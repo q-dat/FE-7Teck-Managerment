@@ -65,10 +65,7 @@ const LoginPage: React.FC = () => {
 
       {/* Form */}
       <div className="relative z-10 w-full rounded-lg border border-gray-300 bg-primary p-6 shadow-lg xl:w-[450px]">
-        <form
-          className="flex w-full flex-col items-center justify-center gap-4"
-          onSubmit={handleSubmit}
-        >
+        <form className="flex w-full flex-col items-center justify-center gap-4" onSubmit={handleSubmit}>
           {isRegister && (
             <Input
               className="w-full border-none placeholder:text-black focus:outline-none"

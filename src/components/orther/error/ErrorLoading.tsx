@@ -11,11 +11,7 @@ const ErrorLoading: React.FC<{}> = () => {
     <div>
       <HeaderResponsive Title_NavbarMobile="404" />
       <div className="flex flex-col items-center justify-center gap-2 py-36">
-        <img
-          src={NotFounds}
-          alt=""
-          className="w-[500px] object-cover drop-shadow-lg filter"
-        />
+        <img src={NotFounds} alt="" className="w-[500px] object-cover drop-shadow-lg filter" />
         <div className="text-md gap-3 text-secondary xl:text-3xl">
           <p>Không tìm thấy dữ liệu!!!</p>
         </div>

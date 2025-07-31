@@ -83,17 +83,11 @@ const PostDetail: React.FC = () => {
               <div>
                 {selectedPost ? (
                   <div className="mb-10">
-                    <p className="text-[35px] font-bold">
-                      {selectedPost?.title}
-                    </p>
+                    <p className="text-[35px] font-bold">{selectedPost?.title}</p>
                     <p className="text-[14px] text-blue-500">
-                      {new Date(selectedPost?.updatedAt).toLocaleDateString(
-                        'vi-VN'
-                      )}
+                      {new Date(selectedPost?.updatedAt).toLocaleDateString('vi-VN')}
                     </p>
-                    <p className="text-[14px] font-light">
-                      Danh mục:&nbsp;{selectedPost?.catalog}
-                    </p>
+                    <p className="text-[14px] font-light">Danh mục:&nbsp;{selectedPost?.catalog}</p>
                     <hr className="my-4" />
                     <div
                       dangerouslySetInnerHTML={{
@@ -114,8 +108,7 @@ const PostDetail: React.FC = () => {
                     các bài viết khác trên trang."
                       className="text-xl"
                     >
-                      Xin lỗi vì sự bất tiện này. Quý độc giả vui lòng theo dõi
-                      các bài viết khác trên trang.
+                      Xin lỗi vì sự bất tiện này. Quý độc giả vui lòng theo dõi các bài viết khác trên trang.
                     </span>
                   </p>
                 )}
@@ -143,9 +136,7 @@ const PostDetail: React.FC = () => {
                     />
                   </div>
                   <div className="flex w-full flex-col items-start justify-start">
-                    <p className="line-clamp-5 w-full py-1 text-sm text-black">
-                      {post?.title}
-                    </p>
+                    <p className="line-clamp-5 w-full py-1 text-sm text-black">{post?.title}</p>
                     <p className="pt-2 text-[12px] text-primary">
                       {new Date(post?.updatedAt).toLocaleDateString('vi-VN')}
                       &nbsp;(

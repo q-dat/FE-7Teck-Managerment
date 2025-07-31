@@ -3,7 +3,7 @@ import { IWindowsCatalog } from '../windows-catalog/windows-catalog';
 export interface IWindows {
   _id: string;
   windows_catalog_id: IWindowsCatalog;
-  windows_view?:number;
+  windows_view?: number;
   windows_name: string;
   windows_color: string;
   windows_img: string;
@@ -16,4 +16,3 @@ export interface IWindows {
   createdAt: string;
   updatedAt: string;
 }
-

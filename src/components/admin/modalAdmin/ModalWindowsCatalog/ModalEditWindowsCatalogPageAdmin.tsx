@@ -9,7 +9,7 @@ import LabelForm from '../../LabelForm';
 import { WindowsCatalogContext } from '../../../../context/windows-catalog/WindowsCatalogContext';
 import { IWindowsCatalog } from '../../../../types/type/windows-catalog/windows-catalog';
 import { optionsWindowsData } from '../../../../types/type/optionsData/optionsWindowsData';
-import ReactQuill from 'react-quill';
+import QuillEditor from '../../../../lib/ReactQuill';
 
 const modules = {
   toolbar: [
@@ -73,27 +73,15 @@ const fields = [
   'w_cat_dimensions_weight_battery.w_cat_release_date'
 ];
 
-const ModalEditWindowsCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
-  isOpen,
-  onClose,
-  windowsCatalogId
-}) => {
-  const {
-    loading,
-    getAllWindowsCatalogs,
-    windowsCatalogs,
-    updateWindowsCatalog
-  } = useContext(WindowsCatalogContext);
+const ModalEditWindowsCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({ isOpen, onClose, windowsCatalogId }) => {
+  const { loading, getAllWindowsCatalogs, windowsCatalogs, updateWindowsCatalog } = useContext(WindowsCatalogContext);
   const isLoading = loading.update;
-  const { control, register, handleSubmit, reset, setValue, watch } =
-    useForm<IWindowsCatalog>();
+  const { control, register, handleSubmit, reset, setValue, watch } = useForm<IWindowsCatalog>();
   const [existingImg, setExistingImg] = useState<string | undefined>('');
   const [editorValue, setEditorValue] = useState<string>('');
 
   useEffect(() => {
-    const windowsData = windowsCatalogs.find(
-      winCatalog => winCatalog._id === windowsCatalogId
-    );
+    const windowsData = windowsCatalogs.find(winCatalog => winCatalog._id === windowsCatalogId);
     if (windowsData) {
       setValue('w_cat_name', windowsData.w_cat_name);
       setValue('w_cat_img', windowsData.w_cat_img);
@@ -150,10 +138,7 @@ const ModalEditWindowsCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
     ];
 
     nestedFields.forEach(field => {
-      data.append(
-        field,
-        JSON.stringify(formData[field as keyof IWindowsCatalog] || {})
-      );
+      data.append(field, JSON.stringify(formData[field as keyof IWindowsCatalog] || {}));
     });
 
     try {
@@ -170,9 +155,7 @@ const ModalEditWindowsCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
 
   if (!isOpen) return null;
 
-  const handleOverlayClick = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if ((e.target as HTMLElement).classList.contains('modal-overlay')) {
       onClose();
     }
@@ -185,19 +168,13 @@ const ModalEditWindowsCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
         className="modal-overlay fixed inset-0 z-50 flex w-full cursor-pointer items-center justify-center bg-black bg-opacity-40"
       >
         <div className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:w-1/2">
-          <p className="font-bold text-black dark:text-white">
-            Cập nhật danh mục
-          </p>
+          <p className="font-bold text-black dark:text-white">Cập nhật danh mục</p>
 
           <div className="h-[500px] w-full overflow-y-auto scrollbar-hide 2xl:h-[700px]">
             {/* Các trường cơ bản */}
             <div className="mt-5">
               <LabelForm title={'Tên danh mục sản phẩm*'} />
-              <InputModal
-                type="text"
-                {...register('w_cat_name')}
-                placeholder="Nhập tên danh mục sản phẩm"
-              />
+              <InputModal type="text" {...register('w_cat_name')} placeholder="Nhập tên danh mục sản phẩm" />
               <LabelForm title={'Giá*'} />
               <InputModal
                 type="number"
@@ -221,17 +198,10 @@ const ModalEditWindowsCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
               <LabelForm title={'Hình ảnh*'} />
               {existingImg && (
                 <div className="my-2">
-                  <img
-                    src={existingImg}
-                    className="h-10 w-10 rounded-md object-cover"
-                  />
+                  <img src={existingImg} className="h-10 w-10 rounded-md object-cover" />
                 </div>
               )}
-              <InputModal
-                type="file"
-                {...register('w_cat_img')}
-                placeholder="Chèn hình ảnh"
-              />
+              <InputModal type="file" {...register('w_cat_img')} placeholder="Chèn hình ảnh" />
             </div>
             {/*  Bộ xử lý */}
             <div className="">
@@ -242,11 +212,7 @@ const ModalEditWindowsCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                 placeholder="Nhập công nghệ CPU"
               />
               <LabelForm title={'Số nhân'} />
-              <InputModal
-                type="number"
-                {...register('w_cat_processor.w_cat_core_count')}
-                placeholder="Nhập số nhân"
-              />
+              <InputModal type="number" {...register('w_cat_processor.w_cat_core_count')} placeholder="Nhập số nhân" />
 
               <LabelForm title={'Số luồng'} />
               <InputModal
@@ -256,11 +222,7 @@ const ModalEditWindowsCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
               />
 
               <LabelForm title={'Tốc độ CPU'} />
-              <InputModal
-                type="text"
-                {...register('w_cat_processor.w_cat_cpu_speed')}
-                placeholder="Nhập tốc độ CPU"
-              />
+              <InputModal type="text" {...register('w_cat_processor.w_cat_cpu_speed')} placeholder="Nhập tốc độ CPU" />
 
               <LabelForm title={'Tốc độ tối đa'} />
               <InputModal
@@ -312,18 +274,10 @@ const ModalEditWindowsCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
               </div>
               {/* Màn hình */}
               <LabelForm title={'Màn hình'} />
-              <InputModal
-                type="text"
-                {...register('w_cat_display.w_cat_screen_size')}
-                placeholder="Nhập màn hình"
-              />
+              <InputModal type="text" {...register('w_cat_display.w_cat_screen_size')} placeholder="Nhập màn hình" />
 
               <LabelForm title={'Độ phân giải'} />
-              <InputModal
-                type="text"
-                {...register('w_cat_display.w_cat_resolution')}
-                placeholder="Nhập độ phân giải"
-              />
+              <InputModal type="text" {...register('w_cat_display.w_cat_resolution')} placeholder="Nhập độ phân giải" />
 
               <LabelForm title={'Tần số quét'} />
               <InputModal
@@ -426,9 +380,7 @@ const ModalEditWindowsCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
               <LabelForm title={'Đèn bàn phím'} />
               <InputModal
                 type="text"
-                {...register(
-                  'w_cat_connectivity_and_ports.w_cat_keyboard_backlight'
-                )}
+                {...register('w_cat_connectivity_and_ports.w_cat_keyboard_backlight')}
                 placeholder="Nhập đèn bàn phím"
               />
               {/* Kích thước - Khối lượng - Pin */}
@@ -457,27 +409,21 @@ const ModalEditWindowsCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
               <LabelForm title={'Thông tin Pin'} />
               <InputModal
                 type="text"
-                {...register(
-                  'w_cat_dimensions_weight_battery.w_cat_battery_info'
-                )}
+                {...register('w_cat_dimensions_weight_battery.w_cat_battery_info')}
                 placeholder="Nhập thông tin về Pin"
               />
 
               <LabelForm title={'Hệ điều hành'} />
               <InputModal
                 type="text"
-                {...register(
-                  'w_cat_dimensions_weight_battery.w_cat_operating_system'
-                )}
+                {...register('w_cat_dimensions_weight_battery.w_cat_operating_system')}
                 placeholder="Nhập hệ điều hành"
               />
 
               <LabelForm title={'Thời điểm ra mắt'} />
               <InputModal
                 type="text"
-                {...register(
-                  'w_cat_dimensions_weight_battery.w_cat_release_date'
-                )}
+                {...register('w_cat_dimensions_weight_battery.w_cat_release_date')}
                 placeholder="Nhập thời điểm ra mắt"
               />
               {/*  */}
@@ -488,7 +434,7 @@ const ModalEditWindowsCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
                   control={control}
                   defaultValue={editorValue}
                   render={({ field }) => (
-                    <ReactQuill
+                    <QuillEditor
                       className="w-full bg-white text-black"
                       value={field.value || ''}
                       onChange={value => field.onChange(value)}
@@ -503,18 +449,10 @@ const ModalEditWindowsCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({
           </div>
 
           <div className="mt-5 space-x-5 text-center">
-            <Button
-              onClick={onClose}
-              className="border-gray-50 text-black dark:text-white"
-            >
+            <Button onClick={onClose} className="border-gray-50 text-black dark:text-white">
               Hủy
             </Button>
-            <Button
-              disabled={isLoading}
-              color="primary"
-              type="submit"
-              className="text-white"
-            >
+            <Button disabled={isLoading} color="primary" type="submit" className="text-white">
               {isLoading ? 'Đang cập nhật...' : 'Xác nhận'}
             </Button>
           </div>

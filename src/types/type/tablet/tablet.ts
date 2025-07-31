@@ -16,4 +16,3 @@ export interface ITablet {
   createdAt: string;
   updatedAt: string;
 }
-

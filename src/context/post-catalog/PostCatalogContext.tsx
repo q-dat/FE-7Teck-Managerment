@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useState,
-  ReactNode,
-  useCallback,
-  useMemo
-} from 'react';
+import { createContext, useState, ReactNode, useCallback, useMemo } from 'react';
 
 import { AxiosResponse } from 'axios';
 import { IPostCatalog } from '../../types/type/post-catalog/post-catalog';
@@ -27,10 +21,7 @@ interface PostCatalogContextType {
   getAllPostCatalogs: () => void;
   getPostCatalogById: (_id: string) => IPostCatalog | undefined;
   createPostCatalog: (postCatalog: IPostCatalog) => Promise<AxiosResponse<any>>;
-  updatePostCatalog: (
-    _id: string,
-    postCatalog: IPostCatalog
-  ) => Promise<AxiosResponse<any>>;
+  updatePostCatalog: (_id: string, postCatalog: IPostCatalog) => Promise<AxiosResponse<any>>;
   deletePostCatalog: (_id: string) => Promise<AxiosResponse<any>>;
 }
 
@@ -46,15 +37,12 @@ const defaultContextValue: PostCatalogContextType = {
   error: null,
   getAllPostCatalogs: () => {},
   getPostCatalogById: () => undefined,
-  createPostCatalog: async () =>
-    ({ data: { savedPostCatalog: null } }) as AxiosResponse,
-  updatePostCatalog: async () =>
-    ({ data: { postCatalog: null } }) as AxiosResponse,
+  createPostCatalog: async () => ({ data: { savedPostCatalog: null } }) as AxiosResponse,
+  updatePostCatalog: async () => ({ data: { postCatalog: null } }) as AxiosResponse,
   deletePostCatalog: async () => ({ data: { deleted: true } }) as AxiosResponse
 };
 
-export const PostCatalogContext =
-  createContext<PostCatalogContextType>(defaultContextValue);
+export const PostCatalogContext = createContext<PostCatalogContextType>(defaultContextValue);
 
 export const PostCatalogProvider = ({ children }: { children: ReactNode }) => {
   const [postCatalogs, setPostCatalogs] = useState<IPostCatalog[]>([]);
@@ -116,38 +104,27 @@ export const PostCatalogProvider = ({ children }: { children: ReactNode }) => {
   );
 
   // Create PostCatalog
-  const createPostCatalog = useCallback(
-    async (postCatalogData: IPostCatalog): Promise<AxiosResponse<any>> => {
-      return await fetchData(
-        () => createPostCatalogApi(postCatalogData),
-        data => {
-          if (data.savedPostCatalog) {
-            setPostCatalogs(prevPostCatalogs => [
-              ...prevPostCatalogs,
-              data.savedPostCatalog
-            ]);
-          }
-        },
-        'create'
-      );
-    },
-    []
-  );
+  const createPostCatalog = useCallback(async (postCatalogData: IPostCatalog): Promise<AxiosResponse<any>> => {
+    return await fetchData(
+      () => createPostCatalogApi(postCatalogData),
+      data => {
+        if (data.savedPostCatalog) {
+          setPostCatalogs(prevPostCatalogs => [...prevPostCatalogs, data.savedPostCatalog]);
+        }
+      },
+      'create'
+    );
+  }, []);
 
   // Update PostCatalog
   const updatePostCatalog = useCallback(
-    async (
-      id: string,
-      postCatalogData: IPostCatalog
-    ): Promise<AxiosResponse<any>> => {
+    async (id: string, postCatalogData: IPostCatalog): Promise<AxiosResponse<any>> => {
       return await fetchData(
         () => updatePostCatalogApi(id, postCatalogData),
         data => {
           if (data.postCatalogData) {
             setPostCatalogs(prevPostCatalogs =>
-              prevPostCatalogs.map(pc =>
-                pc._id === id ? data.postCatalogData : pc
-              )
+              prevPostCatalogs.map(pc => (pc._id === id ? data.postCatalogData : pc))
             );
           }
         },
@@ -158,19 +135,13 @@ export const PostCatalogProvider = ({ children }: { children: ReactNode }) => {
   );
 
   // Delete PostCatalog
-  const deletePostCatalog = useCallback(
-    async (id: string): Promise<AxiosResponse<any>> => {
-      return await fetchData(
-        () => deletePostCatalogApi(id),
-        () =>
-          setPostCatalogs(prevPostCatalogs =>
-            prevPostCatalogs.filter(pc => pc._id !== id)
-          ),
-        'delete'
-      );
-    },
-    []
-  );
+  const deletePostCatalog = useCallback(async (id: string): Promise<AxiosResponse<any>> => {
+    return await fetchData(
+      () => deletePostCatalogApi(id),
+      () => setPostCatalogs(prevPostCatalogs => prevPostCatalogs.filter(pc => pc._id !== id)),
+      'delete'
+    );
+  }, []);
 
   const value = useMemo(
     () => ({
@@ -186,9 +157,5 @@ export const PostCatalogProvider = ({ children }: { children: ReactNode }) => {
     }),
     [postCatalogs, countPostCatalog, loading, error]
   );
-  return (
-    <PostCatalogContext.Provider value={value}>
-      {children}
-    </PostCatalogContext.Provider>
-  );
+  return <PostCatalogContext.Provider value={value}>{children}</PostCatalogContext.Provider>;
 };

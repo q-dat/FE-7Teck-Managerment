@@ -10,8 +10,7 @@ import { useScroll } from '../../../hooks/useScroll';
 import { slugify } from '../../../components/utils/slugify';
 
 const TabletFC: React.FC = () => {
-  const { tablets, getAllTablets, updateTabletView } =
-    useContext(TabletContext);
+  const { tablets, getAllTablets, updateTabletView } = useContext(TabletContext);
   const { scrollRef, isLeftVisible, isRightVisible, scrollBy } = useScroll();
   const [loading, setLoading] = useState(true);
 
@@ -40,13 +39,7 @@ const TabletFC: React.FC = () => {
         className="flex w-full flex-col items-start justify-center px-2 xl:rounded-t-lg"
       >
         <h1 className="py-2 text-2xl font-semibold">
-          {loading ? (
-            <>Đang tải...</>
-          ) : sortedTablets.length === 0 ? (
-            <></>
-          ) : (
-            <>iPad - Giảm giá mạnh</>
-          )}
+          {loading ? <>Đang tải...</> : sortedTablets.length === 0 ? <></> : <>iPad - Giảm giá mạnh</>}
         </h1>
       </div>
       <div className="relative">
@@ -104,26 +97,18 @@ const TabletFC: React.FC = () => {
                       className="w-full cursor-pointer"
                       to={`/may-tinh-bang/${tabletUrl}/${tablet?._id}`}
                     >
-                      <p className="xl:group-hover:text-secondary">
-                        Điện Thoại {tablet.tablet_name}
-                      </p>
+                      <p className="xl:group-hover:text-secondary">Điện Thoại {tablet.tablet_name}</p>
                     </Link>
                     <div className="w-full">
                       <p className="text-red-700">
-                        {(tablet?.tablet_price * 1000).toLocaleString('vi-VN')}₫
-                        &nbsp;
+                        {(tablet?.tablet_price * 1000).toLocaleString('vi-VN')}₫ &nbsp;
                         {tablet?.tablet_sale && (
                           <del className="text-xs font-light text-gray-500">
-                            (tablet?.tablet_sale * 1000).toLocaleString('vi-VN')
-                            ₫
+                            (tablet?.tablet_sale * 1000).toLocaleString('vi-VN') ₫
                           </del>
                         )}
                       </p>
-                      <Link
-                        aria-label="Mua ngay"
-                        to="/thanh-toan"
-                        className="z-50 w-full"
-                      >
+                      <Link aria-label="Mua ngay" to="/thanh-toan" className="z-50 w-full">
                         <Button
                           size="xs"
                           className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary hover:bg-primary hover:bg-opacity-20"
@@ -136,15 +121,8 @@ const TabletFC: React.FC = () => {
                   {/*  */}
                   {tablet?.tablet_status && (
                     <div className="absolute -left-[3px] top-0 z-20">
-                      <img
-                        alt=""
-                        loading="lazy"
-                        className="h-full w-[60px]"
-                        src={Status}
-                      />
-                      <p className="absolute top-[1px] w-full pl-2 text-xs text-white">
-                        {tablet?.tablet_status}
-                      </p>
+                      <img alt="" loading="lazy" className="h-full w-[60px]" src={Status} />
+                      <p className="absolute top-[1px] w-full pl-2 text-xs text-white">{tablet?.tablet_status}</p>
                     </div>
                   )}
                 </div>

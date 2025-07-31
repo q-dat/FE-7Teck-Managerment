@@ -18,10 +18,7 @@ export const createPriceListApi = (data: any) => {
 
 // Update PriceList
 export const updatePriceListApi = (_id: string, priceListData: IPriceList) => {
-  return axios.put<{ priceList: IPriceList }>(
-    `/api/price-list/${_id}`,
-    priceListData
-  );
+  return axios.put<{ priceList: IPriceList }>(`/api/price-list/${_id}`, priceListData);
 };
 
 // Delete PriceList

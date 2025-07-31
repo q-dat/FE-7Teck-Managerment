@@ -10,13 +10,10 @@ import { slugify } from '../../../components/utils/slugify';
 import { scrollToTopSmoothly } from '../../../components/utils/scrollToTopSmoothly';
 
 const UsedWindowsByCatalogPage = () => {
-  const { windows, getAllWindows, updateWindowsView } =
-    useContext(WindowsContext);
+  const { windows, getAllWindows, updateWindowsView } = useContext(WindowsContext);
   const [loading, setLoading] = useState(true);
   const { catalog } = useParams();
-  const filteredPhones = windows.filter(
-    win => slugify(win?.windows_name) === catalog
-  );
+  const filteredPhones = windows.filter(win => slugify(win?.windows_name) === catalog);
 
   useEffect(() => {
     scrollToTopSmoothly();
@@ -103,28 +100,15 @@ const UsedWindowsByCatalogPage = () => {
                             <FaRegEye />
                             <p>{win.windows_view}</p>
                           </div>
-                          <p className="xl:group-hover:text-secondary">
-                            Laptop {win?.windows_name}
-                          </p>
+                          <p className="xl:group-hover:text-secondary">Laptop {win?.windows_name}</p>
                           <p className="font-[500] text-red-700">
-                            {(win?.windows_price * 1000).toLocaleString(
-                              'vi-VN'
-                            )}
-                            ₫ &nbsp;
+                            {(win?.windows_price * 1000).toLocaleString('vi-VN')}₫ &nbsp;
                             <del className="text-xs font-light text-gray-400">
-                              {win?.windows_sale &&
-                                `${(win?.windows_sale * 1000).toLocaleString(
-                                  'vi-VN'
-                                )}₫`}
+                              {win?.windows_sale && `${(win?.windows_sale * 1000).toLocaleString('vi-VN')}₫`}
                             </del>
                           </p>
                         </Link>
-                        <Link
-                          role="navigation"
-                          aria-label="Mua ngay"
-                          to="/thanh-toan"
-                          className="z-50 w-full"
-                        >
+                        <Link role="navigation" aria-label="Mua ngay" to="/thanh-toan" className="z-50 w-full">
                           <Button
                             size="xs"
                             className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary hover:bg-primary hover:bg-opacity-20"
@@ -137,18 +121,14 @@ const UsedWindowsByCatalogPage = () => {
                       {win?.windows_status && (
                         <div className="absolute -left-[3px] top-0 z-20">
                           <img alt="" loading="lazy" width={60} src={Status} />
-                          <p className="absolute top-[1px] w-full pl-1 text-xs text-white">
-                            {win?.windows_status}
-                          </p>
+                          <p className="absolute top-[1px] w-full pl-1 text-xs text-white">{win?.windows_status}</p>
                         </div>
                       )}
                     </section>
                   );
                 })
               ) : (
-                <div className="col-span-full text-center text-2xl">
-                  Rất tiếc. Không tìm thấy sản phẩm nào!
-                </div>
+                <div className="col-span-full text-center text-2xl">Rất tiếc. Không tìm thấy sản phẩm nào!</div>
               )}
             </div>
           </div>

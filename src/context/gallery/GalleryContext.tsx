@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useState,
-  ReactNode,
-  useCallback,
-  useMemo
-} from 'react';
+import { createContext, useState, ReactNode, useCallback, useMemo } from 'react';
 import { AxiosResponse } from 'axios';
 
 import {
@@ -29,10 +23,7 @@ interface GalleryContextType {
   getAllGallerys: () => void;
   getGalleryById: (_id: string) => Promise<IGallery | undefined>;
   createGallery: (galleryData: FormData) => Promise<AxiosResponse<any>>;
-  updateGallery: (
-    _id: string,
-    galleryData: FormData
-  ) => Promise<AxiosResponse<any>>;
+  updateGallery: (_id: string, galleryData: FormData) => Promise<AxiosResponse<any>>;
   deleteGallery: (_id: string) => Promise<AxiosResponse<any>>;
 }
 
@@ -53,8 +44,7 @@ const defaultContextValue: GalleryContextType = {
   deleteGallery: async () => ({ data: { deleted: true } }) as AxiosResponse
 };
 
-export const GalleryContext =
-  createContext<GalleryContextType>(defaultContextValue);
+export const GalleryContext = createContext<GalleryContextType>(defaultContextValue);
 
 export const GalleryProvider = ({ children }: { children: ReactNode }) => {
   const [galleries, setGallerys] = useState<IGallery[]>([]);
@@ -121,55 +111,39 @@ export const GalleryProvider = ({ children }: { children: ReactNode }) => {
   );
 
   // Create Gallery
-  const createGallery = useCallback(
-    async (galleryData: FormData): Promise<AxiosResponse<any>> => {
-      return await fetchData(
-        () => createGalleryApi(galleryData),
-        data => {
-          if (data?.gallery) {
-            setGallerys(prevGallerys => [...prevGallerys, data?.gallery]);
-          }
-        },
-        'create'
-      );
-    },
-    []
-  );
+  const createGallery = useCallback(async (galleryData: FormData): Promise<AxiosResponse<any>> => {
+    return await fetchData(
+      () => createGalleryApi(galleryData),
+      data => {
+        if (data?.gallery) {
+          setGallerys(prevGallerys => [...prevGallerys, data?.gallery]);
+        }
+      },
+      'create'
+    );
+  }, []);
 
   // Update Gallery
-  const updateGallery = useCallback(
-    async (_id: string, galleryData: FormData): Promise<AxiosResponse<any>> => {
-      return await fetchData(
-        () => updateGalleryApi(_id, galleryData),
-        data => {
-          if (data?.gallery) {
-            setGallerys(prevGallerys =>
-              prevGallerys.map(prod =>
-                prod._id === _id ? data?.gallery : prod
-              )
-            );
-          }
-        },
-        'update'
-      );
-    },
-    []
-  );
+  const updateGallery = useCallback(async (_id: string, galleryData: FormData): Promise<AxiosResponse<any>> => {
+    return await fetchData(
+      () => updateGalleryApi(_id, galleryData),
+      data => {
+        if (data?.gallery) {
+          setGallerys(prevGallerys => prevGallerys.map(prod => (prod._id === _id ? data?.gallery : prod)));
+        }
+      },
+      'update'
+    );
+  }, []);
 
   // Delete Gallery
-  const deleteGallery = useCallback(
-    async (id: string): Promise<AxiosResponse<any>> => {
-      return await fetchData(
-        () => deleteGalleryApi(id),
-        () =>
-          setGallerys(prevGallerys =>
-            prevGallerys.filter(gallery => gallery._id !== id)
-          ),
-        'delete'
-      );
-    },
-    []
-  );
+  const deleteGallery = useCallback(async (id: string): Promise<AxiosResponse<any>> => {
+    return await fetchData(
+      () => deleteGalleryApi(id),
+      () => setGallerys(prevGallerys => prevGallerys.filter(gallery => gallery._id !== id)),
+      'delete'
+    );
+  }, []);
 
   const value = useMemo(
     () => ({
@@ -185,7 +159,5 @@ export const GalleryProvider = ({ children }: { children: ReactNode }) => {
     }),
     [galleries, countGallery, loading, error]
   );
-  return (
-    <GalleryContext.Provider value={value}>{children}</GalleryContext.Provider>
-  );
+  return <GalleryContext.Provider value={value}>{children}</GalleryContext.Provider>;
 };

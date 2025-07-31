@@ -10,13 +10,10 @@ import { slugify } from '../../../components/utils/slugify';
 import { scrollToTopSmoothly } from '../../../components/utils/scrollToTopSmoothly';
 
 const UsedTabletByCatalogPage = () => {
-  const { tablets, getAllTablets, updateTabletView } =
-    useContext(TabletContext);
+  const { tablets, getAllTablets, updateTabletView } = useContext(TabletContext);
   const [loading, setLoading] = useState(true);
   const { catalog } = useParams();
-  const filteredPhones = tablets.filter(
-    tablet => slugify(tablet?.tablet_name) === catalog
-  );
+  const filteredPhones = tablets.filter(tablet => slugify(tablet?.tablet_name) === catalog);
 
   useEffect(() => {
     scrollToTopSmoothly();
@@ -98,35 +95,20 @@ const UsedTabletByCatalogPage = () => {
                       </Link>
                       {/*  */}
                       <div className="flex flex-col items-start justify-center gap-1 p-1">
-                        <Link
-                          to={`/imay-tinh-bang/${tabletUrl}/${tablet?._id}`}
-                        >
+                        <Link to={`/imay-tinh-bang/${tabletUrl}/${tablet?._id}`}>
                           <div className="flex w-[50px] items-center justify-start gap-1 rounded-sm p-[2px] text-center text-[12px] text-black">
                             <FaRegEye />
                             <p>{tablet.tablet_view}</p>
                           </div>
-                          <p className="xl:group-hover:text-secondary">
-                            Điện Thoại {tablet?.tablet_name}
-                          </p>
+                          <p className="xl:group-hover:text-secondary">Điện Thoại {tablet?.tablet_name}</p>
                           <p className="font-[500] text-red-700">
-                            {(tablet?.tablet_price * 1000).toLocaleString(
-                              'vi-VN'
-                            )}
-                            ₫ &nbsp;
+                            {(tablet?.tablet_price * 1000).toLocaleString('vi-VN')}₫ &nbsp;
                             <del className="text-xs font-light text-gray-400">
-                              {tablet?.tablet_sale &&
-                                `${(tablet?.tablet_sale * 1000).toLocaleString(
-                                  'vi-VN'
-                                )}₫`}
+                              {tablet?.tablet_sale && `${(tablet?.tablet_sale * 1000).toLocaleString('vi-VN')}₫`}
                             </del>
                           </p>
                         </Link>
-                        <Link
-                          role="navigation"
-                          aria-label="Mua ngay"
-                          to="/thanh-toan"
-                          className="z-50 w-full"
-                        >
+                        <Link role="navigation" aria-label="Mua ngay" to="/thanh-toan" className="z-50 w-full">
                           <Button
                             size="xs"
                             className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary hover:bg-primary hover:bg-opacity-20"
@@ -139,18 +121,14 @@ const UsedTabletByCatalogPage = () => {
                       {tablet?.tablet_status && (
                         <div className="absolute -left-[3px] top-0 z-20">
                           <img alt="" loading="lazy" width={60} src={Status} />
-                          <p className="absolute top-[1px] w-full pl-1 text-xs text-white">
-                            {tablet?.tablet_status}
-                          </p>
+                          <p className="absolute top-[1px] w-full pl-1 text-xs text-white">{tablet?.tablet_status}</p>
                         </div>
                       )}
                     </section>
                   );
                 })
               ) : (
-                <div className="col-span-full text-center text-2xl">
-                  Rất tiếc. Không tìm thấy sản phẩm nào!
-                </div>
+                <div className="col-span-full text-center text-2xl">Rất tiếc. Không tìm thấy sản phẩm nào!</div>
               )}
             </div>
           </div>

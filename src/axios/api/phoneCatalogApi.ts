@@ -7,9 +7,7 @@ export const getAllPhoneCatalogsApi = () => {
 
 // Get PhoneCatalog By ID
 export const getPhoneCatalogByIdApi = (_id: string) => {
-  return axios.get<{ phoneCatalog: IPhoneCatalog }>(
-    `/api/phone-catalog/${_id}`
-  );
+  return axios.get<{ phoneCatalog: IPhoneCatalog }>(`/api/phone-catalog/${_id}`);
 };
 
 // Create PhoneCatalog
@@ -22,19 +20,12 @@ export const createPhoneCatalogApi = (formData: FormData) => {
 };
 
 // Update PhoneCatalog
-export const updatePhoneCatalogApi = async (
-  _id: string,
-  phoneCatalogData: FormData
-) => {
-  const response = await axios.put(
-    `/api/phone-catalog/${_id}`,
-    phoneCatalogData,
-    {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
+export const updatePhoneCatalogApi = async (_id: string, phoneCatalogData: FormData) => {
+  const response = await axios.put(`/api/phone-catalog/${_id}`, phoneCatalogData, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
     }
-  );
+  });
   return response.data;
 };
 

@@ -1,11 +1,8 @@
-export const scrollBy = (
-  scrollRef: React.RefObject<HTMLDivElement>,
-  offset: number
-) => {
-    if (scrollRef.current) {
-        scrollRef.current.scrollLeft += offset;
-      }
-    };
+export const scrollBy = (scrollRef: React.RefObject<HTMLDivElement>, offset: number) => {
+  if (scrollRef.current) {
+    scrollRef.current.scrollLeft += offset;
+  }
+};
 
 export const updateScrollButtons = (
   scrollRef: React.RefObject<HTMLDivElement>,
@@ -24,9 +21,7 @@ export const handleThumbnailClick = (
   scrollRef: React.RefObject<HTMLDivElement>,
   thumb: string,
   index: number,
-  setSelectedImage: React.Dispatch<
-    React.SetStateAction<string | null | undefined>
-  >
+  setSelectedImage: React.Dispatch<React.SetStateAction<string | null | undefined>>
 ) => {
   setSelectedImage(thumb);
   const scrollContainer = scrollRef.current;
@@ -38,8 +33,7 @@ export const handleThumbnailClick = (
       const elementWidth = thumbnailElement.offsetWidth;
 
       // Tính toán vị trí cần scroll sao cho ảnh nằm ở giữa
-      const scrollPosition =
-        elementOffsetLeft - (containerWidth - elementWidth) / 2;
+      const scrollPosition = elementOffsetLeft - (containerWidth - elementWidth) / 2;
       scrollContainer.scrollTo({
         left: scrollPosition,
         behavior: 'smooth'

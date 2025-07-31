@@ -9,7 +9,7 @@ import LabelForm from '../../LabelForm';
 import { optionsWindowsData } from '../../../../types/type/optionsData/optionsWindowsData';
 import { IWindowsCatalog } from '../../../../types/type/windows-catalog/windows-catalog';
 import { WindowsCatalogContext } from '../../../../context/windows-catalog/WindowsCatalogContext';
-import ReactQuill from 'react-quill';
+import QuillEditor from '../../../../lib/ReactQuill';
 
 const modules = {
   toolbar: [
@@ -30,16 +30,10 @@ interface ModalCreateAdminProps {
   onClose: () => void;
 }
 
-const ModalCreateWindowsCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
-  isOpen,
-  onClose
-}) => {
-  const { loading, createWindowsCatalog, getAllWindowsCatalogs } = useContext(
-    WindowsCatalogContext
-  );
+const ModalCreateWindowsCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({ isOpen, onClose }) => {
+  const { loading, createWindowsCatalog, getAllWindowsCatalogs } = useContext(WindowsCatalogContext);
   const isLoading = loading.create;
-  const { register, handleSubmit, reset, setValue } =
-    useForm<IWindowsCatalog>();
+  const { register, handleSubmit, reset, setValue } = useForm<IWindowsCatalog>();
   const [editorValue, setEditorValue] = React.useState<string>('');
 
   const onSubmit: SubmitHandler<IWindowsCatalog> = async formData => {
@@ -91,9 +85,7 @@ const ModalCreateWindowsCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
 
   if (!isOpen) return null;
 
-  const handleOverlayClick = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if ((e.target as HTMLElement).classList.contains('modal-overlay')) {
       onClose();
     }
@@ -106,9 +98,7 @@ const ModalCreateWindowsCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
         className="modal-overlay fixed inset-0 z-50 flex w-full cursor-pointer items-center justify-center bg-black bg-opacity-40"
       >
         <div className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:w-2/3">
-          <p className="font-bold text-black dark:text-white">
-            Tạo danh mục mới
-          </p>
+          <p className="font-bold text-black dark:text-white">Tạo danh mục mới</p>
           <div className="h-[500px] w-full overflow-y-auto scrollbar-hide 2xl:h-[700px]">
             {/* Các trường cơ bản */}
             <div className="mt-5">
@@ -139,11 +129,7 @@ const ModalCreateWindowsCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
                 </SelectDaisyUi>
               </div>
               <LabelForm title={'Hình ảnh*'} />
-              <InputModal
-                type="file"
-                {...register('w_cat_img', { required: true })}
-                placeholder="Chèn hình ảnh"
-              />
+              <InputModal type="file" {...register('w_cat_img', { required: true })} placeholder="Chèn hình ảnh" />
             </div>
             {/*  Bộ xử lý */}
             <div className="">
@@ -154,11 +140,7 @@ const ModalCreateWindowsCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
                 placeholder="Nhập công nghệ CPU"
               />
               <LabelForm title={'Số nhân'} />
-              <InputModal
-                type="number"
-                {...register('w_cat_processor.w_cat_core_count')}
-                placeholder="Nhập số nhân"
-              />
+              <InputModal type="number" {...register('w_cat_processor.w_cat_core_count')} placeholder="Nhập số nhân" />
 
               <LabelForm title={'Số luồng'} />
               <InputModal
@@ -168,11 +150,7 @@ const ModalCreateWindowsCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
               />
 
               <LabelForm title={'Tốc độ CPU'} />
-              <InputModal
-                type="text"
-                {...register('w_cat_processor.w_cat_cpu_speed')}
-                placeholder="Nhập tốc độ CPU"
-              />
+              <InputModal type="text" {...register('w_cat_processor.w_cat_cpu_speed')} placeholder="Nhập tốc độ CPU" />
 
               <LabelForm title={'Tốc độ tối đa'} />
               <InputModal
@@ -224,18 +202,10 @@ const ModalCreateWindowsCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
               </div>
               {/* Màn hình */}
               <LabelForm title={'Màn hình'} />
-              <InputModal
-                type="text"
-                {...register('w_cat_display.w_cat_screen_size')}
-                placeholder="Nhập màn hình"
-              />
+              <InputModal type="text" {...register('w_cat_display.w_cat_screen_size')} placeholder="Nhập màn hình" />
 
               <LabelForm title={'Độ phân giải'} />
-              <InputModal
-                type="text"
-                {...register('w_cat_display.w_cat_resolution')}
-                placeholder="Nhập độ phân giải"
-              />
+              <InputModal type="text" {...register('w_cat_display.w_cat_resolution')} placeholder="Nhập độ phân giải" />
 
               <LabelForm title={'Tần số quét'} />
               <InputModal
@@ -338,9 +308,7 @@ const ModalCreateWindowsCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
               <LabelForm title={'Đèn bàn phím'} />
               <InputModal
                 type="text"
-                {...register(
-                  'w_cat_connectivity_and_ports.w_cat_keyboard_backlight'
-                )}
+                {...register('w_cat_connectivity_and_ports.w_cat_keyboard_backlight')}
                 placeholder="Nhập đèn bàn phím"
               />
               {/* Kích thước - Khối lượng - Pin */}
@@ -369,33 +337,27 @@ const ModalCreateWindowsCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
               <LabelForm title={'Thông tin Pin'} />
               <InputModal
                 type="text"
-                {...register(
-                  'w_cat_dimensions_weight_battery.w_cat_battery_info'
-                )}
+                {...register('w_cat_dimensions_weight_battery.w_cat_battery_info')}
                 placeholder="Nhập thông tin về Pin"
               />
 
               <LabelForm title={'Hệ điều hành'} />
               <InputModal
                 type="text"
-                {...register(
-                  'w_cat_dimensions_weight_battery.w_cat_operating_system'
-                )}
+                {...register('w_cat_dimensions_weight_battery.w_cat_operating_system')}
                 placeholder="Nhập hệ điều hành"
               />
 
               <LabelForm title={'Thời điểm ra mắt'} />
               <InputModal
                 type="text"
-                {...register(
-                  'w_cat_dimensions_weight_battery.w_cat_release_date'
-                )}
+                {...register('w_cat_dimensions_weight_battery.w_cat_release_date')}
                 placeholder="Nhập thời điểm ra mắt"
               />
 
               {/*  */}
               <div className="w-full">
-                <ReactQuill
+                <QuillEditor
                   value={editorValue}
                   onChange={setEditorValue}
                   theme="snow"
@@ -406,18 +368,10 @@ const ModalCreateWindowsCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({
             </div>
           </div>
           <div className="mt-5 flex flex-row items-center justify-center space-x-5 text-center">
-            <Button
-              onClick={onClose}
-              className="border-gray-50 text-black dark:text-white"
-            >
+            <Button onClick={onClose} className="border-gray-50 text-black dark:text-white">
               Hủy
             </Button>
-            <Button
-              disabled={isLoading}
-              color="primary"
-              type="submit"
-              className="group text-white"
-            >
+            <Button disabled={isLoading} color="primary" type="submit" className="group text-white">
               {isLoading ? 'Đang tạo...' : 'Xác nhận'}
             </Button>
           </div>

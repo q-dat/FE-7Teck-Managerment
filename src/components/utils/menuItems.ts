@@ -1,9 +1,4 @@
-import {
-  FaMobileAlt,
-  FaWindows,
-  FaRegNewspaper,
-  FaMagic
-} from 'react-icons/fa';
+import { FaMobileAlt, FaWindows, FaRegNewspaper, FaMagic } from 'react-icons/fa';
 import { GiLaptop } from 'react-icons/gi';
 import { GoChecklist } from 'react-icons/go';
 import { GrGallery } from 'react-icons/gr';
@@ -94,4 +89,3 @@ const menuItems: MenuItem[] = [
   }
 ];
 export default menuItems;
-

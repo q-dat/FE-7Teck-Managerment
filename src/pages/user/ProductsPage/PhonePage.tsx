@@ -100,9 +100,7 @@ const PhonePage: React.FC = () => {
                         className="group relative flex h-full w-full flex-col justify-between rounded-md border border-white text-black"
                       >
                         <div
-                          onClick={() =>
-                            navigate(`/dien-thoai/${phoneUrl}/${subUrl}`)
-                          }
+                          onClick={() => navigate(`/dien-thoai/${phoneUrl}/${subUrl}`)}
                           className="relative h-[200px] w-full cursor-pointer overflow-hidden rounded-md rounded-b-none"
                         >
                           <img
@@ -120,13 +118,8 @@ const PhonePage: React.FC = () => {
                         </div>
                         {/*  */}
                         <div className="flex w-full flex-col items-start justify-between p-1">
-                          <div
-                            className="w-full cursor-pointer"
-                            onClick={() => navigate(`/dien-thoai/${phoneUrl}`)}
-                          >
-                            <p className="xl:group-hover:text-secondary">
-                              Điện Thoại {phone.name}
-                            </p>
+                          <div className="w-full cursor-pointer" onClick={() => navigate(`/dien-thoai/${phoneUrl}`)}>
+                            <p className="xl:group-hover:text-secondary">Điện Thoại {phone.name}</p>
                           </div>
                           <div className="w-full">
                             <p className="text-gray-700">
@@ -141,11 +134,7 @@ const PhonePage: React.FC = () => {
                                 </del>
                               )}
                             </p>
-                            <Link
-                              aria-label="Mua ngay"
-                              to="/thanh-toan"
-                              className="z-50 w-full"
-                            >
+                            <Link aria-label="Mua ngay" to="/thanh-toan" className="z-50 w-full">
                               <Button
                                 size="xs"
                                 className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary hover:bg-primary hover:bg-opacity-20"
@@ -157,15 +146,8 @@ const PhonePage: React.FC = () => {
                         </div>
                         {phone?.status && (
                           <div className="absolute -left-[3px] top-0 z-20">
-                            <img
-                              alt=""
-                              loading="lazy"
-                              width={60}
-                              src={Status}
-                            />
-                            <p className="absolute top-[1px] w-full pl-1 text-xs text-white">
-                              {phone?.status}
-                            </p>
+                            <img alt="" loading="lazy" width={60} src={Status} />
+                            <p className="absolute top-[1px] w-full pl-1 text-xs text-white">{phone?.status}</p>
                           </div>
                         )}
                       </section>

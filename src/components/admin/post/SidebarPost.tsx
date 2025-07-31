@@ -71,12 +71,8 @@ const SidebarPost: React.FC<{}> = () => {
                 alt="7Teck ."
               />
               <div className="">
-                <p className="text-base font-bold text-primary dark:text-white">
-                  7Teck
-                </p>
-                <p className="text-xs font-light dark:text-white">
-                  Product Management
-                </p>
+                <p className="text-base font-bold text-primary dark:text-white">7Teck</p>
+                <p className="text-xs font-light dark:text-white">Product Management</p>
               </div>
             </div>
           </Link>
@@ -102,16 +98,8 @@ const SidebarPost: React.FC<{}> = () => {
                     >
                       <div className="flex w-full items-center justify-between">
                         <div className="flex items-center">
-                          {item.name === activeItem && (
-                            <div className="absolute left-0 top-0 h-full w-1 bg-primary" />
-                          )}
-                          <Icon
-                            className={
-                              item.name === activeItem
-                                ? 'mr-2 h-5 w-5 text-primary'
-                                : 'mr-2 h-5 w-5'
-                            }
-                          />
+                          {item.name === activeItem && <div className="absolute left-0 top-0 h-full w-1 bg-primary" />}
+                          <Icon className={item.name === activeItem ? 'mr-2 h-5 w-5 text-primary' : 'mr-2 h-5 w-5'} />
                           <div className="flex items-center justify-between gap-2">
                             <div className="">
                               <p>{item.name}</p>

@@ -70,4 +70,3 @@ export interface ITabletCatalog {
     t_cat_brand: string; // Hãng
   };
 }
-

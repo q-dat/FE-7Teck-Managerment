@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useState,
-  ReactNode,
-  useCallback,
-  useMemo
-} from 'react';
+import { createContext, useState, ReactNode, useCallback, useMemo } from 'react';
 import { AxiosResponse } from 'axios';
 
 import { ITabletCatalog } from '../../types/type/tablet-catalog/tablet-catalog';
@@ -28,13 +22,8 @@ interface TabletCatalogContextType {
   error: string | null;
   getAllTabletCatalogs: () => void;
   getTabletCatalogById: (_id: string) => Promise<ITabletCatalog | undefined>;
-  createTabletCatalog: (
-    tabletCatalogData: FormData
-  ) => Promise<AxiosResponse<any>>;
-  updateTabletCatalog: (
-    _id: string,
-    tabletCatalogData: FormData
-  ) => Promise<AxiosResponse<any>>;
+  createTabletCatalog: (tabletCatalogData: FormData) => Promise<AxiosResponse<any>>;
+  updateTabletCatalog: (_id: string, tabletCatalogData: FormData) => Promise<AxiosResponse<any>>;
   deleteTabletCatalog: (_id: string) => Promise<AxiosResponse<any>>;
 }
 
@@ -50,22 +39,14 @@ const defaultContextValue: TabletCatalogContextType = {
   error: null,
   getAllTabletCatalogs: () => {},
   getTabletCatalogById: async () => undefined,
-  createTabletCatalog: async () =>
-    ({ data: { tabletCatalog: null } }) as AxiosResponse,
-  updateTabletCatalog: async () =>
-    ({ data: { tabletCatalog: null } }) as AxiosResponse,
-  deleteTabletCatalog: async () =>
-    ({ data: { deleted: true } }) as AxiosResponse
+  createTabletCatalog: async () => ({ data: { tabletCatalog: null } }) as AxiosResponse,
+  updateTabletCatalog: async () => ({ data: { tabletCatalog: null } }) as AxiosResponse,
+  deleteTabletCatalog: async () => ({ data: { deleted: true } }) as AxiosResponse
 };
 
-export const TabletCatalogContext =
-  createContext<TabletCatalogContextType>(defaultContextValue);
+export const TabletCatalogContext = createContext<TabletCatalogContextType>(defaultContextValue);
 
-export const TabletCatalogProvider = ({
-  children
-}: {
-  children: ReactNode;
-}) => {
+export const TabletCatalogProvider = ({ children }: { children: ReactNode }) => {
   const [tabletCatalogs, setTabletCatalogs] = useState<ITabletCatalog[]>([]);
   const [countTabletCatalog, setCountTabletCatalog] = useState<number>(0);
   const [loading, setLoading] = useState({
@@ -120,10 +101,7 @@ export const TabletCatalogProvider = ({
         () => getTabletCatalogByIdApi(id),
         data => {
           if (data?.tc) {
-            setTabletCatalogs(prevTabletCatalogs => [
-              ...prevTabletCatalogs,
-              data.tc
-            ]);
+            setTabletCatalogs(prevTabletCatalogs => [...prevTabletCatalogs, data.tc]);
           }
         },
         'getAll'
@@ -134,38 +112,27 @@ export const TabletCatalogProvider = ({
   );
 
   // Create TabletCatalog
-  const createTabletCatalog = useCallback(
-    async (tabletCatalogData: FormData): Promise<AxiosResponse<any>> => {
-      return await fetchData(
-        () => createTabletCatalogApi(tabletCatalogData),
-        data => {
-          if (data?.tc) {
-            setTabletCatalogs(prevTabletCatalogs => [
-              ...prevTabletCatalogs,
-              data?.tc
-            ]);
-          }
-        },
-        'create'
-      );
-    },
-    []
-  );
+  const createTabletCatalog = useCallback(async (tabletCatalogData: FormData): Promise<AxiosResponse<any>> => {
+    return await fetchData(
+      () => createTabletCatalogApi(tabletCatalogData),
+      data => {
+        if (data?.tc) {
+          setTabletCatalogs(prevTabletCatalogs => [...prevTabletCatalogs, data?.tc]);
+        }
+      },
+      'create'
+    );
+  }, []);
 
   // Update TabletCatalog
   const updateTabletCatalog = useCallback(
-    async (
-      _id: string,
-      tabletCatalogData: FormData
-    ): Promise<AxiosResponse<any>> => {
+    async (_id: string, tabletCatalogData: FormData): Promise<AxiosResponse<any>> => {
       return await fetchData(
         () => updateTabletCatalogApi(_id, tabletCatalogData),
         data => {
           if (data?.tabletCatalogData) {
             setTabletCatalogs(prevTabletCatalogs =>
-              prevTabletCatalogs.map(tc =>
-                tc._id === _id ? data?.tabletCatalogData : tc
-              )
+              prevTabletCatalogs.map(tc => (tc._id === _id ? data?.tabletCatalogData : tc))
             );
           }
         },
@@ -176,19 +143,13 @@ export const TabletCatalogProvider = ({
   );
 
   // Delete TabletCatalog
-  const deleteTabletCatalog = useCallback(
-    async (id: string): Promise<AxiosResponse<any>> => {
-      return await fetchData(
-        () => deleteTabletCatalogApi(id),
-        () =>
-          setTabletCatalogs(prevTabletCatalogs =>
-            prevTabletCatalogs.filter(tc => tc._id !== id)
-          ),
-        'delete'
-      );
-    },
-    []
-  );
+  const deleteTabletCatalog = useCallback(async (id: string): Promise<AxiosResponse<any>> => {
+    return await fetchData(
+      () => deleteTabletCatalogApi(id),
+      () => setTabletCatalogs(prevTabletCatalogs => prevTabletCatalogs.filter(tc => tc._id !== id)),
+      'delete'
+    );
+  }, []);
 
   const value = useMemo(
     () => ({
@@ -204,9 +165,5 @@ export const TabletCatalogProvider = ({
     }),
     [tabletCatalogs, countTabletCatalog, loading, error]
   );
-  return (
-    <TabletCatalogContext.Provider value={value}>
-      {children}
-    </TabletCatalogContext.Provider>
-  );
+  return <TabletCatalogContext.Provider value={value}>{children}</TabletCatalogContext.Provider>;
 };

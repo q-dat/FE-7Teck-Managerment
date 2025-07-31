@@ -8,9 +8,7 @@ const socket = io(import.meta.env.VITE_API_PORT, {
 });
 
 // Lắng nghe sự kiện 'new_message'
-export const listenToNewMessages = (
-  callback: (message: IMessage) => void
-): void => {
+export const listenToNewMessages = (callback: (message: IMessage) => void): void => {
   socket.on('new_message', callback);
 };
 

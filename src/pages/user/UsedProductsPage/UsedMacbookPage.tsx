@@ -7,9 +7,7 @@ import { slugify } from '../../../components/utils/slugify';
 import { scrollToTopSmoothly } from '../../../components/utils/scrollToTopSmoothly';
 
 const UsedMacbookPage: React.FC = () => {
-  const { macbookCatalogs, getAllMacbookCatalogs } = useContext(
-    MacbookCatalogContext
-  );
+  const { macbookCatalogs, getAllMacbookCatalogs } = useContext(MacbookCatalogContext);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -32,17 +30,12 @@ const UsedMacbookPage: React.FC = () => {
   // Panigation
   const itemsPerPage = 12;
   const NewiPhoneCatalogs = macbookCatalogs.filter(
-    macbookCatalog =>
-      macbookCatalog?.m_cat_status === 1 &&
-      macbookCatalog?.m_cat_macbookCount >= 1 // status = 1 (Cũ) m_cat_macbookCount số lượng sản phẩm theo danh mục
+    macbookCatalog => macbookCatalog?.m_cat_status === 1 && macbookCatalog?.m_cat_macbookCount >= 1 // status = 1 (Cũ) m_cat_macbookCount số lượng sản phẩm theo danh mục
   );
   const totalPages = Math.ceil(NewiPhoneCatalogs.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentMacbook = NewiPhoneCatalogs.slice(
-    indexOfFirstItem,
-    indexOfLastItem
-  );
+  const currentMacbook = NewiPhoneCatalogs.slice(indexOfFirstItem, indexOfLastItem);
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
@@ -100,24 +93,17 @@ const UsedMacbookPage: React.FC = () => {
                 <div className="flex w-full flex-col items-start justify-between">
                   <div className="w-full cursor-pointer p-1">
                     <p className="w-[75px] rounded-sm bg-gray-100 text-center text-[10px] text-white">
-                      {macbookCatalog?.m_cat_macbookCount > 99
-                        ? '99+'
-                        : macbookCatalog?.m_cat_macbookCount}{' '}
+                      {macbookCatalog?.m_cat_macbookCount > 99 ? '99+' : macbookCatalog?.m_cat_macbookCount}{' '}
                       {' Sản phẩm'}
                     </p>
 
-                    <p className="xl:group-hover:text-secondary">
-                      Laptop {macbookCatalog.m_cat_name}
-                    </p>
+                    <p className="xl:group-hover:text-secondary">Laptop {macbookCatalog.m_cat_name}</p>
                   </div>
                   <div className="w-full p-1">
                     <p className="text-gray-700">
                       Từ:&nbsp;
                       <span className="font-semibold text-red-700">
-                        {(macbookCatalog.m_cat_price * 1000).toLocaleString(
-                          'vi-VN'
-                        )}
-                        ₫
+                        {(macbookCatalog.m_cat_price * 1000).toLocaleString('vi-VN')}₫
                       </span>
                     </p>
                   </div>

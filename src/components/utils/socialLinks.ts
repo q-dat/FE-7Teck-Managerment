@@ -6,8 +6,8 @@ export const mailUrl = 'mailto:cskh.7teck@gmail.com';
 export const mail = 'cskh.7teck@gmail.com';
 export const address = '136/11 Trần Quang Diệu, Phường 12, Quận 3, HCM';
 export const contact = '0333 133 050';
-// 
+//
 export const ggMapUrl = 'https://maps.app.goo.gl/tGKhMfAu9be2cYZ38';
 export const igUrl = 'https://www.instagram.com/';
-// 
+//
 export const copyright = 'Copyright © 2024-2025 7Teck';

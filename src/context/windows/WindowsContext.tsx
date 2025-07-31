@@ -207,4 +207,3 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
   );
   return <WindowsContext.Provider value={value}>{children}</WindowsContext.Provider>;
 };
-

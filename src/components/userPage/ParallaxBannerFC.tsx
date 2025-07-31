@@ -42,9 +42,7 @@ const ParallaxBannerFC: React.FC = () => {
     opacity: [0, 0.9],
     shouldAlwaysCompleteAnimation: true,
     expanded: false,
-    children: (
-      <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-blue-900" />
-    )
+    children: <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-blue-900" />
   };
 
   return (

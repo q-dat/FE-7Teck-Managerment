@@ -10,8 +10,7 @@ import { useScroll } from '../../../hooks/useScroll';
 import { slugify } from '../../../components/utils/slugify';
 
 const WindowsFC: React.FC = () => {
-  const { windows, getAllWindows, updateWindowsView } =
-    useContext(WindowsContext);
+  const { windows, getAllWindows, updateWindowsView } = useContext(WindowsContext);
   const { scrollRef, isLeftVisible, isRightVisible, scrollBy } = useScroll();
   const [loading, setLoading] = useState(true);
 
@@ -40,13 +39,7 @@ const WindowsFC: React.FC = () => {
         className="flex w-full flex-col items-start justify-center px-2 xl:rounded-t-lg"
       >
         <h1 className="py-2 text-2xl font-semibold">
-          {loading ? (
-            <>Đang tải</>
-          ) : sortedWindows.length === 0 ? (
-            <></>
-          ) : (
-            <>Windows - Giảm giá mạnh</>
-          )}
+          {loading ? <>Đang tải</> : sortedWindows.length === 0 ? <></> : <>Windows - Giảm giá mạnh</>}
         </h1>
       </div>
       <div className="relative">
@@ -76,10 +69,7 @@ const WindowsFC: React.FC = () => {
                   key={win._id}
                   className="group relative flex h-full w-[195px] flex-col justify-between rounded-md border border-[#f2f4f7] text-black"
                 >
-                  <Link
-                    aria-label="Xem chi tiết sản phẩm khi ấn vào hình ảnh"
-                    to={`/windows/${tabletUrl}/${win?._id}`}
-                  >
+                  <Link aria-label="Xem chi tiết sản phẩm khi ấn vào hình ảnh" to={`/windows/${tabletUrl}/${win?._id}`}>
                     <div className="relative h-[200px] w-full cursor-pointer overflow-hidden">
                       <img
                         alt="Hình ảnh"
@@ -103,25 +93,18 @@ const WindowsFC: React.FC = () => {
                       className="w-full cursor-pointer"
                       to={`/windows/${tabletUrl}/${win?._id}`}
                     >
-                      <p className="xl:group-hover:text-secondary">
-                        Điện Thoại {win.windows_name}
-                      </p>
+                      <p className="xl:group-hover:text-secondary">Điện Thoại {win.windows_name}</p>
                     </Link>
                     <div className="w-full">
                       <p className="text-red-700">
-                        {(win?.windows_price * 1000).toLocaleString('vi-VN')}₫
-                        &nbsp;
+                        {(win?.windows_price * 1000).toLocaleString('vi-VN')}₫ &nbsp;
                         {win?.windows_sale && (
                           <del className="text-xs font-light text-gray-500">
                             (win?.windows_sale * 1000).toLocaleString('vi-VN') ₫
                           </del>
                         )}
                       </p>
-                      <Link
-                        aria-label="Mua ngay"
-                        to="/thanh-toan"
-                        className="z-50 w-full"
-                      >
+                      <Link aria-label="Mua ngay" to="/thanh-toan" className="z-50 w-full">
                         <Button
                           size="xs"
                           className="w-full rounded-md border-none bg-primary bg-opacity-10 text-primary hover:bg-primary hover:bg-opacity-20"
@@ -134,15 +117,8 @@ const WindowsFC: React.FC = () => {
                   {/*  */}
                   {win?.windows_status && (
                     <div className="absolute -left-[3px] top-0 z-20">
-                      <img
-                        alt=""
-                        loading="lazy"
-                        className="h-full w-[60px]"
-                        src={Status}
-                      />
-                      <p className="absolute top-[1px] w-full pl-2 text-xs text-white">
-                        {win?.windows_status}
-                      </p>
+                      <img alt="" loading="lazy" className="h-full w-[60px]" src={Status} />
+                      <p className="absolute top-[1px] w-full pl-2 text-xs text-white">{win?.windows_status}</p>
                     </div>
                   )}
                 </div>

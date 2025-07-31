@@ -3,13 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { AuthContext } from '../context/auth/AuthContext';
 import { LoadingLocal } from '../components/orther/loading';
 
-const PrivateRoute = ({
-  children,
-  requiredRole
-}: {
-  children: ReactNode;
-  requiredRole: string;
-}) => {
+const PrivateRoute = ({ children, requiredRole }: { children: ReactNode; requiredRole: string }) => {
   const { user, token } = useContext(AuthContext);
 
   if (!token) {
@@ -28,4 +22,3 @@ const PrivateRoute = ({
 };
 
 export default PrivateRoute;
-
