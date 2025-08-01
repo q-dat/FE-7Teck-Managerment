@@ -43,7 +43,7 @@ const TimeAgo: React.FC<TimeAgoProps> = ({ date }) => {
 
   const isRecent = isLessThanADay(date);
 
-  const className = isRecent ? 'text-green-700 font-semibold bg-green-100 px-2 py-1 rounded' : 'text-gray-700 ';
+  const className = isRecent ? 'text-green-700 w-full bg-green-100 inline-block' : 'text-gray-700 dark:text-white';
 
   return <span className={className}>{timeAgo(date)}</span>;
 };
