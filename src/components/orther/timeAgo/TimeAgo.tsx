@@ -47,5 +47,5 @@ const TimeAgo: React.FC<TimeAgoProps> = ({ date }) => {
 
   return <span className={className}>{timeAgo(date)}</span>;
 };
-x
+
 export default TimeAgo;
