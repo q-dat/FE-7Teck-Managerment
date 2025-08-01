@@ -148,7 +148,7 @@ const PhoneManager: React.FC = () => {
             <span>Tình Trạng</span>
             <span>Mô Tả</span>
             <span>Ghi Chú</span>
-            <span>Ngày Tạo</span>
+            <span>Ngày Cập Nhật</span>
             <span>Hành Động</span>
           </Table.Head>
         }
@@ -218,7 +218,7 @@ const PhoneManager: React.FC = () => {
                   <mark className="line-clamp-3">{phone?.note || 'Không có ghi chú!'}</mark>
                   <span>
                     {/* {new Date(phone?.createdAt).toLocaleString('vi-VN')} */}
-                    <TimeAgo date={phone?.createdAt} />
+                    <TimeAgo date={phone?.updatedAt} />
                   </span>
                   <span>
                     <details>

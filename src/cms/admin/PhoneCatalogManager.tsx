@@ -84,7 +84,7 @@ const PhoneCatalogManager: React.FC = () => {
             <span>Ảnh Đại Diện</span>
             <span>Tên</span>
             <span>Giá</span>
-            <span>Ngày Tạo</span>
+            <span>Ngày Cập Nhật</span>
             <span>Trạng Thái</span>
             <span>Hành Động</span>
           </Table.Head>
@@ -108,7 +108,7 @@ const PhoneCatalogManager: React.FC = () => {
                     {/* {new Date(phoneCatalog?.createdAt).toLocaleString(
                         'vi-VN'
                       )} */}
-                    <TimeAgo date={phoneCatalog?.createdAt} />
+                    <TimeAgo date={phoneCatalog?.updatedAt} />
                   </span>
                   <span>
                     {phoneCatalog?.status === 0 ? (

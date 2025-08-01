@@ -85,7 +85,7 @@ const TabletCatalogManager: React.FC = () => {
             <span>Ảnh Đại Diện</span>
             <span>Tên</span>
             <span>Giá</span>
-            <span>Ngày Tạo</span>
+            <span>Ngày Cập Nhật</span>
             <span>Trạng Thái</span>
             <span>Hành Động</span>
           </Table.Head>
@@ -114,7 +114,7 @@ const TabletCatalogManager: React.FC = () => {
                     {/* {new Date(tabletCatalog?.createdAt).toLocaleString(
                         'vi-VN'
                       )} */}
-                    <TimeAgo date={tabletCatalog?.createdAt} />
+                    <TimeAgo date={tabletCatalog?.updatedAt} />
                   </span>
                   <span>
                     {tabletCatalog?.t_cat_status === 0 ? (

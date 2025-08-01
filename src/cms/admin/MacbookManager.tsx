@@ -146,7 +146,7 @@ const MacbookManager: React.FC = () => {
             <span>Tình Trạng</span>
             <span>Mô Tả</span>
             <span>Ghi Chú</span>
-            <span>Ngày Tạo</span>
+            <span>Ngày Cập Nhật</span>
             <span>Hành Động</span>
           </Table.Head>
         }
@@ -216,7 +216,7 @@ const MacbookManager: React.FC = () => {
                   <mark className="line-clamp-3">{mac?.macbook_note || 'Không có ghi chú!'}</mark>
                   <span>
                     {/* {new Date(mac?.createdAt).toLocaleString('vi-VN')} */}
-                    <TimeAgo date={mac?.createdAt} />
+                    <TimeAgo date={mac?.updatedAt} />
                   </span>
                   <span>
                     <details>
