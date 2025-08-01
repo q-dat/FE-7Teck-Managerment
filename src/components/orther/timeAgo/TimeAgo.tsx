@@ -34,7 +34,18 @@ const TimeAgo: React.FC<TimeAgoProps> = ({ date }) => {
     return 'Vừa xong';
   };
 
-  return <span>{timeAgo(date)}</span>;
-};
+  const isLessThanADay = (inputDate: string | number | Date): boolean => {
+    const date = parseDate(inputDate);
+    const now = new Date();
+    const diffInMs = now.getTime() - date.getTime();
+    return diffInMs < 86400000; // 1 ngày = 86,400,000 ms
+  };
 
+  const isRecent = isLessThanADay(date);
+
+  const className = isRecent ? 'text-green-700 font-semibold bg-green-100 px-2 py-1 rounded' : 'text-gray-700 ';
+
+  return <span className={className}>{timeAgo(date)}</span>;
+};
+x
 export default TimeAgo;
