@@ -183,7 +183,10 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({ isOpen,
         className="modal-overlay fixed inset-0 z-50 flex w-full cursor-pointer items-center justify-center bg-black bg-opacity-40"
       >
         <div className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:w-1/2">
-          <p className="font-bold text-black dark:text-white">Cập nhật danh mục</p>
+          <p className="font-bold text-black dark:text-white">
+            Cập nhật danh mục:
+            <span className="text-2xl font-bold text-primary ml-2">{watch('name') || 'Tên sản phẩm chưa có'}</span>
+          </p>
           <div className="h-[500px] w-full overflow-y-auto scrollbar-hide 2xl:h-[700px]">
             {/* Các trường cơ bản */}
             <div className="mt-5">

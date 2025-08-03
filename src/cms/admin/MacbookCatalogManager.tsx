@@ -85,7 +85,7 @@ const MacbookCatalogManager: React.FC = () => {
             <span>Ảnh Đại Diện</span>
             <span>Tên</span>
             <span>Giá</span>
-            <span>Ngày Tạo</span>
+            <span>Ngày Cập Nhật</span>
             <span>Trạng Thái</span>
             <span>Hành Động</span>
           </Table.Head>
@@ -114,7 +114,7 @@ const MacbookCatalogManager: React.FC = () => {
                     {/* {new Date(macCatalog?.createdAt).toLocaleString(
                         'vi-VN'
                       )} */}
-                    <TimeAgo date={macCatalog?.createdAt} />
+                    <TimeAgo date={macCatalog?.updatedAt} />
                   </span>
                   <span>
                     {macCatalog?.m_cat_status === 0 ? (

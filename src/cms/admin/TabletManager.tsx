@@ -148,7 +148,7 @@ const TabletManager: React.FC = () => {
             <span>Tình Trạng</span>
             <span>Mô Tả</span>
             <span>Ghi Chú</span>
-            <span>Ngày Tạo</span>
+            <span>Ngày Cập Nhật</span>
             <span>Hành Động</span>
           </Table.Head>
         }
@@ -220,7 +220,7 @@ const TabletManager: React.FC = () => {
                   <mark className="line-clamp-3">{tablet?.tablet_note || 'Không có ghi chú!'}</mark>
                   <span>
                     {/* {new Date(tablet?.createdAt).toLocaleString('vi-VN')} */}
-                    <TimeAgo date={tablet?.createdAt} />
+                    <TimeAgo date={tablet?.updatedAt} />
                   </span>
                   <span>
                     <details>

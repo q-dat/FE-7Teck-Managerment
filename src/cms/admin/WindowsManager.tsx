@@ -146,7 +146,7 @@ const WindowsManager: React.FC = () => {
             <span>Tình Trạng</span>
             <span>Mô Tả</span>
             <span>Ghi Chú</span>
-            <span>Ngày Tạo</span>
+            <span>Ngày Cập Nhật</span>
             <span>Hành Động</span>
           </Table.Head>
         }
@@ -216,7 +216,7 @@ const WindowsManager: React.FC = () => {
                   <mark className="line-clamp-3">{win?.windows_note || 'Không có ghi chú!'}</mark>
                   <span>
                     {/* {new Date(win?.createdAt).toLocaleString('vi-VN')} */}
-                    <TimeAgo date={win?.createdAt} />
+                    <TimeAgo date={win?.updatedAt} />
                   </span>
                   <span>
                     <details>
