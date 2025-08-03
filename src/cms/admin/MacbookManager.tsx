@@ -112,7 +112,7 @@ const MacbookManager: React.FC = () => {
                   onClick={handleCatalogModal} // Click nền để đóng
                 >
                   <div
-                    className="relative h-[90%] w-3/4 cursor-default overflow-y-auto rounded-md border-4 border-white bg-[#F3F2F7] p-2 scrollbar-hide dark:bg-gray-900"
+                    className="relative h-[80%] w-full cursor-default overflow-y-auto rounded-md border-2 border-white bg-[#F3F2F7] scrollbar-hide dark:bg-gray-900 xl:h-[90%] xl:w-3/4 xl:border-4 xl:p-2"
                     onClick={e => e.stopPropagation()} // Ngăn chặn click xuyên modal
                   >
                     <MacbookCatalogManager />
