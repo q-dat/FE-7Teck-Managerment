@@ -10,7 +10,6 @@ import { RiAddBoxLine } from 'react-icons/ri';
 import NavtitleAdmin from '../../components/admin/NavtitleAdmin';
 import TableListAdmin from '../../components/admin/TablelistAdmin';
 import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
-import NavbarAdmin from '../../components/admin/responsiveUI/mobile/NavbarAdminMobile';
 import { MacbookContext } from '../../context/macbook/MacbookContext';
 import { IMacbook } from '../../types/type/macbook/macbook';
 import ModalCreateMacbookPageAdmin from '../../components/admin/modalAdmin/ModalMacbook/ModalCreateMacbook MacbookPageAdmin';
@@ -19,6 +18,8 @@ import ModalEditMacbookPageAdmin from '../../components/admin/modalAdmin/ModalMa
 import Zoom from '../../lib/Zoom';
 import MacbookCatalogManager from './MacbookCatalogManager';
 import { FaList } from 'react-icons/fa';
+import NavbarAdminDesktop from '../../components/admin/NavbarAdminDesktop ';
+import NavbarAdminMobile from '../../components/admin/responsiveUI/mobile/NavbarAdminMobile';
 
 const MacbookManager: React.FC = () => {
   const { macbook, loading, error, getAllMacbook, deleteMacbook } = useContext(MacbookContext);
@@ -65,7 +66,8 @@ const MacbookManager: React.FC = () => {
 
   return (
     <div className="w-full pb-10 xl:pb-0">
-      <NavbarAdmin Title_NavbarAdmin="Laptop Macbook" />
+      <NavbarAdminDesktop onSearch={keyword => getAllMacbook({ name: keyword })} />
+      <NavbarAdminMobile Title_NavbarAdmin="Laptop Macbook" onSearch={keyword => getAllMacbook({ name: keyword })} />
       <div className="">
         <NavtitleAdmin
           Title_NavtitleAdmin="Quản Lý Danh Sách Laptop Macbook"

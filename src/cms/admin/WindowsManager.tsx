@@ -10,7 +10,6 @@ import { RiAddBoxLine } from 'react-icons/ri';
 import NavtitleAdmin from '../../components/admin/NavtitleAdmin';
 import TableListAdmin from '../../components/admin/TablelistAdmin';
 import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
-import NavbarAdmin from '../../components/admin/responsiveUI/mobile/NavbarAdminMobile';
 import { WindowsContext } from '../../context/windows/WindowsContext';
 import { IWindows } from '../../types/type/windows/windows';
 import ModalCreateWindowsPageAdmin from '../../components/admin/modalAdmin/ModalWindows/ModalCreateWindowsPageAdmin';
@@ -19,6 +18,8 @@ import ModalEditWindowsPageAdmin from '../../components/admin/modalAdmin/ModalWi
 import Zoom from '../../lib/Zoom';
 import WindowsCatalogManager from './WindowsCatalogManager';
 import { FaList } from 'react-icons/fa';
+import NavbarAdminDesktop from '../../components/admin/NavbarAdminDesktop ';
+import NavbarAdminMobile from '../../components/admin/responsiveUI/mobile/NavbarAdminMobile';
 
 const WindowsManager: React.FC = () => {
   const { windows, loading, error, getAllWindows, deleteWindows } = useContext(WindowsContext);
@@ -65,7 +66,8 @@ const WindowsManager: React.FC = () => {
 
   return (
     <div className="w-full pb-10 xl:pb-0">
-      <NavbarAdmin Title_NavbarAdmin="Laptop Windows" />
+      <NavbarAdminDesktop onSearch={keyword => getAllWindows({ name: keyword })} />
+      <NavbarAdminMobile Title_NavbarAdmin="Laptop Windows" onSearch={keyword => getAllWindows({ name: keyword })} />
       <div className="">
         <NavtitleAdmin
           Title_NavtitleAdmin="Quản Lý Danh Sách Laptop Windows"

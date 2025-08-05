@@ -10,7 +10,6 @@ import { RiAddBoxLine } from 'react-icons/ri';
 import NavtitleAdmin from '../../components/admin/NavtitleAdmin';
 import TableListAdmin from '../../components/admin/TablelistAdmin';
 import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
-import NavbarAdmin from '../../components/admin/responsiveUI/mobile/NavbarAdminMobile';
 import { TabletContext } from '../../context/tablet/TabletContext';
 import { ITablet } from '../../types/type/tablet/tablet';
 import ModalCreateTabletPageAdmin from '../../components/admin/modalAdmin/ModalTablet/ModalCreateTabletPageAdmin';
@@ -19,6 +18,8 @@ import ModalEditTabletPageAdmin from '../../components/admin/modalAdmin/ModalTab
 import Zoom from '../../lib/Zoom';
 import TabletCatalogManager from './TabletCatalogManager';
 import { FaList } from 'react-icons/fa';
+import NavbarAdminDesktop from '../../components/admin/NavbarAdminDesktop ';
+import NavbarAdminMobile from '../../components/admin/responsiveUI/mobile/NavbarAdminMobile';
 
 const TabletManager: React.FC = () => {
   const { tablets, loading, error, getAllTablets, deleteTablet } = useContext(TabletContext);
@@ -65,7 +66,8 @@ const TabletManager: React.FC = () => {
 
   return (
     <div className="w-full pb-10 xl:pb-0">
-      <NavbarAdmin Title_NavbarAdmin="Máy Tính Bảng" />
+      <NavbarAdminDesktop onSearch={keyword => getAllTablets({ name: keyword })} />
+      <NavbarAdminMobile Title_NavbarAdmin="Máy Tính Bảng" onSearch={keyword => getAllTablets({ name: keyword })} />
       <div className="">
         <NavtitleAdmin
           Title_NavtitleAdmin="Quản Lý Danh Sách Máy Tính Bảng"

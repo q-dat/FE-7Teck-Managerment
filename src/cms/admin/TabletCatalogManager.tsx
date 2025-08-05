@@ -10,7 +10,7 @@ import { FaCircleInfo, FaPenToSquare } from 'react-icons/fa6';
 import { isIErrorResponse } from '../../types/error/error';
 import TableListAdmin from '../../components/admin/TablelistAdmin';
 import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
-import NavbarAdmin from '../../components/admin/responsiveUI/mobile/NavbarAdminMobile';
+import NavbarAdminMobile from '../../components/admin/responsiveUI/mobile/NavbarAdminMobile';
 import { TabletCatalogContext } from '../../context/tablet-catalog/TabletCatalogContext';
 import { ITabletCatalog } from '../../types/type/tablet-catalog/tablet-catalog';
 import ModalCreateTabletCatalogPageAdmin from '../../components/admin/modalAdmin/ModalTabletCatalog/ModalCreateTabletCatalogPageAdmin';
@@ -58,7 +58,7 @@ const TabletCatalogManager: React.FC = () => {
 
   return (
     <div className="w-full pb-10 xl:pb-0">
-      <NavbarAdmin Title_NavbarAdmin="Danh Mục Máy Tính Bảng" />
+      <NavbarAdminMobile Title_NavbarAdmin="Danh Mục Máy Tính Bảng" />
       <div className="">
         <NavtitleAdmin
           Title_NavtitleAdmin="Quản Lý Danh Sách Danh Mục Máy Tính Bảng"

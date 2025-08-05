@@ -20,7 +20,7 @@ interface MacbookContextType {
     delete: boolean;
   };
   error: string | null;
-  getAllMacbook: (filter?: { macbook_status?: number }) => void;
+  getAllMacbook: (filter?: { macbook_status?: number; name?: string }) => void;
   getMacbookById: (_id: string) => Promise<IMacbook | undefined>;
   createMacbook: (macbookData: FormData) => Promise<AxiosResponse<any>>;
   updateMacbook: (_id: string, macbookData: FormData) => Promise<AxiosResponse<any>>;
@@ -87,7 +87,7 @@ export const MacbookProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // Get All Macbook
-  const getAllMacbook = useCallback(async (filter?: { macbook_status?: number }) => {
+  const getAllMacbook = useCallback(async (filter?: { macbook_status?: number; name?: string }) => {
     await fetchData(
       () => getAllMacbookApi(filter),
       data => {

@@ -10,13 +10,13 @@ import { FaCircleInfo, FaPenToSquare } from 'react-icons/fa6';
 import { isIErrorResponse } from '../../types/error/error';
 import TableListAdmin from '../../components/admin/TablelistAdmin';
 import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
-import NavbarAdmin from '../../components/admin/responsiveUI/mobile/NavbarAdminMobile';
 import { MacbookCatalogContext } from '../../context/macbook-catalog/MacbookCatalogContext';
 import { IMacbookCatalog } from '../../types/type/macbook-catalog/macbook-catalog';
 import ModalCreateMacbookCatalogPageAdmin from '../../components/admin/modalAdmin/ModalMacbookCatalog/ModalCreateMacbookCatalogPageAdmin';
 import ModalDeleteMacbookCatalogPageAdmin from '../../components/admin/modalAdmin/ModalMacbookCatalog/ModalDeleteMacbookCatalogPageAdmin';
 import ModalEditMacbookCatalogPageAdmin from '../../components/admin/modalAdmin/ModalMacbookCatalog/ModalEditMacbookCatalogPageAdmin';
 import Zoom from '../../lib/Zoom';
+import NavbarAdminMobile from '../../components/admin/responsiveUI/mobile/NavbarAdminMobile';
 
 const MacbookCatalogManager: React.FC = () => {
   const { loading, macbookCatalogs, deleteMacbookCatalog, getAllMacbookCatalogs, error } =
@@ -58,7 +58,7 @@ const MacbookCatalogManager: React.FC = () => {
 
   return (
     <div className="w-full pb-10 xl:pb-0">
-      <NavbarAdmin Title_NavbarAdmin="Danh Mục Laptop Macbook" />
+      <NavbarAdminMobile Title_NavbarAdmin="Danh Mục Laptop Macbook" />
       <div className="">
         <NavtitleAdmin
           Title_NavtitleAdmin="Quản Lý Danh Sách Danh Mục Laptop Macbook"

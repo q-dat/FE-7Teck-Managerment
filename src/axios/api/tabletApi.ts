@@ -2,7 +2,7 @@ import axios from '../config/axiosConfig';
 import { ITablet } from '../../types/type/tablet/tablet';
 
 // Get All Tablets
-export const getAllTabletsApi = (params?: { tablet_status?: number }) => {
+export const getAllTabletsApi = (params?: { tablet_status?: number; name?: string }) => {
   return axios.get<{ tablets: ITablet[] }>('/api/tablets', { params });
 };
 

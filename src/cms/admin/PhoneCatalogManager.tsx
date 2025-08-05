@@ -15,7 +15,7 @@ import ModalEditPhoneCatalogPageAdmin from '../../components/admin/modalAdmin/Mo
 import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
 import { IPhoneCatalog } from '../../types/type/phone-catalog/phone-catalog';
 import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
-import NavbarAdmin from '../../components/admin/responsiveUI/mobile/NavbarAdminMobile';
+import NavbarAdminMobile from '../../components/admin/responsiveUI/mobile/NavbarAdminMobile';
 import Zoom from '../../lib/Zoom';
 
 const PhoneCatalogManager: React.FC = () => {
@@ -57,7 +57,7 @@ const PhoneCatalogManager: React.FC = () => {
 
   return (
     <div className="w-full pb-10 xl:pb-0">
-      <NavbarAdmin Title_NavbarAdmin="Danh Mục Điện Thoại" />
+      <NavbarAdminMobile Title_NavbarAdmin="Danh Mục Điện Thoại" />
       <div className="">
         <NavtitleAdmin
           Title_NavtitleAdmin="Quản Lý Danh Sách Danh Mục Điện Thoại"

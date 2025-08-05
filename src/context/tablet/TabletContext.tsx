@@ -21,7 +21,7 @@ interface TabletContextType {
     delete: boolean;
   };
   error: string | null;
-  getAllTablets: (filter?: { tablet_status?: number }) => void;
+  getAllTablets: (filter?: { tablet_status?: number; name?: string }) => void;
   getTabletById: (_id: string) => Promise<ITablet | undefined>;
   createTablet: (tabletData: FormData) => Promise<AxiosResponse<any>>;
   updateTablet: (_id: string, tabletData: FormData) => Promise<AxiosResponse<any>>;
@@ -86,7 +86,7 @@ export const TabletProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // Get All Tablets
-  const getAllTablets = useCallback(async (filter?: { tablet_status?: number }) => {
+  const getAllTablets = useCallback(async (filter?: { tablet_status?: number; name?: string }) => {
     await fetchData(
       () => getAllTabletsApi(filter),
       data => {
