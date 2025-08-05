@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import SidebarGallery from '../../components/admin/gallery/SidebarGallery';
-import NavbarAdmin from '../../components/admin/NavbarAdmin';
+import NavbarAdmin from '../../components/admin/NavbarAdminDesktop ';
 import ScrollToTopButton from '../../components/orther/scrollToTop/ScrollToTopButton';
 
 const Gallery: React.FC<{}> = () => {

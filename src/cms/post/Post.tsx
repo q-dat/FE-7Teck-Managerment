@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-import NavbarAdmin from '../../components/admin/NavbarAdmin';
+import NavbarAdmin from '../../components/admin/NavbarAdminDesktop ';
 import SidebarPost from '../../components/admin/post/SidebarPost';
 import ScrollToTopButton from '../../components/orther/scrollToTop/ScrollToTopButton';
 

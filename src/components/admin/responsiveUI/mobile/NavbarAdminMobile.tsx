@@ -5,7 +5,13 @@ import { RxHamburgerMenu } from 'react-icons/rx';
 import { IoSearchOutline } from 'react-icons/io5';
 import SidebarAdmin from '../../SidebarAdmin';
 
-const NavbarAdmin: React.FC<{ Title_NavbarAdmin: string }> = ({ Title_NavbarAdmin }) => {
+interface NavbarAdminProps {
+  Title_NavbarAdmin: string;
+  onSearch?: (keyword: string) => void;
+}
+
+const NavbarAdminMobile: React.FC<NavbarAdminProps> = ({ Title_NavbarAdmin, onSearch }) => {
+  const [searchInput, setSearchInput] = useState('');
   const [leftVisible, setLeftVisible] = useState(false);
   const [rightVisible, setRightVisible] = useState(false);
 
@@ -16,6 +22,7 @@ const NavbarAdmin: React.FC<{ Title_NavbarAdmin: string }> = ({ Title_NavbarAdmi
   const toggleRightVisible = useCallback(() => {
     setRightVisible(visible => !visible);
   }, []);
+
   return (
     <div className="flex flex-col px-2 pb-6 xl:hidden xl:px-0">
       <div className="mb-6 flex items-center justify-between">
@@ -91,8 +98,26 @@ const NavbarAdmin: React.FC<{ Title_NavbarAdmin: string }> = ({ Title_NavbarAdmi
       </div>
       {/* Input Search */}
       <div className="relative flex items-center">
-        <Input className="w-full text-black focus:outline-none" type="text" placeholder="Tìm Kiếm..." />
-        <div className="absolute right-2 h-5 w-5 cursor-pointer text-gray-50">
+        <Input
+          className="w-full text-black focus:outline-none"
+          type="text"
+          placeholder="Tìm Kiếm..."
+          value={searchInput}
+          onChange={e => setSearchInput(e.target.value)}
+          onKeyDown={e => {
+            if (e.key === 'Enter' && onSearch) {
+              onSearch(searchInput);
+            }
+          }}
+        />
+        <div
+          className="absolute right-2 h-5 w-5 cursor-pointer text-gray-50"
+          onClick={() => {
+            if (onSearch) {
+              onSearch(searchInput);
+            }
+          }}
+        >
           <IoSearchOutline />
         </div>
       </div>
@@ -100,4 +125,4 @@ const NavbarAdmin: React.FC<{ Title_NavbarAdmin: string }> = ({ Title_NavbarAdmi
   );
 };
 
-export default NavbarAdmin;
+export default NavbarAdminMobile;

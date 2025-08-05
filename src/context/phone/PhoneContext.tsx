@@ -23,7 +23,7 @@ interface PhoneContextType {
     delete: boolean;
   };
   error: string | null;
-  getAllPhones: (filter?: { status?: number }) => void;
+  getAllPhones: (filter?: { status?: number; name?: string }) => void;
   getMostViewedPhones: () => void;
   getPhoneById: (_id: string) => Promise<IPhone | undefined>;
   createPhone: (phoneData: FormData) => Promise<AxiosResponse<any>>;
@@ -94,7 +94,7 @@ export const PhoneProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // Get All Phones
-  const getAllPhones = useCallback(async (filter?: { status?: number }) => {
+  const getAllPhones = useCallback(async (filter?: { status?: number; name?: string }) => {
     await fetchData(
       () => getAllPhonesApi(filter),
       data => {

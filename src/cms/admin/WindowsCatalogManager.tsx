@@ -10,7 +10,7 @@ import { FaCircleInfo, FaPenToSquare } from 'react-icons/fa6';
 import { isIErrorResponse } from '../../types/error/error';
 import TableListAdmin from '../../components/admin/TablelistAdmin';
 import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
-import NavbarAdmin from '../../components/admin/responsiveUI/mobile/NavbarAdmin';
+import NavbarAdmin from '../../components/admin/responsiveUI/mobile/NavbarAdminMobile';
 import { WindowsCatalogContext } from '../../context/windows-catalog/WindowsCatalogContext';
 import { IWindowsCatalog } from '../../types/type/windows-catalog/windows-catalog';
 import ModalCreateWindowsCatalogPageAdmin from '../../components/admin/modalAdmin/ModalWindowsCatalog/ModalCreateWindowsCatalogPageAdmin';

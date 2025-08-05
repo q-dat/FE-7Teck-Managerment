@@ -10,7 +10,7 @@ import { RiAddBoxLine } from 'react-icons/ri';
 import NavtitleAdmin from '../../components/admin/NavtitleAdmin';
 import TableListAdmin from '../../components/admin/TablelistAdmin';
 import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
-import NavbarAdmin from '../../components/admin/responsiveUI/mobile/NavbarAdmin';
+import NavbarAdmin from '../../components/admin/responsiveUI/mobile/NavbarAdminMobile';
 import { MacbookContext } from '../../context/macbook/MacbookContext';
 import { IMacbook } from '../../types/type/macbook/macbook';
 import ModalCreateMacbookPageAdmin from '../../components/admin/modalAdmin/ModalMacbook/ModalCreateMacbook MacbookPageAdmin';

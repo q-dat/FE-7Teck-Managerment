@@ -15,10 +15,11 @@ import ModalEditPhonePageAdmin from '../../components/admin/modalAdmin/ModalPhon
 import { PhoneContext } from '../../context/phone/PhoneContext';
 import { IPhone } from '../../types/type/phone/phone';
 import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
-import NavbarAdmin from '../../components/admin/responsiveUI/mobile/NavbarAdmin';
 import Zoom from '../../lib/Zoom';
 import PhoneCatalogManager from './PhoneCatalogManager';
 import { FaList } from 'react-icons/fa';
+import NavbarAdminDesktop from '../../components/admin/NavbarAdminDesktop ';
+import NavbarAdminMobile from '../../components/admin/responsiveUI/mobile/NavbarAdminMobile';
 
 const PhoneManager: React.FC = () => {
   const { phones, loading, error, getAllPhones, deletePhone } = useContext(PhoneContext);
@@ -65,7 +66,8 @@ const PhoneManager: React.FC = () => {
 
   return (
     <div className="w-full pb-10 xl:pb-0">
-      <NavbarAdmin Title_NavbarAdmin="Điện Thoại" />
+      <NavbarAdminDesktop onSearch={keyword => getAllPhones({ name: keyword })} />
+      <NavbarAdminMobile Title_NavbarAdmin="Điện Thoại" onSearch={keyword => getAllPhones({ name: keyword })} />
       <div className="">
         <NavtitleAdmin
           Title_NavtitleAdmin="Quản Lý Danh Sách Điện Thoại"

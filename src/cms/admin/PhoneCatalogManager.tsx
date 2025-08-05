@@ -15,7 +15,7 @@ import ModalEditPhoneCatalogPageAdmin from '../../components/admin/modalAdmin/Mo
 import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
 import { IPhoneCatalog } from '../../types/type/phone-catalog/phone-catalog';
 import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
-import NavbarAdmin from '../../components/admin/responsiveUI/mobile/NavbarAdmin';
+import NavbarAdmin from '../../components/admin/responsiveUI/mobile/NavbarAdminMobile';
 import Zoom from '../../lib/Zoom';
 
 const PhoneCatalogManager: React.FC = () => {

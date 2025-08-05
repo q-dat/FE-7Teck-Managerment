@@ -10,7 +10,7 @@ import { RiAddBoxLine } from 'react-icons/ri';
 import NavtitleAdmin from '../../components/admin/NavtitleAdmin';
 import TableListAdmin from '../../components/admin/TablelistAdmin';
 import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
-import NavbarAdmin from '../../components/admin/responsiveUI/mobile/NavbarAdmin';
+import NavbarAdmin from '../../components/admin/responsiveUI/mobile/NavbarAdminMobile';
 import { WindowsContext } from '../../context/windows/WindowsContext';
 import { IWindows } from '../../types/type/windows/windows';
 import ModalCreateWindowsPageAdmin from '../../components/admin/modalAdmin/ModalWindows/ModalCreateWindowsPageAdmin';
