@@ -49,7 +49,16 @@ const ModalCreateGalleryPageAdmin: React.FC<ModalCreateAdminProps> = ({ isOpen, 
   if (!isOpen) return null;
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      onKeyDown={e => {
+        const target = e.target as HTMLElement;
+        if (e.key === 'Enter' && target.tagName !== 'TEXTAREA') {
+          e.preventDefault(); // Ngăn default Enter behavior trong input
+          handleSubmit(onSubmit)(); // Gọi submit thủ công
+        }
+      }}
+    >
       <div
         onClick={handleOverlayClick}
         className="modal-overlay fixed inset-0 z-50 flex w-full cursor-pointer items-center justify-center bg-black bg-opacity-40"

@@ -70,7 +70,16 @@ const OptionsData: React.FC<ModalCreateAdminProps> = ({ isOpen, onClose }) => {
       >
         <h1>Danh mục options thông tin sản phẩm!</h1>
         <div>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            onKeyDown={e => {
+              const target = e.target as HTMLElement;
+              if (e.key === 'Enter' && target.tagName !== 'TEXTAREA') {
+                e.preventDefault(); // Ngăn default Enter behavior trong input
+                handleSubmit(onSubmit)(); // Gọi submit thủ công
+              }
+            }}
+          >
             <h1>OptionsPhoneDate</h1>
 
             <Button disabled={isLoading} color="primary" type="submit" className="group text-white">
