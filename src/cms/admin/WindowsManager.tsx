@@ -79,7 +79,10 @@ const WindowsManager: React.FC = () => {
                   size="sm"
                   color="primary"
                   className="w-[80px] text-sm font-light text-white"
-                  onClick={() => getAllWindows()}
+                  onClick={() => {
+                    localStorage.setItem('searchKeyword', '');
+                    getAllWindows();
+                  }}
                 >
                   Tất cả
                 </Button>
@@ -88,7 +91,10 @@ const WindowsManager: React.FC = () => {
                   size="sm"
                   color="info"
                   className="w-[80px] text-sm font-light text-white"
-                  onClick={() => getAllWindows({ windows_status: 0 })}
+                  onClick={() => {
+                    localStorage.setItem('searchKeyword', '');
+                    getAllWindows({ windows_status: 0 });
+                  }}
                 >
                   Mới
                 </Button>
@@ -97,7 +103,10 @@ const WindowsManager: React.FC = () => {
                   size="sm"
                   color="warning"
                   className="w-[80px] text-sm font-light text-white"
-                  onClick={() => getAllWindows({ windows_status: 1 })}
+                  onClick={() => {
+                    localStorage.setItem('searchKeyword', '');
+                    getAllWindows({ windows_status: 1 });
+                  }}
                 >
                   Cũ
                 </Button>

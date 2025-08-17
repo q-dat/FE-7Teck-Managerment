@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Drawer, Input, Menu } from 'react-daisyui';
 //Icon
 import { RxHamburgerMenu } from 'react-icons/rx';
@@ -22,6 +22,22 @@ const NavbarAdminMobile: React.FC<NavbarAdminProps> = ({ Title_NavbarAdmin, onSe
   const toggleRightVisible = useCallback(() => {
     setRightVisible(visible => !visible);
   }, []);
+
+  // Lấy dữ liệu từ localStorage khi load trang
+  useEffect(() => {
+    const savedSearch = localStorage.getItem('searchKeyword');
+    if (savedSearch) {
+      setSearchInput(savedSearch);
+    }
+  }, []);
+
+  // Hàm handleSearch: lưu vào localStorage + callback onSearch
+  const handleSearch = () => {
+    localStorage.setItem('searchKeyword', searchInput);
+    if (onSearch) {
+      onSearch(searchInput);
+    }
+  };
 
   return (
     <div className="flex flex-col px-2 pb-6 xl:hidden xl:px-0">
@@ -99,6 +115,7 @@ const NavbarAdminMobile: React.FC<NavbarAdminProps> = ({ Title_NavbarAdmin, onSe
       {/* Input Search */}
       <div className="relative flex items-center">
         <Input
+          autoFocus
           className="w-full text-black focus:outline-none"
           type="text"
           placeholder="Tìm Kiếm..."
@@ -106,19 +123,14 @@ const NavbarAdminMobile: React.FC<NavbarAdminProps> = ({ Title_NavbarAdmin, onSe
           onChange={e => setSearchInput(e.target.value)}
           onKeyDown={e => {
             if (e.key === 'Enter' && onSearch) {
-              onSearch(searchInput);
+              handleSearch();
             }
           }}
         />
-        <div
-          className="absolute right-2 h-5 w-5 cursor-pointer text-gray-50"
-          onClick={() => {
-            if (onSearch) {
-              onSearch(searchInput);
-            }
-          }}
-        >
-          <IoSearchOutline />
+        <div className="absolute right-2 h-5 w-5 cursor-pointer text-gray-50">
+          <button type="submit" onClick={handleSearch}>
+            <IoSearchOutline />
+          </button>
         </div>
       </div>
     </div>

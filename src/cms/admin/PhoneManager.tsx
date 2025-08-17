@@ -79,7 +79,10 @@ const PhoneManager: React.FC = () => {
                   size="sm"
                   color="primary"
                   className="w-[80px] text-sm font-light text-white"
-                  onClick={() => getAllPhones()}
+                  onClick={() => {
+                    localStorage.setItem('searchKeyword', '');
+                    getAllPhones();
+                  }}
                 >
                   Tất cả
                 </Button>
@@ -89,7 +92,10 @@ const PhoneManager: React.FC = () => {
                   size="sm"
                   color="info"
                   className="w-[80px] text-sm font-light text-white"
-                  onClick={() => getAllPhones({ status: 0 })}
+                  onClick={() => {
+                    localStorage.setItem('searchKeyword', '');
+                    getAllPhones({ status: 0 });
+                  }}
                 >
                   Mới
                 </Button>
@@ -99,7 +105,10 @@ const PhoneManager: React.FC = () => {
                   size="sm"
                   color="warning"
                   className="w-[80px] text-sm font-light text-white"
-                  onClick={() => getAllPhones({ status: 1 })}
+                  onClick={() => {
+                    localStorage.setItem('searchKeyword', '');
+                    getAllPhones({ status: 1 });
+                  }}
                 >
                   Cũ
                 </Button>

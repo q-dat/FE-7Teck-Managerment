@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Avatar from 'boring-avatars';
 import { Button, Input } from 'react-daisyui';
 import { AuthContext } from '../../context/auth/AuthContext';
@@ -25,12 +25,29 @@ const NavbarAdminDesktop: React.FC<NavbarAdminDesktopProps> = ({ onSearch }) => 
     setDropdownVisible(!dropdownVisible);
   };
 
+  // Lấy dữ liệu từ localStorage khi load trang
+  useEffect(() => {
+    const savedSearch = localStorage.getItem('searchKeyword');
+    if (savedSearch) {
+      setSearchInput(savedSearch);
+    }
+  }, []);
+
+  // Hàm handleSearch: lưu vào localStorage + callback onSearch
+  const handleSearch = () => {
+    localStorage.setItem('searchKeyword', searchInput);
+    if (onSearch) {
+      onSearch(searchInput);
+    }
+  };
+
   return (
     <div className="flex items-center justify-between">
       <div className="hidden w-full items-center justify-between xl:flex">
         {/* Search Input */}
         <div className="relative mr-4 flex items-center">
           <Input
+            autoFocus
             className="min-w-[400px] bg-white text-black placeholder-black focus:outline-none"
             type="text"
             placeholder="Tìm Kiếm..."
@@ -38,12 +55,14 @@ const NavbarAdminDesktop: React.FC<NavbarAdminDesktopProps> = ({ onSearch }) => 
             onChange={e => setSearchInput(e.target.value)}
             onKeyDown={e => {
               if (e.key === 'Enter' && onSearch) {
-                onSearch(searchInput);
+                handleSearch();
               }
             }}
           />
           <div className="absolute right-2 h-5 w-5 cursor-pointer text-black">
-            <IoSearchOutline />
+            <button type="submit" onClick={handleSearch}>
+              <IoSearchOutline />
+            </button>
           </div>
         </div>
 

@@ -79,7 +79,10 @@ const TabletManager: React.FC = () => {
                   size="sm"
                   color="primary"
                   className="w-[80px] text-sm font-light text-white"
-                  onClick={() => getAllTablets()}
+                  onClick={() => {
+                    localStorage.setItem('searchKeyword', '');
+                    getAllTablets();
+                  }}
                 >
                   Tất cả
                 </Button>
@@ -89,7 +92,10 @@ const TabletManager: React.FC = () => {
                   size="sm"
                   color="info"
                   className="w-[80px] text-sm font-light text-white"
-                  onClick={() => getAllTablets({ tablet_status: 0 })}
+                  onClick={() => {
+                    localStorage.setItem('searchKeyword', '');
+                    getAllTablets({ tablet_status: 0 });
+                  }}
                 >
                   Mới
                 </Button>
@@ -99,7 +105,10 @@ const TabletManager: React.FC = () => {
                   size="sm"
                   color="warning"
                   className="w-[80px] text-sm font-light text-white"
-                  onClick={() => getAllTablets({ tablet_status: 1 })}
+                  onClick={() => {
+                    localStorage.setItem('searchKeyword', '');
+                    getAllTablets({ tablet_status: 1 });
+                  }}
                 >
                   Cũ
                 </Button>
