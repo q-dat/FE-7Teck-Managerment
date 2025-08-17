@@ -29,7 +29,7 @@ export default {
       colors: {
         //Lưu ý về màu sắc: do logo nhiều màu nên tone màu của web sẽ sẽ là bg-white và text-black
         white: " #FFFFFF",
-        black: "#333333",
+        black: "#000000",
         "primary-white": "#FAFAFA",
         "btn-section-borderless": "#D6D6D6", //Với button section không viền, nền trắng dùng hex code: #D6D6D6
         "btn-section-border": "#F0F0F0", //Với button section có nền đen thì dùng hex code: #F0F0F0
