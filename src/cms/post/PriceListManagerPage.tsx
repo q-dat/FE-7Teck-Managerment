@@ -77,14 +77,23 @@ const PriceListManagerPage: React.FC = () => {
   return (
     <div className="w-full pb-10 xl:pb-0">
       <NavbarPost Title_NavbarPost="Bảng Giá" />
-      <NavtitleAdmin
-        Title_NavtitleAdmin="Quản Lý Danh Sách Bảng Giá"
-        Btn_Create={
-          <Button color="primary" onClick={openModalCreateAdmin} className="flex items-center gap-2">
-            <RiAddBoxLine /> Thêm
-          </Button>
-        }
-      />
+      <div className="">
+        <NavtitleAdmin
+          Title_NavtitleAdmin="Quản Lý Danh Sách Bảng Giá"
+          Btn_Create={
+            <div className="flex flex-col items-start justify-center gap-2 md:flex-row md:items-end">
+              <Button
+                color="primary"
+                onClick={openModalCreateAdmin}
+                className="w-[100px] text-sm font-light text-white"
+              >
+                <RiAddBoxLine className="text-xl" color="white" />
+                Thêm
+              </Button>
+            </div>
+          }
+        />
+      </div>
 
       {Object.keys(catalogs).map(
         categoryType =>
