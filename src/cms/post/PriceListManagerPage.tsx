@@ -45,7 +45,8 @@ const PriceListManagerPage: React.FC = () => {
       list.groups.forEach(group => {
         aggregatedData[category][group.catalog] = group.variants.map(v => ({
           ...v,
-          price: typeof v.price === 'string' ? Number(v.price) : v.price
+          price_new: typeof v.price_new === 'string' ? Number(v.price_new) : v.price_new,
+          price_used: typeof v.price_used === 'string' ? Number(v.price_used) : v.price_used
         }));
         parentIdMap[group.catalog] = list._id;
 
@@ -131,7 +132,8 @@ const PriceListManagerPage: React.FC = () => {
                     <span>#</span>
                     <span>Tên sản phẩm</span>
                     <span>Dung lượng</span>
-                    <span>Giá</span>
+                    <span>Giá Máy Mới</span>
+                    <span>Giá Máy Cũ</span>
                     <span>Trạng thái</span>
                     <span>ĐK thu mua</span>
                     <span>Hành động</span>
@@ -142,7 +144,8 @@ const PriceListManagerPage: React.FC = () => {
                         <span>#{index + 1}</span>
                         <span>{product.name}</span>
                         <span>{product.storage}</span>
-                        <span>{(product.price * 1000).toLocaleString('vi-VN')}đ</span>
+                        <span>{(product.price_new * 1000).toLocaleString('vi-VN')}đ</span>
+                        <span>{(product.price_used * 1000).toLocaleString('vi-VN')}đ</span>
                         <span className="line-clamp-2">
                           {product?.condition ? (
                             <span dangerouslySetInnerHTML={{ __html: product.condition }} />

@@ -35,7 +35,8 @@ const ModalCreatePriceListPageAdmin: React.FC<ModalCreateAdminProps> = ({ isOpen
     try {
       const payload: ICreatePriceListPayload = {
         category,
-        status: [data.status],
+        price_new: data.price_new || 0,
+        price_used: data.price_used || 0,
         conditions: editorValue,
         groups: [
           {
@@ -43,9 +44,9 @@ const ModalCreatePriceListPageAdmin: React.FC<ModalCreateAdminProps> = ({ isOpen
             variants: [
               {
                 name: data.name,
-                status: data.status,
-                condition: data.status,
-                price: data.price,
+                condition: editorValue,
+                price_new: data.price_new || 0,
+                price_used: data.price_used || 0,
                 storage: data.storage
               }
             ]
@@ -110,18 +111,6 @@ const ModalCreatePriceListPageAdmin: React.FC<ModalCreateAdminProps> = ({ isOpen
                 </Select>
               </div>
               {/*  */}
-              <div className="flex w-full items-center gap-2">
-                <LabelForm title="Tình trạng" />
-                <select
-                  {...register('status', { required: true })}
-                  className="flex-1 rounded-md border border-gray-300 bg-white px-3 py-2 text-black outline-none focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-white"
-                >
-                  <option value="Máy Mới">Máy Mới</option>
-                  <option value="Máy 99%">Máy 99%</option>
-                </select>
-              </div>
-
-              {/*  */}
               <LabelForm title={'Tên danh mục'} />
               <InputModal
                 type="text"
@@ -131,11 +120,17 @@ const ModalCreatePriceListPageAdmin: React.FC<ModalCreateAdminProps> = ({ isOpen
               />
               <LabelForm title={productName ? `${productName} - Tên sản phẩm:` : 'Tên sản phẩm:'} />
               <InputModal placeholder={'Nhập tên sản phẩm'} type="text" {...register('name', { required: true })} />
-              <LabelForm title={'Giá'} />
+              <LabelForm title={'Giá Máy Mới'} />
               <InputModal
                 placeholder="Giá* (Hệ số x1000: 1triệu = 1000)"
                 type="number"
-                {...register('price', { required: true })}
+                {...register('price_new', { required: true })}
+              />
+              <LabelForm title={'Giá Máy Cũ'} />
+              <InputModal
+                placeholder="Giá* (Hệ số x1000: 1triệu = 1000)"
+                type="number"
+                {...register('price_used', { required: true })}
               />
               <LabelForm title={'Dung lượng'} />
               <InputModal placeholder={'Nhập dung lượng'} type="text" {...register('storage', { required: true })} />

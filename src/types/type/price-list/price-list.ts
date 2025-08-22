@@ -1,9 +1,9 @@
 export interface IProductVariant {
   _id?: string;
   name: string;
-  status:string
+  price_new: number;
+  price_used: number;
   condition: string;
-  price: number;
   storage?: string;
 }
 
@@ -16,7 +16,8 @@ export interface IProductGroup {
 export interface IPriceListApi {
   _id: string;
   category: string;
-  status: string[];
+  price_new: number;
+  price_used: number;
   conditions?: string;
   groups: IProductGroup[];
   createdAt?: string;
@@ -25,14 +26,15 @@ export interface IPriceListApi {
 
 export interface ICreatePriceListPayload {
   category: string;
-  status: string[];
+  price_new: number;
+  price_used: number;
   conditions?: string;
   groups: IProductGroup[];
 }
 export interface FormValues {
-  name: string;     
-  status: string;   
-  price: number;    
-  storage?: string; 
+  name: string;
+  storage?: string;
+  price_new: number;
+  price_used: number;
   conditions?: string;
 }
