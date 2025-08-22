@@ -131,10 +131,8 @@ const PriceListManagerPage: React.FC = () => {
                   <Table.Head className="bg-secondary text-center text-white">
                     <span>#</span>
                     <span>Tên sản phẩm</span>
-                    <span>Dung lượng</span>
                     <span>Giá Máy Mới</span>
                     <span>Giá Máy Cũ</span>
-                    <span>Trạng thái</span>
                     <span>ĐK thu mua</span>
                     <span>Hành động</span>
                   </Table.Head>
@@ -143,10 +141,13 @@ const PriceListManagerPage: React.FC = () => {
                       <Table.Row key={index} className="border border-secondary text-black dark:text-white">
                         <span>#{index + 1}</span>
                         <span>{product.name}</span>
-                        <span>{product.storage}</span>
-                        <span>{(product.price_new * 1000).toLocaleString('vi-VN')}đ</span>
-                        <span>{(product.price_used * 1000).toLocaleString('vi-VN')}đ</span>
-                        <span className="line-clamp-2">
+                        <span className="font-semibold text-red-700">
+                          {(product.price_new * 1000).toLocaleString('vi-VN')}đ
+                        </span>
+                        <span className="font-semibold text-red-700">
+                          {(product.price_used * 1000).toLocaleString('vi-VN')}đ
+                        </span>
+                        <span className="line-clamp-2 w-40">
                           {product?.condition ? (
                             <span dangerouslySetInnerHTML={{ __html: product.condition }} />
                           ) : (
