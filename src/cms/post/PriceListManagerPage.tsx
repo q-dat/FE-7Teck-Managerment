@@ -1,35 +1,48 @@
 import React, { useContext, useEffect, useState } from 'react';
 import ModalCreatePriceListPageAdmin from '../../components/admin/modalAdmin/ModalPriceListPage/ModalCreatePriceListPageAdmin';
+import ModalEditPriceListPageAdmin from '../../components/admin/modalAdmin/ModalPriceListPage/ModalEditPriceListPageAdmin';
 import ModalDeletePriceListPageAdmin from '../../components/admin/modalAdmin/ModalPriceListPage/ModalDeletePriceListPageAdmin';
 import NavtitleAdmin from '../../components/admin/NavtitleAdmin';
 import NavbarPost from '../../components/admin/responsiveUI/mobile/NavbarPost';
 import { Button, Table } from 'react-daisyui';
 import { RiAddBoxLine } from 'react-icons/ri';
-import { MdDelete } from 'react-icons/md';
+import { MdDelete, MdEdit } from 'react-icons/md';
 import { PriceListContext } from '../../context/price-list/PriceListContext';
 import ErrorLoading from '../../components/orther/error/ErrorLoading';
 import { LoadingLocal } from '../../components/orther/loading';
 import { isIErrorResponse } from '../../types/error/error';
 import { Toastify } from '../../helper/Toastify';
-import { IProductVariant } from '../../types/type/price-list/price-list';
+import { IProductVariant, IPriceListApi } from '../../types/type/price-list/price-list';
 
 const PriceListManagerPage: React.FC = () => {
   const { priceLists, getAllPriceLists, loading, error, deletePriceLists } = useContext(PriceListContext);
 
   const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
+  const [isModalEditOpen, setIsModalEditOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
-  const [selectedPriceListId, setSelectedPriceListId] = useState<string | null>(null);
+  const [selectedPriceList, setSelectedPriceList] = useState<IPriceListApi | null>(null);
   const [catalogs, setCatalogs] = useState<Record<string, Record<string, IProductVariant[]>>>({});
   const [parentIds, setParentIds] = useState<Record<string, string>>({});
   const [activeTabs, setActiveTabs] = useState<Record<string, string>>({});
 
   const openModalCreateAdmin = () => setIsModalCreateOpen(true);
   const closeModalCreateAdmin = () => setIsModalCreateOpen(false);
-  const openModalDeleteAdmin = (id: string) => {
-    setSelectedPriceListId(id);
+  const openModalEditAdmin = (priceList: IPriceListApi) => {
+    setSelectedPriceList(priceList);
+    setIsModalEditOpen(true);
+  };
+  const closeModalEditAdmin = () => {
+    setSelectedPriceList(null);
+    setIsModalEditOpen(false);
+  };
+  const openModalDeleteAdmin = (priceList: IPriceListApi) => {
+    setSelectedPriceList(priceList);
     setIsModalDeleteOpen(true);
   };
-  const closeModalDeleteAdmin = () => setIsModalDeleteOpen(false);
+  const closeModalDeleteAdmin = () => {
+    setSelectedPriceList(null);
+    setIsModalDeleteOpen(false);
+  };
 
   useEffect(() => {
     if (!priceLists || priceLists.length === 0) return;
@@ -39,18 +52,19 @@ const PriceListManagerPage: React.FC = () => {
     const newActiveTabs: Record<string, string> = {};
 
     priceLists.forEach(list => {
-      const category = list.category; // ví dụ "phoneProducts"
+      const category = list.category;
       if (!aggregatedData[category]) aggregatedData[category] = {};
 
       list.groups.forEach(group => {
         aggregatedData[category][group.catalog] = group.variants.map(v => ({
           ...v,
           price_new: typeof v.price_new === 'string' ? Number(v.price_new) : v.price_new,
-          price_used: typeof v.price_used === 'string' ? Number(v.price_used) : v.price_used
+          price_used: typeof v.price_used === 'string' ? Number(v.price_used) : v.price_used,
+          storage: v.storage // storage is optional
         }));
         parentIdMap[group.catalog] = list._id;
 
-        if (!newActiveTabs[category]) newActiveTabs[category] = group.catalog; // mặc định tab đầu
+        if (!newActiveTabs[category]) newActiveTabs[category] = group.catalog;
       });
     });
 
@@ -60,10 +74,10 @@ const PriceListManagerPage: React.FC = () => {
   }, [priceLists]);
 
   const handleDelete = async () => {
-    if (!selectedPriceListId) return;
+    if (!selectedPriceList) return;
     try {
-      await deletePriceLists(selectedPriceListId);
-      Toastify('Xoá sản phẩm thành công', 201);
+      await deletePriceLists(selectedPriceList._id);
+      Toastify('Xoá bảng giá thành công', 201);
       getAllPriceLists();
       closeModalDeleteAdmin();
     } catch (err) {
@@ -110,7 +124,6 @@ const PriceListManagerPage: React.FC = () => {
                       : 'Bảng giá Laptop Windows'}
               </h2>
 
-              {/* Tabs */}
               <div className="grid grid-cols-3 gap-2 px-2 xl:grid-cols-6 xl:px-0">
                 {Object.keys(catalogs[categoryType]).map(category => (
                   <Button
@@ -125,7 +138,6 @@ const PriceListManagerPage: React.FC = () => {
                 ))}
               </div>
 
-              {/* Table */}
               <div className="w-screen overflow-x-auto border-8 border-transparent scrollbar-hide xl:w-full xl:border-none">
                 <Table className="mt-5 border border-secondary" zebra>
                   <Table.Head className="bg-secondary text-center text-white">
@@ -137,44 +149,49 @@ const PriceListManagerPage: React.FC = () => {
                     <span>Hành động</span>
                   </Table.Head>
                   <Table.Body className="text-center text-sm">
-                    {catalogs[categoryType][activeTabs[categoryType]]?.map((product, index) => (
-                      <Table.Row key={index} className="border border-secondary text-black dark:text-white">
-                        <span>#{index + 1}</span>
-                        <span>{product.name}</span>
-                        <span className="font-semibold text-red-700">
-                          {(product.price_new * 1000).toLocaleString('vi-VN')}đ
-                        </span>
-                        <span className="font-semibold text-red-700">
-                          {(product.price_used * 1000).toLocaleString('vi-VN')}đ
-                        </span>
-                        <span className="line-clamp-2 w-40">
-                          {product?.condition ? (
-                            <span dangerouslySetInnerHTML={{ __html: product.condition }} />
-                          ) : (
-                            'Chưa có nội dung'
-                          )}
-                        </span>
-                        <span className="flex flex-row items-center justify-center gap-2">
-                          {/* <Button
-                                size="sm"
-                                color="success"
-                                // onClick={() =>
-                                //   // openModalEditAdmin(product?._id ?? '')
-                                // }
-                                className="text-sm font-light text-white"
-                              >
-                                <FaPenToSquare />
-                              </Button> */}
-                          <Button
-                            size="sm"
-                            onClick={() => openModalDeleteAdmin(parentIds[activeTabs[categoryType]])}
-                            className="bg-red-600 text-sm font-light text-white"
-                          >
-                            <MdDelete />
-                          </Button>
-                        </span>
-                      </Table.Row>
-                    ))}
+                    {catalogs[categoryType][activeTabs[categoryType]]?.map((product, index) => {
+                      const parentPriceList = priceLists.find(list => list._id === parentIds[activeTabs[categoryType]]);
+                      return (
+                        <Table.Row key={index} className="border border-secondary text-black dark:text-white">
+                          <span>#{index + 1}</span>
+                          <span>{product.name}</span>
+                          <span className="font-semibold text-red-700">
+                            {product.price_new !== null
+                              ? (product.price_new * 1000).toLocaleString('vi-VN') + 'đ'
+                              : '-'}
+                          </span>
+                          <span className="font-semibold text-red-700">
+                            {product.price_used !== null
+                              ? (product.price_used * 1000).toLocaleString('vi-VN') + 'đ'
+                              : '-'}
+                          </span>
+                          <span className="line-clamp-2 w-40">
+                            {product?.condition ? (
+                              <span dangerouslySetInnerHTML={{ __html: product.condition }} />
+                            ) : (
+                              'Chưa có nội dung'
+                            )}
+                          </span>
+                          <span className="flex flex-row items-center justify-center gap-2">
+                            <Button
+                              size="sm"
+                              color="success"
+                              onClick={() => parentPriceList && openModalEditAdmin(parentPriceList)}
+                              className="text-sm font-light text-white"
+                            >
+                              <MdEdit />
+                            </Button>
+                            <Button
+                              size="sm"
+                              onClick={() => parentPriceList && openModalDeleteAdmin(parentPriceList)}
+                              className="bg-red-600 text-sm font-light text-white"
+                            >
+                              <MdDelete />
+                            </Button>
+                          </span>
+                        </Table.Row>
+                      );
+                    })}
                   </Table.Body>
                 </Table>
               </div>
@@ -183,6 +200,11 @@ const PriceListManagerPage: React.FC = () => {
       )}
 
       <ModalCreatePriceListPageAdmin isOpen={isModalCreateOpen} onClose={closeModalCreateAdmin} />
+      <ModalEditPriceListPageAdmin
+        isOpen={isModalEditOpen}
+        onClose={closeModalEditAdmin}
+        priceList={selectedPriceList}
+      />
       <ModalDeletePriceListPageAdmin
         isOpen={isModalDeleteOpen}
         onClose={closeModalDeleteAdmin}
