@@ -1,14 +1,14 @@
-import { IPriceList } from '../../types/type/price-list/price-list';
+import { ICreatePriceListPayload, IPriceListApi, IProductVariant } from '../../types/type/price-list/price-list';
 import axios from '../config/axiosConfig';
 
 // Get All PriceLists
 export const getAllPriceListsApi = () => {
-  return axios.get<{ priceLists: IPriceList[] }>('/api/price-lists');
+  return axios.get<{ priceLists: IProductVariant[] }>('/api/price-lists');
 };
 
 // Get PriceList By ID
 export const getPriceListByIdApi = (_id: string) => {
-  return axios.get<{ priceList: IPriceList }>(`/api/price-list/${_id}`);
+  return axios.get<{ priceList: IProductVariant }>(`/api/price-list/${_id}`);
 };
 
 // Create PriceList
@@ -17,8 +17,8 @@ export const createPriceListApi = (data: any) => {
 };
 
 // Update PriceList
-export const updatePriceListApi = (_id: string, priceListData: IPriceList) => {
-  return axios.put<{ priceList: IPriceList }>(`/api/price-list/${_id}`, priceListData);
+export const updatePriceListApi = (_id: string, priceListData: ICreatePriceListPayload) => {
+  return axios.put<{ priceList: IPriceListApi }>(`/api/price-list/${_id}`, priceListData);
 };
 
 // Delete PriceList
