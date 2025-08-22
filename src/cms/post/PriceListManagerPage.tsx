@@ -10,9 +10,9 @@ import { LoadingLocal } from '../../components/orther/loading';
 import { isIErrorResponse } from '../../types/error/error';
 import { Toastify } from '../../helper/Toastify';
 import ModalDeletePriceListPageAdmin from '../../components/admin/modalAdmin/ModalPriceListPage/ModalDeletePriceListPageAdmin';
-import { FaPenToSquare } from 'react-icons/fa6';
 import { MdDelete } from 'react-icons/md';
 import NavbarPost from '../../components/admin/responsiveUI/mobile/NavbarPost';
+// import { FaPenToSquare } from 'react-icons/fa6';
 
 const PriceListManagerPage: React.FC = () => {
   const { priceLists, getAllPriceLists, loading, error, deletePriceLists } = useContext(PriceListContext);
@@ -155,13 +155,13 @@ const PriceListManagerPage: React.FC = () => {
                           <Table.Row key={index} className="border border-secondary">
                             <span>
                               #{index + 1}
-                              {parentIds[activeTabs[categoryType]]}
+                              {/* {parentIds[activeTabs[categoryType]]} */}
                             </span>
                             <span>{product?.name}</span>
                             <span>{product?.storage}</span>
                             <span>{(product?.price * 1000).toLocaleString('vi-VN')}đ</span>
                             <span className="flex flex-row items-center justify-center gap-2">
-                              <Button
+                              {/* <Button
                                 size="sm"
                                 color="success"
                                 // onClick={() =>
@@ -170,7 +170,7 @@ const PriceListManagerPage: React.FC = () => {
                                 className="text-sm font-light text-white"
                               >
                                 <FaPenToSquare />
-                              </Button>
+                              </Button> */}
                               <Button
                                 size="sm"
                                 onClick={() => openModalDeleteAdmin(`${parentIds[activeTabs[categoryType]]}`)}
