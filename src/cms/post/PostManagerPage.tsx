@@ -104,7 +104,15 @@ const PostManagerPage: React.FC = () => {
                   {/* {new Date(post?.updatedAt).toLocaleDateString('vi-VN')} */}
                   <TimeAgo date={post?.updatedAt} />
                 </span>
-                <span className="line-clamp-2" dangerouslySetInnerHTML={{ __html: post.content }}></span>
+
+                <span className="line-clamp-2">
+                  {post?.content ? (
+                    <span className="line-clamp-2" dangerouslySetInnerHTML={{ __html: post.content }}></span>
+                  ) : (
+                    'Chưa có nội dung'
+                  )}
+                </span>
+
                 <span>
                   <details>
                     <summary className="inline cursor-pointer text-base text-warning">

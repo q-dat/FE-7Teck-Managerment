@@ -5,30 +5,61 @@ import { Toastify } from '../../../../helper/Toastify';
 import { Button, Select } from 'react-daisyui';
 import LabelForm from '../../LabelForm';
 import InputModal from '../../InputModal';
+import { FormValues, ICreatePriceListPayload } from '../../../../types/type/price-list/price-list';
+import QuillEditor from '../../../../lib/ReactQuill';
 
 interface ModalCreateAdminProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
+const modules = {
+  toolbar: [
+    [{ header: [1, 2, 3, false] }],
+    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+    [{ list: 'ordered' }, { list: 'bullet' }],
+    ['link', 'image'],
+    ['clean']
+  ]
+};
 const ModalCreatePriceListPageAdmin: React.FC<ModalCreateAdminProps> = ({ isOpen, onClose }) => {
   const { getAllPriceLists, createPriceLists, loading } = useContext(PriceListContext);
   const isLoading = loading.create;
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset } = useForm<FormValues>();
+  const [editorValue, setEditorValue] = React.useState<string>('');
 
   const [productName, setProductName] = useState('');
   const [category, setCategory] = useState('phoneProducts');
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: FormValues) => {
     try {
-      await createPriceLists(category, productName, data);
+      const payload: ICreatePriceListPayload = {
+        category,
+        status: [data.status],
+        conditions: editorValue,
+        groups: [
+          {
+            catalog: productName,
+            variants: [
+              {
+                name: data.name,
+                status: data.status,
+                condition: data.status,
+                price: data.price,
+                storage: data.storage
+              }
+            ]
+          }
+        ]
+      };
+
+      await createPriceLists(payload);
       reset();
       getAllPriceLists();
       Toastify('Tạo sản phẩm thành công!', 201);
       onClose();
       setProductName('');
     } catch (err) {
-      getAllPriceLists();
       Toastify(`Lỗi: ${err}`, 500);
     }
   };
@@ -60,7 +91,7 @@ const ModalCreatePriceListPageAdmin: React.FC<ModalCreateAdminProps> = ({ isOpen
           onClick={e => e.stopPropagation()}
           className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:w-1/2"
         >
-          <div>
+          <div className="h-[500px] w-full overflow-y-auto scrollbar-hide 2xl:h-[700px]">
             <p className="font-bold text-black dark:text-white">Quản lý bảng giá</p>
             <div className="mt-5 flex flex-col items-start justify-center gap-5">
               <div className="w-full">
@@ -79,6 +110,18 @@ const ModalCreatePriceListPageAdmin: React.FC<ModalCreateAdminProps> = ({ isOpen
                 </Select>
               </div>
               {/*  */}
+              <div className="flex w-full items-center gap-2">
+                <LabelForm title="Tình trạng" />
+                <select
+                  {...register('status', { required: true })}
+                  className="flex-1 rounded-md border border-gray-300 bg-white px-3 py-2 text-black outline-none focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                >
+                  <option value="Máy Mới">Máy Mới</option>
+                  <option value="Máy 99%">Máy 99%</option>
+                </select>
+              </div>
+
+              {/*  */}
               <LabelForm title={'Tên danh mục'} />
               <InputModal
                 type="text"
@@ -96,6 +139,18 @@ const ModalCreatePriceListPageAdmin: React.FC<ModalCreateAdminProps> = ({ isOpen
               />
               <LabelForm title={'Dung lượng'} />
               <InputModal placeholder={'Nhập dung lượng'} type="text" {...register('storage', { required: true })} />
+              {/*  */}
+              <div className="w-full">
+                <LabelForm title={'Điều kiện thu mua'} />
+                <QuillEditor
+                  value={editorValue}
+                  onChange={setEditorValue}
+                  theme="snow"
+                  modules={modules}
+                  className="mb-4 h-[400px] overflow-auto rounded-md border text-black scrollbar-hide dark:text-white xl:h-[600px]"
+                  placeholder="Nội dung bài viết..."
+                />
+              </div>
             </div>
           </div>
           <div className="flex flex-row items-center justify-center space-x-5 text-center">

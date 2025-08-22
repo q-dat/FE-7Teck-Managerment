@@ -7,10 +7,10 @@ import {
   updatePriceListApi,
   deletePriceListApi
 } from '../../axios/api/priceListApi';
-import { IPriceList } from '../../types/type/price-list/price-list';
+import { ICreatePriceListPayload, IPriceListApi } from '../../types/type/price-list/price-list';
 
 interface PriceListsContextType {
-  priceLists: IPriceList[];
+  priceLists: IPriceListApi[];
   countPriceList: number;
   loading: {
     getAll: boolean;
@@ -20,40 +20,30 @@ interface PriceListsContextType {
   };
   error: string | null;
   getAllPriceLists: () => void;
-  getPriceListsById: (_id: string) => Promise<IPriceList | undefined>;
-  createPriceLists: (category: string, productName: string, data: any) => Promise<AxiosResponse<any>>;
-  updatePriceLists: (_id: string, priceListData: IPriceList) => Promise<AxiosResponse<any>>;
+  getPriceListsById: (_id: string) => Promise<IPriceListApi | undefined>;
+  createPriceLists: (payload: ICreatePriceListPayload) => Promise<AxiosResponse<IPriceListApi>>;
+  updatePriceLists: (_id: string, priceListData: ICreatePriceListPayload) => Promise<AxiosResponse<IPriceListApi>>;
   deletePriceLists: (_id: string) => Promise<AxiosResponse<any>>;
 }
 
 const defaultContextValue: PriceListsContextType = {
   priceLists: [],
   countPriceList: 0,
-  loading: {
-    getAll: false,
-    create: false,
-    update: false,
-    delete: false
-  },
+  loading: { getAll: false, create: false, update: false, delete: false },
   error: null,
   getAllPriceLists: () => {},
   getPriceListsById: async () => undefined,
-  createPriceLists: async () => ({ data: { priceList: null } }) as AxiosResponse,
-  updatePriceLists: async () => ({ data: { priceList: null } }) as AxiosResponse,
-  deletePriceLists: async () => ({ data: { deleted: true } }) as AxiosResponse
+  createPriceLists: null!,
+  updatePriceLists: null!,
+  deletePriceLists: null!
 };
 
 export const PriceListContext = createContext<PriceListsContextType>(defaultContextValue);
 
 export const PriceListProvider = ({ children }: { children: ReactNode }) => {
-  const [priceLists, setPriceLists] = useState<IPriceList[]>([]);
+  const [priceLists, setPriceLists] = useState<IPriceListApi[]>([]);
   const [countPriceList, setCount] = useState<number>(0);
-  const [loading, setLoading] = useState({
-    getAll: false,
-    create: false,
-    update: false,
-    delete: false
-  });
+  const [loading, setLoading] = useState({ getAll: false, create: false, update: false, delete: false });
   const [error, setError] = useState<string | null>(null);
 
   const handleError = (err: any) => {
@@ -63,7 +53,7 @@ export const PriceListProvider = ({ children }: { children: ReactNode }) => {
   const fetchData = async (
     apiCall: () => Promise<AxiosResponse<any>>,
     onSuccess: (data: any) => void,
-    requestType: keyof typeof loading // 'getAll', 'create', 'update', 'delete'
+    requestType: keyof typeof loading
   ): Promise<AxiosResponse<any>> => {
     setLoading(prev => ({ ...prev, [requestType]: true }));
     setError(null);
@@ -79,58 +69,42 @@ export const PriceListProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  // Get All PriceLists
+  // Get All
   const getAllPriceLists = useCallback(async () => {
     await fetchData(
       getAllPriceListsApi,
       data => {
         setPriceLists(data.priceLists || []);
-        setCount(data.count || []);
+        setCount(data.count || 0);
       },
       'getAll'
     );
   }, []);
 
-  // Get PriceLists By Id
+  // Get By Id
   const getPriceListsById = useCallback(
-    async (id: string): Promise<IPriceList | undefined> => {
-      const cachedPriceLists = priceLists.find(p => p._id === id);
-      if (cachedPriceLists) return cachedPriceLists;
+    async (id: string): Promise<IPriceListApi | undefined> => {
+      const cached = priceLists.find(p => p._id === id);
+      if (cached) return cached;
       const response = await fetchData(
         () => getPriceListByIdApi(id),
         data => {
-          if (data?.p) {
-            setPriceLists(prevPriceLists => [...prevPriceLists, data.p]);
-          }
+          if (data?.priceList) setPriceLists(prev => [...prev, data.priceList]);
         },
         'getAll'
       );
-      return response.data?.p;
+      return response.data?.priceList;
     },
     [priceLists]
   );
 
-  // Create PriceLists
+  // Create
   const createPriceLists = useCallback(
-    async (category: string, productName: string, data: any): Promise<AxiosResponse<any>> => {
-      const normalizedProductName =
-        productName.trim().charAt(0).toUpperCase() + productName.trim().slice(1).toLowerCase();
-      const newProduct = {
-        name: data.name,
-        price: data.price,
-        storage: data.storage
-      };
-
-      const priceListData = {
-        [category]: { [normalizedProductName]: [newProduct] }
-      };
-
+    async (payload: ICreatePriceListPayload): Promise<AxiosResponse<IPriceListApi>> => {
       return await fetchData(
-        () => createPriceListApi(priceListData),
+        () => createPriceListApi(payload),
         data => {
-          if (data?.priceListData) {
-            setPriceLists(prevPriceLists => [...prevPriceLists, data?.priceListData]);
-          }
+          if (data?.newPriceList) setPriceLists(prev => [...prev, data.newPriceList]);
         },
         'create'
       );
@@ -138,24 +112,27 @@ export const PriceListProvider = ({ children }: { children: ReactNode }) => {
     []
   );
 
-  // Update PriceLists
-  const updatePriceLists = useCallback(async (_id: string, priceListData: IPriceList): Promise<AxiosResponse<any>> => {
-    return await fetchData(
-      () => updatePriceListApi(_id, priceListData),
-      data => {
-        if (data?.priceList) {
-          setPriceLists(prevPriceLists => prevPriceLists.map(p => (p._id === _id ? data?.priceList : p)));
-        }
-      },
-      'update'
-    );
-  }, []);
+  // Update
+  const updatePriceLists = useCallback(
+    async (_id: string, priceListData: ICreatePriceListPayload): Promise<AxiosResponse<IPriceListApi>> => {
+      return await fetchData(
+        () => updatePriceListApi(_id, priceListData),
+        data => {
+          if (data?.updatedPriceList) {
+            setPriceLists(prev => prev.map(p => (p._id === _id ? data.updatedPriceList : p)));
+          }
+        },
+        'update'
+      );
+    },
+    []
+  );
 
-  // Delete PriceLists
+  // Delete
   const deletePriceLists = useCallback(async (id: string): Promise<AxiosResponse<any>> => {
     return await fetchData(
       () => deletePriceListApi(id),
-      () => setPriceLists(prevPriceLists => prevPriceLists.filter(p => p._id !== id)),
+      () => setPriceLists(prev => prev.filter(p => p._id !== id)),
       'delete'
     );
   }, []);
@@ -174,5 +151,6 @@ export const PriceListProvider = ({ children }: { children: ReactNode }) => {
     }),
     [priceLists, countPriceList, loading, error]
   );
+
   return <PriceListContext.Provider value={value}>{children}</PriceListContext.Provider>;
 };
