@@ -61,6 +61,7 @@ const ModalCreateWindowsPageAdmin: React.FC<ModalCreateAdminProps> = ({ isOpen, 
 
   const onSubmit: SubmitHandler<IWindows> = async formData => {
     const data = new FormData();
+    data.append('windows_note', formData.windows_note || '');
     data.append('windows_name', formData.windows_name || '');
     data.append('windows_catalog_id', formData.windows_catalog_id._id);
     data.append('windows_color', formData.windows_color);

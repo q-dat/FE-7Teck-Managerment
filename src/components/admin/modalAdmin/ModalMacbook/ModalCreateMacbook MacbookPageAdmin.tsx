@@ -56,6 +56,7 @@ const ModalCreateMacbookPageAdmin: React.FC<ModalCreateAdminProps> = ({ isOpen, 
 
   const onSubmit: SubmitHandler<IMacbook> = async formData => {
     const data = new FormData();
+    data.append('macbook_note', formData.macbook_note || '');
     data.append('macbook_name', formData.macbook_name || '');
     data.append('macbook_catalog_id', formData.macbook_catalog_id._id);
     data.append('macbook_color', formData.macbook_color);

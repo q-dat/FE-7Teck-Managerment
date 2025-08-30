@@ -55,6 +55,7 @@ const ModalCreateTabletPageAdmin: React.FC<ModalCreateAdminProps> = ({ isOpen, o
 
   const onSubmit: SubmitHandler<ITablet> = async formData => {
     const data = new FormData();
+    data.append('tablet_note', formData.tablet_note || '');
     data.append('tablet_name', formData.tablet_name || '');
     data.append('tablet_catalog_id', formData.tablet_catalog_id._id);
     data.append('tablet_color', formData.tablet_color);

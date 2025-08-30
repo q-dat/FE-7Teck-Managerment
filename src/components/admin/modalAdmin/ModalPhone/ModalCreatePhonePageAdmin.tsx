@@ -49,6 +49,7 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreateAdminProps> = ({ isOpen, on
 
   const onSubmit: SubmitHandler<IPhone> = async formData => {
     const data = new FormData();
+    data.append('note', formData.note || '');
     data.append('name', formData.name || '');
     data.append('phone_catalog_id', formData.phone_catalog_id._id);
     data.append('color', formData.color);
