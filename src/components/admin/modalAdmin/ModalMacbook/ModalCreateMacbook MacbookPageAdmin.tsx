@@ -117,6 +117,13 @@ const ModalCreateMacbookPageAdmin: React.FC<ModalCreateAdminProps> = ({ isOpen, 
         >
           <div>
             <p className="font-bold text-black dark:text-white">Tạo sản phẩm mới</p>
+            <LabelForm title={'Ghi chú (Chỉ mỗi admin)'} />
+            <InputModal
+              className="bg-yellow-400 px-2"
+              type="text"
+              {...register('macbook_note')}
+              placeholder="Điền ghi chú..."
+            />
             <div className="flex items-center">
               <ReactSelect
                 placeholder="Chọn danh mục*"

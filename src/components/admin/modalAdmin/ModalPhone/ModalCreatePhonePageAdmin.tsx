@@ -110,6 +110,13 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreateAdminProps> = ({ isOpen, on
         >
           <div>
             <p className="font-bold text-black dark:text-white">Tạo sản phẩm mới</p>
+            <LabelForm title={'Ghi chú (Chỉ mỗi admin)'} />
+            <InputModal
+              className="bg-yellow-400 px-2"
+              type="text"
+              {...register('note')}
+              placeholder="Điền ghi chú..."
+            />
             <div className="flex items-center">
               <ReactSelect
                 placeholder="Chọn danh mục*"
