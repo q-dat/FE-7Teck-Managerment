@@ -13,7 +13,6 @@ import { TabletContext } from '../../context/tablet/TabletContext';
 import { WindowsCatalogContext } from '../../context/windows-catalog/WindowsCatalogContext';
 import { WindowsContext } from '../../context/windows/WindowsContext';
 import { PriceListContext } from '../../context/price-list/PriceListContext';
-import { OptionPhoneContext } from '../../context/optionsData/OptionPhoneContext';
 import SidebarAdmin from '../../components/admin/SidebarAdmin';
 import ScrollToTopButton from '../../components/orther/scrollToTop/ScrollToTopButton';
 const Admin: React.FC<{}> = () => {
@@ -29,7 +28,6 @@ const Admin: React.FC<{}> = () => {
   const { getAllWindowsCatalogs } = useContext(WindowsCatalogContext);
   const { getAllWindows } = useContext(WindowsContext);
   const { getAllPriceLists } = useContext(PriceListContext);
-  const { getAllOptionPhones } = useContext(OptionPhoneContext);
 
   useEffect(() => {
     // Title Tag
@@ -49,8 +47,7 @@ const Admin: React.FC<{}> = () => {
           getAllTablets(),
           getAllWindowsCatalogs(),
           getAllWindows(),
-          getAllPriceLists(),
-          getAllOptionPhones()
+          getAllPriceLists()
         ]);
       } catch (error) {
         console.error('Error initializing data:', error);

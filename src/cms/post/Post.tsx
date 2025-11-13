@@ -3,7 +3,6 @@ import { Outlet } from 'react-router-dom';
 import NavbarAdmin from '../../components/admin/NavbarAdminDesktop ';
 import SidebarPost from '../../components/admin/post/SidebarPost';
 import ScrollToTopButton from '../../components/orther/scrollToTop/ScrollToTopButton';
-import { OptionPhoneContext } from '../../context/optionsData/OptionPhoneContext';
 import { PostCatalogContext } from '../../context/post-catalog/PostCatalogContext';
 import { PostContext } from '../../context/post/PostContext';
 import { PriceListContext } from '../../context/price-list/PriceListContext';
@@ -12,13 +11,12 @@ const Post: React.FC<{}> = () => {
   const { getAllPostCatalogs } = useContext(PostCatalogContext);
   const { getAllPosts } = useContext(PostContext);
   const { getAllPriceLists } = useContext(PriceListContext);
-  const { getAllOptionPhones } = useContext(OptionPhoneContext);
   useEffect(() => {
     // Title Tag
     document.title = `Trang Quản Trị Bài Viết`;
     const initializeData = async () => {
       try {
-        await Promise.all([getAllPostCatalogs(), getAllPosts(), getAllPriceLists(), getAllOptionPhones()]);
+        await Promise.all([getAllPostCatalogs(), getAllPosts(), getAllPriceLists()]);
       } catch (error) {
         console.error('Error initializing data:', error);
       }

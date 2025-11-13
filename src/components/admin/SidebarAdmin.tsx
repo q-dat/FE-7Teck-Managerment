@@ -10,7 +10,6 @@ import { BsApple } from 'react-icons/bs';
 import { TabletContext } from '../../context/tablet/TabletContext';
 import { WindowsContext } from '../../context/windows/WindowsContext';
 import { MacbookContext } from '../../context/macbook/MacbookContext';
-import OptionsData from './modalAdmin/OptionsData/OptionsData';
 // import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
 // import { TabletCatalogContext } from '../../context/tablet-catalog/TabletCatalogContext';
 // import { WindowsCatalogContext } from '../../context/windows-catalog/WindowsCatalogContext';
@@ -26,9 +25,6 @@ const SidebarAdmin: React.FC<{}> = () => {
   const { countWindows } = useContext(WindowsContext);
   const { countMacbook } = useContext(MacbookContext);
   const [activeItem, setActiveItem] = useState('Dashboard');
-  const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
-  const openModalCreateAdmin = () => setIsModalCreateOpen(true);
-  const closeModalCreateAdmin = () => setIsModalCreateOpen(false);
   const location = useLocation();
 
   const menuItems = [
@@ -178,17 +174,12 @@ const SidebarAdmin: React.FC<{}> = () => {
       <div className="flex flex-col items-center">
         <div className="rounded-lg bg-primary p-4 text-center text-white">
           <p className="w-40 text-center text-xs">Chọn nút bên dưới để thêm options thông tin sản phẩm!</p>
-          <Button onClick={openModalCreateAdmin} className="my-4 rounded-lg bg-white text-primary hover:bg-white">
-            +Thêm Options
-          </Button>
+          <Button className="my-4 rounded-lg bg-white text-primary hover:bg-white">+Thêm</Button>
         </div>
         <div className="py-4 text-xs text-black dark:text-white">
           <p className="font-bold">Quản trị 7Teck </p>
           <p className="font-light">© 2025 Điểu Quốc Đạt</p>
         </div>
-      </div>
-      <div>
-        <OptionsData isOpen={isModalCreateOpen} onClose={closeModalCreateAdmin} />
       </div>
     </div>
   );

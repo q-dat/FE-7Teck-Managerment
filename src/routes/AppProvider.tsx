@@ -5,7 +5,6 @@ import { AuthProvider } from '../context/auth/AuthContext';
 import { GalleryProvider } from '../context/gallery/GalleryContext';
 import { MacbookCatalogProvider } from '../context/macbook-catalog/MacbookCatalogContext';
 import { MacbookProvider } from '../context/macbook/MacbookContext';
-import { OptionPhoneProvider } from '../context/optionsData/OptionPhoneContext';
 import { PhoneCatalogProvider } from '../context/phone-catalog/PhoneCatalogContext';
 import { PhoneProvider } from '../context/phone/PhoneContext';
 import { PostCatalogProvider } from '../context/post-catalog/PostCatalogContext';
@@ -31,9 +30,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
                         <WindowsProvider>
                           <MacbookCatalogProvider>
                             <MacbookProvider>
-                              <OptionPhoneProvider>
                                 <ParallaxProvider>{children}</ParallaxProvider>
-                              </OptionPhoneProvider>
                             </MacbookProvider>
                           </MacbookCatalogProvider>
                         </WindowsProvider>
