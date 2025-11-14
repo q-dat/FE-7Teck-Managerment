@@ -2,13 +2,11 @@ import React, { useEffect, useContext, useState } from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { Toastify } from '../../../../helper/Toastify';
 import InputModal from '../../InputModal';
-import { Button } from 'react-daisyui';
-import Select from 'react-select';
+import { Button, Textarea } from 'react-daisyui';
 import { Select as SelectDaisyUi } from 'react-daisyui';
 import LabelForm from '../../LabelForm';
 import { PhoneCatalogContext } from '../../../../context/phone-catalog/PhoneCatalogContext';
 import { IPhoneCatalog } from '../../../../types/type/phone-catalog/phone-catalog';
-import { optionsPhoneData } from '../../../../types/type/optionsData/optionsPhoneData';
 import QuillEditor from '../../../../lib/ReactQuill';
 
 const modules = {
@@ -219,7 +217,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({ isOpen,
               </div>
               <LabelForm title={'Hình ảnh'} />
               {existingImg && (
-                <div className="my-2">
+                <div className="col-span-full w-full">
                   <img src={existingImg} className="h-10 w-10 rounded-md object-cover" />
                 </div>
               )}
@@ -282,17 +280,12 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({ isOpen,
                   {...register('camera_and_screen.rear_camera_resolution')}
                   placeholder="Nhập độ phân giải camera sau"
                 />
-                <div className="my-2">
+                <div className="col-span-full w-full">
                   <LabelForm title={'Quay phim camera sau'} />
-                  <Select
-                    isMulti
-                    options={optionsPhoneData.rear_camera_video}
-                    onChange={selected =>
-                      setValue(
-                        'camera_and_screen.rear_camera_video',
-                        selected.map(option => option.value)
-                      )
-                    }
+                  <Textarea
+                    className="w-full border p-2 focus:outline-none"
+                    {...register('camera_and_screen.rear_camera_video')}
+                    placeholder="Nhập quay phim camera sau"
                   />
                 </div>
                 <LabelForm title={'Đèn Flash camera sau'} />
@@ -301,17 +294,12 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({ isOpen,
                   {...register('camera_and_screen.rear_camera_flash')}
                   placeholder="Nhập đèn Flash camera sau"
                 />
-                <div className="my-2">
+                <div className="col-span-full w-full">
                   <LabelForm title={'Tính năng camera sau'} />
-                  <Select
-                    isMulti
-                    options={optionsPhoneData.rear_camera_features}
-                    onChange={selected =>
-                      setValue(
-                        'camera_and_screen.rear_camera_features',
-                        selected.map(option => option.value)
-                      )
-                    }
+                  <Textarea
+                    className="w-full border p-2 focus:outline-none"
+                    {...register('camera_and_screen.rear_camera_features')}
+                    placeholder="Nhập tính năng camera sau"
                   />
                 </div>
               </div>
@@ -321,17 +309,12 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({ isOpen,
                 {...register('camera_and_screen.front_camera_resolution')}
                 placeholder="Nhập độ phân giải camera trước"
               />
-              <div className="my-2">
+              <div className="col-span-full w-full">
                 <LabelForm title={'Tính năng camera trước'} />
-                <Select
-                  isMulti
-                  options={optionsPhoneData.front_camera_features}
-                  onChange={selected =>
-                    setValue(
-                      'camera_and_screen.front_camera_features',
-                      selected.map(option => option.value)
-                    )
-                  }
+                <Textarea
+                  className="w-full border p-2 focus:outline-none"
+                  {...register('camera_and_screen.front_camera_features')}
+                  placeholder="Nhập tính năng camera trước"
                 />
               </div>
               <LabelForm title={'Công nghệ màn hình'} />
@@ -377,46 +360,31 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({ isOpen,
                 {...register('battery_and_charging.max_charging_support')}
                 placeholder="Nhập hỗ trợ sạc tối đa"
               />
-              <div className="my-2">
+              <div className="col-span-full w-full">
                 <LabelForm title={'Công nghệ pin'} />
-                <Select
-                  isMulti
-                  options={optionsPhoneData.battery_technology}
-                  onChange={selected =>
-                    setValue(
-                      'battery_and_charging.battery_technology',
-                      selected.map(option => option.value)
-                    )
-                  }
+                <Textarea
+                  className="w-full border p-2 focus:outline-none"
+                  {...register('battery_and_charging.battery_technology')}
+                  placeholder="Nhập công nghệ pin"
                 />
               </div>
             </div>
             {/* Tiện ích */}
             <div className="">
-              <div className="my-2">
+              <div className="col-span-full w-full">
                 <LabelForm title={'Bảo mật nâng cao'} />
-                <Select
-                  isMulti
-                  options={optionsPhoneData.advanced_security}
-                  onChange={selected =>
-                    setValue(
-                      'features.advanced_security',
-                      selected.map(option => option.value)
-                    )
-                  }
+                <Textarea
+                  className="w-full border p-2 focus:outline-none"
+                  {...register('features.advanced_security')}
+                  placeholder="Nhập bảo mật nâng cao"
                 />
               </div>
-              <div className="my-2">
+              <div className="col-span-full w-full">
                 <LabelForm title={'Tính năng đặc biệt'} />
-                <Select
-                  isMulti
-                  options={optionsPhoneData.special_features}
-                  onChange={selected =>
-                    setValue(
-                      'features.special_features',
-                      selected.map(option => option.value)
-                    )
-                  }
+                <Textarea
+                  className="w-full border p-2 focus:outline-none"
+                  {...register('features.special_features')}
+                  placeholder="Nhập tính năng đặc biệt"
                 />
               </div>
               <LabelForm title={'Tên sản phẩm'} />
@@ -425,45 +393,30 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({ isOpen,
                 {...register('features.water_dust_resistant')}
                 placeholder="Nhập Kháng nước/bụi"
               />
-              <div className="my-2">
+              <div className="col-span-full w-full">
                 <LabelForm title={'Ghi âm'} />
-                <Select
-                  isMulti
-                  options={optionsPhoneData.voice_recording}
-                  onChange={selected =>
-                    setValue(
-                      'features.voice_recording',
-                      selected.map(option => option.value)
-                    )
-                  }
+                <Textarea
+                  className="w-full border p-2 focus:outline-none"
+                  {...register('features.voice_recording')}
+                  placeholder="Nhập ghi âm"
                 />
               </div>
-              <div className="my-2">
+              <div className="col-span-full w-full">
                 <LabelForm title={'Radio'} />
-                <Select
-                  isMulti
-                  options={optionsPhoneData.radio}
-                  onChange={selected =>
-                    setValue(
-                      'features.radio',
-                      selected.map(option => option.value)
-                    )
-                  }
+                <Textarea
+                  className="w-full border p-2 focus:outline-none"
+                  {...register('features.radio')}
+                  placeholder="Nhập radio"
                 />
               </div>
               <LabelForm title={'Xem phim'} />
               <InputModal type="text" {...register('features.video_playback')} placeholder="Nhập xem phim" />
-              <div className="my-2">
+              <div className="col-span-full w-full">
                 <LabelForm title={'Nghe nhạc'} />
-                <Select
-                  isMulti
-                  options={optionsPhoneData.music_playback}
-                  onChange={selected =>
-                    setValue(
-                      'features.music_playback',
-                      selected.map(option => option.value)
-                    )
-                  }
+                <Textarea
+                  className="w-full border p-2 focus:outline-none"
+                  {...register('features.music_playback')}
+                  placeholder="Nhập nghe nhạc"
                 />
               </div>
             </div>
@@ -473,30 +426,20 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({ isOpen,
               <InputModal type="text" {...register('connectivity.mobile_network')} placeholder="Nhập mạng di động" />
               <LabelForm title={'Sim'} />
               <InputModal type="text" {...register('connectivity.sim')} placeholder="Nhập Sim" />
-              <div className="my-2">
+              <div className="col-span-full w-full">
                 <LabelForm title={'Wi-Fi'} />
-                <Select
-                  isMulti
-                  options={optionsPhoneData.wifiOptions}
-                  onChange={selected =>
-                    setValue(
-                      'connectivity.wifi',
-                      selected.map(option => option.value)
-                    )
-                  }
+                <Textarea
+                  className="w-full border p-2 focus:outline-none"
+                  {...register('connectivity.wifi')}
+                  placeholder="Nhập Wi-Fi"
                 />
               </div>
-              <div className="my-2">
+              <div className="col-span-full w-full">
                 <LabelForm title={'GPS'} />
-                <Select
-                  isMulti
-                  options={optionsPhoneData.gpsOptions}
-                  onChange={selected =>
-                    setValue(
-                      'connectivity.gps',
-                      selected.map(option => option.value)
-                    )
-                  }
+                <Textarea
+                  className="w-full border p-2 focus:outline-none"
+                  {...register('connectivity.gps')}
+                  placeholder="Nhập GPS"
                 />
               </div>
               <LabelForm title={'Bluetooth'} />

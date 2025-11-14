@@ -1,14 +1,12 @@
 import React, { useContext } from 'react';
-import { Button } from 'react-daisyui';
+import { Button, Textarea } from 'react-daisyui';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import InputModal from '../../InputModal';
 import { Toastify } from '../../../../helper/Toastify';
-import Select from 'react-select';
 import { Select as SelectDaisyUi } from 'react-daisyui';
 import LabelForm from '../../LabelForm';
 import { PhoneCatalogContext } from '../../../../context/phone-catalog/PhoneCatalogContext';
 import { IPhoneCatalog } from '../../../../types/type/phone-catalog/phone-catalog';
-import { optionsPhoneData } from '../../../../types/type/optionsData/optionsPhoneData';
 import QuillEditor from '../../../../lib/ReactQuill';
 
 const modules = {
@@ -33,7 +31,7 @@ interface ModalCreateAdminProps {
 const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({ isOpen, onClose }) => {
   const { loading, createPhoneCatalog, getAllPhoneCatalogs } = useContext(PhoneCatalogContext);
   const isLoading = loading.create;
-  const { register, handleSubmit, reset, setValue } = useForm<IPhoneCatalog>();
+  const { register, handleSubmit, reset } = useForm<IPhoneCatalog>();
   const [editorValue, setEditorValue] = React.useState<string>('');
 
   const onSubmit: SubmitHandler<IPhoneCatalog> = async formData => {
@@ -139,6 +137,7 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({ isO
               <LabelForm title={'Hình ảnh*'} />
               <InputModal type="file" {...register('img', { required: true })} placeholder="Chèn hình ảnh" />
             </div>
+
             {/* Cấu hình và bộ nhớ */}
             <div className="">
               <LabelForm title={'Hệ điều hành'} />
@@ -153,7 +152,6 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({ isO
                 {...register('configuration_and_memory.cpu_chip')}
                 placeholder="Nhập chip xử lý CPU"
               />
-
               <LabelForm title={'Tốc độ CPU'} />
               <InputModal
                 type="text"
@@ -191,23 +189,18 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({ isO
 
               {/* Camera và màn hình */}
               <div className="">
-                <LabelForm title={' Độ phân giải camera sau'} />
+                <LabelForm title={'Độ phân giải camera sau'} />
                 <InputModal
                   type="text"
                   {...register('camera_and_screen.rear_camera_resolution')}
                   placeholder="Nhập độ phân giải camera sau"
                 />
-                <div className="my-2">
+                <div className="col-span-full w-full">
                   <LabelForm title={'Quay phim camera sau'} />
-                  <Select
-                    isMulti
-                    options={optionsPhoneData.rear_camera_video}
-                    onChange={selected =>
-                      setValue(
-                        'camera_and_screen.rear_camera_video',
-                        selected.map(option => option.value)
-                      )
-                    }
+                  <Textarea
+                    className="w-full border p-2 focus:outline-none"
+                    {...register('camera_and_screen.rear_camera_video')}
+                    placeholder="Nhập quay phim camera sau"
                   />
                 </div>
                 <LabelForm title={'Đèn Flash camera sau'} />
@@ -216,39 +209,31 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({ isO
                   {...register('camera_and_screen.rear_camera_flash')}
                   placeholder="Nhập đèn Flash camera sau"
                 />
-                <div className="my-2">
+                <div className="col-span-full w-full">
                   <LabelForm title={'Tính năng camera sau'} />
-                  <Select
-                    isMulti
-                    options={optionsPhoneData.rear_camera_features}
-                    onChange={selected =>
-                      setValue(
-                        'camera_and_screen.rear_camera_features',
-                        selected.map(option => option.value)
-                      )
-                    }
+                  <Textarea
+                    className="w-full border p-2 focus:outline-none"
+                    {...register('camera_and_screen.rear_camera_features')}
+                    placeholder="Nhập tính năng camera sau"
                   />
                 </div>
               </div>
+
               <LabelForm title={'Độ phân giải camera trước'} />
               <InputModal
                 type="text"
                 {...register('camera_and_screen.front_camera_resolution')}
                 placeholder="Nhập độ phân giải camera trước"
               />
-              <div className="my-2">
+              <div className="col-span-full w-full">
                 <LabelForm title={'Tính năng camera trước'} />
-                <Select
-                  isMulti
-                  options={optionsPhoneData.front_camera_features}
-                  onChange={selected =>
-                    setValue(
-                      'camera_and_screen.front_camera_features',
-                      selected.map(option => option.value)
-                    )
-                  }
+                <Textarea
+                  className="w-full border p-2 focus:outline-none"
+                  {...register('camera_and_screen.front_camera_features')}
+                  placeholder="Nhập tính năng camera trước"
                 />
               </div>
+
               <LabelForm title={'Công nghệ màn hình'} />
               <InputModal
                 type="text"
@@ -276,6 +261,7 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({ isO
                 placeholder="Nhập mặt kính cảm ứng"
               />
             </div>
+
             {/* Pin và sạc */}
             <div className="">
               <LabelForm title={'Dung lượng pin'} />
@@ -292,46 +278,32 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({ isO
                 {...register('battery_and_charging.max_charging_support')}
                 placeholder="Nhập hỗ trợ sạc tối đa"
               />
-              <div className="my-2">
+              <div className="col-span-full w-full">
                 <LabelForm title={'Công nghệ pin'} />
-                <Select
-                  isMulti
-                  options={optionsPhoneData.battery_technology}
-                  onChange={selected =>
-                    setValue(
-                      'battery_and_charging.battery_technology',
-                      selected.map(option => option.value)
-                    )
-                  }
+                <Textarea
+                  className="w-full border p-2 focus:outline-none"
+                  {...register('battery_and_charging.battery_technology')}
+                  placeholder="Nhập công nghệ pin"
                 />
               </div>
             </div>
+
             {/* Tiện ích */}
             <div className="">
-              <div className="my-2">
+              <div className="col-span-full w-full">
                 <LabelForm title={'Bảo mật nâng cao'} />
-                <Select
-                  isMulti
-                  options={optionsPhoneData.advanced_security}
-                  onChange={selected =>
-                    setValue(
-                      'features.advanced_security',
-                      selected.map(option => option.value)
-                    )
-                  }
+                <Textarea
+                  className="w-full border p-2 focus:outline-none"
+                  {...register('features.advanced_security')}
+                  placeholder="Nhập bảo mật nâng cao"
                 />
               </div>
-              <div className="my-2">
+              <div className="col-span-full w-full">
                 <LabelForm title={'Tính năng đặc biệt'} />
-                <Select
-                  isMulti
-                  options={optionsPhoneData.special_features}
-                  onChange={selected =>
-                    setValue(
-                      'features.special_features',
-                      selected.map(option => option.value)
-                    )
-                  }
+                <Textarea
+                  className="w-full border p-2 focus:outline-none"
+                  {...register('features.special_features')}
+                  placeholder="Nhập tính năng đặc biệt"
                 />
               </div>
               <LabelForm title={'Tên sản phẩm'} />
@@ -340,78 +312,54 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({ isO
                 {...register('features.water_dust_resistant')}
                 placeholder="Nhập Kháng nước/bụi"
               />
-              <div className="my-2">
+              <div className="col-span-full w-full">
                 <LabelForm title={'Ghi âm'} />
-                <Select
-                  isMulti
-                  options={optionsPhoneData.voice_recording}
-                  onChange={selected =>
-                    setValue(
-                      'features.voice_recording',
-                      selected.map(option => option.value)
-                    )
-                  }
+                <Textarea
+                  className="w-full border p-2 focus:outline-none"
+                  {...register('features.voice_recording')}
+                  placeholder="Nhập ghi âm"
                 />
               </div>
-              <div className="my-2">
+              <div className="col-span-full w-full">
                 <LabelForm title={'Radio'} />
-                <Select
-                  isMulti
-                  options={optionsPhoneData.radio}
-                  onChange={selected =>
-                    setValue(
-                      'features.radio',
-                      selected.map(option => option.value)
-                    )
-                  }
+                <Textarea
+                  className="w-full border p-2 focus:outline-none"
+                  {...register('features.radio')}
+                  placeholder="Nhập Radio"
                 />
               </div>
               <LabelForm title={'Xem phim'} />
               <InputModal type="text" {...register('features.video_playback')} placeholder="Nhập xem phim" />
-              <div className="my-2">
+              <div className="col-span-full w-full">
                 <LabelForm title={'Nghe nhạc'} />
-                <Select
-                  isMulti
-                  options={optionsPhoneData.music_playback}
-                  onChange={selected =>
-                    setValue(
-                      'features.music_playback',
-                      selected.map(option => option.value)
-                    )
-                  }
+                <Textarea
+                  className="w-full border p-2 focus:outline-none"
+                  {...register('features.music_playback')}
+                  placeholder="Nhập nghe nhạc"
                 />
               </div>
             </div>
+
             {/* Kết nối */}
             <div className="">
               <LabelForm title={'Mạng di động'} />
               <InputModal type="text" {...register('connectivity.mobile_network')} placeholder="Nhập mạng di động" />
               <LabelForm title={'Sim'} />
               <InputModal type="text" {...register('connectivity.sim')} placeholder="Nhập Sim" />
-              <div className="my-2">
+              <div className="col-span-full w-full">
                 <LabelForm title={'Wi-Fi'} />
-                <Select
-                  isMulti
-                  options={optionsPhoneData.wifiOptions}
-                  onChange={selected =>
-                    setValue(
-                      'connectivity.wifi',
-                      selected.map(option => option.value)
-                    )
-                  }
+                <Textarea
+                  className="w-full border p-2 focus:outline-none"
+                  {...register('connectivity.wifi')}
+                  placeholder="Nhập Wi-Fi"
                 />
               </div>
-              <div className="my-2">
+              <div className="col-span-full w-full">
                 <LabelForm title={'GPS'} />
-                <Select
-                  isMulti
-                  options={optionsPhoneData.gpsOptions}
-                  onChange={selected =>
-                    setValue(
-                      'connectivity.gps',
-                      selected.map(option => option.value)
-                    )
-                  }
+                <Textarea
+                  className="w-full border p-2 focus:outline-none"
+                  {...register('connectivity.gps')}
+                  placeholder="Nhập GPS"
                 />
               </div>
               <LabelForm title={'Bluetooth'} />
@@ -431,6 +379,7 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({ isO
                 placeholder="Nhập kết nối khác"
               />
             </div>
+
             {/* Thiết kế và chất liệu */}
             <div className="">
               <LabelForm title={'Thiết kế'} />
@@ -452,6 +401,7 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({ isO
               <LabelForm title={'Hãng'} />
               <InputModal type="text" {...register('design_and_material.brand')} placeholder="Nhập hãng" />
             </div>
+
             <div className="w-full">
               <QuillEditor
                 value={editorValue}
@@ -462,6 +412,7 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({ isO
               />
             </div>
           </div>
+
           <div className="mt-5 flex flex-row items-center justify-center space-x-5 text-center">
             <Button onClick={onClose} className="border-gray-50 text-black dark:text-white">
               Hủy

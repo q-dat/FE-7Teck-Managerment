@@ -1,12 +1,10 @@
 import React, { useContext } from 'react';
-import { Button } from 'react-daisyui';
+import { Button, Textarea } from 'react-daisyui';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import InputModal from '../../InputModal';
 import { Toastify } from '../../../../helper/Toastify';
-import Select from 'react-select';
 import { Select as SelectDaisyUi } from 'react-daisyui';
 import LabelForm from '../../LabelForm';
-import { optionsTabletData } from '../../../../types/type/optionsData/optionsTabletData';
 import { TabletCatalogContext } from '../../../../context/tablet-catalog/TabletCatalogContext';
 import { ITabletCatalog } from '../../../../types/type/tablet-catalog/tablet-catalog';
 import QuillEditor from '../../../../lib/ReactQuill';
@@ -33,7 +31,7 @@ interface ModalCreateAdminProps {
 const ModalCreateTabletCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({ isOpen, onClose }) => {
   const { loading, createTabletCatalog, getAllTabletCatalogs } = useContext(TabletCatalogContext);
   const isLoading = loading.create;
-  const { register, handleSubmit, reset, setValue } = useForm<ITabletCatalog>();
+  const { register, handleSubmit, reset } = useForm<ITabletCatalog>();
   const [editorValue, setEditorValue] = React.useState<string>('');
 
   const onSubmit: SubmitHandler<ITabletCatalog> = async formData => {
@@ -208,30 +206,20 @@ const ModalCreateTabletCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({ is
                   {...register('t_cat_rear_camera.t_cat_resolution')}
                   placeholder="Nhập độ phân giải"
                 />
-                <div className="my-2">
+                <div className="col-span-full w-full">
                   <LabelForm title={'Quay phim'} />
-                  <Select
-                    isMulti
-                    options={optionsTabletData.t_cat_video_recording}
-                    onChange={selected =>
-                      setValue(
-                        't_cat_rear_camera.t_cat_video_recording',
-                        selected.map(option => option.value)
-                      )
-                    }
+                  <Textarea
+                    className="w-full border p-2 focus:outline-none"
+                    {...register('t_cat_rear_camera.t_cat_video_recording')}
+                    placeholder="Nhập quay phim"
                   />
                 </div>
-                <div className="my-2">
-                  <LabelForm title={'Tính năng'} />
-                  <Select
-                    isMulti
-                    options={optionsTabletData.t_cat_features}
-                    onChange={selected =>
-                      setValue(
-                        't_cat_rear_camera.t_cat_features',
-                        selected.map(option => option.value)
-                      )
-                    }
+                <div className="col-span-full w-full">
+                  <LabelForm title={'Tính năng cam sau'} />
+                  <Textarea
+                    className="w-full border p-2 focus:outline-none"
+                    {...register('t_cat_rear_camera.t_cat_features')}
+                    placeholder="Nhập tính năng cam sau"
                   />
                 </div>
                 {/* Camera trước */}
@@ -241,17 +229,12 @@ const ModalCreateTabletCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({ is
                   {...register('t_cat_front_camera.t_cat_resolution')}
                   placeholder="Nhập độ phân giải"
                 />
-                <div className="my-2">
-                  <LabelForm title={'Tính năng'} />
-                  <Select
-                    isMulti
-                    options={optionsTabletData.t_cat_features}
-                    onChange={selected =>
-                      setValue(
-                        't_cat_front_camera.t_cat_features',
-                        selected.map(option => option.value)
-                      )
-                    }
+                <div className="col-span-full w-full">
+                  <LabelForm title={'Tính năng cam trước'} />
+                  <Textarea
+                    className="w-full border p-2 focus:outline-none"
+                    {...register('t_cat_front_camera.t_cat_features')}
+                    placeholder="Nhập tính năng cam trước"
                   />
                 </div>
               </div>
@@ -270,30 +253,20 @@ const ModalCreateTabletCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({ is
                 {...register('t_cat_connectivity.t_cat_calls')}
                 placeholder="Nhập thực hiện cuộc gọi"
               />
-              <div className="my-2">
+              <div className="col-span-full w-full">
                 <LabelForm title={'Wifi'} />
-                <Select
-                  isMulti
-                  options={optionsTabletData.t_cat_wifi}
-                  onChange={selected =>
-                    setValue(
-                      't_cat_connectivity.t_cat_wifi',
-                      selected.map(option => option.value)
-                    )
-                  }
+                <Textarea
+                  className="w-full border p-2 focus:outline-none"
+                  {...register('t_cat_connectivity.t_cat_wifi')}
+                  placeholder="Nhập Wifi"
                 />
               </div>
-              <div className="my-2">
+              <div className="col-span-full w-full">
                 <LabelForm title={'GPS'} />
-                <Select
-                  isMulti
-                  options={optionsTabletData.t_cat_gps}
-                  onChange={selected =>
-                    setValue(
-                      't_cat_connectivity.t_cat_gps',
-                      selected.map(option => option.value)
-                    )
-                  }
+                <Textarea
+                  className="w-full border p-2 focus:outline-none"
+                  {...register('t_cat_connectivity.t_cat_gps')}
+                  placeholder="Nhập GPS"
                 />
               </div>
               <LabelForm title={'Bluetooth'} />
@@ -334,17 +307,12 @@ const ModalCreateTabletCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({ is
                 {...register('t_cat_battery_and_charging.t_cat_battery_type')}
                 placeholder="Nhập loại pin"
               />
-              <div className="my-2">
+              <div className="col-span-full w-full">
                 <LabelForm title={'Công nghệ pin'} />
-                <Select
-                  isMulti
-                  options={optionsTabletData.t_cat_battery_technology}
-                  onChange={selected =>
-                    setValue(
-                      't_cat_battery_and_charging.t_cat_battery_technology',
-                      selected.map(option => option.value)
-                    )
-                  }
+                <Textarea
+                  className="w-full border p-2 focus:outline-none"
+                  {...register('t_cat_battery_and_charging.t_cat_battery_technology')}
+                  placeholder="Nhập công nghệ pin"
                 />
               </div>
               <LabelForm title={'Hỗ trợ sạc tối đa'} />

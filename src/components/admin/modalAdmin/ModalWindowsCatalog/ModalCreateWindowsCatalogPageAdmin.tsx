@@ -1,12 +1,10 @@
 import React, { useContext } from 'react';
-import { Button } from 'react-daisyui';
+import { Button, Textarea } from 'react-daisyui';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import InputModal from '../../InputModal';
 import { Toastify } from '../../../../helper/Toastify';
-import Select from 'react-select';
 import { Select as SelectDaisyUi } from 'react-daisyui';
 import LabelForm from '../../LabelForm';
-import { optionsWindowsData } from '../../../../types/type/optionsData/optionsWindowsData';
 import { IWindowsCatalog } from '../../../../types/type/windows-catalog/windows-catalog';
 import { WindowsCatalogContext } from '../../../../context/windows-catalog/WindowsCatalogContext';
 import QuillEditor from '../../../../lib/ReactQuill';
@@ -33,7 +31,7 @@ interface ModalCreateAdminProps {
 const ModalCreateWindowsCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({ isOpen, onClose }) => {
   const { loading, createWindowsCatalog, getAllWindowsCatalogs } = useContext(WindowsCatalogContext);
   const isLoading = loading.create;
-  const { register, handleSubmit, reset, setValue } = useForm<IWindowsCatalog>();
+  const { register, handleSubmit, reset } = useForm<IWindowsCatalog>();
   const [editorValue, setEditorValue] = React.useState<string>('');
 
   const onSubmit: SubmitHandler<IWindowsCatalog> = async formData => {
@@ -196,17 +194,12 @@ const ModalCreateWindowsCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({ i
                 placeholder="Nhập hỗ trợ RAM tối đa"
               />
 
-              <div className="my-2">
+              <div className="col-span-full w-full">
                 <LabelForm title={'Ổ cứng'} />
-                <Select
-                  isMulti
-                  options={optionsWindowsData.w_cat_hard_drive}
-                  onChange={selected =>
-                    setValue(
-                      'w_cat_memory_and_storage.w_cat_hard_drive',
-                      selected.map(option => option.value)
-                    )
-                  }
+                <Textarea
+                  className="w-full border p-2 focus:outline-none"
+                  {...register('w_cat_memory_and_storage.w_cat_hard_drive')}
+                  placeholder="Nhập ổ cứng"
                 />
               </div>
               {/* Màn hình */}
@@ -230,17 +223,12 @@ const ModalCreateWindowsCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({ i
                 placeholder="Nhập độ phủ màu"
               />
 
-              <div className="my-2">
+              <div className="col-span-full w-full">
                 <LabelForm title={'Công nghệ màn hình'} />
-                <Select
-                  isMulti
-                  options={optionsWindowsData.w_cat_screen_technology}
-                  onChange={selected =>
-                    setValue(
-                      'w_cat_display.w_cat_screen_technology',
-                      selected.map(option => option.value)
-                    )
-                  }
+                <Textarea
+                  className="w-full border p-2 focus:outline-none"
+                  {...register('w_cat_display.w_cat_screen_technology')}
+                  placeholder="Nhập công nghệ màn hình"
                 />
               </div>
               {/* Đồ hoạ và âm thanh */}
@@ -259,31 +247,21 @@ const ModalCreateWindowsCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({ i
               />
               {/* Cổng kết nối & tính năng mở rộng */}
 
-              <div className="my-2">
+              <div className="col-span-full w-full">
                 <LabelForm title={'Nhập cổng giao tiếp'} />
-                <Select
-                  isMulti
-                  options={optionsWindowsData.w_cat_ports}
-                  onChange={selected =>
-                    setValue(
-                      'w_cat_connectivity_and_ports.w_cat_ports',
-                      selected.map(option => option.value)
-                    )
-                  }
+                <Textarea
+                  className="w-full border p-2 focus:outline-none"
+                  {...register('w_cat_connectivity_and_ports.w_cat_ports')}
+                  placeholder="Nhập cổng giao tiếp"
                 />
               </div>
 
-              <div className="my-2">
+              <div className="col-span-full w-full">
                 <LabelForm title={'Kết nối không dây'} />
-                <Select
-                  isMulti
-                  options={optionsWindowsData.w_cat_wireless_connectivity}
-                  onChange={selected =>
-                    setValue(
-                      'w_cat_connectivity_and_ports.w_cat_wireless_connectivity',
-                      selected.map(option => option.value)
-                    )
-                  }
+                <Textarea
+                  className="w-full border p-2 focus:outline-none"
+                  {...register('w_cat_connectivity_and_ports.w_cat_wireless_connectivity')}
+                  placeholder="Nhập kết nối không dây"
                 />
               </div>
               <LabelForm title={'Khe đọc thẻ nhớ'} />
@@ -300,17 +278,12 @@ const ModalCreateWindowsCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({ i
                 placeholder="Nhập webcam"
               />
 
-              <div className="my-2">
+              <div className="col-span-full w-full">
                 <LabelForm title={'Tính năng khác'} />
-                <Select
-                  isMulti
-                  options={optionsWindowsData.w_cat_other_features}
-                  onChange={selected =>
-                    setValue(
-                      'w_cat_connectivity_and_ports.w_cat_other_features',
-                      selected.map(option => option.value)
-                    )
-                  }
+                <Textarea
+                  className="w-full border p-2 focus:outline-none"
+                  {...register('w_cat_connectivity_and_ports.w_cat_other_features')}
+                  placeholder="Nhập tính năng khác"
                 />
               </div>
 
@@ -322,18 +295,13 @@ const ModalCreateWindowsCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({ i
               />
               {/* Kích thước - Khối lượng - Pin */}
 
-              <div className="my-2">
+              <div className="col-span-full w-full">
                 <LabelForm title={'Kích thước'} />
 
-                <Select
-                  isMulti
-                  options={optionsWindowsData.w_cat_dimensions}
-                  onChange={selected =>
-                    setValue(
-                      'w_cat_dimensions_weight_battery.w_cat_dimensions',
-                      selected.map(option => option.value)
-                    )
-                  }
+                <Textarea
+                  className="w-full border p-2 focus:outline-none"
+                  {...register('w_cat_dimensions_weight_battery.w_cat_dimensions')}
+                  placeholder="Nhập kích thước"
                 />
               </div>
               <LabelForm title={'Chất liệu'} />
