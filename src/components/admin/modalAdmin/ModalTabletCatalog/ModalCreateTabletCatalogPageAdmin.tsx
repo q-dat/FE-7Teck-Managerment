@@ -8,6 +8,7 @@ import LabelForm from '../../LabelForm';
 import { TabletCatalogContext } from '../../../../context/tablet-catalog/TabletCatalogContext';
 import { ITabletCatalog } from '../../../../types/type/tablet-catalog/tablet-catalog';
 import QuillEditor from '../../../../lib/ReactQuill';
+import { textareaToArray } from '../../../utils/textareaToArray';
 
 const modules = {
   toolbar: [
@@ -63,11 +64,25 @@ const ModalCreateTabletCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({ is
       const fieldData = formData[field as keyof ITabletCatalog]; // Ép kiểu an toàn
       if (fieldData) {
         Object.entries(fieldData).forEach(([key, value]) => {
+          // Nếu là textarea → convert thành mảng
+          if (typeof value === 'string') {
+            const arr = textareaToArray(value);
+            if (arr.length > 0) {
+              arr.forEach(item => data.append(`${field}[${key}][]`, item));
+            } else {
+              data.append(`${field}[${key}]`, '');
+            }
+            return;
+          }
+
+          // Nếu FE trả mảng dạng select multiple…
           if (Array.isArray(value)) {
             value.forEach(item => data.append(`${field}[${key}][]`, item));
-          } else {
-            data.append(`${field}[${key}]`, value);
+            return;
           }
+
+          // Nếu là text/number thông thường
+          data.append(`${field}[${key}]`, String(value));
         });
       }
     });
