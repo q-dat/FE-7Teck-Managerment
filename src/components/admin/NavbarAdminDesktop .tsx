@@ -3,7 +3,6 @@ import Avatar from 'boring-avatars';
 import { Button, Input } from 'react-daisyui';
 import { AuthContext } from '../../context/auth/AuthContext';
 import { MdLogout } from 'react-icons/md';
-
 import { Link } from 'react-router-dom';
 import { IoChatboxEllipses, IoSearchOutline } from 'react-icons/io5';
 import { FaBell, FaGift } from 'react-icons/fa';

@@ -20,9 +20,11 @@ import TabletCatalogManager from './TabletCatalogManager';
 import { FaList } from 'react-icons/fa';
 import NavbarAdminDesktop from '../../components/admin/NavbarAdminDesktop ';
 import NavbarAdminMobile from '../../components/admin/responsiveUI/mobile/NavbarAdminMobile';
+import { InlinePriceEditor } from '../../components/admin/inline-edit/InlinePriceEditor';
+import InlineNoteEditor from '../../components/admin/inline-edit/InlineNoteEditor';
 
 const TabletManager: React.FC = () => {
-  const { tablets, loading, error, getAllTablets, deleteTablet } = useContext(TabletContext);
+  const { tablets, loading, error, getAllTablets, updateTablet, deleteTablet } = useContext(TabletContext);
   const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
@@ -46,6 +48,19 @@ const TabletManager: React.FC = () => {
     setIsModalEditOpen(true);
   };
   const closeModalEditAdmin = () => setIsModalEditOpen(false);
+
+  const handleInlineUpdate = async (id: string, field: keyof ITablet, value: any) => {
+    const data = new FormData();
+    data.append(String(field), String(value));
+
+    try {
+      await updateTablet(id, data);
+      Toastify('Cập nhật thành công', 200);
+      getAllTablets();
+    } catch {
+      Toastify('Lỗi cập nhật', 500);
+    }
+  };
 
   const handleDeleteTablet = async () => {
     if (selectedTabletId) {
@@ -206,18 +221,22 @@ const TabletManager: React.FC = () => {
                       {tablet?.tablet_color}
                     </span>
                   </span>
-                  <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
-                    {(tablet.tablet_price * 1000).toLocaleString('vi-VN')}đ
-                  </span>
-                  <>
-                    {tablet?.tablet_sale === null || tablet?.tablet_sale === 0 || tablet?.tablet_sale === undefined ? (
-                      <>Chưa có giá giảm!</>
-                    ) : (
-                      <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
-                        {(tablet?.tablet_sale * 1000).toLocaleString('vi-VN')}₫
-                      </span>
-                    )}
-                  </>
+                  <InlinePriceEditor<ITablet>
+                    prodId={tablet._id}
+                    field="tablet_price"
+                    value={tablet.tablet_price}
+                    type="number"
+                    formatter={v => `${(Number(v) * 1000).toLocaleString('vi-VN')}đ`}
+                    onSubmit={handleInlineUpdate}
+                  />
+                  <InlinePriceEditor<ITablet>
+                    prodId={tablet._id}
+                    field="tablet_sale"
+                    value={tablet.tablet_sale ?? 0}
+                    type="number"
+                    formatter={v => `${(Number(v) * 1000).toLocaleString('vi-VN')}đ`}
+                    onSubmit={handleInlineUpdate}
+                  />
                   {tablet?.tablet_status.toLocaleLowerCase() === 'new' ? (
                     <span className="line-clamp-3 rounded-md bg-green-500 text-black">
                       {tablet?.tablet_status || 'Không có tình trạng!'}
@@ -228,7 +247,11 @@ const TabletManager: React.FC = () => {
                     </span>
                   )}
                   <span className="line-clamp-3">{tablet?.tablet_des || 'Không có mô tả!'}</span>
-                  <mark className="line-clamp-3">{tablet?.tablet_note || 'Không có ghi chú!'}</mark>
+                  <InlineNoteEditor
+                    prodId={tablet._id}
+                    value={tablet.tablet_note ?? ''}
+                    onSubmit={(id, newNote) => handleInlineUpdate(id, 'tablet_note', newNote)}
+                  />
                   <span>
                     {/* {new Date(tablet?.createdAt).toLocaleString('vi-VN')} */}
                     <TimeAgo date={tablet?.updatedAt} />

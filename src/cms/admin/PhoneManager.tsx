@@ -20,9 +20,11 @@ import PhoneCatalogManager from './PhoneCatalogManager';
 import { FaList } from 'react-icons/fa';
 import NavbarAdminDesktop from '../../components/admin/NavbarAdminDesktop ';
 import NavbarAdminMobile from '../../components/admin/responsiveUI/mobile/NavbarAdminMobile';
+import { InlinePriceEditor } from '../../components/admin/inline-edit/InlinePriceEditor';
+import InlineNoteEditor from '../../components/admin/inline-edit/InlineNoteEditor';
 
 const PhoneManager: React.FC = () => {
-  const { phones, loading, error, getAllPhones, deletePhone } = useContext(PhoneContext);
+  const { phones, loading, error, getAllPhones, updatePhone, deletePhone } = useContext(PhoneContext);
   const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
@@ -46,6 +48,19 @@ const PhoneManager: React.FC = () => {
     setIsModalEditOpen(true);
   };
   const closeModalEditAdmin = () => setIsModalEditOpen(false);
+
+  const handleInlineUpdate = async (id: string, field: keyof IPhone, value: any) => {
+    const data = new FormData();
+    data.append(String(field), String(value));
+
+    try {
+      await updatePhone(id, data);
+      Toastify('Cập nhật thành công', 200);
+      getAllPhones();
+    } catch {
+      Toastify('Lỗi cập nhật', 500);
+    }
+  };
 
   const handleDeletePhone = async () => {
     if (selectedPhoneId) {
@@ -204,18 +219,25 @@ const PhoneManager: React.FC = () => {
                     )}
                     <span className="bg-black p-1 text-white dark:bg-white dark:text-black">{phone?.color}</span>
                   </span>
-                  <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
-                    {(phone.price * 1000).toLocaleString('vi-VN')}đ
-                  </span>
-                  <>
-                    {phone?.sale === null || phone?.sale === 0 || phone?.sale === undefined ? (
-                      <>Chưa có giá giảm!</>
-                    ) : (
-                      <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
-                        {(phone?.sale * 1000).toLocaleString('vi-VN')}₫
-                      </span>
-                    )}
-                  </>
+
+                  <InlinePriceEditor<IPhone>
+                    prodId={phone._id}
+                    field="price"
+                    value={phone.price}
+                    type="number"
+                    formatter={v => `${(Number(v) * 1000).toLocaleString('vi-VN')}đ`}
+                    onSubmit={handleInlineUpdate}
+                  />
+
+                  <InlinePriceEditor<IPhone>
+                    prodId={phone._id}
+                    field="sale"
+                    value={phone.sale ?? 0}
+                    type="number"
+                    formatter={v => `${(Number(v) * 1000).toLocaleString('vi-VN')}đ`}
+                    onSubmit={handleInlineUpdate}
+                  />
+
                   {phone?.status.toLocaleLowerCase() === 'new' ? (
                     <span className="line-clamp-3 rounded-md bg-green-500 text-black">
                       {phone?.status || 'Không có tình trạng!'}
@@ -226,7 +248,11 @@ const PhoneManager: React.FC = () => {
                     </span>
                   )}
                   <span className="line-clamp-3">{phone?.des || 'Không có mô tả!'}</span>
-                  <mark className="line-clamp-3">{phone?.note || 'Không có ghi chú!'}</mark>
+                  <InlineNoteEditor
+                    prodId={phone._id}
+                    value={phone.note ?? ''}
+                    onSubmit={(id, newNote) => handleInlineUpdate(id, 'note', newNote)}
+                  />
                   <span>
                     {/* {new Date(phone?.createdAt).toLocaleString('vi-VN')} */}
                     <TimeAgo date={phone?.updatedAt} />

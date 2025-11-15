@@ -20,9 +20,11 @@ import WindowsCatalogManager from './WindowsCatalogManager';
 import { FaList } from 'react-icons/fa';
 import NavbarAdminDesktop from '../../components/admin/NavbarAdminDesktop ';
 import NavbarAdminMobile from '../../components/admin/responsiveUI/mobile/NavbarAdminMobile';
+import { InlinePriceEditor } from '../../components/admin/inline-edit/InlinePriceEditor';
+import InlineNoteEditor from '../../components/admin/inline-edit/InlineNoteEditor';
 
 const WindowsManager: React.FC = () => {
-  const { windows, loading, error, getAllWindows, deleteWindows } = useContext(WindowsContext);
+  const { windows, loading, error, getAllWindows, updateWindows, deleteWindows } = useContext(WindowsContext);
   const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
@@ -47,6 +49,18 @@ const WindowsManager: React.FC = () => {
   };
   const closeModalEditAdmin = () => setIsModalEditOpen(false);
 
+  const handleInlineUpdate = async (id: string, field: keyof IWindows, value: any) => {
+    const data = new FormData();
+    data.append(String(field), String(value));
+
+    try {
+      await updateWindows(id, data);
+      Toastify('Cập nhật thành công', 200);
+      getAllWindows();
+    } catch {
+      Toastify('Lỗi cập nhật', 500);
+    }
+  };
   const handleDeleteWindows = async () => {
     if (selectedWindowsId) {
       try {
@@ -202,18 +216,22 @@ const WindowsManager: React.FC = () => {
                     )}
                     <span className="bg-black p-1 text-white dark:bg-white dark:text-black">{win?.windows_color}</span>
                   </span>
-                  <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
-                    {(win.windows_price * 1000).toLocaleString('vi-VN')}đ
-                  </span>
-                  <>
-                    {win?.windows_sale === null || win?.windows_sale === 0 || win?.windows_sale === undefined ? (
-                      <>Chưa có giá giảm!</>
-                    ) : (
-                      <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
-                        {(win?.windows_sale * 1000).toLocaleString('vi-VN')}₫
-                      </span>
-                    )}
-                  </>
+                  <InlinePriceEditor<IWindows>
+                    prodId={win._id}
+                    field="windows_price"
+                    value={win.windows_price}
+                    type="number"
+                    formatter={v => `${(Number(v) * 1000).toLocaleString('vi-VN')}đ`}
+                    onSubmit={handleInlineUpdate}
+                  />
+                  <InlinePriceEditor<IWindows>
+                    prodId={win._id}
+                    field="windows_sale"
+                    value={win.windows_sale ?? 0}
+                    type="number"
+                    formatter={v => `${(Number(v) * 1000).toLocaleString('vi-VN')}đ`}
+                    onSubmit={handleInlineUpdate}
+                  />
                   {win?.windows_status.toLocaleLowerCase() === 'new' ? (
                     <span className="line-clamp-3 rounded-md bg-green-500 text-black">
                       {win?.windows_status || 'Không có tình trạng!'}
@@ -224,7 +242,11 @@ const WindowsManager: React.FC = () => {
                     </span>
                   )}
                   <span className="line-clamp-3">{win?.windows_des || 'Không có mô tả!'}</span>
-                  <mark className="line-clamp-3">{win?.windows_note || 'Không có ghi chú!'}</mark>
+                  <InlineNoteEditor
+                    prodId={win._id}
+                    value={win.windows_note ?? ''}
+                    onSubmit={(id, newNote) => handleInlineUpdate(id, 'windows_note', newNote)}
+                  />
                   <span>
                     {/* {new Date(win?.createdAt).toLocaleString('vi-VN')} */}
                     <TimeAgo date={win?.updatedAt} />

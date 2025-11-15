@@ -20,9 +20,11 @@ import MacbookCatalogManager from './MacbookCatalogManager';
 import { FaList } from 'react-icons/fa';
 import NavbarAdminDesktop from '../../components/admin/NavbarAdminDesktop ';
 import NavbarAdminMobile from '../../components/admin/responsiveUI/mobile/NavbarAdminMobile';
+import { InlinePriceEditor } from '../../components/admin/inline-edit/InlinePriceEditor';
+import InlineNoteEditor from '../../components/admin/inline-edit/InlineNoteEditor';
 
 const MacbookManager: React.FC = () => {
-  const { macbook, loading, error, getAllMacbook, deleteMacbook } = useContext(MacbookContext);
+  const { macbook, loading, error, getAllMacbook, updateMacbook, deleteMacbook } = useContext(MacbookContext);
   const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
@@ -46,6 +48,19 @@ const MacbookManager: React.FC = () => {
     setIsModalEditOpen(true);
   };
   const closeModalEditAdmin = () => setIsModalEditOpen(false);
+
+  const handleInlineUpdate = async (id: string, field: keyof IMacbook, value: any) => {
+    const data = new FormData();
+    data.append(String(field), String(value));
+
+    try {
+      await updateMacbook(id, data);
+      Toastify('Cập nhật thành công', 200);
+      getAllMacbook();
+    } catch {
+      Toastify('Lỗi cập nhật', 500);
+    }
+  };
 
   const handleDeleteMacbook = async () => {
     if (selectedMacbookId) {
@@ -202,18 +217,25 @@ const MacbookManager: React.FC = () => {
                     )}
                     <span className="bg-black p-1 text-white dark:bg-white dark:text-black">{mac?.macbook_color}</span>
                   </span>
-                  <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
-                    {(mac.macbook_price * 1000).toLocaleString('vi-VN')}đ
-                  </span>
-                  <>
-                    {mac?.macbook_sale === null || mac?.macbook_sale === 0 || mac?.macbook_sale === undefined ? (
-                      <>Chưa có giá giảm!</>
-                    ) : (
-                      <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
-                        {(mac?.macbook_sale * 1000).toLocaleString('vi-VN')}₫
-                      </span>
-                    )}
-                  </>
+
+                  <InlinePriceEditor<IMacbook>
+                    prodId={mac._id}
+                    field="macbook_price"
+                    value={mac.macbook_price}
+                    type="number"
+                    formatter={v => `${(Number(v) * 1000).toLocaleString('vi-VN')}đ`}
+                    onSubmit={handleInlineUpdate}
+                  />
+
+                  <InlinePriceEditor<IMacbook>
+                    prodId={mac._id}
+                    field="macbook_sale"
+                    value={mac.macbook_sale ?? 0}
+                    type="number"
+                    formatter={v => `${(Number(v) * 1000).toLocaleString('vi-VN')}đ`}
+                    onSubmit={handleInlineUpdate}
+                  />
+
                   {mac?.macbook_status.toLocaleLowerCase() === 'new' ? (
                     <span className="line-clamp-3 rounded-md bg-green-500 text-black">
                       {mac?.macbook_status || 'Không có tình trạng!'}
@@ -224,7 +246,11 @@ const MacbookManager: React.FC = () => {
                     </span>
                   )}
                   <span className="line-clamp-3">{mac?.macbook_des || 'Không có mô tả!'}</span>
-                  <mark className="line-clamp-3">{mac?.macbook_note || 'Không có ghi chú!'}</mark>
+                  <InlineNoteEditor
+                    prodId={mac._id}
+                    value={mac.macbook_note ?? ''}
+                    onSubmit={(id, newNote) => handleInlineUpdate(id, 'macbook_note', newNote)}
+                  />
                   <span>
                     {/* {new Date(mac?.createdAt).toLocaleString('vi-VN')} */}
                     <TimeAgo date={mac?.updatedAt} />
