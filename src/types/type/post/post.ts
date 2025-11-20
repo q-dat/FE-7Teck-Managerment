@@ -4,6 +4,7 @@ export interface IPost {
   catalog: string;
   content: string;
   imageUrl: string;
+  source?: string;
   createdAt: string;
   updatedAt: string;
 }

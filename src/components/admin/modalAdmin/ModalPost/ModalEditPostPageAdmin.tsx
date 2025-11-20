@@ -43,6 +43,7 @@ const ModalEditPostPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({ isOpen,
       setValue('title', postData.title);
       setValue('catalog', postData.catalog);
       setValue('content', postData.content);
+      setValue('source', postData.source);
       setValue('imageUrl', postData.imageUrl);
       setEditorValue(postData.content);
     }
@@ -52,11 +53,11 @@ const ModalEditPostPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({ isOpen,
     const data = new FormData();
     data.append('title', formData.title);
     data.append('catalog', formData.catalog);
-    data.append('content', formData.content || '');
+    data.append('content', formData.content);
+    data.append('source', formData.source || '');
     if (formData.imageUrl?.[0]) {
       data.append('imageUrl', formData.imageUrl[0]);
     }
-
     try {
       await updatePost(postId, data);
       reset();
@@ -101,7 +102,7 @@ const ModalEditPostPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({ isOpen,
             <div className="w-full xl:w-1/2">
               <LabelForm title={'Tiêu đề bài viết'} />
               <Textarea
-                className="h-[100px] w-full border border-gray-50 bg-white text-black placeholder:text-black focus:border focus:border-gray-50 focus:outline-none dark:bg-gray-700 dark:text-white xl:h-[350px]"
+                className="h-[100px] w-full border border-gray-50 bg-white text-black placeholder:text-black focus:border focus:border-gray-50 focus:outline-none dark:bg-gray-700 dark:text-white xl:h-[30vh]"
                 {...register('title')}
                 placeholder="Tiêu đề bài viết"
               />
@@ -120,6 +121,8 @@ const ModalEditPostPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({ isOpen,
                   </option>
                 ))}
               </Select>
+              <LabelForm title={'Nguồn'} />
+              <InputModal type="text" {...register('source')} placeholder="Nguồn:..." />
               <LabelForm title={'Ảnh đại diện'} />
               <InputModal type="file" {...register('imageUrl')} placeholder="Ảnh đại diện" />
             </div>
@@ -135,7 +138,7 @@ const ModalEditPostPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({ isOpen,
                     onChange={value => field.onChange(value)}
                     theme="snow"
                     modules={modules}
-                    className="mb-4 h-[400px] overflow-auto rounded-md border text-black scrollbar-hide dark:text-white xl:h-[600px]"
+                    className="mb-4 h-[400px] overflow-auto rounded-md border text-black scrollbar-hide dark:text-white xl:h-[70vh]"
                     placeholder="Nội dung bài viết..."
                   />
                 )}

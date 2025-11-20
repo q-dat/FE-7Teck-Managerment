@@ -39,6 +39,7 @@ const ModalCreatePostPageAdmin: React.FC<ModalCreatePostProps> = ({ isOpen, onCl
     data.append('title', formData.title);
     data.append('catalog', formData.catalog);
     data.append('content', editorValue);
+    data.append('source', formData.source || '');
     if (formData.imageUrl) {
       data.append('imageUrl', formData.imageUrl[0]);
     }
@@ -86,7 +87,7 @@ const ModalCreatePostPageAdmin: React.FC<ModalCreatePostProps> = ({ isOpen, onCl
             <div className="w-full xl:w-1/2">
               <LabelForm title={'Tiêu đề bài viết'} />
               <Textarea
-                className="h-[100px] w-full border border-gray-50 bg-white text-black placeholder:text-black focus:border focus:border-gray-50 focus:outline-none dark:bg-gray-700 dark:text-white xl:h-[429px]"
+                className="h-[100px] w-full border border-gray-50 bg-white text-black placeholder:text-black focus:border focus:border-gray-50 focus:outline-none dark:bg-gray-700 dark:text-white xl:h-[30vh]"
                 {...register('title', { required: true })}
                 placeholder="Tiêu đề bài viết"
               />
@@ -105,6 +106,8 @@ const ModalCreatePostPageAdmin: React.FC<ModalCreatePostProps> = ({ isOpen, onCl
                   </option>
                 ))}
               </Select>
+              <LabelForm title={'Nguồn'} />
+              <InputModal type="text" {...register('source')} placeholder="Nguồn:..." />
               <LabelForm title={'Ảnh đại diện'} />
               <InputModal type="file" {...register('imageUrl', { required: true })} placeholder="Ảnh đại diện" />
             </div>
@@ -115,7 +118,7 @@ const ModalCreatePostPageAdmin: React.FC<ModalCreatePostProps> = ({ isOpen, onCl
                 onChange={setEditorValue}
                 theme="snow"
                 modules={modules}
-                className="mb-4 h-[400px] overflow-auto rounded-md border text-black scrollbar-hide dark:text-white xl:h-[600px]"
+                className="mb-4 h-[400px] overflow-auto rounded-md border text-black scrollbar-hide dark:text-white xl:h-[70vh]"
                 placeholder="Nội dung bài viết..."
               />
             </div>
