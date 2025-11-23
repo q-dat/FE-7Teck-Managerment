@@ -6,12 +6,13 @@ import { isIErrorResponse } from '../../types/error/error';
 import { Button, Table } from 'react-daisyui';
 import { FaCircleInfo, FaPenToSquare } from 'react-icons/fa6';
 import { MdDelete } from 'react-icons/md';
-import { RiAddBoxLine } from 'react-icons/ri';
+import { RiAddBoxLine, RiUploadCloud2Line } from 'react-icons/ri';
 import NavtitleAdmin from '../../components/admin/NavtitleAdmin';
 import TableListAdmin from '../../components/admin/TablelistAdmin';
 import ModalCreatePhonePageAdmin from '../../components/admin/modalAdmin/ModalPhone/ModalCreatePhonePageAdmin';
 import ModalDeletePhonePageAdmin from '../../components/admin/modalAdmin/ModalPhone/ModalDeletePhonePageAdmin';
 import ModalEditPhonePageAdmin from '../../components/admin/modalAdmin/ModalPhone/ModalEditPhonePageAdmin';
+import ModalBulkImportPhone from '../../components/admin/modalAdmin/ModalPhone/ModalBulkImportPhone';
 import { PhoneContext } from '../../context/phone/PhoneContext';
 import { IPhone } from '../../types/type/phone/phone';
 import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
@@ -29,6 +30,7 @@ const PhoneManager: React.FC = () => {
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
   const [selectedPhoneId, setSelectedPhoneId] = useState<string | null>(null);
+  const [isBulkImportOpen, setIsBulkImportOpen] = useState(false);
   // handleCatalogModal
   const [selectedCatalog, setSelectedCatalog] = useState(false);
   // handleCatalogModal
@@ -101,7 +103,6 @@ const PhoneManager: React.FC = () => {
                 >
                   Tất cả
                 </Button>
-
                 {/* New */}
                 <Button
                   size="sm"
@@ -114,7 +115,6 @@ const PhoneManager: React.FC = () => {
                 >
                   Mới
                 </Button>
-
                 {/* Used */}
                 <Button
                   size="sm"
@@ -147,15 +147,25 @@ const PhoneManager: React.FC = () => {
                   </div>
                 </div>
               )}
-              {/* Add Product */}
-              <Button
-                color="primary"
-                onClick={openModalCreateAdmin}
-                className="w-[100px] text-sm font-light text-white"
-              >
-                <RiAddBoxLine className="text-xl" color="white" />
-                Thêm
-              </Button>
+              <div className="flex flex-row items-center gap-2">
+                {/* Add Product */}
+                <Button
+                  color="primary"
+                  onClick={openModalCreateAdmin}
+                  className="w-[100px] text-sm font-light text-white"
+                >
+                  <RiAddBoxLine className="text-xl" color="white" />
+                  Thêm
+                </Button>
+                {/* Bulk Import Button */}
+                <Button
+                  color="primary"
+                  onClick={() => setIsBulkImportOpen(true)}
+                  className="flex w-auto flex-row text-sm font-light text-white"
+                >
+                  <RiUploadCloud2Line className="text-xl" />
+                </Button>
+              </div>
             </div>
           }
         />
@@ -292,6 +302,11 @@ const PhoneManager: React.FC = () => {
             )}
           </Table.Body>
         }
+      />
+      <ModalBulkImportPhone
+        isOpen={isBulkImportOpen}
+        onClose={() => setIsBulkImportOpen(false)}
+        onSuccess={() => getAllPhones()}
       />
       <ModalCreatePhonePageAdmin isOpen={isModalCreateOpen} onClose={closeModalCreateAdmin} />
       <ModalDeletePhonePageAdmin
