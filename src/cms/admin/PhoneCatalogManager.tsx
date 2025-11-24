@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Toastify } from '../../helper/Toastify';
 import LoadingLocal from '../../components/orther/loading/LoadingLocal';
 import NavtitleAdmin from '../../components/admin/NavtitleAdmin';
-import { RiAddBoxLine } from 'react-icons/ri';
+import { RiAddBoxLine, RiUploadCloud2Line } from 'react-icons/ri';
 import { Button, Table } from 'react-daisyui';
 import { MdDelete } from 'react-icons/md';
 import ErrorLoading from '../../components/orther/error/ErrorLoading';
@@ -17,6 +17,7 @@ import { IPhoneCatalog } from '../../types/type/phone-catalog/phone-catalog';
 import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
 import NavbarAdminMobile from '../../components/admin/responsiveUI/mobile/NavbarAdminMobile';
 import Zoom from '../../lib/Zoom';
+import ModalBulkImportPhoneCatalog from '../../components/admin/modalAdmin/ModalPhoneCatalog/ModalBulkImportPhoneCatalog';
 
 const PhoneCatalogManager: React.FC = () => {
   const { loading, phoneCatalogs, deletePhoneCatalog, getAllPhoneCatalogs, error } = useContext(PhoneCatalogContext);
@@ -24,6 +25,7 @@ const PhoneCatalogManager: React.FC = () => {
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
   const [selectedPhoneCatalogId, setSelectedPhoneCatalogId] = useState<string | null>(null);
+  const [isBulkImportOpen, setIsBulkImportOpen] = useState(false);
 
   const openModalCreateAdmin = () => setIsModalCreateOpen(true);
   const closeModalCreateAdmin = () => setIsModalCreateOpen(false);
@@ -70,6 +72,14 @@ const PhoneCatalogManager: React.FC = () => {
               >
                 <RiAddBoxLine className="text-xl" color="white" />
                 Thêm
+              </Button>
+              {/* Bulk Import Button */}
+              <Button
+                color="primary"
+                onClick={() => setIsBulkImportOpen(true)}
+                className="flex w-auto flex-row text-sm font-light text-white"
+              >
+                <RiUploadCloud2Line className="text-xl" />
               </Button>
             </div>
           }
@@ -155,6 +165,11 @@ const PhoneCatalogManager: React.FC = () => {
             )}
           </Table.Body>
         }
+      />
+      <ModalBulkImportPhoneCatalog
+        isOpen={isBulkImportOpen}
+        onClose={() => setIsBulkImportOpen(false)}
+        onSuccess={() => getAllPhoneCatalogs()}
       />
       <ModalCreatePhoneCatalogPageAdmin isOpen={isModalCreateOpen} onClose={closeModalCreateAdmin} />
       <ModalDeletePhoneCatalogPageAdmin

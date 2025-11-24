@@ -1,0 +1,2185 @@
+{
+    "message": "Lấy danh sách danh mục điện thoại kèm số lượng thành công!",
+    "count": 32,
+    "visibleCount": 32,
+    "phoneCatalogs": [
+        {
+            "_id": "68b3d4b8eba09f56d8d8b4c8",
+            "name": "Samsung Galaxy S24 Ultra 12GB/512GB",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1756615864/zhgjvusypaxbfv2xvxbd.webp",
+            "price": 24400,
+            "status": 0,
+            "content": "",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "12GB",
+                "storage_capacity": "512GB",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_video": [
+                    "1,2,3"
+                ],
+                "rear_camera_flash": "",
+                "rear_camera_features": [],
+                "front_camera_resolution": "",
+                "front_camera_features": [],
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": ""
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "advanced_security": [],
+                "special_features": [],
+                "water_dust_resistant": "",
+                "voice_recording": [],
+                "radio": [],
+                "video_playback": "",
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "wifi": [],
+                "gps": [],
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": ""
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-08-31T04:51:04.864Z",
+            "updatedAt": "2025-11-14T00:48:10.947Z",
+            "__v": 0,
+            "phoneCount": 2
+        },
+        {
+            "_id": "68b3cb0ceba09f56d8d8b34c",
+            "name": " Samsung Galaxy S24 Ultra 5G 12GB/256GB",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1756613388/yiuabiq09jwa9ae7fmk0.jpg",
+            "price": 21600,
+            "status": 0,
+            "content": "",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "12GB",
+                "storage_capacity": "256GB",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_flash": "",
+                "front_camera_resolution": "",
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": "",
+                "rear_camera_video": [],
+                "rear_camera_features": [],
+                "front_camera_features": []
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "water_dust_resistant": "",
+                "video_playback": "",
+                "advanced_security": [],
+                "special_features": [],
+                "voice_recording": [],
+                "radio": [],
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": "",
+                "wifi": [],
+                "gps": []
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-08-31T04:09:48.806Z",
+            "updatedAt": "2025-08-31T04:09:48.806Z",
+            "__v": 0,
+            "phoneCount": 6
+        },
+        {
+            "_id": "68b2e6abba8c9af5b798cc74",
+            "name": "Samsung Galaxy S24 Plus 12GB 256GB",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1756554922/dmyfbzthc3iyrywnzzuv.jpg",
+            "price": 16400,
+            "status": 0,
+            "content": "",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "12GB",
+                "storage_capacity": "256GB",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_flash": "",
+                "front_camera_resolution": "",
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": "",
+                "rear_camera_video": [],
+                "rear_camera_features": [],
+                "front_camera_features": []
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "water_dust_resistant": "",
+                "video_playback": "",
+                "advanced_security": [],
+                "special_features": [],
+                "voice_recording": [],
+                "radio": [],
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": "",
+                "wifi": [],
+                "gps": []
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-08-30T11:55:23.269Z",
+            "updatedAt": "2025-08-30T11:55:23.269Z",
+            "__v": 0,
+            "phoneCount": 1
+        },
+        {
+            "_id": "68b2e030ba8c9af5b798cb7b",
+            "name": " Samsung Galaxy S24 FE 5G 8GB/256GB",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1756553263/aniupfsooazqacthaeg8.jpg",
+            "price": 13400,
+            "status": 0,
+            "content": "",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "8GB",
+                "storage_capacity": "256GB",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_flash": "",
+                "front_camera_resolution": "",
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": "",
+                "rear_camera_video": [],
+                "rear_camera_features": [],
+                "front_camera_features": []
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "water_dust_resistant": "",
+                "video_playback": "",
+                "advanced_security": [],
+                "special_features": [],
+                "voice_recording": [],
+                "radio": [],
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": "",
+                "wifi": [],
+                "gps": []
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-08-30T11:27:44.321Z",
+            "updatedAt": "2025-08-30T11:27:44.321Z",
+            "__v": 0,
+            "phoneCount": 3
+        },
+        {
+            "_id": "68b2cc61ba8c9af5b798c775",
+            "name": "Samsung Galaxy S24 FE 5G 8GB/128GB",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1756548192/h5tumrdnjl2mzte1cyfm.jpg",
+            "price": 12400,
+            "status": 0,
+            "content": "",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "8GB",
+                "storage_capacity": "128GB",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_flash": "",
+                "front_camera_resolution": "",
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": "",
+                "rear_camera_video": [],
+                "rear_camera_features": [],
+                "front_camera_features": []
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "water_dust_resistant": "",
+                "video_playback": "",
+                "advanced_security": [],
+                "special_features": [],
+                "voice_recording": [],
+                "radio": [],
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": "",
+                "wifi": [],
+                "gps": []
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-08-30T10:03:13.033Z",
+            "updatedAt": "2025-08-30T10:03:13.033Z",
+            "__v": 0,
+            "phoneCount": 4
+        },
+        {
+            "_id": "68b2c757ba8c9af5b798c76c",
+            "name": "Samsung Galaxy M15 5G 4GB/128GB",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1756546903/xgzdbxej8q9ayihdsvs4.jpg",
+            "price": 4320,
+            "status": 0,
+            "content": "",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "4GB",
+                "storage_capacity": "128GB",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_flash": "",
+                "front_camera_resolution": "",
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": "",
+                "rear_camera_video": [],
+                "rear_camera_features": [],
+                "front_camera_features": []
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "water_dust_resistant": "",
+                "video_playback": "",
+                "advanced_security": [],
+                "special_features": [],
+                "voice_recording": [],
+                "radio": [],
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": "",
+                "wifi": [],
+                "gps": []
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-08-30T09:41:43.972Z",
+            "updatedAt": "2025-08-30T09:41:43.972Z",
+            "__v": 0,
+            "phoneCount": 1
+        },
+        {
+            "_id": "68b2b9faba8c9af5b798c495",
+            "name": "Samsung Galaxy A56 5G 12GB/256GB",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1756543482/bptjht93p92534uqduxg.jpg",
+            "price": 10500,
+            "status": 0,
+            "content": "New",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": " 12GB",
+                "storage_capacity": "256GB",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_flash": "",
+                "front_camera_resolution": "",
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": "",
+                "rear_camera_video": [],
+                "rear_camera_features": [],
+                "front_camera_features": []
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "water_dust_resistant": "",
+                "video_playback": "",
+                "advanced_security": [],
+                "special_features": [],
+                "voice_recording": [],
+                "radio": [],
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": "",
+                "wifi": [],
+                "gps": []
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-08-30T08:44:42.550Z",
+            "updatedAt": "2025-11-24T17:18:48.984Z",
+            "__v": 0,
+            "phoneCount": 2
+        },
+        {
+            "_id": "68b2b4f0ba8c9af5b798c391",
+            "name": "Samsung Galaxy A56 5G 8GB/256GB",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1756542192/tu184qwn4nbo8sbpqayg.jpg",
+            "price": 9500,
+            "status": 0,
+            "content": "New",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "8GB",
+                "storage_capacity": "256GB",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_flash": "",
+                "front_camera_resolution": "",
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": "",
+                "rear_camera_video": [],
+                "rear_camera_features": [],
+                "front_camera_features": []
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "water_dust_resistant": "",
+                "video_playback": "",
+                "advanced_security": [],
+                "special_features": [],
+                "voice_recording": [],
+                "radio": [],
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": "",
+                "wifi": [],
+                "gps": []
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-08-30T08:23:12.734Z",
+            "updatedAt": "2025-11-24T17:18:48.880Z",
+            "__v": 0,
+            "phoneCount": 3
+        },
+        {
+            "_id": "68af0c11627d6daa8da09e63",
+            "name": "Samsung Galaxy A56 5G 8GB/128GB",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1756302353/gny4fdhxmmng1yg50kre.jpg",
+            "price": 8200,
+            "status": 0,
+            "content": "New",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "8GB",
+                "storage_capacity": "128GB",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_flash": "",
+                "front_camera_resolution": "",
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": "",
+                "rear_camera_video": [],
+                "rear_camera_features": [],
+                "front_camera_features": []
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "water_dust_resistant": "",
+                "video_playback": "",
+                "advanced_security": [],
+                "special_features": [],
+                "voice_recording": [],
+                "radio": [],
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": "",
+                "wifi": [],
+                "gps": []
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-08-27T13:45:53.906Z",
+            "updatedAt": "2025-11-24T17:18:48.776Z",
+            "__v": 0,
+            "phoneCount": 3
+        },
+        {
+            "_id": "68a1dc0fc0818504e861b4c3",
+            "name": "Samsung Galaxy A36 5G 12GB/256GB",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1755438094/ixnu24f7tdcmzkzgrqf3.jpg",
+            "price": 8750,
+            "status": 0,
+            "content": "",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "12GB",
+                "storage_capacity": "256GB",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_flash": "",
+                "front_camera_resolution": "",
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": "",
+                "rear_camera_video": [],
+                "rear_camera_features": [],
+                "front_camera_features": []
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "water_dust_resistant": "",
+                "video_playback": "",
+                "advanced_security": [],
+                "special_features": [],
+                "voice_recording": [],
+                "radio": [],
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": "",
+                "wifi": [],
+                "gps": []
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-08-17T13:41:35.013Z",
+            "updatedAt": "2025-08-17T13:41:35.013Z",
+            "__v": 0,
+            "phoneCount": 1
+        },
+        {
+            "_id": "68a1db48c0818504e861b4b7",
+            "name": "Samsung Galaxy A36 5G 8GB/256GB",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1755437895/ptqij5nsemapnk8jezbf.jpg",
+            "price": 7700,
+            "status": 0,
+            "content": "",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "8GB",
+                "storage_capacity": "256GB",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_flash": "",
+                "front_camera_resolution": "",
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": "",
+                "rear_camera_video": [],
+                "rear_camera_features": [],
+                "front_camera_features": []
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "water_dust_resistant": "",
+                "video_playback": "",
+                "advanced_security": [],
+                "special_features": [],
+                "voice_recording": [],
+                "radio": [],
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": "",
+                "wifi": [],
+                "gps": []
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-08-17T13:38:16.295Z",
+            "updatedAt": "2025-08-17T13:38:16.295Z",
+            "__v": 0,
+            "phoneCount": 1
+        },
+        {
+            "_id": "68a1d810c0818504e861b46f",
+            "name": "Samsung Galaxy A36 5G 8GB/128GB",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1755437071/nw2wfbks3r6pywlgz5vk.jpg",
+            "price": 7000,
+            "status": 0,
+            "content": "New",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "8GB",
+                "storage_capacity": "128GB",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_flash": "",
+                "front_camera_resolution": "",
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": "",
+                "rear_camera_video": [],
+                "rear_camera_features": [],
+                "front_camera_features": []
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "water_dust_resistant": "",
+                "video_playback": "",
+                "advanced_security": [],
+                "special_features": [],
+                "voice_recording": [],
+                "radio": [],
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": "",
+                "wifi": [],
+                "gps": []
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-08-17T13:24:32.537Z",
+            "updatedAt": "2025-11-24T17:18:48.674Z",
+            "__v": 0,
+            "phoneCount": 4
+        },
+        {
+            "_id": "68a1d74cc0818504e861b466",
+            "name": "Samsung Galaxy A35 5G 8GB/128GB",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1755436875/ysxbdho3en4uhf4stjgy.jpg",
+            "price": 7050,
+            "status": 0,
+            "content": "",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "8GB",
+                "storage_capacity": "128GB",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_flash": "",
+                "front_camera_resolution": "",
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": "",
+                "rear_camera_video": [],
+                "rear_camera_features": [],
+                "front_camera_features": []
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "water_dust_resistant": "",
+                "video_playback": "",
+                "advanced_security": [],
+                "special_features": [],
+                "voice_recording": [],
+                "radio": [],
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": "",
+                "wifi": [],
+                "gps": []
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-08-17T13:21:16.701Z",
+            "updatedAt": "2025-08-17T13:21:16.701Z",
+            "__v": 0,
+            "phoneCount": 1
+        },
+        {
+            "_id": "68a1d10bc0818504e861b369",
+            "name": "Samsung Galaxy A26 5G 8GB/128GB",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1755435275/u2ke9in8gghggtbm9o5y.jpg",
+            "price": 6100,
+            "status": 0,
+            "content": "New",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "8GB",
+                "storage_capacity": "128GB",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_flash": "",
+                "front_camera_resolution": "",
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": "",
+                "rear_camera_video": [],
+                "rear_camera_features": [],
+                "front_camera_features": []
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "water_dust_resistant": "",
+                "video_playback": "",
+                "advanced_security": [],
+                "special_features": [],
+                "voice_recording": [],
+                "radio": [],
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": "",
+                "wifi": [],
+                "gps": []
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-08-17T12:54:35.883Z",
+            "updatedAt": "2025-11-24T17:18:48.570Z",
+            "__v": 0,
+            "phoneCount": 2
+        },
+        {
+            "_id": "68a1d037c0818504e861b358",
+            "name": "Samsung Galaxy A16 5G 8GB/256GB",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1755435062/wlbekmnw7gwqky9k76oa.jpg",
+            "price": 6070,
+            "status": 0,
+            "content": "",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "8GB",
+                "storage_capacity": "256GB",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_flash": "",
+                "front_camera_resolution": "",
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": "",
+                "rear_camera_video": [],
+                "rear_camera_features": [],
+                "front_camera_features": []
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "water_dust_resistant": "",
+                "video_playback": "",
+                "advanced_security": [],
+                "special_features": [],
+                "voice_recording": [],
+                "radio": [],
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": "",
+                "wifi": [],
+                "gps": []
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-08-17T12:51:03.225Z",
+            "updatedAt": "2025-08-17T12:51:03.225Z",
+            "__v": 0,
+            "phoneCount": 2
+        },
+        {
+            "_id": "68a1ce7dc0818504e861b2e1",
+            "name": "Samsung Galaxy A16 5G 8GB/128GB",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1755434620/iorlbudnpgrm3igdljyo.jpg",
+            "price": 5500,
+            "status": 0,
+            "content": "",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "8GB",
+                "storage_capacity": "128GB",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_flash": "",
+                "front_camera_resolution": "",
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": "",
+                "rear_camera_video": [],
+                "rear_camera_features": [],
+                "front_camera_features": []
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "water_dust_resistant": "",
+                "video_playback": "",
+                "advanced_security": [],
+                "special_features": [],
+                "voice_recording": [],
+                "radio": [],
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": "",
+                "wifi": [],
+                "gps": []
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-08-17T12:43:41.243Z",
+            "updatedAt": "2025-08-17T12:43:41.243Z",
+            "__v": 0,
+            "phoneCount": 3
+        },
+        {
+            "_id": "68a1cc3ac0818504e861b2c8",
+            "name": "Samsung Galaxy A16 8GB/128GB",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1755434041/va01etukhce5v5op13qx.jpg",
+            "price": 5050,
+            "status": 0,
+            "content": "",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "8GB",
+                "storage_capacity": "128GB",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_flash": "",
+                "front_camera_resolution": "",
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": "",
+                "rear_camera_video": [],
+                "rear_camera_features": [],
+                "front_camera_features": []
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "water_dust_resistant": "",
+                "video_playback": "",
+                "advanced_security": [],
+                "special_features": [],
+                "voice_recording": [],
+                "radio": [],
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": "",
+                "wifi": [],
+                "gps": []
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-08-17T12:34:02.281Z",
+            "updatedAt": "2025-08-17T12:34:02.281Z",
+            "__v": 0,
+            "phoneCount": 3
+        },
+        {
+            "_id": "68a1c9fac0818504e861b2a5",
+            "name": "Samsung Galaxy A16 4GB/128GB",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1755433465/mmd7mcmc95pwoqpjkrzs.jpg",
+            "price": 4260,
+            "status": 0,
+            "content": "",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "4GB",
+                "storage_capacity": "128GB",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_flash": "",
+                "front_camera_resolution": "",
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": "",
+                "rear_camera_video": [],
+                "rear_camera_features": [],
+                "front_camera_features": []
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "water_dust_resistant": "",
+                "video_playback": "",
+                "advanced_security": [],
+                "special_features": [],
+                "voice_recording": [],
+                "radio": [],
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": "",
+                "wifi": [],
+                "gps": []
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-08-17T12:24:26.328Z",
+            "updatedAt": "2025-08-17T12:24:26.328Z",
+            "__v": 0,
+            "phoneCount": 3
+        },
+        {
+            "_id": "68725b31f0aef9c0729e5d6e",
+            "name": "Samsung Galaxy A06 5G 4GB/128GB",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1752324913/xcudks7b63nupe9hdgsu.png",
+            "price": 3630,
+            "status": 0,
+            "content": "<p><br></p>",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "4GB",
+                "storage_capacity": "",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_flash": "",
+                "front_camera_resolution": "",
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": "",
+                "rear_camera_video": [],
+                "rear_camera_features": [],
+                "front_camera_features": []
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "water_dust_resistant": "",
+                "video_playback": "",
+                "advanced_security": [],
+                "special_features": [],
+                "voice_recording": [],
+                "radio": [],
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": "",
+                "wifi": [],
+                "gps": []
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-07-12T12:55:13.441Z",
+            "updatedAt": "2025-07-31T11:54:30.788Z",
+            "__v": 0,
+            "phoneCount": 3
+        },
+        {
+            "_id": "687256e8f0aef9c0729e5cbb",
+            "name": "Samsung Galaxy A06 4G 6GB/128GB",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1752323816/rzqt3uy1a4njcesfbcax.jpg",
+            "price": 3580,
+            "status": 0,
+            "content": "",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "6GB",
+                "storage_capacity": "",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_flash": "",
+                "front_camera_resolution": "",
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": "",
+                "rear_camera_video": [],
+                "rear_camera_features": [],
+                "front_camera_features": []
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "water_dust_resistant": "",
+                "video_playback": "",
+                "advanced_security": [],
+                "special_features": [],
+                "voice_recording": [],
+                "radio": [],
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": "",
+                "wifi": [],
+                "gps": []
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-07-12T12:36:56.990Z",
+            "updatedAt": "2025-08-01T04:03:43.733Z",
+            "__v": 0,
+            "phoneCount": 2
+        },
+        {
+            "_id": "68720944d5a591bf219b4932",
+            "name": "Samsung Galaxy A06 4G 4GB/128GB",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1752303939/jfblmhjuvgaj7w8adivn.jpg",
+            "price": 3300,
+            "status": 0,
+            "content": "",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "4GB",
+                "storage_capacity": "",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_video": [],
+                "rear_camera_flash": "",
+                "rear_camera_features": [],
+                "front_camera_resolution": "",
+                "front_camera_features": [],
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": ""
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "advanced_security": [],
+                "special_features": [],
+                "water_dust_resistant": "",
+                "voice_recording": [],
+                "radio": [],
+                "video_playback": "",
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "wifi": [],
+                "gps": [],
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": ""
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-07-12T07:05:40.334Z",
+            "updatedAt": "2025-08-01T04:04:01.715Z",
+            "__v": 0,
+            "phoneCount": 3
+        },
+        {
+            "_id": "68712ec47571a71fe2000f6f",
+            "name": "Samsung Galaxy A06 5G 4GB/64GB",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1752248004/hzwdrinkyf74memlsh6r.png",
+            "price": 3160,
+            "status": 0,
+            "content": "New",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "4GB",
+                "storage_capacity": "",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_video": [],
+                "rear_camera_flash": "",
+                "rear_camera_features": [],
+                "front_camera_resolution": "",
+                "front_camera_features": [],
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": ""
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "advanced_security": [],
+                "special_features": [],
+                "water_dust_resistant": "",
+                "voice_recording": [],
+                "radio": [],
+                "video_playback": "",
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "wifi": [],
+                "gps": [],
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": ""
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-07-11T15:33:24.735Z",
+            "updatedAt": "2025-11-24T17:18:48.204Z",
+            "__v": 0,
+            "phoneCount": 3
+        },
+        {
+            "_id": "686406c4c04afca1a5a137a5",
+            "name": "Samsung Galaxy A06 4G 4GB/64GB",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1751385796/rix4nv5cpec0pqapwpku.jpg",
+            "price": 3090,
+            "status": 0,
+            "content": "",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "4GB",
+                "storage_capacity": "",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_video": [],
+                "rear_camera_flash": "",
+                "rear_camera_features": [],
+                "front_camera_resolution": "",
+                "front_camera_features": [],
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": ""
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "advanced_security": [],
+                "special_features": [],
+                "water_dust_resistant": "",
+                "voice_recording": [],
+                "radio": [],
+                "video_playback": "",
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "wifi": [],
+                "gps": [],
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": ""
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-07-01T16:03:16.809Z",
+            "updatedAt": "2025-08-01T04:04:30.362Z",
+            "__v": 0,
+            "phoneCount": 3
+        },
+        {
+            "_id": "6863ff96c04afca1a5a13771",
+            "name": "Samsung Galaxy A05 4G 4GB/64GB",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1751383958/eyk5akwz4tuck6gisi7j.jpg",
+            "price": 2980,
+            "status": 0,
+            "content": "",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "4GB",
+                "storage_capacity": "",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_video": [],
+                "rear_camera_flash": "",
+                "rear_camera_features": [],
+                "front_camera_resolution": "",
+                "front_camera_features": [],
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": ""
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "advanced_security": [],
+                "special_features": [],
+                "water_dust_resistant": "",
+                "voice_recording": [],
+                "radio": [],
+                "video_playback": "",
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "wifi": [],
+                "gps": [],
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": ""
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-07-01T15:32:38.997Z",
+            "updatedAt": "2025-08-01T04:04:39.668Z",
+            "__v": 0,
+            "phoneCount": 2
+        },
+        {
+            "_id": "684e52f8cf5083200d88fa22",
+            "name": "iPhone 16 Pro Max 1TB",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1749963514/lw7reymzf2dmpc0moovk.webp",
+            "price": 31600,
+            "status": 1,
+            "content": "",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "",
+                "storage_capacity": "1TB",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_video": [],
+                "rear_camera_flash": "",
+                "rear_camera_features": [],
+                "front_camera_resolution": "",
+                "front_camera_features": [],
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": ""
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "advanced_security": [],
+                "special_features": [],
+                "water_dust_resistant": "",
+                "voice_recording": [],
+                "radio": [],
+                "video_playback": "",
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "wifi": [],
+                "gps": [],
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": ""
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-06-15T04:58:32.405Z",
+            "updatedAt": "2025-08-01T04:05:45.324Z",
+            "__v": 0,
+            "phoneCount": 1
+        },
+        {
+            "_id": "684e52cecf5083200d88fa1e",
+            "name": "iPhone 16 Pro Max 512GB",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1749963472/jxtjqbg5wawk5uq8wdcu.webp",
+            "price": 30000,
+            "status": 1,
+            "content": "",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "",
+                "storage_capacity": "512GB",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_video": [],
+                "rear_camera_flash": "",
+                "rear_camera_features": [],
+                "front_camera_resolution": "",
+                "front_camera_features": [],
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": ""
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "advanced_security": [],
+                "special_features": [],
+                "water_dust_resistant": "",
+                "voice_recording": [],
+                "radio": [],
+                "video_playback": "",
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "wifi": [],
+                "gps": [],
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": ""
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-06-15T04:57:50.885Z",
+            "updatedAt": "2025-08-01T04:06:00.729Z",
+            "__v": 0,
+            "phoneCount": 0
+        },
+        {
+            "_id": "684e529acf5083200d88fa1a",
+            "name": "iPhone 16 Pro Max 256GB",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1749963420/spc7qg5emdkoa2o6v0qz.webp",
+            "price": 32500,
+            "status": 1,
+            "content": "",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "",
+                "storage_capacity": "256GB",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_video": [],
+                "rear_camera_flash": "",
+                "rear_camera_features": [],
+                "front_camera_resolution": "",
+                "front_camera_features": [],
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": ""
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "advanced_security": [],
+                "special_features": [],
+                "water_dust_resistant": "",
+                "voice_recording": [],
+                "radio": [],
+                "video_playback": "",
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "wifi": [],
+                "gps": [],
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": ""
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-06-15T04:56:58.637Z",
+            "updatedAt": "2025-08-01T04:06:11.818Z",
+            "__v": 0,
+            "phoneCount": 1
+        },
+        {
+            "_id": "684e5077698c83dac6550796",
+            "name": "iPhone 16 Pro Max 1TB - Chính hãng VN/A",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1749962872/zn1m3clngln8aw7g3qf5.webp",
+            "price": 42600,
+            "status": 0,
+            "content": "",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "",
+                "storage_capacity": "1TB",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_video": [],
+                "rear_camera_flash": "",
+                "rear_camera_features": [],
+                "front_camera_resolution": "",
+                "front_camera_features": [],
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": ""
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "advanced_security": [],
+                "special_features": [],
+                "water_dust_resistant": "",
+                "voice_recording": [],
+                "radio": [],
+                "video_playback": "",
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "wifi": [],
+                "gps": [],
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": ""
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-06-15T04:47:51.101Z",
+            "updatedAt": "2025-08-01T04:06:28.406Z",
+            "__v": 0,
+            "phoneCount": 3
+        },
+        {
+            "_id": "684e4dee46831a73f7709623",
+            "name": "iPhone 16 Pro Max 512GB - Chính hãng VN/A",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1749962836/sgzctslm3sjrojby7cgw.webp",
+            "price": 36300,
+            "status": 0,
+            "content": "",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "",
+                "storage_capacity": "512GB",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_video": [],
+                "rear_camera_flash": "",
+                "rear_camera_features": [],
+                "front_camera_resolution": "",
+                "front_camera_features": [],
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": ""
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "advanced_security": [],
+                "special_features": [],
+                "water_dust_resistant": "",
+                "voice_recording": [],
+                "radio": [],
+                "video_playback": "",
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "wifi": [],
+                "gps": [],
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": ""
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-06-15T04:37:02.826Z",
+            "updatedAt": "2025-08-01T04:06:39.749Z",
+            "__v": 0,
+            "phoneCount": 3
+        },
+        {
+            "_id": "684e44623a1aa233adfbed78",
+            "name": "iPhone 16 Pro Max 256GB - Chính hãng VN/A",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1750704951/yjyksv5i5a88o1ta6ryl.webp",
+            "price": 30150,
+            "status": 0,
+            "content": "",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "",
+                "storage_capacity": "256GB",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_video": [],
+                "rear_camera_flash": "",
+                "rear_camera_features": [],
+                "front_camera_resolution": "",
+                "front_camera_features": [],
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": ""
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "advanced_security": [],
+                "special_features": [],
+                "water_dust_resistant": "",
+                "voice_recording": [],
+                "radio": [],
+                "video_playback": "",
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "wifi": [],
+                "gps": [],
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": ""
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-06-15T03:56:18.692Z",
+            "updatedAt": "2025-08-01T04:07:21.600Z",
+            "__v": 0,
+            "phoneCount": 4
+        },
+        {
+            "_id": "684bc8e2b6b694a7afca4cb9",
+            "name": "iPhone 15 Promax 256GB",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1749797092/esqry16ja6bduwodffh0.webp",
+            "price": 21500,
+            "status": 1,
+            "content": "",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "",
+                "storage_capacity": "256GB",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_video": [],
+                "rear_camera_flash": "",
+                "rear_camera_features": [],
+                "front_camera_resolution": "",
+                "front_camera_features": [],
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": ""
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "advanced_security": [],
+                "special_features": [],
+                "water_dust_resistant": "",
+                "voice_recording": [],
+                "radio": [],
+                "video_playback": "",
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "wifi": [],
+                "gps": [],
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": ""
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-06-13T06:44:50.601Z",
+            "updatedAt": "2025-08-01T04:07:32.875Z",
+            "__v": 0,
+            "phoneCount": 2
+        },
+        {
+            "_id": "684a93a778870d7440c1c09d",
+            "name": "iPhone 14 Plus 256GB",
+            "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1749717930/ksjdboxjrifzkrm7nybz.jpg",
+            "price": 11000,
+            "status": 1,
+            "content": "",
+            "configuration_and_memory": {
+                "operating_system": "",
+                "cpu_chip": "",
+                "cpu_speed": "",
+                "gpu": "",
+                "ram": "",
+                "storage_capacity": "256GB",
+                "remaining_capacity": "",
+                "memory_card": "",
+                "contacts": ""
+            },
+            "camera_and_screen": {
+                "rear_camera_resolution": "",
+                "rear_camera_video": [],
+                "rear_camera_flash": "",
+                "rear_camera_features": [],
+                "front_camera_resolution": "",
+                "front_camera_features": [],
+                "screen_technology": "",
+                "screen_resolution": "",
+                "screen_size": "",
+                "max_brightness": "",
+                "touchscreen_glass": ""
+            },
+            "battery_and_charging": {
+                "battery_capacity": "",
+                "battery_type": "",
+                "max_charging_support": "",
+                "battery_technology": []
+            },
+            "features": {
+                "advanced_security": [],
+                "special_features": [],
+                "water_dust_resistant": "",
+                "voice_recording": [],
+                "radio": [],
+                "video_playback": "",
+                "music_playback": []
+            },
+            "connectivity": {
+                "mobile_network": "",
+                "sim": "",
+                "wifi": [],
+                "gps": [],
+                "bluetooth": "",
+                "charging_connection_port": "",
+                "headphone_jack": "",
+                "other_connectivity": ""
+            },
+            "design_and_material": {
+                "design": "",
+                "material": "",
+                "dimensions_and_weight": "",
+                "release_date": "",
+                "brand": ""
+            },
+            "createdAt": "2025-06-12T08:45:27.259Z",
+            "updatedAt": "2025-08-01T04:07:40.688Z",
+            "__v": 0,
+            "phoneCount": 1
+        }
+    ]
+}

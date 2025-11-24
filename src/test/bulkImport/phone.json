@@ -1,0 +1,27 @@
+[
+  {
+    "catalogName": "Samsung Galaxy A56 5G 8GB/128GB",
+    "name": "Hồng",
+    "color": "Hồng",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/v1763551728/kg4muutp7pf7ioftob7r.jpg",
+      "https://res.cloudinary.com/cloud7teck/image/upload/v1763551728/p4pwyei2xdudtp40haqv.jpg",
+      "https://res.cloudinary.com/cloud7teck/image/upload/v1763551729/qo5mrmi5ri0favsjwuch.jpg",
+      "https://res.cloudinary.com/cloud7teck/image/upload/v1763551729/zdkggnolhzlgtm3yhc1f.jpg",
+      "https://res.cloudinary.com/cloud7teck/image/upload/v1763551729/b9tagssy99pe3gighvb7.jpg",
+      "https://res.cloudinary.com/cloud7teck/image/upload/v1763551729/gnbojdspmodqoosggvbq.jpg",
+      "https://res.cloudinary.com/cloud7teck/image/upload/v1763551729/mlf0pivj8rh80agartal.jpg",
+      "https://res.cloudinary.com/cloud7teck/image/upload/v1763551729/db4o9vhmmemklcnrupti.jpg",
+      "https://res.cloudinary.com/cloud7teck/image/upload/v1763551728/zbigdccp7sm4p5gcp7nn.jpg",
+      "https://res.cloudinary.com/cloud7teck/image/upload/v1763551729/ft2xtgqtwqez4py3l0ys.jpg",
+      "https://res.cloudinary.com/cloud7teck/image/upload/v1763551729/ecny2qdqdcs0oxbhltoa.jpg",
+      "https://res.cloudinary.com/cloud7teck/image/upload/v1763551729/uqibftm6c8ixpgdv6ns6.jpg"
+    ],
+    "price": 8250,
+    "sale": 7990,
+    "status": "New",
+    "des": "Bản màu hồng siêu hot, hàng chính hãng VN/A",
+    "note": "Khuyến mãi tặng sạc 45W + ốp lưng"
+  }
+]
