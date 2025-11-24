@@ -88,41 +88,44 @@ const ModalBulkImportPhone: React.FC<ModalBulkImportProps> = ({ isOpen, onClose,
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70" onClick={onClose}>
+    <div
+      className="fixed inset-0 z-50 flex cursor-pointer items-center justify-center bg-black bg-opacity-40 px-2 xl:px-0"
+      onClick={onClose}
+    >
       <div
-        className="relative max-h-[90vh] w-full mx-[10vw] overflow-y-auto rounded-md bg-white p-2 shadow-2xl dark:bg-gray-800"
+        className="relative w-full cursor-default overflow-y-auto rounded-md bg-white p-2 dark:bg-gray-800 xl:w-2/3"
         onClick={e => e.stopPropagation()}
       >
         {/* Nút đóng */}
         <button
           onClick={onClose}
-          className="absolute right-5 top-5 z-10 text-3xl text-gray-500 transition-colors hover:text-red-600"
+          className="absolute right-5 top-5 z-10 text-3xl text-gray-500 transition-colors hover:scale-125 dark:text-white dark:hover:scale-125"
         >
           <RiCloseLine />
         </button>
 
         {/* Tiêu đề */}
-        <h2 className="font-bold text-2xl text-primary py-2 text-center">Bulk Import Điện Thoại</h2>
+        <h2 className="py-2 text-center text-2xl font-bold text-primary dark:text-white">Bulk Import</h2>
 
         {/* Ô nhập JSON */}
         <Textarea
           value={jsonInput}
           onChange={e => setJsonInput(e.target.value)}
           placeholder={`Dán JSON ở đây... (Copy từ Excel hoặc file mẫu)\n\nVí dụ:\n[\n  {\n    "catalogName": "Samsung Galaxy A56 5G 8GB/128GB",\n    "name": "Samsung Galaxy A56 5G 8GB/128GB - Hồng",\n    "color": "Hồng",\n    "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1763551728/m1mh7igu1a6xzlzrtmlp.jpg",\n    "thumbnail": [\n      "https://res.cloudinary.com/cloud7teck/image/upload/v1763551728/kg4muutp7pf7ioftob7r.jpg",\n      "...\n    ],\n    "price": 8250,\n    "sale": 7990,\n    "status": "New",\n    "note": "Tặng sạc 45W"\n  }\n]`}
-          className="h-[60vh] w-full focus:outline-none"
+          className="my-2 h-[80vh] w-full border border-black bg-white text-xs placeholder:text-black/50 focus:outline-none dark:bg-gray-700 dark:text-white dark:placeholder:text-white/50"
           bordered
         />
-        <p> Import Ngay ({itemCount} sản phẩm)</p>
-        {/* Nút hành động */}
-        <div className="mt-8 flex justify-end gap-4">
-          <Button onClick={onClose} color="ghost" size="lg">
+
+        {/*  */}
+        <div className="flex justify-end gap-4">
+          <Button size="sm" className="text-white" onClick={onClose}>
             Hủy bỏ
           </Button>
           <Button
+            size="sm"
+            className="bg-primary text-white"
             onClick={handleImport}
-            color="accent"
             disabled={loading || !jsonInput.trim()}
-            className="flex items-center gap-3 px-8 font-bold shadow-lg hover:shadow-accent/50"
           >
             {loading ? (
               <>
@@ -132,7 +135,10 @@ const ModalBulkImportPhone: React.FC<ModalBulkImportProps> = ({ isOpen, onClose,
             ) : (
               <>
                 <RiUploadCloud2Line className="text-xl" />
-                Import
+
+                {jsonInput.trim() && ` (${itemCount} sản phẩm)`}
+                {jsonInput.trim() && itemCount === 0 && ' (JSON không hợp lệ)'}
+                {jsonInput === '' && ' (Chưa có dữ liệu)'}
               </>
             )}
           </Button>
