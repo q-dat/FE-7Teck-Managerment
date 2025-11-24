@@ -89,7 +89,7 @@ const PhoneManager: React.FC = () => {
         <NavtitleAdmin
           Title_NavtitleAdmin="Quản Lý Danh Sách Điện Thoại"
           Btn_Create={
-            <div className="flex flex-col items-start justify-center gap-2 md:flex-row md:items-end">
+            <div className="flex flex-col items-start justify-center gap-2 md:items-end">
               <div className="flex flex-row items-end justify-center gap-2">
                 {/* All */}
                 <Button
@@ -127,13 +127,8 @@ const PhoneManager: React.FC = () => {
                 >
                   Cũ
                 </Button>
-                {/* Catalog */}
-                <Button color="secondary" onClick={handleCatalogModal} className="w-auto text-sm font-light text-white">
-                  <FaList className="text-xl" color="white" />
-                  Danh mục
-                </Button>
               </div>
-              {/* Modal */}
+              {/* Modal PhoneCatalogManager */}
               {selectedCatalog && (
                 <div
                   className="fixed inset-0 z-50 flex cursor-pointer items-center justify-center bg-black/50"
@@ -148,6 +143,11 @@ const PhoneManager: React.FC = () => {
                 </div>
               )}
               <div className="flex flex-row items-center gap-2">
+                {/* Catalog */}
+                <Button color="secondary" onClick={handleCatalogModal} className="w-auto text-sm font-light text-white">
+                  <FaList className="text-xl" color="white" />
+                  Danh mục
+                </Button>
                 {/* Add Product */}
                 <Button
                   color="primary"
@@ -217,7 +217,7 @@ const PhoneManager: React.FC = () => {
                       <span>Không có ảnh thu nhỏ</span>
                     )}
                   </span>
-                  <span className="">
+                  <span className="leading-5">
                     <b>{phone?.name}</b>
                     &nbsp;
                     {phone?.phone_catalog_id?.status === 0 ? (
@@ -257,7 +257,7 @@ const PhoneManager: React.FC = () => {
                       {phone?.status || 'Không có tình trạng!'}
                     </span>
                   )}
-                  <span className="line-clamp-3">{phone?.des || 'Không có mô tả!'}</span>
+                  <span className="line-clamp-3">{phone?.des || 'Trống!'}</span>
                   <InlineNoteEditor
                     prodId={phone._id}
                     value={phone.note ?? ''}

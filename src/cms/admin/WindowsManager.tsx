@@ -204,7 +204,7 @@ const WindowsManager: React.FC = () => {
                       <span>Không có ảnh thu nhỏ</span>
                     )}
                   </span>
-                  <span className="">
+                  <span className="leading-5">
                     <b>{win?.windows_name}</b>
                     &nbsp;
                     {win?.windows_catalog_id?.w_cat_status === 0 ? (
@@ -241,7 +241,7 @@ const WindowsManager: React.FC = () => {
                       {win?.windows_status || 'Không có tình trạng!'}
                     </span>
                   )}
-                  <span className="line-clamp-3">{win?.windows_des || 'Không có mô tả!'}</span>
+                  <span className="line-clamp-3">{win?.windows_des || 'Trống!'}</span>
                   <InlineNoteEditor
                     prodId={win._id}
                     value={win.windows_note ?? ''}

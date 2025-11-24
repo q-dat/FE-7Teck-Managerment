@@ -43,7 +43,7 @@ export function InlinePriceEditor<T>({
           type={type}
           autoFocus
           value={String(localValue)}
-          className="w-[100px] rounded border bg-transparent p-2 focus:outline-none"
+          className="w-[90px] rounded border bg-transparent px-0.5 py-2 focus:outline-none"
           onChange={e => {
             const val = type === 'number' ? Number(e.target.value) : e.target.value;
             setLocalValue(val as T[keyof T]);
@@ -74,7 +74,7 @@ export function InlinePriceEditor<T>({
 
   return (
     <span
-      className="inline-block w-[100px] rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500"
+      className="inline-block w-[90px] rounded-lg border border-red-500 bg-red-500 bg-opacity-20 px-0.5 py-2 font-semibold text-red-500"
       onClick={() => setEditing(true)}
     >
       {displayValue}

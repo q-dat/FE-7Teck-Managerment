@@ -205,7 +205,7 @@ const MacbookManager: React.FC = () => {
                       <span>Không có ảnh thu nhỏ</span>
                     )}
                   </span>
-                  <span className="">
+                  <span className="leading-5">
                     <b>{mac?.macbook_name}</b>
                     &nbsp;
                     {mac?.macbook_catalog_id?.m_cat_status === 0 ? (
@@ -245,7 +245,7 @@ const MacbookManager: React.FC = () => {
                       {mac?.macbook_status || 'Không có tình trạng!'}
                     </span>
                   )}
-                  <span className="line-clamp-3">{mac?.macbook_des || 'Không có mô tả!'}</span>
+                  <span className="line-clamp-3">{mac?.macbook_des || 'Trống!'}</span>
                   <InlineNoteEditor
                     prodId={mac._id}
                     value={mac.macbook_note ?? ''}

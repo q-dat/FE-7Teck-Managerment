@@ -207,11 +207,11 @@ const TabletManager: React.FC = () => {
                       <span>Không có ảnh thu nhỏ</span>
                     )}
                   </span>
-                  <span className="">
+                  <span className="leading-5">
                     <b>{tablet?.tablet_name}</b>
                     &nbsp;
                     {tablet?.tablet_catalog_id?.t_cat_status === 0 ? (
-                      <span className="bg-green-500 p-1 text-black">New</span>
+                      <span className="bg-green-500 px-1 py-2 text-black">New</span>
                     ) : tablet?.tablet_catalog_id?.t_cat_status === 1 ? (
                       <span className="bg-red-500 p-1 text-white">Used</span>
                     ) : (
@@ -246,7 +246,7 @@ const TabletManager: React.FC = () => {
                       {tablet?.tablet_status || 'Không có tình trạng!'}
                     </span>
                   )}
-                  <span className="line-clamp-3">{tablet?.tablet_des || 'Không có mô tả!'}</span>
+                  <span className="line-clamp-3">{tablet?.tablet_des || 'Trống!'}</span>
                   <InlineNoteEditor
                     prodId={tablet._id}
                     value={tablet.tablet_note ?? ''}

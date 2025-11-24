@@ -30,7 +30,7 @@ const InlineNoteEditor: React.FC<Props> = ({ prodId, value, onSubmit }) => {
       {editing ? (
         <>
           <Textarea
-            className="h-[50px] w-[120px] rounded border bg-transparent p-2"
+            className="h-[50px] w-[80px] text-xs rounded border bg-transparent p-px focus:outline-none"
             value={note}
             onChange={e => setNote(e.target.value)}
             placeholder="Điền ghi chú..."
@@ -48,8 +48,11 @@ const InlineNoteEditor: React.FC<Props> = ({ prodId, value, onSubmit }) => {
           )}
         </>
       ) : (
-        <mark className="line-clamp-3 h-[50px] w-[120px] cursor-pointer rounded p-1" onClick={() => setEditing(true)}>
-          {value || 'Không có ghi chú!'}
+        <mark
+          className="line-clamp-3 h-[50px] w-[80px] text-xs cursor-pointer rounded p-0.5 text-start"
+          onClick={() => setEditing(true)}
+        >
+          {value || 'Trống!'}
         </mark>
       )}
     </div>
