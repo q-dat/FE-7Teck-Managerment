@@ -9,6 +9,10 @@ interface BulkImportCatalogItem {
   price: number;
   status: number;
   content?: string;
+  configuration_and_memory?: {
+    ram?: string;
+    storage_capacity?: string;
+  };
 }
 
 interface ModalBulkImportProps {
@@ -101,7 +105,7 @@ const ModalBulkImportPhoneCatalog: React.FC<ModalBulkImportProps> = ({ isOpen, o
           value={jsonInput}
           onChange={e => setJsonInput(e.target.value)}
           placeholder={`Dán JSON ở đây... (Copy từ Excel hoặc file mẫu)\n\nVí dụ:\n[\n  {\n    "name": "Samsung Galaxy A56 5G",\n    "img": "https://...jpg",\n    "price": 8200,\n    "status": 1,\n    "content": "Mô tả..."\n  }\n]`}
-          className="my-2 h-[80vh] w-full der border-black bg-white text-xs placeholder:text-black/50 focus:outline-none dark:bg-gray-700 dark:text-white dark:placeholder:text-white/50"
+          className="my-2 h-[80vh] w-full border-black bg-white text-xs placeholder:text-black/50 focus:outline-none dark:bg-gray-700 dark:text-white dark:placeholder:text-white/50"
           bordered
         />
 

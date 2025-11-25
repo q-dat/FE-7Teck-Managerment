@@ -124,13 +124,8 @@ const WindowsManager: React.FC = () => {
                 >
                   Cũ
                 </Button>
-                {/* Catalog */}
-                <Button color="secondary" onClick={handleCatalogModal} className="w-auto text-sm font-light text-white">
-                  <FaList className="text-xl" color="white" />
-                  Danh mục
-                </Button>
               </div>
-              {/* Modal */}
+              {/* Modal WindowsCatalogManager */}
               {selectedCatalog && (
                 <div
                   className="fixed inset-0 z-50 flex cursor-pointer items-center justify-center bg-black/50"
@@ -144,15 +139,22 @@ const WindowsManager: React.FC = () => {
                   </div>
                 </div>
               )}
-              {/* Add Product */}{' '}
-              <Button
-                color="primary"
-                onClick={openModalCreateAdmin}
-                className="w-[100px] text-sm font-light text-white"
-              >
-                <RiAddBoxLine className="text-xl" color="white" />
-                Thêm
-              </Button>
+              <div className="flex flex-row items-center gap-2">
+                {/* Catalog */}
+                <Button color="secondary" onClick={handleCatalogModal} className="w-auto text-sm font-light text-white">
+                  <FaList className="text-xl" color="white" />
+                  Danh mục
+                </Button>
+                {/* Add Product */}
+                <Button
+                  color="primary"
+                  onClick={openModalCreateAdmin}
+                  className="w-[100px] text-sm font-light text-white"
+                >
+                  <RiAddBoxLine className="text-xl" color="white" />
+                  Thêm
+                </Button>
+              </div>
             </div>
           }
         />

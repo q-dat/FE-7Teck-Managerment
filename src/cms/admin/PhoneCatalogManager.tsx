@@ -64,7 +64,7 @@ const PhoneCatalogManager: React.FC = () => {
         <NavtitleAdmin
           Title_NavtitleAdmin="Quản Lý Danh Sách Danh Mục Điện Thoại"
           Btn_Create={
-            <div className="flex flex-col items-start justify-center gap-2 md:flex-row md:items-end">
+            <div className="flex flex-row items-start justify-center gap-2 md:items-end">
               <Button
                 color="primary"
                 onClick={openModalCreateAdmin}
