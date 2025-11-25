@@ -1,27 +1,1354 @@
 [
   {
+    "catalogName": "Samsung Galaxy A06 5G 4GB/64GB",
+    "name": "Samsung Galaxy A06 5G 4GB/64GB",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3160,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy A06 5G 4GB/64GB",
+    "name": "Samsung Galaxy A06 5G 4GB/64GB",
+    "color": "Green",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3160,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy A06 5G 4GB/64GB",
+    "name": "Samsung Galaxy A06 5G 4GB/64GB",
+    "color": "Xám",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3160,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy A07 4G 4GB/64GB",
+    "name": "Samsung Galaxy A07 4G 4GB/64GB",
+    "color": "Tím",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3430,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy A07 4G 4GB/128GB",
+    "name": "Samsung Galaxy A07 4G 4GB/128GB",
+    "color": "Tím",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3520,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy A07 4G 4GB/128GB",
+    "name": "Samsung Galaxy A07 4G 4GB/128GB",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3520,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy A07 4G 4GB/128GB",
+    "name": "Samsung Galaxy A07 4G 4GB/128GB",
+    "color": "Xanh",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3520,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy A16 4G 4GB/128GB",
+    "name": "Samsung Galaxy A16 4G 4GB/128GB",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4060,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy A16 4G 4GB/128GB",
+    "name": "Samsung Galaxy A16 4G 4GB/128GB",
+    "color": "Xanh",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4060,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy A16 4G 4GB/128GB",
+    "name": "Samsung Galaxy A16 4G 4GB/128GB",
+    "color": "Xám",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4060,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy A17 4G 8GB/128GB",
+    "name": "Samsung Galaxy A17 4G 8GB/128GB",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 5180,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy A17 4G 8GB/128GB",
+    "name": "Samsung Galaxy A17 4G 8GB/128GB",
+    "color": "Xanh",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 5180,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy A17 4G 8GB/128GB",
+    "name": "Samsung Galaxy A17 4G 8GB/128GB",
+    "color": "Xám",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 5180,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy A17 5G 8GB/128GB",
+    "name": "Samsung Galaxy A17 5G 8GB/128GB",
+    "color": "Xám",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3870,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy A17 5G 8GB/128GB",
+    "name": "Samsung Galaxy A17 5G 8GB/128GB",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3870,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy A17 5G 8GB/128GB",
+    "name": "Samsung Galaxy A17 5G 8GB/128GB",
+    "color": "Navy",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3870,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy A26 5G 8GB/128GB",
+    "name": "Samsung Galaxy A26 5G 8GB/128GB",
+    "color": "Mint",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 6100,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy A26 5G 8GB/128GB",
+    "name": "Samsung Galaxy A26 5G 8GB/128GB",
+    "color": "Pink",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 6100,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy A36 5G 8GB/128GB",
+    "name": "Samsung Galaxy A36 5G 8GB/128GB",
+    "color": "Tím",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 7000,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy A36 5G 8GB/128GB",
+    "name": "Samsung Galaxy A36 5G 8GB/128GB",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 7000,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy A36 5G 8GB/128GB",
+    "name": "Samsung Galaxy A36 5G 8GB/128GB",
+    "color": "Xanh",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 7000,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy A36 5G 8GB/128GB",
+    "name": "Samsung Galaxy A36 5G 8GB/128GB",
+    "color": "Trắng",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 7000,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
     "catalogName": "Samsung Galaxy A56 5G 8GB/128GB",
-    "name": "Hồng",
+    "name": "Samsung Galaxy A56 5G 8GB/128GB",
+    "color": "Xanh",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 8200,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy A56 5G 8GB/128GB",
+    "name": "Samsung Galaxy A56 5G 8GB/128GB",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 8200,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy A56 5G 8GB/128GB",
+    "name": "Samsung Galaxy A56 5G 8GB/128GB",
+    "color": "Xám",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 8200,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy A56 5G 8GB/128GB",
+    "name": "Samsung Galaxy A56 5G 8GB/128GB",
     "color": "Hồng",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
-      "https://res.cloudinary.com/cloud7teck/image/upload/v1763551728/kg4muutp7pf7ioftob7r.jpg",
-      "https://res.cloudinary.com/cloud7teck/image/upload/v1763551728/p4pwyei2xdudtp40haqv.jpg",
-      "https://res.cloudinary.com/cloud7teck/image/upload/v1763551729/qo5mrmi5ri0favsjwuch.jpg",
-      "https://res.cloudinary.com/cloud7teck/image/upload/v1763551729/zdkggnolhzlgtm3yhc1f.jpg",
-      "https://res.cloudinary.com/cloud7teck/image/upload/v1763551729/b9tagssy99pe3gighvb7.jpg",
-      "https://res.cloudinary.com/cloud7teck/image/upload/v1763551729/gnbojdspmodqoosggvbq.jpg",
-      "https://res.cloudinary.com/cloud7teck/image/upload/v1763551729/mlf0pivj8rh80agartal.jpg",
-      "https://res.cloudinary.com/cloud7teck/image/upload/v1763551729/db4o9vhmmemklcnrupti.jpg",
-      "https://res.cloudinary.com/cloud7teck/image/upload/v1763551728/zbigdccp7sm4p5gcp7nn.jpg",
-      "https://res.cloudinary.com/cloud7teck/image/upload/v1763551729/ft2xtgqtwqez4py3l0ys.jpg",
-      "https://res.cloudinary.com/cloud7teck/image/upload/v1763551729/ecny2qdqdcs0oxbhltoa.jpg",
-      "https://res.cloudinary.com/cloud7teck/image/upload/v1763551729/uqibftm6c8ixpgdv6ns6.jpg"
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
     ],
-    "price": 8250,
-    "sale": 7990,
+    "price": 8200,
     "status": "New",
-    "des": "Bản màu hồng siêu hot, hàng chính hãng VN/A",
-    "note": "Khuyến mãi tặng sạc 45W + ốp lưng"
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy A56 5G 8GB/256GB",
+    "name": "Samsung Galaxy A56 5G 8GB/256GB",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 9500,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy A56 5G 8GB/256GB",
+    "name": "Samsung Galaxy A56 5G 8GB/256GB",
+    "color": "Xám",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 9500,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy A56 5G 8GB/256GB",
+    "name": "Samsung Galaxy A56 5G 8GB/256GB",
+    "color": "Xanh",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 9500,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy A56 5G 12GB/256GB",
+    "name": "Samsung Galaxy A56 5G 12GB/256GB",
+    "color": "Xanh",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 10500,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy A56 5G 12GB/256GB",
+    "name": "Samsung Galaxy A56 5G 12GB/256GB",
+    "color": "Xám",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 10500,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy A56 5G 12GB/256GB",
+    "name": "Samsung Galaxy A56 5G 12GB/256GB",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 10500,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy M55 5G 12GB/256GB",
+    "name": "Samsung Galaxy M55 5G 12GB/256GB",
+    "color": "Green",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 7650,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy M55 5G 12GB/256GB",
+    "name": "Samsung Galaxy M55 5G 12GB/256GB",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 7650,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S24 FE 8GB/128GB",
+    "name": "Samsung Galaxy S24 FE 8GB/128GB",
+    "color": "Xám",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 11200,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S24 Ultra 256GB",
+    "name": "Samsung Galaxy S24 Ultra 256GB",
+    "color": "Vàng",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 21600,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S24 Ultra 256GB",
+    "name": "Samsung Galaxy S24 Ultra 256GB",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 21600,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S24 Ultra 256GB",
+    "name": "Samsung Galaxy S24 Ultra 256GB",
+    "color": "Xám",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 21600,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S24 Ultra 512GB",
+    "name": "Samsung Galaxy S24 Ultra 512GB",
+    "color": "Xám",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 23500,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S24 Ultra 512GB",
+    "name": "Samsung Galaxy S24 Ultra 512GB",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 23500,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S25 256GB",
+    "name": "Samsung Galaxy S25 256GB",
+    "color": "Mint",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 16700,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S25 512GB",
+    "name": "Samsung Galaxy S25 512GB",
+    "color": "Navy",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 18900,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S25 512GB",
+    "name": "Samsung Galaxy S25 512GB",
+    "color": "Icy",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 18900,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S25 512GB",
+    "name": "Samsung Galaxy S25 512GB",
+    "color": "Xám",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 18900,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S25 512GB",
+    "name": "Samsung Galaxy S25 512GB",
+    "color": "Mint",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 18900,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S25+ 256GB",
+    "name": "Samsung Galaxy S25+ 256GB",
+    "color": "Icyblue",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 19800,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S25+ 256GB",
+    "name": "Samsung Galaxy S25+ 256GB",
+    "color": "Navy",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 19800,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S25+ 512GB",
+    "name": "Samsung Galaxy S25+ 512GB",
+    "color": "Xám",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 22100,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S25+ 512GB",
+    "name": "Samsung Galaxy S25+ 512GB",
+    "color": "Navy",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 22100,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S25 FE 8GB/128GB",
+    "name": "Samsung Galaxy S25 FE 8GB/128GB",
+    "color": "Trắng",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 15000,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S25 FE 8GB/128GB",
+    "name": "Samsung Galaxy S25 FE 8GB/128GB",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 15000,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S25 FE 8GB/256GB",
+    "name": "Samsung Galaxy S25 FE 8GB/256GB",
+    "color": "Icyblue",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 15800,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S25 Edge 512GB",
+    "name": "Samsung Galaxy S25 Edge 512GB",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 20100,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S25 Edge 512GB",
+    "name": "Samsung Galaxy S25 Edge 512GB",
+    "color": "Xám",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 20100,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S25 Edge 512GB",
+    "name": "Samsung Galaxy S25 Edge 512GB",
+    "color": "Icy",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 20100,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S25 Ultra 256GB Blue",
+    "name": "Samsung Galaxy S25 Ultra 256GB Blue",
+    "color": "Blue",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 23000,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S25 Ultra 256GB",
+    "name": "Samsung Galaxy S25 Ultra 256GB",
+    "color": "Bạc",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 24000,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S25 Ultra 256GB",
+    "name": "Samsung Galaxy S25 Ultra 256GB",
+    "color": "Xám",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 24000,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S25 Ultra 256GB",
+    "name": "Samsung Galaxy S25 Ultra 256GB",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 24000,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S25 Ultra 256GB",
+    "name": "Samsung Galaxy S25 Ultra 256GB",
+    "color": "Blue",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 24000,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S25 Ultra 512GB",
+    "name": "Samsung Galaxy S25 Ultra 512GB",
+    "color": "Xám",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 27900,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S25 Ultra 512GB",
+    "name": "Samsung Galaxy S25 Ultra 512GB",
+    "color": "Jetblack",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 27900,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S25 Ultra 512GB",
+    "name": "Samsung Galaxy S25 Ultra 512GB",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 27900,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S25 Ultra 512GB",
+    "name": "Samsung Galaxy S25 Ultra 512GB",
+    "color": "Blue",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 27900,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S25 Ultra 512GB",
+    "name": "Samsung Galaxy S25 Ultra 512GB",
+    "color": "Bạc",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 27900,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S25 Ultra 512GB Pinkgold",
+    "name": "Samsung Galaxy S25 Ultra 512GB Pinkgold",
+    "color": "Pinkgold",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 27200,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy S25 Ultra 1TB Jetblack",
+    "name": "Samsung Galaxy S25 Ultra 1TB Jetblack",
+    "color": "Jetblack",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 31400,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy ZFlip7 FE 128GB",
+    "name": "Samsung Galaxy ZFlip7 FE 128GB",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 14800,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy ZFlip7 FE 128GB",
+    "name": "Samsung Galaxy ZFlip7 FE 128GB",
+    "color": "Trắng",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 14800,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy ZFlip7 256GB",
+    "name": "Samsung Galaxy ZFlip7 256GB",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 23500,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy ZFlip7 256GB",
+    "name": "Samsung Galaxy ZFlip7 256GB",
+    "color": "Đỏ",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 23500,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy ZFlip7 256GB",
+    "name": "Samsung Galaxy ZFlip7 256GB",
+    "color": "Xanh",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 23500,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy ZFlip7 512GB",
+    "name": "Samsung Galaxy ZFlip7 512GB",
+    "color": "Đỏ",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 27100,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy ZFold6 256GB",
+    "name": "Samsung Galaxy ZFold6 256GB",
+    "color": "Navy",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 28800,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy ZFold7 256GB",
+    "name": "Samsung Galaxy ZFold7 256GB",
+    "color": "Navy",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 37800,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy ZFold7 256GB",
+    "name": "Samsung Galaxy ZFold7 256GB",
+    "color": "Jet",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 37800,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy ZFold7 256GB Xám",
+    "name": "Samsung Galaxy ZFold7 256GB Xám",
+    "color": "Xám",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 38200,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Samsung Galaxy ZFold7 1TB",
+    "name": "Samsung Galaxy ZFold7 1TB",
+    "color": "Jetblack",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 49300,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Oppo A5i 4GB/64GB",
+    "name": "Oppo A5i 4GB/64GB",
+    "color": "Đỏ",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3510,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Oppo A5i 4GB/64GB",
+    "name": "Oppo A5i 4GB/64GB",
+    "color": "Tím",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3510,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Oppo A5i 4GB/128GB",
+    "name": "Oppo A5i 4GB/128GB",
+    "color": "Đỏ",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3790,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Oppo A5i 4GB/128GB",
+    "name": "Oppo A5i 4GB/128GB",
+    "color": "Tím",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3790,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Oppo A5i 6GB/128GB",
+    "name": "Oppo A5i 6GB/128GB",
+    "color": "Tím",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4570,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Oppo A5i 6GB/128GB",
+    "name": "Oppo A5i 6GB/128GB",
+    "color": "Đỏ",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4570,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Oppo A5i Pro 8GB/128GB",
+    "name": "Oppo A5i Pro 8GB/128GB",
+    "color": "Trắng",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 5530,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Oppo A5i Pro 8GB/128GB",
+    "name": "Oppo A5i Pro 8GB/128GB",
+    "color": "Tím",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 5530,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Oppo A3 6GB/128GB",
+    "name": "Oppo A3 6GB/128GB",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4530,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Oppo A3 6GB/128GB",
+    "name": "Oppo A3 6GB/128GB",
+    "color": "Tím",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4530,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Oppo A3 8GB/128GB",
+    "name": "Oppo A3 8GB/128GB",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4710,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Oppo A3 8GB/128GB",
+    "name": "Oppo A3 8GB/128GB",
+    "color": "Trắng",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4710,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Oppo A3 8GB/256GB",
+    "name": "Oppo A3 8GB/256GB",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 5580,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Oppo A3 8GB/256GB",
+    "name": "Oppo A3 8GB/256GB",
+    "color": "Trắng",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 5580,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Oppo A3X 6GB/128GB",
+    "name": "Oppo A3X 6GB/128GB",
+    "color": "Đỏ",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4380,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Oppo A3X 6GB/128GB",
+    "name": "Oppo A3X 6GB/128GB",
+    "color": "Xanh",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4380,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Oppo A5X 4GB/64GB",
+    "name": "Oppo A5X 4GB/64GB",
+    "color": "Trắng",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3900,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Oppo A5X 4GB/64GB",
+    "name": "Oppo A5X 4GB/64GB",
+    "color": "Xanh",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3900,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Oppo A58 6GB/128GB",
+    "name": "Oppo A58 6GB/128GB",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4480,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Oppo A58 6GB/128GB",
+    "name": "Oppo A58 6GB/128GB",
+    "color": "Xanh",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4480,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Oppo A58 8GB/128GB",
+    "name": "Oppo A58 8GB/128GB",
+    "color": "Xanh",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4570,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Oppo A79 5G 8GB/257GB",
+    "name": "Oppo A79 5G 8GB/257GB",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 6460,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Oppo A79 5G 8GB/257GB",
+    "name": "Oppo A79 5G 8GB/257GB",
+    "color": "Tím",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 6460,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Oppo A6 Pro 4G 8GB/256GB",
+    "name": "Oppo A6 Pro 4G 8GB/256GB",
+    "color": "Xám",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 7580,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Oppo A6 Pro 4G 8GB/256GB",
+    "name": "Oppo A6 Pro 4G 8GB/256GB",
+    "color": "Hồng",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 7580,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Oppo Reno 14F 5G 8GB/256GB",
+    "name": "Oppo Reno 14F 5G 8GB/256GB",
+    "color": "Xanh lá",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 8900,
+    "status": "New",
+    "des": "",
+    "note": ""
   }
 ]
