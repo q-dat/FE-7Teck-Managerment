@@ -1350,5 +1350,525 @@
     "status": "New",
     "des": "",
     "note": ""
+  },
+  {
+    "catalogName": "Redmi 14c 4/128G",
+    "name": "Redmi 14c 4/128G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3360,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi 14c 4/128G",
+    "name": "Redmi 14c 4/128G",
+    "color": "XLA",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3360,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi 14c 4/128G",
+    "name": "Redmi 14c 4/128G",
+    "color": "Xduong",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3360,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi 13 6/128G",
+    "name": "Redmi 13 6/128G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3670,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi 13x 6/128G",
+    "name": "Redmi 13x 6/128G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3830,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi 13x 6/128G",
+    "name": "Redmi 13x 6/128G",
+    "color": "Vàng",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3830,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi 13X 8/128G",
+    "name": "Redmi 13X 8/128G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4120,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi 13X 8/128G",
+    "name": "Redmi 13X 8/128G",
+    "color": "Xanh",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4120,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi 13X 8/128G",
+    "name": "Redmi 13X 8/128G",
+    "color": "Vàng",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4120,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi A3 3/64G",
+    "name": "Redmi A3 3/64G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 2740,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi A3 3/64G",
+    "name": "Redmi A3 3/64G",
+    "color": "XLA",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 2740,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi A3 3/64G",
+    "name": "Redmi A3 3/64G",
+    "color": "XD",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 2740,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi A3 4/128G",
+    "name": "Redmi A3 4/128G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 2920,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi A3 4/128G",
+    "name": "Redmi A3 4/128G",
+    "color": "XLA",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 2920,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi A3 4/128G",
+    "name": "Redmi A3 4/128G",
+    "color": "XD",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 2920,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi A5 3/64G",
+    "name": "Redmi A5 3/64G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 2990,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi A5 3/64G",
+    "name": "Redmi A5 3/64G",
+    "color": "Xanh",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 2990,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi A5 3/64G",
+    "name": "Redmi A5 3/64G",
+    "color": "Vàng",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 2990,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi A5 4/128G",
+    "name": "Redmi A5 4/128G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3400,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi A5 4/128G",
+    "name": "Redmi A5 4/128G",
+    "color": "Xanh",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3400,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi A5 4/128G",
+    "name": "Redmi A5 4/128G",
+    "color": "Vàng",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3400,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi 15C 4/128G",
+    "name": "Redmi 15C 4/128G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3950,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi 15C 4/128G",
+    "name": "Redmi 15C 4/128G",
+    "color": "Xanh",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3950,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi 15C 6/128G",
+    "name": "Redmi 15C 6/128G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4150,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi 15C 6/128G",
+    "name": "Redmi 15C 6/128G",
+    "color": "Xanh",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4150,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi 15C 6/128G",
+    "name": "Redmi 15C 6/128G",
+    "color": "Cam",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4150,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi 15 6/128G",
+    "name": "Redmi 15 6/128G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4650,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi 15 6/128G",
+    "name": "Redmi 15 6/128G",
+    "color": "Xanh",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4650,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi 15 6/128G",
+    "name": "Redmi 15 6/128G",
+    "color": "Xám",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4650,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi 15 8/128G",
+    "name": "Redmi 15 8/128G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 5050,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi 15 8/128G",
+    "name": "Redmi 15 8/128G",
+    "color": "Xám",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 5050,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi Note 14 6/128G",
+    "name": "Redmi Note 14 6/128G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4780,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi Note 14 6/128G",
+    "name": "Redmi Note 14 6/128G",
+    "color": "Tím",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4780,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi Note 14 6/128G",
+    "name": "Redmi Note 14 6/128G",
+    "color": "Xanh",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4780,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi Note 14 8/128G",
+    "name": "Redmi Note 14 8/128G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 5160,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi Note 14 8/128G",
+    "name": "Redmi Note 14 8/128G",
+    "color": "Tím",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 5160,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi Note 14 8/128G",
+    "name": "Redmi Note 14 8/128G",
+    "color": "Xanh",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 5160,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi Note 14 8/256G",
+    "name": "Redmi Note 14 8/256G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 5700,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi Note 14 8/256G",
+    "name": "Redmi Note 14 8/256G",
+    "color": "Xanh",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 5700,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Redmi Note 14 8/256G",
+    "name": "Redmi Note 14 8/256G",
+    "color": "Tím",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 5700,
+    "status": "New",
+    "des": "",
+    "note": ""
   }
 ]
