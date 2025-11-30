@@ -275,7 +275,7 @@
   {
     "catalogName": "Samsung Galaxy A36 5G 8GB/128GB",
     "name": "Samsung Galaxy A36 5G 8GB/128GB",
-    "color": "Trắng",
+    "color": "TrắngB",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
       "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
@@ -327,7 +327,7 @@
   {
     "catalogName": "Samsung Galaxy A56 5G 8GB/128GB",
     "name": "Samsung Galaxy A56 5G 8GB/128GB",
-    "color": "Hồng",
+    "color": "HồngB",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
       "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
@@ -457,7 +457,7 @@
   {
     "catalogName": "Samsung Galaxy S24 Ultra 256GB",
     "name": "Samsung Galaxy S24 Ultra 256GB",
-    "color": "Vàng",
+    "color": "VàngB",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
       "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
@@ -639,7 +639,7 @@
   {
     "catalogName": "Samsung Galaxy S25 FE 8GB/128GB",
     "name": "Samsung Galaxy S25 FE 8GB/128GB",
-    "color": "Trắng",
+    "color": "TrắngB",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
       "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
@@ -886,7 +886,7 @@
   {
     "catalogName": "Samsung Galaxy ZFlip7 FE 128GB",
     "name": "Samsung Galaxy ZFlip7 FE 128GB",
-    "color": "Trắng",
+    "color": "TrắngB",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
       "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
@@ -1094,7 +1094,7 @@
   {
     "catalogName": "Oppo A5i Pro 8GB/128GB",
     "name": "Oppo A5i Pro 8GB/128GB",
-    "color": "Trắng",
+    "color": "TrắngB",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
       "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
@@ -1159,7 +1159,7 @@
   {
     "catalogName": "Oppo A3 8GB/128GB",
     "name": "Oppo A3 8GB/128GB",
-    "color": "Trắng",
+    "color": "TrắngB",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
       "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
@@ -1185,7 +1185,7 @@
   {
     "catalogName": "Oppo A3 8GB/256GB",
     "name": "Oppo A3 8GB/256GB",
-    "color": "Trắng",
+    "color": "TrắngB",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
       "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
@@ -1224,7 +1224,7 @@
   {
     "catalogName": "Oppo A5X 4GB/64GB",
     "name": "Oppo A5X 4GB/64GB",
-    "color": "Trắng",
+    "color": "TrắngB",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
       "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
@@ -1328,7 +1328,7 @@
   {
     "catalogName": "Oppo A6 Pro 4G 8GB/256GB",
     "name": "Oppo A6 Pro 4G 8GB/256GB",
-    "color": "Hồng",
+    "color": "HồngB",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
       "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
@@ -1352,8 +1352,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi 14c 4/128G",
-    "name": "Redmi 14c 4/128G",
+    "catalogName": "Xiaomi Redmi 14c 4GB/128GB",
+    "name": "Xiaomi Redmi 14c 4GB/128GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1365,8 +1365,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi 14c 4/128G",
-    "name": "Redmi 14c 4/128G",
+    "catalogName": "Xiaomi Redmi 14c 4GB/128GB",
+    "name": "Xiaomi Redmi 14c 4GB/128GB",
     "color": "XLA",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1378,9 +1378,9 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi 14c 4/128G",
-    "name": "Redmi 14c 4/128G",
-    "color": "Xduong",
+    "catalogName": "Xiaomi Redmi 14c 4GB/128GB",
+    "name": "Xiaomi Redmi 14c 4GB/128GB",
+    "color": "XduongB",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
       "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
@@ -1391,8 +1391,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi 13 6/128G",
-    "name": "Redmi 13 6/128G",
+    "catalogName": "Xiaomi Redmi 13 6GB/128GB",
+    "name": "Xiaomi Redmi 13 6GB/128GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1404,8 +1404,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi 13x 6/128G",
-    "name": "Redmi 13x 6/128G",
+    "catalogName": "Xiaomi Redmi 13x 6GB/128GB",
+    "name": "Xiaomi Redmi 13x 6GB/128GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1417,9 +1417,9 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi 13x 6/128G",
-    "name": "Redmi 13x 6/128G",
-    "color": "Vàng",
+    "catalogName": "Xiaomi Redmi 13x 6GB/128GB",
+    "name": "Xiaomi Redmi 13x 6GB/128GB",
+    "color": "VàngB",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
       "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
@@ -1430,8 +1430,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi 13X 8/128G",
-    "name": "Redmi 13X 8/128G",
+    "catalogName": "Xiaomi Redmi 13X 8GB/128GB",
+    "name": "Xiaomi Redmi 13X 8GB/128GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1443,8 +1443,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi 13X 8/128G",
-    "name": "Redmi 13X 8/128G",
+    "catalogName": "Xiaomi Redmi 13X 8GB/128GB",
+    "name": "Xiaomi Redmi 13X 8GB/128GB",
     "color": "Xanh",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1456,9 +1456,9 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi 13X 8/128G",
-    "name": "Redmi 13X 8/128G",
-    "color": "Vàng",
+    "catalogName": "Xiaomi Redmi 13X 8GB/128GB",
+    "name": "Xiaomi Redmi 13X 8GB/128GB",
+    "color": "VàngB",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
       "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
@@ -1469,8 +1469,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi A3 3/64G",
-    "name": "Redmi A3 3/64G",
+    "catalogName": "Xiaomi Redmi A3 3GB/64GB",
+    "name": "Xiaomi Redmi A3 3GB/64GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1482,8 +1482,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi A3 3/64G",
-    "name": "Redmi A3 3/64G",
+    "catalogName": "Xiaomi Redmi A3 3GB/64GB",
+    "name": "Xiaomi Redmi A3 3GB/64GB",
     "color": "XLA",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1495,8 +1495,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi A3 3/64G",
-    "name": "Redmi A3 3/64G",
+    "catalogName": "Xiaomi Redmi A3 3GB/64GB",
+    "name": "Xiaomi Redmi A3 3GB/64GB",
     "color": "XD",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1508,8 +1508,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi A3 4/128G",
-    "name": "Redmi A3 4/128G",
+    "catalogName": "Xiaomi Redmi A3 4GB/128GB",
+    "name": "Xiaomi Redmi A3 4GB/128GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1521,8 +1521,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi A3 4/128G",
-    "name": "Redmi A3 4/128G",
+    "catalogName": "Xiaomi Redmi A3 4GB/128GB",
+    "name": "Xiaomi Redmi A3 4GB/128GB",
     "color": "XLA",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1534,8 +1534,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi A3 4/128G",
-    "name": "Redmi A3 4/128G",
+    "catalogName": "Xiaomi Redmi A3 4GB/128GB",
+    "name": "Xiaomi Redmi A3 4GB/128GB",
     "color": "XD",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1547,8 +1547,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi A5 3/64G",
-    "name": "Redmi A5 3/64G",
+    "catalogName": "Xiaomi Redmi A5 3GB/64GB",
+    "name": "Xiaomi Redmi A5 3GB/64GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1560,8 +1560,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi A5 3/64G",
-    "name": "Redmi A5 3/64G",
+    "catalogName": "Xiaomi Redmi A5 3GB/64GB",
+    "name": "Xiaomi Redmi A5 3GB/64GB",
     "color": "Xanh",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1573,9 +1573,9 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi A5 3/64G",
-    "name": "Redmi A5 3/64G",
-    "color": "Vàng",
+    "catalogName": "Xiaomi Redmi A5 3GB/64GB",
+    "name": "Xiaomi Redmi A5 3GB/64GB",
+    "color": "VàngB",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
       "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
@@ -1586,8 +1586,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi A5 4/128G",
-    "name": "Redmi A5 4/128G",
+    "catalogName": "Xiaomi Redmi A5 4GB/128GB",
+    "name": "Xiaomi Redmi A5 4GB/128GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1599,8 +1599,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi A5 4/128G",
-    "name": "Redmi A5 4/128G",
+    "catalogName": "Xiaomi Redmi A5 4GB/128GB",
+    "name": "Xiaomi Redmi A5 4GB/128GB",
     "color": "Xanh",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1612,9 +1612,9 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi A5 4/128G",
-    "name": "Redmi A5 4/128G",
-    "color": "Vàng",
+    "catalogName": "Xiaomi Redmi A5 4GB/128GB",
+    "name": "Xiaomi Redmi A5 4GB/128GB",
+    "color": "VàngB",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
       "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
@@ -1625,8 +1625,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi 15C 4/128G",
-    "name": "Redmi 15C 4/128G",
+    "catalogName": "Xiaomi Redmi 15C 4GB/128GB",
+    "name": "Xiaomi Redmi 15C 4GB/128GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1638,8 +1638,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi 15C 4/128G",
-    "name": "Redmi 15C 4/128G",
+    "catalogName": "Xiaomi Redmi 15C 4GB/128GB",
+    "name": "Xiaomi Redmi 15C 4GB/128GB",
     "color": "Xanh",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1651,8 +1651,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi 15C 6/128G",
-    "name": "Redmi 15C 6/128G",
+    "catalogName": "Xiaomi Redmi 15C 6GB/128GB",
+    "name": "Xiaomi Redmi 15C 6GB/128GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1664,8 +1664,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi 15C 6/128G",
-    "name": "Redmi 15C 6/128G",
+    "catalogName": "Xiaomi Redmi 15C 6GB/128GB",
+    "name": "Xiaomi Redmi 15C 6GB/128GB",
     "color": "Xanh",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1677,8 +1677,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi 15C 6/128G",
-    "name": "Redmi 15C 6/128G",
+    "catalogName": "Xiaomi Redmi 15C 6GB/128GB",
+    "name": "Xiaomi Redmi 15C 6GB/128GB",
     "color": "Cam",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1690,8 +1690,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi 15 6/128G",
-    "name": "Redmi 15 6/128G",
+    "catalogName": "Xiaomi Redmi 15 6GB/128GB",
+    "name": "Xiaomi Redmi 15 6GB/128GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1703,8 +1703,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi 15 6/128G",
-    "name": "Redmi 15 6/128G",
+    "catalogName": "Xiaomi Redmi 15 6GB/128GB",
+    "name": "Xiaomi Redmi 15 6GB/128GB",
     "color": "Xanh",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1716,8 +1716,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi 15 6/128G",
-    "name": "Redmi 15 6/128G",
+    "catalogName": "Xiaomi Redmi 15 6GB/128GB",
+    "name": "Xiaomi Redmi 15 6GB/128GB",
     "color": "Xám",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1729,8 +1729,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi 15 8/128G",
-    "name": "Redmi 15 8/128G",
+    "catalogName": "Xiaomi Redmi 15 8GB/128GB",
+    "name": "Xiaomi Redmi 15 8GB/128GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1742,8 +1742,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi 15 8/128G",
-    "name": "Redmi 15 8/128G",
+    "catalogName": "Xiaomi Redmi 15 8GB/128GB",
+    "name": "Xiaomi Redmi 15 8GB/128GB",
     "color": "Xám",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1755,8 +1755,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi Note 14 6/128G",
-    "name": "Redmi Note 14 6/128G",
+    "catalogName": "Xiaomi Redmi Note 14 6GB/128GB",
+    "name": "Xiaomi Redmi Note 14 6GB/128GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1768,8 +1768,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi Note 14 6/128G",
-    "name": "Redmi Note 14 6/128G",
+    "catalogName": "Xiaomi Redmi Note 14 6GB/128GB",
+    "name": "Xiaomi Redmi Note 14 6GB/128GB",
     "color": "Tím",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1781,8 +1781,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi Note 14 6/128G",
-    "name": "Redmi Note 14 6/128G",
+    "catalogName": "Xiaomi Redmi Note 14 6GB/128GB",
+    "name": "Xiaomi Redmi Note 14 6GB/128GB",
     "color": "Xanh",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1794,8 +1794,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi Note 14 8/128G",
-    "name": "Redmi Note 14 8/128G",
+    "catalogName": "Xiaomi Redmi Note 14 8GB/128GB",
+    "name": "Xiaomi Redmi Note 14 8GB/128GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1807,8 +1807,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi Note 14 8/128G",
-    "name": "Redmi Note 14 8/128G",
+    "catalogName": "Xiaomi Redmi Note 14 8GB/128GB",
+    "name": "Xiaomi Redmi Note 14 8GB/128GB",
     "color": "Tím",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1820,8 +1820,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi Note 14 8/128G",
-    "name": "Redmi Note 14 8/128G",
+    "catalogName": "Xiaomi Redmi Note 14 8GB/128GB",
+    "name": "Xiaomi Redmi Note 14 8GB/128GB",
     "color": "Xanh",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1833,8 +1833,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi Note 14 8/256G",
-    "name": "Redmi Note 14 8/256G",
+    "catalogName": "Xiaomi Redmi Note 14 8GB/256GB",
+    "name": "Xiaomi Redmi Note 14 8GB/256GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1846,8 +1846,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi Note 14 8/256G",
-    "name": "Redmi Note 14 8/256G",
+    "catalogName": "Xiaomi Redmi Note 14 8GB/256GB",
+    "name": "Xiaomi Redmi Note 14 8GB/256GB",
     "color": "Xanh",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1859,8 +1859,8 @@
     "note": ""
   },
   {
-    "catalogName": "Redmi Note 14 8/256G",
-    "name": "Redmi Note 14 8/256G",
+    "catalogName": "Xiaomi Redmi Note 14 8GB/256GB",
+    "name": "Xiaomi Redmi Note 14 8GB/256GB",
     "color": "Tím",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1872,8 +1872,8 @@
     "note": ""
   },
   {
-    "catalogName": "Realme Note 60X 3/64G",
-    "name": "Realme Note 60X 3/64G",
+    "catalogName": "Realme Note 60X 3GB/64GB",
+    "name": "Realme Note 60X 3GB/64GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1885,8 +1885,8 @@
     "note": ""
   },
   {
-    "catalogName": "Realme Note 60X 3/64G",
-    "name": "Realme Note 60X 3/64G",
+    "catalogName": "Realme Note 60X 3GB/64GB",
+    "name": "Realme Note 60X 3GB/64GB",
     "color": "Xanh",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1898,8 +1898,8 @@
     "note": ""
   },
   {
-    "catalogName": "Realme Note 60 6/128G",
-    "name": "Realme Note 60 6/128G",
+    "catalogName": "Realme Note 60 6GB/128GB",
+    "name": "Realme Note 60 6GB/128GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1911,8 +1911,8 @@
     "note": ""
   },
   {
-    "catalogName": "Realme Note 70 4/64G",
-    "name": "Realme Note 70 4/64G",
+    "catalogName": "Realme Note 70 4GB/64GB",
+    "name": "Realme Note 70 4GB/64GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1924,9 +1924,9 @@
     "note": ""
   },
   {
-    "catalogName": "Realme Note 70 4/64G",
-    "name": "Realme Note 70 4/64G",
-    "color": "Vàng",
+    "catalogName": "Realme Note 70 4GB/64GB",
+    "name": "Realme Note 70 4GB/64GB",
+    "color": "VàngB",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
       "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
@@ -1937,8 +1937,8 @@
     "note": ""
   },
   {
-    "catalogName": "Realme Note 70 4/128G",
-    "name": "Realme Note 70 4/128G",
+    "catalogName": "Realme Note 70 4GB/128GB",
+    "name": "Realme Note 70 4GB/128GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1950,9 +1950,9 @@
     "note": ""
   },
   {
-    "catalogName": "Realme Note 70 4/128G",
-    "name": "Realme Note 70 4/128G",
-    "color": "Vàng",
+    "catalogName": "Realme Note 70 4GB/128GB",
+    "name": "Realme Note 70 4GB/128GB",
+    "color": "VàngB",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
       "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
@@ -1963,9 +1963,9 @@
     "note": ""
   },
   {
-    "catalogName": "Realme C71 4/128G",
-    "name": "Realme C71 4/128G",
-    "color": "Trắng",
+    "catalogName": "Realme C71 4GB/128GB",
+    "name": "Realme C71 4GB/128GB",
+    "color": "TrắngB",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
       "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
@@ -1976,8 +1976,8 @@
     "note": ""
   },
   {
-    "catalogName": "Realme C71 6/128G",
-    "name": "Realme C71 6/128G",
+    "catalogName": "Realme C71 6GB/128GB",
+    "name": "Realme C71 6GB/128GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -1989,9 +1989,9 @@
     "note": ""
   },
   {
-    "catalogName": "Realme C71 6/128G",
-    "name": "Realme C71 6/128G",
-    "color": "Trắng",
+    "catalogName": "Realme C71 6GB/128GB",
+    "name": "Realme C71 6GB/128GB",
+    "color": "TrắngB",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
       "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
@@ -2002,8 +2002,8 @@
     "note": ""
   },
   {
-    "catalogName": "Realme C65 8/256G",
-    "name": "Realme C65 8/256G",
+    "catalogName": "Realme C65 8GB/256GB",
+    "name": "Realme C65 8GB/256GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -2015,8 +2015,8 @@
     "note": ""
   },
   {
-    "catalogName": "Realme C75 8/128G",
-    "name": "Realme C75 8/128G",
+    "catalogName": "Realme C75 8GB/128GB",
+    "name": "Realme C75 8GB/128GB",
     "color": "Đỏ",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -2029,8 +2029,8 @@
   },
 
   {
-    "catalogName": "Poco C71 3/64G",
-    "name": "Poco C71 3/64G",
+    "catalogName": "Poco C71 3GB/64GB",
+    "name": "Poco C71 3GB/64GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -2042,8 +2042,8 @@
     "note": ""
   },
   {
-    "catalogName": "Poco C71 3/64G",
-    "name": "Poco C71 3/64G",
+    "catalogName": "Poco C71 3GB/64GB",
+    "name": "Poco C71 3GB/64GB",
     "color": "Xanh",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -2055,8 +2055,8 @@
     "note": ""
   },
   {
-    "catalogName": "Poco C71 4/128G",
-    "name": "Poco C71 4/128G",
+    "catalogName": "Poco C71 4GB/128GB",
+    "name": "Poco C71 4GB/128GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -2068,8 +2068,8 @@
     "note": ""
   },
   {
-    "catalogName": "Poco C71 4/128G",
-    "name": "Poco C71 4/128G",
+    "catalogName": "Poco C71 4GB/128GB",
+    "name": "Poco C71 4GB/128GB",
     "color": "Xanh",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -2081,9 +2081,9 @@
     "note": ""
   },
   {
-    "catalogName": "Poco C71 4/128G",
-    "name": "Poco C71 4/128G",
-    "color": "Vàng",
+    "catalogName": "Poco C71 4GB/128GB",
+    "name": "Poco C71 4GB/128GB",
+    "color": "VàngB",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
       "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
@@ -2094,8 +2094,8 @@
     "note": ""
   },
   {
-    "catalogName": "Poco C85 6/128G",
-    "name": "Poco C85 6/128G",
+    "catalogName": "Poco C85 6GB/128GB",
+    "name": "Poco C85 6GB/128GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -2107,8 +2107,8 @@
     "note": ""
   },
   {
-    "catalogName": "Poco C85 6/128G",
-    "name": "Poco C85 6/128G",
+    "catalogName": "Poco C85 6GB/128GB",
+    "name": "Poco C85 6GB/128GB",
     "color": "Xanh",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -2120,8 +2120,8 @@
     "note": ""
   },
   {
-    "catalogName": "Poco C85 6/128G",
-    "name": "Poco C85 6/128G",
+    "catalogName": "Poco C85 6GB/128GB",
+    "name": "Poco C85 6GB/128GB",
     "color": "Tím",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -2133,8 +2133,8 @@
     "note": ""
   },
   {
-    "catalogName": "Poco C85 8/256G",
-    "name": "Poco C85 8/256G",
+    "catalogName": "Poco C85 8GB/256GB",
+    "name": "Poco C85 8GB/256GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -2146,8 +2146,8 @@
     "note": ""
   },
   {
-    "catalogName": "Poco C85 8/256G",
-    "name": "Poco C85 8/256G",
+    "catalogName": "Poco C85 8GB/256GB",
+    "name": "Poco C85 8GB/256GB",
     "color": "Xanh",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -2159,8 +2159,8 @@
     "note": ""
   },
   {
-    "catalogName": "Poco C85 8/256G",
-    "name": "Poco C85 8/256G",
+    "catalogName": "Poco C85 8GB/256GB",
+    "name": "Poco C85 8GB/256GB",
     "color": "Tím",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -2173,8 +2173,8 @@
   },
 
   {
-    "catalogName": "Vivo Y04 4/64G",
-    "name": "Vivo Y04 4/64G",
+    "catalogName": "Vivo Y04 4GB/64GB",
+    "name": "Vivo Y04 4GB/64GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -2186,8 +2186,8 @@
     "note": ""
   },
   {
-    "catalogName": "Vivo Y04 4/64G",
-    "name": "Vivo Y04 4/64G",
+    "catalogName": "Vivo Y04 4GB/64GB",
+    "name": "Vivo Y04 4GB/64GB",
     "color": "Xanh",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -2199,9 +2199,9 @@
     "note": ""
   },
   {
-    "catalogName": "Vivo Y04 4/64G",
-    "name": "Vivo Y04 4/64G",
-    "color": "Trắng",
+    "catalogName": "Vivo Y04 4GB/64GB",
+    "name": "Vivo Y04 4GB/64GB",
+    "color": "TrắngB",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
       "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
@@ -2212,8 +2212,8 @@
     "note": ""
   },
   {
-    "catalogName": "Vivo Y04 4/128G",
-    "name": "Vivo Y04 4/128G",
+    "catalogName": "Vivo Y04 4GB/128GB",
+    "name": "Vivo Y04 4GB/128GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -2225,8 +2225,8 @@
     "note": ""
   },
   {
-    "catalogName": "Vivo Y04 4/128G",
-    "name": "Vivo Y04 4/128G",
+    "catalogName": "Vivo Y04 4GB/128GB",
+    "name": "Vivo Y04 4GB/128GB",
     "color": "Xanh",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -2238,9 +2238,9 @@
     "note": ""
   },
   {
-    "catalogName": "Vivo Y04 4/128G",
-    "name": "Vivo Y04 4/128G",
-    "color": "Vàng",
+    "catalogName": "Vivo Y04 4GB/128GB",
+    "name": "Vivo Y04 4GB/128GB",
+    "color": "VàngB",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
       "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
@@ -2251,8 +2251,8 @@
     "note": ""
   },
   {
-    "catalogName": "Vivo Y04 6/128G",
-    "name": "Vivo Y04 6/128G",
+    "catalogName": "Vivo Y04 6GB/128GB",
+    "name": "Vivo Y04 6GB/128GB",
     "color": "Xanh",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -2264,8 +2264,8 @@
     "note": ""
   },
   {
-    "catalogName": "Vivo Y04 6/128G",
-    "name": "Vivo Y04 6/128G",
+    "catalogName": "Vivo Y04 6GB/128GB",
+    "name": "Vivo Y04 6GB/128GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -2277,9 +2277,9 @@
     "note": ""
   },
   {
-    "catalogName": "Vivo Y04 6/128G",
-    "name": "Vivo Y04 6/128G",
-    "color": "Vàng",
+    "catalogName": "Vivo Y04 6GB/128GB",
+    "name": "Vivo Y04 6GB/128GB",
+    "color": "VàngB",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
       "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
@@ -2290,8 +2290,8 @@
     "note": ""
   },
   {
-    "catalogName": "Vivo Y19s 4/128G",
-    "name": "Vivo Y19s 4/128G",
+    "catalogName": "Vivo Y19s 4GB/128GB",
+    "name": "Vivo Y19s 4GB/128GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -2303,8 +2303,8 @@
     "note": ""
   },
   {
-    "catalogName": "Vivo Y19s 4/128G",
-    "name": "Vivo Y19s 4/128G",
+    "catalogName": "Vivo Y19s 4GB/128GB",
+    "name": "Vivo Y19s 4GB/128GB",
     "color": "Xanh",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -2316,8 +2316,8 @@
     "note": ""
   },
   {
-    "catalogName": "Vivo Y19s 6/128G",
-    "name": "Vivo Y19s 6/128G",
+    "catalogName": "Vivo Y19s 6GB/128GB",
+    "name": "Vivo Y19s 6GB/128GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -2329,8 +2329,8 @@
     "note": ""
   },
   {
-    "catalogName": "Vivo Y19s 6/128G",
-    "name": "Vivo Y19s 6/128G",
+    "catalogName": "Vivo Y19s 6GB/128GB",
+    "name": "Vivo Y19s 6GB/128GB",
     "color": "Bạc",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -2342,8 +2342,8 @@
     "note": ""
   },
   {
-    "catalogName": "Vivo Y19s 8/128G",
-    "name": "Vivo Y19s 8/128G",
+    "catalogName": "Vivo Y19s 8GB/128GB",
+    "name": "Vivo Y19s 8GB/128GB",
     "color": "Đen",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
@@ -2355,8 +2355,8 @@
     "note": ""
   },
   {
-    "catalogName": "Vivo Y19s 8/128G",
-    "name": "Vivo Y19s 8/128G",
+    "catalogName": "Vivo Y19s 8GB/128GB",
+    "name": "Vivo Y19s 8GB/128GB",
     "color": "Bạc",
     "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
     "thumbnail": [
