@@ -646,5 +646,125 @@
     "status": 0,
     "content": "New",
     "configuration_and_memory": { "ram": "8GB", "storage_capacity": "128GB" }
+  },
+  {
+    "name": "Xiaomi Redmi 14c 4GB/128GB",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "price": 3360,
+    "status": 0,
+    "content": "New",
+    "configuration_and_memory": { "ram": "4GB", "storage_capacity": "128GB" }
+  },
+  {
+    "name": "Xiaomi Redmi 13 6GB/128GB",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "price": 3670,
+    "status": 0,
+    "content": "New",
+    "configuration_and_memory": { "ram": "6GB", "storage_capacity": "128GB" }
+  },
+  {
+    "name": "Xiaomi Redmi 13x 6GB/128GB",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "price": 3830,
+    "status": 0,
+    "content": "New",
+    "configuration_and_memory": { "ram": "6GB", "storage_capacity": "128GB" }
+  },
+  {
+    "name": "Xiaomi Redmi 13X 8GB/128GB",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "price": 4120,
+    "status": 0,
+    "content": "New",
+    "configuration_and_memory": { "ram": "8GB", "storage_capacity": "128GB" }
+  },
+  {
+    "name": "Xiaomi Redmi A3 3GB/64GB",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "price": 2740,
+    "status": 0,
+    "content": "New",
+    "configuration_and_memory": { "ram": "3GB", "storage_capacity": "64GB" }
+  },
+  {
+    "name": "Xiaomi Redmi A3 4GB/128GB",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "price": 2920,
+    "status": 0,
+    "content": "New",
+    "configuration_and_memory": { "ram": "4GB", "storage_capacity": "128GB" }
+  },
+  {
+    "name": "Xiaomi Redmi A5 3GB/64GB",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "price": 2990,
+    "status": 0,
+    "content": "New",
+    "configuration_and_memory": { "ram": "3GB", "storage_capacity": "64GB" }
+  },
+  {
+    "name": "Xiaomi Redmi A5 4GB/128GB",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "price": 3400,
+    "status": 0,
+    "content": "New",
+    "configuration_and_memory": { "ram": "4GB", "storage_capacity": "128GB" }
+  },
+  {
+    "name": "Xiaomi Redmi 15C 4GB/128GB",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "price": 3950,
+    "status": 0,
+    "content": "New",
+    "configuration_and_memory": { "ram": "4GB", "storage_capacity": "128GB" }
+  },
+  {
+    "name": "Xiaomi Redmi 15C 6GB/128GB",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "price": 4150,
+    "status": 0,
+    "content": "New",
+    "configuration_and_memory": { "ram": "6GB", "storage_capacity": "128GB" }
+  },
+  {
+    "name": "Xiaomi Redmi 15 6GB/128GB",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "price": 4650,
+    "status": 0,
+    "content": "New",
+    "configuration_and_memory": { "ram": "6GB", "storage_capacity": "128GB" }
+  },
+  {
+    "name": "Xiaomi Redmi 15 8GB/128GB",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "price": 5050,
+    "status": 0,
+    "content": "New",
+    "configuration_and_memory": { "ram": "8GB", "storage_capacity": "128GB" }
+  },
+  {
+    "name": "Xiaomi Redmi Note 14 6GB/128GB",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "price": 4780,
+    "status": 0,
+    "content": "New",
+    "configuration_and_memory": { "ram": "6GB", "storage_capacity": "128GB" }
+  },
+  {
+    "name": "Xiaomi Redmi Note 14 8GB/128GB",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "price": 5160,
+    "status": 0,
+    "content": "New",
+    "configuration_and_memory": { "ram": "8GB", "storage_capacity": "128GB" }
+  },
+  {
+    "name": "Xiaomi Redmi Note 14 8GB/256GB",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "price": 5700,
+    "status": 0,
+    "content": "New",
+    "configuration_and_memory": { "ram": "8GB", "storage_capacity": "256GB" }
   }
 ]
