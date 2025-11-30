@@ -1870,5 +1870,501 @@
     "status": "New",
     "des": "",
     "note": ""
+  },
+  {
+    "catalogName": "Realme Note 60X 3/64G",
+    "name": "Realme Note 60X 3/64G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 2980,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Realme Note 60X 3/64G",
+    "name": "Realme Note 60X 3/64G",
+    "color": "Xanh",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 2980,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Realme Note 60 6/128G",
+    "name": "Realme Note 60 6/128G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3550,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Realme Note 70 4/64G",
+    "name": "Realme Note 70 4/64G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3370,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Realme Note 70 4/64G",
+    "name": "Realme Note 70 4/64G",
+    "color": "Vàng",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3370,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Realme Note 70 4/128G",
+    "name": "Realme Note 70 4/128G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3670,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Realme Note 70 4/128G",
+    "name": "Realme Note 70 4/128G",
+    "color": "Vàng",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3670,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Realme C71 4/128G",
+    "name": "Realme C71 4/128G",
+    "color": "Trắng",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3860,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Realme C71 6/128G",
+    "name": "Realme C71 6/128G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4180,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Realme C71 6/128G",
+    "name": "Realme C71 6/128G",
+    "color": "Trắng",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4180,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Realme C65 8/256G",
+    "name": "Realme C65 8/256G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4450,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Realme C75 8/128G",
+    "name": "Realme C75 8/128G",
+    "color": "Đỏ",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4790,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+
+  {
+    "catalogName": "Poco C71 3/64G",
+    "name": "Poco C71 3/64G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 2840,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Poco C71 3/64G",
+    "name": "Poco C71 3/64G",
+    "color": "Xanh",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 2840,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Poco C71 4/128G",
+    "name": "Poco C71 4/128G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3080,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Poco C71 4/128G",
+    "name": "Poco C71 4/128G",
+    "color": "Xanh",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3080,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Poco C71 4/128G",
+    "name": "Poco C71 4/128G",
+    "color": "Vàng",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3080,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Poco C85 6/128G",
+    "name": "Poco C85 6/128G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3780,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Poco C85 6/128G",
+    "name": "Poco C85 6/128G",
+    "color": "Xanh",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3780,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Poco C85 6/128G",
+    "name": "Poco C85 6/128G",
+    "color": "Tím",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3780,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Poco C85 8/256G",
+    "name": "Poco C85 8/256G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4180,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Poco C85 8/256G",
+    "name": "Poco C85 8/256G",
+    "color": "Xanh",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4180,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Poco C85 8/256G",
+    "name": "Poco C85 8/256G",
+    "color": "Tím",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4180,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+
+  {
+    "catalogName": "Vivo Y04 4/64G",
+    "name": "Vivo Y04 4/64G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3360,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Vivo Y04 4/64G",
+    "name": "Vivo Y04 4/64G",
+    "color": "Xanh",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3360,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Vivo Y04 4/64G",
+    "name": "Vivo Y04 4/64G",
+    "color": "Trắng",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3360,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Vivo Y04 4/128G",
+    "name": "Vivo Y04 4/128G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3840,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Vivo Y04 4/128G",
+    "name": "Vivo Y04 4/128G",
+    "color": "Xanh",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3840,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Vivo Y04 4/128G",
+    "name": "Vivo Y04 4/128G",
+    "color": "Vàng",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3840,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Vivo Y04 6/128G",
+    "name": "Vivo Y04 6/128G",
+    "color": "Xanh",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4120,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Vivo Y04 6/128G",
+    "name": "Vivo Y04 6/128G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4120,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Vivo Y04 6/128G",
+    "name": "Vivo Y04 6/128G",
+    "color": "Vàng",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4120,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Vivo Y19s 4/128G",
+    "name": "Vivo Y19s 4/128G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3960,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Vivo Y19s 4/128G",
+    "name": "Vivo Y19s 4/128G",
+    "color": "Xanh",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 3960,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Vivo Y19s 6/128G",
+    "name": "Vivo Y19s 6/128G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4330,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Vivo Y19s 6/128G",
+    "name": "Vivo Y19s 6/128G",
+    "color": "Bạc",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4330,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Vivo Y19s 8/128G",
+    "name": "Vivo Y19s 8/128G",
+    "color": "Đen",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4630,
+    "status": "New",
+    "des": "",
+    "note": ""
+  },
+  {
+    "catalogName": "Vivo Y19s 8/128G",
+    "name": "Vivo Y19s 8/128G",
+    "color": "Bạc",
+    "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+    "thumbnail": [
+      "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg"
+    ],
+    "price": 4630,
+    "status": "New",
+    "des": "",
+    "note": ""
   }
 ]
