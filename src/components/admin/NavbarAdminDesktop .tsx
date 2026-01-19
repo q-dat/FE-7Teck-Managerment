@@ -1,20 +1,17 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Avatar from 'boring-avatars';
 import { Button, Input } from 'react-daisyui';
 import { AuthContext } from '../../context/auth/AuthContext';
 import { MdLogout } from 'react-icons/md';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { IoChatboxEllipses, IoSearchOutline } from 'react-icons/io5';
 import { FaBell, FaGift } from 'react-icons/fa';
 import { FaGear } from 'react-icons/fa6';
 import NavigationBtnAdmin from './NavigationBtnAdmin';
 
-type NavbarAdminDesktopProps = {
-  onSearch?: (keyword: string) => void;
-};
-
-const NavbarAdminDesktop: React.FC<NavbarAdminDesktopProps> = ({ onSearch }) => {
-  const [searchInput, setSearchInput] = useState('');
+const NavbarAdminDesktop: React.FC = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [value, setValue] = useState<string>(searchParams.get('q') ?? '');
 
   const { logoutUser } = useContext(AuthContext);
 
@@ -24,20 +21,18 @@ const NavbarAdminDesktop: React.FC<NavbarAdminDesktopProps> = ({ onSearch }) => 
     setDropdownVisible(!dropdownVisible);
   };
 
-  // Lấy dữ liệu từ localStorage khi load trang
-  useEffect(() => {
-    const savedSearch = localStorage.getItem('searchKeyword');
-    if (savedSearch) {
-      setSearchInput(savedSearch);
-    }
-  }, []);
-
-  // Hàm handleSearch: lưu vào localStorage + callback onSearch
+  // Handle search
   const handleSearch = () => {
-    localStorage.setItem('searchKeyword', searchInput);
-    if (onSearch) {
-      onSearch(searchInput);
+    if (!value.trim()) {
+      searchParams.delete('q');
+      setSearchParams(searchParams);
+      return;
     }
+
+    setSearchParams(prev => {
+      prev.set('q', value.trim());
+      return prev;
+    });
   };
 
   return (
@@ -49,14 +44,12 @@ const NavbarAdminDesktop: React.FC<NavbarAdminDesktopProps> = ({ onSearch }) => 
             autoFocus
             className="min-w-[400px] bg-white text-black placeholder-black focus:outline-none"
             type="text"
-            placeholder="Tìm Kiếm..."
-            value={searchInput}
-            onChange={e => setSearchInput(e.target.value)}
+            value={value}
+            onChange={e => setValue(e.target.value)}
             onKeyDown={e => {
-              if (e.key === 'Enter' && onSearch) {
-                handleSearch();
-              }
+              if (e.key === 'Enter') handleSearch();
             }}
+            placeholder="Tìm kiếm..."
           />
           <div className="absolute right-2 h-5 w-5 cursor-pointer text-black">
             <button type="submit" onClick={handleSearch}>

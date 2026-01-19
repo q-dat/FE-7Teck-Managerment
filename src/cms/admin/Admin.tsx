@@ -1,78 +1,63 @@
 import React, { useContext, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-// import NavbarAdmin from '../../components/admin/NavbarAdmin';
-import { GalleryContext } from '../../context/gallery/GalleryContext';
-import { MacbookCatalogContext } from '../../context/macbook-catalog/MacbookCatalogContext';
-import { MacbookContext } from '../../context/macbook/MacbookContext';
-import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
-import { PhoneContext } from '../../context/phone/PhoneContext';
-import { PostCatalogContext } from '../../context/post-catalog/PostCatalogContext';
-import { PostContext } from '../../context/post/PostContext';
-import { TabletCatalogContext } from '../../context/tablet-catalog/TabletCatalogContext';
-import { TabletContext } from '../../context/tablet/TabletContext';
-import { WindowsCatalogContext } from '../../context/windows-catalog/WindowsCatalogContext';
-import { WindowsContext } from '../../context/windows/WindowsContext';
-import { PriceListContext } from '../../context/price-list/PriceListContext';
 import SidebarAdmin from '../../components/admin/SidebarAdmin';
 import ScrollToTopButton from '../../components/orther/scrollToTop/ScrollToTopButton';
-const Admin: React.FC<{}> = () => {
+
+import { GalleryContext } from '../../context/gallery/GalleryContext';
+import { MacbookCatalogContext } from '../../context/macbook-catalog/MacbookCatalogContext';
+import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
+import { PostCatalogContext } from '../../context/post-catalog/PostCatalogContext';
+import { TabletCatalogContext } from '../../context/tablet-catalog/TabletCatalogContext';
+import { WindowsCatalogContext } from '../../context/windows-catalog/WindowsCatalogContext';
+import { PriceListContext } from '../../context/price-list/PriceListContext';
+
+const Admin: React.FC = () => {
+  // ===== Catalog / metadata only =====
   const { getAllGallerys } = useContext(GalleryContext);
   const { getAllMacbookCatalogs } = useContext(MacbookCatalogContext);
-  const { getAllMacbook } = useContext(MacbookContext);
   const { getAllPhoneCatalogs } = useContext(PhoneCatalogContext);
-  const { getAllPhones } = useContext(PhoneContext);
   const { getAllPostCatalogs } = useContext(PostCatalogContext);
-  const { getAllPosts } = useContext(PostContext);
   const { getAllTabletCatalogs } = useContext(TabletCatalogContext);
-  const { getAllTablets } = useContext(TabletContext);
   const { getAllWindowsCatalogs } = useContext(WindowsCatalogContext);
-  const { getAllWindows } = useContext(WindowsContext);
   const { getAllPriceLists } = useContext(PriceListContext);
 
   useEffect(() => {
-    // Title Tag
-    document.title = `Trang Quản Trị`;
+    document.title = 'Trang Quản Trị';
 
-    const initializeData = async () => {
+    const preloadMetadata = async () => {
       try {
         await Promise.all([
           getAllGallerys(),
           getAllMacbookCatalogs(),
-          getAllMacbook(),
           getAllPhoneCatalogs(),
-          getAllPhones(),
           getAllPostCatalogs(),
-          getAllPosts(),
           getAllTabletCatalogs(),
-          getAllTablets(),
           getAllWindowsCatalogs(),
-          getAllWindows(),
           getAllPriceLists()
         ]);
       } catch (error) {
-        console.error('Error initializing data:', error);
+        console.error('Admin preload error:', error);
       }
     };
 
-    initializeData();
+    preloadMetadata();
   }, []);
+
   return (
     <div className="flex min-h-screen w-full flex-col bg-[#F3F2F7] dark:bg-gray-900">
       <div className="flex flex-1">
-        <div className="z-10 hidden xl:block">
+        {/* Sidebar desktop */}
+        <aside className="z-10 hidden xl:block">
           <SidebarAdmin />
-        </div>
-        <div className="flex-1 xl:p-6">
+        </aside>
+
+        {/* Main content */}
+        <main className="flex-1 xl:p-6">
           <div className="xl:ml-64">
-            {/* <div>
-              <NavbarAdmin />
-            </div> */}
-            <div>
-              <ScrollToTopButton />
-              <Outlet />
-            </div>
+            <ScrollToTopButton />
+            <Outlet />
           </div>
-        </div>
+        </main>
       </div>
     </div>
   );

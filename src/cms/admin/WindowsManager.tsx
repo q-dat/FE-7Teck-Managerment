@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ErrorLoading from '../../components/orther/error/ErrorLoading';
 import { LoadingLocal } from '../../components/orther/loading';
 import { Toastify } from '../../helper/Toastify';
@@ -22,6 +22,7 @@ import NavbarAdminDesktop from '../../components/admin/NavbarAdminDesktop ';
 import NavbarAdminMobile from '../../components/admin/responsiveUI/mobile/NavbarAdminMobile';
 import { InlinePriceEditor } from '../../components/admin/inline-edit/InlinePriceEditor';
 import InlineNoteEditor from '../../components/admin/inline-edit/InlineNoteEditor';
+import { useSearchParams } from 'react-router-dom';
 
 const WindowsManager: React.FC = () => {
   const { windows, loading, error, getAllWindows, updateWindows, deleteWindows } = useContext(WindowsContext);
@@ -29,6 +30,24 @@ const WindowsManager: React.FC = () => {
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
   const [selectedWindowsId, setSelectedWindowsId] = useState<string | null>(null);
+  // handle Search
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const keyword = searchParams.get('q') ?? undefined;
+  const status = searchParams.get('status');
+
+  useEffect(() => {
+    const params: { name?: string; status?: number } = {};
+
+    if (keyword) params.name = keyword;
+    if (status !== null) params.status = Number(status);
+
+    getAllWindows({
+      name: keyword,
+      windows_status: status ? Number(status) : undefined
+    });
+  }, [keyword, status, getAllWindows]);
+
   // handleCatalogModal
   const [selectedCatalog, setSelectedCatalog] = useState(false);
   // handleCatalogModal
@@ -56,7 +75,10 @@ const WindowsManager: React.FC = () => {
     try {
       await updateWindows(id, data);
       Toastify('Cập nhật thành công', 200);
-      getAllWindows();
+      getAllWindows({
+        name: keyword,
+        windows_status: status ? Number(status) : undefined
+      });
     } catch {
       Toastify('Lỗi cập nhật', 500);
     }
@@ -67,7 +89,11 @@ const WindowsManager: React.FC = () => {
         await deleteWindows(selectedWindowsId);
         closeModalDeleteAdmin();
         Toastify('Bạn đã xoá sản phẩm thành công', 201);
-        getAllWindows();
+
+        getAllWindows({
+          name: keyword,
+          windows_status: status ? Number(status) : undefined
+        });
       } catch (error) {
         const errorMessage = isIErrorResponse(error) ? error.data?.message : 'Xoá sản phẩm thất bại!';
         Toastify(`Lỗi: ${errorMessage}`, 500);
@@ -80,8 +106,8 @@ const WindowsManager: React.FC = () => {
 
   return (
     <div className="w-full pb-10 xl:pb-0">
-      <NavbarAdminDesktop onSearch={keyword => getAllWindows({ name: keyword })} />
-      <NavbarAdminMobile Title_NavbarAdmin="Laptop Windows" onSearch={keyword => getAllWindows({ name: keyword })} />
+      <NavbarAdminDesktop />
+      <NavbarAdminMobile Title_NavbarAdmin="Laptop Windows" />
       <div className="">
         <NavtitleAdmin
           Title_NavtitleAdmin="Quản Lý Danh Sách Laptop Windows"
@@ -94,8 +120,7 @@ const WindowsManager: React.FC = () => {
                   color="primary"
                   className="w-[80px] text-sm font-light text-white"
                   onClick={() => {
-                    localStorage.setItem('searchKeyword', '');
-                    getAllWindows();
+                    setSearchParams({});
                   }}
                 >
                   Tất cả
@@ -106,8 +131,7 @@ const WindowsManager: React.FC = () => {
                   color="info"
                   className="w-[80px] text-sm font-light text-white"
                   onClick={() => {
-                    localStorage.setItem('searchKeyword', '');
-                    getAllWindows({ windows_status: 0 });
+                    setSearchParams({ status: '0' });
                   }}
                 >
                   Mới
@@ -118,8 +142,7 @@ const WindowsManager: React.FC = () => {
                   color="warning"
                   className="w-[80px] text-sm font-light text-white"
                   onClick={() => {
-                    localStorage.setItem('searchKeyword', '');
-                    getAllWindows({ windows_status: 1 });
+                    setSearchParams({ status: '1' });
                   }}
                 >
                   Cũ

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ErrorLoading from '../../components/orther/error/ErrorLoading';
 import { LoadingLocal } from '../../components/orther/loading';
 import { Toastify } from '../../helper/Toastify';
@@ -23,6 +23,7 @@ import NavbarAdminDesktop from '../../components/admin/NavbarAdminDesktop ';
 import NavbarAdminMobile from '../../components/admin/responsiveUI/mobile/NavbarAdminMobile';
 import { InlinePriceEditor } from '../../components/admin/inline-edit/InlinePriceEditor';
 import InlineNoteEditor from '../../components/admin/inline-edit/InlineNoteEditor';
+import { useSearchParams } from 'react-router-dom';
 
 const PhoneManager: React.FC = () => {
   const { phones, loading, error, getAllPhones, updatePhone, deletePhone } = useContext(PhoneContext);
@@ -31,6 +32,24 @@ const PhoneManager: React.FC = () => {
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
   const [selectedPhoneId, setSelectedPhoneId] = useState<string | null>(null);
   const [isBulkImportOpen, setIsBulkImportOpen] = useState(false);
+  // handle Search
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const keyword = searchParams.get('q') ?? undefined;
+  const status = searchParams.get('status');
+
+  useEffect(() => {
+    const params: { name?: string; status?: number } = {};
+
+    if (keyword) params.name = keyword;
+    if (status !== null) params.status = Number(status);
+
+    getAllPhones({
+      name: keyword,
+      status: status ? Number(status) : undefined
+    });
+  }, [keyword, status, getAllPhones]);
+
   // handleCatalogModal
   const [selectedCatalog, setSelectedCatalog] = useState(false);
   // handleCatalogModal
@@ -58,7 +77,10 @@ const PhoneManager: React.FC = () => {
     try {
       await updatePhone(id, data);
       Toastify('Cập nhật thành công', 200);
-      getAllPhones();
+      getAllPhones({
+        name: keyword,
+        status: status ? Number(status) : undefined
+      });
     } catch {
       Toastify('Lỗi cập nhật', 500);
     }
@@ -70,7 +92,10 @@ const PhoneManager: React.FC = () => {
         await deletePhone(selectedPhoneId);
         closeModalDeleteAdmin();
         Toastify('Bạn đã xoá sản phẩm thành công', 201);
-        getAllPhones();
+        getAllPhones({
+          name: keyword,
+          status: status ? Number(status) : undefined
+        });
       } catch (error) {
         const errorMessage = isIErrorResponse(error) ? error.data?.message : 'Xoá sản phẩm thất bại!';
         Toastify(`Lỗi: ${errorMessage}`, 500);
@@ -83,8 +108,8 @@ const PhoneManager: React.FC = () => {
 
   return (
     <div className="w-full pb-10 xl:pb-0">
-      <NavbarAdminDesktop onSearch={keyword => getAllPhones({ name: keyword })} />
-      <NavbarAdminMobile Title_NavbarAdmin="Điện Thoại" onSearch={keyword => getAllPhones({ name: keyword })} />
+      <NavbarAdminDesktop />
+      <NavbarAdminMobile Title_NavbarAdmin="Điện Thoại" />
       <div className="">
         <NavtitleAdmin
           Title_NavtitleAdmin="Quản Lý Danh Sách Điện Thoại"
@@ -97,8 +122,7 @@ const PhoneManager: React.FC = () => {
                   color="primary"
                   className="w-[80px] text-sm font-light text-white"
                   onClick={() => {
-                    localStorage.setItem('searchKeyword', '');
-                    getAllPhones();
+                    setSearchParams({});
                   }}
                 >
                   Tất cả
@@ -109,8 +133,7 @@ const PhoneManager: React.FC = () => {
                   color="info"
                   className="w-[80px] text-sm font-light text-white"
                   onClick={() => {
-                    localStorage.setItem('searchKeyword', '');
-                    getAllPhones({ status: 0 });
+                    setSearchParams({ status: '0' });
                   }}
                 >
                   Mới
@@ -121,8 +144,7 @@ const PhoneManager: React.FC = () => {
                   color="warning"
                   className="w-[80px] text-sm font-light text-white"
                   onClick={() => {
-                    localStorage.setItem('searchKeyword', '');
-                    getAllPhones({ status: 1 });
+                    setSearchParams({ status: '1' });
                   }}
                 >
                   Cũ
@@ -306,7 +328,12 @@ const PhoneManager: React.FC = () => {
       <ModalBulkImportPhone
         isOpen={isBulkImportOpen}
         onClose={() => setIsBulkImportOpen(false)}
-        onSuccess={() => getAllPhones()}
+        onSuccess={() =>
+          getAllPhones({
+            name: keyword,
+            status: status ? Number(status) : undefined
+          })
+        }
       />
       <ModalCreatePhonePageAdmin isOpen={isModalCreateOpen} onClose={closeModalCreateAdmin} />
       <ModalDeletePhonePageAdmin

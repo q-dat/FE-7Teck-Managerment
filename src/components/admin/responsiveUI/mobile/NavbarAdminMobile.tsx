@@ -1,17 +1,18 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Drawer, Input, Menu } from 'react-daisyui';
 //Icon
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { IoSearchOutline } from 'react-icons/io5';
 import SidebarAdmin from '../../SidebarAdmin';
+import { useSearchParams } from 'react-router-dom';
 
 interface NavbarAdminProps {
   Title_NavbarAdmin: string;
-  onSearch?: (keyword: string) => void;
 }
 
-const NavbarAdminMobile: React.FC<NavbarAdminProps> = ({ Title_NavbarAdmin, onSearch }) => {
-  const [searchInput, setSearchInput] = useState('');
+const NavbarAdminMobile: React.FC<NavbarAdminProps> = ({ Title_NavbarAdmin }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [value, setValue] = useState<string>(searchParams.get('q') ?? '');
   const [leftVisible, setLeftVisible] = useState(false);
   const [rightVisible, setRightVisible] = useState(false);
 
@@ -23,20 +24,18 @@ const NavbarAdminMobile: React.FC<NavbarAdminProps> = ({ Title_NavbarAdmin, onSe
     setRightVisible(visible => !visible);
   }, []);
 
-  // Lấy dữ liệu từ localStorage khi load trang
-  useEffect(() => {
-    const savedSearch = localStorage.getItem('searchKeyword');
-    if (savedSearch) {
-      setSearchInput(savedSearch);
-    }
-  }, []);
-
-  // Hàm handleSearch: lưu vào localStorage + callback onSearch
+  // Handle search
   const handleSearch = () => {
-    localStorage.setItem('searchKeyword', searchInput);
-    if (onSearch) {
-      onSearch(searchInput);
+    if (!value.trim()) {
+      searchParams.delete('q');
+      setSearchParams(searchParams);
+      return;
     }
+
+    setSearchParams(prev => {
+      prev.set('q', value.trim());
+      return prev;
+    });
   };
 
   return (
@@ -118,14 +117,12 @@ const NavbarAdminMobile: React.FC<NavbarAdminProps> = ({ Title_NavbarAdmin, onSe
           autoFocus
           className="w-full text-black focus:outline-none"
           type="text"
-          placeholder="Tìm Kiếm..."
-          value={searchInput}
-          onChange={e => setSearchInput(e.target.value)}
+          value={value}
+          onChange={e => setValue(e.target.value)}
           onKeyDown={e => {
-            if (e.key === 'Enter' && onSearch) {
-              handleSearch();
-            }
+            if (e.key === 'Enter') handleSearch();
           }}
+          placeholder="Tìm kiếm..."
         />
         <div className="absolute right-2 h-5 w-5 cursor-pointer text-gray-50">
           <button type="submit" onClick={handleSearch}>

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ErrorLoading from '../../components/orther/error/ErrorLoading';
 import { LoadingLocal } from '../../components/orther/loading';
 import { Toastify } from '../../helper/Toastify';
@@ -22,6 +22,7 @@ import NavbarAdminDesktop from '../../components/admin/NavbarAdminDesktop ';
 import NavbarAdminMobile from '../../components/admin/responsiveUI/mobile/NavbarAdminMobile';
 import { InlinePriceEditor } from '../../components/admin/inline-edit/InlinePriceEditor';
 import InlineNoteEditor from '../../components/admin/inline-edit/InlineNoteEditor';
+import { useSearchParams } from 'react-router-dom';
 
 const MacbookManager: React.FC = () => {
   const { macbook, loading, error, getAllMacbook, updateMacbook, deleteMacbook } = useContext(MacbookContext);
@@ -29,6 +30,25 @@ const MacbookManager: React.FC = () => {
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
   const [selectedMacbookId, setSelectedMacbookId] = useState<string | null>(null);
+
+  // handle Search
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const keyword = searchParams.get('q') ?? undefined;
+  const status = searchParams.get('status');
+
+  useEffect(() => {
+    const params: { name?: string; status?: number } = {};
+
+    if (keyword) params.name = keyword;
+    if (status !== null) params.status = Number(status);
+
+    getAllMacbook({
+      name: keyword,
+      macbook_status: status ? Number(status) : undefined
+    });
+  }, [keyword, status, getAllMacbook]);
+
   // handleCatalogModal
   const [selectedCatalog, setSelectedCatalog] = useState(false);
   // handleCatalogModal
@@ -56,7 +76,10 @@ const MacbookManager: React.FC = () => {
     try {
       await updateMacbook(id, data);
       Toastify('Cập nhật thành công', 200);
-      getAllMacbook();
+      getAllMacbook({
+        name: keyword,
+        macbook_status: status ? Number(status) : undefined
+      });
     } catch {
       Toastify('Lỗi cập nhật', 500);
     }
@@ -68,7 +91,10 @@ const MacbookManager: React.FC = () => {
         await deleteMacbook(selectedMacbookId);
         closeModalDeleteAdmin();
         Toastify('Bạn đã xoá sản phẩm thành công', 201);
-        getAllMacbook();
+        getAllMacbook({
+          name: keyword,
+          macbook_status: status ? Number(status) : undefined
+        });
       } catch (error) {
         const errorMessage = isIErrorResponse(error) ? error.data?.message : 'Xoá sản phẩm thất bại!';
         Toastify(`Lỗi: ${errorMessage}`, 500);
@@ -81,8 +107,8 @@ const MacbookManager: React.FC = () => {
 
   return (
     <div className="w-full pb-10 xl:pb-0">
-      <NavbarAdminDesktop onSearch={keyword => getAllMacbook({ name: keyword })} />
-      <NavbarAdminMobile Title_NavbarAdmin="Laptop Macbook" onSearch={keyword => getAllMacbook({ name: keyword })} />
+      <NavbarAdminDesktop />
+      <NavbarAdminMobile Title_NavbarAdmin="Laptop Macbook" />
       <div className="">
         <NavtitleAdmin
           Title_NavtitleAdmin="Quản Lý Danh Sách Laptop Macbook"
@@ -95,8 +121,7 @@ const MacbookManager: React.FC = () => {
                   color="primary"
                   className="w-[80px] text-sm font-light text-white"
                   onClick={() => {
-                    localStorage.setItem('searchKeyword', '');
-                    getAllMacbook();
+                    setSearchParams({});
                   }}
                 >
                   Tất cả
@@ -107,8 +132,7 @@ const MacbookManager: React.FC = () => {
                   color="info"
                   className="w-[80px] text-sm font-light text-white"
                   onClick={() => {
-                    localStorage.setItem('searchKeyword', '');
-                    getAllMacbook({ macbook_status: 0 });
+                    setSearchParams({ status: '0' });
                   }}
                 >
                   Mới
@@ -119,8 +143,7 @@ const MacbookManager: React.FC = () => {
                   color="warning"
                   className="w-[80px] text-sm font-light text-white"
                   onClick={() => {
-                    localStorage.setItem('searchKeyword', '');
-                    getAllMacbook({ macbook_status: 1 });
+                    setSearchParams({ status: '1' });
                   }}
                 >
                   Cũ
