@@ -10,12 +10,12 @@ import { FaCircleInfo, FaPenToSquare } from 'react-icons/fa6';
 import { isIErrorResponse } from '../../types/error/error';
 import TableListAdmin from '../../components/admin/TablelistAdmin';
 import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
-import NavbarAdminMobile from '../../components/admin/responsiveUI/mobile/NavbarAdminMobile';
+import NavbarAdminMobile from '../../components/admin/responsiveUI/mobile/NavbarAdmin.mobile';
 import { TabletCatalogContext } from '../../context/tablet-catalog/TabletCatalogContext';
 import { ITabletCatalog } from '../../types/type/tablet-catalog/tablet-catalog';
-import ModalCreateTabletCatalogPageAdmin from '../../components/admin/modalAdmin/ModalTabletCatalog/ModalCreateTabletCatalogPageAdmin';
-import ModalDeleteTabletCatalogPageAdmin from '../../components/admin/modalAdmin/ModalTabletCatalog/ModalDeleteTabletCatalogPageAdmin';
-import ModalEditTabletCatalogPageAdmin from '../../components/admin/modalAdmin/ModalTabletCatalog/ModalEditTabletCatalogPageAdmin';
+import ModalCreateTabletCatalogPageAdmin from '../../components/admin/modalAdmin/TabletCatalogModal/CreateTabletCatalog.modal';
+import ModalDeleteTabletCatalogPageAdmin from '../../components/admin/modalAdmin/TabletCatalogModal/DeleteTabletCatalog.modal';
+import ModalEditTabletCatalogPageAdmin from '../../components/admin/modalAdmin/TabletCatalogModal/EditTabletCatalog.modal';
 import Zoom from '../../lib/Zoom';
 
 const TabletCatalogManager: React.FC = () => {

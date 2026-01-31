@@ -1,6 +1,6 @@
 import React from 'react';
 import NavtitleAdmin from '../../components/admin/NavtitleAdmin';
-import NavbarAdmin from '../../components/admin/responsiveUI/mobile/NavbarAdminMobile';
+import NavbarAdmin from '../../components/admin/responsiveUI/mobile/NavbarAdmin.mobile';
 
 interface DashboardCardProps {
   Icons: React.ReactNode;

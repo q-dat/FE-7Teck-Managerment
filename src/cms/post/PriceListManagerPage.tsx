@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import ModalCreatePriceListPageAdmin from '../../components/admin/modalAdmin/ModalPriceListPage/ModalCreatePriceListPageAdmin';
-import ModalEditPriceListPageAdmin from '../../components/admin/modalAdmin/ModalPriceListPage/ModalEditPriceListPageAdmin';
-import ModalDeletePriceListPageAdmin from '../../components/admin/modalAdmin/ModalPriceListPage/ModalDeletePriceListPageAdmin';
+import ModalCreatePriceListPageAdmin from '../../components/admin/modalAdmin/PriceListPageModal/CreatePriceList.modal';
+import ModalEditPriceListPageAdmin from '../../components/admin/modalAdmin/PriceListPageModal/EditPriceList.modal';
+import ModalDeletePriceListPageAdmin from '../../components/admin/modalAdmin/PriceListPageModal/DeletePriceList.modal';
 import NavtitleAdmin from '../../components/admin/NavtitleAdmin';
-import NavbarPost from '../../components/admin/responsiveUI/mobile/NavbarPost';
+import NavbarPost from '../../components/admin/responsiveUI/mobile/NavbarPost.mobile';
 import { Button, Table } from 'react-daisyui';
 import { RiAddBoxLine } from 'react-icons/ri';
 import { MdDelete, MdEdit } from 'react-icons/md';

@@ -9,15 +9,15 @@ import ErrorLoading from '../../components/orther/error/ErrorLoading';
 import { FaCircleInfo, FaPenToSquare } from 'react-icons/fa6';
 import { isIErrorResponse } from '../../types/error/error';
 import TableListAdmin from '../../components/admin/TablelistAdmin';
-import ModalCreatePhoneCatalogPageAdmin from '../../components/admin/modalAdmin/ModalPhoneCatalog/ModalCreatePhoneCatalogPageAdmin';
-import ModalDeletePhoneCatalogPageAdmin from '../../components/admin/modalAdmin/ModalPhoneCatalog/ModalDeletePhoneCatalogPageAdmin';
-import ModalEditPhoneCatalogPageAdmin from '../../components/admin/modalAdmin/ModalPhoneCatalog/ModalEditPhoneCatalogPageAdmin';
+import ModalCreatePhoneCatalogPageAdmin from '../../components/admin/modalAdmin/PhoneCatalogModal/CreatePhoneCatalog.modal';
+import ModalDeletePhoneCatalogPageAdmin from '../../components/admin/modalAdmin/PhoneCatalogModal/DeletePhoneCatalog.modal';
+import ModalEditPhoneCatalogPageAdmin from '../../components/admin/modalAdmin/PhoneCatalogModal/EditPhoneCatalog.modal';
 import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
 import { IPhoneCatalog } from '../../types/type/phone-catalog/phone-catalog';
 import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
-import NavbarAdminMobile from '../../components/admin/responsiveUI/mobile/NavbarAdminMobile';
+import NavbarAdminMobile from '../../components/admin/responsiveUI/mobile/NavbarAdmin.mobile';
 import Zoom from '../../lib/Zoom';
-import ModalBulkImportPhoneCatalog from '../../components/admin/modalAdmin/ModalPhoneCatalog/ModalBulkImportPhoneCatalog';
+import ModalBulkImportPhoneCatalog from '../../components/admin/modalAdmin/PhoneCatalogModal/BulkImportPhoneCatalog.modal';
 
 const PhoneCatalogManager: React.FC = () => {
   const { loading, phoneCatalogs, deletePhoneCatalog, getAllPhoneCatalogs, error } = useContext(PhoneCatalogContext);

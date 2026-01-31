@@ -12,11 +12,11 @@ import TableListAdmin from '../../components/admin/TablelistAdmin';
 import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
 import { MacbookCatalogContext } from '../../context/macbook-catalog/MacbookCatalogContext';
 import { IMacbookCatalog } from '../../types/type/macbook-catalog/macbook-catalog';
-import ModalCreateMacbookCatalogPageAdmin from '../../components/admin/modalAdmin/ModalMacbookCatalog/ModalCreateMacbookCatalogPageAdmin';
-import ModalDeleteMacbookCatalogPageAdmin from '../../components/admin/modalAdmin/ModalMacbookCatalog/ModalDeleteMacbookCatalogPageAdmin';
-import ModalEditMacbookCatalogPageAdmin from '../../components/admin/modalAdmin/ModalMacbookCatalog/ModalEditMacbookCatalogPageAdmin';
+import ModalCreateMacbookCatalogPageAdmin from '../../components/admin/modalAdmin/MacbookCatalogModal/CreateMacbookCatalog.modal';
+import ModalDeleteMacbookCatalogPageAdmin from '../../components/admin/modalAdmin/MacbookCatalogModal/DeleteMacbookCatalog.modal';
+import ModalEditMacbookCatalogPageAdmin from '../../components/admin/modalAdmin/MacbookCatalogModal/EditMacbookCatalog.modal';
 import Zoom from '../../lib/Zoom';
-import NavbarAdminMobile from '../../components/admin/responsiveUI/mobile/NavbarAdminMobile';
+import NavbarAdminMobile from '../../components/admin/responsiveUI/mobile/NavbarAdmin.mobile';
 
 const MacbookCatalogManager: React.FC = () => {
   const { loading, macbookCatalogs, deleteMacbookCatalog, getAllMacbookCatalogs, error } =
