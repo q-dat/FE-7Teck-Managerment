@@ -13,10 +13,10 @@ import {
   updateScrollButtons,
   handleScrollButtons,
   handleThumbnailClick
-} from '../../../components/utils/DetailPage/scrollUtils';
+} from '../../../components/utils/detailPage/scrollUtils';
 import Zoom from '../../../lib/Zoom';
 import { contact, hotlineUrl } from '../../../components/utils/socialLinks';
-import { LoadingLocal } from '../../../components/orther/loading';
+import { LoadingLocal } from '../../../components/common/loading';
 
 const TabletDetailPage: React.FC = () => {
   const { id } = useParams();

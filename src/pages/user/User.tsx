@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import Header from '../../components/userPage/Header';
 import FooterFC from '../../components/userPage/Footer';
 import ContactForm from '../../components/userPage/ContactForm';
-import ScrollToTopButton from '../../components/orther/scrollToTop/ScrollToTopButton';
+import ScrollToTopButton from '../../components/common/scrollToTop/ScrollToTopButton';
 import NavBottom from '../../components/userPage/NavBottom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';

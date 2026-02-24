@@ -31,26 +31,25 @@ import LoginPage from '../pages/auth/LoginPage';
 // const MacbookDetailPage = lazy(() => import('../pages/user/DetailsPage/MacbookDetailPage'));
 
 // admin
-const Admin = lazy(() => import('../cms/admin/Admin'));
-const DashboardPage = lazy(() => import('../cms/admin/DashboardPage'));
-const PhoneCatalogManager = lazy(() => import('../cms/admin/PhoneCatalogManager'));
-const PhoneManager = lazy(() => import('../cms/admin/PhoneManager'));
-
-const TabletCatalogManager = lazy(() => import('../cms/admin/TabletCatalogManager'));
-const TabletManager = lazy(() => import('../cms/admin/TabletManager'));
-const MacbookCatalogManager = lazy(() => import('../cms/admin/MacbookCatalogManager'));
-const MacbookManager = lazy(() => import('../cms/admin/MacbookManager'));
-const WindowsCatalogManager = lazy(() => import('../cms/admin/WindowsCatalogManager'));
-const WindowsManager = lazy(() => import('../cms/admin/WindowsManager'));
+const Admin = lazy(() => import('../cms/product/layout'));
+const DashboardPage = lazy(() => import('../cms/product/DashboardPage'));
+const PhoneCatalogManager = lazy(() => import('../cms/product/phonePage/PhoneCatalogManager'));
+const PhoneManager = lazy(() => import('../cms/product/phonePage/PhoneManager'));
+const TabletCatalogManager = lazy(() => import('../cms/product/tabletPage/TabletCatalogManager'));
+const TabletManager = lazy(() => import('../cms/product/tabletPage/TabletManager'));
+const MacbookCatalogManager = lazy(() => import('../cms/product/macbookPage/MacbookCatalogManager'));
+const MacbookManager = lazy(() => import('../cms/product/macbookPage/MacbookManager'));
+const WindowsCatalogManager = lazy(() => import('../cms/product/windowsPage/WindowsCatalogManager'));
+const WindowsManager = lazy(() => import('../cms/product/windowsPage/WindowsManager'));
 
 // post
-const Post = lazy(() => import('../cms/post/Post'));
+const Post = lazy(() => import('../cms/post/layout'));
 const PostManagerPage = lazy(() => import('../cms/post/PostManagerPage'));
 const PostCatalogManagerPage = lazy(() => import('../cms/post/PostCatalogManagerPage'));
 const PriceListManagerPage = lazy(() => import('../cms/post/PriceListManagerPage'));
 
 // gallery
-const Gallery = lazy(() => import('../cms/gallery/Gallery'));
+const Gallery = lazy(() => import('../cms/gallery/layout'));
 const GalleryManagerPage = lazy(() => import('../cms/gallery/GalleryManagerPage'));
 
 // not found page

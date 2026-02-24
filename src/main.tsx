@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
-import ErrorBoundary from './components/orther/error/ErrorBoundary.tsx';
+import ErrorBoundary from './components/common/error/ErrorBoundary.tsx';
 import LoadingPage from './pages/LoadingPage/LoadingPage.tsx';
 import { ToastContainer } from 'react-toastify';
 import { Analytics } from '@vercel/analytics/react';

@@ -12,11 +12,11 @@ import {
   updateScrollButtons,
   handleScrollButtons,
   handleThumbnailClick
-} from '../../../components/utils/DetailPage/scrollUtils';
+} from '../../../components/utils/detailPage/scrollUtils';
 import { scrollToTopSmoothly } from '../../../components/utils/scrollToTopSmoothly';
 import Zoom from '../../../lib/Zoom';
 import { contact, hotlineUrl } from '../../../components/utils/socialLinks';
-import { LoadingLocal } from '../../../components/orther/loading';
+import { LoadingLocal } from '../../../components/common/loading';
 
 const WindowsDetailPage: React.FC = () => {
   const { id } = useParams();

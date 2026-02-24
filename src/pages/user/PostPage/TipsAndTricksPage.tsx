@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import HeaderResponsive from '../../../components/userPage/HeaderResponsive';
 import { Link, useNavigate } from 'react-router-dom';
 import { PostContext } from '../../../context/post/PostContext';
-import TimeAgo from '../../../components/orther/timeAgo/TimeAgo';
+import TimeAgo from '../../../components/common/timeAgo/TimeAgo';
 import { scrollToTopSmoothly } from '../../../components/utils/scrollToTopSmoothly';
 import { slugify } from '../../../components/utils/slugify';
 

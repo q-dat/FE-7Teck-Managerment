@@ -7,7 +7,7 @@ import { Placeholder } from 'semantic-ui-react';
 import { WindowsContext } from '../../../context/windows/WindowsContext';
 import { slugify } from '../../../components/utils/slugify';
 import { scrollToTopSmoothly } from '../../../components/utils/scrollToTopSmoothly';
-import ErrorLoading from '../../../components/orther/error/ErrorLoading';
+import ErrorLoading from '../../../components/common/error/ErrorLoading';
 import { Status } from '../../../assets/image-represent';
 
 const WindowsPage: React.FC = () => {

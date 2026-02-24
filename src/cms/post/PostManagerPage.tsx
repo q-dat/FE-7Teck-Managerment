@@ -1,21 +1,21 @@
 import React, { useState, useContext } from 'react';
 import { Toastify } from '../../helper/Toastify';
-import LoadingLocal from '../../components/orther/loading/LoadingLocal';
-import NavtitleAdmin from '../../components/admin/NavtitleAdmin';
+import LoadingLocal from '../../components/common/loading/LoadingLocal';
+import NavtitleAdmin from '../../components/adminPage/NavtitleAdmin';
 import { RiAddBoxLine } from 'react-icons/ri';
 import { Button, Table } from 'react-daisyui';
 import { MdDelete } from 'react-icons/md';
-import ErrorLoading from '../../components/orther/error/ErrorLoading';
+import ErrorLoading from '../../components/common/error/ErrorLoading';
 import { FaCircleInfo, FaPenToSquare } from 'react-icons/fa6';
-import TableListAdmin from '../../components/admin/TablelistAdmin';
-import ModalCreatePostPageAdmin from '../../components/admin/modalAdmin/PostModal/CreatePost.modal';
-import ModalDeletePostPageAdmin from '../../components/admin/modalAdmin/PostModal/DeletePost.modal';
-import ModalEditPostPageAdmin from '../../components/admin/modalAdmin/PostModal/EditPost.modal';
+import TableListAdmin from '../../components/adminPage/TablelistAdmin';
+import ModalCreatePostPageAdmin from '../../components/adminPage/modalAdmin/PostModal/CreatePost.modal';
+import ModalDeletePostPageAdmin from '../../components/adminPage/modalAdmin/PostModal/DeletePost.modal';
+import ModalEditPostPageAdmin from '../../components/adminPage/modalAdmin/PostModal/EditPost.modal';
 import { IPost } from '../../types/type/post/post';
 import { PostContext } from '../../context/post/PostContext';
 import { isIErrorResponse } from '../../types/error/error';
-import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
-import NavbarPost from '../../components/admin/responsiveUI/mobile/NavbarPost.mobile';
+import TimeAgo from '../../components/common/timeAgo/TimeAgo';
+import NavbarPost from '../../components/adminPage/responsiveUI/mobile/NavbarPost.mobile';
 
 const PostManagerPage: React.FC = () => {
   const { loading, posts, deletePost, getAllPosts, error } = useContext(PostContext);

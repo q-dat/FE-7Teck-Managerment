@@ -1,7 +1,7 @@
 import { ReactNode, useContext } from 'react';
 import { Navigate } from 'react-router-dom';
 import { AuthContext } from '../context/auth/AuthContext';
-import { LoadingLocal } from '../components/orther/loading';
+import { LoadingLocal } from '../components/common/loading';
 
 const PrivateRoute = ({ children, requiredRole }: { children: ReactNode; requiredRole: string }) => {
   const { user, token } = useContext(AuthContext);

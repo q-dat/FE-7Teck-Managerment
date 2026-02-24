@@ -6,7 +6,7 @@ import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
 import Pagination from '../../components/userPage/Pagination';
 import { scrollToTopSmoothly } from '../../components/utils/scrollToTopSmoothly';
-import ErrorLoading from '../../components/orther/error/ErrorLoading';
+import ErrorLoading from '../../components/common/error/ErrorLoading';
 import Masonry from 'react-masonry-css';
 
 const GalleryPage: React.FC = () => {

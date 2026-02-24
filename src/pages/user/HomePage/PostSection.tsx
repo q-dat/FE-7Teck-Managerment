@@ -2,7 +2,7 @@ import React, { memo, useContext, useEffect } from 'react';
 import { IoIosArrowForward } from 'react-icons/io';
 import { Link, useNavigate } from 'react-router-dom';
 import { bgBlog } from '../../../assets/images';
-import TimeAgo from '../../../components/orther/timeAgo/TimeAgo';
+import TimeAgo from '../../../components/common/timeAgo/TimeAgo';
 import { PostContext } from '../../../context/post/PostContext';
 import { Button } from 'react-daisyui';
 import { slugify } from '../../../components/utils/slugify';

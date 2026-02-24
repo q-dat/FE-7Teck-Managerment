@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import HeaderResponsive from '../../../components/userPage/HeaderResponsive';
 import { PostContext } from '../../../context/post/PostContext';
 import { FaArrowLeftLong } from 'react-icons/fa6';
-import TimeAgo from '../../../components/orther/timeAgo/TimeAgo';
+import TimeAgo from '../../../components/common/timeAgo/TimeAgo';
 import { scrollToTopSmoothly } from '../../../components/utils/scrollToTopSmoothly';
 import { IPost } from '../../../types/type/post/post';
 import { slugify } from '../../../components/utils/slugify';

@@ -1,21 +1,21 @@
 import React, { useState, useContext } from 'react';
 import { Toastify } from '../../helper/Toastify';
-import LoadingLocal from '../../components/orther/loading/LoadingLocal';
-import NavtitleAdmin from '../../components/admin/NavtitleAdmin';
+import LoadingLocal from '../../components/common/loading/LoadingLocal';
+import NavtitleAdmin from '../../components/adminPage/NavtitleAdmin';
 import { RiAddBoxLine } from 'react-icons/ri';
 import { Button, Table } from 'react-daisyui';
 import { MdDelete } from 'react-icons/md';
-import ErrorLoading from '../../components/orther/error/ErrorLoading';
+import ErrorLoading from '../../components/common/error/ErrorLoading';
 import { FaCircleInfo, FaPenToSquare } from 'react-icons/fa6';
-import TableListAdmin from '../../components/admin/TablelistAdmin';
+import TableListAdmin from '../../components/adminPage/TablelistAdmin';
 import { isIErrorResponse } from '../../types/error/error';
-import TimeAgo from '../../components/orther/timeAgo/TimeAgo';
-import NavbarPost from '../../components/admin/responsiveUI/mobile/NavbarPost.mobile';
+import TimeAgo from '../../components/common/timeAgo/TimeAgo';
+import NavbarPost from '../../components/adminPage/responsiveUI/mobile/NavbarPost.mobile';
 import { PostCatalogContext } from '../../context/post-catalog/PostCatalogContext';
 import { IPostCatalog } from '../../types/type/post-catalog/post-catalog';
-import ModalCreatePostCatalogPageAdmin from '../../components/admin/modalAdmin/PostCatalogModal/CreatePostCatalog.modal';
-import ModalDeletePostCatalogPageAdmin from '../../components/admin/modalAdmin/PostCatalogModal/DeletePostCatalog.modal';
-import ModalEditPostCatalogPageAdmin from '../../components/admin/modalAdmin/PostCatalogModal/EditPostCatalog.modal';
+import ModalCreatePostCatalogPageAdmin from '../../components/adminPage/modalAdmin/PostCatalogModal/CreatePostCatalog.modal';
+import ModalDeletePostCatalogPageAdmin from '../../components/adminPage/modalAdmin/PostCatalogModal/DeletePostCatalog.modal';
+import ModalEditPostCatalogPageAdmin from '../../components/adminPage/modalAdmin/PostCatalogModal/EditPostCatalog.modal';
 
 const PostCatalogManagerPage: React.FC = () => {
   const { loading, postCatalogs, deletePostCatalog, getAllPostCatalogs, error } = useContext(PostCatalogContext);
