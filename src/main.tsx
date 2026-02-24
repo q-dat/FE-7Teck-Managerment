@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import ErrorBoundary from './components/common/error/ErrorBoundary.tsx';
-import LoadingPage from './pages/LoadingPage/LoadingPage.tsx';
+import LoadingPage from './pages/loadingPage/LoadingPage.tsx';
 import { ToastContainer } from 'react-toastify';
 import { Analytics } from '@vercel/analytics/react';
 import AppProvider from './routes/AppProvider.tsx';
