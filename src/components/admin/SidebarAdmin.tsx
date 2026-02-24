@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Button, Menu } from 'react-daisyui';
+import { Menu } from 'react-daisyui';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { FaHome, FaMobileAlt, FaTabletAlt } from 'react-icons/fa';
 import DarkModeToggle from '../orther/darkmode/DarkMode';
@@ -172,13 +172,15 @@ const SidebarAdmin: React.FC<{}> = () => {
       </div>
       {/*  */}
       <div className="flex flex-col items-center">
-        <div className="rounded-lg bg-primary p-4 text-center text-white">
-          <p className="w-40 text-center text-xs">Chọn nút bên dưới để thêm options thông tin sản phẩm!</p>
+        {/* <div className="rounded-lg bg-primary p-4 text-center text-white">
+          <p className="w-40 text-center text-xs">Chọn nút bên dưới để thêm sản phẩm!</p>
           <Button className="my-4 rounded-lg bg-white text-primary hover:bg-white">+Thêm</Button>
-        </div>
+        </div> */}
         <div className="py-4 text-xs text-black dark:text-white">
-          <p className="font-bold">Quản trị 7Teck </p>
-          <p className="font-light">© 2025 Điểu Quốc Đạt</p>
+          <p className="font-bold">
+            Quản trị <span className="text-primary">7Teck</span>
+          </p>
+          <p className="font-light">© 2026 Điểu Quốc Đạt</p>
         </div>
       </div>
     </div>
