@@ -57,6 +57,7 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({ isOpen, on
     const phoneData = phones.find(phone => phone._id === phoneId);
     if (phoneData) {
       setValue('name', phoneData.name);
+      setValue('slug', phoneData.slug);
       setValue('phone_catalog_id._id', phoneData.phone_catalog_id._id);
       setValue('color', phoneData.color);
       setValue('price', phoneData.price);
@@ -78,6 +79,7 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({ isOpen, on
     const data = new FormData();
 
     data.append('name', formData.name || '');
+    data.append('slug', formData.slug || '');
     data.append('phone_catalog_id', formData.phone_catalog_id._id);
     data.append('color', formData.color);
     data.append('price', formData.price?.toString() || '');
@@ -150,16 +152,12 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({ isOpen, on
           <InputModal className="bg-yellow-400 px-2" type="text" {...register('note')} placeholder="Điền ghi chú..." />
           <div className="flex w-full flex-row items-start justify-between gap-10">
             <div className="flex w-full flex-col items-start justify-center">
-              <InputModal
-                // className="hidden"
-                type="text"
-                {...register('name')}
-                placeholder="Tên danh mục"
-              />
+              <InputModal type="text" {...register('name')} placeholder="Tên sản phẩm" />
+              <InputModal type="text" {...register('slug')} placeholder="Slug" />
               <LabelForm title={'Danh mục'} />
               <div className="flex w-full items-center">
                 <ReactSelect
-                  placeholder="Chọn danh mục*"
+                  placeholder="Chọn danh mục"
                   name="phone_catalog_id._id"
                   control={control}
                   options={phoneCatalog}

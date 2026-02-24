@@ -97,6 +97,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({ isOpen,
     const phoneData = phoneCatalogs.find(phoneCatalog => phoneCatalog._id === phoneCatalogId);
     if (phoneData) {
       setValue('name', phoneData.name);
+      setValue('slug', phoneData.slug);
       setValue('img', phoneData.img);
       setValue('price', phoneData.price);
       setValue('status', phoneData.status);
@@ -127,6 +128,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({ isOpen,
     const data = new FormData();
 
     data.append('name', formData.name);
+    data.append('slug', formData.slug || '');
     data.append('price', formData.price.toString());
     data.append('status', formData.status.toString());
     data.append('content', formData.content || '');
@@ -199,6 +201,7 @@ const ModalEditPhoneCatalogPageAdmin: React.FC<ModalEditAdminProps> = ({ isOpen,
             <div className="mt-5">
               <LabelForm title={'Tên sản phẩm'} />
               <InputModal type="text" {...register('name')} placeholder="Nhập tên sản phẩm" />
+              <InputModal type="text" {...register('slug')} placeholder="Slug" />
               <LabelForm title={'Giá'} />
               <InputModal type="number" {...register('price')} placeholder="Nhập giá" />
               <div>

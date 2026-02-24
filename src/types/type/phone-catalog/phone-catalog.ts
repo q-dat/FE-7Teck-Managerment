@@ -1,6 +1,7 @@
 export interface IPhoneCatalog {
   _id: string;
   name: string;
+  slug?: string;
   img: string;
   price: number;
   status: number; //0 NEW - 1 OLD

@@ -38,6 +38,7 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({ isO
   const onSubmit: SubmitHandler<IPhoneCatalog> = async formData => {
     const data = new FormData();
     data.append('name', formData.name);
+    data.append('slug', formData.slug || '');
     data.append('price', formData.price.toString());
     data.append('status', formData.status.toString());
     data.append('content', editorValue);
@@ -129,6 +130,7 @@ const ModalCreatePhoneCatalogPageAdmin: React.FC<ModalCreateAdminProps> = ({ isO
                 {...register('name', { required: true })}
                 placeholder="Nhập tên danh mục sản phẩm"
               />
+              <InputModal type="text" {...register('slug')} placeholder="Slug" />
               <LabelForm title={'Giá*'} />
               <InputModal
                 type="number"

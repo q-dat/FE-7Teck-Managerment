@@ -5,6 +5,7 @@ export interface IPhone {
   phone_catalog_id: IPhoneCatalog;
   view?: number;
   name: string;
+  slug?: string;
   color: string;
   img: string;
   thumbnail?: string[];

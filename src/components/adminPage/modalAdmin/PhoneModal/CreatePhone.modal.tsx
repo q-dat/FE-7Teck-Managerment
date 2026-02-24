@@ -51,6 +51,7 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreateAdminProps> = ({ isOpen, on
     const data = new FormData();
     data.append('note', formData.note || '');
     data.append('name', formData.name || '');
+    data.append('slug', formData.slug || '');
     data.append('phone_catalog_id', formData.phone_catalog_id._id);
     data.append('color', formData.color);
     data.append('price', formData.price?.toString() || '');
@@ -128,12 +129,8 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreateAdminProps> = ({ isOpen, on
                 className=""
               />
             </div>
-            <InputModal
-              // className="hidden"
-              type="text"
-              {...register('name', { required: true })}
-              placeholder="Tên sản phẩm*"
-            />
+            <InputModal type="text" {...register('name', { required: true })} placeholder="Tên sản phẩm*" />
+            <InputModal type="text" {...register('slug', { required: true })} placeholder="Slug" />
             <InputModal type="text" {...register('color', { required: true })} placeholder="Nhập màu*" />
 
             <InputModal
