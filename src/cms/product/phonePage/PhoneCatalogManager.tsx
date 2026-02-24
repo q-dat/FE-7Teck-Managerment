@@ -92,7 +92,7 @@ const PhoneCatalogManager: React.FC = () => {
           <Table.Head className="bg-primary text-center text-white">
             <span>STT</span>
             <span>Ảnh Đại Diện</span>
-            <span>Tên</span>
+            <span>Tên Danh mục - (SL sản phẩm)</span>
             <span>Giá</span>
             <span>Ngày Cập Nhật</span>
             <span>Trạng Thái</span>
@@ -110,7 +110,10 @@ const PhoneCatalogManager: React.FC = () => {
                       <img loading="lazy" src={phoneCatalog?.img} alt="Hình ảnh" className="h-12 w-12 object-cover" />
                     </Zoom>
                   </span>
-                  <span>{phoneCatalog?.name}</span>
+                  <span>
+                    {phoneCatalog?.name}
+                    {phoneCatalog?.phoneCount !== 0 && <b className="text-red-500"> ({phoneCatalog?.phoneCount})</b>}
+                  </span>
                   <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
                     {(phoneCatalog?.price * 1000).toLocaleString('vi-VN')}₫
                   </span>
