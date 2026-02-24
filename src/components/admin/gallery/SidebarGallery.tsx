@@ -34,7 +34,7 @@ const SidebarGallery: React.FC<{}> = () => {
       <div className="w-full">
         {/*  */}
         <div className="mt-8 flex w-full items-center justify-between p-2">
-          <Link to="/">
+          <Link to="/cms/admin">
             <div className="flex items-center gap-2">
               <img
                 loading="lazy"
