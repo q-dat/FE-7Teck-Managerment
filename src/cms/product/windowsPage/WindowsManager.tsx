@@ -12,9 +12,6 @@ import TableListAdmin from '../../../components/adminPage/TablelistAdmin';
 import TimeAgo from '../../../components/common/timeAgo/TimeAgo';
 import { WindowsContext } from '../../../context/windows/WindowsContext';
 import { IWindows } from '../../../types/type/windows/windows';
-import ModalCreateWindowsPageAdmin from '../../../components/adminPage/modalAdmin/WindowsModal/CreateWindows.modal';
-import ModalDeleteWindowsPageAdmin from '../../../components/adminPage/modalAdmin/WindowsModal/DeleteWindows.modal';
-import ModalEditWindowsPageAdmin from '../../../components/adminPage/modalAdmin/WindowsModal/EditWindows.modal';
 import Zoom from '../../../lib/Zoom';
 import WindowsCatalogManager from './WindowsCatalogManager';
 import { FaList } from 'react-icons/fa';
@@ -23,6 +20,9 @@ import NavbarAdminMobile from '../../../components/adminPage/responsiveUI/mobile
 import { InlinePriceEditor } from '../../../components/adminPage/inline-edit/InlinePriceEditor';
 import InlineNoteEditor from '../../../components/adminPage/inline-edit/InlineNoteEditor';
 import { useSearchParams } from 'react-router-dom';
+import ModalCreateWindowsPageAdmin from '../../../components/adminPage/modalAdmin/windows/WindowsModal/CreateWindows.modal';
+import ModalDeleteWindowsPageAdmin from '../../../components/adminPage/modalAdmin/windows/WindowsModal/DeleteWindows.modal';
+import ModalEditWindowsPageAdmin from '../../../components/adminPage/modalAdmin/windows/WindowsModal/EditWindows.modal';
 
 const WindowsManager: React.FC = () => {
   const { windows, loading, error, getAllWindows, updateWindows, deleteWindows } = useContext(WindowsContext);

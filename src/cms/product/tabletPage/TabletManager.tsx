@@ -12,9 +12,6 @@ import TableListAdmin from '../../../components/adminPage/TablelistAdmin';
 import TimeAgo from '../../../components/common/timeAgo/TimeAgo';
 import { TabletContext } from '../../../context/tablet/TabletContext';
 import { ITablet } from '../../../types/type/tablet/tablet';
-import ModalCreateTabletPageAdmin from '../../../components/adminPage/modalAdmin/TabletModal/CreateTablet.modal';
-import ModalDeleteTabletPageAdmin from '../../../components/adminPage/modalAdmin/TabletModal/DeleteTablet.modal';
-import ModalEditTabletPageAdmin from '../../../components/adminPage/modalAdmin/TabletModal/EditTablet.modal';
 import Zoom from '../../../lib/Zoom';
 import TabletCatalogManager from './TabletCatalogManager';
 import { FaList } from 'react-icons/fa';
@@ -23,6 +20,9 @@ import NavbarAdminMobile from '../../../components/adminPage/responsiveUI/mobile
 import { InlinePriceEditor } from '../../../components/adminPage/inline-edit/InlinePriceEditor';
 import InlineNoteEditor from '../../../components/adminPage/inline-edit/InlineNoteEditor';
 import { useSearchParams } from 'react-router-dom';
+import ModalCreateTabletPageAdmin from '../../../components/adminPage/modalAdmin/tablet/TabletModal/CreateTablet.modal';
+import ModalDeleteTabletPageAdmin from '../../../components/adminPage/modalAdmin/tablet/TabletModal/DeleteTablet.modal';
+import ModalEditTabletPageAdmin from '../../../components/adminPage/modalAdmin/tablet/TabletModal/EditTablet.modal';
 
 const TabletManager: React.FC = () => {
   const { tablets, loading, error, getAllTablets, updateTablet, deleteTablet } = useContext(TabletContext);

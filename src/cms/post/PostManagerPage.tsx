@@ -8,14 +8,14 @@ import { MdDelete } from 'react-icons/md';
 import ErrorLoading from '../../components/common/error/ErrorLoading';
 import { FaCircleInfo, FaPenToSquare } from 'react-icons/fa6';
 import TableListAdmin from '../../components/adminPage/TablelistAdmin';
-import ModalCreatePostPageAdmin from '../../components/adminPage/modalAdmin/PostModal/CreatePost.modal';
-import ModalDeletePostPageAdmin from '../../components/adminPage/modalAdmin/PostModal/DeletePost.modal';
-import ModalEditPostPageAdmin from '../../components/adminPage/modalAdmin/PostModal/EditPost.modal';
 import { IPost } from '../../types/type/post/post';
 import { PostContext } from '../../context/post/PostContext';
 import { isIErrorResponse } from '../../types/error/error';
 import TimeAgo from '../../components/common/timeAgo/TimeAgo';
 import NavbarPost from '../../components/adminPage/responsiveUI/mobile/NavbarPost.mobile';
+import ModalCreatePostPageAdmin from '../../components/adminPage/modalAdmin/post/PostModal/CreatePost.modal';
+import ModalDeletePostPageAdmin from '../../components/adminPage/modalAdmin/post/PostModal/DeletePost.modal';
+import ModalEditPostPageAdmin from '../../components/adminPage/modalAdmin/post/PostModal/EditPost.modal';
 
 const PostManagerPage: React.FC = () => {
   const { loading, posts, deletePost, getAllPosts, error } = useContext(PostContext);

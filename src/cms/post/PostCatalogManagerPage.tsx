@@ -13,9 +13,9 @@ import TimeAgo from '../../components/common/timeAgo/TimeAgo';
 import NavbarPost from '../../components/adminPage/responsiveUI/mobile/NavbarPost.mobile';
 import { PostCatalogContext } from '../../context/post-catalog/PostCatalogContext';
 import { IPostCatalog } from '../../types/type/post-catalog/post-catalog';
-import ModalCreatePostCatalogPageAdmin from '../../components/adminPage/modalAdmin/PostCatalogModal/CreatePostCatalog.modal';
-import ModalDeletePostCatalogPageAdmin from '../../components/adminPage/modalAdmin/PostCatalogModal/DeletePostCatalog.modal';
-import ModalEditPostCatalogPageAdmin from '../../components/adminPage/modalAdmin/PostCatalogModal/EditPostCatalog.modal';
+import ModalCreatePostCatalogPageAdmin from '../../components/adminPage/modalAdmin/post/PostCatalogModal/CreatePostCatalog.modal';
+import ModalDeletePostCatalogPageAdmin from '../../components/adminPage/modalAdmin/post/PostCatalogModal/DeletePostCatalog.modal';
+import ModalEditPostCatalogPageAdmin from '../../components/adminPage/modalAdmin/post/PostCatalogModal/EditPostCatalog.modal';
 
 const PostCatalogManagerPage: React.FC = () => {
   const { loading, postCatalogs, deletePostCatalog, getAllPostCatalogs, error } = useContext(PostCatalogContext);

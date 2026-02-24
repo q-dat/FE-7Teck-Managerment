@@ -1,7 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import ModalCreatePriceListPageAdmin from '../../components/adminPage/modalAdmin/PriceListPageModal/CreatePriceList.modal';
-import ModalEditPriceListPageAdmin from '../../components/adminPage/modalAdmin/PriceListPageModal/EditPriceList.modal';
-import ModalDeletePriceListPageAdmin from '../../components/adminPage/modalAdmin/PriceListPageModal/DeletePriceList.modal';
 import NavtitleAdmin from '../../components/adminPage/NavtitleAdmin';
 import NavbarPost from '../../components/adminPage/responsiveUI/mobile/NavbarPost.mobile';
 import { Button, Table } from 'react-daisyui';
@@ -13,6 +10,9 @@ import { LoadingLocal } from '../../components/common/loading';
 import { isIErrorResponse } from '../../types/error/error';
 import { Toastify } from '../../helper/Toastify';
 import { IProductVariant, IPriceListApi } from '../../types/type/price-list/price-list';
+import ModalCreatePriceListPageAdmin from '../../components/adminPage/modalAdmin/price-list/PriceListPageModal/CreatePriceList.modal';
+import ModalDeletePriceListPageAdmin from '../../components/adminPage/modalAdmin/price-list/PriceListPageModal/DeletePriceList.modal';
+import ModalEditPriceListPageAdmin from '../../components/adminPage/modalAdmin/price-list/PriceListPageModal/EditPriceList.modal';
 
 const PriceListManagerPage: React.FC = () => {
   const { priceLists, getAllPriceLists, loading, error, deletePriceLists } = useContext(PriceListContext);

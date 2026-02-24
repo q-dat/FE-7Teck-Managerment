@@ -12,9 +12,6 @@ import TableListAdmin from '../../../components/adminPage/TablelistAdmin';
 import TimeAgo from '../../../components/common/timeAgo/TimeAgo';
 import { MacbookContext } from '../../../context/macbook/MacbookContext';
 import { IMacbook } from '../../../types/type/macbook/macbook';
-import ModalCreateMacbookPageAdmin from '../../../components/adminPage/modalAdmin/MacbookModal/CreateMacbook.modal';
-import ModalDeleteMacbookPageAdmin from '../../../components/adminPage/modalAdmin/MacbookModal/DeleteMacbook.modal';
-import ModalEditMacbookPageAdmin from '../../../components/adminPage/modalAdmin/MacbookModal/EditMacbook.modal';
 import Zoom from '../../../lib/Zoom';
 import MacbookCatalogManager from './MacbookCatalogManager';
 import { FaList } from 'react-icons/fa';
@@ -23,6 +20,9 @@ import NavbarAdminMobile from '../../../components/adminPage/responsiveUI/mobile
 import { InlinePriceEditor } from '../../../components/adminPage/inline-edit/InlinePriceEditor';
 import InlineNoteEditor from '../../../components/adminPage/inline-edit/InlineNoteEditor';
 import { useSearchParams } from 'react-router-dom';
+import ModalCreateMacbookPageAdmin from '../../../components/adminPage/modalAdmin/macbook/MacbookModal/CreateMacbook.modal';
+import ModalDeleteMacbookPageAdmin from '../../../components/adminPage/modalAdmin/macbook/MacbookModal/DeleteMacbook.modal';
+import ModalEditMacbookPageAdmin from '../../../components/adminPage/modalAdmin/macbook/MacbookModal/EditMacbook.modal';
 
 const MacbookManager: React.FC = () => {
   const { macbook, loading, error, getAllMacbook, updateMacbook, deleteMacbook } = useContext(MacbookContext);

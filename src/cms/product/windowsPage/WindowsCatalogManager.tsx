@@ -13,10 +13,10 @@ import TimeAgo from '../../../components/common/timeAgo/TimeAgo';
 import NavbarAdminMobile from '../../../components/adminPage/responsiveUI/mobile/NavbarAdmin.mobile';
 import { WindowsCatalogContext } from '../../../context/windows-catalog/WindowsCatalogContext';
 import { IWindowsCatalog } from '../../../types/type/windows-catalog/windows-catalog';
-import ModalCreateWindowsCatalogPageAdmin from '../../../components/adminPage/modalAdmin/WindowsCatalogModal/CreateWindowsCatalog.modal';
-import ModalDeleteWindowsCatalogPageAdmin from '../../../components/adminPage/modalAdmin/WindowsCatalogModal/DeleteWindowsCatalog.modal';
-import ModalEditWindowsCatalogPageAdmin from '../../../components/adminPage/modalAdmin/WindowsCatalogModal/EditWindowsCatalog.modal';
 import Zoom from '../../../lib/Zoom';
+import ModalCreateWindowsCatalogPageAdmin from '../../../components/adminPage/modalAdmin/windows/WindowsCatalogModal/CreateWindowsCatalog.modal';
+import ModalDeleteWindowsCatalogPageAdmin from '../../../components/adminPage/modalAdmin/windows/WindowsCatalogModal/DeleteWindowsCatalog.modal';
+import ModalEditWindowsCatalogPageAdmin from '../../../components/adminPage/modalAdmin/windows/WindowsCatalogModal/EditWindowsCatalog.modal';
 
 const WindowsCatalogManager: React.FC = () => {
   const { loading, windowsCatalogs, deleteWindowsCatalog, getAllWindowsCatalogs, error } =

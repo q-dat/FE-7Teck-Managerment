@@ -5,9 +5,6 @@ import ErrorLoading from '../../components/common/error/ErrorLoading';
 import { LoadingLocal } from '../../components/common/loading';
 import { Toastify } from '../../helper/Toastify';
 import { isIErrorResponse } from '../../types/error/error';
-import ModalCreateGalleryPageAdmin from '../../components/adminPage/modalAdmin/GalleryModal/CreateGallery.modal';
-import ModalDeleteGalleryPageAdmin from '../../components/adminPage/modalAdmin/GalleryModal/DeleteGallery.modal';
-import ModalEditGalleryPageAdmin from '../../components/adminPage/modalAdmin/GalleryModal/EditGallery.modal';
 import { IGallery } from '../../types/type/gallery/gallery';
 import { Button } from 'react-daisyui';
 import { RiAddBoxLine } from 'react-icons/ri';
@@ -17,6 +14,9 @@ import { MdDelete } from 'react-icons/md';
 import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
 import TimeAgo from '../../components/common/timeAgo/TimeAgo';
+import ModalCreateGalleryPageAdmin from '../../components/adminPage/modalAdmin/gallery/GalleryModal/CreateGallery.modal';
+import ModalDeleteGalleryPageAdmin from '../../components/adminPage/modalAdmin/gallery/GalleryModal/DeleteGallery.modal';
+import ModalEditGalleryPageAdmin from '../../components/adminPage/modalAdmin/gallery/GalleryModal/EditGallery.modal';
 
 const GalleryManagerPage: React.FC = () => {
   const { galleries, loading, error, getAllGallerys, deleteGallery } = useContext(GalleryContext);

@@ -13,10 +13,10 @@ import TimeAgo from '../../../components/common/timeAgo/TimeAgo';
 import NavbarAdminMobile from '../../../components/adminPage/responsiveUI/mobile/NavbarAdmin.mobile';
 import { TabletCatalogContext } from '../../../context/tablet-catalog/TabletCatalogContext';
 import { ITabletCatalog } from '../../../types/type/tablet-catalog/tablet-catalog';
-import ModalCreateTabletCatalogPageAdmin from '../../../components/adminPage/modalAdmin/TabletCatalogModal/CreateTabletCatalog.modal';
-import ModalDeleteTabletCatalogPageAdmin from '../../../components/adminPage/modalAdmin/TabletCatalogModal/DeleteTabletCatalog.modal';
-import ModalEditTabletCatalogPageAdmin from '../../../components/adminPage/modalAdmin/TabletCatalogModal/EditTabletCatalog.modal';
 import Zoom from '../../../lib/Zoom';
+import ModalCreateTabletCatalogPageAdmin from '../../../components/adminPage/modalAdmin/tablet/TabletCatalogModal/CreateTabletCatalog.modal';
+import ModalDeleteTabletCatalogPageAdmin from '../../../components/adminPage/modalAdmin/tablet/TabletCatalogModal/DeleteTabletCatalog.modal';
+import ModalEditTabletCatalogPageAdmin from '../../../components/adminPage/modalAdmin/tablet/TabletCatalogModal/EditTabletCatalog.modal';
 
 const TabletCatalogManager: React.FC = () => {
   const { loading, tabletCatalogs, deleteTabletCatalog, getAllTabletCatalogs, error } =
