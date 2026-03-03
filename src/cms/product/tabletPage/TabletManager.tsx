@@ -207,7 +207,7 @@ const TabletManager: React.FC = () => {
           <Table.Body className="text-center text-sm">
             {tablets && tablets.length > 0 ? (
               tablets.map((tablet: ITablet, index: number) => (
-                <Table.Row key={index}>
+                <Table.Row key={tablet._id}>
                   <span>#{index + 1}</span>
                   <span className="flex items-center justify-center">
                     <Zoom>

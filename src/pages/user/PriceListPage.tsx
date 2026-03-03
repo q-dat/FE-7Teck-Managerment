@@ -151,7 +151,7 @@
 //                       <Table.Body className="text-center text-sm">
 //                         {catalogs[categoryType as keyof typeof catalogs][activeTabs[categoryType]]?.map(
 //                           (product, index) => (
-//                             <Table.Row key={index} className="border border-secondary">
+//                             <Table.Row key={product._id} className="border border-secondary">
 //                               <span>{product?.name}</span>
 //                               <span>{product?.storage}</span>
 //                               <span>{(product?.price * 1000).toLocaleString('vi-VN')}đ</span>

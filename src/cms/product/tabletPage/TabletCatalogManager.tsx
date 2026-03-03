@@ -94,7 +94,7 @@ const TabletCatalogManager: React.FC = () => {
           <Table.Body className="text-center text-sm">
             {tabletCatalogs && tabletCatalogs.length > 0 ? (
               tabletCatalogs.map((tabletCatalog: ITabletCatalog, index: number) => (
-                <Table.Row key={index}>
+                <Table.Row key={tabletCatalog._id}>
                   <span>#{index + 1}</span>
                   <span className="flex items-center justify-center">
                     <Zoom>

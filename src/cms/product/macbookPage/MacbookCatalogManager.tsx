@@ -94,7 +94,7 @@ const MacbookCatalogManager: React.FC = () => {
           <Table.Body className="text-center text-sm">
             {macbookCatalogs && macbookCatalogs.length > 0 ? (
               macbookCatalogs.map((macCatalog: IMacbookCatalog, index: number) => (
-                <Table.Row key={index}>
+                <Table.Row key={macCatalog._id}>
                   <span>#{index + 1}</span>
                   <span className="flex items-center justify-center">
                     <Zoom>

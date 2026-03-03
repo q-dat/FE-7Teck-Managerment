@@ -103,7 +103,7 @@ const PhoneCatalogManager: React.FC = () => {
           <Table.Body className="text-center text-sm">
             {phoneCatalogs && phoneCatalogs.length > 0 ? (
               phoneCatalogs.map((phoneCatalog: IPhoneCatalog, index: number) => (
-                <Table.Row key={index}>
+                <Table.Row key={phoneCatalog._id}>
                   <span>#{index + 1}</span>
                   <span className="flex items-center justify-center">
                     <Zoom>

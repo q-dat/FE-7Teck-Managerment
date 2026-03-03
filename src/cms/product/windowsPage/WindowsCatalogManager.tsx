@@ -94,7 +94,7 @@ const WindowsCatalogManager: React.FC = () => {
           <Table.Body className="text-center text-sm">
             {windowsCatalogs && windowsCatalogs.length > 0 ? (
               windowsCatalogs.map((winCatalog: IWindowsCatalog, index: number) => (
-                <Table.Row key={index}>
+                <Table.Row key={winCatalog._id}>
                   <span>#{index + 1}</span>
                   <span className="flex items-center justify-center">
                     <Zoom>

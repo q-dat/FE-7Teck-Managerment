@@ -214,7 +214,7 @@ const PhoneManager: React.FC = () => {
           <Table.Body className="text-center text-sm">
             {phones && phones.length > 0 ? (
               phones.map((phone: IPhone, index: number) => (
-                <Table.Row key={index}>
+                <Table.Row key={phone._id}>
                   <span>#{index + 1}</span>
                   <span className="flex items-center justify-center">
                     <Zoom>

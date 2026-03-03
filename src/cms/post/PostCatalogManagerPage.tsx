@@ -87,13 +87,13 @@ const PostCatalogManagerPage: React.FC = () => {
         }
         table_body={
           <Table.Body className="text-center text-sm">
-            {postCatalogs.map((post: IPostCatalog, index: number) => (
-              <Table.Row key={index}>
+            {postCatalogs.map((postCatalog: IPostCatalog, index: number) => (
+              <Table.Row key={postCatalog._id}>
                 <span>#{index + 1}</span>
-                <span className="line-clamp-2">{post?.name}</span>
+                <span className="line-clamp-2">{postCatalog?.name}</span>
                 <span>
-                  {/* {new Date(post?.updatedAt).toLocaleDateString('vi-VN')} */}
-                  <TimeAgo date={post?.updatedAt} />
+                  {/* {new Date(postCatalog?.updatedAt).toLocaleDateString('vi-VN')} */}
+                  <TimeAgo date={postCatalog?.updatedAt} />
                 </span>
 
                 <span>
@@ -106,14 +106,14 @@ const PostCatalogManagerPage: React.FC = () => {
                     <div className="flex flex-col items-center justify-center gap-2">
                       <Button
                         color="success"
-                        onClick={() => openModalEditAdmin(post?._id ?? '')}
+                        onClick={() => openModalEditAdmin(postCatalog._id ?? '')}
                         className="w-full max-w-[140px] text-sm font-light text-white"
                       >
                         <FaPenToSquare />
                         Cập Nhật
                       </Button>
                       <Button
-                        onClick={() => openModalDeleteAdmin(post?._id ?? '')}
+                        onClick={() => openModalDeleteAdmin(postCatalog._id ?? '')}
                         className="w-full max-w-[140px] bg-red-600 text-sm font-light text-white"
                       >
                         <MdDelete />

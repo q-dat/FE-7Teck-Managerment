@@ -92,7 +92,7 @@ const PostManagerPage: React.FC = () => {
         table_body={
           <Table.Body className="text-center text-sm">
             {posts.map((post: IPost, index: number) => (
-              <Table.Row key={index}>
+              <Table.Row key={post._id}>
                 <span>#{index + 1}</span>
                 <span className="line-clamp-2">{post?.title}</span>
                 <span className="flex items-center justify-center">

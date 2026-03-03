@@ -205,7 +205,7 @@ const MacbookManager: React.FC = () => {
           <Table.Body className="text-center text-sm">
             {macbook && macbook.length > 0 ? (
               macbook.map((mac: IMacbook, index: number) => (
-                <Table.Row key={index}>
+                <Table.Row key={mac._id}>
                   <span>#{index + 1}</span>
                   <span className="flex items-center justify-center">
                     <Zoom>

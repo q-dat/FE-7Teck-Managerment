@@ -204,7 +204,7 @@ const WindowsManager: React.FC = () => {
           <Table.Body className="text-center text-sm">
             {windows && windows.length > 0 ? (
               windows.map((win: IWindows, index: number) => (
-                <Table.Row key={index}>
+                <Table.Row key={win._id}>
                   <span>#{index + 1}</span>
                   <span className="flex items-center justify-center">
                     <Zoom>

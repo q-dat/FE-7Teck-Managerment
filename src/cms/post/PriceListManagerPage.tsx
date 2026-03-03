@@ -152,7 +152,7 @@ const PriceListManagerPage: React.FC = () => {
                     {catalogs[categoryType][activeTabs[categoryType]]?.map((product, index) => {
                       const parentPriceList = priceLists.find(list => list._id === parentIds[activeTabs[categoryType]]);
                       return (
-                        <Table.Row key={index} className="border border-secondary text-black dark:text-white">
+                        <Table.Row key={product._id} className="border border-secondary text-black dark:text-white">
                           <span>#{index + 1}</span>
                           <span>{product.name}</span>
                           <span className="font-semibold text-red-700">
