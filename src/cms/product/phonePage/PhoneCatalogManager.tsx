@@ -114,7 +114,11 @@ const PhoneCatalogManager: React.FC = () => {
                   </span>
                   <span>
                     {phoneCatalog?.name}
-                    {phoneCatalog?.phoneCount !== 0 && <b className="text-red-500"> ({phoneCatalog?.phoneCount})</b>}
+                    {phoneCatalog?.phoneCount !== 0 ? (
+                      <b className="ml-1 text-green-500">({phoneCatalog?.phoneCount})</b>
+                    ) : (
+                      <em className="ml-1 text-red-500">Không có sản phẩm</em>
+                    )}
                   </span>
                   <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
                     {(phoneCatalog?.price * 1000).toLocaleString('vi-VN')}₫
