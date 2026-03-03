@@ -18,6 +18,7 @@ import TimeAgo from '../../../components/common/timeAgo/TimeAgo';
 import NavbarAdminMobile from '../../../components/adminPage/responsiveUI/mobile/NavbarAdmin.mobile';
 import Zoom from '../../../lib/Zoom';
 import ModalBulkImportPhoneCatalog from '../../../components/adminPage/modalAdmin/phone/PhoneCatalogModal/BulkImportPhoneCatalog.modal';
+import ModalUpdateFullPhoneCatalog from '../../../components/adminPage/modalAdmin/phone/PhoneCatalogModal/UpdateFullPhoneCatalog.modal';
 
 const PhoneCatalogManager: React.FC = () => {
   const { loading, phoneCatalogs, deletePhoneCatalog, getAllPhoneCatalogs, error } = useContext(PhoneCatalogContext);
@@ -26,6 +27,7 @@ const PhoneCatalogManager: React.FC = () => {
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
   const [selectedPhoneCatalogId, setSelectedPhoneCatalogId] = useState<string | null>(null);
   const [isBulkImportOpen, setIsBulkImportOpen] = useState(false);
+  const [isFullUpdateOpen, setIsFullUpdateOpen] = useState(false);
 
   const openModalCreateAdmin = () => setIsModalCreateOpen(true);
   const closeModalCreateAdmin = () => setIsModalCreateOpen(false);
@@ -149,12 +151,24 @@ const PhoneCatalogManager: React.FC = () => {
                           <FaPenToSquare />
                           Cập Nhật
                         </Button>
+                        {/*  */}
                         <Button
                           onClick={() => openModalDeleteAdmin(phoneCatalog._id ?? '')}
                           className="w-full max-w-[140px] bg-red-600 text-sm font-light text-white"
                         >
                           <MdDelete />
                           Xoá
+                        </Button>
+                        {/*  */}
+                        <Button
+                          color="info"
+                          onClick={() => {
+                            setSelectedPhoneCatalogId(phoneCatalog._id ?? '');
+                            setIsFullUpdateOpen(true);
+                          }}
+                          className="w-full max-w-[140px] text-sm font-light text-white"
+                        >
+                          Full Update
                         </Button>
                       </div>
                     </details>
@@ -168,6 +182,12 @@ const PhoneCatalogManager: React.FC = () => {
             )}
           </Table.Body>
         }
+      />
+      <ModalUpdateFullPhoneCatalog
+        isOpen={isFullUpdateOpen}
+        onClose={() => setIsFullUpdateOpen(false)}
+        onSuccess={getAllPhoneCatalogs}
+        phoneCatalogId={selectedPhoneCatalogId ?? ''}
       />
       <ModalBulkImportPhoneCatalog
         isOpen={isBulkImportOpen}
