@@ -21,7 +21,7 @@ const ModalUpdateFullPhoneCatalog: React.FC<ModalUpdateFullPhoneCatalogProps> = 
 
   const API_URL = import.meta.env.VITE_API_PORT;
 
-  const handleUpdate = async () => {
+  const handleImport = async () => {
     if (!jsonInput.trim()) {
       Toastify('Vui lòng nhập JSON!', 400);
       return;
@@ -65,18 +65,27 @@ const ModalUpdateFullPhoneCatalog: React.FC<ModalUpdateFullPhoneCatalogProps> = 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 px-2" onClick={onClose}>
+    <div
+      className="fixed inset-0 z-50 flex cursor-pointer items-center justify-center bg-black bg-opacity-40 px-2 xl:px-0"
+      onClick={onClose}
+    >
       <div
-        className="relative max-h-[95vh] w-full overflow-hidden rounded-md bg-white p-4 xl:w-2/3"
+        className="relative w-full cursor-default overflow-y-auto rounded-md bg-white p-2 dark:bg-gray-800 xl:w-2/3"
         onClick={e => e.stopPropagation()}
       >
-        <button onClick={onClose} className="absolute right-4 top-4 text-2xl">
+        {/* Nút đóng */}
+        <button
+          onClick={onClose}
+          className="absolute right-5 top-5 z-10 text-3xl text-gray-500 transition-colors hover:scale-125 dark:text-white dark:hover:scale-125"
+        >
           <RiCloseLine />
         </button>
 
-        <h2 className="mb-3 text-center text-xl font-bold text-primary">Update Full Phone Catalog</h2>
+        {/* Tiêu đề */}
+        <h2 className="py-2 text-center text-2xl font-bold text-primary dark:text-white">Update Full Phone Catalog</h2>
 
         <Textarea
+          className="my-2 h-[80vh] w-full border-black bg-white text-xs placeholder:text-black/50 focus:outline-none dark:bg-gray-700 dark:text-white dark:placeholder:text-white/50"
           value={jsonInput}
           onChange={e => setJsonInput(e.target.value)}
           placeholder={`Dán JSON ở đây... (Copy từ Excel hoặc file mẫu)
@@ -198,16 +207,14 @@ const ModalUpdateFullPhoneCatalog: React.FC<ModalUpdateFullPhoneCatalogProps> = 
                 "brand": "Xiaomi"
             }
             }`}
-          className="h-[70vh] w-full text-xs"
           bordered
         />
 
-        <div className="mt-4 flex justify-end gap-3">
-          <Button size="sm" onClick={onClose}>
-            Hủy
+        <div className="flex justify-end gap-4">
+          <Button size="sm" className="text-white" onClick={onClose}>
+            Hủy bỏ
           </Button>
-
-          <Button size="sm" color="primary" onClick={handleUpdate} disabled={loading}>
+          <Button size="sm" color="primary" onClick={handleImport} disabled={loading}>
             {loading ? (
               <span className="loading loading-spinner loading-sm" />
             ) : (
