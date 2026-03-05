@@ -6,7 +6,7 @@ import { RiAddBoxLine, RiUploadCloud2Line } from 'react-icons/ri';
 import { Button, Table } from 'react-daisyui';
 import { MdDelete } from 'react-icons/md';
 import ErrorLoading from '../../../components/common/error/ErrorLoading';
-import { FaCircleInfo, FaPenToSquare } from 'react-icons/fa6';
+import { FaCircleInfo, FaFacebook, FaGoogle, FaPenToSquare, FaReddit, FaYoutube } from 'react-icons/fa6';
 import { isIErrorResponse } from '../../../types/error/error';
 import TableListAdmin from '../../../components/adminPage/TablelistAdmin';
 import ModalCreatePhoneCatalogPageAdmin from '../../../components/adminPage/modalAdmin/phone/PhoneCatalogModal/CreatePhoneCatalog.modal';
@@ -19,6 +19,8 @@ import NavbarAdminMobile from '../../../components/adminPage/responsiveUI/mobile
 import Zoom from '../../../lib/Zoom';
 import ModalBulkImportPhoneCatalog from '../../../components/adminPage/modalAdmin/phone/PhoneCatalogModal/BulkImportPhoneCatalog.modal';
 import ModalUpdateFullPhoneCatalog from '../../../components/adminPage/modalAdmin/phone/PhoneCatalogModal/UpdateFullPhoneCatalog.modal';
+import { openSearchProvider } from '../../../components/utils/searchProvider';
+import { SiTiktok, SiX, SiInstagram } from 'react-icons/si';
 
 const PhoneCatalogManager: React.FC = () => {
   const { loading, phoneCatalogs, deletePhoneCatalog, getAllPhoneCatalogs, error } = useContext(PhoneCatalogContext);
@@ -112,13 +114,52 @@ const PhoneCatalogManager: React.FC = () => {
                       <img loading="lazy" src={phoneCatalog?.img} alt="Hình ảnh" className="h-12 w-12 object-cover" />
                     </Zoom>
                   </span>
-                  <span>
-                    {phoneCatalog?.name}
-                    {phoneCatalog?.phoneCount !== 0 ? (
-                      <b className="ml-1 text-green-500">({phoneCatalog?.phoneCount})</b>
-                    ) : (
-                      <em className="ml-1 text-red-500">Không có sản phẩm</em>
-                    )}
+                  <span className="flex flex-col items-center gap-2">
+                    <span>
+                      {phoneCatalog?.name}
+                      {phoneCatalog?.phoneCount !== 0 ? (
+                        <b className="text-green-500">({phoneCatalog?.phoneCount})</b>
+                      ) : (
+                        <em className="text-red-500">Không có sản phẩm</em>
+                      )}
+                    </span>
+
+                    <span className="flex items-center gap-4 text-sm opacity-0 hover:opacity-100">
+                      <FaGoogle
+                        className="cursor-pointer opacity-70 transition hover:text-red-500 hover:opacity-100"
+                        onClick={() => openSearchProvider('google', phoneCatalog?.name ?? '')}
+                      />
+
+                      <FaYoutube
+                        className="cursor-pointer opacity-70 transition hover:text-red-600 hover:opacity-100"
+                        onClick={() => openSearchProvider('youtube', phoneCatalog?.name ?? '')}
+                      />
+
+                      <FaFacebook
+                        className="cursor-pointer opacity-70 transition hover:text-blue-600 hover:opacity-100"
+                        onClick={() => openSearchProvider('facebook', phoneCatalog?.name ?? '')}
+                      />
+
+                      <SiTiktok
+                        className="cursor-pointer opacity-70 transition hover:opacity-100"
+                        onClick={() => openSearchProvider('tiktok', phoneCatalog?.name ?? '')}
+                      />
+
+                      <SiX
+                        className="cursor-pointer opacity-70 transition hover:opacity-100"
+                        onClick={() => openSearchProvider('x', phoneCatalog?.name ?? '')}
+                      />
+
+                      <SiInstagram
+                        className="cursor-pointer opacity-70 transition hover:text-pink-500 hover:opacity-100"
+                        onClick={() => openSearchProvider('instagram', phoneCatalog?.name ?? '')}
+                      />
+
+                      <FaReddit
+                        className="cursor-pointer opacity-70 transition hover:text-orange-500 hover:opacity-100"
+                        onClick={() => openSearchProvider('reddit', phoneCatalog?.name ?? '')}
+                      />
+                    </span>
                   </span>
                   <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
                     {(phoneCatalog?.price * 1000).toLocaleString('vi-VN')}₫
