@@ -33,6 +33,7 @@ const PhoneCatalogManager: React.FC = () => {
   const [selectedPhoneCatalogId, setSelectedPhoneCatalogId] = useState<string | null>(null);
   const [isBulkImportOpen, setIsBulkImportOpen] = useState(false);
   const [isFullUpdateOpen, setIsFullUpdateOpen] = useState(false);
+  const [activeRowId, setActiveRowId] = useState<string | null>(null);
 
   const openModalCreateAdmin = () => setIsModalCreateOpen(true);
   const closeModalCreateAdmin = () => setIsModalCreateOpen(false);
@@ -124,7 +125,10 @@ const PhoneCatalogManager: React.FC = () => {
           <Table.Body className="text-center text-sm">
             {phoneCatalogs && phoneCatalogs.length > 0 ? (
               phoneCatalogs.map((phoneCatalog: IPhoneCatalog, index: number) => (
-                <Table.Row key={phoneCatalog._id}>
+                <Table.Row
+                  key={phoneCatalog._id}
+                  className={`text-black dark:text-white ${activeRowId === phoneCatalog._id ? 'border-y-2 border-l-8 border-green-500 bg-orange-200 font-bold dark:bg-green-950' : 'bg-primary/10 transition-all dark:bg-gray-900'} `}
+                >
                   <span>#{index + 1}</span>
                   {/*  */}
                   <span className="flex items-center justify-center">
@@ -142,48 +146,71 @@ const PhoneCatalogManager: React.FC = () => {
                         <em className="text-red-500">Không có sản phẩm</em>
                       )}
                       <button
-                        color="success"
-                        onClick={() => openModalEditAdmin(phoneCatalog._id ?? '')}
+                        onClick={() => {
+                          setActiveRowId(phoneCatalog._id ?? '');
+                          openModalEditAdmin(phoneCatalog._id ?? '');
+                        }}
                         className="w-full max-w-[140px] text-sm font-light"
                       >
-                        <FaPenToSquare className="text-primary dark:text-green-400" />
+                        <FaPenToSquare className="text-green-500" />
                       </button>
                     </span>
 
                     <span className="flex items-center gap-4 text-sm opacity-0 hover:opacity-100">
                       <FaGoogle
                         className="cursor-pointer opacity-70 transition hover:text-red-500 hover:opacity-100"
-                        onClick={() => openSearchProvider('google', phoneCatalog?.name ?? '')}
+                        onClick={() => {
+                          setActiveRowId(phoneCatalog._id ?? '');
+                          openSearchProvider('google', phoneCatalog?.name ?? '');
+                        }}
                       />
 
                       <FaYoutube
                         className="cursor-pointer opacity-70 transition hover:text-red-600 hover:opacity-100"
-                        onClick={() => openSearchProvider('youtube', phoneCatalog?.name ?? '')}
+                        onClick={() => {
+                          setActiveRowId(phoneCatalog._id ?? '');
+                          openSearchProvider('youtube', phoneCatalog?.name ?? '');
+                        }}
                       />
 
                       <FaFacebook
                         className="cursor-pointer opacity-70 transition hover:text-blue-600 hover:opacity-100"
-                        onClick={() => openSearchProvider('facebook', phoneCatalog?.name ?? '')}
+                        onClick={() => {
+                          setActiveRowId(phoneCatalog._id ?? '');
+                          openSearchProvider('facebook', phoneCatalog?.name ?? '');
+                        }}
                       />
 
                       <SiTiktok
                         className="cursor-pointer opacity-70 transition hover:opacity-100"
-                        onClick={() => openSearchProvider('tiktok', phoneCatalog?.name ?? '')}
+                        onClick={() => {
+                          setActiveRowId(phoneCatalog._id ?? '');
+                          openSearchProvider('tiktok', phoneCatalog?.name ?? '');
+                        }}
                       />
 
                       <SiX
                         className="cursor-pointer opacity-70 transition hover:opacity-100"
-                        onClick={() => openSearchProvider('x', phoneCatalog?.name ?? '')}
+                        onClick={() => {
+                          setActiveRowId(phoneCatalog._id ?? '');
+                          openSearchProvider('x', phoneCatalog?.name ?? '');
+                        }}
                       />
 
                       <SiInstagram
                         className="cursor-pointer opacity-70 transition hover:text-pink-500 hover:opacity-100"
-                        onClick={() => openSearchProvider('instagram', phoneCatalog?.name ?? '')}
+                        onClick={() => {
+                          setActiveRowId(phoneCatalog._id ?? '');
+                          openSearchProvider('instagram', phoneCatalog?.name ?? '');
+                        }}
                       />
 
                       <FaReddit
                         className="cursor-pointer opacity-70 transition hover:text-orange-500 hover:opacity-100"
-                        onClick={() => openSearchProvider('reddit', phoneCatalog?.name ?? '')}
+                        onClick={() => {
+                          setActiveRowId(phoneCatalog._id ?? '');
+                          openSearchProvider('reddit', phoneCatalog?.name ?? '');
+                        }}
                       />
                     </span>
                   </span>
@@ -217,6 +244,7 @@ const PhoneCatalogManager: React.FC = () => {
                   <span>
                     <Button
                       onClick={() => {
+                        setActiveRowId(phoneCatalog._id ?? '');
                         setSelectedPhoneCatalogId(phoneCatalog._id ?? '');
                         setIsFullUpdateOpen(true);
                       }}
@@ -236,7 +264,10 @@ const PhoneCatalogManager: React.FC = () => {
                       <div className="flex flex-col items-center justify-center gap-2">
                         <Button
                           color="success"
-                          onClick={() => openModalEditAdmin(phoneCatalog._id ?? '')}
+                          onClick={() => {
+                            setActiveRowId(phoneCatalog._id ?? '');
+                            openModalEditAdmin(phoneCatalog._id ?? '');
+                          }}
                           className="w-full max-w-[140px] text-sm font-light text-white"
                         >
                           <FaPenToSquare />
