@@ -138,8 +138,8 @@ const PhoneCatalogManager: React.FC = () => {
                   </span>
                   {/*  */}
                   <span className="flex flex-col items-center gap-2">
-                    <span className="flex flex-row items-center gap-1 whitespace-nowrap group-hover:font-bold">
-                      {phoneCatalog?.name}
+                    <span className="flex flex-row items-center gap-1 whitespace-nowrap">
+                      <span className="px-1 group-hover:bg-primary group-hover:text-white">{phoneCatalog?.name}</span>
                       {phoneCatalog?.phoneCount !== 0 ? (
                         <b className="text-green-500">({phoneCatalog?.phoneCount})</b>
                       ) : (

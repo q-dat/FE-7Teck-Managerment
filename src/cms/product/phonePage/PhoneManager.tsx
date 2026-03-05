@@ -32,6 +32,7 @@ const PhoneManager: React.FC = () => {
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
   const [selectedPhoneId, setSelectedPhoneId] = useState<string | null>(null);
   const [isBulkImportOpen, setIsBulkImportOpen] = useState(false);
+  const [activeRowId, setActiveRowId] = useState<string | null>(null);
   // handle Search
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -199,7 +200,6 @@ const PhoneManager: React.FC = () => {
           <Table.Head className="bg-primary text-center text-white">
             <span>STT</span>
             <span>Hình Ảnh</span>
-            <span>Ảnh Thu Nhỏ</span>
             <span>Tên Sản Phẩm</span>
             <span>Giá</span>
             <span>Giá Giảm</span>
@@ -216,7 +216,7 @@ const PhoneManager: React.FC = () => {
               phones.map((phone: IPhone, index: number) => (
                 <Table.Row
                   key={phone._id}
-                  className="group bg-primary/10 text-black transition-all dark:bg-gray-900 dark:text-white"
+                  className={`group text-black dark:text-white ${activeRowId === phone._id ? 'border-y-2 border-l-8 border-green-500 bg-orange-200 font-bold dark:bg-green-950' : 'bg-primary/10 transition-all dark:bg-gray-900'} `}
                 >
                   <span>#{index + 1}</span>
                   <span className="flex flex-wrap items-center justify-center gap-2">
@@ -229,7 +229,7 @@ const PhoneManager: React.FC = () => {
                       <span>Không có ảnh thu nhỏ</span>
                     )}
                   </span>
-                  <span className="group-hover:font-bold">
+                  <span className="pl-2 group-hover:bg-primary group-hover:py-1 group-hover:text-white">
                     {phone?.name}
                     &nbsp;
                     {phone?.phone_catalog_id?.status === 0 ? (
@@ -269,7 +269,7 @@ const PhoneManager: React.FC = () => {
                       {phone?.status || 'Không có tình trạng!'}
                     </span>
                   )}
-                  <span className="line-clamp-3">{phone?.des || 'Trống!'}</span>
+                  <span className="line-clamp-3 w-20">{phone?.des || 'Trống!'}</span>
                   <InlineNoteEditor
                     prodId={phone._id}
                     value={phone.note ?? ''}
@@ -289,7 +289,10 @@ const PhoneManager: React.FC = () => {
                       <div className="flex flex-col items-center justify-center gap-2">
                         <Button
                           color="success"
-                          onClick={() => openModalEditAdmin(phone?._id ?? '')}
+                          onClick={() => {
+                            setActiveRowId(phone._id ?? '');
+                            openModalEditAdmin(phone?._id ?? '');
+                          }}
                           className="w-full max-w-[140px] text-sm font-light text-white"
                         >
                           <FaPenToSquare />

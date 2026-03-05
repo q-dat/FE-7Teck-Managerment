@@ -25,6 +25,7 @@ const TabletCatalogManager: React.FC = () => {
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
   const [selectedTabletCatalogId, setSelectedTabletCatalogId] = useState<string | null>(null);
+  const [activeRowId, setActiveRowId] = useState<string | null>(null);
 
   const openModalCreateAdmin = () => setIsModalCreateOpen(true);
   const closeModalCreateAdmin = () => setIsModalCreateOpen(false);
@@ -94,7 +95,10 @@ const TabletCatalogManager: React.FC = () => {
           <Table.Body className="text-center text-sm">
             {tabletCatalogs && tabletCatalogs.length > 0 ? (
               tabletCatalogs.map((tabletCatalog: ITabletCatalog, index: number) => (
-                <Table.Row key={tabletCatalog._id}>
+                <Table.Row
+                  key={tabletCatalog._id}
+                  className={`group text-black dark:text-white ${activeRowId === tabletCatalog._id ? 'border-y-2 border-l-8 border-green-500 bg-orange-200 font-bold dark:bg-green-950' : 'bg-primary/10 transition-all dark:bg-gray-900'} `}
+                >
                   <span>#{index + 1}</span>
                   <span className="flex items-center justify-center">
                     <Zoom>
@@ -106,7 +110,9 @@ const TabletCatalogManager: React.FC = () => {
                       />
                     </Zoom>
                   </span>
-                  <span>{tabletCatalog?.t_cat_name}</span>
+                  <span className="px-1 group-hover:bg-primary group-hover:text-white">
+                    {tabletCatalog?.t_cat_name}
+                  </span>
                   <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
                     {(tabletCatalog?.t_cat_price * 1000).toLocaleString('vi-VN')}₫
                   </span>
@@ -136,7 +142,10 @@ const TabletCatalogManager: React.FC = () => {
                       <div className="flex flex-col items-center justify-center gap-2">
                         <Button
                           color="success"
-                          onClick={() => openModalEditAdmin(tabletCatalog._id ?? '')}
+                          onClick={() => {
+                            setActiveRowId(tabletCatalog._id ?? '');
+                            openModalEditAdmin(tabletCatalog?._id ?? '');
+                          }}
                           className="w-full max-w-[140px] text-sm font-light text-white"
                         >
                           <FaPenToSquare />

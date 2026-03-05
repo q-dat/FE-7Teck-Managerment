@@ -25,6 +25,7 @@ const MacbookCatalogManager: React.FC = () => {
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
   const [selectedMacbookCatalogId, setSelectedMacbookCatalogId] = useState<string | null>(null);
+  const [activeRowId, setActiveRowId] = useState<string | null>(null);
 
   const openModalCreateAdmin = () => setIsModalCreateOpen(true);
   const closeModalCreateAdmin = () => setIsModalCreateOpen(false);
@@ -94,7 +95,10 @@ const MacbookCatalogManager: React.FC = () => {
           <Table.Body className="text-center text-sm">
             {macbookCatalogs && macbookCatalogs.length > 0 ? (
               macbookCatalogs.map((macCatalog: IMacbookCatalog, index: number) => (
-                <Table.Row key={macCatalog._id}>
+                <Table.Row
+                  key={macCatalog._id}
+                  className={`group text-black dark:text-white ${activeRowId === macCatalog._id ? 'border-y-2 border-l-8 border-green-500 bg-orange-200 font-bold dark:bg-green-950' : 'bg-primary/10 transition-all dark:bg-gray-900'} `}
+                >
                   <span>#{index + 1}</span>
                   <span className="flex items-center justify-center">
                     <Zoom>
@@ -106,7 +110,7 @@ const MacbookCatalogManager: React.FC = () => {
                       />
                     </Zoom>
                   </span>
-                  <span>{macCatalog?.m_cat_name}</span>
+                  <span className="px-1 group-hover:bg-primary group-hover:text-white">{macCatalog?.m_cat_name}</span>
                   <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
                     {(macCatalog?.m_cat_price * 1000).toLocaleString('vi-VN')}₫
                   </span>
@@ -136,7 +140,10 @@ const MacbookCatalogManager: React.FC = () => {
                       <div className="flex flex-col items-center justify-center gap-2">
                         <Button
                           color="success"
-                          onClick={() => openModalEditAdmin(macCatalog._id ?? '')}
+                          onClick={() => {
+                            setActiveRowId(macCatalog._id ?? '');
+                            openModalEditAdmin(macCatalog?._id ?? '');
+                          }}
                           className="w-full max-w-[140px] text-sm font-light text-white"
                         >
                           <FaPenToSquare />

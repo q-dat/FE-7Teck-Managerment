@@ -25,6 +25,7 @@ const WindowsCatalogManager: React.FC = () => {
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
   const [selectedWindowsCatalogId, setSelectedWindowsCatalogId] = useState<string | null>(null);
+  const [activeRowId, setActiveRowId] = useState<string | null>(null);
 
   const openModalCreateAdmin = () => setIsModalCreateOpen(true);
   const closeModalCreateAdmin = () => setIsModalCreateOpen(false);
@@ -94,7 +95,10 @@ const WindowsCatalogManager: React.FC = () => {
           <Table.Body className="text-center text-sm">
             {windowsCatalogs && windowsCatalogs.length > 0 ? (
               windowsCatalogs.map((winCatalog: IWindowsCatalog, index: number) => (
-                <Table.Row key={winCatalog._id}>
+                <Table.Row
+                  key={winCatalog._id}
+                  className={`group text-black dark:text-white ${activeRowId === winCatalog._id ? 'border-y-2 border-l-8 border-green-500 bg-orange-200 font-bold dark:bg-green-950' : 'bg-primary/10 transition-all dark:bg-gray-900'} `}
+                >
                   <span>#{index + 1}</span>
                   <span className="flex items-center justify-center">
                     <Zoom>
@@ -106,7 +110,7 @@ const WindowsCatalogManager: React.FC = () => {
                       />
                     </Zoom>
                   </span>
-                  <span>{winCatalog?.w_cat_name}</span>
+                  <span className="px-1 group-hover:bg-primary group-hover:text-white">{winCatalog?.w_cat_name}</span>
                   <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
                     {(winCatalog?.w_cat_price * 1000).toLocaleString('vi-VN')}₫
                   </span>
@@ -136,7 +140,10 @@ const WindowsCatalogManager: React.FC = () => {
                       <div className="flex flex-col items-center justify-center gap-2">
                         <Button
                           color="success"
-                          onClick={() => openModalEditAdmin(winCatalog._id ?? '')}
+                          onClick={() => {
+                            setActiveRowId(winCatalog._id ?? '');
+                            openModalEditAdmin(winCatalog?._id ?? '');
+                          }}
                           className="w-full max-w-[140px] text-sm font-light text-white"
                         >
                           <FaPenToSquare />

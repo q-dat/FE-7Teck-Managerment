@@ -30,6 +30,8 @@ const WindowsManager: React.FC = () => {
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
   const [selectedWindowsId, setSelectedWindowsId] = useState<string | null>(null);
+  const [activeRowId, setActiveRowId] = useState<string | null>(null);
+
   // handle Search
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -189,7 +191,6 @@ const WindowsManager: React.FC = () => {
           <Table.Head className="bg-primary text-center text-white">
             <span>STT</span>
             <span>Hình Ảnh</span>
-            <span>Ảnh Thu Nhỏ</span>
             <span>Tên Sản Phẩm</span>
             <span>Giá</span>
             <span>Giá Giảm</span>
@@ -204,14 +205,15 @@ const WindowsManager: React.FC = () => {
           <Table.Body className="text-center text-sm">
             {windows && windows.length > 0 ? (
               windows.map((win: IWindows, index: number) => (
-                <Table.Row key={win._id}>
+                <Table.Row
+                  key={win._id}
+                  className={`group text-black dark:text-white ${activeRowId === win._id ? 'border-y-2 border-l-8 border-green-500 bg-orange-200 font-bold dark:bg-green-950' : 'bg-primary/10 transition-all dark:bg-gray-900'} `}
+                >
                   <span>#{index + 1}</span>
-                  <span className="flex items-center justify-center">
+                  <span className="flex flex-wrap items-center justify-center gap-2">
                     <Zoom>
                       <img loading="lazy" src={win?.windows_img} alt="Hình ảnh" className="h-12 w-12 object-cover" />
                     </Zoom>
-                  </span>
-                  <span className="flex flex-wrap items-center justify-center gap-2">
                     {win?.windows_thumbnail && Array.isArray(win?.windows_thumbnail) ? (
                       <>
                         {win.windows_thumbnail.slice(0, 1).map((thumb, index) => (
@@ -229,8 +231,8 @@ const WindowsManager: React.FC = () => {
                       <span>Không có ảnh thu nhỏ</span>
                     )}
                   </span>
-                  <span className="leading-5">
-                    <b>{win?.windows_name}</b>
+                  <span className="pl-2 group-hover:bg-primary group-hover:py-1 group-hover:text-white">
+                    {win?.windows_name}
                     &nbsp;
                     {win?.windows_catalog_id?.w_cat_status === 0 ? (
                       <span className="bg-green-500 p-1 text-black">New</span>
@@ -266,7 +268,7 @@ const WindowsManager: React.FC = () => {
                       {win?.windows_status || 'Không có tình trạng!'}
                     </span>
                   )}
-                  <span className="line-clamp-3">{win?.windows_des || 'Trống!'}</span>
+                  <span className="line-clamp-3 w-20">{win?.windows_des || 'Trống!'}</span>
                   <InlineNoteEditor
                     prodId={win._id}
                     value={win.windows_note ?? ''}
@@ -286,7 +288,10 @@ const WindowsManager: React.FC = () => {
                       <div className="flex flex-col items-center justify-center gap-2">
                         <Button
                           color="success"
-                          onClick={() => openModalEditAdmin(win?._id ?? '')}
+                          onClick={() => {
+                            setActiveRowId(win._id ?? '');
+                            openModalEditAdmin(win?._id ?? '');
+                          }}
                           className="w-full max-w-[140px] text-sm font-light text-white"
                         >
                           <FaPenToSquare />

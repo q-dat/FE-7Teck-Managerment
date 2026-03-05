@@ -30,6 +30,7 @@ const MacbookManager: React.FC = () => {
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
   const [selectedMacbookId, setSelectedMacbookId] = useState<string | null>(null);
+  const [activeRowId, setActiveRowId] = useState<string | null>(null);
 
   // handle Search
   const [searchParams, setSearchParams] = useSearchParams();
@@ -190,7 +191,6 @@ const MacbookManager: React.FC = () => {
           <Table.Head className="bg-primary text-center text-white">
             <span>STT</span>
             <span>Hình Ảnh</span>
-            <span>Ảnh Thu Nhỏ</span>
             <span>Tên Sản Phẩm</span>
             <span>Giá</span>
             <span>Giá Giảm</span>
@@ -205,33 +205,24 @@ const MacbookManager: React.FC = () => {
           <Table.Body className="text-center text-sm">
             {macbook && macbook.length > 0 ? (
               macbook.map((mac: IMacbook, index: number) => (
-                <Table.Row key={mac._id}>
+                <Table.Row
+                  key={mac._id}
+                  className={`group text-black dark:text-white ${activeRowId === mac._id ? 'border-y-2 border-l-8 border-green-500 bg-orange-200 font-bold dark:bg-green-950' : 'bg-primary/10 transition-all dark:bg-gray-900'} `}
+                >
                   <span>#{index + 1}</span>
-                  <span className="flex items-center justify-center">
+                  <span className="flex flex-wrap items-center justify-center gap-2">
                     <Zoom>
                       <img loading="lazy" src={mac?.macbook_img} alt="Hình ảnh" className="h-12 w-12 object-cover" />
                     </Zoom>
-                  </span>
-                  <span className="flex flex-wrap items-center justify-center gap-2">
                     {mac?.macbook_thumbnail && Array.isArray(mac?.macbook_thumbnail) ? (
-                      <>
-                        {mac.macbook_thumbnail.slice(0, 1).map((thumb, index) => (
-                          <img
-                            loading="lazy"
-                            key={index}
-                            src={thumb}
-                            alt="Ảnh thu nhỏ"
-                            className="h-12 w-12 object-cover"
-                          />
-                        ))}
-                        <span className="text-xs text-red-500">(Ảnh thu nhỏ: {mac?.macbook_thumbnail?.length})</span>
-                      </>
+                      <span className="text-xs text-red-500">(Ảnh thu nhỏ: {mac?.macbook_thumbnail?.length})</span>
                     ) : (
                       <span>Không có ảnh thu nhỏ</span>
                     )}
                   </span>
-                  <span className="leading-5">
-                    <b>{mac?.macbook_name}</b>
+
+                  <span className="pl-2 group-hover:bg-primary group-hover:py-1 group-hover:text-white">
+                    {mac?.macbook_name}
                     &nbsp;
                     {mac?.macbook_catalog_id?.m_cat_status === 0 ? (
                       <span className="bg-green-500 p-1 text-black">New</span>
@@ -270,7 +261,7 @@ const MacbookManager: React.FC = () => {
                       {mac?.macbook_status || 'Không có tình trạng!'}
                     </span>
                   )}
-                  <span className="line-clamp-3">{mac?.macbook_des || 'Trống!'}</span>
+                  <span className="line-clamp-3 w-20">{mac?.macbook_des || 'Trống!'}</span>
                   <InlineNoteEditor
                     prodId={mac._id}
                     value={mac.macbook_note ?? ''}
@@ -290,7 +281,10 @@ const MacbookManager: React.FC = () => {
                       <div className="flex flex-col items-center justify-center gap-2">
                         <Button
                           color="success"
-                          onClick={() => openModalEditAdmin(mac?._id ?? '')}
+                          onClick={() => {
+                            setActiveRowId(mac._id ?? '');
+                            openModalEditAdmin(mac?._id ?? '');
+                          }}
                           className="w-full max-w-[140px] text-sm font-light text-white"
                         >
                           <FaPenToSquare />

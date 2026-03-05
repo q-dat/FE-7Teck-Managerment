@@ -30,6 +30,7 @@ const TabletManager: React.FC = () => {
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
   const [selectedTabletId, setSelectedTabletId] = useState<string | null>(null);
+  const [activeRowId, setActiveRowId] = useState<string | null>(null);
   // handle Search
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -192,7 +193,6 @@ const TabletManager: React.FC = () => {
           <Table.Head className="bg-primary text-center text-white">
             <span>STT</span>
             <span>Hình Ảnh</span>
-            <span>Ảnh Thu Nhỏ</span>
             <span>Tên Sản Phẩm</span>
             <span>Giá</span>
             <span>Giá Giảm</span>
@@ -207,33 +207,23 @@ const TabletManager: React.FC = () => {
           <Table.Body className="text-center text-sm">
             {tablets && tablets.length > 0 ? (
               tablets.map((tablet: ITablet, index: number) => (
-                <Table.Row key={tablet._id}>
+                <Table.Row
+                  key={tablet._id}
+                  className={`group text-black dark:text-white ${activeRowId === tablet._id ? 'border-y-2 border-l-8 border-green-500 bg-orange-200 font-bold dark:bg-green-950' : 'bg-primary/10 transition-all dark:bg-gray-900'} `}
+                >
                   <span>#{index + 1}</span>
-                  <span className="flex items-center justify-center">
+                  <span className="flex flex-wrap items-center justify-center gap-2">
                     <Zoom>
                       <img loading="lazy" src={tablet?.tablet_img} alt="Hình ảnh" className="h-12 w-12 object-cover" />
                     </Zoom>
-                  </span>
-                  <span className="flex flex-wrap items-center justify-center gap-2">
                     {tablet?.tablet_thumbnail && Array.isArray(tablet?.tablet_thumbnail) ? (
-                      <>
-                        {tablet.tablet_thumbnail.slice(0, 1).map((thumb, index) => (
-                          <img
-                            loading="lazy"
-                            key={index}
-                            src={thumb}
-                            alt="Ảnh thu nhỏ"
-                            className="h-12 w-12 object-cover"
-                          />
-                        ))}
-                        <span className="text-xs text-red-500">(Ảnh thu nhỏ: {tablet?.tablet_thumbnail?.length})</span>
-                      </>
+                      <span className="text-xs text-red-500">(Ảnh thu nhỏ: {tablet?.tablet_thumbnail?.length})</span>
                     ) : (
                       <span>Không có ảnh thu nhỏ</span>
                     )}
                   </span>
-                  <span className="leading-5">
-                    <b>{tablet?.tablet_name}</b>
+                  <span className="pl-2 group-hover:bg-primary group-hover:py-1 group-hover:text-white">
+                    {tablet?.tablet_name}
                     &nbsp;
                     {tablet?.tablet_catalog_id?.t_cat_status === 0 ? (
                       <span className="bg-green-500 px-1 py-2 text-black">New</span>
@@ -271,7 +261,7 @@ const TabletManager: React.FC = () => {
                       {tablet?.tablet_status || 'Không có tình trạng!'}
                     </span>
                   )}
-                  <span className="line-clamp-3">{tablet?.tablet_des || 'Trống!'}</span>
+                  <span className="line-clamp-3 w-20">{tablet?.tablet_des || 'Trống!'}</span>
                   <InlineNoteEditor
                     prodId={tablet._id}
                     value={tablet.tablet_note ?? ''}
@@ -291,7 +281,10 @@ const TabletManager: React.FC = () => {
                       <div className="flex flex-col items-center justify-center gap-2">
                         <Button
                           color="success"
-                          onClick={() => openModalEditAdmin(tablet?._id ?? '')}
+                          onClick={() => {
+                            setActiveRowId(tablet._id ?? '');
+                            openModalEditAdmin(tablet?._id ?? '');
+                          }}
                           className="w-full max-w-[140px] text-sm font-light text-white"
                         >
                           <FaPenToSquare />
