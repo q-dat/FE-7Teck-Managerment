@@ -127,7 +127,7 @@ const PhoneCatalogManager: React.FC = () => {
               phoneCatalogs.map((phoneCatalog: IPhoneCatalog, index: number) => (
                 <Table.Row
                   key={phoneCatalog._id}
-                  className={`text-black dark:text-white ${activeRowId === phoneCatalog._id ? 'border-y-2 border-l-8 border-green-500 bg-orange-200 font-bold dark:bg-green-950' : 'bg-primary/10 transition-all dark:bg-gray-900'} `}
+                  className={`group text-black dark:text-white ${activeRowId === phoneCatalog._id ? 'border-y-2 border-l-8 border-green-500 bg-orange-200 font-bold dark:bg-green-950' : 'bg-primary/10 transition-all dark:bg-gray-900'} `}
                 >
                   <span>#{index + 1}</span>
                   {/*  */}
@@ -138,7 +138,7 @@ const PhoneCatalogManager: React.FC = () => {
                   </span>
                   {/*  */}
                   <span className="flex flex-col items-center gap-2">
-                    <span className="flex flex-row items-center gap-1 whitespace-nowrap">
+                    <span className="flex flex-row items-center gap-1 whitespace-nowrap group-hover:font-bold">
                       {phoneCatalog?.name}
                       {phoneCatalog?.phoneCount !== 0 ? (
                         <b className="text-green-500">({phoneCatalog?.phoneCount})</b>
@@ -156,9 +156,9 @@ const PhoneCatalogManager: React.FC = () => {
                       </button>
                     </span>
 
-                    <span className="flex items-center gap-4 text-sm opacity-0 hover:opacity-100">
+                    <span className="flex items-center gap-4 text-sm opacity-0 group-hover:opacity-100">
                       <FaGoogle
-                        className="cursor-pointer opacity-70 transition hover:text-red-500 hover:opacity-100"
+                        className="cursor-pointer transition hover:text-red-500"
                         onClick={() => {
                           setActiveRowId(phoneCatalog._id ?? '');
                           openSearchProvider('google', phoneCatalog?.name ?? '');
@@ -166,7 +166,7 @@ const PhoneCatalogManager: React.FC = () => {
                       />
 
                       <FaYoutube
-                        className="cursor-pointer opacity-70 transition hover:text-red-600 hover:opacity-100"
+                        className="cursor-pointer transition hover:text-red-600"
                         onClick={() => {
                           setActiveRowId(phoneCatalog._id ?? '');
                           openSearchProvider('youtube', phoneCatalog?.name ?? '');
@@ -174,7 +174,7 @@ const PhoneCatalogManager: React.FC = () => {
                       />
 
                       <FaFacebook
-                        className="cursor-pointer opacity-70 transition hover:text-blue-600 hover:opacity-100"
+                        className="cursor-pointer transition hover:text-blue-600"
                         onClick={() => {
                           setActiveRowId(phoneCatalog._id ?? '');
                           openSearchProvider('facebook', phoneCatalog?.name ?? '');
@@ -182,7 +182,7 @@ const PhoneCatalogManager: React.FC = () => {
                       />
 
                       <SiTiktok
-                        className="cursor-pointer opacity-70 transition hover:opacity-100"
+                        className="cursor-pointer transition"
                         onClick={() => {
                           setActiveRowId(phoneCatalog._id ?? '');
                           openSearchProvider('tiktok', phoneCatalog?.name ?? '');
@@ -190,7 +190,7 @@ const PhoneCatalogManager: React.FC = () => {
                       />
 
                       <SiX
-                        className="cursor-pointer opacity-70 transition hover:opacity-100"
+                        className="cursor-pointer transition"
                         onClick={() => {
                           setActiveRowId(phoneCatalog._id ?? '');
                           openSearchProvider('x', phoneCatalog?.name ?? '');
@@ -198,7 +198,7 @@ const PhoneCatalogManager: React.FC = () => {
                       />
 
                       <SiInstagram
-                        className="cursor-pointer opacity-70 transition hover:text-pink-500 hover:opacity-100"
+                        className="cursor-pointer transition hover:text-pink-500"
                         onClick={() => {
                           setActiveRowId(phoneCatalog._id ?? '');
                           openSearchProvider('instagram', phoneCatalog?.name ?? '');
@@ -206,7 +206,7 @@ const PhoneCatalogManager: React.FC = () => {
                       />
 
                       <FaReddit
-                        className="cursor-pointer opacity-70 transition hover:text-orange-500 hover:opacity-100"
+                        className="cursor-pointer transition hover:text-orange-500"
                         onClick={() => {
                           setActiveRowId(phoneCatalog._id ?? '');
                           openSearchProvider('reddit', phoneCatalog?.name ?? '');

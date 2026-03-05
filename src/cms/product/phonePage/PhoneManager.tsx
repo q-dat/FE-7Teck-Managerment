@@ -214,33 +214,23 @@ const PhoneManager: React.FC = () => {
           <Table.Body className="text-center text-sm">
             {phones && phones.length > 0 ? (
               phones.map((phone: IPhone, index: number) => (
-                <Table.Row key={phone._id}>
+                <Table.Row
+                  key={phone._id}
+                  className="group bg-primary/10 text-black transition-all dark:bg-gray-900 dark:text-white"
+                >
                   <span>#{index + 1}</span>
-                  <span className="flex items-center justify-center">
+                  <span className="flex flex-wrap items-center justify-center gap-2">
                     <Zoom>
                       <img loading="lazy" src={phone?.img} alt="Hình ảnh" className="h-12 w-12 object-cover" />
                     </Zoom>
-                  </span>
-                  <span className="flex flex-wrap items-center justify-center gap-2">
                     {phone?.thumbnail && Array.isArray(phone?.thumbnail) ? (
-                      <>
-                        {phone.thumbnail.slice(0, 1).map((thumb, index) => (
-                          <img
-                            loading="lazy"
-                            key={index}
-                            src={thumb}
-                            alt="Ảnh thu nhỏ"
-                            className="h-12 w-12 object-cover"
-                          />
-                        ))}
-                        <span className="text-xs text-red-500">(Ảnh thu nhỏ: {phone?.thumbnail?.length})</span>
-                      </>
+                      <span className="text-xs text-red-500">(Ảnh thu nhỏ: {phone?.thumbnail?.length})</span>
                     ) : (
                       <span>Không có ảnh thu nhỏ</span>
                     )}
                   </span>
-                  <span className="leading-5">
-                    <b>{phone?.name}</b>
+                  <span className="group-hover:font-bold">
+                    {phone?.name}
                     &nbsp;
                     {phone?.phone_catalog_id?.status === 0 ? (
                       <span className="bg-green-500 p-1 text-black">New</span>
