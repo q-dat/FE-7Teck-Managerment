@@ -134,13 +134,20 @@ const PhoneCatalogManager: React.FC = () => {
                   </span>
                   {/*  */}
                   <span className="flex flex-col items-center gap-2">
-                    <span>
+                    <span className="flex flex-row items-center gap-1 whitespace-nowrap">
                       {phoneCatalog?.name}
                       {phoneCatalog?.phoneCount !== 0 ? (
                         <b className="text-green-500">({phoneCatalog?.phoneCount})</b>
                       ) : (
                         <em className="text-red-500">Không có sản phẩm</em>
                       )}
+                      <button
+                        color="success"
+                        onClick={() => openModalEditAdmin(phoneCatalog._id ?? '')}
+                        className="w-full max-w-[140px] text-sm font-light"
+                      >
+                        <FaPenToSquare className="text-primary dark:text-green-400" />
+                      </button>
                     </span>
 
                     <span className="flex items-center gap-4 text-sm opacity-0 hover:opacity-100">
