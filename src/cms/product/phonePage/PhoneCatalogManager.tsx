@@ -18,12 +18,15 @@ import TimeAgo from '../../../components/common/timeAgo/TimeAgo';
 import NavbarAdminMobile from '../../../components/adminPage/responsiveUI/mobile/NavbarAdmin.mobile';
 import Zoom from '../../../lib/Zoom';
 import ModalBulkImportPhoneCatalog from '../../../components/adminPage/modalAdmin/phone/PhoneCatalogModal/BulkImportPhoneCatalog.modal';
-import ModalUpdateFullPhoneCatalog from '../../../components/adminPage/modalAdmin/phone/PhoneCatalogModal/UpdateFullPhoneCatalog.modal';
+import PhoneCatalogItemFullUpdateModal from '../../../components/adminPage/modalAdmin/phone/PhoneCatalogModal/PhoneCatalogItemFullUpdateModal';
 import { openSearchProvider } from '../../../components/utils/searchProvider';
 import { SiTiktok, SiX, SiInstagram } from 'react-icons/si';
+import { LuFileJson } from 'react-icons/lu';
+import { InlinePriceEditor } from '../../../components/adminPage/inline-edit/InlinePriceEditor';
 
 const PhoneCatalogManager: React.FC = () => {
-  const { loading, phoneCatalogs, deletePhoneCatalog, getAllPhoneCatalogs, error } = useContext(PhoneCatalogContext);
+  const { loading, phoneCatalogs, updatePhoneCatalog, deletePhoneCatalog, getAllPhoneCatalogs, error } =
+    useContext(PhoneCatalogContext);
   const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
@@ -43,6 +46,19 @@ const PhoneCatalogManager: React.FC = () => {
     setIsModalEditOpen(true);
   };
   const closeModalEditAdmin = () => setIsModalEditOpen(false);
+
+  const handleInlineUpdate = async (id: string, field: keyof IPhoneCatalog, value: any) => {
+    const data = new FormData();
+    data.append(String(field), String(value));
+
+    try {
+      await updatePhoneCatalog(id, data);
+      Toastify('Cập nhật thành công', 200);
+      getAllPhoneCatalogs();
+    } catch {
+      Toastify('Lỗi cập nhật', 500);
+    }
+  };
 
   const handleDeletePhoneCatalog = async () => {
     if (selectedPhoneCatalogId) {
@@ -100,6 +116,7 @@ const PhoneCatalogManager: React.FC = () => {
             <span>Giá</span>
             <span>Ngày Cập Nhật</span>
             <span>Trạng Thái</span>
+            <span>Full Update</span>
             <span>Hành Động</span>
           </Table.Head>
         }
@@ -109,11 +126,13 @@ const PhoneCatalogManager: React.FC = () => {
               phoneCatalogs.map((phoneCatalog: IPhoneCatalog, index: number) => (
                 <Table.Row key={phoneCatalog._id}>
                   <span>#{index + 1}</span>
+                  {/*  */}
                   <span className="flex items-center justify-center">
                     <Zoom>
                       <img loading="lazy" src={phoneCatalog?.img} alt="Hình ảnh" className="h-12 w-12 object-cover" />
                     </Zoom>
                   </span>
+                  {/*  */}
                   <span className="flex flex-col items-center gap-2">
                     <span>
                       {phoneCatalog?.name}
@@ -161,15 +180,23 @@ const PhoneCatalogManager: React.FC = () => {
                       />
                     </span>
                   </span>
-                  <span className="rounded-lg border border-red-500 bg-red-500 bg-opacity-20 p-2 font-semibold text-red-500">
-                    {(phoneCatalog?.price * 1000).toLocaleString('vi-VN')}₫
-                  </span>
+                  {/*  */}
+                  <InlinePriceEditor<IPhoneCatalog>
+                    prodId={phoneCatalog._id}
+                    field="price"
+                    value={phoneCatalog.price}
+                    type="number"
+                    formatter={v => `${(Number(v) * 1000).toLocaleString('vi-VN')}đ`}
+                    onSubmit={handleInlineUpdate}
+                  />
+                  {/*  */}
                   <span>
                     {/* {new Date(phoneCatalog?.createdAt).toLocaleString(
                         'vi-VN'
                       )} */}
                     <TimeAgo date={phoneCatalog?.updatedAt} />
                   </span>
+                  {/*  */}
                   <span>
                     {phoneCatalog?.status === 0 ? (
                       <p className="rounded-md bg-green-500 p-1 text-white">New</p>
@@ -178,6 +205,18 @@ const PhoneCatalogManager: React.FC = () => {
                     ) : (
                       phoneCatalog?.status
                     )}
+                  </span>
+                  {/*  */}
+                  <span>
+                    <Button
+                      onClick={() => {
+                        setSelectedPhoneCatalogId(phoneCatalog._id ?? '');
+                        setIsFullUpdateOpen(true);
+                      }}
+                      className="border-none p-0"
+                    >
+                      <LuFileJson size={24} className="text-primary dark:text-green-400" />
+                    </Button>
                   </span>
                   {/* Hành động */}
                   <span>
@@ -204,17 +243,6 @@ const PhoneCatalogManager: React.FC = () => {
                           <MdDelete />
                           Xoá
                         </Button>
-                        {/*  */}
-                        <Button
-                          color="info"
-                          onClick={() => {
-                            setSelectedPhoneCatalogId(phoneCatalog._id ?? '');
-                            setIsFullUpdateOpen(true);
-                          }}
-                          className="w-full max-w-[140px] text-sm font-light text-white"
-                        >
-                          Full Update
-                        </Button>
                       </div>
                     </details>
                   </span>
@@ -228,7 +256,7 @@ const PhoneCatalogManager: React.FC = () => {
           </Table.Body>
         }
       />
-      <ModalUpdateFullPhoneCatalog
+      <PhoneCatalogItemFullUpdateModal
         isOpen={isFullUpdateOpen}
         onClose={() => setIsFullUpdateOpen(false)}
         onSuccess={getAllPhoneCatalogs}

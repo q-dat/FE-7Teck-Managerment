@@ -10,7 +10,7 @@ interface ModalUpdateFullPhoneCatalogProps {
   phoneCatalogId: string;
 }
 
-const ModalUpdateFullPhoneCatalog: React.FC<ModalUpdateFullPhoneCatalogProps> = ({
+const PhoneCatalogItemFullUpdateModal: React.FC<ModalUpdateFullPhoneCatalogProps> = ({
   isOpen,
   onClose,
   onSuccess,
@@ -230,4 +230,4 @@ const ModalUpdateFullPhoneCatalog: React.FC<ModalUpdateFullPhoneCatalogProps> = 
   );
 };
 
-export default ModalUpdateFullPhoneCatalog;
+export default PhoneCatalogItemFullUpdateModal;
