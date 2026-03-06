@@ -20,6 +20,12 @@
         "trailingComma": "none",
         "endOfLine": "crlf"
       }
+    },
+    {
+      "files": ["*.json"],
+      "options": {
+        "printWidth": 999999
+      }
     }
   ]
 }

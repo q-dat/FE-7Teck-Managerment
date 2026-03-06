@@ -1,0 +1,6160 @@
+{
+  "message": "Lấy danh sách danh mục điện thoại thành công!",
+  "count": 110,
+  "visibleCount": 110,
+  "phoneCatalogs": [
+    {
+      "_id": "692c76a176aaf7bacfb675c0",
+      "name": "Xiaomi Redmi 13x 6GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 3830,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "6GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T16:53:53.011Z",
+      "updatedAt": "2025-11-30T16:56:34.906Z",
+      "__v": 0,
+      "phoneCount": 2
+    },
+    {
+      "_id": "692c7b0f76aaf7bacfb677e9",
+      "name": "Xiaomi Redmi 13 6GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 3670,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "6GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T17:12:47.850Z",
+      "updatedAt": "2025-12-01T00:48:02.012Z",
+      "__v": 0,
+      "phoneCount": 1
+    },
+    {
+      "_id": "692c7b1076aaf7bacfb677ef",
+      "name": "Xiaomi Redmi 13X 8GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 4120,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "8GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T17:12:48.503Z",
+      "updatedAt": "2025-12-01T00:48:02.095Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "692c7b1076aaf7bacfb677f2",
+      "name": "Xiaomi Redmi A3 3GB/64GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 2740,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "3GB",
+        "storage_capacity": "64GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T17:12:48.831Z",
+      "updatedAt": "2025-12-01T00:48:02.136Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "692c7b1176aaf7bacfb677f5",
+      "name": "Xiaomi Redmi A3 4GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 2920,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "4GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T17:12:49.158Z",
+      "updatedAt": "2025-12-01T00:48:02.177Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "692c7b1176aaf7bacfb677f8",
+      "name": "Xiaomi Redmi A5 3GB/64GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 2990,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "3GB",
+        "storage_capacity": "64GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T17:12:49.487Z",
+      "updatedAt": "2025-12-01T00:48:02.220Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "692c7b1176aaf7bacfb677fb",
+      "name": "Xiaomi Redmi A5 4GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 3400,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "4GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T17:12:49.814Z",
+      "updatedAt": "2025-12-01T00:48:02.262Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "692c7b1276aaf7bacfb677fe",
+      "name": "Xiaomi Redmi 15C 4GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 3950,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "4GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T17:12:50.140Z",
+      "updatedAt": "2025-12-01T00:48:02.309Z",
+      "__v": 0,
+      "phoneCount": 2
+    },
+    {
+      "_id": "692c7b1276aaf7bacfb67801",
+      "name": "Xiaomi Redmi 15C 6GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 4150,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "6GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T17:12:50.467Z",
+      "updatedAt": "2025-12-01T00:48:02.356Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "692c7b1276aaf7bacfb67804",
+      "name": "Xiaomi Redmi 15 6GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 4650,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "6GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T17:12:50.795Z",
+      "updatedAt": "2025-12-01T00:48:02.407Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "68b2e030ba8c9af5b798cb7b",
+      "name": "Samsung Galaxy S24 FE 5G 8GB/256GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1756553263/aniupfsooazqacthaeg8.jpg",
+      "price": 13400,
+      "status": 0,
+      "content": "",
+      "configuration_and_memory": {
+        "operating_system": "",
+        "cpu_chip": "",
+        "cpu_speed": "",
+        "gpu": "",
+        "ram": "8GB",
+        "storage_capacity": "256GB",
+        "remaining_capacity": "",
+        "memory_card": "",
+        "contacts": ""
+      },
+      "camera_and_screen": {
+        "rear_camera_resolution": "",
+        "rear_camera_flash": "",
+        "front_camera_resolution": "",
+        "screen_technology": "",
+        "screen_resolution": "",
+        "screen_size": "",
+        "max_brightness": "",
+        "touchscreen_glass": "",
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_capacity": "",
+        "battery_type": "",
+        "max_charging_support": "",
+        "battery_technology": []
+      },
+      "features": {
+        "water_dust_resistant": "",
+        "video_playback": "",
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "mobile_network": "",
+        "sim": "",
+        "bluetooth": "",
+        "charging_connection_port": "",
+        "headphone_jack": "",
+        "other_connectivity": "",
+        "wifi": [],
+        "gps": []
+      },
+      "design_and_material": {
+        "design": "",
+        "material": "",
+        "dimensions_and_weight": "",
+        "release_date": "",
+        "brand": ""
+      },
+      "createdAt": "2025-08-30T11:27:44.321Z",
+      "updatedAt": "2025-12-01T01:03:49.710Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "68b3cb0ceba09f56d8d8b34c",
+      "name": "Samsung Galaxy S24 Ultra 5G 12GB/256GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1756613388/yiuabiq09jwa9ae7fmk0.jpg",
+      "price": 21600,
+      "status": 0,
+      "content": "",
+      "configuration_and_memory": {
+        "operating_system": "",
+        "cpu_chip": "",
+        "cpu_speed": "",
+        "gpu": "",
+        "ram": "12GB",
+        "storage_capacity": "256GB",
+        "remaining_capacity": "",
+        "memory_card": "",
+        "contacts": ""
+      },
+      "camera_and_screen": {
+        "rear_camera_resolution": "",
+        "rear_camera_flash": "",
+        "front_camera_resolution": "",
+        "screen_technology": "",
+        "screen_resolution": "",
+        "screen_size": "",
+        "max_brightness": "",
+        "touchscreen_glass": "",
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_capacity": "",
+        "battery_type": "",
+        "max_charging_support": "",
+        "battery_technology": []
+      },
+      "features": {
+        "water_dust_resistant": "",
+        "video_playback": "",
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "mobile_network": "",
+        "sim": "",
+        "bluetooth": "",
+        "charging_connection_port": "",
+        "headphone_jack": "",
+        "other_connectivity": "",
+        "wifi": [],
+        "gps": []
+      },
+      "design_and_material": {
+        "design": "",
+        "material": "",
+        "dimensions_and_weight": "",
+        "release_date": "",
+        "brand": ""
+      },
+      "createdAt": "2025-08-31T04:09:48.806Z",
+      "updatedAt": "2025-12-01T01:03:49.804Z",
+      "__v": 0,
+      "phoneCount": 6
+    },
+    {
+      "_id": "68712ec47571a71fe2000f6f",
+      "name": "Samsung Galaxy A06 5G 4GB/64GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1752248004/hzwdrinkyf74memlsh6r.png",
+      "price": 3160,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "4GB",
+        "storage_capacity": "64GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_resolution": "",
+        "rear_camera_video": [],
+        "rear_camera_flash": "",
+        "rear_camera_features": [],
+        "front_camera_resolution": "",
+        "front_camera_features": [],
+        "screen_technology": "",
+        "screen_resolution": "",
+        "screen_size": "",
+        "max_brightness": "",
+        "touchscreen_glass": ""
+      },
+      "battery_and_charging": {
+        "battery_capacity": "",
+        "battery_type": "",
+        "max_charging_support": "",
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "water_dust_resistant": "",
+        "voice_recording": [],
+        "radio": [],
+        "video_playback": "",
+        "music_playback": []
+      },
+      "connectivity": {
+        "mobile_network": "",
+        "sim": "",
+        "wifi": [],
+        "gps": [],
+        "bluetooth": "",
+        "charging_connection_port": "",
+        "headphone_jack": "",
+        "other_connectivity": ""
+      },
+      "design_and_material": {
+        "design": "",
+        "material": "",
+        "dimensions_and_weight": "",
+        "release_date": "",
+        "brand": ""
+      },
+      "createdAt": "2025-07-11T15:33:24.735Z",
+      "updatedAt": "2026-02-24T15:29:29.906Z",
+      "__v": 0,
+      "phoneCount": 5
+    },
+    {
+      "_id": "6924947376327f5529b08536",
+      "name": "Samsung Galaxy A07 4G 4GB/64GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 3430,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:22:59.701Z",
+      "updatedAt": "2026-02-24T15:29:29.997Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "4GB",
+        "storage_capacity": "64GB"
+      },
+      "phoneCount": 1
+    },
+    {
+      "_id": "6924947376327f5529b08539",
+      "name": "Samsung Galaxy A07 4G 4GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 3520,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:22:59.809Z",
+      "updatedAt": "2026-02-24T15:29:30.074Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "4GB",
+        "storage_capacity": "128GB"
+      },
+      "phoneCount": 3
+    },
+    {
+      "_id": "6924947376327f5529b0853c",
+      "name": "Samsung Galaxy A16 4G 4GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 4060,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:22:59.912Z",
+      "updatedAt": "2026-02-24T15:29:30.149Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "4GB",
+        "storage_capacity": "128GB"
+      },
+      "phoneCount": 3
+    },
+    {
+      "_id": "6924947476327f5529b0853f",
+      "name": "Samsung Galaxy A17 4G 8GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 5180,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:23:00.015Z",
+      "updatedAt": "2026-02-24T15:29:30.225Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "8GB",
+        "storage_capacity": "128GB"
+      },
+      "phoneCount": 3
+    },
+    {
+      "_id": "6924947476327f5529b08542",
+      "name": "Samsung Galaxy A17 5G 8GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 3870,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:23:00.119Z",
+      "updatedAt": "2026-02-24T15:29:30.300Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "8GB",
+        "storage_capacity": "128GB"
+      },
+      "phoneCount": 3
+    },
+    {
+      "_id": "68a1d10bc0818504e861b369",
+      "name": "Samsung Galaxy A26 5G 8GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1755435275/u2ke9in8gghggtbm9o5y.jpg",
+      "price": 6100,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "8GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_resolution": "",
+        "rear_camera_flash": "",
+        "front_camera_resolution": "",
+        "screen_technology": "",
+        "screen_resolution": "",
+        "screen_size": "",
+        "max_brightness": "",
+        "touchscreen_glass": "",
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_capacity": "",
+        "battery_type": "",
+        "max_charging_support": "",
+        "battery_technology": []
+      },
+      "features": {
+        "water_dust_resistant": "",
+        "video_playback": "",
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "mobile_network": "",
+        "sim": "",
+        "bluetooth": "",
+        "charging_connection_port": "",
+        "headphone_jack": "",
+        "other_connectivity": "",
+        "wifi": [],
+        "gps": []
+      },
+      "design_and_material": {
+        "design": "",
+        "material": "",
+        "dimensions_and_weight": "",
+        "release_date": "",
+        "brand": ""
+      },
+      "createdAt": "2025-08-17T12:54:35.883Z",
+      "updatedAt": "2026-02-24T15:29:30.375Z",
+      "__v": 0,
+      "phoneCount": 4
+    },
+    {
+      "_id": "68a1d810c0818504e861b46f",
+      "name": "Samsung Galaxy A36 5G 8GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1755437071/nw2wfbks3r6pywlgz5vk.jpg",
+      "price": 7000,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "8GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_resolution": "",
+        "rear_camera_flash": "",
+        "front_camera_resolution": "",
+        "screen_technology": "",
+        "screen_resolution": "",
+        "screen_size": "",
+        "max_brightness": "",
+        "touchscreen_glass": "",
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_capacity": "",
+        "battery_type": "",
+        "max_charging_support": "",
+        "battery_technology": []
+      },
+      "features": {
+        "water_dust_resistant": "",
+        "video_playback": "",
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "mobile_network": "",
+        "sim": "",
+        "bluetooth": "",
+        "charging_connection_port": "",
+        "headphone_jack": "",
+        "other_connectivity": "",
+        "wifi": [],
+        "gps": []
+      },
+      "design_and_material": {
+        "design": "",
+        "material": "",
+        "dimensions_and_weight": "",
+        "release_date": "",
+        "brand": ""
+      },
+      "createdAt": "2025-08-17T13:24:32.537Z",
+      "updatedAt": "2026-02-24T15:29:30.451Z",
+      "__v": 0,
+      "phoneCount": 6
+    },
+    {
+      "_id": "68af0c11627d6daa8da09e63",
+      "name": "Samsung Galaxy A56 5G 8GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1756302353/gny4fdhxmmng1yg50kre.jpg",
+      "price": 8200,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "8GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_resolution": "",
+        "rear_camera_flash": "",
+        "front_camera_resolution": "",
+        "screen_technology": "",
+        "screen_resolution": "",
+        "screen_size": "",
+        "max_brightness": "",
+        "touchscreen_glass": "",
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_capacity": "",
+        "battery_type": "",
+        "max_charging_support": "",
+        "battery_technology": []
+      },
+      "features": {
+        "water_dust_resistant": "",
+        "video_playback": "",
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "mobile_network": "",
+        "sim": "",
+        "bluetooth": "",
+        "charging_connection_port": "",
+        "headphone_jack": "",
+        "other_connectivity": "",
+        "wifi": [],
+        "gps": []
+      },
+      "design_and_material": {
+        "design": "",
+        "material": "",
+        "dimensions_and_weight": "",
+        "release_date": "",
+        "brand": ""
+      },
+      "createdAt": "2025-08-27T13:45:53.906Z",
+      "updatedAt": "2026-02-24T15:29:30.526Z",
+      "__v": 0,
+      "phoneCount": 5
+    },
+    {
+      "_id": "68b2b4f0ba8c9af5b798c391",
+      "name": "Samsung Galaxy A56 5G 8GB/256GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1756542192/tu184qwn4nbo8sbpqayg.jpg",
+      "price": 9500,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "8GB",
+        "storage_capacity": "256GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_resolution": "",
+        "rear_camera_flash": "",
+        "front_camera_resolution": "",
+        "screen_technology": "",
+        "screen_resolution": "",
+        "screen_size": "",
+        "max_brightness": "",
+        "touchscreen_glass": "",
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_capacity": "",
+        "battery_type": "",
+        "max_charging_support": "",
+        "battery_technology": []
+      },
+      "features": {
+        "water_dust_resistant": "",
+        "video_playback": "",
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "mobile_network": "",
+        "sim": "",
+        "bluetooth": "",
+        "charging_connection_port": "",
+        "headphone_jack": "",
+        "other_connectivity": "",
+        "wifi": [],
+        "gps": []
+      },
+      "design_and_material": {
+        "design": "",
+        "material": "",
+        "dimensions_and_weight": "",
+        "release_date": "",
+        "brand": ""
+      },
+      "createdAt": "2025-08-30T08:23:12.734Z",
+      "updatedAt": "2026-02-24T15:29:30.602Z",
+      "__v": 0,
+      "phoneCount": 4
+    },
+    {
+      "_id": "68b2b9faba8c9af5b798c495",
+      "name": "Samsung Galaxy A56 5G 12GB/256GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1756543482/bptjht93p92534uqduxg.jpg",
+      "price": 10500,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "12GB",
+        "storage_capacity": "256GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_resolution": "",
+        "rear_camera_flash": "",
+        "front_camera_resolution": "",
+        "screen_technology": "",
+        "screen_resolution": "",
+        "screen_size": "",
+        "max_brightness": "",
+        "touchscreen_glass": "",
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_capacity": "",
+        "battery_type": "",
+        "max_charging_support": "",
+        "battery_technology": []
+      },
+      "features": {
+        "water_dust_resistant": "",
+        "video_playback": "",
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "mobile_network": "",
+        "sim": "",
+        "bluetooth": "",
+        "charging_connection_port": "",
+        "headphone_jack": "",
+        "other_connectivity": "",
+        "wifi": [],
+        "gps": []
+      },
+      "design_and_material": {
+        "design": "",
+        "material": "",
+        "dimensions_and_weight": "",
+        "release_date": "",
+        "brand": ""
+      },
+      "createdAt": "2025-08-30T08:44:42.550Z",
+      "updatedAt": "2026-02-24T15:29:30.678Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "6924947476327f5529b0854f",
+      "name": "Samsung Galaxy M55 5G 12GB/256GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 7650,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:23:00.740Z",
+      "updatedAt": "2026-02-24T15:29:30.755Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "12GB",
+        "storage_capacity": "256GB"
+      },
+      "phoneCount": 2
+    },
+    {
+      "_id": "6924947476327f5529b08552",
+      "name": "Samsung Galaxy S24 FE 8GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 11200,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:23:00.843Z",
+      "updatedAt": "2026-02-24T15:29:30.832Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "8GB",
+        "storage_capacity": "128GB"
+      },
+      "phoneCount": 1
+    },
+    {
+      "_id": "6924947476327f5529b08555",
+      "name": "Samsung Galaxy S24 Ultra 256GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 21600,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:23:00.948Z",
+      "updatedAt": "2026-02-24T15:29:30.906Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "",
+        "storage_capacity": "256GB"
+      },
+      "phoneCount": 4
+    },
+    {
+      "_id": "6924947576327f5529b08558",
+      "name": "Samsung Galaxy S24 Ultra 512GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 23500,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:23:01.051Z",
+      "updatedAt": "2026-02-24T15:29:30.982Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "",
+        "storage_capacity": "512GB"
+      },
+      "phoneCount": 2
+    },
+    {
+      "_id": "6924947576327f5529b0855b",
+      "name": "Samsung Galaxy S25 256GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 16700,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:23:01.154Z",
+      "updatedAt": "2026-02-24T15:29:31.056Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "",
+        "storage_capacity": "256GB"
+      },
+      "phoneCount": 1
+    },
+    {
+      "_id": "6924947576327f5529b0855e",
+      "name": "Samsung Galaxy S25 512GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 19000,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:23:01.256Z",
+      "updatedAt": "2026-02-24T15:29:31.132Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "",
+        "storage_capacity": "512GB"
+      },
+      "phoneCount": 4
+    },
+    {
+      "_id": "6924947576327f5529b08561",
+      "name": "Samsung Galaxy S25+ 256GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 19800,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:23:01.359Z",
+      "updatedAt": "2026-02-24T15:29:31.207Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "",
+        "storage_capacity": "256GB"
+      },
+      "phoneCount": 2
+    },
+    {
+      "_id": "6924947576327f5529b08564",
+      "name": "Samsung Galaxy S25+ 512GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 22300,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:23:01.461Z",
+      "updatedAt": "2026-02-24T15:29:31.281Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "",
+        "storage_capacity": "512GB"
+      },
+      "phoneCount": 2
+    },
+    {
+      "_id": "6924947576327f5529b08567",
+      "name": "Samsung Galaxy S25 FE 8GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 15100,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:23:01.562Z",
+      "updatedAt": "2026-02-24T15:29:31.358Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "8GB",
+        "storage_capacity": "128GB"
+      },
+      "phoneCount": 3
+    },
+    {
+      "_id": "6924947576327f5529b0856a",
+      "name": "Samsung Galaxy S25 FE 8GB/256GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 15800,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:23:01.666Z",
+      "updatedAt": "2026-02-24T15:29:31.432Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "8GB",
+        "storage_capacity": "256GB"
+      },
+      "phoneCount": 1
+    },
+    {
+      "_id": "6924947576327f5529b0856d",
+      "name": "Samsung Galaxy S25 Edge 512GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 20100,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:23:01.780Z",
+      "updatedAt": "2026-02-24T15:29:31.507Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "",
+        "storage_capacity": "512GB"
+      },
+      "phoneCount": 3
+    },
+    {
+      "_id": "692c7b0876aaf7bacfb677b0",
+      "name": "Samsung Galaxy S25 Ultra 256GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 24000,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "",
+        "storage_capacity": "256GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T17:12:40.163Z",
+      "updatedAt": "2026-02-24T15:29:31.582Z",
+      "__v": 0,
+      "phoneCount": 4
+    },
+    {
+      "_id": "6924947676327f5529b08576",
+      "name": "Samsung Galaxy S25 Ultra 512GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 27900,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:23:02.099Z",
+      "updatedAt": "2026-02-24T15:29:31.657Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "",
+        "storage_capacity": "512GB"
+      },
+      "phoneCount": 5
+    },
+    {
+      "_id": "6924947776327f5529b08594",
+      "name": "Oppo A5i 4GB/64GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 3510,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:23:03.129Z",
+      "updatedAt": "2026-02-24T15:29:32.267Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "4GB",
+        "storage_capacity": "64GB"
+      },
+      "phoneCount": 2
+    },
+    {
+      "_id": "6924947776327f5529b08597",
+      "name": "Oppo A5i 4GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 3790,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:23:03.233Z",
+      "updatedAt": "2026-02-24T15:29:32.344Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "4GB",
+        "storage_capacity": "128GB"
+      },
+      "phoneCount": 2
+    },
+    {
+      "_id": "6924947776327f5529b0859d",
+      "name": "Oppo A5i Pro 8GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 5530,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:23:03.444Z",
+      "updatedAt": "2026-02-24T15:29:32.504Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "8GB",
+        "storage_capacity": "128GB"
+      },
+      "phoneCount": 3
+    },
+    {
+      "_id": "6924947776327f5529b085a0",
+      "name": "Oppo A3 6GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 4530,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:23:03.546Z",
+      "updatedAt": "2026-02-24T15:29:32.578Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "6GB",
+        "storage_capacity": "128GB"
+      },
+      "phoneCount": 2
+    },
+    {
+      "_id": "6924947776327f5529b085a3",
+      "name": "Oppo A3 8GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 4710,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:23:03.648Z",
+      "updatedAt": "2026-02-24T15:29:32.653Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "8GB",
+        "storage_capacity": "128GB"
+      },
+      "phoneCount": 3
+    },
+    {
+      "_id": "6924947776327f5529b085a6",
+      "name": "Oppo A3 8GB/256GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 5580,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:23:03.750Z",
+      "updatedAt": "2026-02-24T15:29:32.728Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "8GB",
+        "storage_capacity": "256GB"
+      },
+      "phoneCount": 3
+    },
+    {
+      "_id": "6924947776327f5529b085a9",
+      "name": "Oppo A3X 6GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 4380,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:23:03.852Z",
+      "updatedAt": "2026-02-24T15:29:32.803Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "6GB",
+        "storage_capacity": "128GB"
+      },
+      "phoneCount": 2
+    },
+    {
+      "_id": "6924947776327f5529b085ac",
+      "name": "Oppo A5X 4GB/64GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 3900,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:23:03.956Z",
+      "updatedAt": "2026-02-24T15:29:32.878Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "4GB",
+        "storage_capacity": "64GB"
+      },
+      "phoneCount": 3
+    },
+    {
+      "_id": "6924947876327f5529b085af",
+      "name": "Oppo A58 6GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 4480,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:23:04.058Z",
+      "updatedAt": "2026-02-24T15:29:32.953Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "6GB",
+        "storage_capacity": "128GB"
+      },
+      "phoneCount": 2
+    },
+    {
+      "_id": "6924947876327f5529b085b2",
+      "name": "Oppo A58 8GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 4570,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:23:04.163Z",
+      "updatedAt": "2026-02-24T15:29:33.029Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "8GB",
+        "storage_capacity": "128GB"
+      },
+      "phoneCount": 1
+    },
+    {
+      "_id": "6924947876327f5529b085b5",
+      "name": "Oppo A79 5G 8GB/257GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 6460,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:23:04.265Z",
+      "updatedAt": "2026-02-24T15:29:33.103Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "8GB",
+        "storage_capacity": "257GB"
+      },
+      "phoneCount": 2
+    },
+    {
+      "_id": "6924947876327f5529b085b8",
+      "name": "Oppo A6 Pro 4G 8GB/256GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 7580,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:23:04.372Z",
+      "updatedAt": "2026-02-24T15:29:33.179Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "8GB",
+        "storage_capacity": "256GB"
+      },
+      "phoneCount": 3
+    },
+    {
+      "_id": "6924947876327f5529b085bb",
+      "name": "Oppo Reno 14F 5G 8GB/256GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 8900,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:23:04.474Z",
+      "updatedAt": "2026-02-24T15:29:33.254Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "8GB",
+        "storage_capacity": "256GB"
+      },
+      "phoneCount": 1
+    },
+    {
+      "_id": "692c69bdb4d1b9ace760274a",
+      "name": "Xiaomi Redmi 13 6GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 3670,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "6GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:58:53.676Z",
+      "updatedAt": "2026-02-24T15:29:33.403Z",
+      "__v": 0,
+      "phoneCount": 1
+    },
+    {
+      "_id": "692c69beb4d1b9ace7602750",
+      "name": "Xiaomi Redmi 13X 8GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 4120,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "8GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:58:54.334Z",
+      "updatedAt": "2026-02-24T15:29:33.554Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "692c69beb4d1b9ace7602753",
+      "name": "Xiaomi Redmi A3 3GB/64GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 2740,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "3GB",
+        "storage_capacity": "64GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:58:54.660Z",
+      "updatedAt": "2026-02-24T15:29:33.779Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "692c69beb4d1b9ace7602756",
+      "name": "Xiaomi Redmi A3 4GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 2920,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "4GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:58:54.985Z",
+      "updatedAt": "2026-02-24T15:29:33.854Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "692c69bfb4d1b9ace7602759",
+      "name": "Xiaomi Redmi A5 3GB/64GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 2990,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "3GB",
+        "storage_capacity": "64GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:58:55.311Z",
+      "updatedAt": "2026-02-24T15:29:33.928Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "692c69bfb4d1b9ace760275c",
+      "name": "Xiaomi Redmi A5 4GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 3400,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "4GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:58:55.637Z",
+      "updatedAt": "2026-02-24T15:29:34.003Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "692c69bfb4d1b9ace760275f",
+      "name": "Xiaomi Redmi 15C 4GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 3950,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "4GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:58:55.962Z",
+      "updatedAt": "2026-02-24T15:29:34.077Z",
+      "__v": 0,
+      "phoneCount": 2
+    },
+    {
+      "_id": "692c69c0b4d1b9ace7602762",
+      "name": "Xiaomi Redmi 15C 6GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 4150,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "6GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:58:56.287Z",
+      "updatedAt": "2026-02-24T15:29:34.151Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "692c69c0b4d1b9ace7602765",
+      "name": "Xiaomi Redmi 15 6GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 4650,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "6GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:58:56.612Z",
+      "updatedAt": "2026-02-24T15:29:34.225Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "692c69c0b4d1b9ace7602768",
+      "name": "Xiaomi Redmi 15 8GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 5050,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "8GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:58:56.937Z",
+      "updatedAt": "2026-02-24T15:29:34.300Z",
+      "__v": 0,
+      "phoneCount": 2
+    },
+    {
+      "_id": "692c69c1b4d1b9ace760276b",
+      "name": "Xiaomi Redmi Note 14 6GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 4780,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "6GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:58:57.262Z",
+      "updatedAt": "2026-02-24T15:29:34.374Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "692c69c1b4d1b9ace760276e",
+      "name": "Xiaomi Redmi Note 14 8GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 5160,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "8GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:58:57.587Z",
+      "updatedAt": "2026-02-24T15:29:34.449Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "692c69c1b4d1b9ace7602771",
+      "name": "Xiaomi Redmi Note 14 8GB/256GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 5700,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "8GB",
+        "storage_capacity": "256GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:58:57.911Z",
+      "updatedAt": "2026-02-24T15:29:34.524Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "692c69c2b4d1b9ace7602774",
+      "name": "Realme Note 60X 3GB/64GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 2980,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "3GB",
+        "storage_capacity": "64GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:58:58.236Z",
+      "updatedAt": "2026-02-24T15:29:34.600Z",
+      "__v": 0,
+      "phoneCount": 2
+    },
+    {
+      "_id": "692c69c2b4d1b9ace7602777",
+      "name": "Realme Note 60 6GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 3550,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "6GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:58:58.560Z",
+      "updatedAt": "2026-02-24T15:29:34.698Z",
+      "__v": 0,
+      "phoneCount": 1
+    },
+    {
+      "_id": "692c69c2b4d1b9ace760277a",
+      "name": "Realme Note 70 4GB/64GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 3370,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "4GB",
+        "storage_capacity": "64GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:58:58.884Z",
+      "updatedAt": "2026-02-24T15:29:34.776Z",
+      "__v": 0,
+      "phoneCount": 2
+    },
+    {
+      "_id": "692c69c3b4d1b9ace760277d",
+      "name": "Realme Note 70 4GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 3670,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "4GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:58:59.210Z",
+      "updatedAt": "2026-02-24T15:29:34.862Z",
+      "__v": 0,
+      "phoneCount": 2
+    },
+    {
+      "_id": "692c69c3b4d1b9ace7602780",
+      "name": "Realme C71 4GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 3860,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "4GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:58:59.534Z",
+      "updatedAt": "2026-02-24T15:29:34.936Z",
+      "__v": 0,
+      "phoneCount": 1
+    },
+    {
+      "_id": "692c69c3b4d1b9ace7602783",
+      "name": "Realme C71 6GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 4180,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "6GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:58:59.859Z",
+      "updatedAt": "2026-02-24T15:29:35.011Z",
+      "__v": 0,
+      "phoneCount": 2
+    },
+    {
+      "_id": "692c69c4b4d1b9ace7602786",
+      "name": "Realme C65 8GB/256GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 4450,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "8GB",
+        "storage_capacity": "256GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:59:00.183Z",
+      "updatedAt": "2026-02-24T15:29:35.086Z",
+      "__v": 0,
+      "phoneCount": 1
+    },
+    {
+      "_id": "692c69c4b4d1b9ace7602789",
+      "name": "Realme C75 8GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 4790,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "8GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:59:00.508Z",
+      "updatedAt": "2026-02-24T15:29:35.161Z",
+      "__v": 0,
+      "phoneCount": 1
+    },
+    {
+      "_id": "692c69c4b4d1b9ace760278c",
+      "name": "Poco C71 3GB/64GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 2840,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "3GB",
+        "storage_capacity": "64GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:59:00.833Z",
+      "updatedAt": "2026-02-24T15:29:35.236Z",
+      "__v": 0,
+      "phoneCount": 2
+    },
+    {
+      "_id": "692c69c5b4d1b9ace760278f",
+      "name": "Poco C71 4GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 3080,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "4GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:59:01.158Z",
+      "updatedAt": "2026-02-24T15:29:35.311Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "692c69c5b4d1b9ace7602792",
+      "name": "Poco C85 6GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 3780,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "6GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:59:01.483Z",
+      "updatedAt": "2026-02-24T15:29:35.385Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "692c69c5b4d1b9ace7602795",
+      "name": "Poco C85 8GB/256GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 4180,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "8GB",
+        "storage_capacity": "256GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:59:01.807Z",
+      "updatedAt": "2026-02-24T15:29:35.460Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "692c69c6b4d1b9ace7602798",
+      "name": "Vivo Y04 4GB/64GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 3360,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "4GB",
+        "storage_capacity": "64GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:59:02.131Z",
+      "updatedAt": "2026-02-24T15:29:35.547Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "692c69c6b4d1b9ace760279b",
+      "name": "Vivo Y04 4GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 3840,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "4GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:59:02.456Z",
+      "updatedAt": "2026-02-24T15:29:35.627Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "692c69c6b4d1b9ace760279e",
+      "name": "Vivo Y04 6GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 4120,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "6GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:59:02.781Z",
+      "updatedAt": "2026-02-24T15:29:35.701Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "692c69c7b4d1b9ace76027a1",
+      "name": "Vivo Y19s 4GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 3960,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "4GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:59:03.105Z",
+      "updatedAt": "2026-02-24T15:29:35.776Z",
+      "__v": 0,
+      "phoneCount": 2
+    },
+    {
+      "_id": "692c69c7b4d1b9ace76027a4",
+      "name": "Vivo Y19s 6GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 4330,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "6GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:59:03.429Z",
+      "updatedAt": "2026-02-24T15:29:35.851Z",
+      "__v": 0,
+      "phoneCount": 2
+    },
+    {
+      "_id": "692c69c7b4d1b9ace76027a7",
+      "name": "Vivo Y19s 8GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 4630,
+      "status": 0,
+      "content": "New",
+      "configuration_and_memory": {
+        "ram": "8GB",
+        "storage_capacity": "128GB"
+      },
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-30T15:59:03.753Z",
+      "updatedAt": "2026-02-24T15:29:35.925Z",
+      "__v": 0,
+      "phoneCount": 2
+    },
+    {
+      "_id": "68725b31f0aef9c0729e5d6e",
+      "name": "Samsung Galaxy A06 5G 4GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1752324913/xcudks7b63nupe9hdgsu.png",
+      "price": 3630,
+      "status": 0,
+      "content": "<p><br></p>",
+      "configuration_and_memory": {
+        "operating_system": "Android 15",
+        "cpu_chip": "MediaTek Dimensity 6300 5G 8 nhân",
+        "cpu_speed": "2 nhân 2.4 GHz & 6 nhân 2 GHz",
+        "gpu": "Mali-G57",
+        "ram": "4 GB",
+        "storage_capacity": "128 GB",
+        "remaining_capacity": "Khoảng 109.4 GB",
+        "memory_card": "MicroSD, hỗ trợ tối đa 1.5 TB",
+        "contacts": "Không giới hạn"
+      },
+      "camera_and_screen": {
+        "rear_camera_resolution": "Chính 50 MP & Phụ 2 MP",
+        "rear_camera_video": ["HD 720p@120fps", "FullHD 1080p@30fps"],
+        "rear_camera_flash": "Có",
+        "rear_camera_features": [
+          "Zoom kỹ thuật số",
+          "Xóa phông",
+          "Tự động lấy nét (AF)",
+          "Trôi nhanh thời gian (Time Lapse)",
+          "Toàn cảnh (Panorama)",
+          "Quay chậm (Slow Motion)",
+          "Làm đẹp",
+          "Chuyên nghiệp (Pro)",
+          "Bộ lọc màu",
+          "Ban đêm (Night Mode)"
+        ],
+        "front_camera_resolution": "8 MP",
+        "front_camera_features": ["Xóa phông", "Làm đẹp", "Bộ lọc màu"],
+        "screen_technology": "PLS LCD",
+        "screen_resolution": "HD+ (720 x 1600 Pixels)",
+        "screen_size": "6.7\" - 90 Hz",
+        "max_brightness": "480 nits",
+        "touchscreen_glass": "Kính cường lực"
+      },
+      "battery_and_charging": {
+        "battery_capacity": "5000 mAh",
+        "battery_type": "Li-Ion",
+        "max_charging_support": "25 W",
+        "battery_technology": ["Tiết kiệm pin", "Sạc pin nhanh"]
+      },
+      "features": {
+        "advanced_security": ["Mở khoá vân tay cạnh viền", "Mở khoá khuôn mặt"],
+        "special_features": [
+          "Ứng dụng kép (Dual Messenger)",
+          "Đa cửa sổ (chia đôi màn hình)",
+          "Âm thanh Dolby Atmos",
+          "Smart Switch (ứng dụng chuyển đổi dữ liệu)"
+        ],
+        "water_dust_resistant": "IP54",
+        "voice_recording": ["Ghi âm mặc định", "Ghi âm cuộc gọi"],
+        "radio": ["Có"],
+        "video_playback": "WEBM, MP4, MKV, M4V, FLV, AVI, 3GP, 3G2",
+        "music_playback": [
+          "XMF",
+          "WAV",
+          "RTX",
+          "RTTTL",
+          "OTA",
+          "OGG",
+          "OGA",
+          "Midi",
+          "MXMF",
+          "MP3",
+          "M4A",
+          "IMY",
+          "FLAC",
+          "AWB",
+          "AMR",
+          "AAC",
+          "3GA"
+        ]
+      },
+      "connectivity": {
+        "mobile_network": "Hỗ trợ 5G",
+        "sim": "2 Nano SIM (SIM 2 chung khe thẻ nhớ)",
+        "wifi": [
+          "Wi-Fi hotspot",
+          "Wi-Fi Direct",
+          "Wi-Fi 5",
+          "Dual-band (2.4 GHz/5 GHz)"
+        ],
+        "gps": ["QZSS", "GPS", "GLONASS", "GALILEO", "BEIDOU"],
+        "bluetooth": "v5.3",
+        "charging_connection_port": "Type-C",
+        "headphone_jack": "3.5 mm",
+        "other_connectivity": ""
+      },
+      "design_and_material": {
+        "design": "Nguyên khối",
+        "material": "Khung & Mặt lưng nhựa",
+        "dimensions_and_weight": "167.3 x 77.3 x 8 mm - 191 g",
+        "release_date": "03/2025",
+        "brand": "Samsung"
+      },
+      "createdAt": "2025-07-12T12:55:13.441Z",
+      "updatedAt": "2026-03-03T17:16:20.632Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "6863ff96c04afca1a5a13771",
+      "name": "Samsung Galaxy A05 4G 4GB/64GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1751383958/eyk5akwz4tuck6gisi7j.jpg",
+      "price": 2980,
+      "status": 0,
+      "content": "<p><br></p>",
+      "configuration_and_memory": {
+        "operating_system": "Android 13",
+        "cpu_chip": "MediaTek Helio G85 8 nhân",
+        "cpu_speed": "4 nhân 2.0 GHz & 4 nhân 1.8 GHz",
+        "gpu": "Mali-G52",
+        "ram": "4 GB",
+        "storage_capacity": "64 GB",
+        "remaining_capacity": "",
+        "memory_card": "MicroSD, hỗ trợ tối đa 1 TB",
+        "contacts": ""
+      },
+      "camera_and_screen": {
+        "rear_camera_resolution": "Chính 50 MP & Phụ 2 MP",
+        "rear_camera_video": [
+          "HD 720p@120fps",
+          "FullHD 1080p@60fps",
+          "FullHD 1080p@30fps"
+        ],
+        "rear_camera_flash": "Có",
+        "rear_camera_features": [
+          "Xóa phông",
+          "Tự động lấy nét (AF)",
+          "Trôi nhanh thời gian (Time Lapse)",
+          "Toàn cảnh (Panorama)",
+          "Quay chậm (Slow Motion)",
+          "Làm đẹp",
+          "Chụp hẹn giờ",
+          "Chuyên nghiệp (Pro)",
+          "Bộ lọc màu",
+          "Ban đêm (Night Mode)"
+        ],
+        "front_camera_resolution": "8 MP",
+        "front_camera_features": ["Làm đẹp", "Bộ lọc màu"],
+        "screen_technology": "PLS LCD",
+        "screen_resolution": "HD+ (720 x 1600 Pixels)",
+        "screen_size": "6.7\" - 60 Hz",
+        "max_brightness": "",
+        "touchscreen_glass": ""
+      },
+      "battery_and_charging": {
+        "battery_capacity": "5000 mAh",
+        "battery_type": "Li-Po",
+        "max_charging_support": "25 W",
+        "battery_technology": ["Tiết kiệm pin", "Sạc pin nhanh"]
+      },
+      "features": {
+        "advanced_security": ["Mở khoá khuôn mặt"],
+        "special_features": [
+          "Ứng dụng kép (Dual Messenger)",
+          "Đa cửa sổ (chia đôi màn hình)",
+          "Âm thanh Dolby Atmos",
+          "Tối ưu game (Game Booster)",
+          "Smart Switch (ứng dụng chuyển đổi dữ liệu)",
+          "Chế độ trẻ em (Samsung Kids)",
+          "Chặn cuộc gọi",
+          "Chạm 2 lần tắt/sáng màn hình"
+        ],
+        "water_dust_resistant": "",
+        "voice_recording": ["Ghi âm mặc định", "Ghi âm cuộc gọi"],
+        "radio": ["Có"],
+        "video_playback": "WEBM, MP4, MKV, FLV, AVI, 3GP",
+        "music_playback": [
+          "WAV",
+          "OGG",
+          "MP3",
+          "Midi",
+          "M4A",
+          "FLAC",
+          "AMR",
+          "AAC"
+        ]
+      },
+      "connectivity": {
+        "mobile_network": "Hỗ trợ 4G",
+        "sim": "2 Nano SIM",
+        "wifi": [
+          "Wi-Fi Direct",
+          "Wi-Fi 802.11 a/b/g/n/ac",
+          "Dual-band (2.4 GHz/5 GHz)"
+        ],
+        "gps": ["GPS", "GLONASS", "GALILEO", "BEIDOU"],
+        "bluetooth": "v5.3",
+        "charging_connection_port": "Type-C",
+        "headphone_jack": "3.5 mm",
+        "other_connectivity": ""
+      },
+      "design_and_material": {
+        "design": "Nguyên khối",
+        "material": "Khung & Mặt lưng nhựa",
+        "dimensions_and_weight": "168.8 x 78.2 x 8.8 mm - 195 g",
+        "release_date": "09/2023",
+        "brand": "Samsung"
+      },
+      "createdAt": "2025-07-01T15:32:38.997Z",
+      "updatedAt": "2026-03-03T17:26:19.278Z",
+      "__v": 0,
+      "slug": "",
+      "phoneCount": 2
+    },
+    {
+      "_id": "687256e8f0aef9c0729e5cbb",
+      "name": "Samsung Galaxy A06 4G 6GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1752323816/rzqt3uy1a4njcesfbcax.jpg",
+      "price": 3580,
+      "status": 0,
+      "content": "",
+      "configuration_and_memory": {
+        "operating_system": "Android 14",
+        "cpu_chip": "MediaTek Helio G85",
+        "cpu_speed": "2 nhân 2.0 GHz & 6 nhân 1.8 GHz",
+        "gpu": "Mali-G52",
+        "ram": "6 GB",
+        "storage_capacity": "128 GB",
+        "remaining_capacity": "Khoảng 109.4 GB",
+        "memory_card": "MicroSD, hỗ trợ tối đa 1 TB",
+        "contacts": "Không giới hạn"
+      },
+      "camera_and_screen": {
+        "rear_camera_resolution": "Chính 50 MP & Phụ 2 MP",
+        "rear_camera_video": ["HD 720p@120fps", "FullHD 1080p@60fps"],
+        "rear_camera_flash": "Có",
+        "rear_camera_features": [
+          "Zoom kỹ thuật số",
+          "Xóa phông",
+          "Tự động lấy nét (AF)",
+          "Toàn cảnh (Panorama)",
+          "Quay chậm (Slow Motion)",
+          "Chuyên nghiệp (Pro)",
+          "Ban đêm (Night Mode)"
+        ],
+        "front_camera_resolution": "8 MP",
+        "front_camera_features": ["Xóa phông", "Làm đẹp"],
+        "screen_technology": "PLS LCD",
+        "screen_resolution": "HD+ (720 x 1600 Pixels)",
+        "screen_size": "6.7\" - 60 Hz",
+        "max_brightness": "576 nits",
+        "touchscreen_glass": "Kính cường lực"
+      },
+      "battery_and_charging": {
+        "battery_capacity": "5000 mAh",
+        "battery_type": "Li-Po",
+        "max_charging_support": "25 W",
+        "battery_technology": ["Tiết kiệm pin", "Sạc pin nhanh"]
+      },
+      "features": {
+        "advanced_security": ["Mở khoá vân tay cạnh viền", "Mở khoá khuôn mặt"],
+        "special_features": [
+          "Ứng dụng kép (Dual Messenger)",
+          "Đa cửa sổ (chia đôi màn hình)",
+          "Âm thanh Dolby Atmos",
+          "Smart Switch (ứng dụng chuyển đổi dữ liệu)"
+        ],
+        "water_dust_resistant": "",
+        "voice_recording": ["Ghi âm mặc định", "Ghi âm cuộc gọi"],
+        "radio": ["Có"],
+        "video_playback": "WEBM, MP4, MKV, M4V, FLV, AVI, 3GP, 3G2",
+        "music_playback": [
+          "XMF",
+          "WAV",
+          "RTX",
+          "RTTTL",
+          "OTA",
+          "OGG",
+          "OGA",
+          "Midi",
+          "MXMF",
+          "MP3",
+          "M4A",
+          "IMY",
+          "FLAC",
+          "AWB",
+          "AMR",
+          "AAC",
+          "3GA"
+        ]
+      },
+      "connectivity": {
+        "mobile_network": "Hỗ trợ 4G",
+        "sim": "2 Nano SIM",
+        "wifi": [
+          "Wi-Fi hotspot",
+          "Wi-Fi Direct",
+          "Wi-Fi 802.11 a/b/g/n/ac",
+          "Dual-band (2.4 GHz/5 GHz)"
+        ],
+        "gps": ["GPS", "GLONASS", "GALILEO", "BEIDOU"],
+        "bluetooth": "v5.3",
+        "charging_connection_port": "Type-C",
+        "headphone_jack": "3.5 mm",
+        "other_connectivity": ""
+      },
+      "design_and_material": {
+        "design": "Nguyên khối",
+        "material": "Khung & Mặt lưng nhựa",
+        "dimensions_and_weight": "167.3 x 77.3 x 8 mm - 189 g",
+        "release_date": "08/2024",
+        "brand": "Samsung"
+      },
+      "createdAt": "2025-07-12T12:36:56.990Z",
+      "updatedAt": "2026-03-04T04:34:11.521Z",
+      "__v": 0,
+      "phoneCount": 2
+    },
+    {
+      "_id": "68720944d5a591bf219b4932",
+      "name": "Samsung Galaxy A06 4G 4GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1752303939/jfblmhjuvgaj7w8adivn.jpg",
+      "price": 3300,
+      "status": 0,
+      "content": "",
+      "configuration_and_memory": {
+        "operating_system": "Android 14",
+        "cpu_chip": "MediaTek Helio G85",
+        "cpu_speed": "2 nhân 2.0 GHz & 6 nhân 1.8 GHz",
+        "gpu": "Mali-G52",
+        "ram": "4 GB",
+        "storage_capacity": "128 GB",
+        "remaining_capacity": "Khoảng 109.4 GB",
+        "memory_card": "MicroSD, hỗ trợ tối đa 1 TB",
+        "contacts": "Không giới hạn"
+      },
+      "camera_and_screen": {
+        "rear_camera_resolution": "Chính 50 MP & Phụ 2 MP",
+        "rear_camera_video": ["HD 720p@120fps", "FullHD 1080p@60fps"],
+        "rear_camera_flash": "Có",
+        "rear_camera_features": [
+          "Zoom kỹ thuật số",
+          "Xóa phông",
+          "Tự động lấy nét (AF)",
+          "Toàn cảnh (Panorama)",
+          "Quay chậm (Slow Motion)",
+          "Chuyên nghiệp (Pro)",
+          "Ban đêm (Night Mode)"
+        ],
+        "front_camera_resolution": "8 MP",
+        "front_camera_features": ["Xóa phông", "Làm đẹp"],
+        "screen_technology": "PLS LCD",
+        "screen_resolution": "HD+ (720 x 1600 Pixels)",
+        "screen_size": "6.7\" - 60 Hz",
+        "max_brightness": "576 nits",
+        "touchscreen_glass": "Kính cường lực"
+      },
+      "battery_and_charging": {
+        "battery_capacity": "5000 mAh",
+        "battery_type": "Li-Po",
+        "max_charging_support": "25 W",
+        "battery_technology": ["Tiết kiệm pin", "Sạc pin nhanh"]
+      },
+      "features": {
+        "advanced_security": ["Mở khoá vân tay cạnh viền", "Mở khoá khuôn mặt"],
+        "special_features": [
+          "Ứng dụng kép (Dual Messenger)",
+          "Đa cửa sổ (chia đôi màn hình)",
+          "Âm thanh Dolby Atmos",
+          "Smart Switch (ứng dụng chuyển đổi dữ liệu)"
+        ],
+        "water_dust_resistant": "",
+        "voice_recording": ["Ghi âm mặc định", "Ghi âm cuộc gọi"],
+        "radio": ["Có"],
+        "video_playback": "WEBM, MP4, MKV, M4V, FLV, AVI, 3GP, 3G2",
+        "music_playback": [
+          "XMF",
+          "WAV",
+          "RTX",
+          "RTTTL",
+          "OTA",
+          "OGG",
+          "OGA",
+          "Midi",
+          "MXMF",
+          "MP3",
+          "M4A",
+          "IMY",
+          "FLAC",
+          "AWB",
+          "AMR",
+          "AAC",
+          "3GA"
+        ]
+      },
+      "connectivity": {
+        "mobile_network": "Hỗ trợ 4G",
+        "sim": "2 Nano SIM",
+        "wifi": [
+          "Wi-Fi hotspot",
+          "Wi-Fi Direct",
+          "Wi-Fi 802.11 a/b/g/n/ac",
+          "Dual-band (2.4 GHz/5 GHz)"
+        ],
+        "gps": ["GPS", "GLONASS", "GALILEO", "BEIDOU"],
+        "bluetooth": "v5.3",
+        "charging_connection_port": "Type-C",
+        "headphone_jack": "3.5 mm",
+        "other_connectivity": ""
+      },
+      "design_and_material": {
+        "design": "Nguyên khối",
+        "material": "Khung & Mặt lưng nhựa",
+        "dimensions_and_weight": "167.3 x 77.3 x 8 mm - 189 g",
+        "release_date": "08/2024",
+        "brand": "Samsung"
+      },
+      "createdAt": "2025-07-12T07:05:40.334Z",
+      "updatedAt": "2026-03-04T04:36:34.718Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "686406c4c04afca1a5a137a5",
+      "name": "Samsung Galaxy A06 4G 4GB/64GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1751385796/rix4nv5cpec0pqapwpku.jpg",
+      "price": 3090,
+      "status": 0,
+      "content": "",
+      "configuration_and_memory": {
+        "operating_system": "Android 14",
+        "cpu_chip": "MediaTek Helio G85",
+        "cpu_speed": "2 nhân 2.0 GHz & 6 nhân 1.8 GHz",
+        "gpu": "Mali-G52",
+        "ram": "4 GB",
+        "storage_capacity": "64 GB",
+        "remaining_capacity": "Khoảng 45 GB",
+        "memory_card": "MicroSD, hỗ trợ tối đa 1 TB",
+        "contacts": "Không giới hạn"
+      },
+      "camera_and_screen": {
+        "rear_camera_resolution": "Chính 50 MP & Phụ 2 MP",
+        "rear_camera_video": ["HD 720p@120fps", "FullHD 1080p@60fps"],
+        "rear_camera_flash": "Có",
+        "rear_camera_features": [
+          "Zoom kỹ thuật số",
+          "Xóa phông",
+          "Tự động lấy nét (AF)",
+          "Toàn cảnh (Panorama)",
+          "Quay chậm (Slow Motion)",
+          "Chuyên nghiệp (Pro)",
+          "Ban đêm (Night Mode)"
+        ],
+        "front_camera_resolution": "8 MP",
+        "front_camera_features": ["Xóa phông", "Làm đẹp"],
+        "screen_technology": "PLS LCD",
+        "screen_resolution": "HD+ (720 x 1600 Pixels)",
+        "screen_size": "6.7\" - 60 Hz",
+        "max_brightness": "576 nits",
+        "touchscreen_glass": "Kính cường lực"
+      },
+      "battery_and_charging": {
+        "battery_capacity": "5000 mAh",
+        "battery_type": "Li-Po",
+        "max_charging_support": "25 W",
+        "battery_technology": ["Tiết kiệm pin", "Sạc pin nhanh"]
+      },
+      "features": {
+        "advanced_security": ["Mở khoá vân tay cạnh viền", "Mở khoá khuôn mặt"],
+        "special_features": [
+          "Ứng dụng kép (Dual Messenger)",
+          "Đa cửa sổ (chia đôi màn hình)",
+          "Âm thanh Dolby Atmos",
+          "Smart Switch (ứng dụng chuyển đổi dữ liệu)"
+        ],
+        "water_dust_resistant": "",
+        "voice_recording": ["Ghi âm mặc định", "Ghi âm cuộc gọi"],
+        "radio": ["Có"],
+        "video_playback": "WEBM, MP4, MKV, M4V, FLV, AVI, 3GP, 3G2",
+        "music_playback": [
+          "XMF",
+          "WAV",
+          "RTX",
+          "RTTTL",
+          "OTA",
+          "OGG",
+          "OGA",
+          "Midi",
+          "MXMF",
+          "MP3",
+          "M4A",
+          "IMY",
+          "FLAC",
+          "AWB",
+          "AMR",
+          "AAC",
+          "3GA"
+        ]
+      },
+      "connectivity": {
+        "mobile_network": "Hỗ trợ 4G",
+        "sim": "2 Nano SIM",
+        "wifi": [
+          "Wi-Fi hotspot",
+          "Wi-Fi Direct",
+          "Wi-Fi 802.11 a/b/g/n/ac",
+          "Dual-band (2.4 GHz/5 GHz)"
+        ],
+        "gps": ["GPS", "GLONASS", "GALILEO", "BEIDOU"],
+        "bluetooth": "v5.3",
+        "charging_connection_port": "Type-C",
+        "headphone_jack": "3.5 mm",
+        "other_connectivity": ""
+      },
+      "design_and_material": {
+        "design": "Nguyên khối",
+        "material": "Khung & Mặt lưng nhựa",
+        "dimensions_and_weight": "167.3 x 77.3 x 8 mm - 189 g",
+        "release_date": "08/2024",
+        "brand": "Samsung"
+      },
+      "createdAt": "2025-07-01T16:03:16.809Z",
+      "updatedAt": "2026-03-04T04:37:30.821Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "68a1c9fac0818504e861b2a5",
+      "name": "Samsung Galaxy A16 4GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1755433465/mmd7mcmc95pwoqpjkrzs.jpg",
+      "price": 4260,
+      "status": 0,
+      "content": "",
+      "configuration_and_memory": {
+        "operating_system": "Android 14",
+        "cpu_chip": "MediaTek Helio G99",
+        "cpu_speed": "2.2 GHz",
+        "gpu": "Mali-G57",
+        "ram": "4 GB",
+        "storage_capacity": "128 GB",
+        "remaining_capacity": "Khoảng 109.4 GB",
+        "memory_card": "MicroSD, hỗ trợ tối đa 1 TB",
+        "contacts": "Không giới hạn"
+      },
+      "camera_and_screen": {
+        "rear_camera_resolution": "Chính 50 MP & Phụ 5 MP, 2 MP",
+        "rear_camera_video": ["HD 720p@120fps", "FullHD 1080p@30fps"],
+        "rear_camera_flash": "Có",
+        "rear_camera_features": [
+          "Zoom kỹ thuật số",
+          "Xóa phông",
+          "Tự động lấy nét (AF)",
+          "Toàn cảnh (Panorama)",
+          "Quay chậm (Slow Motion)",
+          "Chuyên nghiệp (Pro)",
+          "Ban đêm (Night Mode)"
+        ],
+        "front_camera_resolution": "13 MP",
+        "front_camera_features": ["Xóa phông", "Làm đẹp"],
+        "screen_technology": "Super AMOLED",
+        "screen_resolution": "Full HD+ (1080 x 2340 Pixels)",
+        "screen_size": "6.7\" - 90 Hz",
+        "max_brightness": "800 nits",
+        "touchscreen_glass": "Kính cường lực"
+      },
+      "battery_and_charging": {
+        "battery_capacity": "5000 mAh",
+        "battery_type": "Li-Ion",
+        "max_charging_support": "25 W",
+        "battery_technology": ["Tiết kiệm pin", "Sạc pin nhanh"]
+      },
+      "features": {
+        "advanced_security": ["Mở khoá vân tay cạnh viền", "Mở khoá khuôn mặt"],
+        "special_features": ["Chạm 2 lần sáng màn hình"],
+        "water_dust_resistant": "IP54",
+        "voice_recording": ["Ghi âm mặc định", "Ghi âm cuộc gọi"],
+        "radio": ["Có"],
+        "video_playback": "WEBM, MP4, MKV, M4V, FLV, AVI, 3GP, 3G2",
+        "music_playback": [
+          "XMF",
+          "WAV",
+          "RTX",
+          "RTTTL",
+          "OTA",
+          "OGG",
+          "OGA",
+          "MXMF",
+          "MP3",
+          "Midi",
+          "M4A",
+          "IMY",
+          "FLAC",
+          "AWB",
+          "AMR",
+          "AAC",
+          "3GA"
+        ]
+      },
+      "connectivity": {
+        "mobile_network": "Hỗ trợ 4G",
+        "sim": "2 Nano SIM",
+        "wifi": [
+          "Wi-Fi hotspot",
+          "Wi-Fi Direct",
+          "Wi-Fi 802.11 a/b/g/n/ac",
+          "Dual-band (2.4 GHz/5 GHz)"
+        ],
+        "gps": ["GPS", "GLONASS", "GALILEO", "BEIDOU"],
+        "bluetooth": "v5.3",
+        "charging_connection_port": "Type-C",
+        "headphone_jack": "Type-C",
+        "other_connectivity": "NFC"
+      },
+      "design_and_material": {
+        "design": "Nguyên khối",
+        "material": "Khung & Mặt lưng nhựa",
+        "dimensions_and_weight": "164.4 x 77.9 x 7.9 mm - 192 g",
+        "release_date": "11/2024",
+        "brand": "Samsung"
+      },
+      "createdAt": "2025-08-17T12:24:26.328Z",
+      "updatedAt": "2026-03-04T04:38:58.550Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "68a1cc3ac0818504e861b2c8",
+      "name": "Samsung Galaxy A16 8GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1755434041/va01etukhce5v5op13qx.jpg",
+      "price": 5050,
+      "status": 0,
+      "content": "",
+      "configuration_and_memory": {
+        "operating_system": "Android 14",
+        "cpu_chip": "MediaTek Helio G99",
+        "cpu_speed": "2.2 GHz",
+        "gpu": "Mali-G57",
+        "ram": "8 GB",
+        "storage_capacity": "128 GB",
+        "remaining_capacity": "Khoảng 109.4 GB",
+        "memory_card": "MicroSD, hỗ trợ tối đa 1 TB",
+        "contacts": "Không giới hạn"
+      },
+      "camera_and_screen": {
+        "rear_camera_resolution": "Chính 50 MP & Phụ 5 MP, 2 MP",
+        "rear_camera_video": ["HD 720p@120fps", "FullHD 1080p@30fps"],
+        "rear_camera_flash": "Có",
+        "rear_camera_features": [
+          "Zoom kỹ thuật số",
+          "Xóa phông",
+          "Tự động lấy nét (AF)",
+          "Toàn cảnh (Panorama)",
+          "Quay chậm (Slow Motion)",
+          "Chuyên nghiệp (Pro)",
+          "Ban đêm (Night Mode)"
+        ],
+        "front_camera_resolution": "13 MP",
+        "front_camera_features": ["Xóa phông", "Làm đẹp"],
+        "screen_technology": "Super AMOLED",
+        "screen_resolution": "Full HD+ (1080 x 2340 Pixels)",
+        "screen_size": "6.7\" - 90 Hz",
+        "max_brightness": "800 nits",
+        "touchscreen_glass": "Kính cường lực"
+      },
+      "battery_and_charging": {
+        "battery_capacity": "5000 mAh",
+        "battery_type": "Li-Ion",
+        "max_charging_support": "25 W",
+        "battery_technology": ["Tiết kiệm pin", "Sạc pin nhanh"]
+      },
+      "features": {
+        "advanced_security": ["Mở khoá vân tay cạnh viền", "Mở khoá khuôn mặt"],
+        "special_features": ["Chạm 2 lần sáng màn hình"],
+        "water_dust_resistant": "IP54",
+        "voice_recording": ["Ghi âm mặc định", "Ghi âm cuộc gọi"],
+        "radio": ["Có"],
+        "video_playback": "WEBM, MP4, MKV, M4V, FLV, AVI, 3GP, 3G2",
+        "music_playback": [
+          "XMF",
+          "WAV",
+          "RTX",
+          "RTTTL",
+          "OTA",
+          "OGG",
+          "OGA",
+          "MXMF",
+          "MP3",
+          "Midi",
+          "M4A",
+          "IMY",
+          "FLAC",
+          "AWB",
+          "AMR",
+          "AAC",
+          "3GA"
+        ]
+      },
+      "connectivity": {
+        "mobile_network": "Hỗ trợ 4G",
+        "sim": "2 Nano SIM",
+        "wifi": [
+          "Wi-Fi hotspot",
+          "Wi-Fi Direct",
+          "Wi-Fi 802.11 a/b/g/n/ac",
+          "Dual-band (2.4 GHz/5 GHz)"
+        ],
+        "gps": ["GPS", "GLONASS", "GALILEO", "BEIDOU"],
+        "bluetooth": "v5.3",
+        "charging_connection_port": "Type-C",
+        "headphone_jack": "Type-C",
+        "other_connectivity": "NFC"
+      },
+      "design_and_material": {
+        "design": "Nguyên khối",
+        "material": "Khung & Mặt lưng nhựa",
+        "dimensions_and_weight": "164.4 x 77.9 x 7.9 mm - 192 g",
+        "release_date": "11/2024",
+        "brand": "Samsung"
+      },
+      "createdAt": "2025-08-17T12:34:02.281Z",
+      "updatedAt": "2026-03-04T04:40:03.446Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "68a1ce7dc0818504e861b2e1",
+      "name": "Samsung Galaxy A16 5G 8GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1755434620/iorlbudnpgrm3igdljyo.jpg",
+      "price": 5500,
+      "status": 0,
+      "content": "",
+      "configuration_and_memory": {
+        "operating_system": "Android 14",
+        "cpu_chip": "MediaTek Helio G99",
+        "cpu_speed": "2.2 GHz",
+        "gpu": "Mali-G57",
+        "ram": "8 GB",
+        "storage_capacity": "128 GB",
+        "remaining_capacity": "Khoảng 109.4 GB",
+        "memory_card": "MicroSD, hỗ trợ tối đa 1 TB",
+        "contacts": "Không giới hạn"
+      },
+      "camera_and_screen": {
+        "rear_camera_resolution": "Chính 50 MP & Phụ 5 MP, 2 MP",
+        "rear_camera_video": ["HD 720p@120fps", "FullHD 1080p@30fps"],
+        "rear_camera_flash": "Có",
+        "rear_camera_features": [
+          "Zoom kỹ thuật số",
+          "Xóa phông",
+          "Tự động lấy nét (AF)",
+          "Toàn cảnh (Panorama)",
+          "Quay chậm (Slow Motion)",
+          "Chuyên nghiệp (Pro)",
+          "Ban đêm (Night Mode)"
+        ],
+        "front_camera_resolution": "13 MP",
+        "front_camera_features": ["Xóa phông", "Làm đẹp"],
+        "screen_technology": "Super AMOLED",
+        "screen_resolution": "Full HD+ (1080 x 2340 Pixels)",
+        "screen_size": "6.7\" - 90 Hz",
+        "max_brightness": "800 nits",
+        "touchscreen_glass": "Kính cường lực"
+      },
+      "battery_and_charging": {
+        "battery_capacity": "5000 mAh",
+        "battery_type": "Li-Ion",
+        "max_charging_support": "25 W",
+        "battery_technology": ["Tiết kiệm pin", "Sạc pin nhanh"]
+      },
+      "features": {
+        "advanced_security": ["Mở khoá vân tay cạnh viền", "Mở khoá khuôn mặt"],
+        "special_features": ["Chạm 2 lần sáng màn hình"],
+        "water_dust_resistant": "IP54",
+        "voice_recording": ["Ghi âm mặc định", "Ghi âm cuộc gọi"],
+        "radio": ["Có"],
+        "video_playback": "WEBM, MP4, MKV, M4V, FLV, AVI, 3GP, 3G2",
+        "music_playback": [
+          "XMF",
+          "WAV",
+          "RTX",
+          "RTTTL",
+          "OTA",
+          "OGG",
+          "OGA",
+          "MXMF",
+          "MP3",
+          "Midi",
+          "M4A",
+          "IMY",
+          "FLAC",
+          "AWB",
+          "AMR",
+          "AAC",
+          "3GA"
+        ]
+      },
+      "connectivity": {
+        "mobile_network": "Hỗ trợ 4G",
+        "sim": "2 Nano SIM",
+        "wifi": [
+          "Wi-Fi hotspot",
+          "Wi-Fi Direct",
+          "Wi-Fi 802.11 a/b/g/n/ac",
+          "Dual-band (2.4 GHz/5 GHz)"
+        ],
+        "gps": ["GPS", "GLONASS", "GALILEO", "BEIDOU"],
+        "bluetooth": "v5.3",
+        "charging_connection_port": "Type-C",
+        "headphone_jack": "Type-C",
+        "other_connectivity": "NFC"
+      },
+      "design_and_material": {
+        "design": "Nguyên khối",
+        "material": "Khung & Mặt lưng nhựa",
+        "dimensions_and_weight": "164.4 x 77.9 x 7.9 mm - 192 g",
+        "release_date": "11/2024",
+        "brand": "Samsung"
+      },
+      "createdAt": "2025-08-17T12:43:41.243Z",
+      "updatedAt": "2026-03-04T04:42:40.824Z",
+      "__v": 0,
+      "phoneCount": 3
+    },
+    {
+      "_id": "68a1d037c0818504e861b358",
+      "name": "Samsung Galaxy A16 5G 8GB/256GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1755435062/wlbekmnw7gwqky9k76oa.jpg",
+      "price": 6070,
+      "status": 0,
+      "content": "",
+      "configuration_and_memory": {
+        "operating_system": "Android 14",
+        "cpu_chip": "MediaTek Dimensity 6300 5G 8 nhân",
+        "cpu_speed": "2.4 GHz",
+        "gpu": "Mali-G57",
+        "ram": "8 GB",
+        "storage_capacity": "256 GB",
+        "remaining_capacity": "Khoảng 237 GB",
+        "memory_card": "MicroSD, hỗ trợ tối đa 1 TB",
+        "contacts": "Không giới hạn"
+      },
+      "camera_and_screen": {
+        "rear_camera_resolution": "Chính 50 MP & Phụ 5 MP, 2 MP",
+        "rear_camera_video": ["HD 720p@120fps", "FullHD 1080p@30fps"],
+        "rear_camera_flash": "Có",
+        "rear_camera_features": [
+          "Zoom kỹ thuật số",
+          "Xóa phông",
+          "Tự động lấy nét (AF)",
+          "Toàn cảnh (Panorama)",
+          "Quay chậm (Slow Motion)",
+          "Chuyên nghiệp (Pro)",
+          "Ban đêm (Night Mode)"
+        ],
+        "front_camera_resolution": "13 MP",
+        "front_camera_features": ["Xóa phông", "Làm đẹp"],
+        "screen_technology": "Super AMOLED",
+        "screen_resolution": "Full HD+ (1080 x 2340 Pixels)",
+        "screen_size": "6.7\" - 90 Hz",
+        "max_brightness": "800 nits",
+        "touchscreen_glass": "Kính cường lực"
+      },
+      "battery_and_charging": {
+        "battery_capacity": "5000 mAh",
+        "battery_type": "Li-Ion",
+        "max_charging_support": "25 W",
+        "battery_technology": ["Tiết kiệm pin", "Sạc pin nhanh"]
+      },
+      "features": {
+        "advanced_security": ["Mở khoá vân tay cạnh viền", "Mở khoá khuôn mặt"],
+        "special_features": ["Chạm 2 lần sáng màn hình"],
+        "water_dust_resistant": "IP54",
+        "voice_recording": ["Ghi âm mặc định", "Ghi âm cuộc gọi"],
+        "radio": ["Có"],
+        "video_playback": "WEBM, MP4, MKV, M4V, FLV, AVI, 3GP, 3G2",
+        "music_playback": [
+          "XMF",
+          "WAV",
+          "RTX",
+          "RTTTL",
+          "OTA",
+          "OGG",
+          "OGA",
+          "MXMF",
+          "MP3",
+          "Midi",
+          "M4A",
+          "IMY",
+          "FLAC",
+          "AWB",
+          "AMR",
+          "AAC",
+          "3GA"
+        ]
+      },
+      "connectivity": {
+        "mobile_network": "Hỗ trợ 5G",
+        "sim": "2 Nano SIM",
+        "wifi": [
+          "Wi-Fi hotspot",
+          "Wi-Fi Direct",
+          "Wi-Fi 802.11 a/b/g/n/ac",
+          "Dual-band (2.4 GHz/5 GHz)"
+        ],
+        "gps": ["GPS", "GLONASS", "GALILEO", "BEIDOU"],
+        "bluetooth": "v5.3",
+        "charging_connection_port": "Type-C",
+        "headphone_jack": "Type-C",
+        "other_connectivity": "NFC"
+      },
+      "design_and_material": {
+        "design": "Nguyên khối",
+        "material": "Khung & Mặt lưng nhựa",
+        "dimensions_and_weight": "164.4 x 77.9 x 7.9 mm - 192 g",
+        "release_date": "11/2024",
+        "brand": "Samsung"
+      },
+      "createdAt": "2025-08-17T12:51:03.225Z",
+      "updatedAt": "2026-03-04T04:46:26.913Z",
+      "__v": 0,
+      "phoneCount": 2
+    },
+    {
+      "_id": "68a1d74cc0818504e861b466",
+      "name": "Samsung Galaxy A35 5G 8GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1755436875/ysxbdho3en4uhf4stjgy.jpg",
+      "price": 7050,
+      "status": 0,
+      "content": "",
+      "configuration_and_memory": {
+        "operating_system": "Android 14",
+        "cpu_chip": "Exynos 1380 8 nhân",
+        "cpu_speed": "4 nhân 2.4 GHz & 4 nhân 2 GHz",
+        "gpu": "Mali-G68 MP5",
+        "ram": "8 GB",
+        "storage_capacity": "128 GB",
+        "remaining_capacity": "Khoảng 113 GB",
+        "memory_card": "MicroSD, hỗ trợ tối đa 1 TB",
+        "contacts": "Không giới hạn"
+      },
+      "camera_and_screen": {
+        "rear_camera_resolution": "Chính 50 MP & Phụ 8 MP, 5 MP",
+        "rear_camera_video": [
+          "HD 720p@30fps",
+          "HD 720p@240fps",
+          "FullHD 1080p@60fps",
+          "FullHD 1080p@30fps",
+          "4K 2160p@30fps"
+        ],
+        "rear_camera_flash": "Có",
+        "rear_camera_features": [
+          "Zoom kỹ thuật số",
+          "Xóa phông",
+          "Video chuyên nghiệp",
+          "Tự động lấy nét (AF)",
+          "Trôi nhanh thời gian (Time Lapse)",
+          "Toàn cảnh (Panorama)",
+          "Super HDR",
+          "Siêu độ phân giải",
+          "Siêu cận (Macro)",
+          "Quét mã QR",
+          "Quay Siêu chậm (Super Slow Motion)",
+          "Quay chậm (Slow Motion)",
+          "Nhãn dán (AR Stickers)",
+          "Làm đẹp",
+          "Góc siêu rộng (Ultrawide)",
+          "Chụp ảnh chuyển động",
+          "Chụp một chạm",
+          "Chụp hẹn giờ",
+          "Chống rung quang học (OIS)",
+          "Chuyên nghiệp (Pro)",
+          "Bộ lọc màu",
+          "Ban đêm (Night Mode)"
+        ],
+        "front_camera_resolution": "13 MP",
+        "front_camera_features": [
+          "Xóa phông",
+          "Trôi nhanh thời gian (Time Lapse)",
+          "Quay video HD",
+          "Quay video Full HD",
+          "Quay video 4K",
+          "Nhãn dán (AR Stickers)",
+          "Làm đẹp",
+          "Góc rộng (Wide)",
+          "Flash màn hình",
+          "Chụp ảnh chuyển động",
+          "Chụp đêm",
+          "Chụp một chạm",
+          "Chụp hẹn giờ",
+          "Bộ lọc màu"
+        ],
+        "screen_technology": "Super AMOLED",
+        "screen_resolution": "Full HD+ (1080 x 2340 Pixels)",
+        "screen_size": "6.6\" - 120 Hz",
+        "max_brightness": "1000 nits",
+        "touchscreen_glass": "Kính cường lực Corning Gorilla Glass 7"
+      },
+      "battery_and_charging": {
+        "battery_capacity": "5000 mAh",
+        "battery_type": "Li-Po",
+        "max_charging_support": "25 W",
+        "battery_technology": ["Tiết kiệm pin", "Sạc pin nhanh"]
+      },
+      "features": {
+        "advanced_security": [
+          "Mở khoá vân tay dưới màn hình",
+          "Mở khoá khuôn mặt"
+        ],
+        "special_features": [
+          "Ứng dụng kép (Dual Messenger)",
+          "Âm thanh Dolby Atmos",
+          "Tối ưu game (Game Booster)",
+          "Trợ lý ảo Samsung Bixby",
+          "Trợ lý ảo Google Assistant",
+          "Thu nhỏ màn hình sử dụng một tay",
+          "Mở rộng bộ nhớ RAM",
+          "Màn hình luôn hiển thị AOD",
+          "Không gian thứ hai (Thư mục bảo mật)",
+          "Khoanh vùng search đa năng",
+          "Chế độ đơn giản (Giao diện đơn giản)",
+          "Chặn tin nhắn",
+          "Chặn cuộc gọi",
+          "Chạm 2 lần tắt/sáng màn hình"
+        ],
+        "water_dust_resistant": "IP67",
+        "voice_recording": ["Ghi âm mặc định", "Ghi âm cuộc gọi"],
+        "radio": ["Có"],
+        "video_playback": "WEBM, MP4, MKV, M4V, FLV, AV1, 3GP, 3G2",
+        "music_playback": [
+          "XMF",
+          "WAV",
+          "RTX",
+          "RTTTL",
+          "OTA",
+          "OGG",
+          "OGA",
+          "MXMF",
+          "MP3",
+          "Midi",
+          "M4A",
+          "IMY",
+          "FLAC",
+          "AWB",
+          "AMR",
+          "AAC",
+          "3GA"
+        ]
+      },
+      "connectivity": {
+        "mobile_network": "Hỗ trợ 5G",
+        "sim": "2 Nano SIM",
+        "wifi": [
+          "Wi-Fi hotspot",
+          "Wi-Fi Direct",
+          "Wi-Fi 802.11 a/b/g/n/ac/ax",
+          "Dual-band (2.4 GHz/5 GHz)"
+        ],
+        "gps": ["QZSS", "GPS", "GLONASS", "GALILEO", "BEIDOU"],
+        "bluetooth": "v5.3",
+        "charging_connection_port": "Type-C",
+        "headphone_jack": "Type-C",
+        "other_connectivity": "NFC"
+      },
+      "design_and_material": {
+        "design": "Nguyên khối",
+        "material": "Khung nhựa & Mặt lưng kính",
+        "dimensions_and_weight": "161.7 x 78 x 8.2 mm - 209 g",
+        "release_date": "03/2024",
+        "brand": "Samsung"
+      },
+      "createdAt": "2025-08-17T13:21:16.701Z",
+      "updatedAt": "2026-03-04T04:47:40.344Z",
+      "__v": 0,
+      "phoneCount": 1
+    },
+    {
+      "_id": "68a1db48c0818504e861b4b7",
+      "name": "Samsung Galaxy A36 5G 8GB/256GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1755437895/ptqij5nsemapnk8jezbf.jpg",
+      "price": 7700,
+      "status": 0,
+      "content": "",
+      "configuration_and_memory": {
+        "operating_system": "Android 15",
+        "cpu_chip": "Snapdragon 6 Gen 3 8 nhân",
+        "cpu_speed": "2.4 GHz",
+        "gpu": "Adreno 710",
+        "ram": "8 GB",
+        "storage_capacity": "256 GB",
+        "remaining_capacity": "Khoảng 234 GB",
+        "memory_card": "",
+        "contacts": "Không giới hạn"
+      },
+      "camera_and_screen": {
+        "rear_camera_resolution": "Chính 50 MP & Phụ 8 MP, 5 MP",
+        "rear_camera_video": ["HD 720p@240fps", "4K 2160p@30fps"],
+        "rear_camera_flash": "Có",
+        "rear_camera_features": [
+          "Zoom kỹ thuật số",
+          "Xóa phông",
+          "Tự động lấy nét (AF)",
+          "Toàn cảnh (Panorama)",
+          "Siêu cận (Macro)",
+          "Quay chậm (Slow Motion)",
+          "Làm đẹp",
+          "HDR",
+          "Góc siêu rộng (Ultrawide)",
+          "Chống rung quang học (OIS)",
+          "Chuyên nghiệp (Pro)",
+          "Bộ lọc màu",
+          "Ban đêm (Night Mode)"
+        ],
+        "front_camera_resolution": "12 MP",
+        "front_camera_features": [
+          "Xóa phông",
+          "Nhãn dán (AR Stickers)",
+          "Làm đẹp",
+          "HDR",
+          "Bộ lọc màu"
+        ],
+        "screen_technology": "Super AMOLED",
+        "screen_resolution": "Full HD+ (1080 x 2340 Pixels)",
+        "screen_size": "6.7\" - 120 Hz",
+        "max_brightness": "1200 nits",
+        "touchscreen_glass": "Kính cường lực Corning Gorilla Glass Victus+"
+      },
+      "battery_and_charging": {
+        "battery_capacity": "5000 mAh",
+        "battery_type": "Li-Ion",
+        "max_charging_support": "45 W",
+        "battery_technology": ["Tiết kiệm pin", "Sạc pin nhanh"]
+      },
+      "features": {
+        "advanced_security": [
+          "Mở khoá vân tay dưới màn hình",
+          "Mở khoá khuôn mặt"
+        ],
+        "special_features": [
+          "Xoá vật thể AI",
+          "Khoanh vùng search đa năng",
+          "Chạm 2 lần sáng màn hình",
+          "Bộ lọc màu AI"
+        ],
+        "water_dust_resistant": "IP67",
+        "voice_recording": ["Ghi âm mặc định", "Ghi âm cuộc gọi"],
+        "radio": [],
+        "video_playback": "WEBM, MP4, MKV, M4V, FLV, AVI, 3GP, 3G2",
+        "music_playback": [
+          "XMF",
+          "WAV",
+          "RTX",
+          "RTTTL",
+          "OTA",
+          "OGG",
+          "OGA",
+          "Midi",
+          "MXMF",
+          "MP3",
+          "M4A",
+          "IMY",
+          "FLAC",
+          "AWB",
+          "AMR",
+          "AAC",
+          "3GA"
+        ]
+      },
+      "connectivity": {
+        "mobile_network": "Hỗ trợ 5G",
+        "sim": "2 Nano SIM hoặc 2 eSIM hoặc 1 Nano SIM + 1 eSIM",
+        "wifi": [
+          "Wi-Fi hotspot",
+          "Wi-Fi MIMO",
+          "Wi-Fi Direct",
+          "Wi-Fi 6",
+          "Dual-band (2.4 GHz/5 GHz)"
+        ],
+        "gps": ["QZSS", "GPS", "GLONASS", "GALILEO", "BEIDOU"],
+        "bluetooth": "v5.4",
+        "charging_connection_port": "Type-C",
+        "headphone_jack": "Type-C",
+        "other_connectivity": "NFC"
+      },
+      "design_and_material": {
+        "design": "Nguyên khối",
+        "material": "Khung nhựa & Mặt lưng kính",
+        "dimensions_and_weight": "162.9 x 78.2 x 7.4 mm - 195 g",
+        "release_date": "03/2025",
+        "brand": "Samsung"
+      },
+      "createdAt": "2025-08-17T13:38:16.295Z",
+      "updatedAt": "2026-03-04T04:54:33.482Z",
+      "__v": 0,
+      "phoneCount": 1
+    },
+    {
+      "_id": "68a1dc0fc0818504e861b4c3",
+      "name": "Samsung Galaxy A36 5G 12GB/256GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1755438094/ixnu24f7tdcmzkzgrqf3.jpg",
+      "price": 8750,
+      "status": 0,
+      "content": "",
+      "configuration_and_memory": {
+        "operating_system": "Android 15",
+        "cpu_chip": "Snapdragon 6 Gen 3 8 nhân",
+        "cpu_speed": "2.4 GHz",
+        "gpu": "Adreno 710",
+        "ram": "12 GB",
+        "storage_capacity": "256 GB",
+        "remaining_capacity": "Khoảng 234 GB",
+        "memory_card": "",
+        "contacts": "Không giới hạn"
+      },
+      "camera_and_screen": {
+        "rear_camera_resolution": "Chính 50 MP & Phụ 8 MP, 5 MP",
+        "rear_camera_video": ["HD 720p@240fps", "4K 2160p@30fps"],
+        "rear_camera_flash": "Có",
+        "rear_camera_features": [
+          "Zoom kỹ thuật số",
+          "Xóa phông",
+          "Tự động lấy nét (AF)",
+          "Toàn cảnh (Panorama)",
+          "Siêu cận (Macro)",
+          "Quay chậm (Slow Motion)",
+          "Làm đẹp",
+          "HDR",
+          "Góc siêu rộng (Ultrawide)",
+          "Chống rung quang học (OIS)",
+          "Chuyên nghiệp (Pro)",
+          "Bộ lọc màu",
+          "Ban đêm (Night Mode)"
+        ],
+        "front_camera_resolution": "12 MP",
+        "front_camera_features": [
+          "Xóa phông",
+          "Nhãn dán (AR Stickers)",
+          "Làm đẹp",
+          "HDR",
+          "Bộ lọc màu"
+        ],
+        "screen_technology": "Super AMOLED",
+        "screen_resolution": "Full HD+ (1080 x 2340 Pixels)",
+        "screen_size": "6.7\" - 120 Hz",
+        "max_brightness": "1200 nits",
+        "touchscreen_glass": "Kính cường lực Corning Gorilla Glass Victus+"
+      },
+      "battery_and_charging": {
+        "battery_capacity": "5000 mAh",
+        "battery_type": "Li-Ion",
+        "max_charging_support": "45 W",
+        "battery_technology": ["Tiết kiệm pin", "Sạc pin nhanh"]
+      },
+      "features": {
+        "advanced_security": [
+          "Mở khoá vân tay dưới màn hình",
+          "Mở khoá khuôn mặt"
+        ],
+        "special_features": [
+          "Xoá vật thể AI",
+          "Khoanh vùng search đa năng",
+          "Chạm 2 lần sáng màn hình",
+          "Bộ lọc màu AI"
+        ],
+        "water_dust_resistant": "IP67",
+        "voice_recording": ["Ghi âm mặc định", "Ghi âm cuộc gọi"],
+        "radio": [],
+        "video_playback": "WEBM, MP4, MKV, M4V, FLV, AVI, 3GP, 3G2",
+        "music_playback": [
+          "XMF",
+          "WAV",
+          "RTX",
+          "RTTTL",
+          "OTA",
+          "OGG",
+          "OGA",
+          "Midi",
+          "MXMF",
+          "MP3",
+          "M4A",
+          "IMY",
+          "FLAC",
+          "AWB",
+          "AMR",
+          "AAC",
+          "3GA"
+        ]
+      },
+      "connectivity": {
+        "mobile_network": "Hỗ trợ 5G",
+        "sim": "2 Nano SIM hoặc 2 eSIM hoặc 1 Nano SIM + 1 eSIM",
+        "wifi": [
+          "Wi-Fi hotspot",
+          "Wi-Fi MIMO",
+          "Wi-Fi Direct",
+          "Wi-Fi 6",
+          "Dual-band (2.4 GHz/5 GHz)"
+        ],
+        "gps": ["QZSS", "GPS", "GLONASS", "GALILEO", "BEIDOU"],
+        "bluetooth": "v5.4",
+        "charging_connection_port": "Type-C",
+        "headphone_jack": "Type-C",
+        "other_connectivity": "NFC"
+      },
+      "design_and_material": {
+        "design": "Nguyên khối",
+        "material": "Khung nhựa & Mặt lưng kính",
+        "dimensions_and_weight": "162.9 x 78.2 x 7.4 mm - 195 g",
+        "release_date": "03/2025",
+        "brand": "Samsung"
+      },
+      "createdAt": "2025-08-17T13:41:35.013Z",
+      "updatedAt": "2026-03-04T04:58:28.827Z",
+      "__v": 0,
+      "phoneCount": 1
+    },
+    {
+      "_id": "68b2c757ba8c9af5b798c76c",
+      "name": "Samsung Galaxy M15 5G 4GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1756546903/xgzdbxej8q9ayihdsvs4.jpg",
+      "price": 4320,
+      "status": 0,
+      "content": "",
+      "configuration_and_memory": {
+        "operating_system": "Android 14",
+        "cpu_chip": "MediaTek Dimensity 6100+",
+        "cpu_speed": "2 nhân 2.2 GHz & 6 nhân 2.0 GHz",
+        "gpu": "Mali-G57 MP2",
+        "ram": "4 GB",
+        "storage_capacity": "128 GB",
+        "remaining_capacity": "Khoảng 108 GB",
+        "memory_card": "MicroSD, hỗ trợ tối đa 1 TB",
+        "contacts": "Không giới hạn"
+      },
+      "camera_and_screen": {
+        "rear_camera_resolution": "Chính 50 MP & Phụ 5 MP, 2 MP",
+        "rear_camera_video": [
+          "HD 720p@30fps",
+          "HD 720p@120fps",
+          "FullHD 1080p@30fps"
+        ],
+        "rear_camera_flash": "Có",
+        "rear_camera_features": [
+          "Zoom kỹ thuật số",
+          "Xóa phông",
+          "Tự động lấy nét (AF)",
+          "Trôi nhanh thời gian (Time Lapse)",
+          "Toàn cảnh (Panorama)",
+          "Siêu độ phân giải",
+          "Quét mã QR",
+          "Quay chậm (Slow Motion)",
+          "Nhãn dán (AR Stickers)",
+          "Làm đẹp",
+          "HDR",
+          "Góc siêu rộng (Ultrawide)",
+          "Chụp hẹn giờ",
+          "Chuyên nghiệp (Pro)",
+          "Bộ lọc màu",
+          "Ban đêm (Night Mode)"
+        ],
+        "front_camera_resolution": "13 MP",
+        "front_camera_features": [
+          "Xóa phông",
+          "Trôi nhanh thời gian (Time Lapse)",
+          "Quay video HD",
+          "Quay video Full HD",
+          "Nhãn dán (AR Stickers)",
+          "Làm đẹp",
+          "HDR",
+          "Góc rộng (Wide)",
+          "Flash màn hình",
+          "Chụp đêm",
+          "Chụp hẹn giờ"
+        ],
+        "screen_technology": "Super AMOLED",
+        "screen_resolution": "Full HD+ (1080 x 2340 Pixels)",
+        "screen_size": "6.5\" - 90 Hz",
+        "max_brightness": "800 nits",
+        "touchscreen_glass": "Kính cường lực Asahi Dragontrail Pro Glass"
+      },
+      "battery_and_charging": {
+        "battery_capacity": "6000 mAh",
+        "battery_type": "Li-Po",
+        "max_charging_support": "25 W",
+        "battery_technology": ["Tiết kiệm pin", "Sạc pin nhanh"]
+      },
+      "features": {
+        "advanced_security": ["Mở khoá vân tay cạnh viền", "Mở khoá khuôn mặt"],
+        "special_features": [
+          "Voice Focus",
+          "Vision Booster",
+          "Chạm 2 lần sáng màn hình"
+        ],
+        "water_dust_resistant": "",
+        "voice_recording": ["Ghi âm mặc định", "Ghi âm cuộc gọi"],
+        "radio": ["Có"],
+        "video_playback": "WEBM, MP4, MKV, M4V, FLV, AV1, 3GP, 3G2",
+        "music_playback": [
+          "XMF",
+          "WAV",
+          "RTX",
+          "RTTTL",
+          "OTA",
+          "OGG",
+          "OGA",
+          "MXMF",
+          "MP3",
+          "Midi",
+          "M4A",
+          "IMY",
+          "FLAC",
+          "AWB",
+          "AMR",
+          "AAC",
+          "3GA"
+        ]
+      },
+      "connectivity": {
+        "mobile_network": "Hỗ trợ 5G",
+        "sim": "2 Nano SIM",
+        "wifi": [
+          "Wi-Fi hotspot",
+          "Wi-Fi Direct",
+          "Wi-Fi 802.11 a/b/g/n/ac",
+          "Dual-band (2.4 GHz/5 GHz)"
+        ],
+        "gps": ["QZSS", "GPS", "GLONASS", "GALILEO", "BEIDOU"],
+        "bluetooth": "v5.3",
+        "charging_connection_port": "Type-C",
+        "headphone_jack": "3.5 mm",
+        "other_connectivity": "NFC"
+      },
+      "design_and_material": {
+        "design": "Nguyên khối",
+        "material": "Khung & Mặt lưng nhựa",
+        "dimensions_and_weight": "160.1 x 76.8 x 9.3 mm - 217 g",
+        "release_date": "04/2024",
+        "brand": "Samsung"
+      },
+      "createdAt": "2025-08-30T09:41:43.972Z",
+      "updatedAt": "2026-03-04T05:02:35.879Z",
+      "__v": 0,
+      "phoneCount": 1
+    },
+    {
+      "_id": "68b2cc61ba8c9af5b798c775",
+      "name": "Samsung Galaxy S24 FE 5G 8GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1756548192/h5tumrdnjl2mzte1cyfm.jpg",
+      "price": 12400,
+      "status": 0,
+      "content": "",
+      "configuration_and_memory": {
+        "operating_system": "Android 14",
+        "cpu_chip": "Exynos 2400e 8 nhân",
+        "cpu_speed": "",
+        "gpu": "",
+        "ram": "8 GB",
+        "storage_capacity": "128 GB",
+        "remaining_capacity": "",
+        "memory_card": "Không hỗ trợ",
+        "contacts": ""
+      },
+      "camera_and_screen": {
+        "rear_camera_resolution": "50 MP, 12 MP, 8 MP",
+        "rear_camera_video": ["UHD 8K (4320x7680)@30FPS"],
+        "rear_camera_flash": "Có",
+        "rear_camera_features": [],
+        "front_camera_resolution": "10 MP",
+        "front_camera_features": [],
+        "screen_technology": "Dynamic AMOLED 2X",
+        "screen_resolution": "Full HD+ (1080 x 2340 pixels)",
+        "screen_size": "6.7\" - 120 Hz",
+        "max_brightness": "1900 nits",
+        "touchscreen_glass": "Gorilla Glass Victus+"
+      },
+      "battery_and_charging": {
+        "battery_capacity": "4700 mAh",
+        "battery_type": "Lithium-ion",
+        "max_charging_support": "25 W",
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [
+          "Mở khoá vân tay dưới màn hình",
+          "Mở khoá khuôn mặt"
+        ],
+        "special_features": [
+          "Khoanh Vùng Search Đa năng",
+          "Trợ lý Chat thông minh",
+          "Trợ lý Chỉnh ảnh",
+          "Phiên dịch Trực tiếp",
+          "Tạo hình nền AI",
+          "Phác họa thông minh",
+          "Samsung DeX",
+          "Trợ lý ảo Samsung Bixby",
+          "Màn hình luôn bật",
+          "Samsung Wallet",
+          "Thu nhỏ màn hình sử dụng 1 tay",
+          "AKG Dolby"
+        ],
+        "water_dust_resistant": "IP68",
+        "voice_recording": ["Ghi âm mặc định", "Ghi âm cuộc gọi"],
+        "radio": [],
+        "video_playback": "",
+        "music_playback": []
+      },
+      "connectivity": {
+        "mobile_network": "Hỗ trợ 3G/4G/5G",
+        "sim": "1 eSIM, 1 Nano SIM",
+        "wifi": [
+          "Wifi Direct",
+          "Wifi Hotspot",
+          "Wifi 802.11 a/b/g/n/ac/ax (2.4G+5GHz+6GHz), HE160, MIMO, 1024-QAM"
+        ],
+        "gps": ["GPS", "Glonass", "Beidou", "Galileo", "QZSS"],
+        "bluetooth": "Bluetooth v5.3",
+        "charging_connection_port": "Type-C",
+        "headphone_jack": "Type-C",
+        "other_connectivity": "NFC"
+      },
+      "design_and_material": {
+        "design": "Nguyên khối",
+        "material": "Khung viền kim loại & Mặt lưng kính Gorilla Glass Victus+",
+        "dimensions_and_weight": "162 x 77.3 x 8 mm - 213 g",
+        "release_date": "2024",
+        "brand": "Samsung"
+      },
+      "createdAt": "2025-08-30T10:03:13.033Z",
+      "updatedAt": "2026-03-04T05:06:33.766Z",
+      "__v": 0,
+      "phoneCount": 4
+    },
+    {
+      "_id": "68b2e6abba8c9af5b798cc74",
+      "name": "Samsung Galaxy S24 Plus 12GB 256GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1756554922/dmyfbzthc3iyrywnzzuv.jpg",
+      "price": 16400,
+      "status": 0,
+      "content": "",
+      "configuration_and_memory": {
+        "operating_system": "Android 14, One UI 6.1",
+        "cpu_chip": "Exynos 2400",
+        "cpu_speed": "3.2GHz, 2.9GHz, 2.6GHz, 1.95GHz",
+        "gpu": "Adreno 750",
+        "ram": "12 GB",
+        "storage_capacity": "256 GB",
+        "remaining_capacity": "",
+        "memory_card": "Không hỗ trợ",
+        "contacts": ""
+      },
+      "camera_and_screen": {
+        "rear_camera_resolution": "50 MP (wide) + 10 MP (tele 3x) + 12 MP (ultrawide)",
+        "rear_camera_video": [
+          "8K@24/30fps",
+          "4K@30/60/120fps",
+          "1080p@30/60/240fps",
+          "1080p@960fps"
+        ],
+        "rear_camera_flash": "Có",
+        "rear_camera_features": [
+          "Trợ lí Chỉnh ảnh (Gợi ý chỉnh sửa, Hậu kì sáng tạo)",
+          "Chụp đêm Nightography",
+          "Super HDR",
+          "Portrait AI",
+          "Chống rung AI VDIS & OIS",
+          "Zoom kỹ thuật số 30x",
+          "Zoom quang học 3x",
+          "Góc siêu rộng"
+        ],
+        "front_camera_resolution": "12 MP, f/2.2",
+        "front_camera_features": [],
+        "screen_technology": "Dynamic AMOLED 2X",
+        "screen_resolution": "3120 x 1440 pixels (Quad HD+)",
+        "screen_size": "6.7\" - 120 Hz",
+        "max_brightness": "2600 nits",
+        "touchscreen_glass": "Corning Gorilla Glass Victus 2"
+      },
+      "battery_and_charging": {
+        "battery_capacity": "4900 mAh",
+        "battery_type": "",
+        "max_charging_support": "45 W",
+        "battery_technology": [
+          "Sạc nhanh 45W",
+          "Sạc không dây",
+          "Chia sẻ pin không dây",
+          "Sạc siêu nhanh"
+        ]
+      },
+      "features": {
+        "advanced_security": [
+          "Cảm biến vân tay trong màn hình",
+          "Nhận diện khuôn mặt"
+        ],
+        "special_features": [
+          "Samsung DeX",
+          "Game Booster",
+          "Vision Booster",
+          "Samsung Wallet",
+          "Thư mục bảo mật",
+          "Khoanh tròn để tìm kiếm",
+          "Trợ lí chỉnh ảnh chuyên nghiệp",
+          "Phiên dịch cuộc gọi trực tiếp",
+          "Màn hình Always On",
+          "Trợ lý chat thông minh",
+          "Hệ thống tản nhiệt Vapor Chamber"
+        ],
+        "water_dust_resistant": "IP68",
+        "voice_recording": [],
+        "radio": [],
+        "video_playback": "",
+        "music_playback": []
+      },
+      "connectivity": {
+        "mobile_network": "Hỗ trợ 5G",
+        "sim": "SIM 1 + SIM 2 / SIM 1 + eSIM / 2 eSIM",
+        "wifi": [
+          "802.11a/b/g/n/ac/ax 2.4GHz+5GHz+6GHz",
+          "HE160",
+          "MIMO",
+          "1024-QAM"
+        ],
+        "gps": ["GPS", "GLONASS", "BDS", "GALILEO"],
+        "bluetooth": "Bluetooth 5.3",
+        "charging_connection_port": "USB Type-C",
+        "headphone_jack": "",
+        "other_connectivity": "NFC"
+      },
+      "design_and_material": {
+        "design": "Đục lỗ (Nốt ruồi)",
+        "material": "Khung nhôm & Mặt lưng kính",
+        "dimensions_and_weight": "158.5 x 75.9 x 7.75 mm - 196 g",
+        "release_date": "01/2024",
+        "brand": ""
+      },
+      "createdAt": "2025-08-30T11:55:23.269Z",
+      "updatedAt": "2026-03-04T05:09:57.940Z",
+      "__v": 0,
+      "phoneCount": 1
+    },
+    {
+      "_id": "68b3d4b8eba09f56d8d8b4c8",
+      "name": "Samsung Galaxy S24 Ultra 12GB/512GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1756615864/zhgjvusypaxbfv2xvxbd.webp",
+      "price": 24400,
+      "status": 0,
+      "content": "",
+      "configuration_and_memory": {
+        "operating_system": "Android 14",
+        "cpu_chip": "Snapdragon 8 Gen 3",
+        "cpu_speed": "",
+        "gpu": "",
+        "ram": "12 GB",
+        "storage_capacity": "512 GB",
+        "remaining_capacity": "",
+        "memory_card": "Không hỗ trợ",
+        "contacts": ""
+      },
+      "camera_and_screen": {
+        "rear_camera_resolution": "200 MP + 50 MP + 12 MP + 10 MP",
+        "rear_camera_video": [
+          "8K@24/30fps",
+          "4K@30/60/120fps",
+          "1080p@30/60/240fps",
+          "1080p@960fps",
+          "HDR10+",
+          "Stereo sound recording",
+          "Gyro-EIS"
+        ],
+        "rear_camera_flash": "Đèn flash kép",
+        "rear_camera_features": [],
+        "front_camera_resolution": "12 MP",
+        "front_camera_features": [],
+        "screen_technology": "Dynamic AMOLED 2X",
+        "screen_resolution": "Quad HD+ (1440 x 3120) pixels",
+        "screen_size": "6.8\" - 120 Hz",
+        "max_brightness": "2600 nits",
+        "touchscreen_glass": "Corning Gorilla Glass Victus 2"
+      },
+      "battery_and_charging": {
+        "battery_capacity": "5000 mAh",
+        "battery_type": "Li-ion",
+        "max_charging_support": "45 W",
+        "battery_technology": ["Sạc nhanh 45W"]
+      },
+      "features": {
+        "advanced_security": [
+          "Cảm biến vân tay dưới màn hình",
+          "Nhận diện khuôn mặt"
+        ],
+        "special_features": ["Loa ngoài hỗ trợ stereo"],
+        "water_dust_resistant": "IP68",
+        "voice_recording": ["Ghi âm cuộc gọi", "Ghi âm mặc định"],
+        "radio": [],
+        "video_playback": "",
+        "music_playback": []
+      },
+      "connectivity": {
+        "mobile_network": "Hỗ trợ 5G",
+        "sim": "1 Nano SIM + 1 eSIM",
+        "wifi": [
+          "802.11a/b/g/n/ac/ax/be 2.4GHz+5GHz+6GHz",
+          "EHT320",
+          "MIMO",
+          "4096-QAM"
+        ],
+        "gps": ["GPS", "GLONASS", "BDS", "GALILEO"],
+        "bluetooth": "Bluetooth 5.3",
+        "charging_connection_port": "Type-C",
+        "headphone_jack": "Type-C",
+        "other_connectivity": "NFC"
+      },
+      "design_and_material": {
+        "design": "Nguyên khối",
+        "material": "Khung Titanium & Mặt lưng kính Corning Gorilla Glass Victus 2",
+        "dimensions_and_weight": "162.3 x 79 x 8.6 mm - 232 g",
+        "release_date": "2024",
+        "brand": "Samsung"
+      },
+      "createdAt": "2025-08-31T04:51:04.864Z",
+      "updatedAt": "2026-03-04T05:11:23.405Z",
+      "__v": 0,
+      "phoneCount": 2
+    },
+    {
+      "_id": "6924947676327f5529b0857c",
+      "name": "Samsung Galaxy S25 Ultra 1TB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1772601254/siilcbsyx3oembisfsg2.jpg",
+      "price": 31400,
+      "status": 0,
+      "content": "<p>New</p>",
+      "camera_and_screen": {
+        "rear_camera_resolution": "Chính 200 MP & Phụ 50 MP, 50 MP, 10 MP",
+        "rear_camera_video": [
+          "FullHD 1080p@240fps",
+          "FullHD 1080p@120fps",
+          "8K 4320p@30fps"
+        ],
+        "rear_camera_flash": "Có",
+        "rear_camera_features": [
+          "Ảnh Raw",
+          "Zoom quang học",
+          "Zoom kỹ thuật số",
+          "Xóa phông",
+          "Tự động lấy nét (AF)",
+          "Super HDR",
+          "Quay video định dạng Log",
+          "Quay video ban đêm",
+          "Làm đẹp",
+          "Góc siêu rộng (Ultrawide)",
+          "Chống rung quang học (OIS)",
+          "Ban đêm (Night Mode)"
+        ],
+        "front_camera_resolution": "12 MP",
+        "front_camera_features": [
+          "Xóa phông",
+          "Tự động lấy nét (AF)",
+          "Làm đẹp",
+          "Chụp đêm"
+        ],
+        "screen_technology": "Dynamic AMOLED 2X",
+        "screen_resolution": "2K+ (1440 x 3120 Pixels)",
+        "screen_size": "6.9\" - 120 Hz",
+        "max_brightness": "2600 nits",
+        "touchscreen_glass": "Corning Gorilla Armor 2"
+      },
+      "battery_and_charging": {
+        "battery_capacity": "5000 mAh",
+        "battery_type": "Li-Ion",
+        "max_charging_support": "45 W",
+        "battery_technology": [
+          "Tiết kiệm pin",
+          "Sạc pin nhanh",
+          "Sạc không dây",
+          "Sạc ngược không dây"
+        ]
+      },
+      "features": {
+        "advanced_security": [
+          "Mở khoá vân tay dưới màn hình",
+          "Mở khoá khuôn mặt"
+        ],
+        "special_features": [
+          "Trợ lý cuộc gọi",
+          "Trợ lý chỉnh ảnh",
+          "Samsung DeX",
+          "Phiên dịch trực tiếp",
+          "Khả năng tương thích bút S Pen",
+          "Khoanh vùng search đa năng"
+        ],
+        "water_dust_resistant": "IP68",
+        "voice_recording": ["Ghi âm mặc định", "Ghi âm cuộc gọi"],
+        "radio": [],
+        "video_playback": "WEBM, MP4, MKV, M4V, FLV, AVI, 3GP, 3G2",
+        "music_playback": [
+          "WAV",
+          "OGG",
+          "OGA",
+          "MP3",
+          "Midi",
+          "FLAC",
+          "AWB",
+          "AMR",
+          "AAC",
+          "3GA"
+        ]
+      },
+      "connectivity": {
+        "mobile_network": "Hỗ trợ 5G",
+        "sim": "2 Nano SIM hoặc 2 eSIM hoặc 1 Nano SIM + 1 eSIM",
+        "wifi": [
+          "Wi-Fi MIMO",
+          "Wi-Fi hotspot",
+          "Wi-Fi Direct",
+          "Wi-Fi 7",
+          "Dual-band (2.4 GHz/5 GHz)",
+          "6 GHz"
+        ],
+        "gps": ["QZSS", "GPS", "GLONASS", "GALILEO", "BEIDOU"],
+        "bluetooth": "v5.4",
+        "charging_connection_port": "Type-C",
+        "headphone_jack": "Type-C",
+        "other_connectivity": "NFC"
+      },
+      "createdAt": "2025-11-24T17:23:02.304Z",
+      "updatedAt": "2026-03-04T05:14:14.405Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "operating_system": "Android 15",
+        "cpu_chip": "Qualcomm Snapdragon 8 Elite For Galaxy 8 nhân",
+        "cpu_speed": "4.47 GHz",
+        "gpu": "Adreno 830",
+        "ram": "12 GB",
+        "storage_capacity": "1 TB",
+        "remaining_capacity": "Khoảng 990 GB",
+        "memory_card": "",
+        "contacts": "Không giới hạn"
+      },
+      "design_and_material": {
+        "design": "Nguyên khối",
+        "material": "Khung Titan & Mặt lưng kính cường lực",
+        "dimensions_and_weight": "162.8 x 77.6 x 8.2 mm - 218 g",
+        "release_date": "01/2025",
+        "brand": "Samsung"
+      },
+      "slug": "",
+      "phoneCount": 1
+    },
+    {
+      "_id": "692c7b1376aaf7bacfb6780a",
+      "name": "Xiaomi Redmi Note 14 6GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1772601298/ocomqvhqpivymotfysej.jpg",
+      "price": 4780,
+      "status": 0,
+      "content": "<p>New</p>",
+      "configuration_and_memory": {
+        "operating_system": "Xiaomi HyperOS (Android 14)",
+        "cpu_chip": "MediaTek Helio G99-Ultra 8 nhân",
+        "cpu_speed": "2 nhân 2.2 GHz & 6 nhân 2.0 GHz",
+        "gpu": "Mali-G57 MC2",
+        "ram": "6 GB",
+        "storage_capacity": "128 GB",
+        "remaining_capacity": "Khoảng 104 GB",
+        "memory_card": "MicroSD, hỗ trợ tối đa 1 TB",
+        "contacts": "Không giới hạn"
+      },
+      "camera_and_screen": {
+        "rear_camera_resolution": "Chính 108 MP & Phụ 2 MP, 2 MP",
+        "rear_camera_video": [
+          "HD 720p@30fps",
+          "FullHD 1080p@60fps",
+          "FullHD 1080p@30fps"
+        ],
+        "rear_camera_flash": "Có",
+        "rear_camera_features": [
+          "Zoom kỹ thuật số",
+          "Xóa phông",
+          "Trôi nhanh thời gian (Time Lapse)",
+          "Toàn cảnh (Panorama)",
+          "Siêu độ phân giải",
+          "Siêu cận (Macro)",
+          "Quay chậm (Slow Motion)",
+          "Làm đẹp",
+          "Google Lens",
+          "Chụp hẹn giờ",
+          "Bộ lọc màu",
+          "Ban đêm (Night Mode)"
+        ],
+        "front_camera_resolution": "20 MP",
+        "front_camera_features": [
+          "Quay video HD",
+          "Quay video Full HD",
+          "Làm đẹp",
+          "Flash màn hình",
+          "Chụp hẹn giờ",
+          "Bộ lọc màu"
+        ],
+        "screen_technology": "AMOLED",
+        "screen_resolution": "Full HD+ (1080 x 2400 Pixels)",
+        "screen_size": "6.67\" - 120 Hz",
+        "max_brightness": "1800 nits",
+        "touchscreen_glass": "Corning Gorilla Glass 5"
+      },
+      "battery_and_charging": {
+        "battery_capacity": "5500 mAh",
+        "battery_type": "Li-Po",
+        "max_charging_support": "33 W",
+        "battery_technology": ["Tiết kiệm pin", "Sạc pin nhanh"]
+      },
+      "features": {
+        "advanced_security": [
+          "Mở khoá vân tay dưới màn hình",
+          "Mở khoá khuôn mặt"
+        ],
+        "special_features": [
+          "Âm thanh Dolby Atmos",
+          "Xoá vật thể AI",
+          "Trợ lý ảo Google Gemini",
+          "AI Sky",
+          "Loa kép"
+        ],
+        "water_dust_resistant": "IP54",
+        "voice_recording": ["Ghi âm mặc định", "Ghi âm cuộc gọi"],
+        "radio": [],
+        "video_playback": "Có",
+        "music_playback": ["Có"]
+      },
+      "connectivity": {
+        "mobile_network": "Hỗ trợ 4G",
+        "sim": "2 Nano SIM (SIM 2 chung khe thẻ nhớ)",
+        "wifi": [
+          "Wi-Fi hotspot",
+          "Wi-Fi Direct",
+          "Wi-Fi 802.11 a/b/g/n/ac",
+          "Dual-band (2.4 GHz/5 GHz)"
+        ],
+        "gps": ["QZSS", "GPS", "GLONASS", "GALILEO", "BEIDOU"],
+        "bluetooth": "v5.3",
+        "charging_connection_port": "Type-C",
+        "headphone_jack": "3.5 mm",
+        "other_connectivity": "NFC"
+      },
+      "createdAt": "2025-11-30T17:12:51.450Z",
+      "updatedAt": "2026-03-04T05:14:58.557Z",
+      "__v": 0,
+      "design_and_material": {
+        "design": "Nguyên khối",
+        "material": "Khung & Mặt lưng nhựa",
+        "dimensions_and_weight": "163.25 x 76.55 x 8.16 mm - 196.5 g",
+        "release_date": "01/2025",
+        "brand": "Xiaomi"
+      },
+      "slug": "",
+      "phoneCount": 3
+    },
+    {
+      "_id": "6924947576327f5529b08570",
+      "name": "Samsung Galaxy S25 Ultra 256GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1772601372/qnnfuzv4kddgo3yo36ql.jpg",
+      "price": 23000,
+      "status": 0,
+      "content": "<p>New</p>",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:23:01.883Z",
+      "updatedAt": "2026-03-04T05:16:12.928Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "",
+        "storage_capacity": "256GB"
+      },
+      "design_and_material": {},
+      "slug": "",
+      "phoneCount": 1
+    },
+    {
+      "_id": "6924947676327f5529b08579",
+      "name": "Samsung Galaxy S25 Ultra 512GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1772601410/cjvc4o6crulkixfk35s4.jpg",
+      "price": 27200,
+      "status": 0,
+      "content": "<p>New</p>",
+      "camera_and_screen": {
+        "rear_camera_video": [],
+        "rear_camera_features": [],
+        "front_camera_features": []
+      },
+      "battery_and_charging": {
+        "battery_technology": []
+      },
+      "features": {
+        "advanced_security": [],
+        "special_features": [],
+        "voice_recording": [],
+        "radio": [],
+        "music_playback": []
+      },
+      "connectivity": {
+        "wifi": [],
+        "gps": []
+      },
+      "createdAt": "2025-11-24T17:23:02.202Z",
+      "updatedAt": "2026-03-04T05:16:50.720Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "ram": "",
+        "storage_capacity": "512GB"
+      },
+      "design_and_material": {},
+      "slug": "",
+      "phoneCount": 1
+    },
+    {
+      "_id": "692c7b1376aaf7bacfb6780d",
+      "name": "Xiaomi Redmi Note 14 8GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1772601512/kx0hvnzkkv89yf8m9sno.jpg",
+      "price": 5160,
+      "status": 0,
+      "content": "<p>New</p>",
+      "configuration_and_memory": {
+        "operating_system": "Xiaomi HyperOS (Android 14)",
+        "cpu_chip": "MediaTek Helio G99-Ultra 8 nhân",
+        "cpu_speed": "2 nhân 2.2 GHz & 6 nhân 2.0 GHz",
+        "gpu": "Mali-G57 MC2",
+        "ram": "8 GB",
+        "storage_capacity": "128 GB",
+        "remaining_capacity": "Khoảng 104 GB",
+        "memory_card": "MicroSD, hỗ trợ tối đa 1 TB",
+        "contacts": "Không giới hạn"
+      },
+      "camera_and_screen": {
+        "rear_camera_resolution": "Chính 108 MP & Phụ 2 MP, 2 MP",
+        "rear_camera_video": [
+          "HD 720p@30fps",
+          "FullHD 1080p@60fps",
+          "FullHD 1080p@30fps"
+        ],
+        "rear_camera_flash": "Có",
+        "rear_camera_features": [
+          "Zoom kỹ thuật số",
+          "Xóa phông",
+          "Trôi nhanh thời gian (Time Lapse)",
+          "Toàn cảnh (Panorama)",
+          "Siêu độ phân giải",
+          "Siêu cận (Macro)",
+          "Quay chậm (Slow Motion)",
+          "Làm đẹp",
+          "Google Lens",
+          "Chụp hẹn giờ",
+          "Bộ lọc màu",
+          "Ban đêm (Night Mode)"
+        ],
+        "front_camera_resolution": "20 MP",
+        "front_camera_features": [
+          "Quay video HD",
+          "Quay video Full HD",
+          "Làm đẹp",
+          "Flash màn hình",
+          "Chụp hẹn giờ",
+          "Bộ lọc màu"
+        ],
+        "screen_technology": "AMOLED",
+        "screen_resolution": "Full HD+ (1080 x 2400 Pixels)",
+        "screen_size": "6.67\" - 120 Hz",
+        "max_brightness": "1800 nits",
+        "touchscreen_glass": "Corning Gorilla Glass 5"
+      },
+      "battery_and_charging": {
+        "battery_capacity": "5500 mAh",
+        "battery_type": "Li-Po",
+        "max_charging_support": "33 W",
+        "battery_technology": ["Tiết kiệm pin", "Sạc pin nhanh"]
+      },
+      "features": {
+        "advanced_security": [
+          "Mở khoá vân tay dưới màn hình",
+          "Mở khoá khuôn mặt"
+        ],
+        "special_features": [
+          "Âm thanh Dolby Atmos",
+          "Xoá vật thể AI",
+          "Trợ lý ảo Google Gemini",
+          "AI Sky",
+          "Loa kép"
+        ],
+        "water_dust_resistant": "IP54",
+        "voice_recording": ["Ghi âm mặc định", "Ghi âm cuộc gọi"],
+        "radio": [],
+        "video_playback": "Có",
+        "music_playback": ["Có"]
+      },
+      "connectivity": {
+        "mobile_network": "Hỗ trợ 4G",
+        "sim": "2 Nano SIM (SIM 2 chung khe thẻ nhớ)",
+        "wifi": [
+          "Wi-Fi hotspot",
+          "Wi-Fi Direct",
+          "Wi-Fi 802.11 a/b/g/n/ac",
+          "Dual-band (2.4 GHz/5 GHz)"
+        ],
+        "gps": ["QZSS", "GPS", "GLONASS", "GALILEO", "BEIDOU"],
+        "bluetooth": "v5.3",
+        "charging_connection_port": "Type-C",
+        "headphone_jack": "3.5 mm",
+        "other_connectivity": "NFC"
+      },
+      "createdAt": "2025-11-30T17:12:51.776Z",
+      "updatedAt": "2026-03-04T05:18:32.772Z",
+      "__v": 0,
+      "design_and_material": {
+        "design": "Nguyên khối",
+        "material": "Khung & Mặt lưng nhựa",
+        "dimensions_and_weight": "163.25 x 76.55 x 8.16 mm - 196.5 g",
+        "release_date": "01/2025",
+        "brand": "Xiaomi"
+      },
+      "slug": "",
+      "phoneCount": 3
+    },
+    {
+      "_id": "692c7b1476aaf7bacfb67810",
+      "name": "Xiaomi Redmi Note 14 8GB/256GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1772601540/rp45r0tesnmo8hlank9v.jpg",
+      "price": 5700,
+      "status": 0,
+      "content": "<p><br></p>",
+      "configuration_and_memory": {
+        "operating_system": "Xiaomi HyperOS (Android 14)",
+        "cpu_chip": "MediaTek Helio G99-Ultra 8 nhân",
+        "cpu_speed": "2 nhân 2.2 GHz & 6 nhân 2.0 GHz",
+        "gpu": "Mali-G57 MC2",
+        "ram": "8 GB",
+        "storage_capacity": "256 GB",
+        "remaining_capacity": "Khoảng 228 GB",
+        "memory_card": "MicroSD, hỗ trợ tối đa 1 TB",
+        "contacts": "Không giới hạn"
+      },
+      "camera_and_screen": {
+        "rear_camera_resolution": "Chính 108 MP & Phụ 2 MP, 2 MP",
+        "rear_camera_video": [
+          "HD 720p@30fps",
+          "FullHD 1080p@60fps",
+          "FullHD 1080p@30fps"
+        ],
+        "rear_camera_flash": "Có",
+        "rear_camera_features": [
+          "Zoom kỹ thuật số",
+          "Xóa phông",
+          "Trôi nhanh thời gian (Time Lapse)",
+          "Toàn cảnh (Panorama)",
+          "Siêu độ phân giải",
+          "Siêu cận (Macro)",
+          "Quay chậm (Slow Motion)",
+          "Làm đẹp",
+          "Google Lens",
+          "Chụp hẹn giờ",
+          "Bộ lọc màu",
+          "Ban đêm (Night Mode)"
+        ],
+        "front_camera_resolution": "20 MP",
+        "front_camera_features": [
+          "Quay video HD",
+          "Quay video Full HD",
+          "Làm đẹp",
+          "Flash màn hình",
+          "Chụp hẹn giờ",
+          "Bộ lọc màu"
+        ],
+        "screen_technology": "AMOLED",
+        "screen_resolution": "Full HD+ (1080 x 2400 Pixels)",
+        "screen_size": "6.67\" - 120 Hz",
+        "max_brightness": "1800 nits",
+        "touchscreen_glass": "Corning Gorilla Glass 5"
+      },
+      "battery_and_charging": {
+        "battery_capacity": "5500 mAh",
+        "battery_type": "Li-Po",
+        "max_charging_support": "33 W",
+        "battery_technology": ["Tiết kiệm pin", "Sạc pin nhanh"]
+      },
+      "features": {
+        "advanced_security": [
+          "Mở khoá vân tay dưới màn hình",
+          "Mở khoá khuôn mặt"
+        ],
+        "special_features": [
+          "Âm thanh Dolby Atmos",
+          "Xoá vật thể AI",
+          "Trợ lý ảo Google Gemini",
+          "AI Sky",
+          "Loa kép"
+        ],
+        "water_dust_resistant": "IP54",
+        "voice_recording": ["Ghi âm mặc định", "Ghi âm cuộc gọi"],
+        "radio": [],
+        "video_playback": "Có",
+        "music_playback": ["Có"]
+      },
+      "connectivity": {
+        "mobile_network": "Hỗ trợ 4G",
+        "sim": "2 Nano SIM (SIM 2 chung khe thẻ nhớ)",
+        "wifi": [
+          "Wi-Fi hotspot",
+          "Wi-Fi Direct",
+          "Wi-Fi 802.11 a/b/g/n/ac",
+          "Dual-band (2.4 GHz/5 GHz)"
+        ],
+        "gps": ["QZSS", "GPS", "GLONASS", "GALILEO", "BEIDOU"],
+        "bluetooth": "v5.3",
+        "charging_connection_port": "Type-C",
+        "headphone_jack": "3.5 mm",
+        "other_connectivity": "NFC"
+      },
+      "createdAt": "2025-11-30T17:12:52.103Z",
+      "updatedAt": "2026-03-04T05:19:00.558Z",
+      "__v": 0,
+      "design_and_material": {
+        "design": "Nguyên khối",
+        "material": "Khung & Mặt lưng nhựa",
+        "dimensions_and_weight": "163.25 x 76.55 x 8.16 mm - 196.5 g",
+        "release_date": "01/2025",
+        "brand": "Xiaomi"
+      },
+      "slug": "",
+      "phoneCount": 3
+    },
+    {
+      "_id": "692c7b1376aaf7bacfb67807",
+      "name": "Xiaomi Redmi 15 8GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1772601571/rf67zfcyha0fx8xzq3es.jpg",
+      "price": 5050,
+      "status": 0,
+      "content": "<p>New</p>",
+      "configuration_and_memory": {
+        "operating_system": "Android 15",
+        "cpu_chip": "Snapdragon 685 8 nhân",
+        "cpu_speed": "4 nhân 2.8 GHz & 4 nhân 1.9 GHz",
+        "gpu": "Adreno 610",
+        "ram": "8 GB",
+        "storage_capacity": "128 GB",
+        "remaining_capacity": "Khoảng 115 GB",
+        "memory_card": "MicroSD, hỗ trợ tối đa 2 TB",
+        "contacts": "Không giới hạn"
+      },
+      "camera_and_screen": {
+        "rear_camera_resolution": "Chính 50 MP & Phụ QVGA",
+        "rear_camera_video": ["HD 720p@30fps", "FullHD 1080p@30fps"],
+        "rear_camera_flash": "Có",
+        "rear_camera_features": [
+          "Toàn cảnh (Panorama)",
+          "Làm đẹp",
+          "HDR",
+          "Góc siêu rộng (Ultrawide)",
+          "Ban đêm (Night Mode)"
+        ],
+        "front_camera_resolution": "8 MP",
+        "front_camera_features": ["Xóa phông", "Làm đẹp"],
+        "screen_technology": "IPS LCD",
+        "screen_resolution": "Full HD+ (1080 x 2340 Pixels)",
+        "screen_size": "6.9\" - 144 Hz",
+        "max_brightness": "850 nits",
+        "touchscreen_glass": "Đang cập nhật"
+      },
+      "battery_and_charging": {
+        "battery_capacity": "7000 mAh",
+        "battery_type": "Silicon-Carbon",
+        "max_charging_support": "33 W",
+        "battery_technology": [
+          "Tiết kiệm pin",
+          "Sạc pin nhanh",
+          "Sạc ngược qua cáp"
+        ]
+      },
+      "features": {
+        "advanced_security": ["Mở khoá vân tay cạnh viền", "Mở khoá khuôn mặt"],
+        "special_features": [],
+        "water_dust_resistant": "IP64",
+        "voice_recording": ["Ghi âm mặc định"],
+        "radio": ["FM không cần tai nghe"],
+        "video_playback": "Xvid, WMV, WEBM, TS, MP4, MOV, MKV, M4V, FLV, DivX, AVI, ASF, 3GP, 3G2",
+        "music_playback": [
+          "XMF",
+          "WAV",
+          "RTX",
+          "OTA",
+          "OGG",
+          "OGA",
+          "Midi",
+          "MP3",
+          "M4A",
+          "IMY",
+          "FLAC",
+          "AWB",
+          "AMR",
+          "AAC"
+        ]
+      },
+      "connectivity": {
+        "mobile_network": "Hỗ trợ 4G",
+        "sim": "2 Nano SIM",
+        "wifi": [
+          "Wi-Fi hotspot",
+          "Wi-Fi Direct",
+          "Wi-Fi 5",
+          "Dual-band (2.4 GHz/5 GHz)"
+        ],
+        "gps": ["GPS", "GLONASS", "BEIDOU"],
+        "bluetooth": "",
+        "charging_connection_port": "Type-C",
+        "headphone_jack": "Type-C",
+        "other_connectivity": "OTG, Hồng ngoại"
+      },
+      "createdAt": "2025-11-30T17:12:51.123Z",
+      "updatedAt": "2026-03-04T05:19:31.500Z",
+      "__v": 0,
+      "design_and_material": {
+        "design": "Nguyên khối",
+        "material": "Khung hợp kim nhôm & Mặt lưng nhựa",
+        "dimensions_and_weight": "169.48 x 80.45 x 8.4 mm - 214 g",
+        "release_date": "08/2025",
+        "brand": "Xiaomi"
+      },
+      "slug": "",
+      "phoneCount": 2
+    },
+    {
+      "_id": "6924947676327f5529b0857f",
+      "name": "Samsung Galaxy ZFlip7 FE 128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1772623232/ht0isl59u3tbpfqpkkpz.jpg",
+      "price": 14800,
+      "status": 0,
+      "content": "<p>New</p>",
+      "camera_and_screen": {
+        "rear_camera_resolution": "Chính 50 MP & Phụ 12 MP",
+        "rear_camera_video": [
+          "FullHD 1080p@240fps",
+          "FullHD 1080p@120fps",
+          "4K 2160p@60fps"
+        ],
+        "rear_camera_flash": "Có",
+        "rear_camera_features": [
+          "Xóa phông",
+          "Tự động lấy nét (AF)",
+          "Toàn cảnh (Panorama)",
+          "Quay chậm (Slow Motion)",
+          "Làm đẹp",
+          "HDR",
+          "Góc siêu rộng (Ultrawide)",
+          "Chống rung quang học (OIS)",
+          "Chọn ảnh chân dung đẹp nhất (Best Face)",
+          "Ban đêm (Night Mode)",
+          "Audio zoom"
+        ],
+        "front_camera_resolution": "10 MP",
+        "front_camera_features": [
+          "Xóa phông",
+          "Làm đẹp",
+          "Chọn ảnh chân dung đẹp nhất (Best Face)"
+        ],
+        "screen_technology": "Dynamic AMOLED 2X (Chính) & Super AMOLED (Phụ)",
+        "screen_resolution": "FHD+ (1080 x 2640 Pixels) - Chính | HD+ (720 x 748 Pixels) - Phụ",
+        "screen_size": "Chính 6.7\" 120 Hz | Phụ 3.4\" 60 Hz",
+        "max_brightness": "Chính 2600 nits | Phụ 1600 nits",
+        "touchscreen_glass": "Corning Gorilla Glass Victus 2"
+      },
+      "battery_and_charging": {
+        "battery_capacity": "4000 mAh",
+        "battery_type": "Li-Ion",
+        "max_charging_support": "25 W",
+        "battery_technology": [
+          "Tiết kiệm pin",
+          "Sạc pin nhanh",
+          "Sạc không dây"
+        ]
+      },
+      "features": {
+        "advanced_security": ["Mở khoá vân tay cạnh viền", "Mở khoá khuôn mặt"],
+        "special_features": [
+          "Google Gemini",
+          "Smart Switch",
+          "Now Brief",
+          "Khoanh tròn để tìm kiếm",
+          "Audio Eraser"
+        ],
+        "water_dust_resistant": "IP48",
+        "voice_recording": ["Ghi âm mặc định", "Ghi âm cuộc gọi"],
+        "radio": [],
+        "video_playback": "WEBM, MP4, MKV, M4V, FLV, AVI, 3GP, 3G2",
+        "music_playback": [
+          "DFF",
+          "XMF",
+          "WAV",
+          "RTX",
+          "RTTTL",
+          "OTA",
+          "OGG",
+          "OGA",
+          "Midi",
+          "MXMF",
+          "MP3",
+          "M4A",
+          "IMY",
+          "FLAC",
+          "DSF",
+          "AWB",
+          "APE",
+          "AMR",
+          "AAC",
+          "3GA"
+        ]
+      },
+      "connectivity": {
+        "mobile_network": "Hỗ trợ 5G",
+        "sim": "1 Nano SIM & 1 eSIM",
+        "wifi": [
+          "Wi-Fi hotspot",
+          "Wi-Fi MIMO",
+          "Wi-Fi Direct",
+          "Wi-Fi 7",
+          "Dual-band (2.4 GHz/5 GHz)",
+          "6 GHz"
+        ],
+        "gps": ["QZSS", "GPS", "GLONASS", "GALILEO", "BEIDOU"],
+        "bluetooth": "v5.4",
+        "charging_connection_port": "Type-C",
+        "headphone_jack": "Type-C",
+        "other_connectivity": "OTG, NFC"
+      },
+      "createdAt": "2025-11-24T17:23:02.409Z",
+      "updatedAt": "2026-03-04T11:20:33.059Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "operating_system": "Android 16",
+        "cpu_chip": "Exynos 2400 10 nhân",
+        "cpu_speed": "3.2 GHz",
+        "gpu": "Xclipse 940",
+        "ram": "8 GB",
+        "storage_capacity": "128 GB",
+        "remaining_capacity": "Khoảng 98.5 GB",
+        "memory_card": "",
+        "contacts": "Không giới hạn"
+      },
+      "design_and_material": {
+        "design": "Nguyên khối",
+        "material": "Khung nhôm & Mặt lưng kính cường lực",
+        "dimensions_and_weight": "165.1 mm (mở) | 85.1 mm (gập) x 71.9 mm x 6.9 mm (mở) | 14.9 mm (gập) - 187 g",
+        "release_date": "07/2025",
+        "brand": "Samsung"
+      },
+      "slug": "",
+      "phoneCount": 3
+    },
+    {
+      "_id": "6924947676327f5529b08582",
+      "name": "Samsung Galaxy ZFlip7 256GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/v1772624151/n8pory1ecjf1xgugegba.jpg",
+      "price": 23500,
+      "status": 0,
+      "content": "<p>New</p>",
+      "camera_and_screen": {
+        "rear_camera_resolution": "Chính 50 MP & Phụ 12 MP",
+        "rear_camera_video": [
+          "FullHD 1080p@240fps",
+          "FullHD 1080p@120fps",
+          "4K 2160p@60fps"
+        ],
+        "rear_camera_flash": "Có",
+        "rear_camera_features": [
+          "Xóa phông",
+          "Tự động lấy nét (AF)",
+          "Toàn cảnh (Panorama)",
+          "Quay chậm (Slow Motion)",
+          "Làm đẹp",
+          "HDR",
+          "Góc siêu rộng (Ultrawide)",
+          "Chống rung quang học (OIS)",
+          "Chọn ảnh chân dung đẹp nhất (Best Face)",
+          "Ban đêm (Night Mode)",
+          "Audio zoom"
+        ],
+        "front_camera_resolution": "10 MP",
+        "front_camera_features": [
+          "Xóa phông",
+          "Làm đẹp",
+          "Chọn ảnh chân dung đẹp nhất (Best Face)"
+        ],
+        "screen_technology": "Dynamic AMOLED 2X (Chính) & Super AMOLED (Phụ)",
+        "screen_resolution": "Full HD+ (1080 x 2520 Pixels) - Chính | 948 x 1048 Pixels - Phụ",
+        "screen_size": "Chính 6.9\" 120 Hz | Phụ 4.1\" 120 Hz",
+        "max_brightness": "2600 nits",
+        "touchscreen_glass": "Corning Gorilla Glass Victus 2"
+      },
+      "battery_and_charging": {
+        "battery_capacity": "4300 mAh",
+        "battery_type": "Li-Ion",
+        "max_charging_support": "25 W",
+        "battery_technology": [
+          "Tiết kiệm pin",
+          "Sạc pin nhanh",
+          "Sạc không dây"
+        ]
+      },
+      "features": {
+        "advanced_security": ["Mở khoá vân tay cạnh viền", "Mở khoá khuôn mặt"],
+        "special_features": [
+          "Vision Booster",
+          "Google Gemini",
+          "Samsung DeX",
+          "Now Brief",
+          "Khoanh tròn để tìm kiếm",
+          "Audio Eraser"
+        ],
+        "water_dust_resistant": "IP48",
+        "voice_recording": ["Ghi âm mặc định", "Ghi âm cuộc gọi"],
+        "radio": [],
+        "video_playback": "WEBM, MP4, MKV, M4V, FLV, AVI, 3GP, 3G2",
+        "music_playback": [
+          "DFF",
+          "XMF",
+          "WAV",
+          "RTX",
+          "RTTTL",
+          "OTA",
+          "OGG",
+          "OGA",
+          "Midi",
+          "MXMF",
+          "MP3",
+          "M4A",
+          "IMY",
+          "FLAC",
+          "DSF",
+          "AWB",
+          "APE",
+          "AMR",
+          "AAC",
+          "3GA"
+        ]
+      },
+      "connectivity": {
+        "mobile_network": "Hỗ trợ 5G",
+        "sim": "1 Nano SIM + 1 eSIM hoặc 2 eSIM",
+        "wifi": [
+          "Wi-Fi hotspot",
+          "Wi-Fi MIMO",
+          "Wi-Fi Display",
+          "Wi-Fi 7",
+          "Dual-band (2.4 GHz/5 GHz)",
+          "6 GHz"
+        ],
+        "gps": ["QZSS", "GPS", "GLONASS", "GALILEO", "BEIDOU"],
+        "bluetooth": "v5.4",
+        "charging_connection_port": "Type-C",
+        "headphone_jack": "Type-C",
+        "other_connectivity": "OTG, NFC"
+      },
+      "createdAt": "2025-11-24T17:23:02.513Z",
+      "updatedAt": "2026-03-04T11:35:51.876Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "operating_system": "Android 16",
+        "cpu_chip": "Exynos 2500 10 nhân",
+        "cpu_speed": "3.3 GHz",
+        "gpu": "Xclipse 950",
+        "ram": "12 GB",
+        "storage_capacity": "256 GB",
+        "remaining_capacity": "Khoảng 223.8 GB",
+        "memory_card": "",
+        "contacts": "Không giới hạn"
+      },
+      "design_and_material": {
+        "design": "Nguyên khối",
+        "material": "Khung nhôm & Mặt lưng kính cường lực",
+        "dimensions_and_weight": "166.7 mm (mở) | 85.5 mm (gập) x 75.2 mm x 6.5 mm (mở) | 13.7 mm (gập) - 188 g",
+        "release_date": "07/2025",
+        "brand": "Samsung"
+      },
+      "slug": "",
+      "phoneCount": 3
+    },
+    {
+      "_id": "6924947776327f5529b0859a",
+      "name": "Oppo A5i 6GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 4570,
+      "status": 0,
+      "content": "<p>New</p>",
+      "camera_and_screen": {
+        "rear_camera_resolution": "8 MP",
+        "rear_camera_video": ["HD 720p@30fps", "FullHD 1080p@30fps"],
+        "rear_camera_flash": "Có",
+        "rear_camera_features": [
+          "Xóa phông",
+          "Tự động lấy nét (AF)",
+          "Trôi nhanh thời gian (Time Lapse)",
+          "Toàn cảnh (Panorama)",
+          "Quét tài liệu",
+          "Quay chậm (Slow Motion)",
+          "Nhãn dán (AR Stickers)",
+          "Làm đẹp",
+          "Ban đêm (Night Mode)"
+        ],
+        "front_camera_resolution": "5 MP",
+        "front_camera_features": [
+          "Xóa phông",
+          "Trôi nhanh thời gian (Time Lapse)",
+          "Toàn cảnh (Panorama)",
+          "Quay video HD",
+          "Quay video Full HD",
+          "Nhãn dán (AR Stickers)",
+          "Làm đẹp",
+          "Chụp đêm"
+        ],
+        "screen_technology": "IPS LCD",
+        "screen_resolution": "HD+ (720 x 1604 Pixels)",
+        "screen_size": "6.67\"",
+        "max_brightness": "1000 nits",
+        "touchscreen_glass": "Kính cường lực Panda"
+      },
+      "battery_and_charging": {
+        "battery_capacity": "5100 mAh",
+        "battery_type": "Li-Po",
+        "max_charging_support": "45 W",
+        "battery_technology": ["Tiết kiệm pin", "Sạc siêu nhanh SuperVOOC"]
+      },
+      "features": {
+        "advanced_security": ["Mở khoá vân tay cạnh viền", "Mở khoá khuôn mặt"],
+        "special_features": [
+          "Ứng dụng kép (Nhân bản ứng dụng)",
+          "Độ bền chuẩn quân đội MIL-STD 810H",
+          "Mở rộng bộ nhớ RAM",
+          "Cử chỉ thông minh"
+        ],
+        "water_dust_resistant": "IP54",
+        "voice_recording": ["Ghi âm mặc định", "Ghi âm cuộc gọi"],
+        "radio": ["Có"],
+        "video_playback": "MP4, AVI",
+        "music_playback": ["OGG", "Midi", "MP3", "FLAC"]
+      },
+      "connectivity": {
+        "mobile_network": "Hỗ trợ 4G",
+        "sim": "2 Nano SIM",
+        "wifi": [
+          "Wi-Fi 802.11 a/b/g/n",
+          "Wi-Fi 5",
+          "Dual-band (2.4 GHz/5 GHz)"
+        ],
+        "gps": ["QZSS", "GPS", "GLONASS", "GALILEO", "BEIDOU"],
+        "bluetooth": "v5.0",
+        "charging_connection_port": "Type-C",
+        "headphone_jack": "3.5 mm",
+        "other_connectivity": "OTG"
+      },
+      "createdAt": "2025-11-24T17:23:03.335Z",
+      "updatedAt": "2026-03-05T17:22:27.937Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "operating_system": "Android 14",
+        "cpu_chip": "Snapdragon 6s Gen 1 8 nhân",
+        "cpu_speed": "2.1 GHz",
+        "gpu": "Adreno 610",
+        "ram": "6 GB",
+        "storage_capacity": "128 GB",
+        "remaining_capacity": "103 GB",
+        "memory_card": "MicroSD, hỗ trợ tối đa 1 TB",
+        "contacts": "Không giới hạn"
+      },
+      "design_and_material": {
+        "design": "Nguyên khối",
+        "material": "Khung nhựa & Mặt lưng thuỷ tinh hữu cơ",
+        "dimensions_and_weight": "Dài 165.77 mm - Ngang 76.08 mm - Dày 7.68 mm - Nặng 186 g",
+        "release_date": "07/2025",
+        "brand": "OPPO"
+      },
+      "slug": "oppo-a5i-6gb-128gb",
+      "phoneCount": 2
+    },
+    {
+      "_id": "6924947676327f5529b0858b",
+      "name": "Samsung Galaxy Z Fold7 5G 12GB/256GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 37800,
+      "status": 0,
+      "content": "New",
+      "camera_and_screen": {
+        "rear_camera_resolution": "Chính 200 MP & Phụ 12 MP, 10 MP",
+        "rear_camera_video": [
+          "FullHD 1080p@240fps",
+          "FullHD 1080p@120fps",
+          "8K 4320p@30fps",
+          "4K 2160p@120fps"
+        ],
+        "rear_camera_flash": "Có",
+        "rear_camera_features": [
+          "Zoom quang học",
+          "Zoom kỹ thuật số",
+          "Xóa phông",
+          "Tự động lấy nét (AF)",
+          "Toàn cảnh (Panorama)",
+          "Quay chậm (Slow Motion)",
+          "Làm đẹp",
+          "HDR",
+          "Góc siêu rộng (Ultrawide)",
+          "Chống rung quang học (OIS)",
+          "Chọn ảnh chân dung đẹp nhất (Best Face)",
+          "Ban đêm (Night Mode)",
+          "Audio zoom"
+        ],
+        "front_camera_resolution": "Trong 10 MP & Ngoài 10 MP",
+        "front_camera_features": [
+          "Xóa phông",
+          "Làm đẹp",
+          "Chọn ảnh chân dung đẹp nhất (Best Face)"
+        ],
+        "screen_technology": "Dynamic AMOLED 2X",
+        "screen_resolution": "Chính: QXGA+ (1968 x 2184 Pixels) & Phụ: Full HD+ (1080 x 2520 Pixels)",
+        "screen_size": "Chính 8.0\" & Phụ 6.5\" - Tần số quét 120 Hz",
+        "max_brightness": "2600 nits",
+        "touchscreen_glass": "Kính cường lực Corning Gorilla Glass Ceramic 2"
+      },
+      "battery_and_charging": {
+        "battery_capacity": "4400 mAh",
+        "battery_type": "Li-Ion",
+        "max_charging_support": "25 W",
+        "battery_technology": [
+          "Tiết kiệm pin",
+          "Sạc pin nhanh",
+          "Sạc không dây"
+        ]
+      },
+      "features": {
+        "advanced_security": ["Mở khoá vân tay cạnh viền", "Mở khoá khuôn mặt"],
+        "special_features": [
+          "Trợ lý ảo Google Gemini",
+          "Smart Switch (ứng dụng chuyển đổi dữ liệu)",
+          "Samsung DeX (Kết nối màn hình sử dụng giao diện tương tự PC)",
+          "Now Brief",
+          "Khoanh tròn để tìm kiếm",
+          "Audio Eraser"
+        ],
+        "water_dust_resistant": "IP48",
+        "voice_recording": ["Ghi âm mặc định", "Ghi âm cuộc gọi"],
+        "radio": ["Không"],
+        "video_playback": "WEBM, MP4, MKV, M4V, FLV, AVI, 3GP, 3G2",
+        "music_playback": [
+          "XMF",
+          "WAV",
+          "RTX",
+          "RTTTL",
+          "OTA",
+          "OGG",
+          "OGA",
+          "Midi",
+          "MXMF",
+          "MP3",
+          "M4A",
+          "IMY",
+          "FLAC",
+          "AWB",
+          "APE",
+          "AMR",
+          "AAC",
+          "3GA"
+        ]
+      },
+      "connectivity": {
+        "mobile_network": "Hỗ trợ 5G",
+        "sim": "2 Nano SIM hoặc 2 eSIM hoặc 1 Nano SIM + 1 eSIM",
+        "wifi": ["Wi-Fi hotspot", "Wi-Fi Direct", "Dual-band (2.4 GHz/5 GHz)"],
+        "gps": ["QZSS", "GPS", "GLONASS", "GALILEO", "BEIDOU"],
+        "bluetooth": "v5.4",
+        "charging_connection_port": "Type-C",
+        "headphone_jack": "Type-C",
+        "other_connectivity": "OTG, NFC"
+      },
+      "createdAt": "2025-11-24T17:23:02.822Z",
+      "updatedAt": "2026-03-05T17:22:40.885Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "operating_system": "Android 16",
+        "cpu_chip": "Qualcomm Snapdragon 8 Elite For Galaxy 8 nhân",
+        "cpu_speed": "4.47 GHz",
+        "gpu": "Adreno 830",
+        "ram": "12 GB",
+        "storage_capacity": "256 GB",
+        "remaining_capacity": "223.6 GB",
+        "memory_card": "Không hỗ trợ",
+        "contacts": "Không giới hạn"
+      },
+      "design_and_material": {
+        "design": "Nguyên khối",
+        "material": "Khung nhôm & Mặt lưng kính cường lực",
+        "dimensions_and_weight": "Dài 158.4 mm - Ngang 143.2 mm (khi mở) | 72.8 mm (khi gập) - Dày 4.2 mm (khi mở) | 8.9 mm (khi gập) - Nặng 215g",
+        "release_date": "07/2025",
+        "brand": "Samsung"
+      },
+      "slug": "samsung-galaxy-z-fold7-5g-12gb-256gb",
+      "phoneCount": 3
+    },
+    {
+      "_id": "692c769f76aaf7bacfb675b7",
+      "name": "Xiaomi Redmi 14c 4GB/128GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 3360,
+      "status": 0,
+      "content": "<p>Ngừng kinh doanh</p>",
+      "configuration_and_memory": {
+        "operating_system": "Android 14",
+        "cpu_chip": "MediaTek Helio G81-Ultra 8 nhân",
+        "cpu_speed": "2 GHz",
+        "gpu": "Mali-G52 MC2",
+        "ram": "4 GB",
+        "storage_capacity": "128 GB",
+        "remaining_capacity": "115 GB",
+        "memory_card": "MicroSD, hỗ trợ tối đa 1 TB",
+        "contacts": "Không giới hạn"
+      },
+      "camera_and_screen": {
+        "rear_camera_resolution": "Chính 50 MP & Phụ QVGA",
+        "rear_camera_video": ["HD 720p@30fps", "FullHD 1080p@30fps"],
+        "rear_camera_flash": "Có",
+        "rear_camera_features": [
+          "Xóa phông",
+          "Trôi nhanh thời gian (Time Lapse)",
+          "Siêu độ phân giải",
+          "HDR",
+          "Ban đêm (Night Mode)"
+        ],
+        "front_camera_resolution": "13 MP",
+        "front_camera_features": [
+          "Xóa phông",
+          "Trôi nhanh thời gian (Time Lapse)",
+          "HDR",
+          "Chụp đêm"
+        ],
+        "screen_technology": "IPS LCD",
+        "screen_resolution": "HD+ (720 x 1640 Pixels)",
+        "screen_size": "6.88\"",
+        "max_brightness": "600 nits",
+        "touchscreen_glass": "Kính cường lực Corning Gorilla Glass 3"
+      },
+      "battery_and_charging": {
+        "battery_capacity": "5160 mAh",
+        "battery_type": "Li-Po",
+        "max_charging_support": "18 W",
+        "battery_technology": ["Tiết kiệm pin", "Sạc pin nhanh"]
+      },
+      "features": {
+        "advanced_security": ["Mở khoá vân tay cạnh viền", "Mở khoá khuôn mặt"],
+        "special_features": ["Mở rộng bộ nhớ RAM"],
+        "water_dust_resistant": "Chưa có thông tin",
+        "voice_recording": ["Ghi âm mặc định", "Ghi âm cuộc gọi"],
+        "radio": ["Có"],
+        "video_playback": "Có",
+        "music_playback": ["OGG", "Midi", "MP3", "FLAC"]
+      },
+      "connectivity": {
+        "mobile_network": "Hỗ trợ 4G",
+        "sim": "2 Nano SIM",
+        "wifi": [
+          "Wi-Fi hotspot",
+          "Wi-Fi Direct",
+          "Wi-Fi 802.11 a/b/g/n/ac",
+          "Dual-band (2.4 GHz/5 GHz)"
+        ],
+        "gps": ["GPS", "GLONASS", "GALILEO", "BEIDOU"],
+        "bluetooth": "v5.4",
+        "charging_connection_port": "Type-C",
+        "headphone_jack": "3.5 mm",
+        "other_connectivity": "OTG"
+      },
+      "createdAt": "2025-11-30T16:53:51.694Z",
+      "updatedAt": "2026-03-05T19:15:16.994Z",
+      "__v": 0,
+      "design_and_material": {
+        "design": "Nguyên khối",
+        "material": "Khung & Mặt lưng nhựa",
+        "dimensions_and_weight": "Dài 171.88 mm - Ngang 77.8 mm - Dày 8.22 mm - Nặng 207 g",
+        "release_date": "08/2024",
+        "brand": "Xiaomi"
+      },
+      "slug": "xiaomi-redmi-14c-4gb-128gb",
+      "phoneCount": 3
+    },
+    {
+      "_id": "6924947676327f5529b08588",
+      "name": "Samsung Galaxy Z Fold6 5G 12GB/256GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 28800,
+      "status": 0,
+      "content": "",
+      "camera_and_screen": {
+        "rear_camera_resolution": "Chính 50 MP & Phụ 12 MP, 10 MP",
+        "rear_camera_video": [
+          "HD 720p@30fps",
+          "FullHD 1080p@60fps",
+          "FullHD 1080p@240fps",
+          "8K 4320p@60fps",
+          "4K 2160p@120fps"
+        ],
+        "rear_camera_flash": "Có",
+        "rear_camera_features": [
+          "Zoom quang học",
+          "Video chân dung",
+          "Super HDR",
+          "FlexCam",
+          "Chống rung quang học (OIS)",
+          "Ban đêm (Night Mode)",
+          "Quay chậm (Slow Motion)"
+        ],
+        "front_camera_resolution": "10 MP & 4 MP",
+        "front_camera_features": [
+          "Xóa phông",
+          "Video hiển thị kép",
+          "Quay video 4K",
+          "FlexCam",
+          "Chụp đêm"
+        ],
+        "screen_technology": "Dynamic AMOLED 2X",
+        "screen_resolution": "Chính: QXGA+ (1856 x 2160) | Phụ: HD+ (968 x 2376)",
+        "screen_size": "Chính 7.6\" & Phụ 6.3\" - 120 Hz",
+        "max_brightness": "2600 nits",
+        "touchscreen_glass": "Kính cường lực Corning Gorilla Glass Victus 2"
+      },
+      "battery_and_charging": {
+        "battery_capacity": "4400 mAh",
+        "battery_type": "Li-Ion",
+        "max_charging_support": "25 W",
+        "battery_technology": [
+          "Tiết kiệm pin",
+          "Sạc pin nhanh",
+          "Sạc không dây"
+        ]
+      },
+      "features": {
+        "advanced_security": ["Mở khoá vân tay cạnh viền", "Mở khoá khuôn mặt"],
+        "special_features": [
+          "Samsung DeX",
+          "Âm thanh Dolby Atmos",
+          "Khả năng tương thích bút S Pen",
+          "Hệ thống tản nhiệt Vapor Chamber",
+          "Phiên dịch trực tiếp (AI)",
+          "Khoanh vùng search đa năng"
+        ],
+        "water_dust_resistant": "IP48",
+        "voice_recording": ["Ghi âm mặc định", "Ghi âm cuộc gọi"],
+        "radio": ["Không hỗ trợ"],
+        "video_playback": "WEBM, MP4, MKV, M4V, FLV, AVI, 3GP, 3G2",
+        "music_playback": ["MP3", "WAV", "FLAC", "OGG", "AAC", "AMR", "Midi"]
+      },
+      "connectivity": {
+        "mobile_network": "Hỗ trợ 5G",
+        "sim": "2 Nano SIM hoặc 2 eSIM hoặc 1 Nano SIM + 1 eSIM",
+        "wifi": [
+          "Wi-Fi MIMO",
+          "Wi-Fi 802.11 a/b/g/n/ac/ax",
+          "Dual-band (2.4 GHz/5 GHz)",
+          "6 GHz"
+        ],
+        "gps": ["GPS", "GLONASS", "GALILEO", "BEIDOU", "QZSS"],
+        "bluetooth": "v5.3",
+        "charging_connection_port": "Type-C",
+        "headphone_jack": "Type-C",
+        "other_connectivity": "OTG, NFC"
+      },
+      "createdAt": "2025-11-24T17:23:02.717Z",
+      "updatedAt": "2026-03-05T19:35:55.543Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "operating_system": "Android 14",
+        "cpu_chip": "Snapdragon 8 Gen 3 for Galaxy",
+        "cpu_speed": "3.39 GHz",
+        "gpu": "Adreno 750",
+        "ram": "12 GB",
+        "storage_capacity": "256 GB",
+        "remaining_capacity": "216.1 GB",
+        "memory_card": "Không hỗ trợ",
+        "contacts": "Không giới hạn"
+      },
+      "design_and_material": {
+        "design": "Nguyên khối",
+        "material": "Khung nhôm & Mặt lưng kính cường lực",
+        "dimensions_and_weight": "Mở: 153.5 x 132.6 x 5.6 mm | Gập: 153.5 x 68.1 x 12.1 mm - Nặng 239 g",
+        "release_date": "07/2024",
+        "brand": "Samsung"
+      },
+      "slug": "samsung-galaxy-z-fold6-5g-12gb-256gb",
+      "phoneCount": 1
+    },
+    {
+      "_id": "6924947676327f5529b08585",
+      "name": "Samsung Galaxy Z Flip7 5G 12GB/512GB",
+      "img": "https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg",
+      "price": 27100,
+      "status": 0,
+      "content": "<p>New - Exynos 2500</p>",
+      "camera_and_screen": {
+        "rear_camera_resolution": "Chính 50 MP & Phụ 12 MP",
+        "rear_camera_video": [
+          "FullHD 1080p@240fps",
+          "FullHD 1080p@120fps",
+          "4K 2160p@60fps"
+        ],
+        "rear_camera_flash": "Có",
+        "rear_camera_features": [
+          "Xóa phông",
+          "Tự động lấy nét (AF)",
+          "Toàn cảnh (Panorama)",
+          "Quay chậm (Slow Motion)",
+          "Làm đẹp",
+          "HDR",
+          "Góc siêu rộng (Ultrawide)",
+          "Chống rung quang học (OIS)",
+          "Chọn ảnh chân dung đẹp nhất (Best Face)",
+          "Ban đêm (Night Mode)",
+          "Audio zoom"
+        ],
+        "front_camera_resolution": "10 MP",
+        "front_camera_features": [
+          "Xóa phông",
+          "Làm đẹp",
+          "Chọn ảnh chân dung đẹp nhất (Best Face)"
+        ],
+        "screen_technology": "Chính: Dynamic AMOLED 2X | Phụ: Super AMOLED",
+        "screen_resolution": "Chính: Full HD+ (1080 x 2520) | Phụ: 948 x 1048",
+        "screen_size": "Chính 6.9\" & Phụ 4.1\" - 120 Hz",
+        "max_brightness": "2600 nits",
+        "touchscreen_glass": "Kính cường lực Corning Gorilla Glass Victus 2"
+      },
+      "battery_and_charging": {
+        "battery_capacity": "4300 mAh",
+        "battery_type": "Li-Ion",
+        "max_charging_support": "25 W",
+        "battery_technology": [
+          "Tiết kiệm pin",
+          "Sạc pin nhanh",
+          "Sạc không dây"
+        ]
+      },
+      "features": {
+        "advanced_security": ["Mở khoá vân tay cạnh viền", "Mở khoá khuôn mặt"],
+        "special_features": [
+          "Vision Booster",
+          "Trợ lý ảo Google Gemini",
+          "Samsung DeX",
+          "Now Brief",
+          "Khoanh tròn để tìm kiếm",
+          "Audio Eraser"
+        ],
+        "water_dust_resistant": "IP48",
+        "voice_recording": ["Ghi âm mặc định", "Ghi âm cuộc gọi"],
+        "radio": ["Không hỗ trợ"],
+        "video_playback": "WEBM, MP4, MKV, M4V, FLV, AVI, 3GP, 3G2",
+        "music_playback": [
+          "DFF",
+          "XMF",
+          "WAV",
+          "RTX",
+          "RTTTL",
+          "OTA",
+          "OGG",
+          "OGA",
+          "Midi",
+          "MXMF",
+          "MP3",
+          "M4A",
+          "IMY",
+          "FLAC",
+          "DSF",
+          "AWB",
+          "APE",
+          "AMR",
+          "AAC",
+          "3GA"
+        ]
+      },
+      "connectivity": {
+        "mobile_network": "Hỗ trợ 5G",
+        "sim": "1 Nano SIM + 1 eSIM hoặc 2 eSIM",
+        "wifi": [
+          "Wi-Fi hotspot",
+          "Wi-Fi MIMO",
+          "Wi-Fi Display",
+          "Wi-Fi 7",
+          "Dual-band",
+          "6 GHz"
+        ],
+        "gps": ["QZSS", "GPS", "GLONASS", "GALILEO", "BEIDOU"],
+        "bluetooth": "v5.4",
+        "charging_connection_port": "Type-C",
+        "headphone_jack": "Type-C",
+        "other_connectivity": "OTG, NFC"
+      },
+      "createdAt": "2025-11-24T17:23:02.614Z",
+      "updatedAt": "2026-03-05T19:38:08.736Z",
+      "__v": 0,
+      "configuration_and_memory": {
+        "operating_system": "Android 16",
+        "cpu_chip": "Exynos 2500 10 nhân",
+        "cpu_speed": "3.3 GHz",
+        "gpu": "Xclipse 950",
+        "ram": "12 GB",
+        "storage_capacity": "512 GB",
+        "remaining_capacity": "480 GB",
+        "memory_card": "Không hỗ trợ",
+        "contacts": "Không giới hạn"
+      },
+      "design_and_material": {
+        "design": "Nguyên khối",
+        "material": "Khung nhôm & Mặt lưng kính cường lực",
+        "dimensions_and_weight": "Mở: Dài 166.7 - Ngang 75.2 - Dày 6.5 (mm) | Gập: Dài 85.5 - Dày 13.7 (mm) - Nặng 188g",
+        "release_date": "07/2025",
+        "brand": "Samsung"
+      },
+      "slug": "samsung-galaxy-z-flip7-5g-12gb-512gb",
+      "phoneCount": 1
+    }
+  ]
+}
