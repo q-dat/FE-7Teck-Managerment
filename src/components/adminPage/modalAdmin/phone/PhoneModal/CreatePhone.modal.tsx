@@ -51,7 +51,6 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreateAdminProps> = ({ isOpen, on
     const data = new FormData();
     data.append('note', formData.note || '');
     data.append('name', formData.name || '');
-    data.append('slug', formData.slug || '');
     data.append('phone_catalog_id', formData.phone_catalog_id._id);
     data.append('color', formData.color);
     data.append('price', formData.price?.toString() || '');
@@ -108,44 +107,51 @@ const ModalCreatePhonePageAdmin: React.FC<ModalCreateAdminProps> = ({ isOpen, on
       >
         <div
           onClick={e => e.stopPropagation()}
-          className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:w-1/2"
+          className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:w-2/3"
         >
-          <div>
-            <p className="font-bold text-black dark:text-white">Tạo sản phẩm mới</p>
-            <LabelForm title={'Ghi chú (Chỉ mỗi admin)'} />
-            <InputModal
-              className="bg-yellow-400 px-2"
-              type="text"
-              {...register('note')}
-              placeholder="Điền ghi chú..."
-            />
-            <div className="flex items-center">
-              <ReactSelect
-                placeholder="Chọn danh mục*"
-                name="phone_catalog_id._id"
-                control={control}
-                options={phoneCatalog}
-                isMulti={false}
-                className=""
+          <p className="font-bold text-black dark:text-white">Tạo sản phẩm mới</p>
+          <ReactSelect
+            placeholder="Chọn danh mục*"
+            name="phone_catalog_id._id"
+            control={control}
+            options={phoneCatalog}
+            isMulti={false}
+            className=""
+          />
+          <div className="flex flex-col items-center xl:flex-row xl:gap-10">
+            <div className="w-full">
+              <InputModal type="text" {...register('status', { required: true })} placeholder="Tình trạng*" />
+              <InputModal type="text" {...register('name', { required: true })} placeholder="Tên sản phẩm*" />
+              <InputModal type="text" {...register('color', { required: true })} placeholder="Nhập màu*" />
+
+              <InputModal
+                type="number"
+                {...register('price', { required: true })}
+                placeholder="Giá* (Hệ số x1000: 1triệu = 1000)"
+              />
+              <InputModal
+                type="number"
+                {...register('sale')}
+                placeholder="Nhập giá giảm (Hệ số x1000: 1triệu = 1000)"
               />
             </div>
-            <InputModal type="text" {...register('name', { required: true })} placeholder="Tên sản phẩm*" />
-            <InputModal type="text" {...register('slug', { required: true })} placeholder="Slug" />
-            <InputModal type="text" {...register('color', { required: true })} placeholder="Nhập màu*" />
-
-            <InputModal
-              type="number"
-              {...register('price', { required: true })}
-              placeholder="Giá* (Hệ số x1000: 1triệu = 1000)"
-            />
-            <InputModal type="number" {...register('sale')} placeholder="Nhập giá giảm (Hệ số x1000: 1triệu = 1000)" />
-
-            <InputModal type="text" {...register('status', { required: true })} placeholder="Tình trạng*" />
-            <Textarea className="w-full border p-2 focus:outline-none" {...register('des')} placeholder="Mô tả" />
-            <LabelForm title={'Hình ảnh*'} />
-            <InputModal type="file" {...register('img', { required: true })} placeholder="Hình ảnh*" />
-            <LabelForm title={'Ảnh thu nhỏ'} />
-            <InputModal type="file" {...register('thumbnail')} placeholder="Chèn ảnh thu nhỏ" multiple />
+            <div className="w-full">
+              <InputModal
+                className="bg-yellow-400"
+                type="text"
+                {...register('note')}
+                placeholder="Điền ghi chú...(Nội bộ, không hiển thị cho khách hàng)"
+              />
+              <Textarea
+                className="w-full border p-2 focus:outline-none"
+                {...register('des')}
+                placeholder="Mô tả sản phẩm"
+              />
+              <LabelForm title={'Hình ảnh*'} />
+              <InputModal type="file" {...register('img', { required: true })} placeholder="Hình ảnh*" />
+              <LabelForm title={'Ảnh thu nhỏ'} />
+              <InputModal type="file" {...register('thumbnail')} placeholder="Chèn ảnh thu nhỏ" multiple />
+            </div>
           </div>
 
           <div className="flex flex-row items-center justify-center space-x-5 text-center">
