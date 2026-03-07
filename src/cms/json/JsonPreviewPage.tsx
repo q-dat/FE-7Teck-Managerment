@@ -1,4 +1,5 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Button, Input } from 'react-daisyui';
 
 type Variant = {
   id: string;
@@ -32,6 +33,33 @@ type ProductJson = {
 const STORAGE_KEY = 'catalog_json_storage';
 const BACKUP_KEY = 'catalog_json_backup';
 
+// storage hook
+function useLocalStorageState<T>(key: string, initial: T) {
+  const [state, setState] = useState<T>(() => {
+    const saved = localStorage.getItem(key);
+    return saved ? JSON.parse(saved) : initial;
+  });
+
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(state));
+  }, [key, state]);
+
+  useEffect(() => {
+    const handleStorage = (e: StorageEvent) => {
+      if (e.key === key && e.newValue) {
+        setState(JSON.parse(e.newValue));
+      }
+    };
+
+    window.addEventListener('storage', handleStorage);
+
+    return () => window.removeEventListener('storage', handleStorage);
+  }, [key]);
+
+  return [state, setState] as const;
+}
+
+// factories
 const createVariant = (): Variant => ({
   id: crypto.randomUUID(),
   color: '',
@@ -49,49 +77,41 @@ const createCatalog = (): Catalog => ({
   variants: [createVariant()]
 });
 
+// component
 const JsonPreviewPage: React.FC = () => {
-  const [catalogs, setCatalogs] = useState<Catalog[]>([]);
+  const [catalogs, setCatalogs] = useLocalStorageState<Catalog[]>(STORAGE_KEY, []);
+
   const [activeCatalog, setActiveCatalog] = useState<string | null>(null);
   const [activeVariant, setActiveVariant] = useState<string | null>(null);
 
+  const [importText, setImportText] = useState('');
+
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // helpers
   const isInputFocused = () => {
     const el = document.activeElement;
     if (!el) return false;
     return el.tagName === 'INPUT' || el.tagName === 'TEXTAREA';
   };
 
-  /* LOAD LOCAL */
-
-  useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) setCatalogs(JSON.parse(saved));
-  }, []);
-
-  /* SAVE LOCAL */
-
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(catalogs));
-  }, [catalogs]);
-
-  /* ACTIONS */
-
-  const addCatalog = () => {
+  // actions
+  const addCatalog = useCallback(() => {
     const catalog = createCatalog();
+
     setCatalogs(p => [...p, catalog]);
     setActiveCatalog(catalog.id);
-  };
+  }, [setCatalogs]);
 
-  const addVariant = () => {
+  const addVariant = useCallback(() => {
     if (!activeCatalog) return;
 
     setCatalogs(prev =>
       prev.map(c => (c.id === activeCatalog ? { ...c, variants: [...c.variants, createVariant()] } : c))
     );
-  };
+  }, [activeCatalog, setCatalogs]);
 
-  const duplicateVariant = () => {
+  const duplicateVariant = useCallback(() => {
     if (!activeCatalog || !activeVariant) return;
 
     setCatalogs(prev =>
@@ -107,34 +127,34 @@ const JsonPreviewPage: React.FC = () => {
         };
       })
     );
-  };
+  }, [activeCatalog, activeVariant, setCatalogs]);
 
-  const removeCatalog = () => {
+  const removeCatalog = useCallback(() => {
     if (!activeCatalog) return;
 
     setCatalogs(prev => prev.filter(c => c.id !== activeCatalog));
-
     setActiveCatalog(null);
-  };
+  }, [activeCatalog, setCatalogs]);
 
-  const clearLocal = () => {
+  const clearLocal = useCallback(() => {
     const current = localStorage.getItem(STORAGE_KEY);
+
     if (current) sessionStorage.setItem(BACKUP_KEY, current);
 
     localStorage.removeItem(STORAGE_KEY);
     setCatalogs([]);
-  };
+  }, [setCatalogs]);
 
-  const restoreBackup = () => {
+  const restoreBackup = useCallback(() => {
     const backup = sessionStorage.getItem(BACKUP_KEY);
+
     if (!backup) return;
 
     localStorage.setItem(STORAGE_KEY, backup);
     setCatalogs(JSON.parse(backup));
-  };
+  }, [setCatalogs]);
 
-  /* UPDATE */
-
+  // update
   const updateCatalog = (id: string, value: string) => {
     setCatalogs(prev => prev.map(c => (c.id === id ? { ...c, catalogName: value } : c)));
   };
@@ -152,29 +172,7 @@ const JsonPreviewPage: React.FC = () => {
     );
   };
 
-  /* ARROW NAVIGATION */
-
-  const moveFocus = (direction: 'up' | 'down' | 'left' | 'right') => {
-    const elements = Array.from(containerRef.current?.querySelectorAll('input,button') ?? []) as HTMLElement[];
-
-    const currentIndex = elements.indexOf(document.activeElement as HTMLElement);
-
-    if (currentIndex === -1) return;
-
-    let nextIndex = currentIndex;
-
-    if (direction === 'right') nextIndex = currentIndex + 1;
-    if (direction === 'left') nextIndex = currentIndex - 1;
-    if (direction === 'down') nextIndex = currentIndex + 4;
-    if (direction === 'up') nextIndex = currentIndex - 4;
-
-    const next = elements[nextIndex];
-
-    if (next) next.focus();
-  };
-
-  /* HOTKEYS */
-
+  // hotkeys
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -198,7 +196,7 @@ const JsonPreviewPage: React.FC = () => {
           duplicateVariant();
           break;
 
-        case 'z':
+        case 'b':
           removeCatalog();
           break;
 
@@ -206,24 +204,8 @@ const JsonPreviewPage: React.FC = () => {
           clearLocal();
           break;
 
-        case 'b':
+        case 'z':
           restoreBackup();
-          break;
-
-        case 'arrowup':
-          moveFocus('up');
-          break;
-
-        case 'arrowdown':
-          moveFocus('down');
-          break;
-
-        case 'arrowleft':
-          moveFocus('left');
-          break;
-
-        case 'arrowright':
-          moveFocus('right');
           break;
       }
     };
@@ -231,114 +213,132 @@ const JsonPreviewPage: React.FC = () => {
     window.addEventListener('keydown', handleKey);
 
     return () => window.removeEventListener('keydown', handleKey);
-  }, [activeCatalog, activeVariant, catalogs]);
+  }, [addCatalog, addVariant, duplicateVariant, removeCatalog, clearLocal, restoreBackup]);
 
-  /* JSON OUTPUT */
-
+  // json output
   const jsonOutput = useMemo<ProductJson[]>(() => {
-    const result: ProductJson[] = [];
-
-    catalogs.forEach(catalog => {
-      catalog.variants.forEach(variant => {
-        result.push({
-          catalogName: catalog.catalogName,
-          name: catalog.catalogName,
-          color: variant.color,
-          img: variant.img,
-          thumbnail: variant.thumbnail,
-          price: variant.price,
-          status: variant.status,
-          des: variant.des,
-          note: variant.note
-        });
-      });
-    });
-
-    return result;
+    return catalogs.flatMap(c =>
+      c.variants.map(v => ({
+        catalogName: c.catalogName,
+        name: c.catalogName,
+        color: v.color,
+        img: v.img,
+        thumbnail: v.thumbnail,
+        price: v.price,
+        status: v.status,
+        des: v.des,
+        note: v.note
+      }))
+    );
   }, [catalogs]);
 
   const jsonText = useMemo(() => JSON.stringify(jsonOutput, null, 2), [jsonOutput]);
 
-  /* COPY JSON */
+  // import
+  const importJson = (text: string) => {
+    try {
+      const data: ProductJson[] = JSON.parse(text);
 
+      const map = new Map<string, Catalog>();
+
+      data.forEach(item => {
+        if (!map.has(item.catalogName)) {
+          map.set(item.catalogName, {
+            id: crypto.randomUUID(),
+            catalogName: item.catalogName,
+            variants: []
+          });
+        }
+
+        const catalog = map.get(item.catalogName)!;
+
+        catalog.variants.push({
+          id: crypto.randomUUID(),
+          color: item.color,
+          price: item.price,
+          img: item.img,
+          thumbnail: item.thumbnail ?? [],
+          status: item.status,
+          des: item.des,
+          note: item.note
+        });
+      });
+
+      setCatalogs(Array.from(map.values()));
+    } catch (err) {
+      alert('JSON invalid');
+    }
+  };
+  // export
   const copyJson = async () => {
     await navigator.clipboard.writeText(jsonText);
   };
 
-  /* DOWNLOAD */
-
   const downloadJson = () => {
     const blob = new Blob([jsonText], { type: 'application/json' });
-
     const url = URL.createObjectURL(blob);
-
     const a = document.createElement('a');
-
     a.href = url;
     a.download = 'products.json';
-
     a.click();
   };
+
   return (
-    <div ref={containerRef} className="flex h-screen bg-gray-100 dark:bg-gray-950 dark:text-gray-200">
-      {/* JSON */}
-
-      <div className="w-full overflow-auto border-r border-gray-300 p-4 scrollbar-hide dark:border-gray-700 xl:w-1/2">
-        <div className="mb-2 flex justify-between">
-          <h2 className="text-sm font-semibold">JSON Preview</h2>
-
-          <div className="flex gap-1">
-            <button className="btn btn-outline btn-xs" onClick={copyJson}>
-              Copy
-            </button>
-
-            <button className="btn btn-primary btn-xs" onClick={downloadJson}>
-              Download
-            </button>
-            <button className="btn btn-error btn-xs" onClick={clearLocal}>
-              X
-            </button>
-
-            <button className="btn btn-outline btn-xs" onClick={restoreBackup}>
-              B
-            </button>
-          </div>
-        </div>
-
-        <pre className="whitespace-pre-wrap text-[11px]">{jsonText}</pre>
-      </div>
-
-      {/* EDITOR */}
-
-      <div className="w-full space-y-4 overflow-auto p-4 xl:w-1/2">
+    <div
+      ref={containerRef}
+      className="flex h-screen rounded-md border border-black bg-white text-black dark:bg-gray-950 dark:text-white"
+    >
+      <div className="w-full space-y-4 overflow-auto border-r border-black p-4 dark:border-white xl:w-1/2">
         <div className="flex flex-wrap gap-2">
-          <button className="btn btn-primary btn-xs" onClick={addCatalog}>
-            T
-          </button>
+          <h2 className="text-sm font-semibold">Catalogs</h2>
+          <textarea
+            className="w-full rounded border border-gray-300 bg-white p-2 text-xs text-black dark:border-gray-700 dark:bg-gray-900 dark:text-white"
+            rows={1}
+            placeholder="Paste JSON here to import..."
+            value={importText}
+            onChange={e => setImportText(e.target.value)}
+          />
 
-          <button className="btn btn-outline btn-xs" onClick={addVariant}>
-            N
-          </button>
+          <div className="flex flex-wrap gap-2">
+            <Button size="xs" className="btn btn-success text-white" onClick={() => importJson(importText)}>
+              Import
+            </Button>
 
-          <button className="btn btn-outline btn-xs" onClick={duplicateVariant}>
-            M
-          </button>
+            <Button size="xs" className="btn btn-warning text-white" onClick={() => setImportText('')}>
+              Clear JSON
+            </Button>
 
-          <button className="btn btn-warning btn-xs" onClick={removeCatalog}>
-            Z
-          </button>
+            <Button size="xs" className="btn btn-primary text-white" onClick={addCatalog}>
+              T - Add Catalog
+            </Button>
+
+            <Button size="xs" className="btn btn-info text-white" onClick={addVariant}>
+              N - Add Variant
+            </Button>
+
+            <Button size="xs" className="btn btn-secondary text-white" onClick={duplicateVariant}>
+              M - Duplicate Variant
+            </Button>
+
+            <Button size="xs" className="btn btn-error text-white" onClick={removeCatalog}>
+              B - Remove Catalog
+            </Button>
+          </div>
         </div>
 
         {catalogs.map(catalog => (
           <div
             key={catalog.id}
-            className={`rounded-xl border p-3 dark:border-gray-700 ${
-              activeCatalog === catalog.id ? 'border-primary bg-primary/10' : ''
+            className={`cursor-pointer rounded-xl border p-4 transition-colors ${
+              activeCatalog === catalog.id
+                ? 'border-blue-500 bg-blue-50 dark:bg-blue-950/40'
+                : 'border-gray-300 bg-white dark:border-gray-700 dark:bg-gray-900'
             }`}
             onClick={() => setActiveCatalog(catalog.id)}
           >
-            <input
-              className="input input-xs input-bordered mb-2 w-full"
+            <Input
+              size="xs"
+              className="mb-3 w-full border border-gray-300 bg-white text-gray-900 focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:focus:border-green-500"
               placeholder="Catalog name"
               value={catalog.catalogName}
               onChange={e => updateCatalog(catalog.id, e.target.value)}
@@ -352,34 +352,40 @@ const JsonPreviewPage: React.FC = () => {
                     setActiveCatalog(catalog.id);
                     setActiveVariant(variant.id);
                   }}
-                  className={`grid grid-cols-2 gap-2 rounded-lg border p-2 text-xs dark:border-gray-700 xl:grid-cols-4 ${
-                    activeVariant === variant.id ? 'border-secondary bg-secondary/10' : ''
+                  className={`grid grid-cols-2 gap-2 rounded-lg border p-2 text-xs transition-colors xl:grid-cols-4 ${
+                    activeVariant === variant.id
+                      ? 'border-amber-500 bg-amber-50 dark:bg-amber-950/40'
+                      : 'border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-900'
                   }`}
                 >
-                  <input
-                    className="input input-xs input-bordered"
+                  <Input
+                    size="xs"
+                    className="border border-gray-300 bg-white text-gray-900 focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:focus:border-green-500"
                     placeholder="Color"
                     value={variant.color}
                     onChange={e => updateVariant(catalog.id, variant.id, 'color', e.target.value)}
                   />
 
-                  <input
+                  <Input
+                    size="xs"
                     type="number"
-                    className="input input-xs input-bordered"
+                    className="border border-gray-300 bg-white text-gray-900 focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:focus:border-green-500"
                     placeholder="Price"
                     value={variant.price}
                     onChange={e => updateVariant(catalog.id, variant.id, 'price', Number(e.target.value))}
                   />
 
-                  <input
-                    className="input input-xs input-bordered"
+                  <Input
+                    size="xs"
+                    className="border border-gray-300 bg-white text-gray-900 focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:focus:border-green-500"
                     placeholder="Image"
                     value={variant.img}
                     onChange={e => updateVariant(catalog.id, variant.id, 'img', e.target.value)}
                   />
 
-                  <input
-                    className="input input-xs input-bordered"
+                  <Input
+                    size="xs"
+                    className="border border-gray-300 bg-white text-gray-900 focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:focus:border-green-500"
                     placeholder="Status"
                     value={variant.status}
                     onChange={e => updateVariant(catalog.id, variant.id, 'status', e.target.value)}
@@ -389,6 +395,32 @@ const JsonPreviewPage: React.FC = () => {
             </div>
           </div>
         ))}
+      </div>
+      {/* JSON Preview */}
+      <div className="w-full overflow-auto p-4 scrollbar-hide xl:w-1/2">
+        <div className="mb-2 flex justify-between">
+          <h2 className="text-sm font-semibold">JSON Preview</h2>
+
+          <div className="flex gap-2">
+            <Button size="xs" className="btn btn-info text-white" onClick={copyJson}>
+              Copy
+            </Button>
+
+            <Button size="xs" className="btn btn-accent text-white" onClick={downloadJson}>
+              Download
+            </Button>
+
+            <Button size="xs" className="btn btn-error text-white" onClick={clearLocal}>
+              X - Clear Local
+            </Button>
+
+            <Button size="xs" className="btn btn-neutral text-white" onClick={restoreBackup}>
+              Z - Restore Backup
+            </Button>
+          </div>
+        </div>
+
+        <pre className="whitespace-pre-wrap text-base text-blue-800 dark:text-green-500">{jsonText}</pre>
       </div>
     </div>
   );
