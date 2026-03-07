@@ -299,7 +299,7 @@ const JsonPreviewPage: React.FC = () => {
       ref={containerRef}
       className="flex h-screen rounded-md border border-black bg-white text-black dark:bg-gray-950 dark:text-white"
     >
-      <div className="w-full space-y-4 overflow-auto border-r border-black p-4 scrollbar-hide dark:border-white xl:w-2/3">
+      <div className="w-full space-y-4 overflow-auto border-r border-black p-4 scrollbar-hide dark:border-white xl:w-3/4">
         <div className="flex flex-wrap gap-2">
           <div className="flex items-center gap-2">
             <h2 className="text-sm font-semibold">Catalogs</h2>
@@ -413,29 +413,28 @@ const JsonPreviewPage: React.FC = () => {
         ))}
       </div>
       {/* JSON Preview */}
-      <div className="w-full overflow-auto p-4 scrollbar-hide xl:w-1/2">
+      <div className="w-full overflow-auto p-4 scrollbar-hide xl:w-1/4">
         <div className="flex gap-2">
           <div className="flex flex-wrap items-center gap-2">
             <h2 className="text-sm font-semibold">JSON Preview</h2>
-            <Button size="xs" className="btn btn-info text-white" onClick={copyJson}>
-              Copy
-            </Button>
-
-            <Button size="xs" className="btn btn-accent text-white" onClick={downloadJson}>
-              Download
-            </Button>
-
             <Button size="xs" className="btn btn-error text-white" onClick={clearLocal}>
               X - Clear Local
             </Button>
 
-            <Button size="xs" className="btn btn-neutral text-white" onClick={restoreBackup}>
+            <Button size="xs" className="btn btn-warning text-white" onClick={restoreBackup}>
               Z - Restore Backup
+            </Button>
+            <Button size="xs" className="btn btn-info text-white" onClick={copyJson}>
+              Copy
+            </Button>
+
+            <Button size="xs" className="btn btn-success text-white" onClick={downloadJson}>
+              Download
             </Button>
           </div>
         </div>
 
-        <pre className="whitespace-pre-wrap text-base text-blue-800 dark:text-green-500">{jsonText}</pre>
+        <pre className="mt-5 whitespace-pre-wrap text-[10px] text-blue-800 dark:text-green-500">{jsonText}</pre>
       </div>
     </div>
   );
