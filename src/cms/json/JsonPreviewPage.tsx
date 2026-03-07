@@ -282,15 +282,31 @@ const JsonPreviewPage: React.FC = () => {
     a.download = 'products.json';
     a.click();
   };
+  // stats
+  const stats = useMemo(() => {
+    const catalogCount = catalogs.length;
+
+    const variantCount = catalogs.reduce((sum, c) => sum + c.variants.length, 0);
+
+    return {
+      catalogCount,
+      variantCount
+    };
+  }, [catalogs]);
 
   return (
     <div
       ref={containerRef}
       className="flex h-screen rounded-md border border-black bg-white text-black dark:bg-gray-950 dark:text-white"
     >
-      <div className="w-full space-y-4 overflow-auto border-r border-black p-4 dark:border-white xl:w-1/2">
+      <div className="w-full space-y-4 overflow-auto border-r border-black p-4 scrollbar-hide dark:border-white xl:w-2/3">
         <div className="flex flex-wrap gap-2">
-          <h2 className="text-sm font-semibold">Catalogs</h2>
+          <div className="flex items-center gap-2">
+            <h2 className="text-sm font-semibold">Catalogs</h2>
+            <span className="text-xs opacity-70">
+              {stats.catalogCount} catalogs • {stats.variantCount} variants
+            </span>
+          </div>
           <textarea
             className="w-full rounded border border-gray-300 bg-white p-2 text-xs text-black dark:border-gray-700 dark:bg-gray-900 dark:text-white"
             rows={1}
@@ -338,7 +354,7 @@ const JsonPreviewPage: React.FC = () => {
           >
             <Input
               size="xs"
-              className="mb-3 w-full border border-gray-300 bg-white text-gray-900 focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:focus:border-green-500"
+              className="mb-3 w-full border border-gray-300 bg-white text-black focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:focus:border-green-500"
               placeholder="Catalog name"
               value={catalog.catalogName}
               onChange={e => updateCatalog(catalog.id, e.target.value)}
@@ -360,7 +376,7 @@ const JsonPreviewPage: React.FC = () => {
                 >
                   <Input
                     size="xs"
-                    className="border border-gray-300 bg-white text-gray-900 focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:focus:border-green-500"
+                    className="border border-gray-300 bg-white text-black focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:focus:border-green-500"
                     placeholder="Color"
                     value={variant.color}
                     onChange={e => updateVariant(catalog.id, variant.id, 'color', e.target.value)}
@@ -369,7 +385,7 @@ const JsonPreviewPage: React.FC = () => {
                   <Input
                     size="xs"
                     type="number"
-                    className="border border-gray-300 bg-white text-gray-900 focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:focus:border-green-500"
+                    className="border border-gray-300 bg-white text-black focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:focus:border-green-500"
                     placeholder="Price"
                     value={variant.price}
                     onChange={e => updateVariant(catalog.id, variant.id, 'price', Number(e.target.value))}
@@ -377,7 +393,7 @@ const JsonPreviewPage: React.FC = () => {
 
                   <Input
                     size="xs"
-                    className="border border-gray-300 bg-white text-gray-900 focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:focus:border-green-500"
+                    className="border border-gray-300 bg-white text-black focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:focus:border-green-500"
                     placeholder="Image"
                     value={variant.img}
                     onChange={e => updateVariant(catalog.id, variant.id, 'img', e.target.value)}
@@ -385,7 +401,7 @@ const JsonPreviewPage: React.FC = () => {
 
                   <Input
                     size="xs"
-                    className="border border-gray-300 bg-white text-gray-900 focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:focus:border-green-500"
+                    className="border border-gray-300 bg-white text-black focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:focus:border-green-500"
                     placeholder="Status"
                     value={variant.status}
                     onChange={e => updateVariant(catalog.id, variant.id, 'status', e.target.value)}
@@ -398,10 +414,9 @@ const JsonPreviewPage: React.FC = () => {
       </div>
       {/* JSON Preview */}
       <div className="w-full overflow-auto p-4 scrollbar-hide xl:w-1/2">
-        <div className="mb-2 flex justify-between">
-          <h2 className="text-sm font-semibold">JSON Preview</h2>
-
-          <div className="flex gap-2">
+        <div className="flex gap-2">
+          <div className="flex flex-wrap items-center gap-2">
+            <h2 className="text-sm font-semibold">JSON Preview</h2>
             <Button size="xs" className="btn btn-info text-white" onClick={copyJson}>
               Copy
             </Button>
