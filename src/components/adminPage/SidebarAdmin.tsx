@@ -10,6 +10,7 @@ import { BsApple } from 'react-icons/bs';
 import { TabletContext } from '../../context/tablet/TabletContext';
 import { WindowsContext } from '../../context/windows/WindowsContext';
 import { MacbookContext } from '../../context/macbook/MacbookContext';
+import { LuFileJson } from 'react-icons/lu';
 // import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
 // import { TabletCatalogContext } from '../../context/tablet-catalog/TabletCatalogContext';
 // import { WindowsCatalogContext } from '../../context/windows-catalog/WindowsCatalogContext';
@@ -80,6 +81,11 @@ const SidebarAdmin: React.FC<{}> = () => {
       icon: FaWindows,
       link: '/cms/admin/windows-manager',
       toastify: countWindows
+    },
+    {
+      name: 'Json Preview',
+      icon: LuFileJson,
+      link: '/cms/admin/json-preview'
     }
   ];
 

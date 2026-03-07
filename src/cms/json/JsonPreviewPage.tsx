@@ -259,15 +259,42 @@ const JsonPreviewPage: React.FC = () => {
 
   const jsonText = useMemo(() => JSON.stringify(jsonOutput, null, 2), [jsonOutput]);
 
+  /* COPY JSON */
+
+  const copyJson = async () => {
+    await navigator.clipboard.writeText(jsonText);
+  };
+
+  /* DOWNLOAD */
+
+  const downloadJson = () => {
+    const blob = new Blob([jsonText], { type: 'application/json' });
+
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+
+    a.href = url;
+    a.download = 'products.json';
+
+    a.click();
+  };
   return (
     <div ref={containerRef} className="flex h-screen bg-gray-100 dark:bg-gray-950 dark:text-gray-200">
       {/* JSON */}
 
-      <div className="w-full overflow-auto border-r border-gray-300 p-4 dark:border-gray-700 xl:w-1/2">
+      <div className="w-full overflow-auto border-r border-gray-300 p-4 scrollbar-hide dark:border-gray-700 xl:w-1/2">
         <div className="mb-2 flex justify-between">
           <h2 className="text-sm font-semibold">JSON Preview</h2>
 
           <div className="flex gap-1">
+            <button className="btn btn-outline btn-xs" onClick={copyJson}>
+              Copy
+            </button>
+
+            <button className="btn btn-primary btn-xs" onClick={downloadJson}>
+              Download
+            </button>
             <button className="btn btn-error btn-xs" onClick={clearLocal}>
               X
             </button>
@@ -368,3 +395,4 @@ const JsonPreviewPage: React.FC = () => {
 };
 
 export default JsonPreviewPage;
+
