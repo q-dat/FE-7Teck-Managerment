@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Button, Input } from 'react-daisyui';
+import { Toastify } from '../../helper/Toastify';
 
 type Variant = {
   id: string;
@@ -85,6 +86,7 @@ const JsonPreviewPage: React.FC = () => {
   const [activeVariant, setActiveVariant] = useState<string | null>(null);
 
   const [importText, setImportText] = useState('');
+  const [formattedJson, setFormattedJson] = useState<ProductJson[]>([]);
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -265,23 +267,57 @@ const JsonPreviewPage: React.FC = () => {
       });
 
       setCatalogs(Array.from(map.values()));
+      setFormattedJson([]);
     } catch (err) {
-      alert('JSON invalid');
+      Toastify('Failed to import JSON. Please check the input format.', 500);
     }
   };
-  // export
-  const copyJson = async () => {
-    await navigator.clipboard.writeText(jsonText);
-  };
 
-  const downloadJson = () => {
-    const blob = new Blob([jsonText], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'products.json';
-    a.click();
+  // format phones json
+  const formatPhonesJson = () => {
+    try {
+      const parsed = JSON.parse(importText);
+
+      if (!parsed.phones || !Array.isArray(parsed.phones)) {
+        Toastify('Failed to format JSON. Expected a "phones" array.', 500);
+        return;
+      }
+
+      const formatted: ProductJson[] = parsed.phones.map((p: any) => ({
+        catalogName: p.phone_catalog_id?.name ?? '',
+        name: p.phone_catalog_id?.name ?? '',
+        color: p.color ?? '',
+        img: p.img ?? '',
+        thumbnail: p.thumbnail ?? [],
+        price: p.price ?? 0,
+        status: p.status ?? '',
+        des: p.des ?? '',
+        note: p.note ?? ''
+      }));
+
+      setFormattedJson(formatted);
+    } catch {
+      Toastify('Failed to format JSON. Please check the input format.', 500);
+    }
   };
+  const formattedText = useMemo(() => JSON.stringify(formattedJson, null, 2), [formattedJson]);
+
+  const previewJson = useMemo(() => {
+    if (formattedJson.length) return formattedJson;
+    return jsonOutput;
+  }, [formattedJson, jsonOutput]);
+
+  const previewText = useMemo(() => JSON.stringify(previewJson, null, 2), [previewJson]);
+
+  const previewStats = useMemo(() => {
+    return {
+      products: previewJson.length,
+      catalogs: catalogs.length,
+      variants: catalogs.reduce((s, c) => s + c.variants.length, 0),
+      formatted: formattedJson.length > 0
+    };
+  }, [previewJson, catalogs, formattedJson]);
+
   // stats
   const stats = useMemo(() => {
     const catalogCount = catalogs.length;
@@ -299,7 +335,7 @@ const JsonPreviewPage: React.FC = () => {
       ref={containerRef}
       className="flex h-screen rounded-md border border-black bg-white text-black dark:bg-gray-950 dark:text-white"
     >
-      <div className="w-full space-y-4 overflow-auto border-r border-black p-4 scrollbar-hide dark:border-white xl:w-3/4">
+      <div className="w-full space-y-4 overflow-auto border-r border-black p-4 dark:border-white xl:w-3/4">
         <div className="flex flex-wrap gap-2">
           <div className="flex items-center gap-2">
             <h2 className="text-sm font-semibold">Catalogs</h2>
@@ -316,14 +352,19 @@ const JsonPreviewPage: React.FC = () => {
           />
 
           <div className="flex flex-wrap gap-2">
-            <Button size="xs" className="btn btn-success text-white" onClick={() => importJson(importText)}>
-              Import
-            </Button>
+            <div className="flex flex-wrap gap-2">
+              <Button size="xs" className="btn btn-success text-white" onClick={() => importJson(importText)}>
+                Import Catalog JSON
+              </Button>
 
-            <Button size="xs" className="btn btn-warning text-white" onClick={() => setImportText('')}>
-              Clear JSON
-            </Button>
+              <Button size="xs" className="btn btn-accent text-white" onClick={formatPhonesJson}>
+                Format Phones API
+              </Button>
 
+              <Button size="xs" className="btn btn-warning text-white" onClick={() => setImportText('')}>
+                Clear Import
+              </Button>
+            </div>
             <Button size="xs" className="btn btn-primary text-white" onClick={addCatalog}>
               T - Add Catalog
             </Button>
@@ -415,8 +456,42 @@ const JsonPreviewPage: React.FC = () => {
       {/* JSON Preview */}
       <div className="w-full overflow-auto p-4 scrollbar-hide xl:w-1/4">
         <div className="flex gap-2">
-          <div className="flex flex-wrap items-center gap-2">
-            <h2 className="text-sm font-semibold">JSON Preview</h2>
+          <div className="flex flex-wrap gap-2">
+            <div className="flex items-center gap-2">
+              <h2 className="text-sm font-semibold">Preview</h2>
+              <span className="text-xs opacity-70">
+                {previewStats.products} products
+                {previewStats.formatted && ' • formatted'}
+              </span>
+            </div>
+            <Button
+              size="xs"
+              className="btn btn-info text-white"
+              onClick={() => navigator.clipboard.writeText(previewText)}
+            >
+              Copy
+            </Button>
+
+            <Button
+              size="xs"
+              className="btn btn-success text-white"
+              onClick={() => {
+                const blob = new Blob([previewText], {
+                  type: 'application/json'
+                });
+
+                const url = URL.createObjectURL(blob);
+
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = previewStats.formatted ? 'phones-formatted.json' : 'products.json';
+
+                a.click();
+              }}
+            >
+              Download
+            </Button>
+
             <Button size="xs" className="btn btn-error text-white" onClick={clearLocal}>
               X - Clear Local
             </Button>
@@ -424,17 +499,12 @@ const JsonPreviewPage: React.FC = () => {
             <Button size="xs" className="btn btn-warning text-white" onClick={restoreBackup}>
               Z - Restore Backup
             </Button>
-            <Button size="xs" className="btn btn-info text-white" onClick={copyJson}>
-              Copy
-            </Button>
-
-            <Button size="xs" className="btn btn-success text-white" onClick={downloadJson}>
-              Download
-            </Button>
           </div>
         </div>
 
-        <pre className="mt-5 whitespace-pre-wrap text-[10px] text-blue-800 dark:text-green-500">{jsonText}</pre>
+        <pre className="mt-5 whitespace-pre-wrap text-[10px] text-blue-800 dark:text-green-500">
+          {formattedJson.length ? formattedText : jsonText}
+        </pre>
       </div>
     </div>
   );
