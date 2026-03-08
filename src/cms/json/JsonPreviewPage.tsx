@@ -383,70 +383,80 @@ const JsonPreviewPage: React.FC = () => {
           </div>
         </div>
 
-        {catalogs.map(catalog => (
+        {catalogs.map((catalog, index) => (
           <div
             key={catalog.id}
             className={`cursor-pointer rounded-xl border p-4 transition-colors ${
               activeCatalog === catalog.id
-                ? 'border-blue-500 bg-blue-50 dark:bg-blue-950/40'
-                : 'border-gray-300 bg-white dark:border-gray-700 dark:bg-gray-900'
+                ? 'border-blue-500 bg-blue-100 dark:bg-green-950/50 dark:border-green-500'
+                : 'border-dashed border-gray-50 bg-white dark:border-gray-700 dark:bg-gray-900'
             }`}
             onClick={() => setActiveCatalog(catalog.id)}
           >
+            <p className="mb-2 font-bold text-primary dark:text-green-500">
+              <span className="text-xl">#{index + 1}. </span>
+              {catalog.catalogName}{' '}
+              {catalog.variants.length > 0 && (
+                <span className="text-xs opacity-70">({catalog.variants.length} variants)</span>
+              )}
+            </p>
             <Input
               size="xs"
-              className="mb-3 w-full border border-gray-300 bg-white text-black focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:focus:border-green-500"
+              className="mb-3 w-full border border-gray-300 bg-white font-bold text-black focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:focus:border-green-500"
               placeholder="Catalog name"
               value={catalog.catalogName}
               onChange={e => updateCatalog(catalog.id, e.target.value)}
             />
 
             <div className="space-y-2">
-              {catalog.variants.map(variant => (
+              {catalog.variants.map((variant, variantIndex) => (
                 <div
                   key={variant.id}
                   onClick={() => {
                     setActiveCatalog(catalog.id);
                     setActiveVariant(variant.id);
                   }}
-                  className={`grid grid-cols-2 gap-2 rounded-lg border p-2 text-xs transition-colors xl:grid-cols-4 ${
+                  className={`flex items-center rounded-lg border p-2 text-xs transition-colors ${
                     activeVariant === variant.id
                       ? 'border-amber-500 bg-amber-50 dark:bg-amber-950/40'
                       : 'border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-900'
                   }`}
                 >
-                  <Input
-                    size="xs"
-                    className="border border-gray-300 bg-white text-black focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:focus:border-green-500"
-                    placeholder="Color"
-                    value={variant.color}
-                    onChange={e => updateVariant(catalog.id, variant.id, 'color', e.target.value)}
-                  />
+                  <p className="w-10 py-1 text-sm font-bold text-primary dark:text-green-500">#{variantIndex + 1}.</p>
+                  <div className="grid w-full grid-cols-2 gap-2 xl:grid-cols-4">
+                    <Input
+                      size="xs"
+                      className="border border-gray-300 bg-white text-black focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:focus:border-green-500"
+                      placeholder="Color"
+                      value={variant.color}
+                      onChange={e => updateVariant(catalog.id, variant.id, 'color', e.target.value)}
+                    />
 
-                  <Input
-                    size="xs"
-                    type="number"
-                    className="border border-gray-300 bg-white text-black focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:focus:border-green-500"
-                    placeholder="Price"
-                    value={variant.price}
-                    onChange={e => updateVariant(catalog.id, variant.id, 'price', Number(e.target.value))}
-                  />
+                    <Input
+                      size="xs"
+                      type="number"
+                      className="border border-gray-300 bg-white text-black focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:focus:border-green-500"
+                      placeholder="Price"
+                      value={variant.price}
+                      onChange={e => updateVariant(catalog.id, variant.id, 'price', Number(e.target.value))}
+                    />
 
-                  <Input
-                    size="xs"
-                    className="border border-gray-300 bg-white text-black focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:focus:border-green-500"
-                    placeholder="Image"
-                    value={variant.img}
-                    onChange={e => updateVariant(catalog.id, variant.id, 'img', e.target.value)}
-                  />
+                    <Input
+                      size="xs"
+                      className="border border-gray-300 bg-white text-black focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:focus:border-green-500"
+                      placeholder="Image"
+                      value={variant.img}
+                      onChange={e => updateVariant(catalog.id, variant.id, 'img', e.target.value)}
+                    />
 
-                  <Input
-                    size="xs"
-                    className="border border-gray-300 bg-white text-black focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:focus:border-green-500"
-                    placeholder="Status"
-                    value={variant.status}
-                    onChange={e => updateVariant(catalog.id, variant.id, 'status', e.target.value)}
-                  />
+                    <Input
+                      size="xs"
+                      className="border border-gray-300 bg-white text-black focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:focus:border-green-500"
+                      placeholder="Status"
+                      value={variant.status}
+                      onChange={e => updateVariant(catalog.id, variant.id, 'status', e.target.value)}
+                    />
+                  </div>
                 </div>
               ))}
             </div>
@@ -511,4 +521,3 @@ const JsonPreviewPage: React.FC = () => {
 };
 
 export default JsonPreviewPage;
-
