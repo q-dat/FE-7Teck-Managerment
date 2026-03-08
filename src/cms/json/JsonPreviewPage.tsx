@@ -90,6 +90,8 @@ const JsonPreviewPage: React.FC = () => {
 
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const previewItemRefs = useRef<Record<number, HTMLDivElement | null>>({});
+
   // helpers
   const isInputFocused = () => {
     const el = document.activeElement;
@@ -234,7 +236,36 @@ const JsonPreviewPage: React.FC = () => {
     );
   }, [catalogs]);
 
-  const jsonText = useMemo(() => JSON.stringify(jsonOutput, null, 2), [jsonOutput]);
+  const variantIndexMap = useMemo(() => {
+    const map = new Map<string, number>();
+    let index = 0;
+
+    catalogs.forEach(c => {
+      c.variants.forEach(v => {
+        map.set(v.id, index);
+        index++;
+      });
+    });
+
+    return map;
+  }, [catalogs]);
+
+  useEffect(() => {
+    if (!activeVariant) return;
+
+    const index = variantIndexMap.get(activeVariant);
+
+    if (index === undefined) return;
+
+    const el = previewItemRefs.current[index];
+
+    if (el) {
+      el.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
+    }
+  }, [activeVariant, variantIndexMap]);
 
   // import
   const importJson = (text: string) => {
@@ -300,7 +331,6 @@ const JsonPreviewPage: React.FC = () => {
       Toastify('Failed to format JSON. Please check the input format.', 500);
     }
   };
-  const formattedText = useMemo(() => JSON.stringify(formattedJson, null, 2), [formattedJson]);
 
   const previewJson = useMemo(() => {
     if (formattedJson.length) return formattedJson;
@@ -388,7 +418,7 @@ const JsonPreviewPage: React.FC = () => {
             key={catalog.id}
             className={`cursor-pointer rounded-xl border p-4 transition-colors ${
               activeCatalog === catalog.id
-                ? 'border-blue-500 bg-blue-100 dark:bg-green-950/50 dark:border-green-500'
+                ? 'border-blue-500 bg-blue-100 dark:border-green-500 dark:bg-green-950/50'
                 : 'border-dashed border-gray-50 bg-white dark:border-gray-700 dark:bg-gray-900'
             }`}
             onClick={() => setActiveCatalog(catalog.id)}
@@ -512,9 +542,24 @@ const JsonPreviewPage: React.FC = () => {
           </div>
         </div>
 
-        <pre className="mt-5 whitespace-pre-wrap text-[10px] text-blue-800 dark:text-green-500">
-          {formattedJson.length ? formattedText : jsonText}
-        </pre>
+        <div className="mt-5 space-y-2 text-[10px] text-blue-800 dark:text-green-500">
+          {previewJson.map((item, index) => (
+            <div
+              key={index}
+              ref={el => {
+                previewItemRefs.current[index] = el;
+              }}
+              className={`rounded border p-2 ${
+                variantIndexMap.get(activeVariant ?? '') === index
+                  ? 'border-amber-500 bg-amber-100 dark:bg-amber-900/40'
+                  : 'border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-900'
+              }`}
+            >
+              {/* <pre className="whitespace-pre-wrap">{JSON.stringify(item)}</pre> */} {/* Json 1 dòng */}
+              <pre className="whitespace-pre-wrap break-all">{JSON.stringify(item, null, 2)}</pre>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
