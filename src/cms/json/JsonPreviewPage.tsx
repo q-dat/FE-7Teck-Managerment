@@ -6,6 +6,7 @@ type Variant = {
   id: string;
   color: string;
   price: number;
+  basePrice: number;
   img: string;
   thumbnail: string[];
   status: string;
@@ -65,6 +66,7 @@ const createVariant = (): Variant => ({
   id: crypto.randomUUID(),
   color: '',
   price: 0,
+  basePrice: 0,
   img: '',
   thumbnail: [],
   status: 'New',
@@ -289,6 +291,7 @@ const JsonPreviewPage: React.FC = () => {
           id: crypto.randomUUID(),
           color: item.color,
           price: item.price,
+          basePrice: item.price,
           img: item.img,
           thumbnail: item.thumbnail ?? [],
           status: item.status,
@@ -359,6 +362,31 @@ const JsonPreviewPage: React.FC = () => {
       variantCount
     };
   }, [catalogs]);
+
+  // price multiplier
+  const toggleMultiplyPrice = (catalogId: string, variantId: string, factor: number) => {
+    setCatalogs(prev =>
+      prev.map(c => {
+        if (c.id !== catalogId) return c;
+
+        return {
+          ...c,
+          variants: c.variants.map(v => {
+            if (v.id !== variantId) return v;
+
+            const multiplied = v.basePrice + factor;
+
+            const isMultiplied = v.price === multiplied;
+
+            return {
+              ...v,
+              price: isMultiplied ? v.basePrice : multiplied
+            };
+          })
+        };
+      })
+    );
+  };
 
   return (
     <div
@@ -449,7 +477,7 @@ const JsonPreviewPage: React.FC = () => {
                   className={`flex items-center rounded-lg border p-2 text-xs transition-colors ${
                     activeVariant === variant.id
                       ? 'border-amber-500 bg-amber-50 dark:bg-amber-950/40'
-                      : 'border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-900'
+                      : 'border-black bg-white dark:border-gray-700 dark:bg-gray-900'
                   }`}
                 >
                   <p className="w-10 py-1 text-sm font-bold text-primary dark:text-green-500">#{variantIndex + 1}.</p>
@@ -462,14 +490,27 @@ const JsonPreviewPage: React.FC = () => {
                       onChange={e => updateVariant(catalog.id, variant.id, 'color', e.target.value)}
                     />
 
-                    <Input
-                      size="xs"
-                      type="number"
-                      className="border border-gray-300 bg-white text-black focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:focus:border-green-500"
-                      placeholder="Price"
-                      value={variant.price}
-                      onChange={e => updateVariant(catalog.id, variant.id, 'price', Number(e.target.value))}
-                    />
+                    <div className="flex flex-col">
+                      <Input
+                        size="xs"
+                        type="number"
+                        className="border border-gray-300 bg-white text-black focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:focus:border-green-500"
+                        placeholder="Price"
+                        value={variant.price}
+                        onChange={e => updateVariant(catalog.id, variant.id, 'price', Number(e.target.value))}
+                      />
+                      <div className="flex flex-wrap gap-1 py-1">
+                        {[1000, 1500, 2000, 2500, 3000].map(f => (
+                          <button
+                            key={f}
+                            className="rounded border border-gray-300 px-1 py-px text-[10px] text-gray-500"
+                            onClick={() => toggleMultiplyPrice(catalog.id, variant.id, f)}
+                          >
+                            +{f}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
 
                     <Input
                       size="xs"
@@ -566,3 +607,4 @@ const JsonPreviewPage: React.FC = () => {
 };
 
 export default JsonPreviewPage;
+
