@@ -1,7 +1,9 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Button, Input } from 'react-daisyui';
 import { Toastify } from '../../helper/Toastify';
+import { parseImportFormat } from './parseImportFormat';
 
+// MODEL | STORAGE | COLORS | PRICE
 type Variant = {
   id: string;
   color: string;
@@ -387,6 +389,21 @@ const JsonPreviewPage: React.FC = () => {
       })
     );
   };
+  //
+  const handleParseImport = () => {
+    try {
+      const data = parseImportFormat(importText);
+
+      if (!data.length) {
+        Toastify('No valid rows found', 500);
+        return;
+      }
+
+      setFormattedJson(data);
+    } catch {
+      Toastify('Parse failed', 500);
+    }
+  };
 
   return (
     <div
@@ -409,7 +426,7 @@ const JsonPreviewPage: React.FC = () => {
             onChange={e => setImportText(e.target.value)}
           />
 
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-col gap-2">
             <div className="flex flex-wrap gap-2">
               <Button size="xs" className="btn btn-success text-white" onClick={() => importJson(importText)}>
                 Import Catalog JSON
@@ -418,26 +435,30 @@ const JsonPreviewPage: React.FC = () => {
               <Button size="xs" className="btn btn-accent text-white" onClick={formatPhonesJson}>
                 Format Phones API
               </Button>
-
+              <Button size="xs" className="btn btn-secondary text-white" onClick={handleParseImport}>
+                MODEL | STORAGE | COLORS | PRICE
+              </Button>
               <Button size="xs" className="btn btn-warning text-white" onClick={() => setImportText('')}>
                 Clear Import
               </Button>
             </div>
-            <Button size="xs" className="btn btn-primary text-white" onClick={addCatalog}>
-              T - Add Catalog
-            </Button>
+            <div className="flex flex-wrap gap-2">
+              <Button size="xs" className="btn btn-primary text-white" onClick={addCatalog}>
+                T - Add Catalog
+              </Button>
 
-            <Button size="xs" className="btn btn-info text-white" onClick={addVariant}>
-              N - Add Variant
-            </Button>
+              <Button size="xs" className="btn btn-info text-white" onClick={addVariant}>
+                N - Add Variant
+              </Button>
 
-            <Button size="xs" className="btn btn-secondary text-white" onClick={duplicateVariant}>
-              M - Duplicate Variant
-            </Button>
+              <Button size="xs" className="btn btn-secondary text-white" onClick={duplicateVariant}>
+                M - Duplicate Variant
+              </Button>
 
-            <Button size="xs" className="btn btn-error text-white" onClick={removeCatalog}>
-              B - Remove Catalog
-            </Button>
+              <Button size="xs" className="btn btn-error text-white" onClick={removeCatalog}>
+                B - Remove Catalog
+              </Button>
+            </div>
           </div>
         </div>
 

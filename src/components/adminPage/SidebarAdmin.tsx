@@ -83,7 +83,7 @@ const SidebarAdmin: React.FC<{}> = () => {
       toastify: countWindows
     },
     {
-      name: 'Json Preview',
+      name: 'Json Preview (Phones)',
       icon: LuFileJson,
       link: '/cms/admin/json-preview'
     }
