@@ -36,6 +36,7 @@ type ProductJson = {
 
 const STORAGE_KEY = 'catalog_json_storage';
 const BACKUP_KEY = 'catalog_json_backup';
+const NOTE_KEY = 'price_note_storage';
 
 // storage hook
 function useLocalStorageState<T>(key: string, initial: T) {
@@ -95,6 +96,9 @@ const JsonPreviewPage: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const previewItemRefs = useRef<Record<number, HTMLDivElement | null>>({});
+
+  const [priceNote, setPriceNote] = useLocalStorageState<string>(NOTE_KEY, '');
+  const [activeRightTab, setActiveRightTab] = useState<'preview' | 'note'>('preview');
 
   // helpers
   const isInputFocused = () => {
@@ -601,27 +605,53 @@ const JsonPreviewPage: React.FC = () => {
             <Button size="xs" className="btn btn-warning text-white" onClick={restoreBackup}>
               Z - Restore Backup
             </Button>
+            <div className="mb-3 flex gap-2">
+              <Button
+                size="xs"
+                className={activeRightTab === 'preview' ? 'btn-primary' : ''}
+                onClick={() => setActiveRightTab('preview')}
+              >
+                Preview JSON
+              </Button>
+
+              <Button
+                size="xs"
+                className={activeRightTab === 'note' ? 'btn-primary' : ''}
+                onClick={() => setActiveRightTab('note')}
+              >
+                Price Note
+              </Button>
+            </div>
           </div>
         </div>
-
-        <div className="mt-5 space-y-2 text-[10px] text-blue-800 dark:text-green-500">
-          {previewJson.map((item, index) => (
-            <div
-              key={index}
-              ref={el => {
-                previewItemRefs.current[index] = el;
-              }}
-              className={`rounded border p-2 ${
-                variantIndexMap.get(activeVariant ?? '') === index
-                  ? 'border-amber-500 bg-amber-100 dark:bg-amber-900/40'
-                  : 'border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-900'
-              }`}
-            >
-              {/* <pre className="whitespace-pre-wrap">{JSON.stringify(item)}</pre> */} {/* Json 1 dòng */}
-              <pre className="whitespace-pre-wrap break-all">{JSON.stringify(item, null, 2)}</pre>
-            </div>
-          ))}
-        </div>
+        {activeRightTab === 'preview' && (
+          <div className="mt-5 space-y-2 text-[10px] text-blue-800 dark:text-green-500">
+            {previewJson.map((item, index) => (
+              <div
+                key={index}
+                ref={el => {
+                  previewItemRefs.current[index] = el;
+                }}
+                className={`rounded border p-2 ${
+                  variantIndexMap.get(activeVariant ?? '') === index
+                    ? 'border-amber-500 bg-amber-100 dark:bg-amber-900/40'
+                    : 'border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-900'
+                }`}
+              >
+                {/* <pre className="whitespace-pre-wrap">{JSON.stringify(item)}</pre> */} {/* Json 1 dòng */}
+                <pre className="whitespace-pre-wrap break-all">{JSON.stringify(item, null, 2)}</pre>
+              </div>
+            ))}
+          </div>
+        )}
+        {activeRightTab === 'note' && (
+          <textarea
+            className="h-full w-full rounded-sm border bg-white p-2 text-base focus:outline-none dark:bg-black"
+            placeholder="Paste phone price list here..."
+            value={priceNote}
+            onChange={e => setPriceNote(e.target.value)}
+          />
+        )}
       </div>
     </div>
   );
