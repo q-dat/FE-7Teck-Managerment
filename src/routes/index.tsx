@@ -41,7 +41,8 @@ const MacbookCatalogManager = lazy(() => import('../cms/product/macbookPage/Macb
 const MacbookManager = lazy(() => import('../cms/product/macbookPage/MacbookManager'));
 const WindowsCatalogManager = lazy(() => import('../cms/product/windowsPage/WindowsCatalogManager'));
 const WindowsManager = lazy(() => import('../cms/product/windowsPage/WindowsManager'));
-const JsonPreviewPage = lazy(() => import('../cms/json/JsonPreviewPage'));;
+const JsonPreviewPage = lazy(() => import('../cms/tools/JsonPreviewPage'));;
+const ImageCollectorPage = lazy(() => import('../cms/tools/ImageCollectorPage'))
 
 // post
 const Post = lazy(() => import('../cms/post/layout'));
@@ -113,6 +114,8 @@ export default function AppRoutes() {
             <Route path="windows-catalog-manager" element={<WindowsCatalogManager />} />
             <Route path="windows-manager" element={<WindowsManager />} />
             <Route path="json-preview" element={<JsonPreviewPage />} />
+            <Route path="image-collector" element={<ImageCollectorPage />} />
+             
           </Route>
         </Route>
 
