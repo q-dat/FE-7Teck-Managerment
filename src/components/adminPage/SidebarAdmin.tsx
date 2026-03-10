@@ -11,6 +11,8 @@ import { TabletContext } from '../../context/tablet/TabletContext';
 import { WindowsContext } from '../../context/windows/WindowsContext';
 import { MacbookContext } from '../../context/macbook/MacbookContext';
 import { LuFileJson } from 'react-icons/lu';
+import { MdImageSearch } from 'react-icons/md';
+
 // import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
 // import { TabletCatalogContext } from '../../context/tablet-catalog/TabletCatalogContext';
 // import { WindowsCatalogContext } from '../../context/windows-catalog/WindowsCatalogContext';
@@ -86,6 +88,11 @@ const SidebarAdmin: React.FC<{}> = () => {
       name: 'Json Preview (Phones)',
       icon: LuFileJson,
       link: '/cms/admin/json-preview'
+    },
+    {
+      name: 'Image Collector',
+      icon: MdImageSearch ,
+      link: '/cms/admin/image-collector'
     }
   ];
 

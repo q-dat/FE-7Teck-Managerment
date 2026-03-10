@@ -1,5 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Button, Input } from 'react-daisyui';
+import { BsDownload } from 'react-icons/bs';
+import { FaDownload } from 'react-icons/fa';
+import { MdDeleteForever } from 'react-icons/md';
 
 type ImageItem = {
   id: string;
@@ -8,35 +11,63 @@ type ImageItem = {
 };
 
 const STORAGE_KEY = 'image_crawler_url';
+const DOMAIN_FILTER_KEY = 'image_domain_filter';
+
+const getHostname = (url: string): string => {
+  try {
+    return new URL(url).hostname;
+  } catch {
+    return 'unknown';
+  }
+};
+
+const matchFilter = (url: string, filter: string): boolean => {
+  if (!filter) return true;
+
+  try {
+    const parsed = new URL(url);
+    const full = `${parsed.hostname}${parsed.pathname}`;
+
+    return full.toLowerCase().includes(filter.toLowerCase());
+  } catch {
+    return false;
+  }
+};
 
 const ImageCollectorPage: React.FC = () => {
   const [images, setImages] = useState<ImageItem[]>([]);
   const [value, setValue] = useState('');
+  const [domainFilter, setDomainFilter] = useState('');
+  const [domainMap, setDomainMap] = useState<Record<string, number>>({});
 
-  const inputRef = useRef<HTMLInputElement>(null);
+  const urlInputRef = useRef<HTMLInputElement>(null);
+  const domainInputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) setValue(saved);
+    const savedUrl = localStorage.getItem(STORAGE_KEY);
+    const savedFilter = localStorage.getItem(DOMAIN_FILTER_KEY);
 
-    inputRef.current?.focus();
+    if (savedUrl) setValue(savedUrl);
+    if (savedFilter) setDomainFilter(savedFilter);
+
+    urlInputRef.current?.focus();
   }, []);
 
   const isInputFocused = () => {
     const el = document.activeElement;
     if (!el) return false;
+
     return el.tagName === 'INPUT' || el.tagName === 'TEXTAREA';
   };
 
   const fetchImagesFromProduct = async (url: string) => {
     try {
+      const apiUrl = `${import.meta.env.VITE_API_PORT}/api/crawl-product-images?url=${encodeURIComponent(url)}`;
+
       localStorage.setItem(STORAGE_KEY, url);
 
-      const res = await fetch(
-        `${import.meta.env.VITE_API_PORT}/api/crawl-product-images?url=${encodeURIComponent(url)}`
-      );
-
+      const res = await fetch(apiUrl);
       const data = await res.json();
 
       if (!data?.images) return;
@@ -49,10 +80,17 @@ const ImageCollectorPage: React.FC = () => {
 
       setImages(items);
 
+      const counter: Record<string, number> = {};
+
+      items.forEach(i => {
+        const host = getHostname(i.url);
+        counter[host] = (counter[host] || 0) + 1;
+      });
+
+      setDomainMap(counter);
+
       setTimeout(() => {
-        listRef.current?.scrollTo({
-          top: 0
-        });
+        listRef.current?.scrollTo({ top: 0 });
       }, 50);
     } catch {
       console.error('crawl failed');
@@ -62,9 +100,10 @@ const ImageCollectorPage: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!value) return;
+    const url = value.trim();
+    if (!url) return;
 
-    fetchImagesFromProduct(value.trim());
+    fetchImagesFromProduct(url);
   };
 
   const toggleSelect = (id: string) => {
@@ -96,26 +135,54 @@ const ImageCollectorPage: React.FC = () => {
     }
   };
 
+  const filteredImages = images.filter(img => matchFilter(img.url, domainFilter));
+
   const downloadAll = useCallback(async () => {
-    const selected = images.filter(i => i.selected);
+    const selected = filteredImages.filter(i => i.selected);
 
     for (let i = 0; i < selected.length; i++) {
       await downloadImage(selected[i].url, i);
     }
-  }, [images]);
+  }, [filteredImages]);
 
-  const selectedCount = images.filter(i => i.selected).length;
+  const handleDomainFilterChange = (v: string) => {
+    setDomainFilter(v);
+
+    if (v) localStorage.setItem(DOMAIN_FILTER_KEY, v);
+    else localStorage.removeItem(DOMAIN_FILTER_KEY);
+  };
+
+  const selectedCount = filteredImages.filter(i => i.selected).length;
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        inputRef.current?.blur();
+      const key = e.key.toLowerCase();
+
+      if (key === 'escape') {
+        urlInputRef.current?.blur();
+        domainInputRef.current?.blur();
+        return;
+      }
+
+      if (key === 'f') {
+        e.preventDefault();
+        window.scrollTo({ top: 0 });
+        urlInputRef.current?.focus();
+        urlInputRef.current?.select();
+        return;
+      }
+
+      if (key === 'g') {
+        e.preventDefault();
+        window.scrollTo({ top: 0 });
+        domainInputRef.current?.focus();
+        domainInputRef.current?.select();
         return;
       }
 
       if (isInputFocused()) return;
 
-      if (e.key.toLowerCase() === 's') {
+      if (key === 's') {
         downloadAll();
       }
     };
@@ -126,94 +193,124 @@ const ImageCollectorPage: React.FC = () => {
   }, [downloadAll]);
 
   return (
-    <div className="flex h-screen flex-col gap-4 bg-white p-4 text-black dark:bg-gray-950 dark:text-white">
-      {/* INPUT */}
-      <div className="flex gap-2">
-        <form onSubmit={handleSubmit} className="flex w-full gap-2">
-          <Input
-            ref={inputRef}
-            value={value}
-            placeholder="Paste product URL then Enter"
-            className="w-full border border-gray-300 bg-white text-black dark:border-gray-700 dark:bg-gray-900 dark:text-white"
-            onChange={e => setValue(e.target.value)}
-          />
-
-          <Button type="submit" className="btn btn-primary text-white">
-            Crawl
-          </Button>
-        </form>
-
-        <Button className="btn btn-success text-white" onClick={downloadAll}>
-          Download
-        </Button>
-      </div>
-
-      {/* STATS */}
-      <div className="flex items-center justify-between text-sm">
-        <div>
-          Total images: <b>{images.length}</b>
-        </div>
-
-        <div>
-          Selected: <b>{selectedCount}</b>
-        </div>
-      </div>
-
-      {/* GRID */}
-      <div ref={listRef} className="grid grid-cols-2 gap-3 overflow-auto xl:grid-cols-5">
-        {images.map((img, index) => (
-          <div
-            key={img.id}
-            onClick={() => toggleSelect(img.id)}
-            className={`group relative cursor-pointer overflow-hidden rounded-xl border transition ${
-              img.selected ? 'border-green-400' : 'border-red-400 opacity-50'
-            }`}
-          >
-            {/* IMAGE */}
-            <img src={img.url} className="aspect-square w-full bg-black/5 object-contain" />
-
-            {/* BIG CHECKBOX */}
-            <div className="absolute left-2 top-2">
-              <input
-                type="checkbox"
-                checked={img.selected}
-                onChange={() => toggleSelect(img.id)}
-                className="h-6 w-6 cursor-pointer"
-              />
-            </div>
-
-            {/* ACTION BAR */}
-            <div className="absolute bottom-0 left-0 right-0 flex gap-1 bg-black/70 p-1 opacity-0 transition group-hover:opacity-100">
-              <Button
-                size="xs"
-                className="btn btn-info text-white"
-                onClick={e => {
-                  e.stopPropagation();
-                  downloadImage(img.url, index);
-                }}
-              >
-                Download
-              </Button>
-
-              <Button
-                size="xs"
-                className="btn btn-error text-white"
-                onClick={e => {
-                  e.stopPropagation();
-                  removeItem(img.id);
-                }}
-              >
-                Remove
-              </Button>
-            </div>
-
-            {/* URL */}
-            <div className="truncate bg-black/50 p-1 text-[10px] text-white">{img.url}</div>
+    <div className="flex h-screen flex-col bg-white text-black dark:bg-gray-950 dark:text-white">
+      <div className="border-b p-4 dark:border-gray-800">
+        <div className="mx-auto flex max-w-[1400px] flex-col gap-3">
+          {/* HOTKEY HELP */}
+          <div className="flex flex-wrap gap-2 text-xs text-gray-500 dark:text-gray-400">
+            <span className="rounded border px-2 py-1">F Focus URL</span>
+            <span className="rounded border px-2 py-1">G Focus Domain</span>
+            <span className="rounded border px-2 py-1">S Download</span>
+            <span className="rounded border px-2 py-1">Esc Blur</span>
           </div>
-        ))}
+          {/*  */}
+          <form onSubmit={handleSubmit} className="flex gap-2">
+            <Input
+              ref={urlInputRef}
+              value={value}
+              placeholder="Paste product URL then Enter"
+              className="w-full bg-white dark:bg-gray-900"
+              onChange={e => setValue(e.target.value)}
+            />
+
+            <Input
+              ref={domainInputRef}
+              value={domainFilter}
+              placeholder="Filter domain or path"
+              className="w-full bg-white dark:bg-gray-900"
+              onChange={e => handleDomainFilterChange(e.target.value)}
+            />
+
+            <Button type="submit" className="btn btn-warning text-white">
+              Crawl
+            </Button>
+
+            <Button type="button" className="btn btn-success text-white" onClick={downloadAll}>
+              <FaDownload />
+            </Button>
+          </form>
+
+          <div className="flex flex-wrap items-center justify-between gap-3 text-sm">
+            <div>
+              Total images: <b>{images.length}</b>
+            </div>
+
+            <div className="rounded-xl bg-primary px-3 py-1 text-base font-semibold text-white">
+              Selected: <b>{selectedCount}</b>
+            </div>
+          </div>
+
+          {/* DOMAIN CHIPS */}
+          <div className="flex flex-wrap gap-2 text-xs">
+            {Object.entries(domainMap).map(([domain, count]) => (
+              <button
+                key={domain}
+                onClick={() => handleDomainFilterChange(domain)}
+                className={`rounded border px-2 py-1 ${
+                  domainFilter === domain ? 'border-blue-500 bg-blue-500 text-white' : 'border-gray-300'
+                }`}
+              >
+                {domain} ({count})
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div ref={listRef} className="flex-1 overflow-auto p-2">
+        <div className="grid grid-cols-2 gap-2 md:grid-cols-3 xl:grid-cols-4">
+          {filteredImages.map((img, index) => (
+            <div
+              key={img.id}
+              onClick={() => toggleSelect(img.id)}
+              className={`group relative cursor-pointer overflow-hidden rounded-lg border bg-white shadow-sm transition hover:shadow-xl dark:bg-gray-900 ${
+                img.selected ? 'border-green-500' : 'border-red-500 opacity-60'
+              }`}
+            >
+              <div className="break-all border-t bg-primary px-1 py-2 text-xs text-white dark:bg-black">{img.url}</div>
+              <div className="h-[200px] w-full">
+                <img src={img.url} className="h-full w-full object-contain" />
+              </div>
+
+              <div className="absolute bottom-2 right-2">
+                <input
+                  type="checkbox"
+                  checked={img.selected}
+                  onChange={() => toggleSelect(img.id)}
+                  className="checkbox-success checkbox"
+                />
+              </div>
+
+              <div className="absolute bottom-0 left-0 right-0 flex gap-2 bg-black/70 p-3 opacity-0 transition group-hover:opacity-100">
+                <Button
+                  size="xs"
+                  className="btn btn-success text-white"
+                  onClick={e => {
+                    e.stopPropagation();
+                    downloadImage(img.url, index);
+                  }}
+                >
+                  <BsDownload size={20} />
+                </Button>
+
+                <Button
+                  size="xs"
+                  className="btn btn-error text-white"
+                  onClick={e => {
+                    e.stopPropagation();
+                    removeItem(img.id);
+                  }}
+                >
+                  <MdDeleteForever size={20} />
+                </Button>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
 };
 
 export default ImageCollectorPage;
+
