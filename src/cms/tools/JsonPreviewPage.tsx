@@ -100,6 +100,11 @@ const JsonPreviewPage: React.FC = () => {
   const [priceNote, setPriceNote] = useLocalStorageState<string>(NOTE_KEY, '');
   const [activeRightTab, setActiveRightTab] = useState<'preview' | 'note'>('preview');
 
+  const [searchName, setSearchName] = useState('');
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  const catalogRefs = useRef<Record<string, HTMLDivElement | null>>({});
+
   // helpers
   const isInputFocused = () => {
     const el = document.activeElement;
@@ -188,8 +193,15 @@ const JsonPreviewPage: React.FC = () => {
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
+        setSearchName('');
         const el = document.activeElement as HTMLElement;
         el?.blur();
+        return;
+      }
+
+      if (e.key.toLowerCase() === 'f') {
+        e.preventDefault();
+        searchInputRef.current?.focus();
         return;
       }
 
@@ -258,6 +270,7 @@ const JsonPreviewPage: React.FC = () => {
     return map;
   }, [catalogs]);
 
+  //
   useEffect(() => {
     if (!activeVariant) return;
 
@@ -265,14 +278,25 @@ const JsonPreviewPage: React.FC = () => {
 
     if (index === undefined) return;
 
-    const el = previewItemRefs.current[index];
+    let frame: number;
 
-    if (el) {
-      el.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center'
-      });
-    }
+    const tryScroll = () => {
+      const el = previewItemRefs.current[index];
+
+      if (el) {
+        el.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        });
+        return;
+      }
+
+      frame = requestAnimationFrame(tryScroll);
+    };
+
+    frame = requestAnimationFrame(tryScroll);
+
+    return () => cancelAnimationFrame(frame);
   }, [activeVariant, variantIndexMap]);
 
   // import
@@ -393,6 +417,7 @@ const JsonPreviewPage: React.FC = () => {
       })
     );
   };
+
   //
   const handleParseImport = () => {
     try {
@@ -409,6 +434,32 @@ const JsonPreviewPage: React.FC = () => {
     }
   };
 
+  //
+  const matchedCatalogIds = useMemo(() => {
+    if (!searchName.trim()) return [];
+
+    const lower = searchName.toLowerCase();
+
+    return catalogs.filter(c => (c.catalogName || '').toLowerCase().includes(lower)).map(c => c.id);
+  }, [searchName, catalogs]);
+
+  //
+  const firstMatchedCatalogId = matchedCatalogIds.length > 0 ? matchedCatalogIds[0] : null;
+
+  //
+  useEffect(() => {
+    if (!firstMatchedCatalogId) return;
+
+    const el = catalogRefs.current[firstMatchedCatalogId];
+
+    if (!el) return;
+
+    el.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
+    });
+  }, [firstMatchedCatalogId]);
+
   return (
     <div
       ref={containerRef}
@@ -421,6 +472,20 @@ const JsonPreviewPage: React.FC = () => {
             <span className="text-xs opacity-70">
               {stats.catalogCount} catalogs • {stats.variantCount} variants
             </span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Input
+              ref={searchInputRef}
+              size="xs"
+              placeholder="Search catalog..."
+              value={searchName}
+              onChange={e => setSearchName(e.target.value)}
+              className="w-52 border border-gray-300 bg-white text-black dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+            />
+            <span className="text-xs opacity-60">{matchedCatalogIds.length} results</span>
+            <Button size="xs" className="btn btn-outline" onClick={() => searchInputRef.current?.focus()}>
+              F
+            </Button>
           </div>
           <textarea
             className="w-full rounded border border-gray-300 bg-white p-2 text-xs text-black dark:border-gray-700 dark:bg-gray-900 dark:text-white"
@@ -469,10 +534,15 @@ const JsonPreviewPage: React.FC = () => {
         {catalogs.map((catalog, index) => (
           <div
             key={catalog.id}
+            ref={el => {
+              catalogRefs.current[catalog.id] = el;
+            }}
             className={`cursor-pointer rounded-xl border p-4 transition-colors ${
-              activeCatalog === catalog.id
-                ? 'border-blue-500 bg-blue-100 dark:border-green-500 dark:bg-green-950/50'
-                : 'border-dashed border-gray-50 bg-white dark:border-gray-700 dark:bg-gray-900'
+              matchedCatalogIds.includes(catalog.id)
+                ? 'border-red-500 bg-red-100 dark:bg-red-900/40'
+                : activeCatalog === catalog.id
+                  ? 'border-blue-500 bg-blue-100 dark:border-green-500 dark:bg-green-950/50'
+                  : 'border-dashed border-gray-50 bg-white dark:border-gray-700 dark:bg-gray-900'
             }`}
             onClick={() => setActiveCatalog(catalog.id)}
           >
@@ -560,11 +630,12 @@ const JsonPreviewPage: React.FC = () => {
         ))}
       </div>
       {/* JSON Preview */}
-      <div className="w-full overflow-auto p-4 scrollbar-hide xl:w-1/4">
+      <div id="preview-panel" className="w-full overflow-auto p-4 scrollbar-hide xl:w-1/4">
         <div className="flex gap-2">
           <div className="flex flex-wrap gap-2">
             <div className="flex items-center gap-2">
               <h2 className="text-sm font-semibold">Preview</h2>
+
               <span className="text-xs opacity-70">
                 {previewStats.products} products
                 {previewStats.formatted && ' • formatted'}
