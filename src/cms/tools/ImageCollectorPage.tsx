@@ -34,6 +34,8 @@ const matchFilter = (url: string, filter: string): boolean => {
   }
 };
 
+const btnClass = 'bg-white text-primary hover:text-white hover:bg-primary';
+
 const ImageCollectorPage: React.FC = () => {
   const [images, setImages] = useState<ImageItem[]>([]);
   const [value, setValue] = useState('');
@@ -221,11 +223,11 @@ const ImageCollectorPage: React.FC = () => {
               onChange={e => handleDomainFilterChange(e.target.value)}
             />
 
-            <Button type="submit" className="btn btn-warning text-white">
+            <Button type="submit" className={btnClass}>
               Crawl
             </Button>
 
-            <Button type="button" className="btn btn-success text-white" onClick={downloadAll}>
+            <Button type="button" className={btnClass} onClick={downloadAll}>
               <FaDownload />
             </Button>
           </form>
@@ -284,7 +286,7 @@ const ImageCollectorPage: React.FC = () => {
               <div className="absolute bottom-0 left-0 right-0 flex gap-2 bg-black/70 p-3 opacity-0 transition group-hover:opacity-100">
                 <Button
                   size="xs"
-                  className="btn btn-success text-white"
+                  className={btnClass}
                   onClick={e => {
                     e.stopPropagation();
                     downloadImage(img.url, index);
@@ -295,7 +297,7 @@ const ImageCollectorPage: React.FC = () => {
 
                 <Button
                   size="xs"
-                  className="btn btn-error text-white"
+                  className={btnClass}
                   onClick={e => {
                     e.stopPropagation();
                     removeItem(img.id);

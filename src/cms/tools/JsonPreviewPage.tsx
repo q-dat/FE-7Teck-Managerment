@@ -37,6 +37,12 @@ type ProductJson = {
 const STORAGE_KEY = 'catalog_json_storage';
 const BACKUP_KEY = 'catalog_json_backup';
 const NOTE_KEY = 'price_note_storage';
+const btnClass =
+  'text-xs font-semibold rounded-md transition-all duration-300 ' +
+  'bg-black text-cyan-400 border border-cyan-500/40 ' +
+  'hover:bg-cyan-500 hover:text-black ' +
+  'shadow-md shadow-cyan-500/20 hover:shadow-lg hover:shadow-cyan-400/40 ' +
+  'active:scale-95';
 
 // storage hook
 function useLocalStorageState<T>(key: string, initial: T) {
@@ -506,7 +512,7 @@ const JsonPreviewPage: React.FC = () => {
               className="w-[300px] border border-gray-300 bg-white text-black focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white"
             />
             <span className="text-xs opacity-60">{matchedCatalogIds.length} results</span>
-            <Button size="xs" className="btn btn-outline" onClick={() => searchInputRef.current?.focus()}>
+            <Button size="xs" className={btnClass} onClick={() => searchInputRef.current?.focus()}>
               F
             </Button>
           </div>
@@ -520,34 +526,34 @@ const JsonPreviewPage: React.FC = () => {
 
           <div className="flex flex-col gap-2">
             <div className="flex flex-wrap gap-2">
-              <Button size="xs" className="btn btn-success text-white" onClick={() => importJson(importText)}>
+              <Button size="xs" className={btnClass} onClick={() => importJson(importText)}>
                 Import Catalog JSON
               </Button>
 
-              <Button size="xs" className="btn btn-accent text-white" onClick={formatPhonesJson}>
+              <Button size="xs" className={btnClass} onClick={formatPhonesJson}>
                 Format Phones API
               </Button>
-              <Button size="xs" className="btn btn-secondary text-white" onClick={handleParseImport}>
+              <Button size="xs" className={btnClass} onClick={handleParseImport}>
                 MODEL | STORAGE | COLORS | PRICE
               </Button>
-              <Button size="xs" className="btn btn-warning text-white" onClick={() => setImportText('')}>
+              <Button size="xs" className={btnClass} onClick={() => setImportText('')}>
                 Clear Import
               </Button>
             </div>
             <div className="flex flex-wrap gap-2">
-              <Button size="xs" className="btn btn-primary text-white" onClick={addCatalog}>
+              <Button size="xs" className={btnClass} onClick={addCatalog}>
                 T - Add Catalog
               </Button>
 
-              <Button size="xs" className="btn btn-info text-white" onClick={addVariant}>
+              <Button size="xs" className={btnClass} onClick={addVariant}>
                 N - Add Variant
               </Button>
 
-              <Button size="xs" className="btn btn-secondary text-white" onClick={duplicateVariant}>
+              <Button size="xs" className={btnClass} onClick={duplicateVariant}>
                 M - Duplicate Variant
               </Button>
 
-              <Button size="xs" className="btn btn-error text-white" onClick={removeCatalog}>
+              <Button size="xs" className={btnClass} onClick={removeCatalog}>
                 B - Remove Catalog
               </Button>
             </div>
@@ -564,17 +570,13 @@ const JsonPreviewPage: React.FC = () => {
             </span>
           </div>
 
-          <Button
-            size="xs"
-            className="btn btn-info text-white"
-            onClick={() => navigator.clipboard.writeText(previewText)}
-          >
+          <Button size="xs" className={btnClass} onClick={() => navigator.clipboard.writeText(previewText)}>
             Copy
           </Button>
 
           <Button
             size="xs"
-            className="btn btn-success text-white"
+            className={btnClass}
             onClick={() => {
               const blob = new Blob([previewText], {
                 type: 'application/json'
@@ -592,18 +594,22 @@ const JsonPreviewPage: React.FC = () => {
             Download
           </Button>
 
-          <Button size="xs" className="btn btn-error text-white" onClick={clearLocal}>
+          <Button size="xs" className={btnClass} onClick={clearLocal}>
             X - Clear Local
           </Button>
 
-          <Button size="xs" className="btn btn-warning text-white" onClick={restoreBackup}>
+          <Button size="xs" className={btnClass} onClick={restoreBackup}>
             Z - Restore Backup
           </Button>
 
           <div className="mb-3 flex gap-2">
             <Button
               size="xs"
-              className={activeRightTab === 'preview' ? 'btn-primary' : ''}
+              className={`hover:border hover:border-dashed hover:bg-primary/50 hover:text-white ${
+                activeRightTab === 'preview'
+                  ? 'bg-primary font-semibold text-white shadow-sm'
+                  : 'border border-neutral-800 bg-neutral-900 text-neutral-300 hover:bg-neutral-800 hover:text-white'
+              }`}
               onClick={() => setActiveRightTab('preview')}
             >
               Preview JSON
@@ -611,7 +617,11 @@ const JsonPreviewPage: React.FC = () => {
 
             <Button
               size="xs"
-              className={activeRightTab === 'note' ? 'btn-primary' : ''}
+              className={`hover:border hover:border-dashed hover:bg-primary/50 hover:text-white ${
+                activeRightTab === 'note'
+                  ? 'bg-primary font-semibold text-white shadow-sm'
+                  : 'border border-neutral-800 bg-neutral-900 text-neutral-300 hover:bg-neutral-800 hover:text-white'
+              }`}
               onClick={() => setActiveRightTab('note')}
             >
               Price Note
