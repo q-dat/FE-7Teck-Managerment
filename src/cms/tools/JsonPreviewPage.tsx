@@ -483,7 +483,7 @@ const JsonPreviewPage: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="flex h-[90vh] rounded-md border border-black bg-white text-black dark:bg-gray-950 dark:text-white"
+      className="flex h-screen rounded-md border border-black bg-white text-black dark:bg-gray-950 dark:text-white 2xl:h-[90vh]"
     >
       {/* Header */}
       <div className="fixed z-10 flex flex-wrap bg-white dark:bg-black">
@@ -622,7 +622,7 @@ const JsonPreviewPage: React.FC = () => {
 
       {/* Catalog */}
       <div
-        className="mt-[150px] flex w-full flex-col gap-2 overflow-auto border-r border-black p-2 scrollbar-hide dark:border-white xl:w-3/4"
+        className="mt-[200px] flex w-full flex-col gap-2 overflow-auto border-r border-black p-2 scrollbar-hide dark:border-white 2xl:mt-[150px]"
         ref={catalogsScrollRef}
       >
         {catalogs.map((catalog, index) => (
@@ -725,7 +725,7 @@ const JsonPreviewPage: React.FC = () => {
       </div>
 
       {/* JSON Preview */}
-      <div className="mt-[130px] w-full overflow-auto p-2 scrollbar-hide xl:w-1/4">
+      <div className="mt-[180px] w-full overflow-auto p-2 scrollbar-hide lg:w-1/3 xl:mt-[130px] xl:w-1/4">
         {/*  */}
         {activeRightTab === 'preview' && (
           <div className="mt-5 space-y-2 text-[10px] text-blue-800 dark:text-green-500">
