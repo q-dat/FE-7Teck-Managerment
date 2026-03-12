@@ -3,6 +3,8 @@ import { Button, Input } from 'react-daisyui';
 import { BsDownload } from 'react-icons/bs';
 import { FaDownload } from 'react-icons/fa';
 import { MdDeleteForever } from 'react-icons/md';
+import LabelForm from '../../components/adminPage/LabelForm';
+import NavbarAdminMobile from '../../components/adminPage/responsiveUI/mobile/NavbarAdmin.mobile';
 
 type ImageItem = {
   id: string;
@@ -12,6 +14,8 @@ type ImageItem = {
 
 const STORAGE_KEY = 'image_crawler_url';
 const DOMAIN_FILTER_KEY = 'image_domain_filter';
+const inputClass =
+  'w-full rounded border border-gray-300 bg-white p-2 text-xs text-black focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white';
 
 const getHostname = (url: string): string => {
   try {
@@ -34,7 +38,7 @@ const matchFilter = (url: string, filter: string): boolean => {
   }
 };
 
-const btnClass = 'bg-white text-primary hover:text-white hover:bg-primary';
+const btnClass = 'bg-white text-primary hover:text-white hover:bg-primary ';
 
 const ImageCollectorPage: React.FC = () => {
   const [images, setImages] = useState<ImageItem[]>([]);
@@ -196,38 +200,47 @@ const ImageCollectorPage: React.FC = () => {
 
   return (
     <div className="flex h-screen flex-col bg-white text-black dark:bg-gray-950 dark:text-white">
+      <NavbarAdminMobile Title_NavbarAdmin="Image Collector Page" />
+
       <div className="border-b p-4 dark:border-gray-800">
         <div className="mx-auto flex max-w-[1400px] flex-col gap-3">
           {/* HOTKEY HELP */}
           <div className="flex flex-wrap gap-2 text-xs text-gray-500 dark:text-gray-400">
-            <span className="rounded border px-2 py-1">F Focus URL</span>
-            <span className="rounded border px-2 py-1">G Focus Domain</span>
-            <span className="rounded border px-2 py-1">S Download</span>
-            <span className="rounded border px-2 py-1">Esc Blur</span>
+            <span className="rounded border px-2 py-1">F - Focus URL</span>
+            <span className="rounded border px-2 py-1">G - Focus Domain</span>
+            <span className="rounded border px-2 py-1">S - Download</span>
+            <span className="rounded border px-2 py-1">Esc - Blur</span>
           </div>
           {/*  */}
-          <form onSubmit={handleSubmit} className="flex gap-2">
-            <Input
-              ref={urlInputRef}
-              value={value}
-              placeholder="Paste product URL then Enter"
-              className="w-full bg-white dark:bg-gray-900"
-              onChange={e => setValue(e.target.value)}
-            />
+          <form onSubmit={handleSubmit} className="flex items-end gap-2">
+            <div className="w-full">
+              <LabelForm title="Product URL" />
+              <Input
+                size="sm"
+                ref={urlInputRef}
+                value={value}
+                placeholder="Paste product URL then Enter"
+                className={inputClass}
+                onChange={e => setValue(e.target.value)}
+              />
+            </div>
+            <div className="w-full">
+              <LabelForm title="Domain/Path" />
+              <Input
+                size="sm"
+                ref={domainInputRef}
+                value={domainFilter}
+                placeholder="Filter domain or path"
+                className={inputClass}
+                onChange={e => handleDomainFilterChange(e.target.value)}
+              />
+            </div>
 
-            <Input
-              ref={domainInputRef}
-              value={domainFilter}
-              placeholder="Filter domain or path"
-              className="w-full bg-white dark:bg-gray-900"
-              onChange={e => handleDomainFilterChange(e.target.value)}
-            />
-
-            <Button type="submit" className={btnClass}>
+            <Button size="sm" type="submit" className={btnClass}>
               Crawl
             </Button>
 
-            <Button type="button" className={btnClass} onClick={downloadAll}>
+            <Button size="sm" type="button" className={btnClass} onClick={downloadAll}>
               <FaDownload />
             </Button>
           </form>
@@ -237,7 +250,7 @@ const ImageCollectorPage: React.FC = () => {
               Total images: <b>{images.length}</b>
             </div>
 
-            <div className="rounded-xl bg-primary px-3 py-1 text-base font-semibold text-white">
+            <div className="rounded-md border border-dashed border-black bg-primary px-3 py-1 text-sm font-semibold text-white">
               Selected: <b>{selectedCount}</b>
             </div>
           </div>

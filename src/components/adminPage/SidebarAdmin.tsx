@@ -91,7 +91,7 @@ const SidebarAdmin: React.FC<{}> = () => {
     },
     {
       name: 'Image Collector',
-      icon: MdImageSearch ,
+      icon: MdImageSearch,
       link: '/cms/admin/image-collector'
     }
   ];
@@ -139,7 +139,7 @@ const SidebarAdmin: React.FC<{}> = () => {
         </div>
         {/*  */}
         <div className="relative flex w-full flex-col justify-between bg-white dark:bg-gray-800 dark:text-white">
-          <div className="mt-2 h-[280px] overflow-y-scroll scrollbar-hide md:h-[500px]">
+          <div className="mt-2 h-[70vh] overflow-y-scroll scrollbar-hide">
             <Menu className="m-0 w-full flex-grow p-0 xl:px-2">
               {menuItems.map(item => {
                 const Icon = item.icon;

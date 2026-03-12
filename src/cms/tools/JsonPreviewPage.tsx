@@ -2,8 +2,9 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Button, Input } from 'react-daisyui';
 import { Toastify } from '../../helper/Toastify';
 import { parseImportFormat } from './parseImportFormat';
+import HelpModal from './HelpModal';
+import NavbarAdminMobile from '../../components/adminPage/responsiveUI/mobile/NavbarAdmin.mobile';
 
-// MODEL | STORAGE | COLORS | PRICE
 type Variant = {
   id: string;
   color: string;
@@ -111,6 +112,12 @@ const JsonPreviewPage: React.FC = () => {
 
   const catalogRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const catalogsScrollRef = useRef<HTMLDivElement>(null);
+
+  const [openHelp, setOpenHelp] = useState(false);
+
+  const copyFormat = () => {
+    navigator.clipboard.writeText('BRAND | MODEL | RAM/STORAGE | COLOR');
+  };
 
   // helpers
   const isInputFocused = () => {
@@ -489,12 +496,15 @@ const JsonPreviewPage: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="flex h-screen rounded-md border border-black bg-white text-black dark:bg-gray-950 dark:text-white 2xl:h-[90vh]"
+      className="flex h-screen rounded-md border border-black bg-white text-black dark:bg-gray-950 dark:text-white 2xl:h-[95vh]"
     >
       {/* Header */}
       <div className="fixed z-10 flex flex-wrap bg-white dark:bg-black">
+        <div className="w-full">
+          <NavbarAdminMobile Title_NavbarAdmin="Image Collector Page" />
+        </div>
         {/* Left */}
-        <div className="flex w-full flex-wrap items-start gap-2 border-r border-black p-2 dark:border-white xl:w-2/4">
+        <div className="flex w-full flex-wrap items-start gap-2 border-r border-dashed border-black p-2 dark:border-white xl:w-2/4">
           <div className="flex items-center gap-2">
             <h2 className="text-sm font-semibold">Catalogs</h2>
             <span className="text-xs opacity-70">
@@ -534,8 +544,9 @@ const JsonPreviewPage: React.FC = () => {
                 Format Phones API
               </Button>
               <Button size="xs" className={btnClass} onClick={handleParseImport}>
-                MODEL | STORAGE | COLORS | PRICE
+                BRAND | MODEL | RAM/STORAGE | COLOR
               </Button>
+
               <Button size="xs" className={btnClass} onClick={() => setImportText('')}>
                 Clear Import
               </Button>
@@ -602,37 +613,52 @@ const JsonPreviewPage: React.FC = () => {
             Z - Restore Backup
           </Button>
 
-          <div className="mb-3 flex gap-2">
-            <Button
-              size="xs"
-              className={`hover:border hover:border-dashed hover:bg-primary/50 hover:text-white ${
-                activeRightTab === 'preview'
-                  ? 'bg-primary font-semibold text-white shadow-sm'
-                  : 'border border-neutral-800 bg-neutral-900 text-neutral-300 hover:bg-neutral-800 hover:text-white'
-              }`}
-              onClick={() => setActiveRightTab('preview')}
-            >
-              Preview JSON
+          <Button
+            size="xs"
+            type="button"
+            data-tip="BRAND | MODEL | RAM/STORAGE | COLOR"
+            className="tooltip tooltip-top tooltip-secondary cursor-pointer rounded-md border border-dotted text-xs"
+            onClick={copyFormat}
+          >
+            Copy format?
+          </Button>
+
+          <div>
+            <Button size="xs" onClick={() => setOpenHelp(true)}>
+              Hướng dẫn
             </Button>
 
-            <Button
-              size="xs"
-              className={`hover:border hover:border-dashed hover:bg-primary/50 hover:text-white ${
-                activeRightTab === 'note'
-                  ? 'bg-primary font-semibold text-white shadow-sm'
-                  : 'border border-neutral-800 bg-neutral-900 text-neutral-300 hover:bg-neutral-800 hover:text-white'
-              }`}
-              onClick={() => setActiveRightTab('note')}
-            >
-              Price Note
-            </Button>
+            <HelpModal open={openHelp} onClose={() => setOpenHelp(false)} />
           </div>
+          <Button
+            size="xs"
+            className={`hover:border hover:border-dashed hover:bg-primary/50 hover:text-white ${
+              activeRightTab === 'preview'
+                ? 'bg-primary font-semibold text-white shadow-sm'
+                : 'border border-neutral-800 bg-neutral-900 text-neutral-300 hover:bg-neutral-800 hover:text-white'
+            }`}
+            onClick={() => setActiveRightTab('preview')}
+          >
+            Preview JSON
+          </Button>
+
+          <Button
+            size="xs"
+            className={`hover:border hover:border-dashed hover:bg-primary/50 hover:text-white ${
+              activeRightTab === 'note'
+                ? 'bg-primary font-semibold text-white shadow-sm'
+                : 'border border-neutral-800 bg-neutral-900 text-neutral-300 hover:bg-neutral-800 hover:text-white'
+            }`}
+            onClick={() => setActiveRightTab('note')}
+          >
+            Price Note
+          </Button>
         </div>
       </div>
 
       {/* Catalog */}
       <div
-        className="mt-[200px] flex w-full flex-col gap-2 overflow-auto border-r border-black p-2 scrollbar-hide dark:border-white 2xl:mt-[150px]"
+        className="mt-[500px] flex w-full flex-col gap-3 overflow-auto border-r border-dashed border-black px-1 scrollbar-hide dark:border-gray-500 2xl:mt-[150px]"
         ref={catalogsScrollRef}
       >
         {catalogs.map((catalog, index) => (
@@ -735,10 +761,10 @@ const JsonPreviewPage: React.FC = () => {
       </div>
 
       {/* JSON Preview */}
-      <div className="mt-[180px] w-full overflow-auto p-2 scrollbar-hide lg:w-1/3 xl:mt-[130px] xl:w-1/4">
+      <div className="mt-[485px] w-full overflow-auto px-1 scrollbar-hide lg:w-1/3 xl:mt-[130px] xl:w-1/4">
         {/*  */}
         {activeRightTab === 'preview' && (
-          <div className="mt-5 space-y-2 text-[10px] text-blue-800 dark:text-green-500">
+          <div className="mt-5 space-y-2 text-[10px] text-black dark:text-green-500">
             {previewJson.map((item, index) => (
               <div
                 key={index}
@@ -748,7 +774,7 @@ const JsonPreviewPage: React.FC = () => {
                 className={`rounded border p-2 ${
                   variantIndexMap.get(activeVariant ?? '') === index
                     ? 'border-amber-500 bg-amber-100 dark:bg-amber-900/40'
-                    : 'border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-900'
+                    : 'border-gray-200 bg-gray-400 dark:border-gray-700 dark:bg-gray-900'
                 }`}
               >
                 {/* <pre className="whitespace-pre-wrap">{JSON.stringify(item)}</pre> */} {/* Json 1 dòng */}
@@ -759,7 +785,7 @@ const JsonPreviewPage: React.FC = () => {
         )}
         {activeRightTab === 'note' && (
           <textarea
-            className="h-full w-full rounded-sm border bg-white p-2 text-base focus:outline-none dark:bg-black"
+            className="h-full w-full rounded-sm border-none bg-white px-px text-sm text-black scrollbar-hide focus:outline-none dark:bg-black dark:text-green-500"
             placeholder="Paste phone price list here..."
             value={priceNote}
             onChange={e => setPriceNote(e.target.value)}
