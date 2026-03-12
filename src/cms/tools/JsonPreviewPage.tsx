@@ -104,6 +104,7 @@ const JsonPreviewPage: React.FC = () => {
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   const catalogRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const catalogsScrollRef = useRef<HTMLDivElement>(null);
 
   // helpers
   const isInputFocused = () => {
@@ -188,56 +189,6 @@ const JsonPreviewPage: React.FC = () => {
       })
     );
   };
-
-  // hotkeys
-  useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setSearchName('');
-        const el = document.activeElement as HTMLElement;
-        el?.blur();
-        return;
-      }
-
-      if (e.key.toLowerCase() === 'f') {
-        e.preventDefault();
-        searchInputRef.current?.focus();
-        return;
-      }
-
-      if (isInputFocused()) return;
-
-      switch (e.key.toLowerCase()) {
-        case 't':
-          addCatalog();
-          break;
-
-        case 'n':
-          addVariant();
-          break;
-
-        case 'm':
-          duplicateVariant();
-          break;
-
-        case 'b':
-          removeCatalog();
-          break;
-
-        case 'x':
-          clearLocal();
-          break;
-
-        case 'z':
-          restoreBackup();
-          break;
-      }
-    };
-
-    window.addEventListener('keydown', handleKey);
-
-    return () => window.removeEventListener('keydown', handleKey);
-  }, [addCatalog, addVariant, duplicateVariant, removeCatalog, clearLocal, restoreBackup]);
 
   // json output
   const jsonOutput = useMemo<ProductJson[]>(() => {
@@ -446,27 +397,98 @@ const JsonPreviewPage: React.FC = () => {
   //
   const firstMatchedCatalogId = matchedCatalogIds.length > 0 ? matchedCatalogIds[0] : null;
 
-  //
-  useEffect(() => {
+  // Scroll matched catalog lên gần top - phiên bản siêu mượt (dùng RAF )
+  const scrollToFirstMatchedCatalog = useCallback(() => {
     if (!firstMatchedCatalogId) return;
 
     const el = catalogRefs.current[firstMatchedCatalogId];
+    if (!el || !catalogsScrollRef.current) return;
 
-    if (!el) return;
+    const container = catalogsScrollRef.current;
+    const elTop = el.offsetTop;
+    const offset = 300; // cách top đẹp mắt, dễ nhìn nhất
 
-    el.scrollIntoView({
-      behavior: 'smooth',
-      block: 'center'
+    container.scrollTo({
+      top: Math.max(0, elTop - offset),
+      behavior: 'smooth'
     });
   }, [firstMatchedCatalogId]);
+
+  // Trigger scroll mượt khi gõ search (dùng RAF )
+  useEffect(() => {
+    if (!firstMatchedCatalogId) return;
+
+    let frame: number;
+
+    const tryScroll = () => {
+      scrollToFirstMatchedCatalog();
+    };
+
+    frame = requestAnimationFrame(tryScroll);
+
+    return () => cancelAnimationFrame(frame);
+  }, [firstMatchedCatalogId, scrollToFirstMatchedCatalog]);
+
+  // hotkeys
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setSearchName('');
+        const el = document.activeElement as HTMLElement;
+        el?.blur();
+        return;
+      }
+
+      if (e.key.toLowerCase() === 'f') {
+        e.preventDefault();
+        searchInputRef.current?.focus();
+        setTimeout(scrollToFirstMatchedCatalog, 100); // chờ focus xong
+        return;
+      }
+
+      if (isInputFocused()) return;
+
+      switch (e.key.toLowerCase()) {
+        case 't':
+          addCatalog();
+          break;
+
+        case 'n':
+          addVariant();
+          break;
+
+        case 'm':
+          duplicateVariant();
+          break;
+
+        case 'b':
+          removeCatalog();
+          break;
+
+        case 'x':
+          clearLocal();
+          break;
+
+        case 'z':
+          restoreBackup();
+          break;
+      }
+    };
+
+    window.addEventListener('keydown', handleKey);
+
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [addCatalog, addVariant, duplicateVariant, removeCatalog, clearLocal, restoreBackup, scrollToFirstMatchedCatalog]);
 
   return (
     <div
       ref={containerRef}
-      className="flex h-screen rounded-md border border-black bg-white text-black dark:bg-gray-950 dark:text-white"
+      className="flex h-[90vh] rounded-md border border-black bg-white text-black dark:bg-gray-950 dark:text-white"
     >
-      <div className="w-full space-y-4 overflow-auto border-r border-black p-4 dark:border-white xl:w-3/4">
-        <div className="flex flex-wrap gap-2">
+      {/* Header */}
+      <div className="fixed z-10 flex flex-wrap bg-white dark:bg-black">
+        {/* Left */}
+        <div className="flex w-full flex-wrap items-start gap-2 border-r border-black p-2 dark:border-white xl:w-2/4">
           <div className="flex items-center gap-2">
             <h2 className="text-sm font-semibold">Catalogs</h2>
             <span className="text-xs opacity-70">
@@ -480,7 +502,8 @@ const JsonPreviewPage: React.FC = () => {
               placeholder="Search catalog..."
               value={searchName}
               onChange={e => setSearchName(e.target.value)}
-              className="w-52 border border-gray-300 bg-white text-black dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+              onFocus={scrollToFirstMatchedCatalog}
+              className="w-[300px] border border-gray-300 bg-white text-black focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white"
             />
             <span className="text-xs opacity-60">{matchedCatalogIds.length} results</span>
             <Button size="xs" className="btn btn-outline" onClick={() => searchInputRef.current?.focus()}>
@@ -488,7 +511,7 @@ const JsonPreviewPage: React.FC = () => {
             </Button>
           </div>
           <textarea
-            className="w-full rounded border border-gray-300 bg-white p-2 text-xs text-black dark:border-gray-700 dark:bg-gray-900 dark:text-white"
+            className="w-full rounded border border-gray-300 bg-white p-2 text-xs text-black focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white"
             rows={1}
             placeholder="Paste JSON here to import..."
             value={importText}
@@ -531,13 +554,84 @@ const JsonPreviewPage: React.FC = () => {
           </div>
         </div>
 
+        {/* Right */}
+        <div className="flex w-full flex-wrap items-start gap-2 p-2 xl:w-2/4">
+          <div className="flex items-center gap-2">
+            <h2 className="text-sm font-semibold">Preview</h2>
+            <span className="text-xs opacity-70">
+              {previewStats.products} products
+              {previewStats.formatted && ' • formatted'}
+            </span>
+          </div>
+
+          <Button
+            size="xs"
+            className="btn btn-info text-white"
+            onClick={() => navigator.clipboard.writeText(previewText)}
+          >
+            Copy
+          </Button>
+
+          <Button
+            size="xs"
+            className="btn btn-success text-white"
+            onClick={() => {
+              const blob = new Blob([previewText], {
+                type: 'application/json'
+              });
+
+              const url = URL.createObjectURL(blob);
+
+              const a = document.createElement('a');
+              a.href = url;
+              a.download = previewStats.formatted ? 'phones-formatted.json' : 'products.json';
+
+              a.click();
+            }}
+          >
+            Download
+          </Button>
+
+          <Button size="xs" className="btn btn-error text-white" onClick={clearLocal}>
+            X - Clear Local
+          </Button>
+
+          <Button size="xs" className="btn btn-warning text-white" onClick={restoreBackup}>
+            Z - Restore Backup
+          </Button>
+
+          <div className="mb-3 flex gap-2">
+            <Button
+              size="xs"
+              className={activeRightTab === 'preview' ? 'btn-primary' : ''}
+              onClick={() => setActiveRightTab('preview')}
+            >
+              Preview JSON
+            </Button>
+
+            <Button
+              size="xs"
+              className={activeRightTab === 'note' ? 'btn-primary' : ''}
+              onClick={() => setActiveRightTab('note')}
+            >
+              Price Note
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Catalog */}
+      <div
+        className="mt-[150px] flex w-full flex-col gap-2 overflow-auto border-r border-black p-2 scrollbar-hide dark:border-white xl:w-3/4"
+        ref={catalogsScrollRef}
+      >
         {catalogs.map((catalog, index) => (
           <div
             key={catalog.id}
             ref={el => {
               catalogRefs.current[catalog.id] = el;
             }}
-            className={`cursor-pointer rounded-xl border p-4 transition-colors ${
+            className={`cursor-pointer rounded-xl border p-2 transition-colors ${
               matchedCatalogIds.includes(catalog.id)
                 ? 'border-red-500 bg-red-100 dark:bg-red-900/40'
                 : activeCatalog === catalog.id
@@ -629,72 +723,10 @@ const JsonPreviewPage: React.FC = () => {
           </div>
         ))}
       </div>
+
       {/* JSON Preview */}
-      <div id="preview-panel" className="w-full overflow-auto p-4 scrollbar-hide xl:w-1/4">
-        <div className="flex gap-2">
-          <div className="flex flex-wrap gap-2">
-            <div className="flex items-center gap-2">
-              <h2 className="text-sm font-semibold">Preview</h2>
-
-              <span className="text-xs opacity-70">
-                {previewStats.products} products
-                {previewStats.formatted && ' • formatted'}
-              </span>
-            </div>
-            <Button
-              size="xs"
-              className="btn btn-info text-white"
-              onClick={() => navigator.clipboard.writeText(previewText)}
-            >
-              Copy
-            </Button>
-
-            <Button
-              size="xs"
-              className="btn btn-success text-white"
-              onClick={() => {
-                const blob = new Blob([previewText], {
-                  type: 'application/json'
-                });
-
-                const url = URL.createObjectURL(blob);
-
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = previewStats.formatted ? 'phones-formatted.json' : 'products.json';
-
-                a.click();
-              }}
-            >
-              Download
-            </Button>
-
-            <Button size="xs" className="btn btn-error text-white" onClick={clearLocal}>
-              X - Clear Local
-            </Button>
-
-            <Button size="xs" className="btn btn-warning text-white" onClick={restoreBackup}>
-              Z - Restore Backup
-            </Button>
-            <div className="mb-3 flex gap-2">
-              <Button
-                size="xs"
-                className={activeRightTab === 'preview' ? 'btn-primary' : ''}
-                onClick={() => setActiveRightTab('preview')}
-              >
-                Preview JSON
-              </Button>
-
-              <Button
-                size="xs"
-                className={activeRightTab === 'note' ? 'btn-primary' : ''}
-                onClick={() => setActiveRightTab('note')}
-              >
-                Price Note
-              </Button>
-            </div>
-          </div>
-        </div>
+      <div className="mt-[130px] w-full overflow-auto p-2 scrollbar-hide xl:w-1/4">
+        {/*  */}
         {activeRightTab === 'preview' && (
           <div className="mt-5 space-y-2 text-[10px] text-blue-800 dark:text-green-500">
             {previewJson.map((item, index) => (
