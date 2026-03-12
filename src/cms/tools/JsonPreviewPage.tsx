@@ -35,11 +35,23 @@ type ProductJson = {
   note: string;
 };
 
+type CatalogJson = {
+  name: string;
+  img: string;
+  price: number;
+  status: number;
+  content: string;
+  configuration_and_memory: {
+    ram: string;
+    storage_capacity: string;
+  };
+};
+
 const STORAGE_KEY = 'catalog_json_storage';
 const BACKUP_KEY = 'catalog_json_backup';
 const NOTE_KEY = 'price_note_storage';
 const btnClass =
-  'text-xs font-semibold rounded-md transition-all duration-300 ' +
+  'text-[10px] font-bold rounded-md transition-all duration-300 ' +
   'bg-black text-cyan-400 border border-cyan-500/40 ' +
   'hover:bg-cyan-500 hover:text-black ' +
   'shadow-md shadow-cyan-500/20 hover:shadow-lg hover:shadow-cyan-400/40 ' +
@@ -105,8 +117,7 @@ const JsonPreviewPage: React.FC = () => {
   const previewItemRefs = useRef<Record<number, HTMLDivElement | null>>({});
 
   const [priceNote, setPriceNote] = useLocalStorageState<string>(NOTE_KEY, '');
-  const [activeRightTab, setActiveRightTab] = useState<'preview' | 'note'>('preview');
-
+  const [activeRightTab, setActiveRightTab] = useState<'preview' | 'catalog' | 'note'>('preview');
   const [searchName, setSearchName] = useState('');
   const searchInputRef = useRef<HTMLInputElement>(null);
 
@@ -220,6 +231,26 @@ const JsonPreviewPage: React.FC = () => {
     );
   }, [catalogs]);
 
+  //
+  const previewJson = useMemo(() => {
+    if (formattedJson.length) return formattedJson;
+    return jsonOutput;
+  }, [formattedJson, jsonOutput]);
+
+  //
+  const previewText = useMemo(() => JSON.stringify(previewJson, null, 2), [previewJson]);
+
+  //
+  const previewStats = useMemo(() => {
+    return {
+      products: previewJson.length,
+      catalogs: catalogs.length,
+      variants: catalogs.reduce((s, c) => s + c.variants.length, 0),
+      formatted: formattedJson.length > 0
+    };
+  }, [previewJson, catalogs, formattedJson]);
+
+  //
   const variantIndexMap = useMemo(() => {
     const map = new Map<string, number>();
     let index = 0;
@@ -329,22 +360,6 @@ const JsonPreviewPage: React.FC = () => {
     }
   };
 
-  const previewJson = useMemo(() => {
-    if (formattedJson.length) return formattedJson;
-    return jsonOutput;
-  }, [formattedJson, jsonOutput]);
-
-  const previewText = useMemo(() => JSON.stringify(previewJson, null, 2), [previewJson]);
-
-  const previewStats = useMemo(() => {
-    return {
-      products: previewJson.length,
-      catalogs: catalogs.length,
-      variants: catalogs.reduce((s, c) => s + c.variants.length, 0),
-      formatted: formattedJson.length > 0
-    };
-  }, [previewJson, catalogs, formattedJson]);
-
   // stats
   const stats = useMemo(() => {
     const catalogCount = catalogs.length;
@@ -397,6 +412,55 @@ const JsonPreviewPage: React.FC = () => {
       Toastify('Parse failed', 500);
     }
   };
+
+  //
+  const parseRamStorage = (name: string) => {
+    const match = name.match(/(\d+GB)\/(\d+GB)/i);
+
+    if (!match) {
+      return {
+        ram: '',
+        storage: ''
+      };
+    }
+
+    return {
+      ram: match[1],
+      storage: match[2]
+    };
+  };
+
+  //
+  const catalogJsonOutput = useMemo<CatalogJson[]>(() => {
+    const map = new Map<string, { prices: number[] }>();
+
+    previewJson.forEach(p => {
+      if (!map.has(p.catalogName)) {
+        map.set(p.catalogName, { prices: [] });
+      }
+
+      map.get(p.catalogName)!.prices.push(p.price);
+    });
+
+    return Array.from(map.entries()).map(([name, data]) => {
+      const { ram, storage } = parseRamStorage(name);
+
+      return {
+        name,
+        img: 'https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg',
+        price: Math.min(...data.prices),
+        status: 0,
+        content: 'New',
+        configuration_and_memory: {
+          ram,
+          storage_capacity: storage
+        }
+      };
+    });
+  }, [previewJson]);
+
+  //
+  const catalogJsonText = useMemo(() => JSON.stringify(catalogJsonOutput, null, 2), [catalogJsonOutput]);
 
   //
   const matchedCatalogIds = useMemo(() => {
@@ -496,7 +560,7 @@ const JsonPreviewPage: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="flex h-screen rounded-md border border-black bg-white text-black dark:bg-gray-950 dark:text-white 2xl:h-[95vh]"
+      className="flex h-screen rounded-md border border-black bg-white text-black dark:bg-gray-950 dark:text-white 2xl:h-[94vh]"
     >
       {/* Header */}
       <div className="fixed z-10 flex flex-wrap bg-white dark:bg-black">
@@ -582,7 +646,18 @@ const JsonPreviewPage: React.FC = () => {
           </div>
 
           <Button size="xs" className={btnClass} onClick={() => navigator.clipboard.writeText(previewText)}>
-            Copy
+            Copy Product JSON
+          </Button>
+          <Button size="xs" className={btnClass} onClick={() => navigator.clipboard.writeText(catalogJsonText)}>
+            Copy Catalog JSON
+          </Button>
+
+          <Button size="xs" className={btnClass} onClick={clearLocal}>
+            X - Clear Local
+          </Button>
+
+          <Button size="xs" className={btnClass} onClick={restoreBackup}>
+            Z - Restore Backup
           </Button>
 
           <Button
@@ -602,17 +677,10 @@ const JsonPreviewPage: React.FC = () => {
               a.click();
             }}
           >
-            Download
+            Download Product Json
           </Button>
 
-          <Button size="xs" className={btnClass} onClick={clearLocal}>
-            X - Clear Local
-          </Button>
-
-          <Button size="xs" className={btnClass} onClick={restoreBackup}>
-            Z - Restore Backup
-          </Button>
-
+          <div className="flex h-6 w-1 items-center bg-green-500" />
           <Button
             size="xs"
             type="button"
@@ -630,6 +698,8 @@ const JsonPreviewPage: React.FC = () => {
 
             <HelpModal open={openHelp} onClose={() => setOpenHelp(false)} />
           </div>
+
+          <div className="flex h-6 w-1 items-center bg-green-500" />
           <Button
             size="xs"
             className={`hover:border hover:border-dashed hover:bg-primary/50 hover:text-white ${
@@ -639,7 +709,19 @@ const JsonPreviewPage: React.FC = () => {
             }`}
             onClick={() => setActiveRightTab('preview')}
           >
-            Preview JSON
+            Product JSON
+          </Button>
+
+          <Button
+            size="xs"
+            className={`hover:border hover:border-dashed hover:bg-primary/50 hover:text-white ${
+              activeRightTab === 'catalog'
+                ? 'bg-primary font-semibold text-white shadow-sm'
+                : 'border border-neutral-800 bg-neutral-900 text-neutral-300 hover:bg-neutral-800 hover:text-white'
+            }`}
+            onClick={() => setActiveRightTab('catalog')}
+          >
+            Catalog JSON
           </Button>
 
           <Button
@@ -778,6 +860,18 @@ const JsonPreviewPage: React.FC = () => {
                 }`}
               >
                 {/* <pre className="whitespace-pre-wrap">{JSON.stringify(item)}</pre> */} {/* Json 1 dòng */}
+                <pre className="whitespace-pre-wrap break-all">{JSON.stringify(item, null, 2)}</pre>
+              </div>
+            ))}
+          </div>
+        )}
+        {activeRightTab === 'catalog' && (
+          <div className="mt-5 space-y-2 text-[10px] text-black dark:text-green-500">
+            {catalogJsonOutput.map((item, index) => (
+              <div
+                key={index}
+                className="rounded border border-gray-200 bg-gray-400 p-2 dark:border-gray-700 dark:bg-gray-900"
+              >
                 <pre className="whitespace-pre-wrap break-all">{JSON.stringify(item, null, 2)}</pre>
               </div>
             ))}
