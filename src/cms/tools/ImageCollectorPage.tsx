@@ -203,7 +203,7 @@ const ImageCollectorPage: React.FC = () => {
       <NavbarAdminMobile Title_NavbarAdmin="Image Collector Page" />
 
       <div className="border-b p-4 dark:border-gray-800">
-        <div className="mx-auto flex max-w-[1400px] flex-col gap-3">
+        <div className="flex flex-col gap-3">
           {/* HOTKEY HELP */}
           <div className="flex flex-wrap gap-2 text-xs text-gray-500 dark:text-gray-400">
             <span className="rounded border px-2 py-1">F - Focus URL</span>
