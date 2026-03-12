@@ -286,8 +286,8 @@ const JsonPreviewPage: React.FC = () => {
           color: item.color,
           price: item.price,
           basePrice: item.price,
-          img: item.img,
-          thumbnail: item.thumbnail ?? [],
+          img: 'https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg',
+          thumbnail: ['https://res.cloudinary.com/cloud7teck/image/upload/1/123.jpg'],
           status: item.status,
           des: item.des,
           note: item.note
