@@ -18,7 +18,7 @@ import { IPhone } from '../../../types/type/phone/phone';
 import TimeAgo from '../../../components/common/timeAgo/TimeAgo';
 import Zoom from '../../../lib/Zoom';
 import PhoneCatalogManager from './PhoneCatalogManager';
-import { FaFacebook, FaGoogle, FaList, FaReddit, FaYoutube } from 'react-icons/fa';
+import { FaCopy, FaFacebook, FaGoogle, FaList, FaReddit, FaYoutube } from 'react-icons/fa';
 import NavbarAdminDesktop from '../../../components/adminPage/NavbarAdminDesktop ';
 import NavbarAdminMobile from '../../../components/adminPage/responsiveUI/mobile/NavbarAdmin.mobile';
 import { InlinePriceEditor } from '../../../components/adminPage/inline-edit/InlinePriceEditor';
@@ -72,6 +72,10 @@ const PhoneManager: React.FC = () => {
     setIsModalEditOpen(true);
   };
   const closeModalEditAdmin = () => setIsModalEditOpen(false);
+
+  const copyProductId = (id: string) => {
+    navigator.clipboard.writeText(id);
+  };
 
   const handleInlineUpdate = async (id: string, field: keyof IPhone, value: any) => {
     const data = new FormData();
@@ -244,7 +248,15 @@ const PhoneManager: React.FC = () => {
                       )}
                       <span className="bg-black p-1 text-white dark:bg-white dark:text-black">{phone?.color}</span>
                     </span>
+
                     <span className="flex items-center gap-4 text-sm opacity-0 group-hover:opacity-100">
+                      <div
+                        data-tip="Copy id sản phẩm"
+                        className="tooltip tooltip-left tooltip-primary cursor-pointer hover:text-red-500"
+                        onClick={() => copyProductId(phone._id)}
+                      >
+                        <FaCopy />
+                      </div>
                       <FaGoogle
                         className="cursor-pointer transition hover:text-red-500"
                         onClick={() => {

@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Button, Input } from 'react-daisyui';
 import { Toastify } from '../../helper/Toastify';
 import { parseImportFormat } from './parseImportFormat';
-import HelpModal from './HelpModal';
+import HelpModal from './Help.modal';
 import NavbarAdminMobile from '../../components/adminPage/responsiveUI/mobile/NavbarAdmin.mobile';
 
 type Variant = {

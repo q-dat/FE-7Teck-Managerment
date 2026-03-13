@@ -50,6 +50,9 @@ const ImageCollectorPage: React.FC = () => {
   const domainInputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
 
+  const [phoneId, setPhoneId] = useState('');
+  const [isUploading, setIsUploading] = useState(false);
+
   useEffect(() => {
     const savedUrl = localStorage.getItem(STORAGE_KEY);
     const savedFilter = localStorage.getItem(DOMAIN_FILTER_KEY);
@@ -198,6 +201,51 @@ const ImageCollectorPage: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKey);
   }, [downloadAll]);
 
+  const updatePhoneImages = async () => {
+    if (!phoneId) {
+      alert('Phone ID is required');
+      return;
+    }
+
+    const selected = filteredImages.filter(i => i.selected);
+
+    if (selected.length === 0) {
+      alert('No images selected');
+      return;
+    }
+
+    const img = selected[0].url;
+    const thumbnails = selected.slice(1).map(i => i.url);
+
+    try {
+      setIsUploading(true);
+
+      const res = await fetch(`${import.meta.env.VITE_API_PORT}/api/phones/update-images`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          phoneId,
+          img,
+          thumbnails
+        })
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || 'Update failed');
+      }
+
+      alert('Images updated successfully');
+    } catch (err) {
+      console.error(err);
+      alert('Upload failed');
+    } finally {
+      setIsUploading(false);
+    }
+  };
   return (
     <div className="flex h-screen flex-col bg-white text-black dark:bg-gray-950 dark:text-white">
       <NavbarAdminMobile Title_NavbarAdmin="Image Collector Page" />
@@ -246,6 +294,27 @@ const ImageCollectorPage: React.FC = () => {
           </form>
 
           <div className="flex flex-wrap items-center justify-between gap-3 text-sm">
+            <div className="flex w-full items-end justify-between gap-3">
+              <div className="w-full">
+                <LabelForm title="Phone ID" />
+                <Input
+                  size="sm"
+                  value={phoneId}
+                  placeholder="Enter phone id"
+                  className={inputClass}
+                  onChange={e => setPhoneId(e.target.value)}
+                />
+              </div>
+              <Button
+                size="sm"
+                type="button"
+                className="bg-green-600 text-white hover:bg-green-700"
+                disabled={isUploading}
+                onClick={updatePhoneImages}
+              >
+                Update Images
+              </Button>
+            </div>
             <div>
               Total images: <b>{images.length}</b>
             </div>
