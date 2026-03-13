@@ -10,41 +10,32 @@ type ProductJson = {
   note: string;
 };
 
-export const parseImportFormat = (input: string): ProductJson[] => {
-  const lines = input
+export const parseImportFormat = (text: string): ProductJson[] => {
+  const rows = text
     .split('\n')
-    .map(v => v.trim())
+    .map(r => r.trim())
     .filter(Boolean);
 
   const result: ProductJson[] = [];
 
-  lines.forEach(line => {
-    const parts = line.split('|').map(v => v.trim());
+  for (const row of rows) {
+    const parts = row.split('|').map(p => p.trim());
 
-    if (parts.length < 4) return;
+    if (parts.length < 5) continue;
 
-    const model = parts[0];
-    const storage = parts[1];
-    const colorsRaw = parts[2];
-    const priceRaw = parts[3];
+    const brand = parts[0];
+    const model = parts[1];
+    const memory = parts[2];
+    const colors = parts[3];
+    const priceRaw = parts[4];
 
-    const catalogName = `${model} ${storage}`.trim();
+    const price = Number(priceRaw.replace(/[^\d]/g, ''));
 
-    const basePrice = Number(priceRaw.replace(/[^\d]/g, ''));
+    const catalogName = `${brand} ${model} ${memory}`.replace(/\s+/g, ' ').trim();
 
-    const colorList = colorsRaw.split(',').map(c => c.trim());
+    const colorList = colors.split(',').map(c => c.trim());
 
-    colorList.forEach(colorItem => {
-      let color = colorItem;
-      let price = basePrice;
-
-      const match = colorItem.match(/(.+?)[ :](\d+)/);
-
-      if (match) {
-        color = match[1].trim();
-        price = Number(match[2]);
-      }
-
+    for (const color of colorList) {
       result.push({
         catalogName,
         name: catalogName,
@@ -56,8 +47,9 @@ export const parseImportFormat = (input: string): ProductJson[] => {
         des: '',
         note: ''
       });
-    });
-  });
+    }
+  }
 
   return result;
 };
+
