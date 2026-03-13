@@ -48,7 +48,7 @@ const Admin: React.FC = () => {
     <div className="flex min-h-screen w-full bg-[#F3F2F7] dark:bg-gray-900">
       {/* Sidebar */}
       <aside
-        className={`fixed left-0 top-0 z-20 h-screen border-r bg-white transition-all duration-300 dark:bg-gray-950 ${collapsed ? 'w-[80px]' : 'w-64'} hidden xl:block`}
+        className={`fixed left-0 top-0 h-screen border-r bg-white transition-all duration-300 dark:bg-gray-950 ${collapsed ? 'w-[80px]' : 'w-64'} hidden xl:block`}
       >
         <SidebarAdmin collapsed={collapsed} />
 

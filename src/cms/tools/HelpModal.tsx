@@ -79,11 +79,11 @@ const HelpModal: React.FC<Props> = ({ open, onClose }) => {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/60">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
       <div
-        className="relative overflow-auto rounded-xl border border-gray-300 bg-white p-2 shadow-2xl dark:border-gray-700 dark:bg-gray-900"
+        className="relative overflow-auto rounded-md border border-gray-300 bg-white p-2 shadow-2xl dark:border-gray-700 dark:bg-gray-900"
         style={{
-          width: 'calc(100vw - 20vw)',
+          width: 'calc(100vw - 10vw)',
           height: 'calc(100vh - 20vh)'
         }}
       >
@@ -95,14 +95,14 @@ const HelpModal: React.FC<Props> = ({ open, onClose }) => {
           </Button>
         </div>
 
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-1 gap-2 lg:grid-cols-2">
           <div className="flex flex-col gap-10">
             <div>
               <p className="rounded-t-md border border-x-2 border-y-0 border-green-500 bg-gray-600 p-1 text-sm font-semibold text-white">
                 Import bảng giá
               </p>
 
-              <pre className="rounded bg-gray-400 p-1 text-[10px] text-black dark:bg-gray-800 dark:text-green-500">
+              <pre className="overflow-hidden break-all rounded bg-gray-400 p-1 text-[10px] text-black dark:bg-gray-800 dark:text-green-500">
                 {priceFormatExample}
               </pre>
 
@@ -116,7 +116,7 @@ const HelpModal: React.FC<Props> = ({ open, onClose }) => {
                 Import Catalog JSON
               </p>
 
-              <pre className="rounded bg-gray-400 p-1 text-[10px] text-black dark:bg-gray-800 dark:text-green-500">
+              <pre className="overflow-hidden break-all rounded bg-gray-400 p-1 text-[10px] text-black dark:bg-gray-800 dark:text-green-500">
                 {catalogJsonExample}
               </pre>
 
@@ -131,7 +131,7 @@ const HelpModal: React.FC<Props> = ({ open, onClose }) => {
               Format JSON API
             </p>
 
-            <pre className="rounded bg-gray-400 p-1 text-[10px] text-black dark:bg-gray-800 dark:text-green-500">
+            <pre className="overflow-hidden break-all rounded bg-gray-400 p-1 text-[10px] text-black dark:bg-gray-800 dark:text-green-500">
               {apiJsonExample}
             </pre>
 
