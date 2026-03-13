@@ -77,7 +77,7 @@ export default {
           primary: "#a92d30",
           secondary: "#009485",
           info: "#312e91",
-          success: "#009485",
+          success: "#28a745",
           warning: "#ff9900",
           error: "#e53e3e",
         },

@@ -5,6 +5,7 @@ import { FaDownload } from 'react-icons/fa';
 import { MdDeleteForever } from 'react-icons/md';
 import LabelForm from '../../components/adminPage/LabelForm';
 import NavbarAdminMobile from '../../components/adminPage/responsiveUI/mobile/NavbarAdmin.mobile';
+import { Toastify } from '../../helper/Toastify';
 
 type ImageItem = {
   id: string;
@@ -203,14 +204,14 @@ const ImageCollectorPage: React.FC = () => {
 
   const updatePhoneImages = async () => {
     if (!phoneId) {
-      alert('Phone ID is required');
+      Toastify('Phone ID is required', 500);
       return;
     }
 
     const selected = filteredImages.filter(i => i.selected);
 
     if (selected.length === 0) {
-      alert('No images selected');
+      Toastify('No images selected', 500);
       return;
     }
 
@@ -238,16 +239,17 @@ const ImageCollectorPage: React.FC = () => {
         throw new Error(data.message || 'Update failed');
       }
 
+      Toastify('Images updated successfully', 200);
       alert('Images updated successfully');
     } catch (err) {
       console.error(err);
-      alert('Upload failed');
+      Toastify('Upload failed', 500);
     } finally {
       setIsUploading(false);
     }
   };
   return (
-    <div className="flex h-screen flex-col bg-white text-black dark:bg-gray-950 dark:text-white">
+    <div className="flex h-screen flex-col bg-white text-black dark:bg-gray-950 dark:text-white 2xl:h-[94vh]">
       <NavbarAdminMobile Title_NavbarAdmin="Image Collector Page" />
 
       <div className="border-b p-4 dark:border-gray-800">
@@ -342,26 +344,26 @@ const ImageCollectorPage: React.FC = () => {
       </div>
 
       <div ref={listRef} className="flex-1 overflow-auto p-2">
-        <div className="grid grid-cols-2 gap-2 md:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-2 gap-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-7">
           {filteredImages.map((img, index) => (
             <div
               key={img.id}
               onClick={() => toggleSelect(img.id)}
-              className={`group relative cursor-pointer overflow-hidden rounded-lg border bg-white shadow-sm transition hover:shadow-xl dark:bg-gray-900 ${
-                img.selected ? 'border-green-500' : 'border-red-500 opacity-60'
+              className={`group relative cursor-pointer overflow-hidden rounded-lg border bg-white shadow-sm transition hover:shadow-xl ${
+                img.selected ? 'border-black' : 'border-dashed border-gray-500 opacity-20'
               }`}
             >
-              <div className="break-all border-t bg-primary px-1 py-2 text-xs text-white dark:bg-black">{img.url}</div>
               <div className="h-[200px] w-full">
                 <img src={img.url} className="h-full w-full object-contain" />
               </div>
+              <p className="break-all border-t px-1 py-2 text-[10px] text-black">{img.url}</p>
 
-              <div className="absolute bottom-2 right-2">
+              <div className="absolute right-2 top-2">
                 <input
                   type="checkbox"
                   checked={img.selected}
                   onChange={() => toggleSelect(img.id)}
-                  className="checkbox-success checkbox"
+                  className="checkbox-success checkbox checkbox-sm"
                 />
               </div>
 
