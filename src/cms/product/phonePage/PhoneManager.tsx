@@ -261,7 +261,7 @@ const PhoneManager: React.FC = () => {
                         className="cursor-pointer transition hover:text-red-500"
                         onClick={() => {
                           setActiveRowId(phone._id ?? '');
-                          openSearchProvider('google', phone?.name ?? '');
+                          openSearchProvider('google', `${phone?.name ?? ''} ${phone?.color ?? ''}`.trim());
                         }}
                       />
 
