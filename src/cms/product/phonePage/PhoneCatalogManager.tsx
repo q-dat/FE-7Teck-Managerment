@@ -126,6 +126,7 @@ const PhoneCatalogManager: React.FC = () => {
             {phoneCatalogs && phoneCatalogs.length > 0 ? (
               phoneCatalogs.map((phoneCatalog: IPhoneCatalog, index: number) => (
                 <Table.Row
+                  onClick={() => setActiveRowId(phoneCatalog._id ?? '')}
                   key={phoneCatalog._id}
                   className={`group text-black dark:text-white ${activeRowId === phoneCatalog._id ? 'border-y-2 border-l-8 border-green-500 bg-orange-200 font-bold dark:bg-green-950' : 'bg-primary/10 transition-all dark:bg-gray-900'} `}
                 >
@@ -147,7 +148,6 @@ const PhoneCatalogManager: React.FC = () => {
                       )}
                       <button
                         onClick={() => {
-                          setActiveRowId(phoneCatalog._id ?? '');
                           openModalEditAdmin(phoneCatalog._id ?? '');
                         }}
                         className="w-full max-w-[140px] text-sm font-light"
@@ -160,7 +160,6 @@ const PhoneCatalogManager: React.FC = () => {
                       <FaGoogle
                         className="cursor-pointer transition hover:text-red-500"
                         onClick={() => {
-                          setActiveRowId(phoneCatalog._id ?? '');
                           openSearchProvider('google', phoneCatalog?.name ?? '');
                         }}
                       />
@@ -168,7 +167,6 @@ const PhoneCatalogManager: React.FC = () => {
                       <FaYoutube
                         className="cursor-pointer transition hover:text-red-600"
                         onClick={() => {
-                          setActiveRowId(phoneCatalog._id ?? '');
                           openSearchProvider('youtube', phoneCatalog?.name ?? '');
                         }}
                       />
@@ -176,7 +174,6 @@ const PhoneCatalogManager: React.FC = () => {
                       <FaFacebook
                         className="cursor-pointer transition hover:text-blue-600"
                         onClick={() => {
-                          setActiveRowId(phoneCatalog._id ?? '');
                           openSearchProvider('facebook', phoneCatalog?.name ?? '');
                         }}
                       />
@@ -184,7 +181,6 @@ const PhoneCatalogManager: React.FC = () => {
                       <SiTiktok
                         className="cursor-pointer transition"
                         onClick={() => {
-                          setActiveRowId(phoneCatalog._id ?? '');
                           openSearchProvider('tiktok', phoneCatalog?.name ?? '');
                         }}
                       />
@@ -192,7 +188,6 @@ const PhoneCatalogManager: React.FC = () => {
                       <SiX
                         className="cursor-pointer transition"
                         onClick={() => {
-                          setActiveRowId(phoneCatalog._id ?? '');
                           openSearchProvider('x', phoneCatalog?.name ?? '');
                         }}
                       />
@@ -200,7 +195,6 @@ const PhoneCatalogManager: React.FC = () => {
                       <SiInstagram
                         className="cursor-pointer transition hover:text-pink-500"
                         onClick={() => {
-                          setActiveRowId(phoneCatalog._id ?? '');
                           openSearchProvider('instagram', phoneCatalog?.name ?? '');
                         }}
                       />
@@ -208,7 +202,6 @@ const PhoneCatalogManager: React.FC = () => {
                       <FaReddit
                         className="cursor-pointer transition hover:text-orange-500"
                         onClick={() => {
-                          setActiveRowId(phoneCatalog._id ?? '');
                           openSearchProvider('reddit', phoneCatalog?.name ?? '');
                         }}
                       />
@@ -244,7 +237,6 @@ const PhoneCatalogManager: React.FC = () => {
                   <span>
                     <Button
                       onClick={() => {
-                        setActiveRowId(phoneCatalog._id ?? '');
                         setSelectedPhoneCatalogId(phoneCatalog._id ?? '');
                         setIsFullUpdateOpen(true);
                       }}
@@ -265,7 +257,6 @@ const PhoneCatalogManager: React.FC = () => {
                         <Button
                           color="success"
                           onClick={() => {
-                            setActiveRowId(phoneCatalog._id ?? '');
                             openModalEditAdmin(phoneCatalog._id ?? '');
                           }}
                           className="w-full max-w-[140px] text-sm font-light text-white"

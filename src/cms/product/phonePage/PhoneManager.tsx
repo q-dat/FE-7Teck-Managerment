@@ -221,6 +221,9 @@ const PhoneManager: React.FC = () => {
             {phones && phones.length > 0 ? (
               phones.map((phone: IPhone, index: number) => (
                 <Table.Row
+                  onClick={() => {
+                    setActiveRowId(phone._id ?? '');
+                  }}
                   key={phone._id}
                   className={`group text-black dark:text-white ${activeRowId === phone._id ? 'border-y-2 border-l-8 border-green-500 bg-orange-200 font-bold dark:bg-green-950' : 'bg-primary/10 transition-all dark:bg-gray-900'} `}
                 >
@@ -253,7 +256,11 @@ const PhoneManager: React.FC = () => {
                       <div
                         data-tip="Copy id sản phẩm"
                         className="tooltip tooltip-left tooltip-primary cursor-pointer hover:text-red-500"
-                        onClick={() => copyProductId(phone._id)}
+                        onClick={() => {
+                          setActiveRowId(phone._id ?? '');
+
+                          copyProductId(phone._id);
+                        }}
                       >
                         <FaCopy />
                       </div>
@@ -261,6 +268,7 @@ const PhoneManager: React.FC = () => {
                         className="cursor-pointer transition hover:text-red-500"
                         onClick={() => {
                           setActiveRowId(phone._id ?? '');
+
                           openSearchProvider('google', `${phone?.name ?? ''} ${phone?.color ?? ''}`.trim());
                         }}
                       />
@@ -269,6 +277,7 @@ const PhoneManager: React.FC = () => {
                         className="cursor-pointer transition hover:text-red-600"
                         onClick={() => {
                           setActiveRowId(phone._id ?? '');
+
                           openSearchProvider('youtube', phone?.name ?? '');
                         }}
                       />
@@ -277,6 +286,7 @@ const PhoneManager: React.FC = () => {
                         className="cursor-pointer transition hover:text-blue-600"
                         onClick={() => {
                           setActiveRowId(phone._id ?? '');
+
                           openSearchProvider('facebook', phone?.name ?? '');
                         }}
                       />
@@ -293,6 +303,7 @@ const PhoneManager: React.FC = () => {
                         className="cursor-pointer transition"
                         onClick={() => {
                           setActiveRowId(phone._id ?? '');
+
                           openSearchProvider('x', phone?.name ?? '');
                         }}
                       />
@@ -301,6 +312,7 @@ const PhoneManager: React.FC = () => {
                         className="cursor-pointer transition hover:text-pink-500"
                         onClick={() => {
                           setActiveRowId(phone._id ?? '');
+
                           openSearchProvider('instagram', phone?.name ?? '');
                         }}
                       />
@@ -309,6 +321,7 @@ const PhoneManager: React.FC = () => {
                         className="cursor-pointer transition hover:text-orange-500"
                         onClick={() => {
                           setActiveRowId(phone._id ?? '');
+
                           openSearchProvider('reddit', phone?.name ?? '');
                         }}
                       />
@@ -364,6 +377,7 @@ const PhoneManager: React.FC = () => {
                           color="success"
                           onClick={() => {
                             setActiveRowId(phone._id ?? '');
+
                             openModalEditAdmin(phone?._id ?? '');
                           }}
                           className="w-full max-w-[140px] text-sm font-light text-white"
