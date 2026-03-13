@@ -18,12 +18,14 @@ import { IPhone } from '../../../types/type/phone/phone';
 import TimeAgo from '../../../components/common/timeAgo/TimeAgo';
 import Zoom from '../../../lib/Zoom';
 import PhoneCatalogManager from './PhoneCatalogManager';
-import { FaList } from 'react-icons/fa';
+import { FaFacebook, FaGoogle, FaList, FaReddit, FaYoutube } from 'react-icons/fa';
 import NavbarAdminDesktop from '../../../components/adminPage/NavbarAdminDesktop ';
 import NavbarAdminMobile from '../../../components/adminPage/responsiveUI/mobile/NavbarAdmin.mobile';
 import { InlinePriceEditor } from '../../../components/adminPage/inline-edit/InlinePriceEditor';
 import InlineNoteEditor from '../../../components/adminPage/inline-edit/InlineNoteEditor';
 import { useSearchParams } from 'react-router-dom';
+import { openSearchProvider } from '../../../components/utils/searchProvider';
+import { SiTiktok, SiX, SiInstagram } from 'react-icons/si';
 
 const PhoneManager: React.FC = () => {
   const { phones, loading, error, getAllPhones, updatePhone, deletePhone } = useContext(PhoneContext);
@@ -229,17 +231,76 @@ const PhoneManager: React.FC = () => {
                       <span>Không có ảnh thu nhỏ</span>
                     )}
                   </span>
-                  <span className="pl-2 group-hover:bg-primary group-hover:py-1 group-hover:text-white">
-                    {phone?.name}
-                    &nbsp;
-                    {phone?.phone_catalog_id?.status === 0 ? (
-                      <span className="bg-green-500 p-1 text-black">New</span>
-                    ) : phone?.phone_catalog_id?.status === 1 ? (
-                      <span className="bg-red-500 p-1 text-white">Used</span>
-                    ) : (
-                      phone?.phone_catalog_id?.status
-                    )}
-                    <span className="bg-black p-1 text-white dark:bg-white dark:text-black">{phone?.color}</span>
+                  <span className="flex flex-col items-center gap-2">
+                    <span className="whitespace-nowrap pl-2 group-hover:bg-primary group-hover:py-1 group-hover:text-white">
+                      {phone?.name}
+                      &nbsp;
+                      {phone?.phone_catalog_id?.status === 0 ? (
+                        <span className="bg-green-500 p-1 text-black">New</span>
+                      ) : phone?.phone_catalog_id?.status === 1 ? (
+                        <span className="bg-red-500 p-1 text-white">Used</span>
+                      ) : (
+                        phone?.phone_catalog_id?.status
+                      )}
+                      <span className="bg-black p-1 text-white dark:bg-white dark:text-black">{phone?.color}</span>
+                    </span>
+                    <span className="flex items-center gap-4 text-sm opacity-0 group-hover:opacity-100">
+                      <FaGoogle
+                        className="cursor-pointer transition hover:text-red-500"
+                        onClick={() => {
+                          setActiveRowId(phone._id ?? '');
+                          openSearchProvider('google', phone?.name ?? '');
+                        }}
+                      />
+
+                      <FaYoutube
+                        className="cursor-pointer transition hover:text-red-600"
+                        onClick={() => {
+                          setActiveRowId(phone._id ?? '');
+                          openSearchProvider('youtube', phone?.name ?? '');
+                        }}
+                      />
+
+                      <FaFacebook
+                        className="cursor-pointer transition hover:text-blue-600"
+                        onClick={() => {
+                          setActiveRowId(phone._id ?? '');
+                          openSearchProvider('facebook', phone?.name ?? '');
+                        }}
+                      />
+
+                      <SiTiktok
+                        className="cursor-pointer transition"
+                        onClick={() => {
+                          setActiveRowId(phone._id ?? '');
+                          openSearchProvider('tiktok', phone?.name ?? '');
+                        }}
+                      />
+
+                      <SiX
+                        className="cursor-pointer transition"
+                        onClick={() => {
+                          setActiveRowId(phone._id ?? '');
+                          openSearchProvider('x', phone?.name ?? '');
+                        }}
+                      />
+
+                      <SiInstagram
+                        className="cursor-pointer transition hover:text-pink-500"
+                        onClick={() => {
+                          setActiveRowId(phone._id ?? '');
+                          openSearchProvider('instagram', phone?.name ?? '');
+                        }}
+                      />
+
+                      <FaReddit
+                        className="cursor-pointer transition hover:text-orange-500"
+                        onClick={() => {
+                          setActiveRowId(phone._id ?? '');
+                          openSearchProvider('reddit', phone?.name ?? '');
+                        }}
+                      />
+                    </span>
                   </span>
 
                   <InlinePriceEditor<IPhone>
