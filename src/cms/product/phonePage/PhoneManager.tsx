@@ -26,6 +26,7 @@ import InlineNoteEditor from '../../../components/adminPage/inline-edit/InlineNo
 import { useSearchParams } from 'react-router-dom';
 import { openSearchProvider } from '../../../components/utils/searchProvider';
 import { SiTiktok, SiX, SiInstagram } from 'react-icons/si';
+import { handleShareFacebook } from '../../../components/adminPage/inline-edit/shareToFacebook';
 
 const PhoneManager: React.FC = () => {
   const { phones, loading, error, getAllPhones, updatePhone, deletePhone } = useContext(PhoneContext);
@@ -325,6 +326,30 @@ const PhoneManager: React.FC = () => {
                           openSearchProvider('reddit', phone?.name ?? '');
                         }}
                       />
+                      {/* FB Share */}
+                      <Button
+                        size="xs"
+                        color="primary"
+                        className="px-1 text-[10px]"
+                        onClick={async () => {
+                          const domain = import.meta.env.VITE_SITE_URL;
+                          const productUrl = `${domain}/${phone.slug}/${phone._id}`;
+
+                          const result = await handleShareFacebook({
+                            des:  phone.des ?? phone.name,
+                            url: productUrl
+                          });
+
+                          if (!result.success) {
+                            Toastify('Không copy được nội dung', 500);
+                            return;
+                          }
+
+                          Toastify('Đã copy nội dung. Dán vào Facebook (Ctrl + V)', 200);
+                        }}
+                      >
+                        FB
+                      </Button>
                     </span>
                   </span>
 
