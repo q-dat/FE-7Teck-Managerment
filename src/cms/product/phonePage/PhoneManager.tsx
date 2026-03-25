@@ -332,7 +332,7 @@ const PhoneManager: React.FC = () => {
                         color="primary"
                         className="px-1 text-[10px]"
                         onClick={async () => {
-                          const domain = import.meta.env.VITE_SITE_URL;
+                          const domain = import.meta.env.VITE_APP_ORIGIN;
                           const productUrl = `${domain}/${phone.slug}/${phone._id}`;
 
                           const result = await handleShareFacebook({
