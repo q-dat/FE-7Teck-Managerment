@@ -27,6 +27,7 @@ import { useSearchParams } from 'react-router-dom';
 import { openSearchProvider } from '../../../components/utils/searchProvider';
 import { SiTiktok, SiX, SiInstagram } from 'react-icons/si';
 import { handleShareFacebook } from '../../../components/adminPage/inline-edit/shareToFacebook';
+import InlineDescriptionEditor from '../../../components/adminPage/inline-edit/InlineDescriptionEditor';
 
 const PhoneManager: React.FC = () => {
   const { phones, loading, error, getAllPhones, updatePhone, deletePhone } = useContext(PhoneContext);
@@ -333,10 +334,10 @@ const PhoneManager: React.FC = () => {
                         className="px-1 text-[10px]"
                         onClick={async () => {
                           const domain = import.meta.env.VITE_APP_ORIGIN;
-                          const productUrl = `${domain}/${phone.slug}/${phone._id}`;
+                          const productUrl = `${domain}/${phone.slug}`;
 
                           const result = await handleShareFacebook({
-                            des:  phone.des ?? phone.name,
+                            des: phone.des ?? phone.name,
                             url: productUrl
                           });
 
@@ -380,7 +381,11 @@ const PhoneManager: React.FC = () => {
                       {phone?.status || 'Không có tình trạng!'}
                     </span>
                   )}
-                  <span className="line-clamp-3 w-20">{phone?.des || 'Trống!'}</span>
+                  <InlineDescriptionEditor
+                    prodId={phone._id}
+                    value={phone.des ?? ''}
+                    onSubmit={(id, value) => handleInlineUpdate(id, 'des', value)}
+                  />
                   <InlineNoteEditor
                     prodId={phone._id}
                     value={phone.note ?? ''}
