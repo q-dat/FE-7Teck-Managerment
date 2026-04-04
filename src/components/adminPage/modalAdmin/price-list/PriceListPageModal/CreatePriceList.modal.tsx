@@ -7,6 +7,7 @@ import LabelForm from '../../../LabelForm';
 import InputModal from '../../../InputModal';
 import { ICreatePriceListPayload, FormValues } from '../../../../../types/type/price-list/price-list';
 import QuillEditor from '../../../../../lib/ReactQuill';
+import { useEscClose } from '../../../../../hooks/useEscClose';
 
 interface ModalCreateAdminProps {
   isOpen: boolean;
@@ -24,6 +25,8 @@ const modules = {
 };
 
 const ModalCreatePriceListPageAdmin: React.FC<ModalCreateAdminProps> = ({ isOpen, onClose }) => {
+  useEscClose(isOpen, onClose);
+
   const { getAllPriceLists, createPriceLists, loading } = useContext(PriceListContext);
   const isLoading = loading.create;
   const { register, handleSubmit, control, reset } = useForm<FormValues>({
