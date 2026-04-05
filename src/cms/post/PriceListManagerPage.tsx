@@ -111,7 +111,11 @@ const PriceListManagerPage: React.FC = () => {
               Thêm
             </Button>
 
-            <Button onClick={() => setOpenPriceListImport(true)} className="w-[100px] text-sm font-light text-white">
+            <Button
+              color="secondary"
+              onClick={() => setOpenPriceListImport(true)}
+              className="w-[100px] text-sm font-light text-white"
+            >
               <RiUploadCloud2Line className="text-xl" />
             </Button>
           </div>
