@@ -261,7 +261,7 @@ const PhoneManager: React.FC = () => {
                   <span>#{index + 1}</span>
                   <span className="flex flex-wrap items-center justify-center gap-2">
                     <Zoom>
-                      <img loading="lazy" src={phone?.img} alt="Hình ảnh" className="h-12 w-12 object-cover" />
+                      <img loading="lazy" src={phone?.img} alt="Hình ảnh" className="h-12 w-12 object-cover " />
                     </Zoom>
                     {phone?.thumbnail && Array.isArray(phone?.thumbnail) ? (
                       <span className="text-xs text-red-500">(Ảnh thu nhỏ: {phone?.thumbnail?.length})</span>
@@ -296,7 +296,7 @@ const PhoneManager: React.FC = () => {
                         <FaCopy />
                       </div>
                       <FaGoogle
-                        className="cursor-pointer text-base transition hover:text-red-500"
+                        className="cursor-pointer transition hover:text-red-500"
                         onClick={() => {
                           setActiveRowId(phone._id ?? '');
 
@@ -305,7 +305,7 @@ const PhoneManager: React.FC = () => {
                       />
 
                       <FaYoutube
-                        className="cursor-pointer text-base transition hover:text-red-600"
+                        className="cursor-pointer transition hover:text-red-600"
                         onClick={() => {
                           setActiveRowId(phone._id ?? '');
 
@@ -314,7 +314,7 @@ const PhoneManager: React.FC = () => {
                       />
 
                       <FaFacebook
-                        className="cursor-pointer text-base transition hover:text-blue-600"
+                        className="cursor-pointer transition hover:text-blue-600"
                         onClick={() => {
                           setActiveRowId(phone._id ?? '');
 
@@ -323,7 +323,7 @@ const PhoneManager: React.FC = () => {
                       />
 
                       <SiTiktok
-                        className="cursor-pointer text-base transition"
+                        className="cursor-pointer transition"
                         onClick={() => {
                           setActiveRowId(phone._id ?? '');
                           openSearchProvider('tiktok', phone?.name ?? '');
@@ -331,7 +331,7 @@ const PhoneManager: React.FC = () => {
                       />
 
                       <SiX
-                        className="cursor-pointer text-base transition"
+                        className="cursor-pointer transition"
                         onClick={() => {
                           setActiveRowId(phone._id ?? '');
 
@@ -340,7 +340,7 @@ const PhoneManager: React.FC = () => {
                       />
 
                       <SiInstagram
-                        className="cursor-pointer text-base transition hover:text-pink-500"
+                        className="cursor-pointer transition hover:text-pink-500"
                         onClick={() => {
                           setActiveRowId(phone._id ?? '');
 
@@ -349,7 +349,7 @@ const PhoneManager: React.FC = () => {
                       />
 
                       <FaReddit
-                        className="cursor-pointer text-base transition hover:text-orange-500"
+                        className="cursor-pointer transition hover:text-orange-500"
                         onClick={() => {
                           setActiveRowId(phone._id ?? '');
 
@@ -439,7 +439,7 @@ const PhoneManager: React.FC = () => {
                   </span>
                   <span>
                     <details>
-                      <summary className="inline cursor-pointer text-base text-warning">
+                      <summary className="inline cursor-pointer text-warning">
                         <div className="flex items-center justify-center px-[55px] py-2">
                           <FaCircleInfo />
                         </div>
