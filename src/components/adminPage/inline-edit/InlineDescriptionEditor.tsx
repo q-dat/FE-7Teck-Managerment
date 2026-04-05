@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useEscClose } from '../../../hooks/useEscClose';
 
 interface Props {
   prodId: string;
@@ -9,6 +10,7 @@ interface Props {
 const InlineDescriptionEditor: React.FC<Props> = ({ prodId, value, onSubmit }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [tempValue, setTempValue] = useState(value);
+  useEscClose(isOpen, () => setIsOpen(false));
 
   const handleSave = async () => {
     await onSubmit(prodId, tempValue);
@@ -16,15 +18,29 @@ const InlineDescriptionEditor: React.FC<Props> = ({ prodId, value, onSubmit }) =
   };
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full font-normal">
       {/* Display */}
-      <div onClick={() => setIsOpen(true)} className="line-clamp-3 w-20 cursor-pointer">
-        {value || 'Trống!'}
-      </div>
+
+      {value == '' ? (
+        <>
+          <div onClick={() => setIsOpen(true)} className="line-clamp-3 w-20 cursor-pointer">
+            Trống
+          </div>
+        </>
+      ) : (
+        <>
+          <div
+            onClick={() => setIsOpen(true)}
+            className="line-clamp-3 w-20 cursor-pointer rounded-sm border border-dashed border-green-500 text-xs text-green-500"
+          >
+            {value}
+          </div>
+        </>
+      )}
 
       {/* Popup */}
       {isOpen && (
-        <div className="absolute right-0 top-0 z-50 w-[30vw] rounded-lg border border-green-500 bg-white p-2 font-light text-black dark:bg-gray-900 dark:text-white">
+        <div className="absolute right-0 top-0 z-50 w-[30vw] rounded-lg border border-green-500 bg-white p-2 text-black dark:bg-gray-900 dark:text-white">
           <textarea
             className="w-full bg-white p-1 text-sm shadow-xl focus:outline-none dark:bg-gray-900"
             rows={10}
