@@ -196,7 +196,7 @@ const TabletManager: React.FC = () => {
             <span>Tên Sản Phẩm</span>
             <span>Giá</span>
             <span>Giá Giảm</span>
-            <span>Tình Trạng</span>
+            <span>Tình Trạng Máy</span>
             <span>Mô Tả</span>
             <span>Ghi Chú</span>
             <span>Ngày Cập Nhật</span>
@@ -222,7 +222,7 @@ const TabletManager: React.FC = () => {
                       <span>Không có ảnh thu nhỏ</span>
                     )}
                   </span>
-                  <span className="pl-2 group-hover:bg-primary group-hover:py-1 group-hover:text-white">
+                  <span className="whitespace-nowrap pl-2 group-hover:bg-white group-hover:py-1 group-hover:text-black">
                     {tablet?.tablet_name}
                     &nbsp;
                     {tablet?.tablet_catalog_id?.t_cat_status === 0 ? (

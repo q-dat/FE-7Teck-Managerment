@@ -28,6 +28,8 @@ import { openSearchProvider } from '../../../components/utils/searchProvider';
 import { SiTiktok, SiX, SiInstagram } from 'react-icons/si';
 import { handleShareFacebook } from '../../../components/adminPage/inline-edit/shareToFacebook';
 import InlineDescriptionEditor from '../../../components/adminPage/inline-edit/InlineDescriptionEditor';
+import { downloadImage } from '../../../helper/downloadImage';
+import { TbCameraDown } from 'react-icons/tb';
 
 const PhoneManager: React.FC = () => {
   const { phones, loading, error, getAllPhones, updatePhone, deletePhone } = useContext(PhoneContext);
@@ -110,6 +112,33 @@ const PhoneManager: React.FC = () => {
         Toastify(`Lỗi: ${errorMessage}`, 500);
       }
     }
+  };
+
+  const handleDownloadImagesById = async (phone: IPhone) => {
+    if (!phone) return;
+
+    const images: string[] = [];
+
+    if (phone.img) images.push(phone.img);
+
+    if (Array.isArray(phone.thumbnail)) {
+      images.push(...phone.thumbnail);
+    }
+
+    const uniqueImages = Array.from(new Set(images));
+
+    for (let i = 0; i < uniqueImages.length; i++) {
+      const url = uniqueImages[i];
+
+      const filename = `${phone.slug || phone._id}-${i + 1}.jpg`;
+
+      await downloadImage(url, filename);
+
+      // tránh bị browser chặn
+      await new Promise(res => setTimeout(res, 150));
+    }
+
+    Toastify(`Đã tải ${uniqueImages.length} ảnh`, 200);
   };
 
   if (loading.getAll) return <LoadingLocal />;
@@ -211,7 +240,7 @@ const PhoneManager: React.FC = () => {
             <span>Tên Sản Phẩm</span>
             <span>Giá</span>
             <span>Giá Giảm</span>
-            <span>Tình Trạng</span>
+            <span>Tình Trạng Máy</span>
             <span>Mô Tả</span>
             <span>Ghi Chú</span>
             <span>Ngày Cập Nhật</span>
@@ -241,7 +270,7 @@ const PhoneManager: React.FC = () => {
                     )}
                   </span>
                   <span className="flex flex-col items-center gap-2">
-                    <span className="whitespace-nowrap pl-2 group-hover:bg-primary group-hover:py-1 group-hover:text-white">
+                    <span className="whitespace-nowrap pl-2 group-hover:bg-white group-hover:py-1 group-hover:text-black">
                       {phone?.name}
                       &nbsp;
                       {phone?.phone_catalog_id?.status === 0 ? (
@@ -254,10 +283,10 @@ const PhoneManager: React.FC = () => {
                       <span className="bg-black p-1 text-white dark:bg-white dark:text-black">{phone?.color}</span>
                     </span>
 
-                    <span className="flex items-center gap-4 text-sm opacity-0 group-hover:opacity-100">
+                    <span className="flex items-center gap-2 opacity-0 group-hover:opacity-100">
                       <div
                         data-tip="Copy id sản phẩm"
-                        className="tooltip tooltip-left tooltip-primary cursor-pointer hover:text-red-500"
+                        className="tooltip tooltip-bottom tooltip-primary cursor-pointer hover:text-red-500"
                         onClick={() => {
                           setActiveRowId(phone._id ?? '');
 
@@ -267,7 +296,7 @@ const PhoneManager: React.FC = () => {
                         <FaCopy />
                       </div>
                       <FaGoogle
-                        className="cursor-pointer transition hover:text-red-500"
+                        className="cursor-pointer text-base transition hover:text-red-500"
                         onClick={() => {
                           setActiveRowId(phone._id ?? '');
 
@@ -276,7 +305,7 @@ const PhoneManager: React.FC = () => {
                       />
 
                       <FaYoutube
-                        className="cursor-pointer transition hover:text-red-600"
+                        className="cursor-pointer text-base transition hover:text-red-600"
                         onClick={() => {
                           setActiveRowId(phone._id ?? '');
 
@@ -285,7 +314,7 @@ const PhoneManager: React.FC = () => {
                       />
 
                       <FaFacebook
-                        className="cursor-pointer transition hover:text-blue-600"
+                        className="cursor-pointer text-base transition hover:text-blue-600"
                         onClick={() => {
                           setActiveRowId(phone._id ?? '');
 
@@ -294,7 +323,7 @@ const PhoneManager: React.FC = () => {
                       />
 
                       <SiTiktok
-                        className="cursor-pointer transition"
+                        className="cursor-pointer text-base transition"
                         onClick={() => {
                           setActiveRowId(phone._id ?? '');
                           openSearchProvider('tiktok', phone?.name ?? '');
@@ -302,7 +331,7 @@ const PhoneManager: React.FC = () => {
                       />
 
                       <SiX
-                        className="cursor-pointer transition"
+                        className="cursor-pointer text-base transition"
                         onClick={() => {
                           setActiveRowId(phone._id ?? '');
 
@@ -311,7 +340,7 @@ const PhoneManager: React.FC = () => {
                       />
 
                       <SiInstagram
-                        className="cursor-pointer transition hover:text-pink-500"
+                        className="cursor-pointer text-base transition hover:text-pink-500"
                         onClick={() => {
                           setActiveRowId(phone._id ?? '');
 
@@ -320,18 +349,18 @@ const PhoneManager: React.FC = () => {
                       />
 
                       <FaReddit
-                        className="cursor-pointer transition hover:text-orange-500"
+                        className="cursor-pointer text-base transition hover:text-orange-500"
                         onClick={() => {
                           setActiveRowId(phone._id ?? '');
 
                           openSearchProvider('reddit', phone?.name ?? '');
                         }}
                       />
-                      {/* FB Share */}
+                      {/* Facebook (Share) */}
                       <Button
+                        data-tip="Facebook (Share)"
                         size="xs"
-                        color="primary"
-                        className="px-1 text-[10px]"
+                        className="tooltip tooltip-bottom tooltip-primary rounded-md border-none bg-[#3b5998] hover:bg-[#3b5998] hover:bg-opacity-80"
                         onClick={async () => {
                           const domain = import.meta.env.VITE_APP_ORIGIN;
                           const productUrl = `${domain}/${phone.slug}`;
@@ -350,6 +379,19 @@ const PhoneManager: React.FC = () => {
                         }}
                       >
                         FB
+                      </Button>
+                      {/* Download Images */}
+                      <Button
+                        data-tip="Download Images"
+                        size="xs"
+                        color="secondary"
+                        className="tooltip tooltip-bottom tooltip-primary rounded-md border-none text-white"
+                        onClick={() => {
+                          setActiveRowId(phone._id ?? '');
+                          handleDownloadImagesById(phone);
+                        }}
+                      >
+                        <TbCameraDown className="text-base" />
                       </Button>
                     </span>
                   </span>

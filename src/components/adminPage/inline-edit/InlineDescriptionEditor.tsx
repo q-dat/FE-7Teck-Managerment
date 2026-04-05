@@ -18,7 +18,7 @@ const InlineDescriptionEditor: React.FC<Props> = ({ prodId, value, onSubmit }) =
   return (
     <div className="relative w-full">
       {/* Display */}
-      <div onClick={() => setIsOpen(true)} className="line-clamp-3 w-20">
+      <div onClick={() => setIsOpen(true)} className="line-clamp-3 w-20 cursor-pointer">
         {value || 'Trống!'}
       </div>
 
