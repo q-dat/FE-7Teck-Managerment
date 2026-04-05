@@ -12,6 +12,7 @@ import { WindowsContext } from '../../context/windows/WindowsContext';
 import { MacbookContext } from '../../context/macbook/MacbookContext';
 import { LuFileJson } from 'react-icons/lu';
 import { MdImageSearch } from 'react-icons/md';
+import { IoIosArrowDropdownCircle, IoIosArrowDropupCircle } from 'react-icons/io';
 
 // import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
 // import { TabletCatalogContext } from '../../context/tablet-catalog/TabletCatalogContext';
@@ -19,6 +20,14 @@ import { MdImageSearch } from 'react-icons/md';
 // import { MacbookCatalogContext } from '../../context/macbook-catalog/MacbookCatalogContext';
 type SidebarAdminProps = {
   collapsed?: boolean;
+};
+
+type MenuItem = {
+  name: string;
+  icon?: React.ElementType;
+  link?: string;
+  toastify?: number;
+  children?: MenuItem[];
 };
 
 const SidebarAdmin: React.FC<SidebarAdminProps> = ({ collapsed = false }) => {
@@ -30,10 +39,20 @@ const SidebarAdmin: React.FC<SidebarAdminProps> = ({ collapsed = false }) => {
   const { countTablet } = useContext(TabletContext);
   const { countWindows } = useContext(WindowsContext);
   const { countMacbook } = useContext(MacbookContext);
+
   const [activeItem, setActiveItem] = useState('Dashboard');
+  const [openMenus, setOpenMenus] = useState<Record<string, boolean>>({});
+
   const location = useLocation();
 
-  const menuItems = [
+  const toggleMenu = (name: string) => {
+    setOpenMenus(prev => ({
+      ...prev,
+      [name]: !prev[name]
+    }));
+  };
+
+  const menuItems: MenuItem[] = [
     {
       name: 'Dashboard',
       icon: FaHome,
@@ -48,8 +67,21 @@ const SidebarAdmin: React.FC<SidebarAdminProps> = ({ collapsed = false }) => {
     {
       name: 'Điện Thoại',
       icon: FaMobileAlt,
-      link: '/cms/admin/phone-manager',
-      toastify: countPhone
+      children: [
+        {
+          name: 'Danh Sách Điện Thoại',
+          link: '/cms/admin/phone-manager',
+          toastify: countPhone
+        },
+        {
+          name: 'New Seal',
+          link: '/cms/admin/phone-manager?status=0'
+        },
+        {
+          name: 'Used',
+          link: '/cms/admin/phone-manager?status=1'
+        }
+      ]
     },
     // {
     //   name: 'DM Máy Tính Bảng',
@@ -61,7 +93,21 @@ const SidebarAdmin: React.FC<SidebarAdminProps> = ({ collapsed = false }) => {
       name: ' Máy Tính Bảng',
       icon: FaTabletAlt,
       link: '/cms/admin/tablet-manager',
-      toastify: countTablet
+      children: [
+        {
+          name: 'Danh Sách Máy Tính Bảng',
+          link: '/cms/admin/tablet-manager',
+          toastify: countTablet
+        },
+        {
+          name: 'New Seal',
+          link: '/cms/admin/tablet-manager?status=0'
+        },
+        {
+          name: 'Used',
+          link: '/cms/admin/tablet-manager?status=1'
+        }
+      ]
     },
     // {
     //   name: 'DM Macbook',
@@ -73,7 +119,21 @@ const SidebarAdmin: React.FC<SidebarAdminProps> = ({ collapsed = false }) => {
       name: 'Macbook',
       icon: BsApple,
       link: '/cms/admin/macbook-manager',
-      toastify: countMacbook
+      children: [
+        {
+          name: 'Danh Sách Macbook',
+          link: '/cms/admin/macbook-manager',
+          toastify: countMacbook
+        },
+        {
+          name: 'New Seal',
+          link: '/cms/admin/macbook-manager?status=0'
+        },
+        {
+          name: 'Used',
+          link: '/cms/admin/macbook-manager?status=1'
+        }
+      ]
     },
     // {
     //   name: 'DM Windows',
@@ -85,7 +145,21 @@ const SidebarAdmin: React.FC<SidebarAdminProps> = ({ collapsed = false }) => {
       name: 'Windows',
       icon: FaWindows,
       link: '/cms/admin/windows-manager',
-      toastify: countWindows
+      children: [
+        {
+          name: 'Danh Sách Windows',
+          link: '/cms/admin/windows-manager',
+          toastify: countWindows
+        },
+        {
+          name: 'New Seal',
+          link: '/cms/admin/windows-manager?status=0'
+        },
+        {
+          name: 'Used',
+          link: '/cms/admin/windows-manager?status=1'
+        }
+      ]
     },
     {
       name: 'Json Preview (Phones)',
@@ -101,18 +175,48 @@ const SidebarAdmin: React.FC<SidebarAdminProps> = ({ collapsed = false }) => {
 
   useEffect(() => {
     const pathname = location.pathname;
-    const foundItem = menuItems.find(item => pathname === item.link);
-    if (foundItem) {
-      setActiveItem(foundItem.name);
+
+    const findActive = (items: MenuItem[]): string | null => {
+      for (const item of items) {
+        if (item.link === pathname) return item.name;
+        if (item.children) {
+          const found = item.children.find(child => child.link === pathname);
+          if (found) return found.name;
+        }
+      }
+      return null;
+    };
+
+    const active = findActive(menuItems);
+    if (active) setActiveItem(active);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const pathname = location.pathname;
+
+    const findParent = (items: MenuItem[]): string | null => {
+      for (const item of items) {
+        if (item.children) {
+          const found = item.children.find(child => child.link === pathname);
+          if (found) return item.name;
+        }
+      }
+      return null;
+    };
+
+    const parent = findParent(menuItems);
+    if (parent) {
+      setOpenMenus(prev => ({ ...prev, [parent]: true }));
     }
-  }, [location.pathname, menuItems]);
+  }, [location.pathname]);
 
   return (
     <div
-      className={`flex min-h-screen flex-col items-center justify-between gap-10 bg-white transition-all duration-300 dark:bg-gray-800 xl:fixed xl:h-full xl:shadow-lg ${collapsed ? 'xl:w-[80px]' : 'xl:w-64'}`}
+      className={`flex min-h-screen flex-col items-center justify-between gap-10 bg-white transition-all duration-300 dark:bg-gray-800 xl:fixed xl:h-full xl:shadow-lg ${
+        collapsed ? 'xl:w-[80px]' : 'xl:w-64'
+      }`}
     >
       <div className="w-full">
-        {/*  */}
         <div className="mt-8 flex w-full items-center justify-between p-2">
           <Link to="/cms/admin">
             <div className="flex items-center gap-2">
@@ -143,48 +247,89 @@ const SidebarAdmin: React.FC<SidebarAdminProps> = ({ collapsed = false }) => {
 
           {!collapsed && <DarkModeToggle />}
         </div>
-        {/*  */}
-        <div className="relative flex w-full flex-col justify-between bg-white dark:bg-gray-800 dark:text-white">
-          <div className="mt-2 h-[70vh] overflow-y-scroll scrollbar-hide">
-            <Menu className="m-0 w-full flex-grow p-0 xl:px-2">
-              {menuItems.map(item => {
-                const Icon = item.icon;
+
+        <div className="mt-2 h-[70vh] overflow-y-scroll scrollbar-hide">
+          <Menu className="m-0 w-full flex-grow p-0 xl:px-2">
+            {menuItems.map(item => {
+              const Icon = item.icon;
+              const isOpen = openMenus[item.name];
+
+              if (item.children) {
                 return (
-                  <Menu.Item key={item.name} className="relative">
-                    <NavLink
-                      to={item.link}
-                      className={`btn flex w-full items-center border-none shadow-none dark:bg-gray-800 ${
-                        item.name === activeItem
-                          ? 'bg-base-200 font-bold text-primary dark:bg-white'
-                          : 'bg-transparent font-light text-black dark:text-white'
-                      } ${collapsed ? 'justify-center px-2' : 'justify-start pl-4'} `}
+                  <div key={item.name}>
+                    <div
+                      onClick={() => toggleMenu(item.name)}
+                      className={`btn flex w-full items-center justify-between border-none text-black shadow-none dark:bg-gray-800 dark:text-white ${
+                        collapsed ? 'justify-center px-2' : 'justify-start pl-4'
+                      }`}
                     >
-                      <div className="flex w-full items-center justify-between">
-                        <div className="flex items-center">
-                          {item.name === activeItem && <div className="absolute left-0 top-0 h-full w-1 bg-primary" />}
-                          <Icon className={item.name === activeItem ? 'mr-2 h-5 w-5 text-primary' : 'mr-2 h-5 w-5'} />
-                          <div className="flex items-center justify-between gap-2">
-                            {!collapsed && <p>{item.name}</p>}
-                          </div>
-                        </div>
-                        <div className="">
-                          {item.toastify && item.toastify > 0 ? (
-                            <div className="flex w-[22px] justify-center rounded-md bg-secondary py-1">
-                              <p className="text-xs font-light text-white">
-                                {item.toastify > 99 ? '99+' : item.toastify}
-                              </p>
-                            </div>
-                          ) : (
-                            ''
-                          )}
-                        </div>
+                      <div className="flex items-center">
+                        {Icon && <Icon className="mr-2 h-5 w-5" />}
+                        {!collapsed && <span>{item.name}</span>}
                       </div>
-                    </NavLink>
-                  </Menu.Item>
+                      {!collapsed && (
+                        <span>
+                          {isOpen ? (
+                            <IoIosArrowDropdownCircle className="text-lg" />
+                          ) : (
+                            <IoIosArrowDropupCircle className="text-lg" />
+                          )}
+                        </span>
+                      )}
+                    </div>
+
+                    <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96' : 'max-h-0'}`}>
+                      {item.children.map(sub => (
+                        <Menu.Item key={sub.name} className="ml-4">
+                          <NavLink
+                            to={sub.link!}
+                            className={`btn flex w-full items-center border-none shadow-none ${
+                              sub.name === activeItem
+                                ? 'bg-base-200 font-bold text-primary dark:bg-white'
+                                : 'bg-transparent font-light text-black dark:text-white'
+                            } ${collapsed ? 'justify-center px-2' : 'justify-start pl-4'}`}
+                          >
+                            {!collapsed && <span>{sub.name}</span>}
+                          </NavLink>
+                        </Menu.Item>
+                      ))}
+                    </div>
+                  </div>
                 );
-              })}
-            </Menu>
-          </div>
+              }
+
+              return (
+                <Menu.Item key={item.name} className="relative">
+                  <NavLink
+                    to={item.link!}
+                    className={`btn flex w-full items-center border-none shadow-none dark:bg-gray-800 ${
+                      item.name === activeItem
+                        ? 'bg-base-200 font-bold text-primary dark:bg-white'
+                        : 'bg-transparent font-light text-black dark:text-white'
+                    } ${collapsed ? 'justify-center px-2' : 'justify-start pl-4'} `}
+                  >
+                    <div className="flex w-full items-center justify-between">
+                      <div className="flex items-center">
+                        {item.name === activeItem && <div className="absolute left-0 top-0 h-full w-1 bg-primary" />}
+                        {Icon && (
+                          <Icon className={item.name === activeItem ? 'mr-2 h-5 w-5 text-primary' : 'mr-2 h-5 w-5'} />
+                        )}
+                        {!collapsed && <p>{item.name}</p>}
+                      </div>
+
+                      {item.toastify && item.toastify > 0 ? (
+                        <div className="flex w-[22px] justify-center rounded-md bg-secondary py-1">
+                          <p className="text-xs font-light text-white">{item.toastify > 99 ? '99+' : item.toastify}</p>
+                        </div>
+                      ) : (
+                        ''
+                      )}
+                    </div>
+                  </NavLink>
+                </Menu.Item>
+              );
+            })}
+          </Menu>
         </div>
       </div>
       {/*  */}
