@@ -261,7 +261,7 @@ const PhoneManager: React.FC = () => {
                   <span>#{index + 1}</span>
                   <span className="flex flex-wrap items-center justify-center gap-2">
                     <Zoom>
-                      <img loading="lazy" src={phone?.img} alt="Hình ảnh" className="h-12 w-12 object-cover " />
+                      <img loading="lazy" src={phone?.img} alt="Hình ảnh" className="h-12 w-12 object-cover" />
                     </Zoom>
                     {phone?.thumbnail && Array.isArray(phone?.thumbnail) ? (
                       <span className="text-xs text-red-500">(Ảnh thu nhỏ: {phone?.thumbnail?.length})</span>
@@ -367,7 +367,12 @@ const PhoneManager: React.FC = () => {
 
                           const result = await handleShareFacebook({
                             des: phone.des ?? phone.name,
-                            url: productUrl
+                            url: productUrl,
+                            contact: {
+                              phone: '0332598789',
+                              email: 'cskh.7teck@gmail.com'
+                            },
+                            hashtag: '#7teck #dienThoai #dienThoaiGiaRe #dienThoaiChinhHang'
                           });
 
                           if (!result.success) {
