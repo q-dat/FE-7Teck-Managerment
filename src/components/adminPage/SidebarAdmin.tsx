@@ -14,10 +14,6 @@ import { LuFileJson } from 'react-icons/lu';
 import { MdImageSearch } from 'react-icons/md';
 import { IoIosArrowDropdownCircle, IoIosArrowDropupCircle } from 'react-icons/io';
 
-// import { PhoneCatalogContext } from '../../context/phone-catalog/PhoneCatalogContext';
-// import { TabletCatalogContext } from '../../context/tablet-catalog/TabletCatalogContext';
-// import { WindowsCatalogContext } from '../../context/windows-catalog/WindowsCatalogContext';
-// import { MacbookCatalogContext } from '../../context/macbook-catalog/MacbookCatalogContext';
 type SidebarAdminProps = {
   collapsed?: boolean;
 };
@@ -26,24 +22,53 @@ type MenuItem = {
   name: string;
   icon?: React.ElementType;
   link?: string;
+  query?: Record<string, string>;
   toastify?: number;
   children?: MenuItem[];
 };
 
 const SidebarAdmin: React.FC<SidebarAdminProps> = ({ collapsed = false }) => {
-  //  const { countPhoneCatalog } = useContext(PhoneCatalogContext);
-  //  const { countTabletCatalog } = useContext(TabletCatalogContext);
-  //  const { countWindowsCatalog } = useContext(WindowsCatalogContext);
-  //  const { countMacbookCatalog } = useContext(MacbookCatalogContext);
   const { countPhone } = useContext(PhoneContext);
   const { countTablet } = useContext(TabletContext);
   const { countWindows } = useContext(WindowsContext);
   const { countMacbook } = useContext(MacbookContext);
 
-  const [activeItem, setActiveItem] = useState('Dashboard');
   const [openMenus, setOpenMenus] = useState<Record<string, boolean>>({});
 
   const location = useLocation();
+  const { pathname, search } = location;
+
+  // build url từ link + query
+  const buildPath = (item: MenuItem): string => {
+    if (!item.link) return '#';
+
+    if (!item.query) return item.link;
+
+    const params = new URLSearchParams(item.query).toString();
+    return `${item.link}?${params}`;
+  };
+
+  // active cho item (strict)
+  const isActiveRoute = (item: MenuItem): boolean => {
+    if (!item.link) return false;
+
+    if (pathname !== item.link) return false;
+
+    const params = new URLSearchParams(search);
+
+    if (!item.query) {
+      return params.toString() === '';
+    }
+
+    return Object.entries(item.query).every(([key, value]) => params.get(key) === value);
+  };
+
+  // active cho parent (loose)
+  const isParentActive = (item: MenuItem): boolean => {
+    if (!item.children) return false;
+
+    return item.children.some(child => child.link === pathname);
+  };
 
   const toggleMenu = (name: string) => {
     setOpenMenus(prev => ({
@@ -58,106 +83,87 @@ const SidebarAdmin: React.FC<SidebarAdminProps> = ({ collapsed = false }) => {
       icon: FaHome,
       link: '/cms/admin'
     },
-    // {
-    //   name: 'DM Điện Thoại',
-    //   icon: FaList,
-    //   link: '/cms/admin/phone-catalog-manager',
-    //   toastify: countPhoneCatalog
-    // },
     {
       name: 'Điện Thoại',
       icon: FaMobileAlt,
       children: [
         {
-          name: 'Danh Sách Điện Thoại',
+          name: 'Tất Cả',
           link: '/cms/admin/phone-manager',
           toastify: countPhone
         },
         {
           name: 'New Seal',
-          link: '/cms/admin/phone-manager?status=0'
+          link: '/cms/admin/phone-manager',
+          query: { status: '0' }
         },
         {
           name: 'Used',
-          link: '/cms/admin/phone-manager?status=1'
+          link: '/cms/admin/phone-manager',
+          query: { status: '1' }
         }
       ]
     },
-    // {
-    //   name: 'DM Máy Tính Bảng',
-    //   icon: FaList,
-    //   link: '/cms/admin/tablet-catalog-manager',
-    //   toastify: countTabletCatalog
-    // },
     {
       name: ' Máy Tính Bảng',
       icon: FaTabletAlt,
-      link: '/cms/admin/tablet-manager',
       children: [
         {
-          name: 'Danh Sách Máy Tính Bảng',
+          name: 'Tất Cả',
           link: '/cms/admin/tablet-manager',
           toastify: countTablet
         },
         {
           name: 'New Seal',
-          link: '/cms/admin/tablet-manager?status=0'
+          link: '/cms/admin/tablet-manager',
+          query: { status: '0' }
         },
         {
           name: 'Used',
-          link: '/cms/admin/tablet-manager?status=1'
+          link: '/cms/admin/tablet-manager',
+          query: { status: '1' }
         }
       ]
     },
-    // {
-    //   name: 'DM Macbook',
-    //   icon: FaList,
-    //   link: '/cms/admin/macbook-catalog-manager',
-    //   toastify: countMacbookCatalog
-    // },
     {
       name: 'Macbook',
       icon: BsApple,
-      link: '/cms/admin/macbook-manager',
       children: [
         {
-          name: 'Danh Sách Macbook',
+          name: 'Tất Cả',
           link: '/cms/admin/macbook-manager',
           toastify: countMacbook
         },
         {
           name: 'New Seal',
-          link: '/cms/admin/macbook-manager?status=0'
+          link: '/cms/admin/macbook-manager',
+          query: { status: '0' }
         },
         {
           name: 'Used',
-          link: '/cms/admin/macbook-manager?status=1'
+          link: '/cms/admin/macbook-manager',
+          query: { status: '1' }
         }
       ]
     },
-    // {
-    //   name: 'DM Windows',
-    //   icon: FaList,
-    //   link: '/cms/admin/windows-catalog-manager',
-    //   toastify: countWindowsCatalog
-    // },
     {
       name: 'Windows',
       icon: FaWindows,
-      link: '/cms/admin/windows-manager',
       children: [
         {
-          name: 'Danh Sách Windows',
+          name: 'Tất Cả',
           link: '/cms/admin/windows-manager',
           toastify: countWindows
         },
         {
           name: 'New Seal',
-          link: '/cms/admin/windows-manager?status=0'
+          link: '/cms/admin/windows-manager',
+          query: { status: '0' }
         },
         {
           name: 'Used',
-          link: '/cms/admin/windows-manager?status=1'
+          link: '/cms/admin/windows-manager',
+          query: { status: '1' }
         }
       ]
     },
@@ -173,42 +179,18 @@ const SidebarAdmin: React.FC<SidebarAdminProps> = ({ collapsed = false }) => {
     }
   ];
 
+  // auto open menu theo route
   useEffect(() => {
-    const pathname = location.pathname;
+    const newOpenMenus: Record<string, boolean> = {};
 
-    const findActive = (items: MenuItem[]): string | null => {
-      for (const item of items) {
-        if (item.link === pathname) return item.name;
-        if (item.children) {
-          const found = item.children.find(child => child.link === pathname);
-          if (found) return found.name;
-        }
+    menuItems.forEach(item => {
+      if (item.children && isParentActive(item)) {
+        newOpenMenus[item.name] = true;
       }
-      return null;
-    };
+    });
 
-    const active = findActive(menuItems);
-    if (active) setActiveItem(active);
-  }, [location.pathname]);
-
-  useEffect(() => {
-    const pathname = location.pathname;
-
-    const findParent = (items: MenuItem[]): string | null => {
-      for (const item of items) {
-        if (item.children) {
-          const found = item.children.find(child => child.link === pathname);
-          if (found) return item.name;
-        }
-      }
-      return null;
-    };
-
-    const parent = findParent(menuItems);
-    if (parent) {
-      setOpenMenus(prev => ({ ...prev, [parent]: true }));
-    }
-  }, [location.pathname]);
+    setOpenMenus(prev => ({ ...prev, ...newOpenMenus }));
+  }, [pathname]);
 
   return (
     <div
@@ -226,7 +208,7 @@ const SidebarAdmin: React.FC<SidebarAdminProps> = ({ collapsed = false }) => {
                 height={60}
                 src={Logo}
                 className="rounded-full shadow-headerMenu shadow-primary dark:hidden"
-                alt="7Teck ."
+                alt="7Teck"
               />
               <img
                 loading="lazy"
@@ -234,7 +216,7 @@ const SidebarAdmin: React.FC<SidebarAdminProps> = ({ collapsed = false }) => {
                 height={60}
                 src={Logo}
                 className="hidden rounded-xl dark:block"
-                alt="7Teck ."
+                alt="7Teck"
               />
               {!collapsed && (
                 <div>
@@ -259,7 +241,7 @@ const SidebarAdmin: React.FC<SidebarAdminProps> = ({ collapsed = false }) => {
                   <div key={item.name}>
                     <div
                       onClick={() => toggleMenu(item.name)}
-                      className={`btn flex w-full items-center justify-between border-none text-black shadow-none dark:bg-gray-800 dark:text-white ${
+                      className={`btn flex w-full items-center justify-between border-none text-black shadow-none dark:text-white ${
                         collapsed ? 'justify-center px-2' : 'justify-start pl-4'
                       }`}
                     >
@@ -279,50 +261,52 @@ const SidebarAdmin: React.FC<SidebarAdminProps> = ({ collapsed = false }) => {
                     </div>
 
                     <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96' : 'max-h-0'}`}>
-                      {item.children.map(sub => (
-                        <Menu.Item key={sub.name} className="ml-4">
-                          <NavLink
-                            to={sub.link!}
-                            className={`btn flex w-full items-center border-none shadow-none ${
-                              sub.name === activeItem
-                                ? 'bg-base-200 font-bold text-primary dark:bg-white'
-                                : 'bg-transparent font-light text-black dark:text-white'
-                            } ${collapsed ? 'justify-center px-2' : 'justify-start pl-4'}`}
-                          >
-                            {!collapsed && <span>{sub.name}</span>}
-                          </NavLink>
-                        </Menu.Item>
-                      ))}
+                      {item.children.map(sub => {
+                        const active = isActiveRoute(sub);
+
+                        return (
+                          <Menu.Item key={sub.name} className="ml-4">
+                            <NavLink
+                              to={buildPath(sub)}
+                              className={`btn flex w-full items-center border-none shadow-none ${
+                                active
+                                  ? 'bg-base-200 font-bold text-primary dark:bg-white'
+                                  : 'bg-transparent font-light text-black dark:text-white'
+                              } ${collapsed ? 'justify-center px-2' : 'justify-start pl-4'}`}
+                            >
+                              {!collapsed && <span>{sub.name}</span>}
+                            </NavLink>
+                          </Menu.Item>
+                        );
+                      })}
                     </div>
                   </div>
                 );
               }
 
+              const active = isActiveRoute(item);
+
               return (
                 <Menu.Item key={item.name} className="relative">
                   <NavLink
-                    to={item.link!}
+                    to={buildPath(item)}
                     className={`btn flex w-full items-center border-none shadow-none dark:bg-gray-800 ${
-                      item.name === activeItem
+                      active
                         ? 'bg-base-200 font-bold text-primary dark:bg-white'
                         : 'bg-transparent font-light text-black dark:text-white'
-                    } ${collapsed ? 'justify-center px-2' : 'justify-start pl-4'} `}
+                    } ${collapsed ? 'justify-center px-2' : 'justify-start pl-4'}`}
                   >
                     <div className="flex w-full items-center justify-between">
                       <div className="flex items-center">
-                        {item.name === activeItem && <div className="absolute left-0 top-0 h-full w-1 bg-primary" />}
-                        {Icon && (
-                          <Icon className={item.name === activeItem ? 'mr-2 h-5 w-5 text-primary' : 'mr-2 h-5 w-5'} />
-                        )}
+                        {active && <div className="absolute left-0 top-0 h-full w-1 bg-primary" />}
+                        {Icon && <Icon className={active ? 'mr-2 h-5 w-5 text-primary' : 'mr-2 h-5 w-5'} />}
                         {!collapsed && <p>{item.name}</p>}
                       </div>
 
-                      {item.toastify && item.toastify > 0 ? (
+                      {item.toastify && item.toastify > 0 && (
                         <div className="flex w-[22px] justify-center rounded-md bg-secondary py-1">
                           <p className="text-xs font-light text-white">{item.toastify > 99 ? '99+' : item.toastify}</p>
                         </div>
-                      ) : (
-                        ''
                       )}
                     </div>
                   </NavLink>
@@ -332,21 +316,15 @@ const SidebarAdmin: React.FC<SidebarAdminProps> = ({ collapsed = false }) => {
           </Menu>
         </div>
       </div>
-      {/*  */}
-      <div className="flex flex-col items-center">
-        {/* <div className="rounded-lg bg-primary p-4 text-center text-white">
-          <p className="w-40 text-center text-xs">Chọn nút bên dưới để thêm sản phẩm!</p>
-          <Button className="my-4 rounded-lg bg-white text-primary hover:bg-white">+Thêm</Button>
-        </div> */}
-        {!collapsed && (
-          <div className="py-4 text-xs text-black dark:text-white">
-            <p className="font-bold">
-              Quản trị <span className="text-primary">7Teck</span>
-            </p>
-            <p className="font-light">© 2026 Điểu Quốc Đạt</p>
-          </div>
-        )}
-      </div>
+
+      {!collapsed && (
+        <div className="py-4 text-xs text-black dark:text-white">
+          <p className="font-bold">
+            Quản trị <span className="text-primary">7Teck</span>
+          </p>
+          <p className="font-light">© 2026 Điểu Quốc Đạt</p>
+        </div>
+      )}
     </div>
   );
 };
