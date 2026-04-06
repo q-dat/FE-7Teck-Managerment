@@ -66,10 +66,8 @@ const SidebarAdmin: React.FC<SidebarAdminProps> = ({ collapsed = false }) => {
   // active cho parent (loose)
   const isParentActive = (item: MenuItem): boolean => {
     if (!item.children) return false;
-
-    return item.children.some(child => child.link === pathname);
+    return item.children.some(child => isActiveRoute(child));
   };
-
   const toggleMenu = (name: string) => {
     setOpenMenus(prev => ({
       ...prev,
@@ -270,11 +268,21 @@ const SidebarAdmin: React.FC<SidebarAdminProps> = ({ collapsed = false }) => {
                               to={buildPath(sub)}
                               className={`btn flex w-full items-center border-none shadow-none ${
                                 active
-                                  ? 'bg-base-200 font-bold text-primary dark:bg-white'
+                                  ? 'bg-base-200 font-bold text-primary dark:bg-white/20 dark:text-white'
                                   : 'bg-transparent font-light text-black dark:text-white'
                               } ${collapsed ? 'justify-center px-2' : 'justify-start pl-4'}`}
                             >
-                              {!collapsed && <span>{sub.name}</span>}
+                              <div className="flex w-full items-center justify-between">
+                                <span>{!collapsed && sub.name}</span>
+
+                                {sub.toastify && sub.toastify > 0 && (
+                                  <div className="flex w-fit justify-center rounded-md bg-secondary p-1 min-w-5">
+                                    <p className="text-xs font-light text-white">
+                                      {sub.toastify > 999 ? '999+' : sub.toastify}
+                                    </p>
+                                  </div>
+                                )}
+                              </div>
                             </NavLink>
                           </Menu.Item>
                         );
@@ -304,8 +312,10 @@ const SidebarAdmin: React.FC<SidebarAdminProps> = ({ collapsed = false }) => {
                       </div>
 
                       {item.toastify && item.toastify > 0 && (
-                        <div className="flex w-[22px] justify-center rounded-md bg-secondary py-1">
-                          <p className="text-xs font-light text-white">{item.toastify > 99 ? '99+' : item.toastify}</p>
+                        <div className="flex w-fit justify-center rounded-md bg-secondary p-1 min-w-5">
+                          <p className="text-xs font-light text-white">
+                            {item.toastify > 999 ? '999+' : item.toastify}
+                          </p>
                         </div>
                       )}
                     </div>
