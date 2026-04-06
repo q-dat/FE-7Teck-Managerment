@@ -12,7 +12,43 @@ import { WindowsCatalogContext } from '../../context/windows-catalog/WindowsCata
 import { PriceListContext } from '../../context/price-list/PriceListContext';
 
 const Admin: React.FC = () => {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState<boolean>(() => {
+    const saved = localStorage.getItem('admin_sidebar_collapsed');
+    return saved === 'true';
+  });
+
+  const toggleSidebar = () => {
+    setCollapsed(prev => {
+      const next = !prev;
+      localStorage.setItem('admin_sidebar_collapsed', String(next));
+      return next;
+    });
+  };
+
+  const handleKeyDown = React.useCallback((event: KeyboardEvent) => {
+    const activeElement = document.activeElement;
+
+    const isTyping =
+      activeElement instanceof HTMLInputElement ||
+      activeElement instanceof HTMLTextAreaElement ||
+      activeElement instanceof HTMLSelectElement ||
+      (activeElement instanceof HTMLElement && activeElement.isContentEditable);
+
+    if (isTyping) return;
+
+    if (event.key.toLowerCase() === 'b' && !event.ctrlKey && !event.metaKey && !event.altKey) {
+      event.preventDefault();
+      toggleSidebar();
+    }
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [handleKeyDown]);
 
   const { getAllGallerys } = useContext(GalleryContext);
   const { getAllMacbookCatalogs } = useContext(MacbookCatalogContext);
@@ -54,9 +90,9 @@ const Admin: React.FC = () => {
 
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className={`absolute left-0 top-0 bg-white p-1 text-start text-xs text-black shadow dark:bg-gray-900 dark:text-white ${collapsed ? 'w-[80px]' : 'w-64'}`}
+          className={`absolute left-0 top-0 w-full p-1 text-center text-xs text-black shadow-sm shadow-white dark:text-white ${collapsed ? 'w-[80px]' : 'w-64'}`}
         >
-          {collapsed ? 'Mở rộng' : 'Thu gọn sidebar'}
+          Phím tắt: B
         </button>
       </aside>
 
