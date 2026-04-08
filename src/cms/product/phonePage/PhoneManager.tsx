@@ -30,6 +30,7 @@ import { handleShareFacebook } from '../../../components/adminPage/inline-edit/s
 import InlineDescriptionEditor from '../../../components/adminPage/inline-edit/InlineDescriptionEditor';
 import { downloadImage } from '../../../helper/downloadImage';
 import { TbCameraDown } from 'react-icons/tb';
+import { contact as numberPhone } from '../../../components/utils/socialLinks';
 
 const PhoneManager: React.FC = () => {
   const { phones, loading, error, getAllPhones, updatePhone, deletePhone } = useContext(PhoneContext);
@@ -369,7 +370,7 @@ const PhoneManager: React.FC = () => {
                             des: phone.des ?? phone.name,
                             url: productUrl,
                             contact: {
-                              phone: '0332598789',
+                              phone: `${numberPhone}`,
                               email: 'cskh.7teck@gmail.com'
                             },
                             hashtag: '#7teck #dienThoai #dienThoaiGiaRe #dienThoaiChinhHang'
