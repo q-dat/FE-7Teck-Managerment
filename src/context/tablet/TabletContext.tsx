@@ -21,7 +21,7 @@ interface TabletContextType {
     delete: boolean;
   };
   error: string | null;
-  getAllTablets: (filter?: { tablet_status?: number; name?: string }) => void;
+  getAllTablets: (filter?: { t_cat_status?: number; name?: string }) => void;
   getTabletById: (_id: string) => Promise<ITablet | undefined>;
   createTablet: (tabletData: FormData) => Promise<AxiosResponse<any>>;
   updateTablet: (_id: string, tabletData: FormData) => Promise<AxiosResponse<any>>;
@@ -40,7 +40,7 @@ const defaultContextValue: TabletContextType = {
     delete: false
   },
   error: null,
-  getAllTablets: () => {},
+  getAllTablets: () => { },
   getTabletById: async () => undefined,
   createTablet: async () => ({ data: { tablet: null } }) as AxiosResponse,
   updateTablet: async () => ({ data: { tablet: null } }) as AxiosResponse,
@@ -86,7 +86,7 @@ export const TabletProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // Get All Tablets
-  const getAllTablets = useCallback(async (filter?: { tablet_status?: number; name?: string }) => {
+  const getAllTablets = useCallback(async (filter?: { t_cat_status?: number; name?: string }) => {
     await fetchData(
       () => getAllTabletsApi(filter),
       data => {

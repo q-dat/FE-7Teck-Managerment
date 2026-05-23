@@ -20,7 +20,7 @@ interface WindowsContextType {
     delete: boolean;
   };
   error: string | null;
-  getAllWindows: (filter?: { windows_status?: number; name?: string }) => void;
+  getAllWindows: (filter?: { w_cat_status?: number; name?: string }) => void;
   getWindowsById: (_id: string) => Promise<IWindows | undefined>;
   createWindows: (windowsData: FormData) => Promise<AxiosResponse<any>>;
   updateWindows: (_id: string, windowsData: FormData) => Promise<AxiosResponse<any>>;
@@ -87,7 +87,7 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // Get All Windowss
-  const getAllWindows = useCallback(async (filter?: { windows_status?: number; name?: string }) => {
+  const getAllWindows = useCallback(async (filter?: { w_cat_status?: number; name?: string }) => {
     await fetchData(
       () => getAllWindowsApi(filter),
       data => {

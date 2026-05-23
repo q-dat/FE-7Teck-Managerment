@@ -36,7 +36,7 @@ const MacbookManager: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const keyword = searchParams.get('q') ?? undefined;
-  const status = searchParams.get('status');
+  const status = searchParams.get('m_cat_status') ?? undefined;
 
   useEffect(() => {
     const params: { name?: string; status?: number } = {};
@@ -46,7 +46,7 @@ const MacbookManager: React.FC = () => {
 
     getAllMacbook({
       name: keyword,
-      macbook_status: status ? Number(status) : undefined
+      m_cat_status: status ? Number(status) : undefined
     });
   }, [keyword, status, getAllMacbook]);
 
@@ -79,7 +79,7 @@ const MacbookManager: React.FC = () => {
       Toastify('Cập nhật thành công', 200);
       getAllMacbook({
         name: keyword,
-        macbook_status: status ? Number(status) : undefined
+        m_cat_status: status ? Number(status) : undefined
       });
     } catch {
       Toastify('Lỗi cập nhật', 500);
@@ -94,7 +94,7 @@ const MacbookManager: React.FC = () => {
         Toastify('Bạn đã xoá sản phẩm thành công', 201);
         getAllMacbook({
           name: keyword,
-          macbook_status: status ? Number(status) : undefined
+          m_cat_status: status ? Number(status) : undefined
         });
       } catch (error) {
         const errorMessage = isIErrorResponse(error) ? error.data?.message : 'Xoá sản phẩm thất bại!';
@@ -133,7 +133,7 @@ const MacbookManager: React.FC = () => {
                   color="info"
                   className="w-[80px] text-sm font-light text-white"
                   onClick={() => {
-                    setSearchParams({ status: '0' });
+                    setSearchParams({ macbook_status: '0' });
                   }}
                 >
                   Mới
@@ -144,7 +144,7 @@ const MacbookManager: React.FC = () => {
                   color="warning"
                   className="w-[80px] text-sm font-light text-white"
                   onClick={() => {
-                    setSearchParams({ status: '1' });
+                    setSearchParams({ macbook_status: '1' });
                   }}
                 >
                   Cũ

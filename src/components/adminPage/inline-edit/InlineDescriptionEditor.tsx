@@ -18,7 +18,7 @@ const InlineDescriptionEditor: React.FC<Props> = ({ prodId, value, onSubmit }) =
   };
 
   return (
-    <div className="relative w-full font-normal">
+    <div className="relative w-full font-normal ">
       {/* Display */}
 
       {value == '' ? (
@@ -40,10 +40,10 @@ const InlineDescriptionEditor: React.FC<Props> = ({ prodId, value, onSubmit }) =
 
       {/* Popup */}
       {isOpen && (
-        <div className="absolute right-0 top-0 z-50 w-[30vw] rounded-lg border border-green-500 bg-white p-2 text-black dark:bg-gray-900 dark:text-white">
+        <div className="absolute right-0 bottom-0 z-50 w-[50dvw] rounded-lg border border-green-500 bg-white p-2 text-black dark:bg-gray-900 dark:text-white">
           <textarea
             className="w-full bg-white p-1 text-sm shadow-xl focus:outline-none dark:bg-gray-900"
-            rows={10}
+            rows={1}
             value={tempValue}
             onChange={e => setTempValue(e.target.value)}
           />

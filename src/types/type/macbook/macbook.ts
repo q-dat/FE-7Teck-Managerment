@@ -3,6 +3,7 @@ import { IMacbookCatalog } from '../macbook-catalog/macbook-catalog';
 export interface IMacbook {
   _id: string;
   macbook_catalog_id: IMacbookCatalog;
+  macbook_slug: string;
   macbook_view?: number;
   macbook_name: string;
   macbook_color: string;

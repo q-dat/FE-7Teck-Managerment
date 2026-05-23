@@ -114,12 +114,12 @@ const SidebarAdmin: React.FC<SidebarAdminProps> = ({ collapsed = false }) => {
         {
           name: 'New Seal',
           link: '/cms/admin/tablet-manager',
-          query: { status: '0' }
+          query: { t_cat_status: '0' }
         },
         {
           name: 'Used',
           link: '/cms/admin/tablet-manager',
-          query: { status: '1' }
+          query: { t_cat_status: '1' }
         }
       ]
     },
@@ -135,12 +135,12 @@ const SidebarAdmin: React.FC<SidebarAdminProps> = ({ collapsed = false }) => {
         {
           name: 'New Seal',
           link: '/cms/admin/macbook-manager',
-          query: { status: '0' }
+          query: { m_cat_status: '0' }
         },
         {
           name: 'Used',
           link: '/cms/admin/macbook-manager',
-          query: { status: '1' }
+          query: { m_cat_status: '1' }
         }
       ]
     },
@@ -156,12 +156,12 @@ const SidebarAdmin: React.FC<SidebarAdminProps> = ({ collapsed = false }) => {
         {
           name: 'New Seal',
           link: '/cms/admin/windows-manager',
-          query: { status: '0' }
+          query: { w_cat_status: '0' }
         },
         {
           name: 'Used',
           link: '/cms/admin/windows-manager',
-          query: { status: '1' }
+          query: { w_cat_status: '1' }
         }
       ]
     },
@@ -192,9 +192,8 @@ const SidebarAdmin: React.FC<SidebarAdminProps> = ({ collapsed = false }) => {
 
   return (
     <div
-      className={`flex min-h-screen flex-col items-center justify-between gap-10 bg-white transition-all duration-300 dark:bg-gray-800 xl:fixed xl:h-full xl:shadow-lg ${
-        collapsed ? 'xl:w-[80px]' : 'xl:w-64'
-      }`}
+      className={`flex min-h-screen flex-col items-center justify-between gap-10 bg-white transition-all duration-300 dark:bg-gray-800 xl:fixed xl:h-full xl:shadow-lg ${collapsed ? 'xl:w-[80px]' : 'xl:w-64'
+        }`}
     >
       <div className="w-full">
         <div className="mt-8 flex w-full items-center justify-between p-2">
@@ -239,9 +238,8 @@ const SidebarAdmin: React.FC<SidebarAdminProps> = ({ collapsed = false }) => {
                   <div key={item.name}>
                     <div
                       onClick={() => toggleMenu(item.name)}
-                      className={`btn flex w-full items-center justify-between border-none text-black shadow-none dark:text-white ${
-                        collapsed ? 'justify-center px-2' : 'justify-start pl-4'
-                      }`}
+                      className={`btn flex w-full items-center justify-between border-none text-black shadow-none dark:text-white ${collapsed ? 'justify-center px-2' : 'justify-start pl-4'
+                        }`}
                     >
                       <div className="flex items-center">
                         {Icon && <Icon className="mr-2 h-5 w-5" />}
@@ -266,11 +264,10 @@ const SidebarAdmin: React.FC<SidebarAdminProps> = ({ collapsed = false }) => {
                           <Menu.Item key={sub.name} className="ml-4">
                             <NavLink
                               to={buildPath(sub)}
-                              className={`btn flex w-full items-center border-none shadow-none ${
-                                active
-                                  ? 'bg-base-200 font-bold text-primary dark:bg-white/20 dark:text-white'
-                                  : 'bg-transparent font-light text-black dark:text-white'
-                              } ${collapsed ? 'justify-center px-2' : 'justify-start pl-4'}`}
+                              className={`btn flex w-full items-center border-none shadow-none ${active
+                                ? 'bg-base-200 font-bold text-primary dark:bg-white/20 dark:text-white'
+                                : 'bg-transparent font-light text-black dark:text-white'
+                                } ${collapsed ? 'justify-center px-2' : 'justify-start pl-4'}`}
                             >
                               <div className="flex w-full items-center justify-between">
                                 <span>{!collapsed && sub.name}</span>
@@ -298,11 +295,10 @@ const SidebarAdmin: React.FC<SidebarAdminProps> = ({ collapsed = false }) => {
                 <Menu.Item key={item.name} className="relative">
                   <NavLink
                     to={buildPath(item)}
-                    className={`btn flex w-full items-center border-none shadow-none dark:bg-gray-800 ${
-                      active
-                        ? 'bg-base-200 font-bold text-primary dark:bg-white'
-                        : 'bg-transparent font-light text-black dark:text-white'
-                    } ${collapsed ? 'justify-center px-2' : 'justify-start pl-4'}`}
+                    className={`btn flex w-full items-center border-none shadow-none dark:bg-gray-800 ${active
+                      ? 'bg-base-200 font-bold text-primary dark:bg-white'
+                      : 'bg-transparent font-light text-black dark:text-white'
+                      } ${collapsed ? 'justify-center px-2' : 'justify-start pl-4'}`}
                   >
                     <div className="flex w-full items-center justify-between">
                       <div className="flex items-center">

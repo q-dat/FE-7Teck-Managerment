@@ -3,6 +3,7 @@ import { ITabletCatalog } from '../tablet-catalog/tablet-catalog';
 export interface ITablet {
   _id: string;
   tablet_catalog_id: ITabletCatalog;
+  tablet_slug: string;
   tablet_view?: number;
   tablet_name: string;
   tablet_color: string;
