@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Toastify } from '../../../../../helper/Toastify';
 import InputModal from '../../../InputModal';
@@ -8,6 +8,8 @@ import { PhoneContext } from '../../../../../context/phone/PhoneContext';
 import { PhoneCatalogContext } from '../../../../../context/phone-catalog/PhoneCatalogContext';
 import LabelForm from '../../../LabelForm';
 import ReactSelect from '../../../../common/react-select/ReactSelect';
+import { useProductImageEditor } from '../../../../../helper/useProductImageEditor';
+import ProductImageEditor from '../../ProductImageEditor';
 
 interface ModalEditPageAdminProps {
   isOpen: boolean;
@@ -23,6 +25,19 @@ interface Option {
 const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({ isOpen, onClose, phoneId }) => {
   const { loading, phones, getAllPhones, updatePhone } = useContext(PhoneContext);
   const isLoading = loading.update;
+  const {
+    mainImageUrl,
+    mainImagePreviewUrl,
+    keptThumbnailUrls,
+    newThumbnailPreviewUrls,
+    initProductImages,
+    handleMainImageChange,
+    handleThumbnailFilesChange,
+    removeKeptThumbnail,
+    removeNewThumbnail,
+    moveKeptThumbnail,
+    appendImagesToFormData
+  } = useProductImageEditor();
 
   // PhoneCatalog
   const { phoneCatalogs } = useContext(PhoneCatalogContext);
@@ -35,9 +50,6 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({ isOpen, on
   }));
 
   const { control, register, handleSubmit, watch, setValue, reset } = useForm<IPhone>();
-
-  const [existingImg, setExistingImg] = useState<string | undefined>('');
-  const [existingThumbnail, setExistingThumbnail] = useState<string[] | undefined>([]);
 
   // Theo dõi giá trị của phone_catalog_id
   const selectedCatalogId = watch('phone_catalog_id._id');
@@ -65,13 +77,12 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({ isOpen, on
       setValue('status', phoneData.status);
       setValue('des', phoneData.des);
       setValue('note', phoneData.note);
-      setValue('img', phoneData.img);
-      setValue('thumbnail', phoneData.thumbnail);
       setValue('createdAt', phoneData.createdAt);
       setValue('updatedAt', phoneData.updatedAt);
-
-      setExistingImg(phoneData.img);
-      setExistingThumbnail(phoneData.thumbnail);
+      initProductImages({
+        mainImageUrl: phoneData.img,
+        thumbnailUrls: phoneData.thumbnail || []
+      });
     }
   }, [phones, phoneId, setValue]);
 
@@ -87,26 +98,10 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({ isOpen, on
     data.append('status', formData.status || '');
     data.append('des', formData.des || '');
     data.append('note', formData.note || '');
-
-    // Thêm ảnh chính
-    const imgFile = watch('img');
-    if (imgFile && imgFile[0]) {
-      data.append('img', imgFile[0]);
-    } else if (existingImg) {
-      data.append('img', existingImg);
-    }
-
-    // Thêm nhiều ảnh thu nhỏ
-    const thumbnailFiles = watch('thumbnail');
-    if (thumbnailFiles && thumbnailFiles.length > 0) {
-      Array.from(thumbnailFiles).forEach(file => {
-        data.append('thumbnail', file);
-      });
-    } else if (existingThumbnail && existingThumbnail.length > 0) {
-      existingThumbnail.forEach(thumbnail => {
-        data.append('thumbnail', thumbnail);
-      });
-    }
+    appendImagesToFormData(data, {
+      mainImageField: 'img',
+      thumbnailField: 'thumbnail'
+    });
 
     try {
       await updatePhone(phoneId, data);
@@ -177,22 +172,17 @@ const ModalEditPhonePageAdmin: React.FC<ModalEditPageAdminProps> = ({ isOpen, on
               <InputModal type="text" {...register('status')} placeholder="Tình trạng" />
               <LabelForm title={'Mô tả'} />
               <Textarea className="w-full border p-2 focus:outline-none" {...register('des')} placeholder="Mô tả" />
-              <LabelForm title={'Hình ảnh'} />
-              {existingImg && (
-                <div className="my-2">
-                  <img src={existingImg} className="h-10 w-10 rounded-md object-cover" />
-                </div>
-              )}
-              <InputModal type="file" {...register('img')} placeholder="Chèn ảnh hình ảnh" />
-              <LabelForm title={'Ảnh thu nhỏ'} />
-              {existingThumbnail && existingThumbnail.length > 0 && (
-                <div className="my-2 flex flex-wrap gap-2">
-                  {existingThumbnail.map((thumbnail, index) => (
-                    <img key={index} src={thumbnail} className="h-10 w-10 rounded-md object-cover" />
-                  ))}
-                </div>
-              )}
-              <InputModal type="file" {...register('thumbnail')} placeholder="Chèn ảnh thu nhỏ" multiple />
+              <ProductImageEditor
+                mainImageUrl={mainImageUrl}
+                mainImagePreviewUrl={mainImagePreviewUrl}
+                keptThumbnailUrls={keptThumbnailUrls}
+                newThumbnailPreviewUrls={newThumbnailPreviewUrls}
+                onMainImageChange={handleMainImageChange}
+                onThumbnailFilesChange={handleThumbnailFilesChange}
+                onRemoveKeptThumbnail={removeKeptThumbnail}
+                onRemoveNewThumbnail={removeNewThumbnail}
+                onMoveKeptThumbnail={moveKeptThumbnail}
+              />
             </div>
           </div>
           <div className="flex flex-row items-center justify-center space-x-5 text-center">
