@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Toastify } from '../../../../../helper/Toastify';
 import InputModal from '../../../InputModal';
@@ -8,6 +8,8 @@ import ReactSelect from '../../../../common/react-select/ReactSelect';
 import { MacbookCatalogContext } from '../../../../../context/macbook-catalog/MacbookCatalogContext';
 import { MacbookContext } from '../../../../../context/macbook/MacbookContext';
 import { IMacbook } from '../../../../../types/type/macbook/macbook';
+import { useProductImageEditor } from '../../../../../helper/useProductImageEditor';
+import ProductImageEditor from '../../ProductImageEditor';
 
 interface ModalEditPageAdminProps {
   isOpen: boolean;
@@ -24,24 +26,34 @@ const ModalEditMacbookPageAdmin: React.FC<ModalEditPageAdminProps> = ({ isOpen, 
   const { loading, macbook, getAllMacbook, updateMacbook } = useContext(MacbookContext);
   const isLoading = loading.update;
   const { macbookCatalogs } = useContext(MacbookCatalogContext);
+  const {
+    mainImageUrl,
+    mainImagePreviewUrl,
+    keptThumbnailUrls,
+    newThumbnailPreviewUrls,
+    initProductImages,
+    handleMainImageChange,
+    handleThumbnailFilesChange,
+    removeKeptThumbnail,
+    removeNewThumbnail,
+    moveKeptThumbnail,
+    appendImagesToFormData
+  } = useProductImageEditor();
+
 
   // react-select
   const macbookCatalog: Option[] = macbookCatalogs.map(macCatalog => ({
     value: macCatalog._id,
     label: `${macCatalog.m_cat_name}  \u00A0
-      ${
-        macCatalog?.m_cat_status === 0
-          ? '(New)'
-          : macCatalog?.m_cat_status === 1
-            ? '(Đã sử dụng)'
-            : macCatalog?.m_cat_status
+      ${macCatalog?.m_cat_status === 0
+        ? '(New)'
+        : macCatalog?.m_cat_status === 1
+          ? '(Đã sử dụng)'
+          : macCatalog?.m_cat_status
       }`
   }));
 
   const { control, register, handleSubmit, watch, setValue, reset } = useForm<IMacbook>();
-
-  const [existingImg, setExistingImg] = useState<string | undefined>('');
-  const [existingThumbnail, setExistingThumbnail] = useState<string[] | undefined>([]);
 
   // Theo dõi giá trị của macbook_catalog_id
   const selectedCatalogId = watch('macbook_catalog_id._id');
@@ -72,9 +84,10 @@ const ModalEditMacbookPageAdmin: React.FC<ModalEditPageAdminProps> = ({ isOpen, 
       setValue('macbook_thumbnail', macbookData.macbook_thumbnail);
       setValue('createdAt', macbookData.createdAt);
       setValue('updatedAt', macbookData.updatedAt);
-
-      setExistingImg(macbookData.macbook_img);
-      setExistingThumbnail(macbookData.macbook_thumbnail);
+      initProductImages({
+        mainImageUrl: macbookData.macbook_img,
+        thumbnailUrls: macbookData.macbook_thumbnail || []
+      });
     }
   }, [macbook, macbookId, setValue]);
 
@@ -89,26 +102,10 @@ const ModalEditMacbookPageAdmin: React.FC<ModalEditPageAdminProps> = ({ isOpen, 
     data.append('macbook_status', formData.macbook_status || '');
     data.append('macbook_des', formData.macbook_des || '');
     data.append('macbook_note', formData.macbook_note || '');
-
-    // Thêm ảnh chính
-    const imgFile = watch('macbook_img');
-    if (imgFile && imgFile[0]) {
-      data.append('macbook_img', imgFile[0]);
-    } else if (existingImg) {
-      data.append('macbook_img', existingImg);
-    }
-
-    // Thêm nhiều ảnh thu nhỏ
-    const thumbnailFiles = watch('macbook_thumbnail');
-    if (thumbnailFiles && thumbnailFiles.length > 0) {
-      Array.from(thumbnailFiles).forEach(file => {
-        data.append('macbook_thumbnail', file);
-      });
-    } else if (existingThumbnail && existingThumbnail.length > 0) {
-      existingThumbnail.forEach(thumbnail => {
-        data.append('macbook_thumbnail', thumbnail);
-      });
-    }
+    appendImagesToFormData(data, {
+      mainImageField: 'macbook_img',
+      thumbnailField: 'macbook_thumbnail'
+    });
 
     try {
       await updateMacbook(macbookId, data);
@@ -192,22 +189,17 @@ const ModalEditMacbookPageAdmin: React.FC<ModalEditPageAdminProps> = ({ isOpen, 
                 {...register('macbook_des')}
                 placeholder="Mô tả"
               />
-              <LabelForm title={'Hình ảnh'} />
-              {existingImg && (
-                <div className="my-2">
-                  <img src={existingImg} className="h-10 w-10 rounded-md object-cover" />
-                </div>
-              )}
-              <InputModal type="file" {...register('macbook_img')} placeholder="Chèn ảnh hình ảnh" />
-              <LabelForm title={'Ảnh thu nhỏ'} />
-              {existingThumbnail && existingThumbnail.length > 0 && (
-                <div className="my-2 flex flex-wrap gap-2">
-                  {existingThumbnail.map((thumbnail, index) => (
-                    <img key={index} src={thumbnail} className="h-10 w-10 rounded-md object-cover" />
-                  ))}
-                </div>
-              )}
-              <InputModal type="file" {...register('macbook_thumbnail')} placeholder="Chèn ảnh thu nhỏ" multiple />
+              <ProductImageEditor
+                mainImageUrl={mainImageUrl}
+                mainImagePreviewUrl={mainImagePreviewUrl}
+                keptThumbnailUrls={keptThumbnailUrls}
+                newThumbnailPreviewUrls={newThumbnailPreviewUrls}
+                onMainImageChange={handleMainImageChange}
+                onThumbnailFilesChange={handleThumbnailFilesChange}
+                onRemoveKeptThumbnail={removeKeptThumbnail}
+                onRemoveNewThumbnail={removeNewThumbnail}
+                onMoveKeptThumbnail={moveKeptThumbnail}
+              />
             </div>
           </div>
           <div className="flex flex-row items-center justify-center space-x-5 text-center">

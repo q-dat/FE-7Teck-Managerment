@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Toastify } from '../../../../../helper/Toastify';
 import InputModal from '../../../InputModal';
@@ -8,6 +8,8 @@ import ReactSelect from '../../../../common/react-select/ReactSelect';
 import { ITablet } from '../../../../../types/type/tablet/tablet';
 import { TabletContext } from '../../../../../context/tablet/TabletContext';
 import { TabletCatalogContext } from '../../../../../context/tablet-catalog/TabletCatalogContext';
+import { useProductImageEditor } from '../../../../../helper/useProductImageEditor';
+import ProductImageEditor from '../../ProductImageEditor';
 
 interface ModalEditPageAdminProps {
   isOpen: boolean;
@@ -24,24 +26,34 @@ const ModalEditTabletPageAdmin: React.FC<ModalEditPageAdminProps> = ({ isOpen, o
   const { loading, tablets, getAllTablets, updateTablet } = useContext(TabletContext);
   const isLoading = loading.update;
   const { tabletCatalogs } = useContext(TabletCatalogContext);
+  const {
+    mainImageUrl,
+    mainImagePreviewUrl,
+    keptThumbnailUrls,
+    newThumbnailPreviewUrls,
+    initProductImages,
+    handleMainImageChange,
+    handleThumbnailFilesChange,
+    removeKeptThumbnail,
+    removeNewThumbnail,
+    moveKeptThumbnail,
+    appendImagesToFormData
+  } = useProductImageEditor();
 
   // react-select
   const tabletCatalog: Option[] = tabletCatalogs.map(tabletCatalog => ({
     value: tabletCatalog._id,
     label: `${tabletCatalog.t_cat_name}  \u00A0
-    ${
-      tabletCatalog?.t_cat_status === 0
+    ${tabletCatalog?.t_cat_status === 0
         ? '(New)'
         : tabletCatalog?.t_cat_status === 1
           ? '(Đã sử dụng)'
           : tabletCatalog?.t_cat_status
-    }`
+      }`
   }));
 
   const { control, register, handleSubmit, watch, setValue, reset } = useForm<ITablet>();
 
-  const [existingImg, setExistingImg] = useState<string | undefined>('');
-  const [existingThumbnail, setExistingThumbnail] = useState<string[] | undefined>([]);
 
   // Theo dõi giá trị của tablet_catalog_id
   const selectedCatalogId = watch('tablet_catalog_id._id');
@@ -71,9 +83,10 @@ const ModalEditTabletPageAdmin: React.FC<ModalEditPageAdminProps> = ({ isOpen, o
       setValue('tablet_thumbnail', tabletData.tablet_thumbnail);
       setValue('createdAt', tabletData.createdAt);
       setValue('updatedAt', tabletData.updatedAt);
-
-      setExistingImg(tabletData.tablet_img);
-      setExistingThumbnail(tabletData.tablet_thumbnail);
+      initProductImages({
+        mainImageUrl: tabletData.tablet_img,
+        thumbnailUrls: tabletData.tablet_thumbnail || []
+      });
     }
   }, [tablets, tabletId, setValue]);
 
@@ -89,26 +102,10 @@ const ModalEditTabletPageAdmin: React.FC<ModalEditPageAdminProps> = ({ isOpen, o
     data.append('tablet_des', formData.tablet_des || '');
     data.append('tablet_note', formData.tablet_note || '');
 
-    // Thêm ảnh chính
-    const imgFile = watch('tablet_img');
-    if (imgFile && imgFile[0]) {
-      data.append('tablet_img', imgFile[0]);
-    } else if (existingImg) {
-      data.append('tablet_img', existingImg);
-    }
-
-    // Thêm nhiều ảnh thu nhỏ
-    const thumbnailFiles = watch('tablet_thumbnail');
-    if (thumbnailFiles && thumbnailFiles.length > 0) {
-      Array.from(thumbnailFiles).forEach(file => {
-        data.append('tablet_thumbnail', file);
-      });
-    } else if (existingThumbnail && existingThumbnail.length > 0) {
-      existingThumbnail.forEach(thumbnail => {
-        data.append('tablet_thumbnail', thumbnail);
-      });
-    }
-
+    appendImagesToFormData(data, {
+      mainImageField: 'tablet_img',
+      thumbnailField: 'tablet_thumbnail'
+    });
     try {
       await updateTablet(tabletId, data);
       reset();
@@ -191,23 +188,17 @@ const ModalEditTabletPageAdmin: React.FC<ModalEditPageAdminProps> = ({ isOpen, o
                 {...register('tablet_des')}
                 placeholder="Mô tả"
               />
-              <LabelForm title={'Hình ảnh'} />
-              {existingImg && (
-                <div className="my-2">
-                  <img src={existingImg} className="h-10 w-10 rounded-md object-cover" />
-                </div>
-              )}
-              <InputModal type="file" {...register('tablet_img')} placeholder="Chèn ảnh hình ảnh" />
-              <LabelForm title={'Ảnh thu nhỏ'} />
-              {existingThumbnail && existingThumbnail.length > 0 && (
-                <div className="my-2 flex flex-wrap gap-2">
-                  {existingThumbnail.map((thumbnail, index) => (
-                    <img key={index} src={thumbnail} className="h-10 w-10 rounded-md object-cover" />
-                  ))}
-                </div>
-              )}
-              <InputModal type="file" {...register('tablet_thumbnail')} placeholder="Chèn ảnh thu nhỏ" multiple />
-            </div>
+              <ProductImageEditor
+                mainImageUrl={mainImageUrl}
+                mainImagePreviewUrl={mainImagePreviewUrl}
+                keptThumbnailUrls={keptThumbnailUrls}
+                newThumbnailPreviewUrls={newThumbnailPreviewUrls}
+                onMainImageChange={handleMainImageChange}
+                onThumbnailFilesChange={handleThumbnailFilesChange}
+                onRemoveKeptThumbnail={removeKeptThumbnail}
+                onRemoveNewThumbnail={removeNewThumbnail}
+                onMoveKeptThumbnail={moveKeptThumbnail}
+              />  </div>
           </div>
           <div className="flex flex-row items-center justify-center space-x-5 text-center">
             <Button onClick={onClose} className="border-gray-50 text-black dark:text-white">
