@@ -2,38 +2,53 @@ import React, { useEffect, useContext } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import InputModal from '../../../InputModal';
 import { Button } from 'react-daisyui';
-import 'react-quill/dist/quill.snow.css';
 import { Toastify } from '../../../../../helper/Toastify';
-import { IPostCatalog } from '../../../../../types/type/post-catalog/post-catalog';
+import LabelForm from '../../../LabelForm';
+import { PostCatalogFormValues } from '../../../../../types/type/post-catalog/post-catalog';
 import { PostCatalogContext } from '../../../../../context/post-catalog/PostCatalogContext';
 
-interface ModalEditPostPageAdminProps {
+interface ModalEditPostCatalogProps {
   isOpen: boolean;
   onClose: () => void;
   postCatalogId: string;
 }
 
-const ModalEditPostCatalogPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({ isOpen, onClose, postCatalogId }) => {
+const ModalEditPostCatalogPageAdmin: React.FC<ModalEditPostCatalogProps> = ({ isOpen, onClose, postCatalogId }) => {
   const { loading, postCatalogs, updatePostCatalog, getAllPostCatalogs } = useContext(PostCatalogContext);
   const isLoading = loading.update;
-  const { register, handleSubmit, setValue, reset } = useForm<IPostCatalog>();
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    reset,
+    formState: { errors }
+  } = useForm<PostCatalogFormValues>();
 
   useEffect(() => {
-    const postData = postCatalogs.find(postCatalog => postCatalog._id === postCatalogId);
-    if (postData) {
-      setValue('name', postData.name);
+    const postCatalogData = postCatalogs.find(postCatalog => postCatalog._id === postCatalogId);
+
+    if (postCatalogData) {
+      setValue('name', postCatalogData.name);
+      setValue('slug', postCatalogData.slug);
+      setValue('catalogId', postCatalogData.catalogId);
     }
   }, [postCatalogs, postCatalogId, setValue]);
 
-  const onSubmit: SubmitHandler<IPostCatalog> = async formData => {
+  const onSubmit: SubmitHandler<PostCatalogFormValues> = async formData => {
     try {
-      await updatePostCatalog(postCatalogId, formData);
-      Toastify('Chỉnh sửa địa điểm thành công!', 200);
+      await updatePostCatalog(postCatalogId, {
+        name: formData.name.trim(),
+        slug: formData.slug?.trim() || '',
+        catalogId: Number(formData.catalogId)
+      });
+
       reset();
-      getAllPostCatalogs();
+      await getAllPostCatalogs();
+      Toastify('Chỉnh sửa danh mục bài viết thành công!', 200);
       onClose();
     } catch (err) {
-      getAllPostCatalogs();
+      await getAllPostCatalogs();
       Toastify(`Lỗi: ${err}`, 500);
     }
   };
@@ -51,9 +66,10 @@ const ModalEditPostCatalogPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({ 
       onSubmit={handleSubmit(onSubmit)}
       onKeyDown={e => {
         const target = e.target as HTMLElement;
+
         if (e.key === 'Enter' && target.tagName !== 'TEXTAREA') {
-          e.preventDefault(); // Ngăn default Enter behavior trong input
-          handleSubmit(onSubmit)(); // Gọi submit thủ công
+          e.preventDefault();
+          handleSubmit(onSubmit)();
         }
       }}
     >
@@ -65,12 +81,36 @@ const ModalEditPostCatalogPageAdmin: React.FC<ModalEditPostPageAdminProps> = ({ 
           onClick={e => e.stopPropagation()}
           className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:w-1/2"
         >
-          <div>
-            <p className="font-bold text-black dark:text-white">Chỉnh sửa danh mục bài viết</p>
-            <InputModal type="text" {...register('name')} placeholder="Tên danh mục bài viết" />
-          </div>
-          <div className="flex flex-row items-center justify-center space-x-5 text-center">
-            <Button onClick={onClose} className="border-gray-50 text-black dark:text-white">
+          <p className="mb-5 font-bold text-black dark:text-white">Chỉnh sửa danh mục bài viết</p>
+
+          <LabelForm title="Tên danh mục bài viết" />
+          <InputModal
+            type="text"
+            {...register('name', { required: 'Vui lòng nhập tên danh mục' })}
+            placeholder="Tên danh mục bài viết"
+          />
+          {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name.message}</p>}
+
+          <LabelForm title="Slug danh mục" />
+          <InputModal type="text" {...register('slug')} placeholder="Để trống server sẽ tự tạo slug" />
+
+          <LabelForm title="Mã danh mục catalogId" />
+          <InputModal
+            type="number"
+            {...register('catalogId', {
+              required: 'Vui lòng nhập catalogId',
+              valueAsNumber: true,
+              min: {
+                value: 1,
+                message: 'catalogId phải lớn hơn 0'
+              }
+            })}
+            placeholder="VD: 1"
+          />
+          {errors.catalogId && <p className="mt-1 text-sm text-red-500">{errors.catalogId.message}</p>}
+
+          <div className="mt-5 flex flex-row items-center justify-center space-x-5 text-center">
+            <Button type="button" onClick={onClose} className="border-gray-50 text-black dark:text-white">
               Hủy
             </Button>
             <Button disabled={isLoading} color="primary" type="submit" className="group text-white">

@@ -1,7 +1,15 @@
 import { createContext, useState, useCallback, ReactNode, useMemo } from 'react';
-import { getAllPostsApi, getPostByIdApi, createPostApi, updatePostApi, deletePostApi } from '../../axios/api/postApi';
-import { IPost } from '../../types/type/post/post';
 import { AxiosResponse } from 'axios';
+import { getAllPostsApi, getPostByIdApi, createPostApi, updatePostApi, deletePostApi } from '../../axios/api/postApi';
+import { IPost, PostApiResponse, PostQueryParams } from '../../types/type/post/post';
+
+type ApiError = {
+  response?: {
+    data?: {
+      message?: string;
+    };
+  };
+};
 
 interface PostContextType {
   posts: IPost[];
@@ -14,11 +22,11 @@ interface PostContextType {
     delete: boolean;
   };
   error: string | null;
-  getAllPosts: () => Promise<void>;
+  getAllPosts: (params?: PostQueryParams) => Promise<void>;
   getPostById: (_id: string) => Promise<IPost | undefined>;
-  createPost: (postData: FormData) => Promise<AxiosResponse<any>>;
-  updatePost: (id: string, postData: FormData) => Promise<AxiosResponse<any>>;
-  deletePost: (id: string) => Promise<AxiosResponse<any>>;
+  createPost: (postData: FormData) => Promise<AxiosResponse<PostApiResponse>>;
+  updatePost: (id: string, postData: FormData) => Promise<AxiosResponse<PostApiResponse>>;
+  deletePost: (id: string) => Promise<AxiosResponse<PostApiResponse>>;
 }
 
 const defaultContextValue: PostContextType = {
@@ -32,11 +40,11 @@ const defaultContextValue: PostContextType = {
     delete: false
   },
   error: null,
-  getAllPosts: async () => {},
+  getAllPosts: async () => { },
   getPostById: async () => undefined,
-  createPost: async () => ({ data: { post: null } }) as AxiosResponse,
-  updatePost: async () => ({ data: { post: null } }) as AxiosResponse,
-  deletePost: async () => ({ data: { deleted: true } }) as AxiosResponse
+  createPost: async () => ({ data: { message: '', post: undefined } }) as AxiosResponse<PostApiResponse>,
+  updatePost: async () => ({ data: { message: '', post: undefined } }) as AxiosResponse<PostApiResponse>,
+  deletePost: async () => ({ data: { message: '', deletedPost: undefined } }) as AxiosResponse<PostApiResponse>
 };
 
 export const PostContext = createContext<PostContextType>(defaultContextValue);
@@ -44,13 +52,7 @@ export const PostContext = createContext<PostContextType>(defaultContextValue);
 export const PostProvider = ({ children }: { children: ReactNode }) => {
   const [posts, setPosts] = useState<IPost[]>([]);
   const [countPost, setCountPost] = useState<number>(0);
-  const [loading, setLoading] = useState<{
-    getAll: boolean;
-    getById: boolean;
-    create: boolean;
-    update: boolean;
-    delete: boolean;
-  }>({
+  const [loading, setLoading] = useState({
     getAll: false,
     getById: false,
     create: false,
@@ -59,22 +61,24 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
   });
   const [error, setError] = useState<string | null>(null);
 
-  const handleError = (err: any) => {
-    setError(err.response?.data?.message || 'Lỗi cục bộ!');
+  const handleError = (err: unknown) => {
+    const apiError = err as ApiError;
+    setError(apiError.response?.data?.message || 'Lỗi cục bộ!');
   };
 
   const fetchData = async (
-    apiCall: () => Promise<AxiosResponse<any>>,
-    onSuccess: (data: any) => void,
+    apiCall: () => Promise<AxiosResponse<PostApiResponse>>,
+    onSuccess: (data: PostApiResponse) => void,
     requestType: keyof typeof loading
-  ): Promise<AxiosResponse<any>> => {
+  ): Promise<AxiosResponse<PostApiResponse>> => {
     setLoading(prev => ({ ...prev, [requestType]: true }));
     setError(null);
+
     try {
       const response = await apiCall();
       onSuccess(response.data);
       return response;
-    } catch (err: any) {
+    } catch (err) {
       handleError(err);
       throw err;
     } finally {
@@ -82,73 +86,75 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  // Get All Posts
-  const getAllPosts = useCallback(async () => {
+  const getAllPosts = useCallback(async (params?: PostQueryParams) => {
     await fetchData(
-      getAllPostsApi,
+      () => getAllPostsApi(params),
       data => {
-        setPosts(data?.posts || []);
-        setCountPost(data?.count || 0);
+        setPosts(data.posts || []);
+        setCountPost(data.count || 0);
       },
       'getAll'
     );
   }, []);
 
-  // Get Post By Id
   const getPostById = useCallback(async (_id: string): Promise<IPost | undefined> => {
     try {
       const response = await fetchData(
         () => getPostByIdApi(_id),
         data => {
-          if (data?.post) {
-            setPosts(prev => {
-              const exists = prev.find(p => p._id === _id);
+          if (data.post) {
+            setPosts(prevPosts => {
+              const exists = prevPosts.some(post => post._id === _id);
+
               if (!exists) {
-                return [...prev, data.post];
+                return [data.post as IPost, ...prevPosts];
               }
-              return prev.map(p => (p._id === _id ? data.post : p));
+
+              return prevPosts.map(post => (post._id === _id ? (data.post as IPost) : post));
             });
           }
         },
         'getById'
       );
+
       return response.data.post;
-    } catch (err) {
+    } catch {
       return undefined;
     }
   }, []);
 
-  // Create Post
-  const createPost = useCallback(async (postData: FormData): Promise<AxiosResponse<any>> => {
+  const createPost = useCallback(async (postData: FormData) => {
     return await fetchData(
       () => createPostApi(postData),
       data => {
-        if (data?.p) {
-          setPosts(prevPosts => [...prevPosts, data?.p]);
+        if (data.post) {
+          setPosts(prevPosts => [data.post as IPost, ...prevPosts]);
+          setCountPost(prev => prev + 1);
         }
       },
       'create'
     );
   }, []);
 
-  // Update Post
-  const updatePost = useCallback(async (id: string, postData: FormData): Promise<AxiosResponse<any>> => {
+  const updatePost = useCallback(async (id: string, postData: FormData) => {
     return await fetchData(
       () => updatePostApi(id, postData),
       data => {
-        if (data?.postData) {
-          setPosts(prevPosts => prevPosts.map(p => (p._id === id ? data?.postData : p)));
+        if (data.post) {
+          setPosts(prevPosts => prevPosts.map(post => (post._id === id ? (data.post as IPost) : post)));
         }
       },
       'update'
     );
   }, []);
 
-  // Delete Post
-  const deletePost = useCallback(async (id: string): Promise<AxiosResponse<any>> => {
+  const deletePost = useCallback(async (id: string) => {
     return await fetchData(
       () => deletePostApi(id),
-      () => setPosts(prevPosts => prevPosts.filter(p => p._id !== id)),
+      () => {
+        setPosts(prevPosts => prevPosts.filter(post => post._id !== id));
+        setCountPost(prev => Math.max(prev - 1, 0));
+      },
       'delete'
     );
   }, []);

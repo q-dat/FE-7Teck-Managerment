@@ -1,27 +1,62 @@
+import { AxiosResponse } from 'axios';
 import axios from '../config/axiosConfig';
-import { IPostCatalog } from '../../types/type/post-catalog/post-catalog';
+import {
+  PostCatalogApiResponse,
+  PostCatalogFormValues,
+  PostCatalogQueryParams
+} from '../../types/type/post-catalog/post-catalog';
+
+const buildPostCatalogQuery = (params?: PostCatalogQueryParams): string => {
+  if (!params) return '';
+
+  const searchParams = new URLSearchParams();
+
+  if (params.catalogId !== undefined) {
+    searchParams.set('catalogId', String(params.catalogId));
+  }
+
+  if (params.keyword) {
+    searchParams.set('keyword', params.keyword);
+  }
+
+  const queryString = searchParams.toString();
+
+  return queryString ? `?${queryString}` : '';
+};
 
 // Get All PostCatalog
-export const getAllPostCatalogsApi = () => {
-  return axios.get<{ postCatalogs: IPostCatalog[] }>('/api/post-catalogs');
+export const getAllPostCatalogsApi = (
+  params?: PostCatalogQueryParams
+): Promise<AxiosResponse<PostCatalogApiResponse>> => {
+  return axios.get<PostCatalogApiResponse>(`/api/post-catalogs${buildPostCatalogQuery(params)}`);
 };
 
 // Get PostCatalog By ID
-export const getPostCatalogByIdApi = (id: string) => {
-  return axios.get<{ postCatalog: IPostCatalog }>(`/api/post-catalog/${id}`);
+export const getPostCatalogByIdApi = (id: string): Promise<AxiosResponse<PostCatalogApiResponse>> => {
+  return axios.get<PostCatalogApiResponse>(`/api/post-catalog/${id}`);
 };
 
-// Post PostCatalog
-export const createPostCatalogApi = (postCatalog: IPostCatalog) => {
-  return axios.post<{ postCatalog: IPostCatalog }>('/api/post-catalog', postCatalog);
+// Get PostCatalog By Slug
+export const getPostCatalogBySlugApi = (slug: string): Promise<AxiosResponse<PostCatalogApiResponse>> => {
+  return axios.get<PostCatalogApiResponse>(`/api/post-catalog/slug/${slug}`);
 };
 
-// Put PostCatalog
-export const updatePostCatalogApi = (id: string, postCatalog: IPostCatalog) => {
-  return axios.put<{ postCatalog: IPostCatalog }>(`/api/post-catalog/${id}`, postCatalog);
+// Create PostCatalog
+export const createPostCatalogApi = (
+  postCatalog: PostCatalogFormValues
+): Promise<AxiosResponse<PostCatalogApiResponse>> => {
+  return axios.post<PostCatalogApiResponse>('/api/post-catalog', postCatalog);
+};
+
+// Update PostCatalog
+export const updatePostCatalogApi = (
+  id: string,
+  postCatalog: PostCatalogFormValues
+): Promise<AxiosResponse<PostCatalogApiResponse>> => {
+  return axios.put<PostCatalogApiResponse>(`/api/post-catalog/${id}`, postCatalog);
 };
 
 // Delete PostCatalog
-export const deletePostCatalogApi = (id: string) => {
-  return axios.delete(`/api/post-catalog/${id}`);
+export const deletePostCatalogApi = (id: string): Promise<AxiosResponse<PostCatalogApiResponse>> => {
+  return axios.delete<PostCatalogApiResponse>(`/api/post-catalog/${id}`);
 };

@@ -23,21 +23,20 @@ const ModalDeletePostPageAdmin: React.FC<ModalDeletePostProps> = ({ isOpen, onCl
     >
       <div
         onClick={e => e.stopPropagation()}
-        className="flex flex-col items-center rounded-lg bg-white p-5 shadow dark:bg-gray-800"
+        className="mx-2 flex w-full max-w-[400px] flex-col items-center rounded-lg bg-white p-5 shadow dark:bg-gray-800"
       >
-        <div className="">
-          <p className="font-bold text-black dark:text-white">Bạn có chắc muốn xóa bài viết này?</p>
+        <p className="font-bold text-black dark:text-white">Bạn có chắc muốn xóa bài viết này?</p>
+
+        <div className="w-full py-5 text-center text-gray-500 dark:text-gray-300">
+          Sau khi nhấn <span className="font-bold text-primary">"Xác nhận"</span>, bài viết sẽ bị xoá khỏi hệ thống.
         </div>
-        <div className="w-[300px] py-5 text-center text-gray-50">
-          Sau khi bạn nhấn
-          <label className="font-bold text-primary">"Xác Nhận"</label>
-        </div>
+
         <div className="flex w-64 flex-col space-y-3 text-center">
-          <Button color="primary" type="submit" className="text-white" onClick={onConfirm}>
-            Xác Nhận
+          <Button color="primary" type="button" className="text-white" onClick={onConfirm}>
+            Xác nhận
           </Button>
 
-          <Button onClick={onClose} className="border-gray-50 text-black dark:text-white">
+          <Button type="button" onClick={onClose} className="border-gray-50 text-black dark:text-white">
             Huỷ
           </Button>
         </div>

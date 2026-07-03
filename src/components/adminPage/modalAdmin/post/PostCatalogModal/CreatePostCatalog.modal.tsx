@@ -1,31 +1,48 @@
 import React, { useContext } from 'react';
 import { Button } from 'react-daisyui';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import 'react-quill/dist/quill.snow.css';
 import { Toastify } from '../../../../../helper/Toastify';
 import InputModal from '../../../InputModal';
-import { IPostCatalog } from '../../../../../types/type/post-catalog/post-catalog';
+import LabelForm from '../../../LabelForm';
+import { PostCatalogFormValues } from '../../../../../types/type/post-catalog/post-catalog';
 import { PostCatalogContext } from '../../../../../context/post-catalog/PostCatalogContext';
 
-interface ModalCreatePostProps {
+interface ModalCreatePostCatalogProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const ModalCreatePostCatalogPageAdmin: React.FC<ModalCreatePostProps> = ({ isOpen, onClose }) => {
+const ModalCreatePostCatalogPageAdmin: React.FC<ModalCreatePostCatalogProps> = ({ isOpen, onClose }) => {
   const { loading, createPostCatalog, getAllPostCatalogs } = useContext(PostCatalogContext);
   const isLoading = loading.create;
-  const { register, handleSubmit, reset } = useForm<IPostCatalog>();
-  //
-  const onSubmit: SubmitHandler<IPostCatalog> = async formData => {
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors }
+  } = useForm<PostCatalogFormValues>({
+    defaultValues: {
+      name: '',
+      slug: '',
+      catalogId: 1
+    }
+  });
+
+  const onSubmit: SubmitHandler<PostCatalogFormValues> = async formData => {
     try {
-      await createPostCatalog(formData);
+      await createPostCatalog({
+        name: formData.name.trim(),
+        slug: formData.slug?.trim() || '',
+        catalogId: Number(formData.catalogId)
+      });
+
       reset();
-      getAllPostCatalogs();
+      await getAllPostCatalogs();
       Toastify('Tạo danh mục bài viết thành công!', 201);
       onClose();
     } catch (err) {
-      getAllPostCatalogs();
+      await getAllPostCatalogs();
       Toastify(`Lỗi: ${err}`, 500);
     }
   };
@@ -43,9 +60,10 @@ const ModalCreatePostCatalogPageAdmin: React.FC<ModalCreatePostProps> = ({ isOpe
       onSubmit={handleSubmit(onSubmit)}
       onKeyDown={e => {
         const target = e.target as HTMLElement;
+
         if (e.key === 'Enter' && target.tagName !== 'TEXTAREA') {
-          e.preventDefault(); // Ngăn default Enter behavior trong input
-          handleSubmit(onSubmit)(); // Gọi submit thủ công
+          e.preventDefault();
+          handleSubmit(onSubmit)();
         }
       }}
     >
@@ -57,13 +75,36 @@ const ModalCreatePostCatalogPageAdmin: React.FC<ModalCreatePostProps> = ({ isOpe
           onClick={e => e.stopPropagation()}
           className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:w-1/2"
         >
-          <div>
-            <p className="font-bold text-black dark:text-white">Tạo danh mục bài viết mới</p>
-            <InputModal type="text" {...register('name', { required: true })} placeholder="Tên danh mục bài viết" />
-          </div>
+          <p className="mb-5 font-bold text-black dark:text-white">Tạo danh mục bài viết mới</p>
 
-          <div className="flex flex-row items-center justify-center space-x-5 text-center">
-            <Button onClick={onClose} className="border-gray-50 text-black dark:text-white">
+          <LabelForm title="Tên danh mục bài viết" />
+          <InputModal
+            type="text"
+            {...register('name', { required: 'Vui lòng nhập tên danh mục' })}
+            placeholder="VD: Tin tức công nghệ"
+          />
+          {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name.message}</p>}
+
+          <LabelForm title="Slug danh mục" />
+          <InputModal type="text" {...register('slug')} placeholder="Để trống server sẽ tự tạo slug" />
+
+          <LabelForm title="Mã danh mục catalogId" />
+          <InputModal
+            type="number"
+            {...register('catalogId', {
+              required: 'Vui lòng nhập catalogId',
+              valueAsNumber: true,
+              min: {
+                value: 1,
+                message: 'catalogId phải lớn hơn 0'
+              }
+            })}
+            placeholder="VD: 1"
+          />
+          {errors.catalogId && <p className="mt-1 text-sm text-red-500">{errors.catalogId.message}</p>}
+
+          <div className="mt-5 flex flex-row items-center justify-center space-x-5 text-center">
+            <Button type="button" onClick={onClose} className="border-gray-50 text-black dark:text-white">
               Hủy
             </Button>
             <Button disabled={isLoading} color="primary" type="submit" className="group text-white">

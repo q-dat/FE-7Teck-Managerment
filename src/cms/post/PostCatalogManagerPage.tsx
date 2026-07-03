@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Toastify } from '../../helper/Toastify';
 import LoadingLocal from '../../components/common/loading/LoadingLocal';
 import NavtitleAdmin from '../../components/adminPage/NavtitleAdmin';
@@ -19,35 +19,50 @@ import ModalEditPostCatalogPageAdmin from '../../components/adminPage/modalAdmin
 
 const PostCatalogManagerPage: React.FC = () => {
   const { loading, postCatalogs, deletePostCatalog, getAllPostCatalogs, error } = useContext(PostCatalogContext);
+
   const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
   const [selectedPostCatalogId, setSelectedPostCatalogId] = useState<string | null>(null);
 
+  useEffect(() => {
+    void getAllPostCatalogs();
+  }, [getAllPostCatalogs]);
+
   const openModalCreateAdmin = () => setIsModalCreateOpen(true);
   const closeModalCreateAdmin = () => setIsModalCreateOpen(false);
+
   const openModalDeleteAdmin = (id: string) => {
     setSelectedPostCatalogId(id);
     setIsModalDeleteOpen(true);
   };
-  const closeModalDeleteAdmin = () => setIsModalDeleteOpen(false);
+
+  const closeModalDeleteAdmin = () => {
+    setSelectedPostCatalogId(null);
+    setIsModalDeleteOpen(false);
+  };
+
   const openModalEditAdmin = (id: string) => {
     setSelectedPostCatalogId(id);
     setIsModalEditOpen(true);
   };
-  const closeModalEditAdmin = () => setIsModalEditOpen(false);
+
+  const closeModalEditAdmin = () => {
+    setSelectedPostCatalogId(null);
+    setIsModalEditOpen(false);
+  };
 
   const handleDeletePostCatalog = async () => {
-    if (selectedPostCatalogId) {
-      try {
-        await deletePostCatalog(selectedPostCatalogId);
-        closeModalDeleteAdmin();
-        Toastify('Bạn đã xoá danh mục bài viết thành công', 201);
-        getAllPostCatalogs();
-      } catch (error) {
-        const errorMessage = isIErrorResponse(error) ? error.data?.message : 'Xoá danh mục bài viết thất bại!';
-        Toastify(`Lỗi: ${errorMessage}`, 500);
-      }
+    if (!selectedPostCatalogId) return;
+
+    try {
+      await deletePostCatalog(selectedPostCatalogId);
+      closeModalDeleteAdmin();
+      Toastify('Bạn đã xoá danh mục bài viết thành công', 201);
+      await getAllPostCatalogs();
+    } catch (error) {
+      const errorMessage = isIErrorResponse(error) ? error.data?.message : 'Xoá danh mục bài viết thất bại!';
+      Toastify(`Lỗi: ${errorMessage}`, 500);
     }
   };
 
@@ -57,31 +72,28 @@ const PostCatalogManagerPage: React.FC = () => {
   return (
     <div className="w-full pb-10 xl:pb-0">
       <NavbarPost Title_NavbarPost="Danh Mục Bài Viết" />
-      <div className="">
-        <NavtitleAdmin
-          Title_NavtitleAdmin="Quản Lý Danh Sách Danh Mục Bài Viết"
-          Btn_Create={
-            <div className="flex flex-col items-start justify-center gap-2 md:flex-row md:items-end">
-              <Button
-                color="primary"
-                onClick={openModalCreateAdmin}
-                className="w-[100px] text-sm font-light text-white"
-              >
-                <RiAddBoxLine className="text-xl" color="white" />
-                Thêm
-              </Button>
-            </div>
-          }
-        />
-      </div>
+
+      <NavtitleAdmin
+        Title_NavtitleAdmin="Quản Lý Danh Sách Danh Mục Bài Viết"
+        Btn_Create={
+          <div className="flex flex-col items-start justify-center gap-2 xl:flex-row xl:items-end">
+            <Button color="primary" onClick={openModalCreateAdmin} className="w-[100px] text-sm font-light text-white">
+              <RiAddBoxLine className="text-xl" color="white" />
+              Thêm
+            </Button>
+          </div>
+        }
+      />
 
       <TableListAdmin
         Title_TableListAdmin={`Danh Sách Danh Mục Bài Viết (${postCatalogs.length})`}
         table_head={
           <Table.Head className="bg-primary text-center text-white">
             <span>STT</span>
+            <span>CatalogId</span>
             <span>Tên Danh Mục</span>
-            <span>Ngày Tạo</span>
+            <span>Slug</span>
+            <span>Ngày Cập Nhật</span>
             <span>Hành Động</span>
           </Table.Head>
         }
@@ -90,10 +102,11 @@ const PostCatalogManagerPage: React.FC = () => {
             {postCatalogs.map((postCatalog: IPostCatalog, index: number) => (
               <Table.Row key={postCatalog._id}>
                 <span>#{index + 1}</span>
-                <span className="line-clamp-2">{postCatalog?.name}</span>
+                <span>{postCatalog.catalogId}</span>
+                <span className="line-clamp-2">{postCatalog.name}</span>
+                <span className="line-clamp-1">{postCatalog.slug}</span>
                 <span>
-                  {/* {new Date(postCatalog?.updatedAt).toLocaleDateString('vi-VN')} */}
-                  <TimeAgo date={postCatalog?.updatedAt} />
+                  <TimeAgo date={postCatalog.updatedAt} />
                 </span>
 
                 <span>
@@ -103,17 +116,19 @@ const PostCatalogManagerPage: React.FC = () => {
                         <FaCircleInfo />
                       </div>
                     </summary>
+
                     <div className="flex flex-col items-center justify-center gap-2">
                       <Button
                         color="success"
-                        onClick={() => openModalEditAdmin(postCatalog._id ?? '')}
+                        onClick={() => openModalEditAdmin(postCatalog._id)}
                         className="w-full max-w-[140px] text-sm font-light text-white"
                       >
                         <FaPenToSquare />
                         Cập Nhật
                       </Button>
+
                       <Button
-                        onClick={() => openModalDeleteAdmin(postCatalog._id ?? '')}
+                        onClick={() => openModalDeleteAdmin(postCatalog._id)}
                         className="w-full max-w-[140px] bg-red-600 text-sm font-light text-white"
                       >
                         <MdDelete />
@@ -127,12 +142,15 @@ const PostCatalogManagerPage: React.FC = () => {
           </Table.Body>
         }
       />
+
       <ModalCreatePostCatalogPageAdmin isOpen={isModalCreateOpen} onClose={closeModalCreateAdmin} />
+
       <ModalDeletePostCatalogPageAdmin
         isOpen={isModalDeleteOpen}
         onClose={closeModalDeleteAdmin}
         onConfirm={handleDeletePostCatalog}
       />
+
       <ModalEditPostCatalogPageAdmin
         isOpen={isModalEditOpen}
         onClose={closeModalEditAdmin}

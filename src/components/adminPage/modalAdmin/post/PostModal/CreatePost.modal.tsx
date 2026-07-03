@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import { Button, Select, Textarea } from 'react-daisyui';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { IPost } from '../../../../../types/type/post/post';
 import { Toastify } from '../../../../../helper/Toastify';
 import InputModal from '../../../InputModal';
 import { PostContext } from '../../../../../context/post/PostContext';
 import { PostCatalogContext } from '../../../../../context/post-catalog/PostCatalogContext';
 import LabelForm from '../../../LabelForm';
 import QuillEditor from '../../../../../lib/ReactQuill';
+import { PostFormValues } from '../../../../../types/type/post/post';
+import 'react-quill/dist/quill.snow.css';
 
 const modules = {
   toolbar: [
@@ -23,34 +24,63 @@ const modules = {
     [{ script: 'sub' }, { script: 'super' }]
   ]
 };
+
 interface ModalCreatePostProps {
   isOpen: boolean;
   onClose: () => void;
 }
+
 const ModalCreatePostPageAdmin: React.FC<ModalCreatePostProps> = ({ isOpen, onClose }) => {
   const { loading, createPost, getAllPosts } = useContext(PostContext);
+  const { postCatalogs, getAllPostCatalogs } = useContext(PostCatalogContext);
   const isLoading = loading.create;
-  const { postCatalogs } = useContext(PostCatalogContext);
-  const { register, handleSubmit, reset } = useForm<IPost>();
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors }
+  } = useForm<PostFormValues>();
+
   const [editorValue, setEditorValue] = React.useState<string>('');
-  //
-  const onSubmit: SubmitHandler<IPost> = async formData => {
-    const data = new FormData();
-    data.append('title', formData.title);
-    data.append('catalog', formData.catalog);
-    data.append('content', editorValue);
-    data.append('source', formData.source || '');
-    if (formData.imageUrl) {
-      data.append('imageUrl', formData.imageUrl[0]);
+
+  React.useEffect(() => {
+    if (isOpen) {
+      void getAllPostCatalogs();
     }
+  }, [isOpen, getAllPostCatalogs]);
+
+  const onSubmit: SubmitHandler<PostFormValues> = async formData => {
+    if (!editorValue.trim()) {
+      Toastify('Vui lòng nhập nội dung bài viết!', 400);
+      return;
+    }
+
+    const imageFile = formData.imageUrl?.[0];
+
+    if (!imageFile) {
+      Toastify('Vui lòng chọn ảnh đại diện!', 400);
+      return;
+    }
+
+    const data = new FormData();
+
+    data.append('title', formData.title.trim());
+    data.append('slug', formData.slug?.trim() || '');
+    data.append('catalogId', String(formData.catalogId));
+    data.append('content', editorValue);
+    data.append('source', formData.source?.trim() || '');
+    data.append('imageUrl', imageFile);
+
     try {
       await createPost(data);
       reset();
-      getAllPosts();
+      setEditorValue('');
+      await getAllPosts();
       Toastify('Tạo bài viết thành công!', 201);
       onClose();
     } catch (err) {
-      getAllPosts();
+      await getAllPosts();
       Toastify(`Lỗi: ${err}`, 500);
     }
   };
@@ -68,9 +98,10 @@ const ModalCreatePostPageAdmin: React.FC<ModalCreatePostProps> = ({ isOpen, onCl
       onSubmit={handleSubmit(onSubmit)}
       onKeyDown={e => {
         const target = e.target as HTMLElement;
+
         if (e.key === 'Enter' && target.tagName !== 'TEXTAREA') {
-          e.preventDefault(); // Ngăn default Enter behavior trong input
-          handleSubmit(onSubmit)(); // Gọi submit thủ công
+          e.preventDefault();
+          handleSubmit(onSubmit)();
         }
       }}
     >
@@ -80,39 +111,57 @@ const ModalCreatePostPageAdmin: React.FC<ModalCreatePostProps> = ({ isOpen, onCl
       >
         <div
           onClick={e => e.stopPropagation()}
-          className="mx-2 flex w-full flex-col rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:mx-[200px] xl:w-screen"
+          className="mx-2 flex max-h-[95vh] w-full flex-col overflow-y-auto rounded-lg bg-white p-5 text-start shadow dark:bg-gray-800 xl:mx-[200px] xl:w-screen"
         >
           <p className="font-bold text-black dark:text-white">Tạo bài viết mới</p>
+
           <div className="mt-5 flex flex-col items-start justify-center gap-5 xl:flex-row">
             <div className="w-full xl:w-1/2">
-              <LabelForm title={'Tiêu đề bài viết'} />
+              <LabelForm title="Tiêu đề bài viết" />
               <Textarea
                 className="h-[100px] w-full border border-gray-50 bg-white text-black placeholder:text-black focus:border focus:border-gray-50 focus:outline-none dark:bg-gray-700 dark:text-white xl:h-[30vh]"
-                {...register('title', { required: true })}
+                {...register('title', { required: 'Vui lòng nhập tiêu đề' })}
                 placeholder="Tiêu đề bài viết"
               />
-              <LabelForm title={'Danh mục'} />
+              {errors.title && <p className="mt-1 text-sm text-red-500">{errors.title.message}</p>}
+
+              <LabelForm title="Slug bài viết" />
+              <InputModal type="text" {...register('slug')} placeholder="Để trống server sẽ tự tạo từ tiêu đề" />
+
+              <LabelForm title="Danh mục" />
               <Select
                 defaultValue=""
                 className="mb-5 w-full border border-gray-50 bg-white text-black focus:border focus:border-gray-50 focus:outline-none dark:bg-gray-700 dark:text-white"
-                {...register('catalog', { required: true })}
+                {...register('catalogId', {
+                  required: 'Vui lòng chọn danh mục',
+                  valueAsNumber: true
+                })}
               >
                 <option value="" disabled>
-                  Chọn Danh Mục
+                  Chọn danh mục
                 </option>
                 {postCatalogs.map(postCatalog => (
-                  <option key={postCatalog._id} value={postCatalog.name}>
-                    {postCatalog.name}
+                  <option key={postCatalog._id} value={postCatalog.catalogId}>
+                    {postCatalog.catalogId} - {postCatalog.name}
                   </option>
                 ))}
               </Select>
-              <LabelForm title={'Nguồn'} />
-              <InputModal type="text" {...register('source')} placeholder="Nguồn:..." />
-              <LabelForm title={'Ảnh đại diện'} />
-              <InputModal type="file" {...register('imageUrl', { required: true })} placeholder="Ảnh đại diện" />
+              {errors.catalogId && <p className="mt-1 text-sm text-red-500">{errors.catalogId.message}</p>}
+
+              <LabelForm title="Nguồn" />
+              <InputModal type="text" {...register('source')} placeholder="Nguồn bài viết" />
+
+              <LabelForm title="Ảnh đại diện" />
+              <InputModal
+                type="file"
+                {...register('imageUrl', { required: 'Vui lòng chọn ảnh đại diện' })}
+                placeholder="Ảnh đại diện"
+              />
+              {errors.imageUrl && <p className="mt-1 text-sm text-red-500">{errors.imageUrl.message}</p>}
             </div>
+
             <div className="w-full">
-              <LabelForm title={'Nội dung'} />
+              <LabelForm title="Nội dung" />
               <QuillEditor
                 value={editorValue}
                 onChange={setEditorValue}
@@ -123,8 +172,9 @@ const ModalCreatePostPageAdmin: React.FC<ModalCreatePostProps> = ({ isOpen, onCl
               />
             </div>
           </div>
+
           <div className="flex flex-row items-center justify-center space-x-5 text-center">
-            <Button onClick={onClose} className="border-gray-50 text-black dark:text-white">
+            <Button type="button" onClick={onClose} className="border-gray-50 text-black dark:text-white">
               Hủy
             </Button>
             <Button disabled={isLoading} color="primary" type="submit" className="group text-white">
