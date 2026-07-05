@@ -14,36 +14,39 @@ import { TabletCatalogProvider } from '../context/tablet-catalog/TabletCatalogCo
 import { TabletProvider } from '../context/tablet/TabletContext';
 import { WindowsCatalogProvider } from '../context/windows-catalog/WindowsCatalogContext';
 import { WindowsProvider } from '../context/windows/WindowsContext';
+import { CloudinaryImageProvider } from '../context/cloudinary-image/CloudinaryImageContext';
 
 const AppProvider = ({ children }: { children: ReactNode }) => {
   return (
     <AuthProvider>
-      <PriceListProvider>
-        <GalleryProvider>
-          <PostCatalogProvider>
-            <PostProvider>
-              <PhoneCatalogProvider>
-                <PhoneProvider>
-                  <TabletCatalogProvider>
-                    <TabletProvider>
-                      <WindowsCatalogProvider>
-                        <WindowsProvider>
-                          <MacbookCatalogProvider>
-                            <MacbookProvider>
+      <CloudinaryImageProvider>
+        <PriceListProvider>
+          <GalleryProvider>
+            <PostCatalogProvider>
+              <PostProvider>
+                <PhoneCatalogProvider>
+                  <PhoneProvider>
+                    <TabletCatalogProvider>
+                      <TabletProvider>
+                        <WindowsCatalogProvider>
+                          <WindowsProvider>
+                            <MacbookCatalogProvider>
+                              <MacbookProvider>
                                 <ParallaxProvider>{children}</ParallaxProvider>
-                            </MacbookProvider>
-                          </MacbookCatalogProvider>
-                        </WindowsProvider>
-                      </WindowsCatalogProvider>
-                    </TabletProvider>
-                  </TabletCatalogProvider>
-                </PhoneProvider>
-              </PhoneCatalogProvider>
-            </PostProvider>
-          </PostCatalogProvider>
-        </GalleryProvider>
-      </PriceListProvider>
-      <ToastContainer />
+                              </MacbookProvider>
+                            </MacbookCatalogProvider>
+                          </WindowsProvider>
+                        </WindowsCatalogProvider>
+                      </TabletProvider>
+                    </TabletCatalogProvider>
+                  </PhoneProvider>
+                </PhoneCatalogProvider>
+              </PostProvider>
+            </PostCatalogProvider>
+          </GalleryProvider>
+        </PriceListProvider>
+        <ToastContainer />
+      </CloudinaryImageProvider>
     </AuthProvider>
   );
 };

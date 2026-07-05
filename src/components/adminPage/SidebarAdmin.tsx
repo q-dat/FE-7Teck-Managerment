@@ -11,7 +11,7 @@ import { TabletContext } from '../../context/tablet/TabletContext';
 import { WindowsContext } from '../../context/windows/WindowsContext';
 import { MacbookContext } from '../../context/macbook/MacbookContext';
 import { LuFileJson } from 'react-icons/lu';
-import { MdImageSearch } from 'react-icons/md';
+import { MdImageSearch, MdCloudQueue } from 'react-icons/md';
 import { IoIosArrowDropdownCircle, IoIosArrowDropupCircle } from 'react-icons/io';
 
 type SidebarAdminProps = {
@@ -68,6 +68,7 @@ const SidebarAdmin: React.FC<SidebarAdminProps> = ({ collapsed = false }) => {
     if (!item.children) return false;
     return item.children.some(child => isActiveRoute(child));
   };
+
   const toggleMenu = (name: string) => {
     setOpenMenus(prev => ({
       ...prev,
@@ -174,6 +175,11 @@ const SidebarAdmin: React.FC<SidebarAdminProps> = ({ collapsed = false }) => {
       name: 'Image Collector',
       icon: MdImageSearch,
       link: '/cms/admin/image-collector'
+    },
+    {
+      name: 'Cloudinary Images',
+      icon: MdCloudQueue,
+      link: '/cms/admin/cloudinary-images'
     }
   ];
 
@@ -265,8 +271,8 @@ const SidebarAdmin: React.FC<SidebarAdminProps> = ({ collapsed = false }) => {
                             <NavLink
                               to={buildPath(sub)}
                               className={`btn flex w-full items-center border-none shadow-none ${active
-                                ? 'bg-base-200 font-bold text-primary dark:bg-white/20 dark:text-white'
-                                : 'bg-transparent font-light text-black dark:text-white'
+                                  ? 'bg-base-200 font-bold text-primary dark:bg-white/20 dark:text-white'
+                                  : 'bg-transparent font-light text-black dark:text-white'
                                 } ${collapsed ? 'justify-center px-2' : 'justify-start pl-4'}`}
                             >
                               <div className="flex w-full items-center justify-between">
@@ -296,8 +302,8 @@ const SidebarAdmin: React.FC<SidebarAdminProps> = ({ collapsed = false }) => {
                   <NavLink
                     to={buildPath(item)}
                     className={`btn flex w-full items-center border-none shadow-none dark:bg-gray-800 ${active
-                      ? 'bg-base-200 font-bold text-primary dark:bg-white'
-                      : 'bg-transparent font-light text-black dark:text-white'
+                        ? 'bg-base-200 font-bold text-primary dark:bg-white'
+                        : 'bg-transparent font-light text-black dark:text-white'
                       } ${collapsed ? 'justify-center px-2' : 'justify-start pl-4'}`}
                   >
                     <div className="flex w-full items-center justify-between">

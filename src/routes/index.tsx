@@ -43,6 +43,8 @@ const WindowsCatalogManager = lazy(() => import('../cms/product/windowsPage/Wind
 const WindowsManager = lazy(() => import('../cms/product/windowsPage/WindowsManager'));
 const JsonPreviewPage = lazy(() => import('../cms/tools/JsonPreviewPage'));;
 const ImageCollectorPage = lazy(() => import('../cms/tools/ImageCollectorPage'))
+const CloudinaryImageManagerPage = lazy(() => import('../pages/adminPage/cloudinary-image/CloudinaryImageManagerPage'))
+
 
 // post
 const Post = lazy(() => import('../cms/post/layout'));
@@ -115,7 +117,7 @@ export default function AppRoutes() {
             <Route path="windows-manager" element={<WindowsManager />} />
             <Route path="json-preview" element={<JsonPreviewPage />} />
             <Route path="image-collector" element={<ImageCollectorPage />} />
-             
+            <Route path="cloudinary-images" element={<CloudinaryImageManagerPage />} />
           </Route>
         </Route>
 
