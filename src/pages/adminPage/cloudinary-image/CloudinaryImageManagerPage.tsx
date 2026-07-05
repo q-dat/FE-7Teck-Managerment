@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Button, Input, Select } from 'react-daisyui';
 import { CloudinaryImageContext } from '../../../context/cloudinary-image/CloudinaryImageContext';
 import { Toastify } from '../../../helper/Toastify';
@@ -8,6 +8,7 @@ const folderOptions = ['', 'products', 'phones', 'posts', 'tablets', 'macbooks',
 const maxResultOptions = [50, 100, 200, 500];
 
 type DeleteMode = 'single' | 'multiple';
+type DragSelectMode = 'select' | 'deselect';
 
 interface DeleteState {
     mode: DeleteMode;
@@ -20,6 +21,11 @@ interface DeleteImageModalProps {
     onClose: () => void;
     onConfirm: () => void;
 }
+
+const controlClass =
+    'h-11 min-h-11 w-full rounded-2xl border-gray-100 bg-white text-sm text-black focus:outline-none dark:border-white/10 dark:bg-gray-800 dark:text-white';
+
+const buttonControlClass = 'h-11 min-h-11 rounded-2xl text-sm font-semibold';
 
 const formatDateTime = (value: string): string => {
     const date = new Date(value);
@@ -91,11 +97,11 @@ const DeleteImageModal: React.FC<DeleteImageModalProps> = ({ deleteState, loadin
                     </div>
 
                     <div className="mt-4 grid grid-cols-2 gap-2">
-                        <Button type="button" onClick={onClose} disabled={loading} className="border-gray-100 text-black dark:text-white">
+                        <Button type="button" onClick={onClose} disabled={loading} className={`${buttonControlClass} border-gray-100 text-black dark:text-white`}>
                             Hủy
                         </Button>
 
-                        <Button type="button" color="error" onClick={onConfirm} disabled={loading} className="text-white">
+                        <Button type="button" color="error" onClick={onConfirm} disabled={loading} className={`${buttonControlClass} text-white`}>
                             {loading ? 'Đang xóa...' : 'Xác nhận xóa'}
                         </Button>
                     </div>
@@ -122,6 +128,8 @@ const CloudinaryImageManagerPage: React.FC = () => {
     const [maxResults, setMaxResults] = useState<number>(100);
     const [selectedUrls, setSelectedUrls] = useState<string[]>([]);
     const [deleteState, setDeleteState] = useState<DeleteState | null>(null);
+
+    const dragSelectModeRef = useRef<DragSelectMode | null>(null);
 
     const selectedUrlSet = useMemo(() => new Set(selectedUrls), [selectedUrls]);
 
@@ -157,6 +165,18 @@ const CloudinaryImageManagerPage: React.FC = () => {
     }, [folder, keyword, maxResults, getCloudinaryImages]);
 
     useEffect(() => {
+        const stopDragSelecting = () => {
+            dragSelectModeRef.current = null;
+        };
+
+        window.addEventListener('mouseup', stopDragSelecting);
+
+        return () => {
+            window.removeEventListener('mouseup', stopDragSelecting);
+        };
+    }, []);
+
+    useEffect(() => {
         return () => {
             resetCloudinaryImages();
         };
@@ -176,14 +196,41 @@ const CloudinaryImageManagerPage: React.FC = () => {
         );
     };
 
-    const toggleSelectImage = (imageUrl: string) => {
+    const updateSelectedImage = (imageUrl: string, mode: DragSelectMode) => {
         setSelectedUrls(prevUrls => {
-            if (prevUrls.includes(imageUrl)) {
-                return prevUrls.filter(url => url !== imageUrl);
+            const alreadySelected = prevUrls.includes(imageUrl);
+
+            if (mode === 'select') {
+                if (alreadySelected) return prevUrls;
+
+                return [...prevUrls, imageUrl];
             }
 
-            return [...prevUrls, imageUrl];
+            if (!alreadySelected) return prevUrls;
+
+            return prevUrls.filter(url => url !== imageUrl);
         });
+    };
+
+    const handleCardMouseDown = (event: React.MouseEvent<HTMLDivElement>, imageUrl: string) => {
+        const target = event.target as HTMLElement;
+
+        if (target.closest('[data-ignore-drag-select="true"]')) {
+            return;
+        }
+
+        event.preventDefault();
+
+        const nextMode: DragSelectMode = selectedUrlSet.has(imageUrl) ? 'deselect' : 'select';
+
+        dragSelectModeRef.current = nextMode;
+        updateSelectedImage(imageUrl, nextMode);
+    };
+
+    const handleCardMouseEnter = (imageUrl: string) => {
+        if (!dragSelectModeRef.current) return;
+
+        updateSelectedImage(imageUrl, dragSelectModeRef.current);
     };
 
     const toggleSelectAllVisible = () => {
@@ -246,7 +293,9 @@ const CloudinaryImageManagerPage: React.FC = () => {
         return (
             <div
                 key={image.publicId}
-                className={`group overflow-hidden rounded-2xl border bg-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl dark:bg-gray-900 ${isSelected ? 'border-primary ring-2 ring-primary/30' : 'border-gray-100 dark:border-white/10'
+                onMouseDown={event => handleCardMouseDown(event, image.secureUrl)}
+                onMouseEnter={() => handleCardMouseEnter(image.secureUrl)}
+                className={`group cursor-pointer select-none overflow-hidden rounded-2xl border bg-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl dark:bg-gray-900 ${isSelected ? 'border-primary bg-primary/5 ring-2 ring-primary/40 dark:bg-primary/10' : 'border-gray-100 dark:border-white/10'
                     }`}
             >
                 <div className="relative aspect-square overflow-hidden bg-gray-100 dark:bg-gray-800">
@@ -254,23 +303,32 @@ const CloudinaryImageManagerPage: React.FC = () => {
                         src={image.secureUrl}
                         alt={image.filename}
                         loading="lazy"
-                        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        draggable={false}
+                        className={`h-full w-full object-cover transition-all duration-300 ${isSelected ? 'scale-105 blur-[2px] brightness-75' : 'group-hover:scale-105'
+                            }`}
                     />
 
-                    <label className="absolute left-2 top-2 flex cursor-pointer items-center gap-1 rounded-full bg-white/90 px-2 py-1 text-[10px] font-bold text-black shadow dark:bg-gray-950/90 dark:text-white">
-                        <input
-                            type="checkbox"
-                            checked={isSelected}
-                            onChange={() => toggleSelectImage(image.secureUrl)}
-                            className="checkbox checkbox-primary checkbox-xs"
-                        />
-                        Chọn
-                    </label>
+                    {isSelected && (
+                        <>
+                            <div className="absolute inset-0 bg-primary/20" />
+
+                            <div className="absolute left-2 top-2 rounded-full bg-primary px-2.5 py-1 text-[10px] font-bold text-white shadow">
+                                Đã chọn
+                            </div>
+
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-xl font-bold text-primary shadow-lg dark:bg-gray-950/90">
+                                    ✓
+                                </div>
+                            </div>
+                        </>
+                    )}
 
                     <button
                         type="button"
+                        data-ignore-drag-select="true"
                         onClick={() => openDeleteSingleModal(image)}
-                        className="absolute right-2 top-2 rounded-full bg-red-500 px-2.5 py-1 text-[10px] font-bold text-white shadow-lg transition-all duration-200 hover:bg-red-600"
+                        className="absolute right-2 top-2 h-7 min-h-7 rounded-full bg-red-500 px-3 text-[10px] font-bold text-white shadow-lg transition-all duration-200 hover:bg-red-600"
                     >
                         Xóa
                     </button>
@@ -299,8 +357,9 @@ const CloudinaryImageManagerPage: React.FC = () => {
                     <div className="grid grid-cols-2 gap-1.5 pt-1">
                         <button
                             type="button"
+                            data-ignore-drag-select="true"
                             onClick={() => copyText(image.secureUrl)}
-                            className="rounded-xl bg-primary px-2 py-1.5 text-[11px] font-semibold text-white transition-all duration-200 hover:opacity-90"
+                            className="h-8 min-h-8 rounded-xl bg-primary px-2 text-[11px] font-semibold text-white transition-all duration-200 hover:opacity-90"
                         >
                             Copy
                         </button>
@@ -309,7 +368,8 @@ const CloudinaryImageManagerPage: React.FC = () => {
                             href={image.secureUrl}
                             target="_blank"
                             rel="noreferrer"
-                            className="rounded-xl border border-gray-100 bg-white px-2 py-1.5 text-center text-[11px] font-semibold text-black transition-all duration-200 hover:bg-gray-50 dark:border-white/10 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
+                            data-ignore-drag-select="true"
+                            className="flex h-8 min-h-8 items-center justify-center rounded-xl border border-gray-100 bg-white px-2 text-center text-[11px] font-semibold text-black transition-all duration-200 hover:bg-gray-50 dark:border-white/10 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
                         >
                             Xem
                         </a>
@@ -326,7 +386,9 @@ const CloudinaryImageManagerPage: React.FC = () => {
                     <div className="flex flex-col gap-2 xl:flex-row xl:items-center xl:justify-between">
                         <div>
                             <h1 className="text-base font-bold text-black dark:text-white xl:text-lg">Quản lý ảnh Cloudinary</h1>
-                            <p className="text-xs text-gray-500 dark:text-gray-400">Chọn folder là tự lọc, chọn nhiều ảnh để xóa nhanh.</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400">
+                                Click vào ảnh để chọn hoặc bỏ chọn. Giữ chuột và vuốt qua ảnh để chọn nhiều ảnh nhanh.
+                            </p>
                         </div>
 
                         <div className="grid grid-cols-4 gap-1.5 text-center text-[11px] xl:flex xl:items-center">
@@ -352,12 +414,8 @@ const CloudinaryImageManagerPage: React.FC = () => {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-2 md:grid-cols-4 xl:grid-cols-[170px_1fr_130px_auto_auto]">
-                        <Select
-                            value={folder}
-                            onChange={e => setFolder(e.target.value)}
-                            className="h-10 w-full border-gray-100 bg-white text-sm text-black focus:outline-none dark:bg-gray-800 dark:text-white"
-                        >
+                    <div className="grid grid-cols-2 gap-2 md:grid-cols-4 xl:grid-cols-[170px_1fr_130px_130px_130px]">
+                        <Select value={folder} onChange={e => setFolder(e.target.value)} className={controlClass}>
                             {folderOptions.map(item => (
                                 <option key={item || 'all'} value={item}>
                                     {item ? item : 'Tất cả folder'}
@@ -369,14 +427,10 @@ const CloudinaryImageManagerPage: React.FC = () => {
                             value={keyword}
                             onChange={e => setKeyword(e.target.value)}
                             placeholder="Tìm publicId..."
-                            className="h-10 w-full border-gray-100 bg-white text-sm text-black placeholder:text-gray-400 focus:outline-none dark:bg-gray-800 dark:text-white"
+                            className={`${controlClass} placeholder:text-gray-400`}
                         />
 
-                        <Select
-                            value={maxResults}
-                            onChange={e => setMaxResults(Number(e.target.value))}
-                            className="h-10 w-full border-gray-100 bg-white text-sm text-black focus:outline-none dark:bg-gray-800 dark:text-white"
-                        >
+                        <Select value={maxResults} onChange={e => setMaxResults(Number(e.target.value))} className={controlClass}>
                             {maxResultOptions.map(item => (
                                 <option key={item} value={item}>
                                     {item} ảnh
@@ -384,19 +438,18 @@ const CloudinaryImageManagerPage: React.FC = () => {
                             ))}
                         </Select>
 
-                        <Button type="button" size="sm" onClick={toggleSelectAllVisible} className="h-10 border-gray-100 text-black dark:text-white">
+                        <Button type="button" onClick={toggleSelectAllVisible} className={`${buttonControlClass} border-gray-100 text-black dark:text-white`}>
                             {isAllVisibleSelected ? 'Bỏ chọn' : 'Chọn tất cả'}
                         </Button>
 
                         <Button
                             type="button"
-                            size="sm"
                             color="error"
-                            className="h-10 text-white"
+                            className={`${buttonControlClass} text-white`}
                             disabled={loading.delete || selectedUrls.length === 0}
                             onClick={openDeleteMultipleModal}
                         >
-                            {loading.delete ? 'Đang xóa...' : `Xóa ${selectedUrls.length || ''}`}
+                            {loading.delete ? 'Đang xóa' : `Xóa ${selectedUrls.length || ''}`}
                         </Button>
                     </div>
 
@@ -418,7 +471,13 @@ const CloudinaryImageManagerPage: React.FC = () => {
 
                 <div className="flex justify-center py-4">
                     {nextCursor ? (
-                        <Button type="button" color="primary" size="sm" className="text-white" disabled={loading.getAll} onClick={loadMoreImages}>
+                        <Button
+                            type="button"
+                            color="primary"
+                            className={`${buttonControlClass} px-5 text-white`}
+                            disabled={loading.getAll}
+                            onClick={loadMoreImages}
+                        >
                             {loading.getAll ? 'Đang tải...' : 'Tải thêm ảnh'}
                         </Button>
                     ) : (
